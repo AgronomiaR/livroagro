@@ -2993,6 +2993,7 @@ cbind(media,variancia,desvio,cv)
 ```
 
 <br>
+
 ### Análise Exploratória dos dados (Fator 2)
 
 ```{r}
