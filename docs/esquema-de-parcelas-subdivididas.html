@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Esquema de Parcelas Subdivididas | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Esquema de Parcelas Subdivididas | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Esquema de Parcelas Subdivididas | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2020-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="esquema-fatorial-3-fatores.html"/>
+<link rel="next" href="polinômios-ortogonais.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a></li>
+<li class="chapter" data-level="2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html"><i class="fa fa-check"></i><b>2</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Delineamento Inteiramente Casualizado</span></a><ul>
+<li class="chapter" data-level="2.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#vantagens"><i class="fa fa-check"></i><b>2.1</b> Vantagens</a></li>
+<li class="chapter" data-level="2.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#desvantagens"><i class="fa fa-check"></i><b>2.2</b> Desvantagens</a></li>
+<li class="chapter" data-level="2.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#modelo-matemático-para-dic"><i class="fa fa-check"></i><b>2.3</b> Modelo matemático para DIC</a></li>
+<li class="chapter" data-level="2.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#hipóteses-e-modelo"><i class="fa fa-check"></i><b>2.4</b> Hipóteses e Modelo</a></li>
+<li class="chapter" data-level="2.5" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#croqui-para-dic"><i class="fa fa-check"></i><b>2.5</b> Croqui para DIC</a></li>
+<li class="chapter" data-level="2.6" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#exemplo-1-4"><i class="fa fa-check"></i><b>2.6</b> Exemplo 1</a></li>
+<li class="chapter" data-level="2.7" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#estatística-descritiva-2"><i class="fa fa-check"></i><b>2.7</b> Estatística descritiva</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#por-inoculação"><i class="fa fa-check"></i><b>2.7.1</b> Por Inoculação</a></li>
+<li class="chapter" data-level="2.7.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#por-época-de-aplicação"><i class="fa fa-check"></i><b>2.7.2</b> Por época de aplicação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráficos-exploratórios-3"><i class="fa fa-check"></i><b>2.8</b> Gráficos exploratórios</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráfico-de-caixas-5"><i class="fa fa-check"></i><b>2.8.1</b> Gráfico de Caixas</a></li>
+<li class="chapter" data-level="2.8.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráfico-de-interação"><i class="fa fa-check"></i><b>2.8.2</b> Gráfico de interação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#análise-de-variância-7"><i class="fa fa-check"></i><b>2.9</b> Análise de Variância</a></li>
+<li class="chapter" data-level="2.10" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#pressuposições-6"><i class="fa fa-check"></i><b>2.10</b> Pressuposições</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#normalidade-dos-erros-9"><i class="fa fa-check"></i><b>2.10.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="2.10.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#homogeneidade-de-variâncias-4"><i class="fa fa-check"></i><b>2.10.2</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="2.10.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#independência-dos-erros-6"><i class="fa fa-check"></i><b>2.10.3</b> Independência dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#teste-de-comparações-2"><i class="fa fa-check"></i><b>2.11</b> Teste de comparações</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html"><i class="fa fa-check"></i><b>3</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema Fatorial (3 Fatores)</span></a><ul>
+<li class="chapter" data-level="3.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#tipos-de-efeitos-avaliados-1"><i class="fa fa-check"></i><b>3.1</b> Tipos de efeitos avaliados</a></li>
+<li class="chapter" data-level="3.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#vantagens-3"><i class="fa fa-check"></i><b>3.2</b> Vantagens</a></li>
+<li class="chapter" data-level="3.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#desvantagens-3"><i class="fa fa-check"></i><b>3.3</b> Desvantagens</a></li>
+<li class="chapter" data-level="3.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#modelo-estatístico-1"><i class="fa fa-check"></i><b>3.4</b> Modelo estatístico</a></li>
+<li class="chapter" data-level="3.5" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#hipóteses-e-modelo-3"><i class="fa fa-check"></i><b>3.5</b> Hipóteses e modelo</a></li>
+<li class="chapter" data-level="3.6" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#exemplo-1-5"><i class="fa fa-check"></i><b>3.6</b> Exemplo 1</a></li>
+<li class="chapter" data-level="3.7" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#conjunto-de-dados-6"><i class="fa fa-check"></i><b>3.7</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="3.8" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados"><i class="fa fa-check"></i><b>3.8</b> Análise Exploratória dos dados</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-geral"><i class="fa fa-check"></i><b>3.8.1</b> Análise Exploratória dos dados (Geral)</a></li>
+<li class="chapter" data-level="3.8.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-fator-1"><i class="fa fa-check"></i><b>3.8.2</b> Análise Exploratória dos dados (Fator 1)</a></li>
+<li class="chapter" data-level="3.8.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-fator-3"><i class="fa fa-check"></i><b>3.8.3</b> Análise Exploratória dos dados (Fator 3)</a></li>
+<li class="chapter" data-level="3.8.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-juntando-tratamentos"><i class="fa fa-check"></i><b>3.8.4</b> Análise Exploratória dos dados (Juntando tratamentos)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-exploratório"><i class="fa fa-check"></i><b>3.9</b> Gráfico exploratório</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-caixas-6"><i class="fa fa-check"></i><b>3.9.1</b> Gráfico de caixas</a></li>
+<li class="chapter" data-level="3.9.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-interação-1"><i class="fa fa-check"></i><b>3.9.2</b> Gráfico de interação</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-de-variância-8"><i class="fa fa-check"></i><b>3.10</b> Análise de variância</a></li>
+<li class="chapter" data-level="3.11" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pressuposições-7"><i class="fa fa-check"></i><b>3.11</b> Pressuposições</a><ul>
+<li class="chapter" data-level="3.11.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#normalidade-dos-erros-10"><i class="fa fa-check"></i><b>3.11.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="3.11.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#homogeneidade-das-variâncias-5"><i class="fa fa-check"></i><b>3.11.2</b> Homogeneidade das variâncias</a></li>
+<li class="chapter" data-level="3.11.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#independência-dos-erros-7"><i class="fa fa-check"></i><b>3.11.3</b> Independência dos erros</a></li>
+<li class="chapter" data-level="3.11.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-residuos-padronizados"><i class="fa fa-check"></i><b>3.11.4</b> Gráfico de residuos padronizados</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#teste-de-comparação"><i class="fa fa-check"></i><b>3.12</b> Teste de comparação</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>3.12.1</b> Pacote ExpDes.pt</a></li>
+<li class="chapter" data-level="3.12.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pacote-easyanova"><i class="fa fa-check"></i><b>3.12.2</b> Pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#tabela-final"><i class="fa fa-check"></i><b>3.13</b> Tabela Final</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html"><i class="fa fa-check"></i><b>4</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema de Parcelas Subdivididas</span></a><ul>
+<li class="chapter" data-level="4.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#vantagens-4"><i class="fa fa-check"></i><b>4.1</b> Vantagens</a></li>
+<li class="chapter" data-level="4.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#desvantagens-4"><i class="fa fa-check"></i><b>4.2</b> Desvantagens</a></li>
+<li class="chapter" data-level="4.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#modelo-estatístico-2"><i class="fa fa-check"></i><b>4.3</b> Modelo estatístico</a></li>
+<li class="chapter" data-level="4.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#hipóteses-e-modelo-4"><i class="fa fa-check"></i><b>4.4</b> Hipóteses e modelo</a></li>
+<li class="chapter" data-level="4.5" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#croqui-em-dic-1"><i class="fa fa-check"></i><b>4.5</b> Croqui em DIC</a></li>
+<li class="chapter" data-level="4.6" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#croqui-em-dbc-1"><i class="fa fa-check"></i><b>4.6</b> Croqui em DBC</a></li>
+<li class="chapter" data-level="4.7" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#exemplo-1-6"><i class="fa fa-check"></i><b>4.7</b> Exemplo 1</a></li>
+<li class="chapter" data-level="4.8" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#estatística-descritiva-3"><i class="fa fa-check"></i><b>4.8</b> Estatística descritiva</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#fator-1-linha-e-entrelinha"><i class="fa fa-check"></i><b>4.8.1</b> Fator 1 (Linha e Entrelinha)</a></li>
+<li class="chapter" data-level="4.8.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#fator-2-manejo"><i class="fa fa-check"></i><b>4.8.2</b> Fator 2 (Manejo)</a></li>
+<li class="chapter" data-level="4.8.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#repetição"><i class="fa fa-check"></i><b>4.8.3</b> Repetição</a></li>
+<li class="chapter" data-level="4.8.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#juntando-os-fatores"><i class="fa fa-check"></i><b>4.8.4</b> Juntando os fatores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#gráficos-exploratórios-4"><i class="fa fa-check"></i><b>4.9</b> Gráficos exploratórios</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#gráfico-de-caixas-boxplot-2"><i class="fa fa-check"></i><b>4.9.1</b> Gráfico de caixas (<em>Boxplot</em>)</a></li>
+<li class="chapter" data-level="4.9.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#interação"><i class="fa fa-check"></i><b>4.9.2</b> Interação</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#análise-de-variância-9"><i class="fa fa-check"></i><b>4.10</b> Análise de Variância</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#usando-o-pacote-agricolae-1"><i class="fa fa-check"></i><b>4.10.1</b> Usando o pacote agricolae</a></li>
+<li class="chapter" data-level="4.10.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#usando-o-pacote-easyanova-1"><i class="fa fa-check"></i><b>4.10.2</b> Usando o pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pressupostos"><i class="fa fa-check"></i><b>4.11</b> Pressupostos</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#normalidade-dos-erros-11"><i class="fa fa-check"></i><b>4.11.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="4.11.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#homogeneidade-de-variâncias-5"><i class="fa fa-check"></i><b>4.11.2</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="4.11.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#independência-dos-erros-8"><i class="fa fa-check"></i><b>4.11.3</b> Independência dos erros</a></li>
+<li class="chapter" data-level="4.11.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#análise-gráfica"><i class="fa fa-check"></i><b>4.11.4</b> Análise Gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#teste-de-comparações-múltiplas"><i class="fa fa-check"></i><b>4.12</b> Teste de comparações múltiplas</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pelo-pacote-easyanova"><i class="fa fa-check"></i><b>4.12.1</b> Pelo pacote easyanova</a></li>
+<li class="chapter" data-level="4.12.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pelo-pacote-expdes.pt"><i class="fa fa-check"></i><b>4.12.2</b> Pelo pacote ExpDes.pt</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html"><i class="fa fa-check"></i><b>5</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Polinômios Ortogonais</span></a><ul>
+<li class="chapter" data-level="5.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#teste-f"><i class="fa fa-check"></i><b>5.1</b> Teste F</a></li>
+<li class="chapter" data-level="5.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#quadro-da-análise-de-variância"><i class="fa fa-check"></i><b>5.2</b> Quadro da Análise de variância</a></li>
+<li class="chapter" data-level="5.3" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#exemplo-1-7"><i class="fa fa-check"></i><b>5.3</b> Exemplo 1</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#conjunto-de-dados-7"><i class="fa fa-check"></i><b>5.3.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#média-e-variância"><i class="fa fa-check"></i><b>5.3.2</b> Média e Variância</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-10"><i class="fa fa-check"></i><b>5.4</b> Análise de Variância</a></li>
+<li class="chapter" data-level="5.5" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-para-matéria-seca"><i class="fa fa-check"></i><b>5.5</b> Análise de Variância para Matéria Seca</a></li>
+<li class="chapter" data-level="5.6" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-até-4-grau"><i class="fa fa-check"></i><b>5.6</b> Polinômio até 4 grau</a></li>
+<li class="chapter" data-level="5.7" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-3-grau"><i class="fa fa-check"></i><b>5.7</b> Polinômio de 3 grau</a></li>
+<li class="chapter" data-level="5.8" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-2-grau"><i class="fa fa-check"></i><b>5.8</b> Polinômio de 2 grau</a></li>
+<li class="chapter" data-level="5.9" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-1-grau"><i class="fa fa-check"></i><b>5.9</b> Polinômio de 1 grau</a></li>
+<li class="chapter" data-level="5.10" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#coeficientes-do-modelo"><i class="fa fa-check"></i><b>5.10</b> Coeficientes do modelo</a></li>
+<li class="chapter" data-level="5.11" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#curva-estimada"><i class="fa fa-check"></i><b>5.11</b> Curva Estimada</a></li>
+<li class="chapter" data-level="5.12" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#usando-o-expdes.pt-1"><i class="fa fa-check"></i><b>5.12</b> Usando o ExpDes.pt</a></li>
+<li class="chapter" data-level="5.13" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráfico"><i class="fa fa-check"></i><b>5.13</b> Gráfico</a></li>
+<li class="chapter" data-level="5.14" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráfico-somente-com-a-média"><i class="fa fa-check"></i><b>5.14</b> Gráfico somente com a média</a></li>
+<li class="chapter" data-level="5.15" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#exemplo-2-3"><i class="fa fa-check"></i><b>5.15</b> Exemplo 2</a></li>
+<li class="chapter" data-level="5.16" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-11"><i class="fa fa-check"></i><b>5.16</b> Análise de Variância</a></li>
+<li class="chapter" data-level="5.17" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#pressuposições-8"><i class="fa fa-check"></i><b>5.17</b> Pressuposições</a><ul>
+<li class="chapter" data-level="5.17.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#normalidade-dos-erros-12"><i class="fa fa-check"></i><b>5.17.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="5.17.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#homogeneidade-das-variâncias-6"><i class="fa fa-check"></i><b>5.17.2</b> Homogeneidade das Variâncias</a></li>
+<li class="chapter" data-level="5.17.3" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#independência-dos-erros-9"><i class="fa fa-check"></i><b>5.17.3</b> Independência dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="5.18" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#coeficientes-do-modelo-1"><i class="fa fa-check"></i><b>5.18</b> Coeficientes do modelo</a></li>
+<li class="chapter" data-level="5.19" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#usando-o-expdes.pt-2"><i class="fa fa-check"></i><b>5.19</b> Usando o ExpDes.pt</a></li>
+<li class="chapter" data-level="5.20" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#curva-estimada-1"><i class="fa fa-check"></i><b>5.20</b> Curva Estimada</a></li>
+<li class="chapter" data-level="5.21" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráficos"><i class="fa fa-check"></i><b>5.21</b> Gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análise-conjunta.html"><a href="análise-conjunta.html"><i class="fa fa-check"></i><b>6</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Análise conjunta</span></a><ul>
+<li class="chapter" data-level="6.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#análise-conjunta-com-um-fator-qualitativo-dbc"><i class="fa fa-check"></i><b>6.1</b> Análise conjunta com um fator qualitativo (DBC)</a></li>
+<li class="chapter" data-level="6.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#exemplo-1-8"><i class="fa fa-check"></i><b>6.2</b> Exemplo 1</a></li>
+<li class="chapter" data-level="6.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#anova-individual"><i class="fa fa-check"></i><b>6.3</b> ANOVA individual</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-2-meses"><i class="fa fa-check"></i><b>6.3.1</b> Tempo de 2 meses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-4-meses"><i class="fa fa-check"></i><b>6.3.2</b> Tempo de 4 meses</a></li>
+<li class="chapter" data-level="6.3.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-6-meses"><i class="fa fa-check"></i><b>6.3.3</b> Tempo de 6 meses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="análise-conjunta.html"><a href="análise-conjunta.html#quadrado-do-resíduo-médio"><i class="fa fa-check"></i><b>6.4</b> Quadrado do resíduo médio</a></li>
+<li class="chapter" data-level="6.5" data-path="análise-conjunta.html"><a href="análise-conjunta.html#gráfico-de-interação-2"><i class="fa fa-check"></i><b>6.5</b> Gráfico de interação</a></li>
+<li class="chapter" data-level="6.6" data-path="análise-conjunta.html"><a href="análise-conjunta.html#análise-de-variância-conjunta"><i class="fa fa-check"></i><b>6.6</b> Análise de Variância conjunta</a></li>
+<li class="chapter" data-level="6.7" data-path="análise-conjunta.html"><a href="análise-conjunta.html#conferindo-manualmente"><i class="fa fa-check"></i><b>6.7</b> Conferindo “Manualmente”</a></li>
+<li class="chapter" data-level="6.8" data-path="análise-conjunta.html"><a href="análise-conjunta.html#grau-de-liberdade"><i class="fa fa-check"></i><b>6.8</b> Grau de liberdade</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#calculando-soma-de-quadrados"><i class="fa fa-check"></i><b>6.8.1</b> Calculando soma de quadrados</a></li>
+<li class="chapter" data-level="6.8.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#calculando-quadrado-médio"><i class="fa fa-check"></i><b>6.8.2</b> Calculando quadrado médio</a></li>
+<li class="chapter" data-level="6.8.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#teste-f-de-fischer"><i class="fa fa-check"></i><b>6.8.3</b> Teste F de Fischer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="análise-conjunta.html"><a href="análise-conjunta.html#pressuposição-do-modelo"><i class="fa fa-check"></i><b>6.9</b> Pressuposição do modelo</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#normalidade-dos-erros-13"><i class="fa fa-check"></i><b>6.9.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="6.9.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#gráfico-de-normalidade-1"><i class="fa fa-check"></i><b>6.9.2</b> Gráfico de normalidade</a></li>
+<li class="chapter" data-level="6.9.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#homogeneidade-de-variâncias-6"><i class="fa fa-check"></i><b>6.9.3</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="6.9.4" data-path="análise-conjunta.html"><a href="análise-conjunta.html#independências-dos-erros-2"><i class="fa fa-check"></i><b>6.9.4</b> Independências dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="análise-conjunta.html"><a href="análise-conjunta.html#desdobramento"><i class="fa fa-check"></i><b>6.10</b> Desdobramento</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#desdobramento-do-comprimento-em-cada-nível-de-tempo"><i class="fa fa-check"></i><b>6.10.1</b> Desdobramento do Comprimento em cada nível de Tempo</a></li>
+<li class="chapter" data-level="6.10.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#teste-de-comparação-múltipla-2"><i class="fa fa-check"></i><b>6.10.2</b> Teste de comparação múltipla</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tabela-final-1"><i class="fa fa-check"></i><b>6.11</b> Tabela Final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>8</b> Literature</a></li>
+<li class="chapter" data-level="9" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>9</b> Methods</a></li>
+<li class="chapter" data-level="10" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>10</b> Applications</a><ul>
+<li class="chapter" data-level="10.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>10.1</b> Example one</a></li>
+<li class="chapter" data-level="10.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>10.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="esquema-de-parcelas-subdivididas" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema de Parcelas Subdivididas</span></h1>
+<hr />
+<p><br><br><br><br></p>
+<ul>
+<li>Tal como no caso de fatorial, o termo parcelas subdivididas não se refere a um tipo de delineamento e sim ao esquema do experimento, ou seja, a maneira pela qual os tratamentos são organizados.</li>
+<li>Nos experimentos em parcelas subdivididas, em geral, estuda-se simultaneamente dois tipos de fatores os quais são geralmente denominados de fatores primários e fatores secundários.</li>
+<li>Em um experimento em parcelas subdivididas, as unidades experimentais são agrupadas em parcelas as quais devem conter um número de unidades experimentais (subparcelas) igual ao
+número de níveis do fator secundário.</li>
+<li>Na instalação os níveis do fator primário (A) são distribuidos às parcelas segundo um tipo de delineamento experimental: DIC, DBC, DQL.</li>
+<li>Posteriormente os níveis do fator secundário (B) são distribuídos ao acaso às subparcerlas de cada parcela.Tal disposição permite obter uma estimativa geral de maior precisão para os efeitos dos tratamentos do segundo fator.</li>
+<li>Nos experimentos em parcelas subdivididas tem-se dois resíduos distintos: um correspondente às parcelas e outro às subparcelas dentro das parcelas.</li>
+<li>Em casos mais complexos, as subparcelas podem, também, ser repartidas em subsubparcelas. Tem-se, neste caso, três resíduos distintos:
+<ul>
+<li>resíduo (a), referente às parcelas;</li>
+<li>resíduo (b), à subparcelas e</li>
+<li>resíduo (c), correspondendo às subsubparcelas.</li>
+</ul></li>
+</ul>
+<p><br></p>
+<hr />
+<div id="vantagens-4" class="section level2">
+<h2><span class="header-section-number">4.1</span> Vantagens</h2>
+<hr />
+<p><br></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Em comparação com experimentos fatoriais, experimentos em parcelas subdivididas são mais fáceis de instalar;</p></li>
+<li><p>Quando os tratamentos associados aos níveis de um dos fatores exigem maior quantidade de material na unidade experimental do que os tratamentos do outro fator.</p></li>
+<li><p>O esquema pode ser utilizado quando um fator adicional é incorporado num experimento, para ampliar seu objetivo.</p></li>
+<li><p>Através da prévia informação, sabe-se que maiores diferenças podem ser esperadas entre os níveis de um certo fator do que entre os níveis do outro fator.</p></li>
+</ol>
+<p><br></p>
+<hr />
+</div>
+<div id="desvantagens-4" class="section level2">
+<h2><span class="header-section-number">4.2</span> Desvantagens</h2>
+<hr />
+<p><br></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Do ponto de vista estatístico, os fatoriais são, em geral, mais eficientes que os em parcelas subdivididas;</p></li>
+<li><p>Enquanto nos fatoriais temos um são resíduo para todos os F e comparações de médias, no <em>“split-plot”</em> há dois resíduos, um para comparações de parcelas e outro para subparcelas;</p></li>
+<li><p>Para parcela, o número de GL geralmente é pequeno, levando à pouca sensibilidade na análise;</p></li>
+<li><p>Sempre que possível, é preferível utilizar experimentos fatoriais em lugar dos experimentos em parcelas subdivididas.</p></li>
+</ol>
+<p><br></p>
+<hr />
+</div>
+<div id="modelo-estatístico-2" class="section level2">
+<h2><span class="header-section-number">4.3</span> Modelo estatístico</h2>
+<hr />
+<p><br></p>
+<p>O modelo linear para o experimento em parcelas subdivididas no delineamento em blocos ao acaso é dado por:</p>
+<center>
+<p><span class="math inline">\(yijk = \mu+\tau_{i}+\gamma_{k}+(\tau\gamma)_{ik}+\beta_{j}+(\tau\beta)_{ij}+(\tau\beta\gamma)_{ijk}\)</span></p>
+</center>
+<ul>
+<li>i = 1; 2; : : : ; a</li>
+<li>j = 1; 2; : : : ; b</li>
+<li>k = 1; 2; : : : ; r</li>
+</ul>
+<p>em que:</p>
+<ul>
+<li><span class="math inline">\(y_{ijk}\)</span> é o valor observado no i-ésimo tratamento, k-ésimo bloco e j-ésima subparcela;</li>
+<li><span class="math inline">\(\mu\)</span> é uma constante;</li>
+<li><span class="math inline">\(\tau_{i}\)</span> é o efeito do i-ésimo fator A;</li>
+<li><span class="math inline">\(\gamma_{k}\)</span> é o efeito do k-ésimo bloco;</li>
+<li><span class="math inline">\((\tau\gamma)_{ik}\)</span> é o resíduo (a) da parcela;</li>
+<li><span class="math inline">\(\beta_{j}\)</span> é o efeito do j-ésimo fator B;</li>
+<li><span class="math inline">\((\tau\beta)_ij\)</span> é a interação entre o i-ésimo fator A e o j-ésimo fator B;</li>
+<li><span class="math inline">\((\tau\beta\gamma)ijk\)</span> é o resíduo (b) da subparcela;</li>
+</ul>
+<p><br></p>
+<hr />
+</div>
+<div id="hipóteses-e-modelo-4" class="section level2">
+<h2><span class="header-section-number">4.4</span> Hipóteses e modelo</h2>
+<hr />
+<p><br></p>
+<p>No experimento em parcelas subdivididas com 2 fatores, deseja-se testar a signicância de ambos os fatores. Há interesse em testar hipóteses sobre a igualdade dos efeitos do fator primário, isto é:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{a} \\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p>e a igualdade nos efeitos do fator secundário, ou seja:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{b} \\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p>e, ainda, se há interação entre os fatores:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; (\tau\beta)ij = 0 \mbox{para todo} i ; j \\[.2cm]
+H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="10%" />
+<col width="13%" />
+<col width="25%" />
+<col width="24%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">CV</th>
+<th align="center">G.L.</th>
+<th align="center">S.Q.</th>
+<th align="center">Q.M.</th>
+<th align="center">Fcalc</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Bloco</td>
+<td align="center"><span class="math inline">\(r-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Bloc}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{Bloc}}{r-1}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{Bloc}}{QM_{Res(a)}}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">Tratamento A</td>
+<td align="center"><span class="math inline">\(a - 1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{A}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{A}}{a-1}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{A}}{QM_{Res(a)}}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">resíduo A</td>
+<td align="center"><span class="math inline">\((a-1)(r-1)\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Res(A)}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{res(A)}}{(a-1)(r-1)}\)</span></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">Parcelas</td>
+<td align="center"><span class="math inline">\(ar-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Parcelas}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">Tratamento B</td>
+<td align="center"><span class="math inline">\(b-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{B}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{B}}{b-1}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{B}}{QM_{Res(b)}}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">Interação A x B</td>
+<td align="center"><span class="math inline">\((a-1)(b-1)\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{AxB}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{AB}}{(a-1)(b-1)}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{AxB}}{QM_{Res(b)}}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">resíduo B</td>
+<td align="center"><span class="math inline">\(a(a-1)(r-1)\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Res(B)}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{Res(b)}}{(r-1)(b-1)}\)</span></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">Total</td>
+<td align="center"><span class="math inline">\(abr-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Total}\)</span></td>
+<td align="center">-</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+</div>
+<div id="croqui-em-dic-1" class="section level2">
+<h2><span class="header-section-number">4.5</span> Croqui em DIC</h2>
+<hr />
+<p><br></p>
+<p>Criando uma função para fazer um croqui (Número de coluna igual número de repetições)</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="esquema-de-parcelas-subdivididas.html#cb283-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb283-2"><a href="esquema-de-parcelas-subdivididas.html#cb283-2"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb283-3"><a href="esquema-de-parcelas-subdivididas.html#cb283-3"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb283-4"><a href="esquema-de-parcelas-subdivididas.html#cb283-4"></a><span class="kw">library</span>(grid)</span>
+<span id="cb283-5"><a href="esquema-de-parcelas-subdivididas.html#cb283-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb283-6"><a href="esquema-de-parcelas-subdivididas.html#cb283-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
+<span id="cb283-7"><a href="esquema-de-parcelas-subdivididas.html#cb283-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r,<span class="dt">byrow=</span>T))</span>
+<span id="cb283-8"><a href="esquema-de-parcelas-subdivididas.html#cb283-8"></a>  ncol=r</span>
+<span id="cb283-9"><a href="esquema-de-parcelas-subdivididas.html#cb283-9"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
+<span id="cb283-10"><a href="esquema-de-parcelas-subdivididas.html#cb283-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb283-11"><a href="esquema-de-parcelas-subdivididas.html#cb283-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
+<span id="cb283-12"><a href="esquema-de-parcelas-subdivididas.html#cb283-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<p><br></p>
+<p>Vetor de tratamentos</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="esquema-de-parcelas-subdivididas.html#cb284-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb284-2"><a href="esquema-de-parcelas-subdivididas.html#cb284-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<p>Usando a função</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="esquema-de-parcelas-subdivididas.html#cb285-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>Criando uma função para fazer um croqui (Número de colunas igual número de tratamentos)</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="esquema-de-parcelas-subdivididas.html#cb286-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb286-2"><a href="esquema-de-parcelas-subdivididas.html#cb286-2"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb286-3"><a href="esquema-de-parcelas-subdivididas.html#cb286-3"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb286-4"><a href="esquema-de-parcelas-subdivididas.html#cb286-4"></a><span class="kw">library</span>(grid)</span>
+<span id="cb286-5"><a href="esquema-de-parcelas-subdivididas.html#cb286-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb286-6"><a href="esquema-de-parcelas-subdivididas.html#cb286-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
+<span id="cb286-7"><a href="esquema-de-parcelas-subdivididas.html#cb286-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r, <span class="dt">byrow=</span>T)))</span>
+<span id="cb286-8"><a href="esquema-de-parcelas-subdivididas.html#cb286-8"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
+<span id="cb286-9"><a href="esquema-de-parcelas-subdivididas.html#cb286-9"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book<span class="op">$</span>trat))</span>
+<span id="cb286-10"><a href="esquema-de-parcelas-subdivididas.html#cb286-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb286-11"><a href="esquema-de-parcelas-subdivididas.html#cb286-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
+<span id="cb286-12"><a href="esquema-de-parcelas-subdivididas.html#cb286-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<p><br></p>
+<p>Vetor de tratamentos</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="esquema-de-parcelas-subdivididas.html#cb287-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb287-2"><a href="esquema-de-parcelas-subdivididas.html#cb287-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<p>Usando a função</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="esquema-de-parcelas-subdivididas.html#cb288-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-184-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br><br></p>
+<hr />
+</div>
+<div id="croqui-em-dbc-1" class="section level2">
+<h2><span class="header-section-number">4.6</span> Croqui em DBC</h2>
+<hr />
+<p><br></p>
+<p>Criando uma função para fazer um croqui (Número de coluna igual número de repetições)</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="esquema-de-parcelas-subdivididas.html#cb289-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb289-2"><a href="esquema-de-parcelas-subdivididas.html#cb289-2"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb289-3"><a href="esquema-de-parcelas-subdivididas.html#cb289-3"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb289-4"><a href="esquema-de-parcelas-subdivididas.html#cb289-4"></a><span class="kw">library</span>(grid)</span>
+<span id="cb289-5"><a href="esquema-de-parcelas-subdivididas.html#cb289-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb289-6"><a href="esquema-de-parcelas-subdivididas.html#cb289-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
+<span id="cb289-7"><a href="esquema-de-parcelas-subdivididas.html#cb289-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r,<span class="dt">byrow=</span>T))</span>
+<span id="cb289-8"><a href="esquema-de-parcelas-subdivididas.html#cb289-8"></a>  ncol=r</span>
+<span id="cb289-9"><a href="esquema-de-parcelas-subdivididas.html#cb289-9"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
+<span id="cb289-10"><a href="esquema-de-parcelas-subdivididas.html#cb289-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb289-11"><a href="esquema-de-parcelas-subdivididas.html#cb289-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
+<span id="cb289-12"><a href="esquema-de-parcelas-subdivididas.html#cb289-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<p><br></p>
+<p>Vetor de tratamentos</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="esquema-de-parcelas-subdivididas.html#cb290-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb290-2"><a href="esquema-de-parcelas-subdivididas.html#cb290-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<p>Usando a função</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="esquema-de-parcelas-subdivididas.html#cb291-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-187-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>Criando uma função para fazer um croqui (Número de colunas igual número de tratamentos)</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="esquema-de-parcelas-subdivididas.html#cb292-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb292-2"><a href="esquema-de-parcelas-subdivididas.html#cb292-2"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb292-3"><a href="esquema-de-parcelas-subdivididas.html#cb292-3"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb292-4"><a href="esquema-de-parcelas-subdivididas.html#cb292-4"></a><span class="kw">library</span>(grid)</span>
+<span id="cb292-5"><a href="esquema-de-parcelas-subdivididas.html#cb292-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb292-6"><a href="esquema-de-parcelas-subdivididas.html#cb292-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
+<span id="cb292-7"><a href="esquema-de-parcelas-subdivididas.html#cb292-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r, <span class="dt">byrow=</span>T)))</span>
+<span id="cb292-8"><a href="esquema-de-parcelas-subdivididas.html#cb292-8"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
+<span id="cb292-9"><a href="esquema-de-parcelas-subdivididas.html#cb292-9"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book<span class="op">$</span>trat))</span>
+<span id="cb292-10"><a href="esquema-de-parcelas-subdivididas.html#cb292-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb292-11"><a href="esquema-de-parcelas-subdivididas.html#cb292-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
+<span id="cb292-12"><a href="esquema-de-parcelas-subdivididas.html#cb292-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<p><br></p>
+<p>Vetor de tratamentos</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="esquema-de-parcelas-subdivididas.html#cb293-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb293-2"><a href="esquema-de-parcelas-subdivididas.html#cb293-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<p>Usando a função</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="esquema-de-parcelas-subdivididas.html#cb294-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-190-1.png" width="672" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="exemplo-1-6" class="section level2">
+<h2><span class="header-section-number">4.7</span> Exemplo 1</h2>
+<hr />
+<p><br></p>
+<p>Um experimento foi realizado com o intuito de avaliar 5 tratamentos na linha e entrelinha de um pomar. O experimento foi instalado em Delineamento em blocos casualizados com 12 repetições por tratamento. Foi analisado o carbono da biomassa microbiana (CBM).</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="esquema-de-parcelas-subdivididas.html#cb295-1"></a>RESP=<span class="kw">c</span>(<span class="fl">224.92</span>, <span class="fl">180.32</span>, <span class="fl">130.19</span>, <span class="fl">110.31</span>, <span class="fl">163.74</span>,<span class="fl">193.03</span>, <span class="fl">211.49</span>, <span class="fl">137.65</span>, <span class="fl">127.15</span>, <span class="fl">203.39</span>,</span>
+<span id="cb295-2"><a href="esquema-de-parcelas-subdivididas.html#cb295-2"></a>       <span class="fl">182.36</span>, <span class="fl">124.75</span>, <span class="fl">177.70</span>, <span class="fl">231.01</span>, <span class="fl">202.14</span>,<span class="fl">214.89</span>, <span class="fl">198.42</span>, <span class="fl">267.85</span>, <span class="fl">207.67</span>, <span class="fl">176.74</span>,</span>
+<span id="cb295-3"><a href="esquema-de-parcelas-subdivididas.html#cb295-3"></a>       <span class="fl">162.18</span>, <span class="fl">124.59</span>, <span class="fl">158.99</span>, <span class="fl">209.12</span>, <span class="fl">128.14</span>,<span class="fl">113.95</span>, <span class="fl">215.53</span>, <span class="fl">190.51</span>, <span class="fl">174.58</span>, <span class="fl">148.70</span>,</span>
+<span id="cb295-4"><a href="esquema-de-parcelas-subdivididas.html#cb295-4"></a>       <span class="fl">150.90</span>, <span class="fl">209.03</span>, <span class="fl">210.40</span>, <span class="fl">199.03</span>, <span class="fl">237.05</span>,<span class="fl">196.97</span>, <span class="fl">176.06</span>, <span class="fl">263.27</span>, <span class="fl">240.19</span>, <span class="fl">160.72</span>,</span>
+<span id="cb295-5"><a href="esquema-de-parcelas-subdivididas.html#cb295-5"></a>       <span class="fl">239.90</span>, <span class="fl">188.07</span>, <span class="fl">251.35</span>, <span class="fl">215.45</span>, <span class="fl">198.50</span>,<span class="fl">271.42</span>, <span class="fl">226.56</span>, <span class="fl">217.65</span>, <span class="fl">213.69</span>, <span class="fl">101.26</span>,</span>
+<span id="cb295-6"><a href="esquema-de-parcelas-subdivididas.html#cb295-6"></a>       <span class="fl">115.41</span>, <span class="fl">140.10</span>, <span class="fl">117.67</span>, <span class="fl">106.45</span>, <span class="fl">139.34</span>,<span class="fl">104.22</span>, <span class="fl">206.13</span>, <span class="fl">195.89</span>, <span class="fl">147.11</span>, <span class="fl">122.93</span>,</span>
+<span id="cb295-7"><a href="esquema-de-parcelas-subdivididas.html#cb295-7"></a>       <span class="fl">176.55</span>, <span class="fl">173.63</span>, <span class="fl">112.83</span>, <span class="fl">184.82</span>, <span class="fl">178.18</span>, <span class="fl">115.85</span>, <span class="fl">183.89</span>, <span class="fl">134.92</span>, <span class="fl">086.49</span>, <span class="fl">103.96</span>,</span>
+<span id="cb295-8"><a href="esquema-de-parcelas-subdivididas.html#cb295-8"></a>       <span class="fl">096.33</span>, <span class="fl">091.64</span>, <span class="fl">157.76</span>, <span class="fl">107.45</span>, <span class="fl">106.61</span>, <span class="fl">095.28</span>, <span class="fl">152.37</span>, <span class="fl">066.02</span>, <span class="fl">125.75</span>, <span class="fl">075.34</span>,</span>
+<span id="cb295-9"><a href="esquema-de-parcelas-subdivididas.html#cb295-9"></a>       <span class="fl">088.64</span>, <span class="fl">104.00</span>, <span class="fl">066.38</span>, <span class="fl">084.74</span>, <span class="fl">101.76</span>,<span class="fl">173.70</span>, <span class="fl">101.24</span>, <span class="fl">143.71</span>, <span class="fl">119.88</span>, <span class="fl">157.79</span>,</span>
+<span id="cb295-10"><a href="esquema-de-parcelas-subdivididas.html#cb295-10"></a>       <span class="fl">070.42</span>, <span class="fl">152.75</span>, <span class="fl">111.65</span>, <span class="fl">153.08</span>, <span class="fl">146.64</span>,<span class="fl">142.57</span>, <span class="fl">098.96</span>, <span class="fl">065.92</span>, <span class="fl">065.62</span>, <span class="fl">063.26</span>,</span>
+<span id="cb295-11"><a href="esquema-de-parcelas-subdivididas.html#cb295-11"></a>       <span class="fl">095.72</span>, <span class="fl">084.14</span>, <span class="fl">054.92</span>, <span class="fl">090.49</span>, <span class="fl">112.11</span>,<span class="fl">102.68</span>, <span class="fl">144.77</span>, <span class="fl">122.58</span>, <span class="fl">125.14</span>, <span class="fl">127.61</span>,</span>
+<span id="cb295-12"><a href="esquema-de-parcelas-subdivididas.html#cb295-12"></a>       <span class="fl">117.14</span>, <span class="fl">147.87</span>, <span class="fl">156.18</span>, <span class="fl">154.82</span>, <span class="fl">183.91</span>,<span class="fl">159.11</span>, <span class="fl">155.41</span>, <span class="fl">184.55</span>, <span class="fl">121.39</span>, <span class="fl">155.77</span>)</span>
+<span id="cb295-13"><a href="esquema-de-parcelas-subdivididas.html#cb295-13"></a>FATOR1=<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;EL&quot;</span>), <span class="dt">e=</span><span class="dv">12</span>),<span class="dv">5</span>); FATOR1=<span class="kw">factor</span>(FATOR1)</span>
+<span id="cb295-14"><a href="esquema-de-parcelas-subdivididas.html#cb295-14"></a>FATOR2=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dt">e=</span><span class="dv">24</span>); FATOR2=<span class="kw">factor</span>(FATOR2)</span>
+<span id="cb295-15"><a href="esquema-de-parcelas-subdivididas.html#cb295-15"></a>repe=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>)),<span class="dv">10</span>); repe=<span class="kw">factor</span>(repe)</span>
+<span id="cb295-16"><a href="esquema-de-parcelas-subdivididas.html#cb295-16"></a>dados =<span class="st"> </span><span class="kw">data.frame</span>(FATOR1,FATOR2,repe,RESP)</span></code></pre></div>
+<p><br><br></p>
+</div>
+<div id="estatística-descritiva-3" class="section level2">
+<h2><span class="header-section-number">4.8</span> Estatística descritiva</h2>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="esquema-de-parcelas-subdivididas.html#cb296-1"></a><span class="st">&quot;Média&quot;</span> =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">mean</span>(RESP))</span>
+<span id="cb296-2"><a href="esquema-de-parcelas-subdivididas.html#cb296-2"></a><span class="st">&quot;Variância&quot;</span> =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">var</span>(RESP))</span>
+<span id="cb296-3"><a href="esquema-de-parcelas-subdivididas.html#cb296-3"></a>Desvio =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sd</span>(RESP))</span>
+<span id="cb296-4"><a href="esquema-de-parcelas-subdivididas.html#cb296-4"></a>CV =<span class="st"> </span>Desvio <span class="op">/</span><span class="st"> </span>Média <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb296-5"><a href="esquema-de-parcelas-subdivididas.html#cb296-5"></a></span>
+<span id="cb296-6"><a href="esquema-de-parcelas-subdivididas.html#cb296-6"></a>desc =<span class="st"> </span><span class="kw">cbind</span>(Média, Variância, Desvio, CV)</span>
+<span id="cb296-7"><a href="esquema-de-parcelas-subdivididas.html#cb296-7"></a><span class="kw">rownames</span>(desc) =<span class="st"> &#39;CBM&#39;</span></span>
+<span id="cb296-8"><a href="esquema-de-parcelas-subdivididas.html#cb296-8"></a><span class="kw">kable</span>(<span class="kw">round</span>(desc,<span class="dv">2</span>), <span class="dt">align=</span><span class="st">&quot;l&quot;</span>, <span class="dt">format=</span><span class="st">&quot;pandoc&quot;</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">big.mark=</span><span class="st">&quot;.&quot;</span>))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Média</th>
+<th align="left">Variância</th>
+<th align="left">Desvio</th>
+<th align="left">CV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CBM</td>
+<td align="left">151.58</td>
+<td align="left">2.547.35</td>
+<td align="left">50.47</td>
+<td align="left">33.3</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div id="fator-1-linha-e-entrelinha" class="section level3">
+<h3><span class="header-section-number">4.8.1</span> Fator 1 (Linha e Entrelinha)</h3>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="esquema-de-parcelas-subdivididas.html#cb297-1"></a>Médias1 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR1, mean))</span>
+<span id="cb297-2"><a href="esquema-de-parcelas-subdivididas.html#cb297-2"></a>Variâncias1 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR1, var))</span>
+<span id="cb297-3"><a href="esquema-de-parcelas-subdivididas.html#cb297-3"></a>Desvios1 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR1, sd))</span>
+<span id="cb297-4"><a href="esquema-de-parcelas-subdivididas.html#cb297-4"></a>CV1 =<span class="st"> </span>Desvios1 <span class="op">/</span><span class="st"> </span>Médias1 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb297-5"><a href="esquema-de-parcelas-subdivididas.html#cb297-5"></a>Desc1 =<span class="st"> </span><span class="kw">cbind</span>(Médias1, Variâncias1, Desvios1, CV1)</span>
+<span id="cb297-6"><a href="esquema-de-parcelas-subdivididas.html#cb297-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc1,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Médias1</th>
+<th align="left">Variâncias1</th>
+<th align="left">Desvios1</th>
+<th align="left">CV1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EL</td>
+<td align="left">166.39</td>
+<td align="left">2297.00</td>
+<td align="left">47.93</td>
+<td align="left">28.80</td>
+</tr>
+<tr class="even">
+<td>L</td>
+<td align="left">136.76</td>
+<td align="left">2394.44</td>
+<td align="left">48.93</td>
+<td align="left">35.78</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+<div id="fator-2-manejo" class="section level3">
+<h3><span class="header-section-number">4.8.2</span> Fator 2 (Manejo)</h3>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="esquema-de-parcelas-subdivididas.html#cb298-1"></a>Médias2 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR2, mean))</span>
+<span id="cb298-2"><a href="esquema-de-parcelas-subdivididas.html#cb298-2"></a>Variâncias2 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR2, var))</span>
+<span id="cb298-3"><a href="esquema-de-parcelas-subdivididas.html#cb298-3"></a>Desvios2 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR2, sd))</span>
+<span id="cb298-4"><a href="esquema-de-parcelas-subdivididas.html#cb298-4"></a>CV2 =<span class="st"> </span>Desvios2 <span class="op">/</span><span class="st"> </span>Médias2 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb298-5"><a href="esquema-de-parcelas-subdivididas.html#cb298-5"></a>Desc2 =<span class="st"> </span><span class="kw">cbind</span>(Médias2, Variâncias2, Desvios2, CV2)</span>
+<span id="cb298-6"><a href="esquema-de-parcelas-subdivididas.html#cb298-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc2,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Médias2</th>
+<th align="left">Variâncias2</th>
+<th align="left">Desvios2</th>
+<th align="left">CV2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T 1</td>
+<td align="left">180.03</td>
+<td align="left">1599.93</td>
+<td align="left">40.00</td>
+<td align="left">22.22</td>
+</tr>
+<tr class="even">
+<td>T 2</td>
+<td align="left">201.00</td>
+<td align="left">1678.32</td>
+<td align="left">40.97</td>
+<td align="left">20.38</td>
+</tr>
+<tr class="odd">
+<td>T 3</td>
+<td align="left">139.55</td>
+<td align="left">1560.41</td>
+<td align="left">39.50</td>
+<td align="left">28.31</td>
+</tr>
+<tr class="even">
+<td>T 4</td>
+<td align="left">116.90</td>
+<td align="left">1085.31</td>
+<td align="left">32.94</td>
+<td align="left">28.18</td>
+</tr>
+<tr class="odd">
+<td>T 5</td>
+<td align="left">120.42</td>
+<td align="left">1443.94</td>
+<td align="left">38.00</td>
+<td align="left">31.56</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+<div id="repetição" class="section level3">
+<h3><span class="header-section-number">4.8.3</span> Repetição</h3>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="esquema-de-parcelas-subdivididas.html#cb299-1"></a>Médias4 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, repe, mean))</span>
+<span id="cb299-2"><a href="esquema-de-parcelas-subdivididas.html#cb299-2"></a>Variâncias4 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, repe, var))</span>
+<span id="cb299-3"><a href="esquema-de-parcelas-subdivididas.html#cb299-3"></a>Desvios4 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, repe, sd))</span>
+<span id="cb299-4"><a href="esquema-de-parcelas-subdivididas.html#cb299-4"></a>CV4 =<span class="st"> </span>Desvios4<span class="op">/</span><span class="st"> </span>Médias4 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb299-5"><a href="esquema-de-parcelas-subdivididas.html#cb299-5"></a>Desc4 =<span class="st"> </span><span class="kw">cbind</span>(Médias4, Variâncias4, Desvios4, CV4)</span>
+<span id="cb299-6"><a href="esquema-de-parcelas-subdivididas.html#cb299-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc4,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Médias4</th>
+<th align="left">Variâncias4</th>
+<th align="left">Desvios4</th>
+<th align="left">CV4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R 1</td>
+<td align="left">158.07</td>
+<td align="left">1917.57</td>
+<td align="left">43.79</td>
+<td align="left">27.70</td>
+</tr>
+<tr class="even">
+<td>R 10</td>
+<td align="left">164.26</td>
+<td align="left">3154.85</td>
+<td align="left">56.17</td>
+<td align="left">34.19</td>
+</tr>
+<tr class="odd">
+<td>R 11</td>
+<td align="left">152.76</td>
+<td align="left">2803.26</td>
+<td align="left">52.95</td>
+<td align="left">34.66</td>
+</tr>
+<tr class="even">
+<td>R 12</td>
+<td align="left">146.87</td>
+<td align="left">2228.39</td>
+<td align="left">47.21</td>
+<td align="left">32.14</td>
+</tr>
+<tr class="odd">
+<td>R 2</td>
+<td align="left">153.81</td>
+<td align="left">3815.91</td>
+<td align="left">61.77</td>
+<td align="left">40.16</td>
+</tr>
+<tr class="even">
+<td>R 3</td>
+<td align="left">140.69</td>
+<td align="left">3301.19</td>
+<td align="left">57.46</td>
+<td align="left">40.84</td>
+</tr>
+<tr class="odd">
+<td>R 4</td>
+<td align="left">145.15</td>
+<td align="left">2131.01</td>
+<td align="left">46.16</td>
+<td align="left">31.80</td>
+</tr>
+<tr class="even">
+<td>R 5</td>
+<td align="left">159.66</td>
+<td align="left">1780.25</td>
+<td align="left">42.19</td>
+<td align="left">26.43</td>
+</tr>
+<tr class="odd">
+<td>R 6</td>
+<td align="left">148.27</td>
+<td align="left">3522.03</td>
+<td align="left">59.35</td>
+<td align="left">40.03</td>
+</tr>
+<tr class="even">
+<td>R 7</td>
+<td align="left">157.96</td>
+<td align="left">3902.06</td>
+<td align="left">62.47</td>
+<td align="left">39.54</td>
+</tr>
+<tr class="odd">
+<td>R 8</td>
+<td align="left">145.57</td>
+<td align="left">2218.76</td>
+<td align="left">47.10</td>
+<td align="left">32.36</td>
+</tr>
+<tr class="even">
+<td>R 9</td>
+<td align="left">145.87</td>
+<td align="left">2264.97</td>
+<td align="left">47.59</td>
+<td align="left">32.63</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+<div id="juntando-os-fatores" class="section level3">
+<h3><span class="header-section-number">4.8.4</span> Juntando os fatores</h3>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="esquema-de-parcelas-subdivididas.html#cb300-1"></a>Médias3 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, <span class="kw">list</span>(FATOR1,FATOR2), mean))</span>
+<span id="cb300-2"><a href="esquema-de-parcelas-subdivididas.html#cb300-2"></a>Variâncias3 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, <span class="kw">list</span>(FATOR1,FATOR2), var))</span>
+<span id="cb300-3"><a href="esquema-de-parcelas-subdivididas.html#cb300-3"></a>Desvios3 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, <span class="kw">list</span>(FATOR1,FATOR2), sd))</span>
+<span id="cb300-4"><a href="esquema-de-parcelas-subdivididas.html#cb300-4"></a>CV3 =<span class="st"> </span>Desvios3<span class="op">/</span>Médias3 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb300-5"><a href="esquema-de-parcelas-subdivididas.html#cb300-5"></a>Desc3 =<span class="st"> </span><span class="kw">rbind</span>(Médias3, Variâncias3, Desvios3, CV3)</span>
+<span id="cb300-6"><a href="esquema-de-parcelas-subdivididas.html#cb300-6"></a><span class="kw">rownames</span>(Desc3)=<span class="kw">c</span>(<span class="st">&quot;Média.L&quot;</span>,<span class="st">&quot;Média.EL&quot;</span>,<span class="st">&quot;Variância.L&quot;</span>,<span class="st">&quot;Variância.EL&quot;</span>, <span class="st">&quot;Desvio.L&quot;</span>,<span class="st">&quot;Desvio.EL&quot;</span>, <span class="st">&quot;CV.L&quot;</span>,<span class="st">&quot;CV.EL&quot;</span>)</span>
+<span id="cb300-7"><a href="esquema-de-parcelas-subdivididas.html#cb300-7"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc3,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">T 1</th>
+<th align="left">T 2</th>
+<th align="left">T 3</th>
+<th align="left">T 4</th>
+<th align="left">T 5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Média.L</td>
+<td align="left">194.28</td>
+<td align="left">220.76</td>
+<td align="left">136.59</td>
+<td align="left">131.27</td>
+<td align="left">149.07</td>
+</tr>
+<tr class="even">
+<td>Média.EL</td>
+<td align="left">165.78</td>
+<td align="left">181.23</td>
+<td align="left">142.52</td>
+<td align="left">102.53</td>
+<td align="left">91.76</td>
+</tr>
+<tr class="odd">
+<td>Variância.L</td>
+<td align="left">1398.17</td>
+<td align="left">1208.34</td>
+<td align="left">1588.68</td>
+<td align="left">904.49</td>
+<td align="left">505.68</td>
+</tr>
+<tr class="even">
+<td>Variância.EL</td>
+<td align="left">1504.10</td>
+<td align="left">1448.57</td>
+<td align="left">1654.85</td>
+<td align="left">914.33</td>
+<td align="left">721.90</td>
+</tr>
+<tr class="odd">
+<td>Desvio.L</td>
+<td align="left">37.39</td>
+<td align="left">34.76</td>
+<td align="left">39.86</td>
+<td align="left">30.07</td>
+<td align="left">22.49</td>
+</tr>
+<tr class="even">
+<td>Desvio.EL</td>
+<td align="left">38.78</td>
+<td align="left">38.06</td>
+<td align="left">40.68</td>
+<td align="left">30.24</td>
+<td align="left">26.87</td>
+</tr>
+<tr class="odd">
+<td>CV.L</td>
+<td align="left">19.25</td>
+<td align="left">15.75</td>
+<td align="left">29.18</td>
+<td align="left">22.91</td>
+<td align="left">15.08</td>
+</tr>
+<tr class="even">
+<td>CV.EL</td>
+<td align="left">23.39</td>
+<td align="left">21.00</td>
+<td align="left">28.54</td>
+<td align="left">29.49</td>
+<td align="left">29.28</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</div>
+</div>
+<div id="gráficos-exploratórios-4" class="section level2">
+<h2><span class="header-section-number">4.9</span> Gráficos exploratórios</h2>
+<p><br></p>
+<div id="gráfico-de-caixas-boxplot-2" class="section level3">
+<h3><span class="header-section-number">4.9.1</span> Gráfico de caixas (<em>Boxplot</em>)</h3>
+<p><br></p>
+<div id="fator-1-1" class="section level4">
+<h4><span class="header-section-number">4.9.1.1</span> Fator 1</h4>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="esquema-de-parcelas-subdivididas.html#cb301-1"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
+<span id="cb301-2"><a href="esquema-de-parcelas-subdivididas.html#cb301-2"></a><span class="kw">points</span>(Médias1, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+</div>
+<div id="fator-2-1" class="section level4">
+<h4><span class="header-section-number">4.9.1.2</span> Fator 2</h4>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="esquema-de-parcelas-subdivididas.html#cb302-1"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
+<span id="cb302-2"><a href="esquema-de-parcelas-subdivididas.html#cb302-2"></a><span class="kw">points</span>(Médias2, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-198-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+</div>
+<div id="juntando-fatores-1" class="section level4">
+<h4><span class="header-section-number">4.9.1.3</span> Juntando fatores</h4>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="esquema-de-parcelas-subdivididas.html#cb303-1"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">*</span>FATOR2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-199-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+</div>
+</div>
+<div id="interação" class="section level3">
+<h3><span class="header-section-number">4.9.2</span> Interação</h3>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="esquema-de-parcelas-subdivididas.html#cb304-1"></a><span class="kw">library</span>(gplots)</span>
+<span id="cb304-2"><a href="esquema-de-parcelas-subdivididas.html#cb304-2"></a><span class="kw">library</span>(lattice)</span>
+<span id="cb304-3"><a href="esquema-de-parcelas-subdivididas.html#cb304-3"></a><span class="kw">with</span>(dados, <span class="kw">xyplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">|</span>FATOR2, <span class="dt">groups=</span>repe, <span class="dt">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
+<span id="cb304-4"><a href="esquema-de-parcelas-subdivididas.html#cb304-4"></a>                   <span class="dt">strip=</span><span class="kw">strip.custom</span>(<span class="dt">strip.names=</span><span class="ot">TRUE</span>, <span class="dt">strip.levels=</span><span class="ot">TRUE</span>)))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-200-1.png" width="672" /></p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="esquema-de-parcelas-subdivididas.html#cb305-1"></a><span class="kw">with</span>(dados, <span class="kw">xyplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">|</span>repe, <span class="dt">groups=</span>FATOR2, <span class="dt">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
+<span id="cb305-2"><a href="esquema-de-parcelas-subdivididas.html#cb305-2"></a>                   <span class="dt">strip=</span><span class="kw">strip.custom</span>(<span class="dt">strip.names=</span><span class="ot">TRUE</span>, <span class="dt">strip.levels=</span><span class="ot">TRUE</span>)))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-201-1.png" width="1440" /></p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="esquema-de-parcelas-subdivididas.html#cb306-1"></a><span class="kw">with</span>(dados, <span class="kw">xyplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR2<span class="op">|</span>repe, <span class="dt">groups=</span>FATOR1, <span class="dt">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
+<span id="cb306-2"><a href="esquema-de-parcelas-subdivididas.html#cb306-2"></a>                   <span class="dt">strip=</span><span class="kw">strip.custom</span>(<span class="dt">strip.names=</span><span class="ot">TRUE</span>, <span class="dt">strip.levels=</span><span class="ot">TRUE</span>)))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-202-1.png" width="672" /></p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="esquema-de-parcelas-subdivididas.html#cb307-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR2, FATOR1, RESP, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb307-2"><a href="esquema-de-parcelas-subdivididas.html#cb307-2"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;repe&quot;</span>))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-203-1.png" width="672" /></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="esquema-de-parcelas-subdivididas.html#cb308-1"></a><span class="co"># FATOR1 e FATOR2</span></span>
+<span id="cb308-2"><a href="esquema-de-parcelas-subdivididas.html#cb308-2"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR1, FATOR2, RESP, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb308-3"><a href="esquema-de-parcelas-subdivididas.html#cb308-3"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
+<p><br><br></p>
+</div>
+</div>
+<div id="análise-de-variância-9" class="section level2">
+<h2><span class="header-section-number">4.10</span> Análise de Variância</h2>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{a} \\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p>e a igualdade nos efeitos do fator secundário, ou seja:
+<span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{b} \\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p>e, ainda, se há interação entre os fatores:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; (\tau\beta)ij = 0 \mbox{para todo} i ; j \\[.2cm]
+H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="esquema-de-parcelas-subdivididas.html#cb309-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">*</span>FATOR2<span class="op">+</span><span class="kw">Error</span>(repe<span class="op">/</span>FATOR1)))</span>
+<span id="cb309-2"><a href="esquema-de-parcelas-subdivididas.html#cb309-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<pre><code>## 
+## Error: repe
+##           Df Sum Sq Mean Sq F value Pr(&gt;F)
+## Residuals 11   5772   524.7               
+## 
+## Error: repe:FATOR1
+##           Df Sum Sq Mean Sq F value Pr(&gt;F)   
+## FATOR1     1  26339   26339   12.74 0.0044 **
+## Residuals 11  22748    2068                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Error: Within
+##               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## FATOR2         4 133672   33418  28.882 2.47e-15 ***
+## FATOR1:FATOR2  4  12783    3196   2.762   0.0325 *  
+## Residuals     88 101820    1157                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Interação significativa (<span class="math inline">\(p=0,0325\)</span>)</p>
+<p><br></p>
+<div id="usando-o-pacote-agricolae-1" class="section level3">
+<h3><span class="header-section-number">4.10.1</span> Usando o pacote agricolae</h3>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="esquema-de-parcelas-subdivididas.html#cb311-1"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb311-2"><a href="esquema-de-parcelas-subdivididas.html#cb311-2"></a>mod.parc =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sp.plot</span>(repe, FATOR1, FATOR2, RESP))</span></code></pre></div>
+<pre><code>## 
+## ANALYSIS SPLIT PLOT:  RESP 
+## Class level information
+## 
+## FATOR1   :  L EL 
+## FATOR2   :  T 1 T 2 T 3 T 4 T 5 
+## repe     :  R 1 R 2 R 3 R 4 R 5 R 6 R 7 R 8 R 9 R 10 R 11 R 12 
+## 
+## Number of observations:  120 
+## 
+## Analysis of Variance Table
+## 
+## Response: RESP
+##               Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## repe          11   5772     525  0.2537  0.984072    
+## FATOR1         1  26339   26339 12.7363  0.004404 ** 
+## Ea            11  22748    2068                      
+## FATOR2         4 133672   33418 28.8821 2.442e-15 ***
+## FATOR1:FATOR2  4  12783    3196  2.7620  0.032468 *  
+## Eb            88 101820    1157                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## cv(a) = 30 %, cv(b) = 22.4 %, Mean = 151.5785</code></pre>
+<p><br></p>
+</div>
+<div id="usando-o-pacote-easyanova-1" class="section level3">
+<h3><span class="header-section-number">4.10.2</span> Usando o pacote easyanova</h3>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="esquema-de-parcelas-subdivididas.html#cb313-1"></a>ano=easyanova<span class="op">::</span><span class="kw">ea2</span>(<span class="kw">data.frame</span>(FATOR1,repe,FATOR2,RESP),<span class="dt">design =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="esquema-de-parcelas-subdivididas.html#cb314-1"></a>ano[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## $`Marginal anova (Type III Sum of Squares)`
+##                 numDF denDF   F-value p-value
+## plot                1    11 12.736294  0.0044
+## split.plot          4    88 28.882103  &lt;.0001
+## block              11    11  0.253728  0.9841
+## plot:split.plot     4    88  2.761997  0.0325</code></pre>
+<p><br><br></p>
+</div>
+</div>
+<div id="pressupostos" class="section level2">
+<h2><span class="header-section-number">4.11</span> Pressupostos</h2>
+<p><br></p>
+<div id="normalidade-dos-erros-11" class="section level3">
+<h3><span class="header-section-number">4.11.1</span> Normalidade dos erros</h3>
+<p>Uma forma de verificação é usar como esquema fatorial</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{Erros seguem distribuição normal}\\[.2cm]
+H_1: \mbox{Erros não seguem distribuição normal.}
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="esquema-de-parcelas-subdivididas.html#cb316-1"></a>mod.pres =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(RESP <span class="op">~</span><span class="st"> </span>repe <span class="op">+</span><span class="st"> </span>FATOR1<span class="op">*</span>FATOR2)); <span class="kw">summary</span>(mod.pres)</span></code></pre></div>
+<pre><code>##               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## repe          11   5772     525   0.417   0.9455    
+## FATOR1         1  26339   26339  20.933 1.38e-05 ***
+## FATOR2         4 133672   33418  26.559 5.66e-15 ***
+## FATOR1:FATOR2  4  12783    3196   2.540   0.0445 *  
+## Residuals     99 124568    1258                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="esquema-de-parcelas-subdivididas.html#cb318-1"></a><span class="kw">shapiro.test</span>(mod.pres<span class="op">$</span>res)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  mod.pres$res
+## W = 0.99207, p-value = 0.7273</code></pre>
+<p>Como p-valor(<span class="math inline">\(p=0,7273\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, os erros seguem distribuição normal.</p>
+<p><br></p>
+</div>
+<div id="homogeneidade-de-variâncias-5" class="section level3">
+<h3><span class="header-section-number">4.11.2</span> Homogeneidade de variâncias</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{As variâncias dos erros são homogêneas}\\[.2cm]
+H_1: \mbox{As variâncias dos erros não são homogêneas}
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p><br></p>
+<div id="para-fator-1-1" class="section level4">
+<h4><span class="header-section-number">4.11.2.1</span> Para Fator 1</h4>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="esquema-de-parcelas-subdivididas.html#cb320-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>FATOR1))</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  mod.pres$residuals by FATOR1
+## Bartlett&#39;s K-squared = 0.022345, df = 1, p-value = 0.8812</code></pre>
+<p>Como p-valor(<span class="math inline">\(p=0,8812\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, as variâncias dos erros são homogêneas.</p>
+<p><br></p>
+</div>
+<div id="para-bloco" class="section level4">
+<h4><span class="header-section-number">4.11.2.2</span> Para Bloco</h4>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="esquema-de-parcelas-subdivididas.html#cb322-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>repe))</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  mod.pres$residuals by repe
+## Bartlett&#39;s K-squared = 10.291, df = 11, p-value = 0.5044</code></pre>
+<p>Como p-valor(<span class="math inline">\(p=0,5044\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, as variâncias dos erros são homogêneas.</p>
+<p><br></p>
+</div>
+<div id="para-fator-2-1" class="section level4">
+<h4><span class="header-section-number">4.11.2.3</span> Para Fator 2</h4>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="esquema-de-parcelas-subdivididas.html#cb324-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>FATOR2))</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  mod.pres$residuals by FATOR2
+## Bartlett&#39;s K-squared = 6.6241, df = 4, p-value = 0.1571</code></pre>
+<p>Como p-valor(<span class="math inline">\(p=0,1571\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, as variâncias dos erros são homogêneas.</p>
+<p><br></p>
+</div>
+<div id="juntandos-os-fatores-1" class="section level4">
+<h4><span class="header-section-number">4.11.2.4</span> Juntandos os fatores</h4>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="esquema-de-parcelas-subdivididas.html#cb326-1"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)),<span class="dt">e=</span><span class="dv">12</span>)</span>
+<span id="cb326-2"><a href="esquema-de-parcelas-subdivididas.html#cb326-2"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>tratamentos))</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  mod.pres$residuals by tratamentos
+## Bartlett&#39;s K-squared = 8.3359, df = 9, p-value = 0.5007</code></pre>
+<p>Como p-valor(<span class="math inline">\(p=0,5007\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, as variâncias dos erros são homogêneas.</p>
+<p><br></p>
+</div>
+</div>
+<div id="independência-dos-erros-8" class="section level3">
+<h3><span class="header-section-number">4.11.3</span> Independência dos erros</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{Os erros são independentes}\\[.2cm]
+H_1: \mbox{Os erros não são independentes}
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="esquema-de-parcelas-subdivididas.html#cb328-1"></a><span class="kw">library</span>(lmtest)</span>
+<span id="cb328-2"><a href="esquema-de-parcelas-subdivididas.html#cb328-2"></a><span class="kw">dwtest</span>(mod.pres)</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  mod.pres
+## DW = 1.9095, p-value = 0.1026
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<p>Como p-valor(<span class="math inline">\(p=0,1026\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, os erros são independentes.</p>
+<p><br></p>
+</div>
+<div id="análise-gráfica" class="section level3">
+<h3><span class="header-section-number">4.11.4</span> Análise Gráfica</h3>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="esquema-de-parcelas-subdivididas.html#cb330-1"></a><span class="kw">plot</span>(RESP<span class="op">-</span><span class="kw">mean</span>(RESP), <span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb330-2"><a href="esquema-de-parcelas-subdivididas.html#cb330-2"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
+<p><br><br></p>
+</div>
+</div>
+<div id="teste-de-comparações-múltiplas" class="section level2">
+<h2><span class="header-section-number">4.12</span> Teste de comparações múltiplas</h2>
+<p><br></p>
+<div id="pelo-pacote-easyanova" class="section level3">
+<h3><span class="header-section-number">4.12.1</span> Pelo pacote easyanova</h3>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="esquema-de-parcelas-subdivididas.html#cb331-1"></a>ano=easyanova<span class="op">::</span><span class="kw">ea2</span>(<span class="kw">data.frame</span>(FATOR1,repe,FATOR2,RESP),<span class="dt">design =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="esquema-de-parcelas-subdivididas.html#cb332-1"></a>ano<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means (plot in levels of split.plot)</span><span class="st">`</span></span></code></pre></div>
+<pre><code>## $`plot in  T 1`
+##   plot.split.plot adjusted.mean standard.error tukey snk duncan t
+## 1          EL.T 1       194.275        10.5643     a   a      a a
+## 2           L.T 1       165.775        10.5643     a   a      a a
+## 
+## $`plot in  T 2`
+##   plot.split.plot adjusted.mean standard.error tukey snk duncan t
+## 3          EL.T 2      220.7617        10.5643     a   a      a a
+## 4           L.T 2      181.2325        10.5643     b   b      b b
+## 
+## $`plot in  T 3`
+##   plot.split.plot adjusted.mean standard.error tukey snk duncan t
+## 6           L.T 3      142.5167        10.5643     a   a      a a
+## 5          EL.T 3      136.5908        10.5643     a   a      a a
+## 
+## $`plot in  T 4`
+##   plot.split.plot adjusted.mean standard.error tukey snk duncan t
+## 7          EL.T 4      131.2658        10.5643     a   a      a a
+## 8           L.T 4      102.5283        10.5643     a   a      a a
+## 
+## $`plot in  T 5`
+##    plot.split.plot adjusted.mean standard.error tukey snk duncan t
+## 9           EL.T 5      149.0750        10.5643     a   a      a a
+## 10           L.T 5       91.7642        10.5643     b   b      b b</code></pre>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="esquema-de-parcelas-subdivididas.html#cb334-1"></a>ano<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means (split.plot in levels of plot)</span><span class="st">`</span></span></code></pre></div>
+<pre><code>## $`split.plot in  EL`
+##   plot.split.plot adjusted.mean standard.error tukey snk duncan t
+## 3          EL.T 2      220.7617        10.5643     a   a      a a
+## 1          EL.T 1      194.2750        10.5643     a   a      a a
+## 9          EL.T 5      149.0750        10.5643     b   b      b b
+## 5          EL.T 3      136.5908        10.5643     b   b      b b
+## 7          EL.T 4      131.2658        10.5643     b   b      b b
+## 
+## $`split.plot in  L`
+##    plot.split.plot adjusted.mean standard.error tukey snk duncan  t
+## 4            L.T 2      181.2325        10.5643     a   a      a  a
+## 2            L.T 1      165.7750        10.5643    ab  ab     ab ab
+## 6            L.T 3      142.5167        10.5643     b   b      b  b
+## 8            L.T 4      102.5283        10.5643     c   c      c  c
+## 10           L.T 5       91.7642        10.5643     c   c      c  c</code></pre>
+<p><br></p>
+</div>
+<div id="pelo-pacote-expdes.pt" class="section level3">
+<h3><span class="header-section-number">4.12.2</span> Pelo pacote ExpDes.pt</h3>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="esquema-de-parcelas-subdivididas.html#cb336-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
+<span id="cb336-2"><a href="esquema-de-parcelas-subdivididas.html#cb336-2"></a><span class="kw">psub2.dbc</span>(FATOR1,FATOR2,repe,RESP)</span></code></pre></div>
+<p><br><br><br><br></p>
+<hr />
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="esquema-fatorial-3-fatores.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="polinômios-ortogonais.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["livroagro.pdf", "livroagro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Análise conjunta | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Análise conjunta | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Análise conjunta | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2020-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="polinômios-ortogonais.html"/>
+<link rel="next" href="intro.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a></li>
+<li class="chapter" data-level="2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html"><i class="fa fa-check"></i><b>2</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Delineamento Inteiramente Casualizado</span></a><ul>
+<li class="chapter" data-level="2.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#vantagens"><i class="fa fa-check"></i><b>2.1</b> Vantagens</a></li>
+<li class="chapter" data-level="2.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#desvantagens"><i class="fa fa-check"></i><b>2.2</b> Desvantagens</a></li>
+<li class="chapter" data-level="2.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#modelo-matemático-para-dic"><i class="fa fa-check"></i><b>2.3</b> Modelo matemático para DIC</a></li>
+<li class="chapter" data-level="2.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#hipóteses-e-modelo"><i class="fa fa-check"></i><b>2.4</b> Hipóteses e Modelo</a></li>
+<li class="chapter" data-level="2.5" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#croqui-para-dic"><i class="fa fa-check"></i><b>2.5</b> Croqui para DIC</a></li>
+<li class="chapter" data-level="2.6" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#exemplo-1-4"><i class="fa fa-check"></i><b>2.6</b> Exemplo 1</a></li>
+<li class="chapter" data-level="2.7" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#estatística-descritiva-2"><i class="fa fa-check"></i><b>2.7</b> Estatística descritiva</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#por-inoculação"><i class="fa fa-check"></i><b>2.7.1</b> Por Inoculação</a></li>
+<li class="chapter" data-level="2.7.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#por-época-de-aplicação"><i class="fa fa-check"></i><b>2.7.2</b> Por época de aplicação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráficos-exploratórios-3"><i class="fa fa-check"></i><b>2.8</b> Gráficos exploratórios</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráfico-de-caixas-5"><i class="fa fa-check"></i><b>2.8.1</b> Gráfico de Caixas</a></li>
+<li class="chapter" data-level="2.8.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráfico-de-interação"><i class="fa fa-check"></i><b>2.8.2</b> Gráfico de interação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#análise-de-variância-7"><i class="fa fa-check"></i><b>2.9</b> Análise de Variância</a></li>
+<li class="chapter" data-level="2.10" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#pressuposições-6"><i class="fa fa-check"></i><b>2.10</b> Pressuposições</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#normalidade-dos-erros-9"><i class="fa fa-check"></i><b>2.10.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="2.10.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#homogeneidade-de-variâncias-4"><i class="fa fa-check"></i><b>2.10.2</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="2.10.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#independência-dos-erros-6"><i class="fa fa-check"></i><b>2.10.3</b> Independência dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#teste-de-comparações-2"><i class="fa fa-check"></i><b>2.11</b> Teste de comparações</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html"><i class="fa fa-check"></i><b>3</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema Fatorial (3 Fatores)</span></a><ul>
+<li class="chapter" data-level="3.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#tipos-de-efeitos-avaliados-1"><i class="fa fa-check"></i><b>3.1</b> Tipos de efeitos avaliados</a></li>
+<li class="chapter" data-level="3.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#vantagens-3"><i class="fa fa-check"></i><b>3.2</b> Vantagens</a></li>
+<li class="chapter" data-level="3.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#desvantagens-3"><i class="fa fa-check"></i><b>3.3</b> Desvantagens</a></li>
+<li class="chapter" data-level="3.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#modelo-estatístico-1"><i class="fa fa-check"></i><b>3.4</b> Modelo estatístico</a></li>
+<li class="chapter" data-level="3.5" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#hipóteses-e-modelo-3"><i class="fa fa-check"></i><b>3.5</b> Hipóteses e modelo</a></li>
+<li class="chapter" data-level="3.6" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#exemplo-1-5"><i class="fa fa-check"></i><b>3.6</b> Exemplo 1</a></li>
+<li class="chapter" data-level="3.7" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#conjunto-de-dados-6"><i class="fa fa-check"></i><b>3.7</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="3.8" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados"><i class="fa fa-check"></i><b>3.8</b> Análise Exploratória dos dados</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-geral"><i class="fa fa-check"></i><b>3.8.1</b> Análise Exploratória dos dados (Geral)</a></li>
+<li class="chapter" data-level="3.8.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-fator-1"><i class="fa fa-check"></i><b>3.8.2</b> Análise Exploratória dos dados (Fator 1)</a></li>
+<li class="chapter" data-level="3.8.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-fator-3"><i class="fa fa-check"></i><b>3.8.3</b> Análise Exploratória dos dados (Fator 3)</a></li>
+<li class="chapter" data-level="3.8.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-juntando-tratamentos"><i class="fa fa-check"></i><b>3.8.4</b> Análise Exploratória dos dados (Juntando tratamentos)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-exploratório"><i class="fa fa-check"></i><b>3.9</b> Gráfico exploratório</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-caixas-6"><i class="fa fa-check"></i><b>3.9.1</b> Gráfico de caixas</a></li>
+<li class="chapter" data-level="3.9.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-interação-1"><i class="fa fa-check"></i><b>3.9.2</b> Gráfico de interação</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-de-variância-8"><i class="fa fa-check"></i><b>3.10</b> Análise de variância</a></li>
+<li class="chapter" data-level="3.11" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pressuposições-7"><i class="fa fa-check"></i><b>3.11</b> Pressuposições</a><ul>
+<li class="chapter" data-level="3.11.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#normalidade-dos-erros-10"><i class="fa fa-check"></i><b>3.11.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="3.11.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#homogeneidade-das-variâncias-5"><i class="fa fa-check"></i><b>3.11.2</b> Homogeneidade das variâncias</a></li>
+<li class="chapter" data-level="3.11.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#independência-dos-erros-7"><i class="fa fa-check"></i><b>3.11.3</b> Independência dos erros</a></li>
+<li class="chapter" data-level="3.11.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-residuos-padronizados"><i class="fa fa-check"></i><b>3.11.4</b> Gráfico de residuos padronizados</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#teste-de-comparação"><i class="fa fa-check"></i><b>3.12</b> Teste de comparação</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>3.12.1</b> Pacote ExpDes.pt</a></li>
+<li class="chapter" data-level="3.12.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pacote-easyanova"><i class="fa fa-check"></i><b>3.12.2</b> Pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#tabela-final"><i class="fa fa-check"></i><b>3.13</b> Tabela Final</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html"><i class="fa fa-check"></i><b>4</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema de Parcelas Subdivididas</span></a><ul>
+<li class="chapter" data-level="4.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#vantagens-4"><i class="fa fa-check"></i><b>4.1</b> Vantagens</a></li>
+<li class="chapter" data-level="4.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#desvantagens-4"><i class="fa fa-check"></i><b>4.2</b> Desvantagens</a></li>
+<li class="chapter" data-level="4.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#modelo-estatístico-2"><i class="fa fa-check"></i><b>4.3</b> Modelo estatístico</a></li>
+<li class="chapter" data-level="4.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#hipóteses-e-modelo-4"><i class="fa fa-check"></i><b>4.4</b> Hipóteses e modelo</a></li>
+<li class="chapter" data-level="4.5" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#croqui-em-dic-1"><i class="fa fa-check"></i><b>4.5</b> Croqui em DIC</a></li>
+<li class="chapter" data-level="4.6" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#croqui-em-dbc-1"><i class="fa fa-check"></i><b>4.6</b> Croqui em DBC</a></li>
+<li class="chapter" data-level="4.7" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#exemplo-1-6"><i class="fa fa-check"></i><b>4.7</b> Exemplo 1</a></li>
+<li class="chapter" data-level="4.8" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#estatística-descritiva-3"><i class="fa fa-check"></i><b>4.8</b> Estatística descritiva</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#fator-1-linha-e-entrelinha"><i class="fa fa-check"></i><b>4.8.1</b> Fator 1 (Linha e Entrelinha)</a></li>
+<li class="chapter" data-level="4.8.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#fator-2-manejo"><i class="fa fa-check"></i><b>4.8.2</b> Fator 2 (Manejo)</a></li>
+<li class="chapter" data-level="4.8.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#repetição"><i class="fa fa-check"></i><b>4.8.3</b> Repetição</a></li>
+<li class="chapter" data-level="4.8.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#juntando-os-fatores"><i class="fa fa-check"></i><b>4.8.4</b> Juntando os fatores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#gráficos-exploratórios-4"><i class="fa fa-check"></i><b>4.9</b> Gráficos exploratórios</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#gráfico-de-caixas-boxplot-2"><i class="fa fa-check"></i><b>4.9.1</b> Gráfico de caixas (<em>Boxplot</em>)</a></li>
+<li class="chapter" data-level="4.9.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#interação"><i class="fa fa-check"></i><b>4.9.2</b> Interação</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#análise-de-variância-9"><i class="fa fa-check"></i><b>4.10</b> Análise de Variância</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#usando-o-pacote-agricolae-1"><i class="fa fa-check"></i><b>4.10.1</b> Usando o pacote agricolae</a></li>
+<li class="chapter" data-level="4.10.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#usando-o-pacote-easyanova-1"><i class="fa fa-check"></i><b>4.10.2</b> Usando o pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pressupostos"><i class="fa fa-check"></i><b>4.11</b> Pressupostos</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#normalidade-dos-erros-11"><i class="fa fa-check"></i><b>4.11.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="4.11.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#homogeneidade-de-variâncias-5"><i class="fa fa-check"></i><b>4.11.2</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="4.11.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#independência-dos-erros-8"><i class="fa fa-check"></i><b>4.11.3</b> Independência dos erros</a></li>
+<li class="chapter" data-level="4.11.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#análise-gráfica"><i class="fa fa-check"></i><b>4.11.4</b> Análise Gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#teste-de-comparações-múltiplas"><i class="fa fa-check"></i><b>4.12</b> Teste de comparações múltiplas</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pelo-pacote-easyanova"><i class="fa fa-check"></i><b>4.12.1</b> Pelo pacote easyanova</a></li>
+<li class="chapter" data-level="4.12.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pelo-pacote-expdes.pt"><i class="fa fa-check"></i><b>4.12.2</b> Pelo pacote ExpDes.pt</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html"><i class="fa fa-check"></i><b>5</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Polinômios Ortogonais</span></a><ul>
+<li class="chapter" data-level="5.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#teste-f"><i class="fa fa-check"></i><b>5.1</b> Teste F</a></li>
+<li class="chapter" data-level="5.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#quadro-da-análise-de-variância"><i class="fa fa-check"></i><b>5.2</b> Quadro da Análise de variância</a></li>
+<li class="chapter" data-level="5.3" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#exemplo-1-7"><i class="fa fa-check"></i><b>5.3</b> Exemplo 1</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#conjunto-de-dados-7"><i class="fa fa-check"></i><b>5.3.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#média-e-variância"><i class="fa fa-check"></i><b>5.3.2</b> Média e Variância</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-10"><i class="fa fa-check"></i><b>5.4</b> Análise de Variância</a></li>
+<li class="chapter" data-level="5.5" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-para-matéria-seca"><i class="fa fa-check"></i><b>5.5</b> Análise de Variância para Matéria Seca</a></li>
+<li class="chapter" data-level="5.6" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-até-4-grau"><i class="fa fa-check"></i><b>5.6</b> Polinômio até 4 grau</a></li>
+<li class="chapter" data-level="5.7" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-3-grau"><i class="fa fa-check"></i><b>5.7</b> Polinômio de 3 grau</a></li>
+<li class="chapter" data-level="5.8" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-2-grau"><i class="fa fa-check"></i><b>5.8</b> Polinômio de 2 grau</a></li>
+<li class="chapter" data-level="5.9" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-1-grau"><i class="fa fa-check"></i><b>5.9</b> Polinômio de 1 grau</a></li>
+<li class="chapter" data-level="5.10" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#coeficientes-do-modelo"><i class="fa fa-check"></i><b>5.10</b> Coeficientes do modelo</a></li>
+<li class="chapter" data-level="5.11" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#curva-estimada"><i class="fa fa-check"></i><b>5.11</b> Curva Estimada</a></li>
+<li class="chapter" data-level="5.12" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#usando-o-expdes.pt-1"><i class="fa fa-check"></i><b>5.12</b> Usando o ExpDes.pt</a></li>
+<li class="chapter" data-level="5.13" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráfico"><i class="fa fa-check"></i><b>5.13</b> Gráfico</a></li>
+<li class="chapter" data-level="5.14" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráfico-somente-com-a-média"><i class="fa fa-check"></i><b>5.14</b> Gráfico somente com a média</a></li>
+<li class="chapter" data-level="5.15" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#exemplo-2-3"><i class="fa fa-check"></i><b>5.15</b> Exemplo 2</a></li>
+<li class="chapter" data-level="5.16" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-11"><i class="fa fa-check"></i><b>5.16</b> Análise de Variância</a></li>
+<li class="chapter" data-level="5.17" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#pressuposições-8"><i class="fa fa-check"></i><b>5.17</b> Pressuposições</a><ul>
+<li class="chapter" data-level="5.17.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#normalidade-dos-erros-12"><i class="fa fa-check"></i><b>5.17.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="5.17.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#homogeneidade-das-variâncias-6"><i class="fa fa-check"></i><b>5.17.2</b> Homogeneidade das Variâncias</a></li>
+<li class="chapter" data-level="5.17.3" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#independência-dos-erros-9"><i class="fa fa-check"></i><b>5.17.3</b> Independência dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="5.18" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#coeficientes-do-modelo-1"><i class="fa fa-check"></i><b>5.18</b> Coeficientes do modelo</a></li>
+<li class="chapter" data-level="5.19" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#usando-o-expdes.pt-2"><i class="fa fa-check"></i><b>5.19</b> Usando o ExpDes.pt</a></li>
+<li class="chapter" data-level="5.20" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#curva-estimada-1"><i class="fa fa-check"></i><b>5.20</b> Curva Estimada</a></li>
+<li class="chapter" data-level="5.21" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráficos"><i class="fa fa-check"></i><b>5.21</b> Gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análise-conjunta.html"><a href="análise-conjunta.html"><i class="fa fa-check"></i><b>6</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Análise conjunta</span></a><ul>
+<li class="chapter" data-level="6.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#análise-conjunta-com-um-fator-qualitativo-dbc"><i class="fa fa-check"></i><b>6.1</b> Análise conjunta com um fator qualitativo (DBC)</a></li>
+<li class="chapter" data-level="6.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#exemplo-1-8"><i class="fa fa-check"></i><b>6.2</b> Exemplo 1</a></li>
+<li class="chapter" data-level="6.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#anova-individual"><i class="fa fa-check"></i><b>6.3</b> ANOVA individual</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-2-meses"><i class="fa fa-check"></i><b>6.3.1</b> Tempo de 2 meses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-4-meses"><i class="fa fa-check"></i><b>6.3.2</b> Tempo de 4 meses</a></li>
+<li class="chapter" data-level="6.3.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-6-meses"><i class="fa fa-check"></i><b>6.3.3</b> Tempo de 6 meses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="análise-conjunta.html"><a href="análise-conjunta.html#quadrado-do-resíduo-médio"><i class="fa fa-check"></i><b>6.4</b> Quadrado do resíduo médio</a></li>
+<li class="chapter" data-level="6.5" data-path="análise-conjunta.html"><a href="análise-conjunta.html#gráfico-de-interação-2"><i class="fa fa-check"></i><b>6.5</b> Gráfico de interação</a></li>
+<li class="chapter" data-level="6.6" data-path="análise-conjunta.html"><a href="análise-conjunta.html#análise-de-variância-conjunta"><i class="fa fa-check"></i><b>6.6</b> Análise de Variância conjunta</a></li>
+<li class="chapter" data-level="6.7" data-path="análise-conjunta.html"><a href="análise-conjunta.html#conferindo-manualmente"><i class="fa fa-check"></i><b>6.7</b> Conferindo “Manualmente”</a></li>
+<li class="chapter" data-level="6.8" data-path="análise-conjunta.html"><a href="análise-conjunta.html#grau-de-liberdade"><i class="fa fa-check"></i><b>6.8</b> Grau de liberdade</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#calculando-soma-de-quadrados"><i class="fa fa-check"></i><b>6.8.1</b> Calculando soma de quadrados</a></li>
+<li class="chapter" data-level="6.8.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#calculando-quadrado-médio"><i class="fa fa-check"></i><b>6.8.2</b> Calculando quadrado médio</a></li>
+<li class="chapter" data-level="6.8.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#teste-f-de-fischer"><i class="fa fa-check"></i><b>6.8.3</b> Teste F de Fischer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="análise-conjunta.html"><a href="análise-conjunta.html#pressuposição-do-modelo"><i class="fa fa-check"></i><b>6.9</b> Pressuposição do modelo</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#normalidade-dos-erros-13"><i class="fa fa-check"></i><b>6.9.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="6.9.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#gráfico-de-normalidade-1"><i class="fa fa-check"></i><b>6.9.2</b> Gráfico de normalidade</a></li>
+<li class="chapter" data-level="6.9.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#homogeneidade-de-variâncias-6"><i class="fa fa-check"></i><b>6.9.3</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="6.9.4" data-path="análise-conjunta.html"><a href="análise-conjunta.html#independências-dos-erros-2"><i class="fa fa-check"></i><b>6.9.4</b> Independências dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="análise-conjunta.html"><a href="análise-conjunta.html#desdobramento"><i class="fa fa-check"></i><b>6.10</b> Desdobramento</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#desdobramento-do-comprimento-em-cada-nível-de-tempo"><i class="fa fa-check"></i><b>6.10.1</b> Desdobramento do Comprimento em cada nível de Tempo</a></li>
+<li class="chapter" data-level="6.10.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#teste-de-comparação-múltipla-2"><i class="fa fa-check"></i><b>6.10.2</b> Teste de comparação múltipla</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tabela-final-1"><i class="fa fa-check"></i><b>6.11</b> Tabela Final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>8</b> Literature</a></li>
+<li class="chapter" data-level="9" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>9</b> Methods</a></li>
+<li class="chapter" data-level="10" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>10</b> Applications</a><ul>
+<li class="chapter" data-level="10.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>10.1</b> Example one</a></li>
+<li class="chapter" data-level="10.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>10.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="análise-conjunta" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Análise conjunta</span></h1>
+<hr />
+<p><br><br><br><br></p>
+<div id="análise-conjunta-com-um-fator-qualitativo-dbc" class="section level2">
+<h2><span class="header-section-number">6.1</span> Análise conjunta com um fator qualitativo (DBC)</h2>
+<p><br></p>
+<p>Na experimentação agrícola é comum a instalação de grupos de ensaios iguais, ou seja, com a mesma estrutura (delineamento, repetições e tratamentos iguais), entretanto, em anos e/ou locais distintos, visando a obtenção de conclusões mais abrangentes. Este tipo de análise é denominada análise conjunta de experimentos ou também conhecido como análise de grupos de experimentos.</p>
+<p>Requisitos para análise de variância conjunta</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Definir local (Ambiente) onde a pesquisa será conduzida, ou seja, diferentes localidades, anos diferentes de uma mesma localidade, anos e localidades distintas, etc. instalam-se os experimentos, o que geralmente são implantados em blocos casualziados, e após a coleta dos daddos, realizam-se todas às análises individuais, isto é, análise para cada ambiente de acordo com o delineamento estatístico utilizado.</p></li>
+<li><p>Examina-se a seguir as grandezas dos <span class="math inline">\(QM_{Res}\)</span>, ou seja, se forem homogêneas (Quando a razão entre a maior e o menor <span class="math inline">\(QM_{Res}\)</span> não for superior a mais de sete vezes) todos os ambientes poderão ser incluídos na análise conjunta sem restrições, do contrário, devem-se organizar subgrupos com QMresíduos homogêneos, sendo as análises conjuntas feitas para cada subgrupo.</p></li>
+</ol>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="11%" />
+<col width="15%" />
+<col width="29%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">FV</th>
+<th align="center">G.L.</th>
+<th align="center">S.Q.</th>
+<th align="center">Q.M.</th>
+<th align="left">Fcalc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Tratamento</td>
+<td align="center"><span class="math inline">\(t-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Tratamento}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{Tratamento}}{t-1}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{QM_{trat}}{QM_{T x A}}\)</span></td>
+</tr>
+<tr class="even">
+<td align="right">Ambientes</td>
+<td align="center"><span class="math inline">\(a-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Ambiente}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{tratamento}}{a-1}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{QM_{a}}{QM_{T x A}}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right">Interação T x A</td>
+<td align="center"><span class="math inline">\((t-1)(a-1)\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Interação}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{T x A}}{(t-1)(a-1)}\)</span></td>
+<td align="left"><span class="math inline">\(\frac{QM_{T x A}}{QM_{res}}\)</span></td>
+</tr>
+<tr class="even">
+<td align="right">Resíduo médio</td>
+<td align="center"><span class="math inline">\(N&#39;\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{res}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{res}}{N}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">Total</td>
+<td align="center"><span class="math inline">\(at-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Total}\)</span></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="exemplo-1-8" class="section level2">
+<h2><span class="header-section-number">6.2</span> Exemplo 1</h2>
+<hr />
+<p><br></p>
+<p>Um experimento com três tratamentos (T1: 6cm; T2: 12cm e T3: 18cm) foi conduzido em delineamento em blocos casualizados com quatro repetições cada. Este mesmo experimento foi repetido duas vezes, totalizando 3 ensaios experimentais (fevereiro; Abril e Junho de 2018).</p>
+<p><br></p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="análise-conjunta.html#cb390-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
+<span id="cb390-2"><a href="análise-conjunta.html#cb390-2"></a>resposta=<span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">80</span>,<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">60</span>,<span class="dv">85</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>,</span>
+<span id="cb390-3"><a href="análise-conjunta.html#cb390-3"></a>           <span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">80</span>,</span>
+<span id="cb390-4"><a href="análise-conjunta.html#cb390-4"></a>           <span class="dv">70</span>,<span class="dv">90</span>,<span class="dv">80</span>,<span class="dv">80</span>)</span>
+<span id="cb390-5"><a href="análise-conjunta.html#cb390-5"></a>Comprimento=<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">12</span>,<span class="dv">18</span>),<span class="dt">e=</span><span class="dv">4</span>),<span class="dv">3</span>); Comprimento=<span class="kw">as.factor</span>(Comprimento)</span>
+<span id="cb390-6"><a href="análise-conjunta.html#cb390-6"></a>Tempo=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="dt">e=</span><span class="dv">12</span>); Tempo=<span class="kw">as.factor</span>(Tempo)</span>
+<span id="cb390-7"><a href="análise-conjunta.html#cb390-7"></a>Repe=<span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dv">3</span>),</span>
+<span id="cb390-8"><a href="análise-conjunta.html#cb390-8"></a>       <span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dv">3</span>),</span>
+<span id="cb390-9"><a href="análise-conjunta.html#cb390-9"></a>       <span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dv">3</span>)))</span>
+<span id="cb390-10"><a href="análise-conjunta.html#cb390-10"></a>(<span class="dt">dados=</span><span class="kw">data.frame</span>(Comprimento, Tempo, Repe, resposta))</span></code></pre></div>
+<pre><code>##    Comprimento Tempo Repe resposta
+## 1            6     2  R 1       20
+## 2            6     2  R 2       30
+## 3            6     2  R 3       30
+## 4            6     2  R 4       20
+## 5           12     2  R 1       80
+## 6           12     2  R 2       75
+## 7           12     2  R 3       75
+## 8           12     2  R 4       60
+## 9           18     2  R 1       85
+## 10          18     2  R 2       80
+## 11          18     2  R 3       80
+## 12          18     2  R 4       90
+## 13           6     4  R 1       20
+## 14           6     4  R 2       10
+## 15           6     4  R 3       10
+## 16           6     4  R 4       20
+## 17          12     4  R 1       30
+## 18          12     4  R 2       20
+## 19          12     4  R 3       10
+## 20          12     4  R 4       20
+## 21          18     4  R 1       50
+## 22          18     4  R 2       60
+## 23          18     4  R 3       80
+## 24          18     4  R 4       30
+## 25           6     6  R 1       30
+## 26           6     6  R 2       60
+## 27           6     6  R 3       40
+## 28           6     6  R 4       50
+## 29          12     6  R 1      100
+## 30          12     6  R 2       60
+## 31          12     6  R 3       80
+## 32          12     6  R 4       80
+## 33          18     6  R 1       70
+## 34          18     6  R 2       90
+## 35          18     6  R 3       80
+## 36          18     6  R 4       80</code></pre>
+<p><br></p>
+</div>
+<div id="anova-individual" class="section level2">
+<h2><span class="header-section-number">6.3</span> ANOVA individual</h2>
+<p><br></p>
+<p>Antes de efetuar a análise conjunta, vamos analisar os dados em cada época (Como experimentos separados).</p>
+<p><br></p>
+<div id="tempo-de-2-meses" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Tempo de 2 meses</h3>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="análise-conjunta.html#cb392-1"></a>modelo=<span class="kw">with</span>(dados[Tempo<span class="op">==</span><span class="st">&quot;2&quot;</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">+</span>Repe))</span>
+<span id="cb392-2"><a href="análise-conjunta.html#cb392-2"></a><span class="kw">anova</span>(modelo)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: resposta
+##             Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## Comprimento  2 7779.2  3889.6 69.1481 7.189e-05 ***
+## Repe         3   56.3    18.8  0.3333    0.8022    
+## Residuals    6  337.5    56.3                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Como p-valor calculado (<span class="math inline">\(p=7.1893264\times 10^{-5}\)</span>) é menor que o nível de significância adotado, rejeita-se <span class="math inline">\(H_0\)</span>. Logo, ao menos dois tratamentos diferem entre si.</p>
+<p><br></p>
+</div>
+<div id="tempo-de-4-meses" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Tempo de 4 meses</h3>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="análise-conjunta.html#cb394-1"></a>modelo1=<span class="kw">with</span>(dados[Tempo<span class="op">==</span><span class="st">&quot;4&quot;</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">+</span>Repe))</span>
+<span id="cb394-2"><a href="análise-conjunta.html#cb394-2"></a><span class="kw">anova</span>(modelo1)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: resposta
+##             Df Sum Sq Mean Sq F value  Pr(&gt;F)  
+## Comprimento  2   3800 1900.00  8.1429 0.01952 *
+## Repe         3    200   66.67  0.2857 0.83436  
+## Residuals    6   1400  233.33                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Como p-valor calculado (<span class="math inline">\(p=0.0195152\)</span>) é menor que o nível de significância adotado, rejeita-se <span class="math inline">\(H_0\)</span>. Logo, ao menos dois tratamentos diferem entre si.</p>
+<p><br></p>
+</div>
+<div id="tempo-de-6-meses" class="section level3">
+<h3><span class="header-section-number">6.3.3</span> Tempo de 6 meses</h3>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="análise-conjunta.html#cb396-1"></a>modelo2=<span class="kw">with</span>(dados[Tempo<span class="op">==</span><span class="st">&quot;6&quot;</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">+</span>Repe))</span>
+<span id="cb396-2"><a href="análise-conjunta.html#cb396-2"></a><span class="kw">anova</span>(modelo2)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: resposta
+##             Df Sum Sq Mean Sq F value  Pr(&gt;F)  
+## Comprimento  2 3266.7 1633.33  6.6818 0.02975 *
+## Repe         3   33.3   11.11  0.0455 0.98589  
+## Residuals    6 1466.7  244.44                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Como p-valor calculado (<span class="math inline">\(p=0.0297504\)</span>) é menor que o nível de significância adotado, rejeita-se <span class="math inline">\(H_0\)</span>. Logo, ao menos dois tratamentos diferem entre si.</p>
+<p><br></p>
+</div>
+</div>
+<div id="quadrado-do-resíduo-médio" class="section level2">
+<h2><span class="header-section-number">6.4</span> Quadrado do resíduo médio</h2>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="análise-conjunta.html#cb398-1"></a>QMResiduo1&lt;-<span class="st"> </span><span class="kw">anova</span>(modelo)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
+<span id="cb398-2"><a href="análise-conjunta.html#cb398-2"></a>QMResiduo2&lt;-<span class="st"> </span><span class="kw">anova</span>(modelo1)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
+<span id="cb398-3"><a href="análise-conjunta.html#cb398-3"></a>QMResiduo3&lt;-<span class="st"> </span><span class="kw">anova</span>(modelo2)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
+<span id="cb398-4"><a href="análise-conjunta.html#cb398-4"></a>QMResiduo&lt;-<span class="st"> </span><span class="kw">c</span>(QMResiduo1, QMResiduo2,</span>
+<span id="cb398-5"><a href="análise-conjunta.html#cb398-5"></a>              QMResiduo3)</span>
+<span id="cb398-6"><a href="análise-conjunta.html#cb398-6"></a><span class="kw">max</span>(QMResiduo)<span class="op">/</span><span class="kw">min</span>(QMResiduo) <span class="co">## Deve ser menor que 7</span></span></code></pre></div>
+<pre><code>## [1] 4.345679</code></pre>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="análise-conjunta.html#cb400-1"></a><span class="kw">sum</span>(QMResiduo)<span class="op">/</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 178.0093</code></pre>
+<p><br></p>
+<p>De acordo com Pimentel Gomes (2009), os ensaios em diversos locais podem ser agrupados em uma única análise desde que o quociente entre o maior e o menor quadrado médio do resíduo (QMRes) seja inferior a 7, caso contrário, pode-se considerar subgrupos de locais homogêneos, com quadrados médios residuais que satisfaçam o quociente, a fim de se construir tantas análises conjuntas quantos subgrupos criados</p>
+<p><strong>Referência</strong>: PIMENTEL GOMES, F. Curso de estatística experimental. 15 ed. Piracicaba: FEALQ, 2009. 451p.</p>
+<p><br><br><br></p>
+</div>
+<div id="gráfico-de-interação-2" class="section level2">
+<h2><span class="header-section-number">6.5</span> Gráfico de interação</h2>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="análise-conjunta.html#cb402-1"></a><span class="kw">interaction.plot</span>(Comprimento, </span>
+<span id="cb402-2"><a href="análise-conjunta.html#cb402-2"></a>                 Tempo, resposta, </span>
+<span id="cb402-3"><a href="análise-conjunta.html#cb402-3"></a>                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>),</span>
+<span id="cb402-4"><a href="análise-conjunta.html#cb402-4"></a>                 <span class="dt">las=</span><span class="dv">1</span>,</span>
+<span id="cb402-5"><a href="análise-conjunta.html#cb402-5"></a>                 <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-245-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+</div>
+<div id="análise-de-variância-conjunta" class="section level2">
+<h2><span class="header-section-number">6.6</span> Análise de Variância conjunta</h2>
+<p>A análise de variância conjunta pode ser efetuada conforme os comandos abaixo:</p>
+<p>Teste F para efeito da interação Local:Trat (Somente a interação é válida)</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="análise-conjunta.html#cb403-1"></a><span class="kw">summary</span>(<span class="kw">aov</span>(resposta<span class="op">~</span>Tempo<span class="op">+</span>Tempo<span class="op">:</span>Repe<span class="op">+</span>Comprimento<span class="op">+</span></span>
+<span id="cb403-2"><a href="análise-conjunta.html#cb403-2"></a><span class="st">              </span>Tempo<span class="op">:</span>Comprimento, <span class="dt">data=</span>dados)) </span></code></pre></div>
+<pre><code>##                   Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Tempo              2   9829    4915  27.609 3.28e-06 ***
+## Comprimento        2  12304    6152  34.560 6.86e-07 ***
+## Tempo:Repe         9    290      32   0.181    0.994    
+## Tempo:Comprimento  4   2542     635   3.570    0.026 *  
+## Residuals         18   3204     178                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Como p-valor calculado <span class="math inline">\(p=0.026\)</span> é menor que o nível de significância adotado de (<span class="math inline">\(\alpha=0.05\)</span>), pode-se concluir que há efeito de interação. Logo, temos que analisar como experimentos separados.</p>
+<p>Teste F para efeito do Tratamento</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="análise-conjunta.html#cb405-1"></a>mod=<span class="kw">aov</span>(resposta<span class="op">~</span>Tempo<span class="op">+</span>Tempo<span class="op">:</span>Repe<span class="op">+</span>Comprimento<span class="op">+</span><span class="kw">Error</span>(Tempo<span class="op">:</span>(Repe<span class="op">+</span>Comprimento)), <span class="dt">data=</span>dados)</span>
+<span id="cb405-2"><a href="análise-conjunta.html#cb405-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<pre><code>## 
+## Error: Tempo:Repe
+##            Df Sum Sq Mean Sq
+## Tempo       2   9829    4915
+## Tempo:Repe  9    290      32
+## 
+## Error: Tempo:Comprimento
+##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
+## Comprimento  2  12304    6152   9.682 0.0293 *
+## Residuals    4   2542     635                 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Error: Within
+##           Df Sum Sq Mean Sq F value Pr(&gt;F)
+## Residuals 18   3204     178</code></pre>
+<p><br><br><br></p>
+</div>
+<div id="conferindo-manualmente" class="section level2">
+<h2><span class="header-section-number">6.7</span> Conferindo “Manualmente”</h2>
+<p>Quadro auxiliar com os totais da resposta em ensaios realizados em Londrina no delineamento inteiramente casualizado com três tratamentos (Comprimento de estaca) e quatro repetições em três épocas (T2,T4,T6)</p>
+<table>
+<thead>
+<tr class="header">
+<th>Comprimento</th>
+<th>T2</th>
+<th>T4</th>
+<th>T6</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+<td>100</td>
+<td>60</td>
+<td>180</td>
+<td>340</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>290</td>
+<td>80</td>
+<td>320</td>
+<td>690</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>335</td>
+<td>220</td>
+<td>320</td>
+<td>875</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>725</td>
+<td>360</td>
+<td>820</td>
+<td>1905</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+</div>
+<div id="grau-de-liberdade" class="section level2">
+<h2><span class="header-section-number">6.8</span> Grau de liberdade</h2>
+<p><strong>Grau de liberdade do Comprimento</strong></p>
+<center>
+<p><span class="math inline">\(GL_{c}=c-1\)</span></p>
+<p><span class="math inline">\(GL_{comp}=3-1=2\)</span></p>
+</center>
+<p><strong>Grau de liberdade do tempo</strong></p>
+<center>
+<p><span class="math inline">\(GL_{t}=t-1\)</span></p>
+<p><span class="math inline">\(GL_{tempo}=3-1=2\)</span></p>
+</center>
+<p><strong>Grau de liberdade da interação</strong></p>
+<center>
+<p><span class="math inline">\(GL_{cXt}=(c-1)(t-1)\)</span></p>
+<p><span class="math inline">\(GL_{interação}=(3-1)(3-1)=4\)</span></p>
+</center>
+<p><strong>Grau de liberdade do resíduo</strong></p>
+<center>
+<p><span class="math inline">\(GL_{resíduomédio}=N&#39;\)</span></p>
+<p><span class="math inline">\(GL_{resíduo médio}=2*3(3)=18\)</span></p>
+<p><span class="math inline">\(N= c r t=36\)</span></p>
+</center>
+<p><br><br></p>
+<div id="calculando-soma-de-quadrados" class="section level3">
+<h3><span class="header-section-number">6.8.1</span> Calculando soma de quadrados</h3>
+<center>
+<hr />
+<p><span class="math inline">\(SQ_{c}=\frac{\sum T_c^2}{rc}-\frac{(\sum T_c)^2}{N}\)</span></p>
+<p><span class="math inline">\(SQ_{comp}=\frac{340^2+690^2+875^2}{4*3}-\frac{1905^2}{36}=12.304,17\)</span></p>
+<hr />
+<p><span class="math inline">\(SQ_{t}=\frac{\sum T_t^2}{rt}-\frac{(\sum T_t)^2}{N}\)</span></p>
+<p><span class="math inline">\(SQ_{tempo}=\frac{725^2+360^2+820^2}{4*3}-\frac{1905^2}{36}=9.829,15\)</span></p>
+<hr />
+<p><span class="math inline">\(SQ_{c X t}=\frac{\sum T_{ct}^2}{r}-\frac{(\sum T_{ct})^2}{N}\)</span></p>
+<p><span class="math inline">\(SQ_{interação}=\frac{100^2+60^2+180^2+290^2+80^2+320^2+335^2+220^2+320^2}{4}-\frac{1905^2}{36}-12.304,17-9.829,15=2.541,63\)</span></p>
+</center>
+<p><br><br></p>
+</div>
+<div id="calculando-quadrado-médio" class="section level3">
+<h3><span class="header-section-number">6.8.2</span> Calculando quadrado médio</h3>
+<center>
+<hr />
+<p><span class="math inline">\(QM_{c}=\frac{SQ_{c}}{GL_c}\)</span></p>
+<p><span class="math inline">\(QM_{comp}=\frac{12.304,17}{2}=6.152,1\)</span></p>
+<hr />
+<p><span class="math inline">\(QM_{t}=\frac{SQ_{t}}{GL_t}\)</span></p>
+<p><span class="math inline">\(QM_{tempo}=\frac{9.829,15}{2}=4.914,6\)</span></p>
+<hr />
+<p><span class="math inline">\(QM_{c}=\frac{SQ_{cXt}}{GL_{interação}}\)</span></p>
+<p><span class="math inline">\(QM_{interação}=\frac{2.541,63}{4}=635,4075\)</span></p>
+<hr />
+<p><span class="math inline">\(QM_{c}=\frac{SQ_{resT2}+SQ_{resT4}+SQ_{resT6}}{t}\)</span></p>
+<p><span class="math inline">\(QM_{resíduo médio}=\frac{56+233,33+244,44}{3}=178,0\)</span></p>
+</center>
+<p><br><br></p>
+</div>
+<div id="teste-f-de-fischer" class="section level3">
+<h3><span class="header-section-number">6.8.3</span> Teste F de Fischer</h3>
+<center>
+<hr />
+<p><span class="math inline">\(F_{c}=\frac{QM_{c}}{QM_{cXt}}\)</span></p>
+<p><span class="math inline">\(F_{comp}=\frac{6.152,1}{635.4075}=9.682\)</span></p>
+<p><span class="math inline">\(F_{t}=\frac{QM_{t}}{QM_{cXt}}\)</span></p>
+<p><span class="math inline">\(F_{tempo}=\frac{4.914,6}{635.4075}=7,73\)</span></p>
+<p><span class="math inline">\(F_{c}=\frac{QM_{cXt}}{QM_{resíduomédio}}\)</span></p>
+<p><span class="math inline">\(F_{interação}=\frac{635.4075}{178}=3,5696\)</span></p>
+</center>
+<p><br><br></p>
+</div>
+</div>
+<div id="pressuposição-do-modelo" class="section level2">
+<h2><span class="header-section-number">6.9</span> Pressuposição do modelo</h2>
+<p><br></p>
+<div id="normalidade-dos-erros-13" class="section level3">
+<h3><span class="header-section-number">6.9.1</span> Normalidade dos erros</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mbox{ Os erros têm distribuição normal} \\[.2cm]
+H_1: &amp; \mbox{ Os erros não têm distribuição normal}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="análise-conjunta.html#cb407-1"></a><span class="co">## Vamos analisar os erros como sendo um modelo em esquema Fatorial</span></span>
+<span id="cb407-2"><a href="análise-conjunta.html#cb407-2"></a>mod1=<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">*</span>Tempo<span class="op">+</span>Repe)</span>
+<span id="cb407-3"><a href="análise-conjunta.html#cb407-3"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod1<span class="op">$</span>res))</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  mod1$res
+## W = 0.97794, p-value = 0.6756</code></pre>
+<p>Como p-valor calculado (<span class="math inline">\(p=0.6756399\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(\alpha=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, os erros seguem distribuição normal.</p>
+<p><br><br></p>
+</div>
+<div id="gráfico-de-normalidade-1" class="section level3">
+<h3><span class="header-section-number">6.9.2</span> Gráfico de normalidade</h3>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="análise-conjunta.html#cb409-1"></a>HNP=hnp<span class="op">::</span><span class="kw">hnp</span>(mod1, <span class="dt">paint.on=</span>T, <span class="dt">col=</span><span class="st">&quot;red&quot;</span> , <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="análise-conjunta.html#cb410-1"></a><span class="kw">plot</span>(HNP,<span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>),  <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-250-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br><br></p>
+</div>
+<div id="homogeneidade-de-variâncias-6" class="section level3">
+<h3><span class="header-section-number">6.9.3</span> Homogeneidade de variâncias</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mbox{ As variâncias são homogêneas} \\[.2cm]
+H_1: &amp; \mbox{ As variâncias não são homogêneas}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="análise-conjunta.html#cb411-1"></a>(<span class="dt">homog=</span><span class="kw">bartlett.test</span>(mod1<span class="op">$</span>res<span class="op">~</span><span class="kw">paste</span>(Comprimento,Tempo)))</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  mod1$res by paste(Comprimento, Tempo)
+## Bartlett&#39;s K-squared = 9.5181, df = 8, p-value = 0.3005</code></pre>
+<p>Como p-valor calculado (<span class="math inline">\(p=0.3004895\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(\alpha=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, as variâncias são homogêneas.</p>
+<p><br><br></p>
+</div>
+<div id="independências-dos-erros-2" class="section level3">
+<h3><span class="header-section-number">6.9.4</span> Independências dos erros</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mbox{ Os erros são independentes;} \\[.2cm]
+H_1: &amp; \mbox{ Os erros não são independentes.}
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="análise-conjunta.html#cb413-1"></a><span class="kw">library</span>(lmtest)</span>
+<span id="cb413-2"><a href="análise-conjunta.html#cb413-2"></a>ind=<span class="kw">dwtest</span>(mod1)</span></code></pre></div>
+<p>Como p-valor calculado (<span class="math inline">\(p=0.5781767\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(\alpha=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, os erros são independentes. A Figura  apresenta o gráfico dos resíduos brutos. Percebe-se que os resíduos estão distribuídos de forma totalmente aleatório, evidenciando a independência dos erros.</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="análise-conjunta.html#cb414-1"></a><span class="kw">plot</span>(mod1<span class="op">$</span>res, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb414-2"><a href="análise-conjunta.html#cb414-2"></a>     <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">16</span>,</span>
+<span id="cb414-3"><a href="análise-conjunta.html#cb414-3"></a>     <span class="dt">ylab=</span><span class="st">&quot;Residuos brutos&quot;</span>)</span>
+<span id="cb414-4"><a href="análise-conjunta.html#cb414-4"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-253-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br><br><br></p>
+</div>
+</div>
+<div id="desdobramento" class="section level2">
+<h2><span class="header-section-number">6.10</span> Desdobramento</h2>
+<p><br></p>
+<div id="desdobramento-do-comprimento-em-cada-nível-de-tempo" class="section level3">
+<h3><span class="header-section-number">6.10.1</span> Desdobramento do Comprimento em cada nível de Tempo</h3>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="análise-conjunta.html#cb415-1"></a><span class="co">#desdobramento</span></span>
+<span id="cb415-2"><a href="análise-conjunta.html#cb415-2"></a>dados<span class="op">$</span>LT&lt;-<span class="st"> </span><span class="kw">as.factor</span>(dados<span class="op">$</span>Tempo<span class="op">:</span>dados<span class="op">$</span>Comprimento)</span>
+<span id="cb415-3"><a href="análise-conjunta.html#cb415-3"></a><span class="co">#efeito de tratamento dentro de cada nível de local</span></span>
+<span id="cb415-4"><a href="análise-conjunta.html#cb415-4"></a>mod.conj&lt;-<span class="st"> </span><span class="kw">aov</span>(resposta <span class="op">~</span><span class="st"> </span>Tempo <span class="op">+</span><span class="st"> </span>Tempo<span class="op">:</span>Repe <span class="op">+</span><span class="st"> </span>LT,</span>
+<span id="cb415-5"><a href="análise-conjunta.html#cb415-5"></a>               <span class="dt">data=</span>dados)</span>
+<span id="cb415-6"><a href="análise-conjunta.html#cb415-6"></a><span class="kw">summary</span>(mod.conj,</span>
+<span id="cb415-7"><a href="análise-conjunta.html#cb415-7"></a>        <span class="dt">split=</span><span class="kw">list</span>(<span class="dt">LT=</span><span class="kw">list</span>(<span class="dt">TdL1=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dt">TdL2=</span><span class="dv">3</span><span class="op">:</span><span class="dv">4</span>,</span>
+<span id="cb415-8"><a href="análise-conjunta.html#cb415-8"></a>                           <span class="dt">TdL3=</span><span class="dv">5</span><span class="op">:</span><span class="dv">6</span>)))</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Tempo        2   9829    4915  27.609 3.28e-06 ***
+## LT           6  14846    2474  13.900 6.80e-06 ***
+##   LT: TdL1   2   7779    3890  21.850 1.53e-05 ***
+##   LT: TdL2   2   3800    1900  10.674 0.000877 ***
+##   LT: TdL3   2   3267    1633   9.176 0.001790 ** 
+## Tempo:Repe   9    290      32   0.181 0.993687    
+## Residuals   18   3204     178                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br></p>
+</div>
+<div id="teste-de-comparação-múltipla-2" class="section level3">
+<h3><span class="header-section-number">6.10.2</span> Teste de comparação múltipla</h3>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="análise-conjunta.html#cb417-1"></a><span class="co"># O QMres é 178 e o GL é 18</span></span>
+<span id="cb417-2"><a href="análise-conjunta.html#cb417-2"></a></span>
+<span id="cb417-3"><a href="análise-conjunta.html#cb417-3"></a><span class="kw">require</span>(agricolae)</span>
+<span id="cb417-4"><a href="análise-conjunta.html#cb417-4"></a></span>
+<span id="cb417-5"><a href="análise-conjunta.html#cb417-5"></a><span class="co">#dentro de Tempo 2</span></span>
+<span id="cb417-6"><a href="análise-conjunta.html#cb417-6"></a>tukey.l1&lt;-<span class="kw">HSD.test</span>(dados<span class="op">$</span>resposta[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;2&quot;</span>],</span>
+<span id="cb417-7"><a href="análise-conjunta.html#cb417-7"></a>             dados<span class="op">$</span>Comprimento[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;2&quot;</span>],</span>
+<span id="cb417-8"><a href="análise-conjunta.html#cb417-8"></a>             <span class="dv">18</span>, <span class="dv">178</span>)</span>
+<span id="cb417-9"><a href="análise-conjunta.html#cb417-9"></a>tukey.l1<span class="op">$</span>groups</span></code></pre></div>
+<pre><code>##    dados$resposta[dados$Tempo == &quot;2&quot;] groups
+## 18                              83.75      a
+## 12                              72.50      a
+## 6                               25.00      b</code></pre>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="análise-conjunta.html#cb419-1"></a><span class="co">#dentro de Tempo 4</span></span>
+<span id="cb419-2"><a href="análise-conjunta.html#cb419-2"></a>tukey.l2&lt;-<span class="kw">HSD.test</span>(dados<span class="op">$</span>resposta[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;4&quot;</span>],</span>
+<span id="cb419-3"><a href="análise-conjunta.html#cb419-3"></a>                    dados<span class="op">$</span>Comprimento[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;4&quot;</span>],</span>
+<span id="cb419-4"><a href="análise-conjunta.html#cb419-4"></a>                    <span class="dv">18</span>, <span class="dv">178</span>)</span>
+<span id="cb419-5"><a href="análise-conjunta.html#cb419-5"></a>tukey.l2<span class="op">$</span>groups</span></code></pre></div>
+<pre><code>##    dados$resposta[dados$Tempo == &quot;4&quot;] groups
+## 18                                 55      a
+## 12                                 20      b
+## 6                                  15      b</code></pre>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="análise-conjunta.html#cb421-1"></a><span class="co">#dentro de Tempo 6</span></span>
+<span id="cb421-2"><a href="análise-conjunta.html#cb421-2"></a>tukey.l3&lt;-<span class="kw">HSD.test</span>(dados<span class="op">$</span>resposta[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;6&quot;</span>],</span>
+<span id="cb421-3"><a href="análise-conjunta.html#cb421-3"></a>                    dados<span class="op">$</span>Comprimento[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;6&quot;</span>],</span>
+<span id="cb421-4"><a href="análise-conjunta.html#cb421-4"></a>                    <span class="dv">18</span>, <span class="dv">178</span>)</span>
+<span id="cb421-5"><a href="análise-conjunta.html#cb421-5"></a>tukey.l3<span class="op">$</span>groups</span></code></pre></div>
+<pre><code>##    dados$resposta[dados$Tempo == &quot;6&quot;] groups
+## 12                                 80      a
+## 18                                 80      a
+## 6                                  45      b</code></pre>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="análise-conjunta.html#cb423-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb423-2"><a href="análise-conjunta.html#cb423-2"></a><span class="kw">bar.group</span>(tukey.l1<span class="op">$</span>groups, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
+<span id="cb423-3"><a href="análise-conjunta.html#cb423-3"></a>          <span class="dt">main=</span><span class="st">&quot;Tempo 2&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
+<span id="cb423-4"><a href="análise-conjunta.html#cb423-4"></a>          <span class="dt">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="dt">las=</span><span class="dv">1</span>)</span>
+<span id="cb423-5"><a href="análise-conjunta.html#cb423-5"></a><span class="kw">bar.group</span>(tukey.l2<span class="op">$</span>groups, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
+<span id="cb423-6"><a href="análise-conjunta.html#cb423-6"></a>          <span class="dt">main=</span><span class="st">&quot;Tempo 4&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
+<span id="cb423-7"><a href="análise-conjunta.html#cb423-7"></a>          <span class="dt">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="dt">las=</span><span class="dv">1</span>)</span>
+<span id="cb423-8"><a href="análise-conjunta.html#cb423-8"></a><span class="kw">bar.group</span>(tukey.l3<span class="op">$</span>groups, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
+<span id="cb423-9"><a href="análise-conjunta.html#cb423-9"></a>          <span class="dt">main=</span><span class="st">&quot;Tempo 6&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
+<span id="cb423-10"><a href="análise-conjunta.html#cb423-10"></a>          <span class="dt">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="dt">las=</span><span class="dv">1</span>) </span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
+<p><br><br><br></p>
+</div>
+</div>
+<div id="tabela-final-1" class="section level2">
+<h2><span class="header-section-number">6.11</span> Tabela Final</h2>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="análise-conjunta.html#cb424-1"></a><span class="kw">library</span>(knitr)</span>
+<span id="cb424-2"><a href="análise-conjunta.html#cb424-2"></a>media=<span class="kw">tapply</span>(resposta, <span class="kw">list</span>(Comprimento, Tempo),mean)</span>
+<span id="cb424-3"><a href="análise-conjunta.html#cb424-3"></a>tabela=<span class="kw">data.frame</span>(<span class="st">&quot;Mês 2&quot;</span>=media[,<span class="dv">1</span>],</span>
+<span id="cb424-4"><a href="análise-conjunta.html#cb424-4"></a>             <span class="st">&quot; &quot;</span>=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>),</span>
+<span id="cb424-5"><a href="análise-conjunta.html#cb424-5"></a>             <span class="st">&quot;Mês 4&quot;</span>=media[,<span class="dv">2</span>],</span>
+<span id="cb424-6"><a href="análise-conjunta.html#cb424-6"></a>             <span class="st">&quot; &quot;</span>=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>),</span>
+<span id="cb424-7"><a href="análise-conjunta.html#cb424-7"></a>             <span class="st">&quot;Mês 6&quot;</span>=media[,<span class="dv">3</span>],</span>
+<span id="cb424-8"><a href="análise-conjunta.html#cb424-8"></a>             <span class="st">&quot; &quot;</span>=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>))</span>
+<span id="cb424-9"><a href="análise-conjunta.html#cb424-9"></a><span class="kw">kable</span>(tabela, <span class="dt">align =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Mês 2&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;Mês 4&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;Mês 6&quot;</span>,<span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Mês 2</th>
+<th></th>
+<th align="center">Mês 4</th>
+<th></th>
+<th align="center">Mês 6</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+<td align="center">25.00</td>
+<td>B</td>
+<td align="center">15</td>
+<td>B</td>
+<td align="center">45</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td align="center">72.50</td>
+<td>A</td>
+<td align="center">20</td>
+<td>B</td>
+<td align="center">80</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td align="center">83.75</td>
+<td>A</td>
+<td align="center">55</td>
+<td>A</td>
+<td align="center">80</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br><br></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="polinômios-ortogonais.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["livroagro.pdf", "livroagro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

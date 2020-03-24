@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Polinômios Ortogonais | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Polinômios Ortogonais | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Polinômios Ortogonais | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2020-03-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="esquema-de-parcelas-subdivididas.html"/>
+<link rel="next" href="análise-conjunta.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Apresentação</a></li>
+<li class="chapter" data-level="2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html"><i class="fa fa-check"></i><b>2</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Delineamento Inteiramente Casualizado</span></a><ul>
+<li class="chapter" data-level="2.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#vantagens"><i class="fa fa-check"></i><b>2.1</b> Vantagens</a></li>
+<li class="chapter" data-level="2.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#desvantagens"><i class="fa fa-check"></i><b>2.2</b> Desvantagens</a></li>
+<li class="chapter" data-level="2.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#modelo-matemático-para-dic"><i class="fa fa-check"></i><b>2.3</b> Modelo matemático para DIC</a></li>
+<li class="chapter" data-level="2.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#hipóteses-e-modelo"><i class="fa fa-check"></i><b>2.4</b> Hipóteses e Modelo</a></li>
+<li class="chapter" data-level="2.5" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#croqui-para-dic"><i class="fa fa-check"></i><b>2.5</b> Croqui para DIC</a></li>
+<li class="chapter" data-level="2.6" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#exemplo-1-4"><i class="fa fa-check"></i><b>2.6</b> Exemplo 1</a></li>
+<li class="chapter" data-level="2.7" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#estatística-descritiva-2"><i class="fa fa-check"></i><b>2.7</b> Estatística descritiva</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#por-inoculação"><i class="fa fa-check"></i><b>2.7.1</b> Por Inoculação</a></li>
+<li class="chapter" data-level="2.7.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#por-época-de-aplicação"><i class="fa fa-check"></i><b>2.7.2</b> Por época de aplicação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráficos-exploratórios-3"><i class="fa fa-check"></i><b>2.8</b> Gráficos exploratórios</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráfico-de-caixas-5"><i class="fa fa-check"></i><b>2.8.1</b> Gráfico de Caixas</a></li>
+<li class="chapter" data-level="2.8.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#gráfico-de-interação"><i class="fa fa-check"></i><b>2.8.2</b> Gráfico de interação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#análise-de-variância-7"><i class="fa fa-check"></i><b>2.9</b> Análise de Variância</a></li>
+<li class="chapter" data-level="2.10" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#pressuposições-6"><i class="fa fa-check"></i><b>2.10</b> Pressuposições</a><ul>
+<li class="chapter" data-level="2.10.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#normalidade-dos-erros-9"><i class="fa fa-check"></i><b>2.10.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="2.10.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#homogeneidade-de-variâncias-4"><i class="fa fa-check"></i><b>2.10.2</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="2.10.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#independência-dos-erros-6"><i class="fa fa-check"></i><b>2.10.3</b> Independência dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#teste-de-comparações-2"><i class="fa fa-check"></i><b>2.11</b> Teste de comparações</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html"><i class="fa fa-check"></i><b>3</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema Fatorial (3 Fatores)</span></a><ul>
+<li class="chapter" data-level="3.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#tipos-de-efeitos-avaliados-1"><i class="fa fa-check"></i><b>3.1</b> Tipos de efeitos avaliados</a></li>
+<li class="chapter" data-level="3.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#vantagens-3"><i class="fa fa-check"></i><b>3.2</b> Vantagens</a></li>
+<li class="chapter" data-level="3.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#desvantagens-3"><i class="fa fa-check"></i><b>3.3</b> Desvantagens</a></li>
+<li class="chapter" data-level="3.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#modelo-estatístico-1"><i class="fa fa-check"></i><b>3.4</b> Modelo estatístico</a></li>
+<li class="chapter" data-level="3.5" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#hipóteses-e-modelo-3"><i class="fa fa-check"></i><b>3.5</b> Hipóteses e modelo</a></li>
+<li class="chapter" data-level="3.6" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#exemplo-1-5"><i class="fa fa-check"></i><b>3.6</b> Exemplo 1</a></li>
+<li class="chapter" data-level="3.7" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#conjunto-de-dados-6"><i class="fa fa-check"></i><b>3.7</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="3.8" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados"><i class="fa fa-check"></i><b>3.8</b> Análise Exploratória dos dados</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-geral"><i class="fa fa-check"></i><b>3.8.1</b> Análise Exploratória dos dados (Geral)</a></li>
+<li class="chapter" data-level="3.8.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-fator-1"><i class="fa fa-check"></i><b>3.8.2</b> Análise Exploratória dos dados (Fator 1)</a></li>
+<li class="chapter" data-level="3.8.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-fator-3"><i class="fa fa-check"></i><b>3.8.3</b> Análise Exploratória dos dados (Fator 3)</a></li>
+<li class="chapter" data-level="3.8.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-exploratória-dos-dados-juntando-tratamentos"><i class="fa fa-check"></i><b>3.8.4</b> Análise Exploratória dos dados (Juntando tratamentos)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-exploratório"><i class="fa fa-check"></i><b>3.9</b> Gráfico exploratório</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-caixas-6"><i class="fa fa-check"></i><b>3.9.1</b> Gráfico de caixas</a></li>
+<li class="chapter" data-level="3.9.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-interação-1"><i class="fa fa-check"></i><b>3.9.2</b> Gráfico de interação</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#análise-de-variância-8"><i class="fa fa-check"></i><b>3.10</b> Análise de variância</a></li>
+<li class="chapter" data-level="3.11" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pressuposições-7"><i class="fa fa-check"></i><b>3.11</b> Pressuposições</a><ul>
+<li class="chapter" data-level="3.11.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#normalidade-dos-erros-10"><i class="fa fa-check"></i><b>3.11.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="3.11.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#homogeneidade-das-variâncias-5"><i class="fa fa-check"></i><b>3.11.2</b> Homogeneidade das variâncias</a></li>
+<li class="chapter" data-level="3.11.3" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#independência-dos-erros-7"><i class="fa fa-check"></i><b>3.11.3</b> Independência dos erros</a></li>
+<li class="chapter" data-level="3.11.4" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#gráfico-de-residuos-padronizados"><i class="fa fa-check"></i><b>3.11.4</b> Gráfico de residuos padronizados</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#teste-de-comparação"><i class="fa fa-check"></i><b>3.12</b> Teste de comparação</a><ul>
+<li class="chapter" data-level="3.12.1" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>3.12.1</b> Pacote ExpDes.pt</a></li>
+<li class="chapter" data-level="3.12.2" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#pacote-easyanova"><i class="fa fa-check"></i><b>3.12.2</b> Pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="3.13" data-path="esquema-fatorial-3-fatores.html"><a href="esquema-fatorial-3-fatores.html#tabela-final"><i class="fa fa-check"></i><b>3.13</b> Tabela Final</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html"><i class="fa fa-check"></i><b>4</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema de Parcelas Subdivididas</span></a><ul>
+<li class="chapter" data-level="4.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#vantagens-4"><i class="fa fa-check"></i><b>4.1</b> Vantagens</a></li>
+<li class="chapter" data-level="4.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#desvantagens-4"><i class="fa fa-check"></i><b>4.2</b> Desvantagens</a></li>
+<li class="chapter" data-level="4.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#modelo-estatístico-2"><i class="fa fa-check"></i><b>4.3</b> Modelo estatístico</a></li>
+<li class="chapter" data-level="4.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#hipóteses-e-modelo-4"><i class="fa fa-check"></i><b>4.4</b> Hipóteses e modelo</a></li>
+<li class="chapter" data-level="4.5" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#croqui-em-dic-1"><i class="fa fa-check"></i><b>4.5</b> Croqui em DIC</a></li>
+<li class="chapter" data-level="4.6" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#croqui-em-dbc-1"><i class="fa fa-check"></i><b>4.6</b> Croqui em DBC</a></li>
+<li class="chapter" data-level="4.7" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#exemplo-1-6"><i class="fa fa-check"></i><b>4.7</b> Exemplo 1</a></li>
+<li class="chapter" data-level="4.8" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#estatística-descritiva-3"><i class="fa fa-check"></i><b>4.8</b> Estatística descritiva</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#fator-1-linha-e-entrelinha"><i class="fa fa-check"></i><b>4.8.1</b> Fator 1 (Linha e Entrelinha)</a></li>
+<li class="chapter" data-level="4.8.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#fator-2-manejo"><i class="fa fa-check"></i><b>4.8.2</b> Fator 2 (Manejo)</a></li>
+<li class="chapter" data-level="4.8.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#repetição"><i class="fa fa-check"></i><b>4.8.3</b> Repetição</a></li>
+<li class="chapter" data-level="4.8.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#juntando-os-fatores"><i class="fa fa-check"></i><b>4.8.4</b> Juntando os fatores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#gráficos-exploratórios-4"><i class="fa fa-check"></i><b>4.9</b> Gráficos exploratórios</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#gráfico-de-caixas-boxplot-2"><i class="fa fa-check"></i><b>4.9.1</b> Gráfico de caixas (<em>Boxplot</em>)</a></li>
+<li class="chapter" data-level="4.9.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#interação"><i class="fa fa-check"></i><b>4.9.2</b> Interação</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#análise-de-variância-9"><i class="fa fa-check"></i><b>4.10</b> Análise de Variância</a><ul>
+<li class="chapter" data-level="4.10.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#usando-o-pacote-agricolae-1"><i class="fa fa-check"></i><b>4.10.1</b> Usando o pacote agricolae</a></li>
+<li class="chapter" data-level="4.10.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#usando-o-pacote-easyanova-1"><i class="fa fa-check"></i><b>4.10.2</b> Usando o pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pressupostos"><i class="fa fa-check"></i><b>4.11</b> Pressupostos</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#normalidade-dos-erros-11"><i class="fa fa-check"></i><b>4.11.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="4.11.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#homogeneidade-de-variâncias-5"><i class="fa fa-check"></i><b>4.11.2</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="4.11.3" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#independência-dos-erros-8"><i class="fa fa-check"></i><b>4.11.3</b> Independência dos erros</a></li>
+<li class="chapter" data-level="4.11.4" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#análise-gráfica"><i class="fa fa-check"></i><b>4.11.4</b> Análise Gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#teste-de-comparações-múltiplas"><i class="fa fa-check"></i><b>4.12</b> Teste de comparações múltiplas</a><ul>
+<li class="chapter" data-level="4.12.1" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pelo-pacote-easyanova"><i class="fa fa-check"></i><b>4.12.1</b> Pelo pacote easyanova</a></li>
+<li class="chapter" data-level="4.12.2" data-path="esquema-de-parcelas-subdivididas.html"><a href="esquema-de-parcelas-subdivididas.html#pelo-pacote-expdes.pt"><i class="fa fa-check"></i><b>4.12.2</b> Pelo pacote ExpDes.pt</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html"><i class="fa fa-check"></i><b>5</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Polinômios Ortogonais</span></a><ul>
+<li class="chapter" data-level="5.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#teste-f"><i class="fa fa-check"></i><b>5.1</b> Teste F</a></li>
+<li class="chapter" data-level="5.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#quadro-da-análise-de-variância"><i class="fa fa-check"></i><b>5.2</b> Quadro da Análise de variância</a></li>
+<li class="chapter" data-level="5.3" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#exemplo-1-7"><i class="fa fa-check"></i><b>5.3</b> Exemplo 1</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#conjunto-de-dados-7"><i class="fa fa-check"></i><b>5.3.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="5.3.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#média-e-variância"><i class="fa fa-check"></i><b>5.3.2</b> Média e Variância</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-10"><i class="fa fa-check"></i><b>5.4</b> Análise de Variância</a></li>
+<li class="chapter" data-level="5.5" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-para-matéria-seca"><i class="fa fa-check"></i><b>5.5</b> Análise de Variância para Matéria Seca</a></li>
+<li class="chapter" data-level="5.6" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-até-4-grau"><i class="fa fa-check"></i><b>5.6</b> Polinômio até 4 grau</a></li>
+<li class="chapter" data-level="5.7" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-3-grau"><i class="fa fa-check"></i><b>5.7</b> Polinômio de 3 grau</a></li>
+<li class="chapter" data-level="5.8" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-2-grau"><i class="fa fa-check"></i><b>5.8</b> Polinômio de 2 grau</a></li>
+<li class="chapter" data-level="5.9" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#polinômio-de-1-grau"><i class="fa fa-check"></i><b>5.9</b> Polinômio de 1 grau</a></li>
+<li class="chapter" data-level="5.10" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#coeficientes-do-modelo"><i class="fa fa-check"></i><b>5.10</b> Coeficientes do modelo</a></li>
+<li class="chapter" data-level="5.11" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#curva-estimada"><i class="fa fa-check"></i><b>5.11</b> Curva Estimada</a></li>
+<li class="chapter" data-level="5.12" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#usando-o-expdes.pt-1"><i class="fa fa-check"></i><b>5.12</b> Usando o ExpDes.pt</a></li>
+<li class="chapter" data-level="5.13" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráfico"><i class="fa fa-check"></i><b>5.13</b> Gráfico</a></li>
+<li class="chapter" data-level="5.14" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráfico-somente-com-a-média"><i class="fa fa-check"></i><b>5.14</b> Gráfico somente com a média</a></li>
+<li class="chapter" data-level="5.15" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#exemplo-2-3"><i class="fa fa-check"></i><b>5.15</b> Exemplo 2</a></li>
+<li class="chapter" data-level="5.16" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#análise-de-variância-11"><i class="fa fa-check"></i><b>5.16</b> Análise de Variância</a></li>
+<li class="chapter" data-level="5.17" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#pressuposições-8"><i class="fa fa-check"></i><b>5.17</b> Pressuposições</a><ul>
+<li class="chapter" data-level="5.17.1" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#normalidade-dos-erros-12"><i class="fa fa-check"></i><b>5.17.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="5.17.2" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#homogeneidade-das-variâncias-6"><i class="fa fa-check"></i><b>5.17.2</b> Homogeneidade das Variâncias</a></li>
+<li class="chapter" data-level="5.17.3" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#independência-dos-erros-9"><i class="fa fa-check"></i><b>5.17.3</b> Independência dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="5.18" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#coeficientes-do-modelo-1"><i class="fa fa-check"></i><b>5.18</b> Coeficientes do modelo</a></li>
+<li class="chapter" data-level="5.19" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#usando-o-expdes.pt-2"><i class="fa fa-check"></i><b>5.19</b> Usando o ExpDes.pt</a></li>
+<li class="chapter" data-level="5.20" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#curva-estimada-1"><i class="fa fa-check"></i><b>5.20</b> Curva Estimada</a></li>
+<li class="chapter" data-level="5.21" data-path="polinômios-ortogonais.html"><a href="polinômios-ortogonais.html#gráficos"><i class="fa fa-check"></i><b>5.21</b> Gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análise-conjunta.html"><a href="análise-conjunta.html"><i class="fa fa-check"></i><b>6</b> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Análise conjunta</span></a><ul>
+<li class="chapter" data-level="6.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#análise-conjunta-com-um-fator-qualitativo-dbc"><i class="fa fa-check"></i><b>6.1</b> Análise conjunta com um fator qualitativo (DBC)</a></li>
+<li class="chapter" data-level="6.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#exemplo-1-8"><i class="fa fa-check"></i><b>6.2</b> Exemplo 1</a></li>
+<li class="chapter" data-level="6.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#anova-individual"><i class="fa fa-check"></i><b>6.3</b> ANOVA individual</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-2-meses"><i class="fa fa-check"></i><b>6.3.1</b> Tempo de 2 meses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-4-meses"><i class="fa fa-check"></i><b>6.3.2</b> Tempo de 4 meses</a></li>
+<li class="chapter" data-level="6.3.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tempo-de-6-meses"><i class="fa fa-check"></i><b>6.3.3</b> Tempo de 6 meses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="análise-conjunta.html"><a href="análise-conjunta.html#quadrado-do-resíduo-médio"><i class="fa fa-check"></i><b>6.4</b> Quadrado do resíduo médio</a></li>
+<li class="chapter" data-level="6.5" data-path="análise-conjunta.html"><a href="análise-conjunta.html#gráfico-de-interação-2"><i class="fa fa-check"></i><b>6.5</b> Gráfico de interação</a></li>
+<li class="chapter" data-level="6.6" data-path="análise-conjunta.html"><a href="análise-conjunta.html#análise-de-variância-conjunta"><i class="fa fa-check"></i><b>6.6</b> Análise de Variância conjunta</a></li>
+<li class="chapter" data-level="6.7" data-path="análise-conjunta.html"><a href="análise-conjunta.html#conferindo-manualmente"><i class="fa fa-check"></i><b>6.7</b> Conferindo “Manualmente”</a></li>
+<li class="chapter" data-level="6.8" data-path="análise-conjunta.html"><a href="análise-conjunta.html#grau-de-liberdade"><i class="fa fa-check"></i><b>6.8</b> Grau de liberdade</a><ul>
+<li class="chapter" data-level="6.8.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#calculando-soma-de-quadrados"><i class="fa fa-check"></i><b>6.8.1</b> Calculando soma de quadrados</a></li>
+<li class="chapter" data-level="6.8.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#calculando-quadrado-médio"><i class="fa fa-check"></i><b>6.8.2</b> Calculando quadrado médio</a></li>
+<li class="chapter" data-level="6.8.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#teste-f-de-fischer"><i class="fa fa-check"></i><b>6.8.3</b> Teste F de Fischer</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="análise-conjunta.html"><a href="análise-conjunta.html#pressuposição-do-modelo"><i class="fa fa-check"></i><b>6.9</b> Pressuposição do modelo</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#normalidade-dos-erros-13"><i class="fa fa-check"></i><b>6.9.1</b> Normalidade dos erros</a></li>
+<li class="chapter" data-level="6.9.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#gráfico-de-normalidade-1"><i class="fa fa-check"></i><b>6.9.2</b> Gráfico de normalidade</a></li>
+<li class="chapter" data-level="6.9.3" data-path="análise-conjunta.html"><a href="análise-conjunta.html#homogeneidade-de-variâncias-6"><i class="fa fa-check"></i><b>6.9.3</b> Homogeneidade de variâncias</a></li>
+<li class="chapter" data-level="6.9.4" data-path="análise-conjunta.html"><a href="análise-conjunta.html#independências-dos-erros-2"><i class="fa fa-check"></i><b>6.9.4</b> Independências dos erros</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="análise-conjunta.html"><a href="análise-conjunta.html#desdobramento"><i class="fa fa-check"></i><b>6.10</b> Desdobramento</a><ul>
+<li class="chapter" data-level="6.10.1" data-path="análise-conjunta.html"><a href="análise-conjunta.html#desdobramento-do-comprimento-em-cada-nível-de-tempo"><i class="fa fa-check"></i><b>6.10.1</b> Desdobramento do Comprimento em cada nível de Tempo</a></li>
+<li class="chapter" data-level="6.10.2" data-path="análise-conjunta.html"><a href="análise-conjunta.html#teste-de-comparação-múltipla-2"><i class="fa fa-check"></i><b>6.10.2</b> Teste de comparação múltipla</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="análise-conjunta.html"><a href="análise-conjunta.html#tabela-final-1"><i class="fa fa-check"></i><b>6.11</b> Tabela Final</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>8</b> Literature</a></li>
+<li class="chapter" data-level="9" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>9</b> Methods</a></li>
+<li class="chapter" data-level="10" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>10</b> Applications</a><ul>
+<li class="chapter" data-level="10.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>10.1</b> Example one</a></li>
+<li class="chapter" data-level="10.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>10.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="polinômios-ortogonais" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> <span style="font-family:impact; color:darkblue;font-size:1.2em;">Polinômios Ortogonais</span></h1>
+<hr />
+<p><br><br><br><br></p>
+<ul>
+<li>A variável analisada na análise de variância nos delineamentos discutidos anteriormente pode ser qualitativa ou quantitativa.</li>
+<li>Uma variável quantitativa é aquela cujos níveis podem ser associados com pontos em uma escala numérica, tal como temperatura, pressão ou tempo.</li>
+<li>Variáveis qualitativas, por outro lado, apresentam valores que não podem ser colocados em ordem de magnitude.</li>
+</ul>
+<p><br></p>
+<hr />
+<div id="teste-f" class="section level2">
+<h2><span class="header-section-number">5.1</span> Teste F</h2>
+<hr />
+<p><br></p>
+<ul>
+<li>Se o efeito de tratamentos for significativo e, os níveis forem quantitativos, deve-se decompor os graus de liberdade dos tratamentos em regressão linear, quadrática e cúbica.</li>
+<li>Em situações em que os níveis da variável possuem o mesmo espaçamento, esta decomposição pode ser feita de modo simples pelo método dos polinômios ortogonais, com o auxílio de coeficientes dados em tabelas.</li>
+</ul>
+<p><br></p>
+<hr />
+</div>
+<div id="quadro-da-análise-de-variância" class="section level2">
+<h2><span class="header-section-number">5.2</span> Quadro da Análise de variância</h2>
+<hr />
+<p><br></p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="12%" />
+<col width="14%" />
+<col width="22%" />
+<col width="29%" />
+<col width="7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">CV</th>
+<th align="center">G.L.</th>
+<th align="center">S.Q.</th>
+<th align="center">Q.M.</th>
+<th align="center">Fcalc</th>
+<th align="left">Ftab</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Trat</td>
+<td align="center"><span class="math inline">\(a-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{trat}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{trat}}{a-1}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{trat}}{QM_{Res}}\)</span></td>
+<td align="left"><span class="math inline">\(F(\alpha;GL_{Trat};GL_{Res})\)</span></td>
+</tr>
+<tr class="even">
+<td align="right"><em>Linear</em></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(SQ_{\hat{y}L}\)</span></td>
+<td align="center"><span class="math inline">\(QM_{\hat{y}L}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{\hat{y}L}}{QM_{res}}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right"><em>Quadrático</em></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(SQ_{\hat{y}Q}\)</span></td>
+<td align="center"><span class="math inline">\(QM_{\hat{y}Q}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{\hat{y}Q}}{QM_{res}}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right"><em>Cúbico</em></td>
+<td align="center">1</td>
+<td align="center"><span class="math inline">\(SQ_{\hat{y}C}\)</span></td>
+<td align="center"><span class="math inline">\(QM_{\hat{y}C}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{\hat{y}C}}{QM_{res}}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="right">resíduo</td>
+<td align="center"><span class="math inline">\(a(b-1)\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{res}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{res}}{a(b-1)}\)</span></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">Total</td>
+<td align="center"><span class="math inline">\(ab-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Total}\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+</div>
+<div id="exemplo-1-7" class="section level2">
+<h2><span class="header-section-number">5.3</span> Exemplo 1</h2>
+<hr />
+<p><br></p>
+<p><strong>Avaliação e Caracterização de Silagem de Triticale (X <em>Triticosecale</em> Wittimack)</strong></p>
+<p>No Brasil, quando se fala em produção de volumoso conservado, logo se imagina silagem de milho ou sorgo. No entanto, em clima subtropical e temperado, silagens de cereais de inverno tornam-se uma alternativa interessante para produção dos mesmos, principalmente em situações onde culturas de verão não são possíveis de serem cultivadas.</p>
+<p>Assim, um trabalho foi desenvolvido com o objetivo de avaliar a silagem de triticale em substituição à silagem de sorgo na alimentação de bovinos corte. O ensaio foi realizado no Laboratório de análises de Alimentos e Nutrição Animal (LANA) do Departamento de Zootecnia da Universidade Estadual de Londrina.</p>
+<p>Foi estudado a silagem de triticale em substituição a silagem de sorgo com os teores de 0, 25, 50, 75 e 100% de substituição à de sorgo, a fim de melhor avaliar o valor nutritivo deste volumoso. Foi realizada a determinação da matéria seca (MS). O delineamento experimental utilizado foi o inteiramente casualizado com 4 repetições.</p>
+<p>Fonte: <a href="http://www.uel.br/pessoal/silvano/Experimental/R/Polinomios/Sorgo_Sandra.R" class="uri">http://www.uel.br/pessoal/silvano/Experimental/R/Polinomios/Sorgo_Sandra.R</a></p>
+<p><br></p>
+<div id="conjunto-de-dados-7" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Conjunto de dados</h3>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="polinômios-ortogonais.html#cb337-1"></a>MS=<span class="kw">c</span>(<span class="fl">93.517</span>, <span class="fl">93.246</span>, <span class="fl">93.216</span>, <span class="fl">93.224</span>,</span>
+<span id="cb337-2"><a href="polinômios-ortogonais.html#cb337-2"></a>     <span class="fl">93.168</span>, <span class="fl">93.645</span>, <span class="fl">93.640</span>, <span class="fl">93.357</span>,</span>
+<span id="cb337-3"><a href="polinômios-ortogonais.html#cb337-3"></a>     <span class="fl">92.985</span>, <span class="fl">92.644</span>, <span class="fl">92.506</span>, <span class="fl">92.293</span>, </span>
+<span id="cb337-4"><a href="polinômios-ortogonais.html#cb337-4"></a>     <span class="fl">93.124</span>, <span class="fl">93.375</span>, <span class="fl">93.138</span>, <span class="fl">92.678</span>,</span>
+<span id="cb337-5"><a href="polinômios-ortogonais.html#cb337-5"></a>     <span class="fl">92.529</span>, <span class="fl">92.150</span>, <span class="fl">92.603</span>, <span class="fl">92.415</span>)</span>
+<span id="cb337-6"><a href="polinômios-ortogonais.html#cb337-6"></a>AMOSTRA=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb337-7"><a href="polinômios-ortogonais.html#cb337-7"></a>          <span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,</span>
+<span id="cb337-8"><a href="polinômios-ortogonais.html#cb337-8"></a>          <span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,</span>
+<span id="cb337-9"><a href="polinômios-ortogonais.html#cb337-9"></a>          <span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,</span>
+<span id="cb337-10"><a href="polinômios-ortogonais.html#cb337-10"></a>          <span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>)</span>
+<span id="cb337-11"><a href="polinômios-ortogonais.html#cb337-11"></a>dados=<span class="kw">data.frame</span>(<span class="dt">Amostra=</span><span class="kw">factor</span>(AMOSTRA),MS)</span>
+<span id="cb337-12"><a href="polinômios-ortogonais.html#cb337-12"></a><span class="kw">attach</span>(dados)</span></code></pre></div>
+<p><br></p>
+</div>
+<div id="média-e-variância" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Média e Variância</h3>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="polinômios-ortogonais.html#cb338-1"></a>(<span class="dt">meditrat=</span><span class="kw">tapply</span>(MS,AMOSTRA,mean))</span></code></pre></div>
+<pre><code>##        0       25       50       75      100 
+## 93.30075 93.45250 92.60700 93.07875 92.42425</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="polinômios-ortogonais.html#cb340-1"></a>(<span class="dt">variatrat=</span><span class="kw">tapply</span>(MS,AMOSTRA,var))</span></code></pre></div>
+<pre><code>##          0         25         50         75        100 
+## 0.02094492 0.05409100 0.08435000 0.08464092 0.03940758</code></pre>
+<p><br></p>
+</div>
+</div>
+<div id="análise-de-variância-10" class="section level2">
+<h2><span class="header-section-number">5.4</span> Análise de Variância</h2>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{5} \\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p><br></p>
+</div>
+<div id="análise-de-variância-para-matéria-seca" class="section level2">
+<h2><span class="header-section-number">5.5</span> Análise de Variância para Matéria Seca</h2>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="polinômios-ortogonais.html#cb342-1"></a>mod =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>Amostra)</span>
+<span id="cb342-2"><a href="polinômios-ortogonais.html#cb342-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Amostra      4 3.1344  0.7836   13.82 6.42e-05 ***
+## Residuals   15 0.8503  0.0567                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br></p>
+</div>
+<div id="polinômio-até-4-grau" class="section level2">
+<h2><span class="header-section-number">5.6</span> Polinômio até 4 grau</h2>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="polinômios-ortogonais.html#cb344-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">4</span>))</span>
+<span id="cb344-2"><a href="polinômios-ortogonais.html#cb344-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<pre><code>##              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## AMOSTRA       1 1.8092  1.8092  31.916 4.62e-05 ***
+## I(AMOSTRA^2)  1 0.0249  0.0249   0.439 0.517484    
+## I(AMOSTRA^3)  1 0.0067  0.0067   0.117 0.736600    
+## I(AMOSTRA^4)  1 1.2936  1.2936  22.821 0.000245 ***
+## Residuals    15 0.8503  0.0567                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br></p>
+</div>
+<div id="polinômio-de-3-grau" class="section level2">
+<h2><span class="header-section-number">5.7</span> Polinômio de 3 grau</h2>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="polinômios-ortogonais.html#cb346-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>))</span>
+<span id="cb346-2"><a href="polinômios-ortogonais.html#cb346-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<pre><code>##              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## AMOSTRA       1 1.8092  1.8092  13.502 0.00205 **
+## I(AMOSTRA^2)  1 0.0249  0.0249   0.186 0.67212   
+## I(AMOSTRA^3)  1 0.0067  0.0067   0.050 0.82645   
+## Residuals    16 2.1439  0.1340                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br></p>
+</div>
+<div id="polinômio-de-2-grau" class="section level2">
+<h2><span class="header-section-number">5.8</span> Polinômio de 2 grau</h2>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="polinômios-ortogonais.html#cb348-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>))</span>
+<span id="cb348-2"><a href="polinômios-ortogonais.html#cb348-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<pre><code>##              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## AMOSTRA       1 1.8092  1.8092  14.302 0.00149 **
+## I(AMOSTRA^2)  1 0.0249  0.0249   0.197 0.66285   
+## Residuals    17 2.1506  0.1265                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br></p>
+</div>
+<div id="polinômio-de-1-grau" class="section level2">
+<h2><span class="header-section-number">5.9</span> Polinômio de 1 grau</h2>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="polinômios-ortogonais.html#cb350-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA)</span>
+<span id="cb350-2"><a href="polinômios-ortogonais.html#cb350-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## AMOSTRA      1  1.809  1.8092   14.97 0.00112 **
+## Residuals   18  2.175  0.1209                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br></p>
+</div>
+<div id="coeficientes-do-modelo" class="section level2">
+<h2><span class="header-section-number">5.10</span> Coeficientes do modelo</h2>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="polinômios-ortogonais.html#cb352-1"></a>mod.reg =<span class="st"> </span><span class="kw">lm</span>(MS <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">4</span>))</span>
+<span id="cb352-2"><a href="polinômios-ortogonais.html#cb352-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = MS ~ I(AMOSTRA) + I(AMOSTRA^2) + I(AMOSTRA^3) + 
+##     I(AMOSTRA^4))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.40075 -0.09688  0.01388  0.18094  0.37800 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   9.330e+01  1.190e-01 783.743  &lt; 2e-16 ***
+## I(AMOSTRA)    1.045e-01  2.659e-02   3.928 0.001341 ** 
+## I(AMOSTRA^2) -6.139e-03  1.335e-03  -4.598 0.000348 ***
+## I(AMOSTRA^3)  1.008e-04  2.134e-05   4.724 0.000272 ***
+## I(AMOSTRA^4) -5.075e-07  1.062e-07  -4.777 0.000245 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.2381 on 15 degrees of freedom
+## Multiple R-squared:  0.7866, Adjusted R-squared:  0.7297 
+## F-statistic: 13.82 on 4 and 15 DF,  p-value: 6.422e-05</code></pre>
+<p><br></p>
+</div>
+<div id="curva-estimada" class="section level2">
+<h2><span class="header-section-number">5.11</span> Curva Estimada</h2>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="polinômios-ortogonais.html#cb354-1"></a>m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(MS<span class="op">~</span><span class="kw">poly</span>(AMOSTRA, <span class="dt">degree=</span><span class="dv">1</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
+<span id="cb354-2"><a href="polinômios-ortogonais.html#cb354-2"></a><span class="co"># ou</span></span>
+<span id="cb354-3"><a href="polinômios-ortogonais.html#cb354-3"></a>m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(MS<span class="op">~</span>AMOSTRA)</span>
+<span id="cb354-4"><a href="polinômios-ortogonais.html#cb354-4"></a><span class="kw">anova</span>(m1)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: MS
+##                                       Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## poly(AMOSTRA, degree = 1, raw = TRUE)  1 1.8092 1.80923   14.97 0.001124 **
+## Residuals                             18 2.1755 0.12086                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br></p>
+</div>
+<div id="usando-o-expdes.pt-1" class="section level2">
+<h2><span class="header-section-number">5.12</span> Usando o ExpDes.pt</h2>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="polinômios-ortogonais.html#cb356-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
+<span id="cb356-2"><a href="polinômios-ortogonais.html#cb356-2"></a><span class="kw">dic</span>(AMOSTRA,MS,<span class="dt">quali =</span> F)</span></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL     SQ      QM     Fc      Pr&gt;Fc
+## Tratamento  4 3.1344 0.78361 13.823 6.4215e-05
+## Residuo    15 0.8503 0.05669                  
+## Total      19 3.9847                          
+## ------------------------------------------------------------------------
+## CV = 0.26 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## Valor-p:  0.8052063 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.807195 
+## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Ajuste de modelos polinomiais de regressao
+## ------------------------------------------------------------------------
+## 
+## Modelo Linear
+## ============================================
+##    Estimativa Erro.padrao     tc     valor.p
+## --------------------------------------------
+## b0  93.3980     0.0922    1,012.8630    0   
+## b1  -0.0085     0.0015     -5.6494   0.00005
+## --------------------------------------------
+## 
+## R2 do modelo linear
+## --------
+## 0.577212
+## --------
+## 
+## Analise de variancia do modelo linear
+## ===================================================
+##                      GL   SQ     QM    Fc   valor.p
+## ---------------------------------------------------
+## Efeito linear        1  1.8092 1.8092 31.92  5e-05 
+## Desvios de Regressao 3  1.3252 0.4417 7.79  0.00228
+## Residuos             15 0.8503 0.0567              
+## ---------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo quadratico
+## ==========================================
+##    Estimativa Erro.padrao    tc    valor.p
+## ------------------------------------------
+## b0  93.3558     0.1120    833.2653    0   
+## b1  -0.0051     0.0053    -0.9669  0.3489 
+## b2  -0.00003    0.00005   -0.6629  0.5175 
+## ------------------------------------------
+## 
+## R2 do modelo quadratico
+## --------
+## 0.585158
+## --------
+## 
+## Analise de variancia do modelo quadratico
+## ===================================================
+##                      GL   SQ     QM    Fc   valor.p
+## ---------------------------------------------------
+## Efeito linear        1  1.8092 1.8092 31.92  5e-05 
+## Efeito quadratico    1  0.0249 0.0249 0.44  0.51748
+## Desvios de Regressao 2  1.3003 0.6501 11.47 0.00095
+## Residuos             15 0.8503 0.0567              
+## ---------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo cubico
+## ==========================================
+##    Estimativa Erro.padrao    tc    valor.p
+## ------------------------------------------
+## b0  93.3687     0.1182    789.9773    0   
+## b1  -0.0088     0.0120    -0.7343  0.4741 
+## b2   0.0001     0.0003     0.2274  0.8232 
+## b3 -0.000001       0      -0.3427  0.7366 
+## ------------------------------------------
+## 
+## R2 do modelo cubico
+## --------
+## 0.587282
+## --------
+## 
+## Analise de variancia do modelo cubico
+## ===================================================
+##                      GL   SQ     QM    Fc   valor.p
+## ---------------------------------------------------
+## Efeito linear        1  1.8092 1.8092 31.92  5e-05 
+## Efeito quadratico    1  0.0249 0.0249 0.44  0.51748
+## Efeito cubico        1  0.0067 0.0067 0.12  0.7366 
+## Desvios de Regressao 1  1.2936 1.2936 22.82 0.00024
+## Residuos             15 0.8503 0.0567              
+## ---------------------------------------------------
+## ------------------------------------------------------------------------</code></pre>
+<p><br></p>
+</div>
+<div id="gráfico" class="section level2">
+<h2><span class="header-section-number">5.13</span> Gráfico</h2>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="polinômios-ortogonais.html#cb358-1"></a><span class="kw">plot</span>(MS<span class="op">~</span>AMOSTRA,<span class="dt">ylab=</span><span class="st">&quot;Massa Seca&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot; &quot;</span>)</span>
+<span id="cb358-2"><a href="polinômios-ortogonais.html#cb358-2"></a><span class="kw">abline</span>(m1,<span class="dt">col=</span><span class="dv">2</span>)</span>
+<span id="cb358-3"><a href="polinômios-ortogonais.html#cb358-3"></a>dose=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>)</span>
+<span id="cb358-4"><a href="polinômios-ortogonais.html#cb358-4"></a><span class="kw">points</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="st">&quot;*&quot;</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
+<p><br></p>
+</div>
+<div id="gráfico-somente-com-a-média" class="section level2">
+<h2><span class="header-section-number">5.14</span> Gráfico somente com a média</h2>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="polinômios-ortogonais.html#cb359-1"></a><span class="kw">plot</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">las=</span><span class="dv">1</span>)</span>
+<span id="cb359-2"><a href="polinômios-ortogonais.html#cb359-2"></a><span class="kw">curve</span>(m1<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>m1<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>x, <span class="dt">add=</span>T)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
+<p><br><br><br></p>
+<hr />
+</div>
+<div id="exemplo-2-3" class="section level2">
+<h2><span class="header-section-number">5.15</span> Exemplo 2</h2>
+<hr />
+<p><br></p>
+<p>Num experimento estudou-se o efeito do farelo de arroz desengordurado (FAD) como fatores de retardamento da maturidade sexual de frangas. O ensaio, organizado em blocos completos casualizados, abrangeu duas fases distintas e foi constituído de 5 tratamentos e 5 repetições com 8 aves por unidade experimental. Os tratamentos, na primeira fase eram formados por rações que continham 0, 15, 30, 45, 60 % de FAD em substituição ao milho. Os resultados obtidos na primeira fase do ensaio, para conversão alimentar foram os seguintes:</p>
+<p>Fonte: <a href="http://www.uel.br/pessoal/lscunha/pages/arquivos/uel/Especializa%C3%A7%C3%A3o/Aula_9_-_Polin%C3%B4mios_Ortogonais(1).pdf" class="uri">http://www.uel.br/pessoal/lscunha/pages/arquivos/uel/Especializa%C3%A7%C3%A3o/Aula_9_-_Polin%C3%B4mios_Ortogonais(1).pdf</a></p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="polinômios-ortogonais.html#cb360-1"></a>CA=<span class="kw">c</span>(<span class="fl">6.5</span>, <span class="fl">6.4</span>, <span class="fl">6.2</span>, <span class="fl">5.8</span>, <span class="fl">7.3</span>,</span>
+<span id="cb360-2"><a href="polinômios-ortogonais.html#cb360-2"></a>    <span class="fl">7.1</span>, <span class="fl">7.4</span>, <span class="fl">6.9</span>, <span class="fl">7.3</span>, <span class="fl">7.0</span>,</span>
+<span id="cb360-3"><a href="polinômios-ortogonais.html#cb360-3"></a>    <span class="fl">7.5</span>, <span class="fl">8.1</span>, <span class="fl">6.7</span>, <span class="fl">7.4</span>, <span class="fl">7.7</span>,</span>
+<span id="cb360-4"><a href="polinômios-ortogonais.html#cb360-4"></a>    <span class="fl">7.2</span>, <span class="fl">7.0</span>, <span class="fl">6.9</span>, <span class="fl">6.7</span>, <span class="fl">6.5</span>,</span>
+<span id="cb360-5"><a href="polinômios-ortogonais.html#cb360-5"></a>    <span class="fl">6.4</span>, <span class="fl">6.5</span>, <span class="fl">6.0</span>, <span class="fl">6.3</span>, <span class="fl">6.2</span>)</span>
+<span id="cb360-6"><a href="polinômios-ortogonais.html#cb360-6"></a>Bloco=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dv">5</span>)</span>
+<span id="cb360-7"><a href="polinômios-ortogonais.html#cb360-7"></a>FAD=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>),<span class="dt">e=</span><span class="dv">5</span>)</span>
+<span id="cb360-8"><a href="polinômios-ortogonais.html#cb360-8"></a>dados=<span class="kw">data.frame</span>(<span class="dt">fad=</span><span class="kw">factor</span>(FAD),<span class="dt">Bloco=</span><span class="kw">factor</span>(Bloco),CA)</span></code></pre></div>
+<p><br><br></p>
+</div>
+<div id="análise-de-variância-11" class="section level2">
+<h2><span class="header-section-number">5.16</span> Análise de Variância</h2>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{5} \\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p><br></p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="polinômios-ortogonais.html#cb361-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados,<span class="kw">aov</span>(CA <span class="op">~</span><span class="st"> </span>fad<span class="op">+</span>Bloco))</span>
+<span id="cb361-2"><a href="polinômios-ortogonais.html#cb361-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## fad          4  4.868   1.217  10.058 0.000289 ***
+## Bloco        4  0.936   0.234   1.934 0.153795    
+## Residuals   16  1.936   0.121                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br><br></p>
+</div>
+<div id="pressuposições-8" class="section level2">
+<h2><span class="header-section-number">5.17</span> Pressuposições</h2>
+<p><br></p>
+<div id="normalidade-dos-erros-12" class="section level3">
+<h3><span class="header-section-number">5.17.1</span> Normalidade dos erros</h3>
+<p><br></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mbox{Os erros seguem distribuição normal}\\[.2cm]
+H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p><br></p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="polinômios-ortogonais.html#cb363-1"></a><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  mod$res
+## W = 0.95907, p-value = 0.3963</code></pre>
+<p><br></p>
+</div>
+<div id="homogeneidade-das-variâncias-6" class="section level3">
+<h3><span class="header-section-number">5.17.2</span> Homogeneidade das Variâncias</h3>
+<p><br></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mbox{ As Variâncias são homogêneas}\\[.2cm]
+H_1: &amp; \mbox{ As Variâncias não são homogêneas}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<p><br></p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="polinômios-ortogonais.html#cb365-1"></a><span class="kw">bartlett.test</span>(<span class="kw">residuals</span>(mod)<span class="op">~</span><span class="kw">as.factor</span>(dados<span class="op">$</span>fad))</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  residuals(mod) by as.factor(dados$fad)
+## Bartlett&#39;s K-squared = 6.4994, df = 4, p-value = 0.1648</code></pre>
+<p><br></p>
+</div>
+<div id="independência-dos-erros-9" class="section level3">
+<h3><span class="header-section-number">5.17.3</span> Independência dos erros</h3>
+<p><br></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{Os erros são independentes}\\[.2cm]
+H_1: \mbox{Os erros não são independentes}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="polinômios-ortogonais.html#cb367-1"></a><span class="kw">library</span>(lmtest)</span>
+<span id="cb367-2"><a href="polinômios-ortogonais.html#cb367-2"></a><span class="kw">dwtest</span>(mod)</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  mod
+## DW = 2.8659, p-value = 0.923
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="polinômios-ortogonais.html#cb369-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
+<p><br></p>
+</div>
+</div>
+<div id="coeficientes-do-modelo-1" class="section level2">
+<h2><span class="header-section-number">5.18</span> Coeficientes do modelo</h2>
+<p><br></p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="polinômios-ortogonais.html#cb370-1"></a>mod.reg =<span class="st"> </span><span class="kw">lm</span>(CA <span class="op">~</span><span class="st"> </span>FAD <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">4</span>))</span>
+<span id="cb370-2"><a href="polinômios-ortogonais.html#cb370-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = CA ~ FAD + I(FAD^2) + I(FAD^3) + I(FAD^4))
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -0.78  -0.16   0.02   0.16   0.86 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  6.440e+00  1.695e-01  38.001   &lt;2e-16 ***
+## FAD          1.867e-02  6.309e-02   0.296    0.770    
+## I(FAD^2)     3.793e-03  5.279e-03   0.718    0.481    
+## I(FAD^3)    -1.481e-04  1.407e-04  -1.053    0.305    
+## I(FAD^4)     1.317e-06  1.167e-06   1.128    0.272    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3789 on 20 degrees of freedom
+## Multiple R-squared:  0.6289, Adjusted R-squared:  0.5547 
+## F-statistic: 8.475 on 4 and 20 DF,  p-value: 0.0003607</code></pre>
+<p><br></p>
+</div>
+<div id="usando-o-expdes.pt-2" class="section level2">
+<h2><span class="header-section-number">5.19</span> Usando o ExpDes.pt</h2>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="polinômios-ortogonais.html#cb372-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
+<span id="cb372-2"><a href="polinômios-ortogonais.html#cb372-2"></a><span class="kw">dic</span>(FAD,CA, <span class="dt">quali=</span>F)</span></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL    SQ     QM     Fc      Pr&gt;Fc
+## Tratamento  4 4.868 1.2170 8.4749 0.00036068
+## Residuo    20 2.872 0.1436                  
+## Total      24 7.740                         
+## ------------------------------------------------------------------------
+## CV = 5.54 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## Valor-p:  0.5382094 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.1426676 
+## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Ajuste de modelos polinomiais de regressao
+## ------------------------------------------------------------------------
+## 
+## Modelo Linear
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0   6.9600     0.1313    53.0202    0   
+## b1  -0.0040     0.0036    -1.1196 0.2762 
+## -----------------------------------------
+## 
+## R2 do modelo linear
+## --------
+## 0.036976
+## --------
+## 
+## Analise de variancia do modelo linear
+## ===================================================
+##                      GL   SQ     QM    Fc   valor.p
+## ---------------------------------------------------
+## Efeito linear        1  0.1800 0.1800 1.25  0.27615
+## Desvios de Regressao 3  4.6880 1.5627 10.88 0.00019
+## Residuos             20 2.8720 0.1436              
+## ---------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo quadratico
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0   6.4571     0.1595    40.4857    0   
+## b1   0.0630     0.0126    5.0056  0.0001 
+## b2  -0.0011     0.0002    -5.5512 0.00002
+## -----------------------------------------
+## 
+## R2 do modelo quadratico
+## --------
+## 0.946003
+## --------
+## 
+## Analise de variancia do modelo quadratico
+## ===================================================
+##                      GL   SQ     QM    Fc   valor.p
+## ---------------------------------------------------
+## Efeito linear        1  0.1800 0.1800 1.25  0.27615
+## Efeito quadratico    1  4.4251 4.4251 30.82  2e-05 
+## Desvios de Regressao 2  0.2629 0.1314 0.92  0.41655
+## Residuos             20 2.8720 0.1436              
+## ---------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo cubico
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0   6.4171     0.1682    38.1394    0   
+## b1   0.0822     0.0285    2.8792  0.0093 
+## b2  -0.0020     0.0012    -1.6611 0.1123 
+## b3  0.00001     0.00001   0.7464  0.4641 
+## -----------------------------------------
+## 
+## R2 do modelo cubico
+## --------
+## 0.962437
+## --------
+## 
+## Analise de variancia do modelo cubico
+## ===================================================
+##                      GL   SQ     QM    Fc   valor.p
+## ---------------------------------------------------
+## Efeito linear        1  0.1800 0.1800 1.25  0.27615
+## Efeito quadratico    1  4.4251 4.4251 30.82  2e-05 
+## Efeito cubico        1  0.0800 0.0800 0.56  0.46411
+## Desvios de Regressao 1  0.1829 0.1829 1.27  0.27249
+## Residuos             20 2.8720 0.1436              
+## ---------------------------------------------------
+## ------------------------------------------------------------------------</code></pre>
+<p><br></p>
+</div>
+<div id="curva-estimada-1" class="section level2">
+<h2><span class="header-section-number">5.20</span> Curva Estimada</h2>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="polinômios-ortogonais.html#cb374-1"></a>m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(CA<span class="op">~</span><span class="kw">poly</span>(FAD, <span class="dt">degree=</span><span class="dv">1</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
+<span id="cb374-2"><a href="polinômios-ortogonais.html#cb374-2"></a><span class="kw">anova</span>(m1)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: CA
+##                                   Df Sum Sq Mean Sq F value Pr(&gt;F)
+## poly(FAD, degree = 1, raw = TRUE)  1   0.18  0.1800  0.5476 0.4668
+## Residuals                         23   7.56  0.3287</code></pre>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="polinômios-ortogonais.html#cb376-1"></a><span class="kw">summary</span>(m1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = CA ~ poly(FAD, degree = 1, raw = TRUE))
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -1.16  -0.42   0.00   0.40   1.26 
+## 
+## Coefficients:
+##                                    Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                        6.960000   0.198604   35.05   &lt;2e-16 ***
+## poly(FAD, degree = 1, raw = TRUE) -0.004000   0.005405   -0.74    0.467    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5733 on 23 degrees of freedom
+## Multiple R-squared:  0.02326,    Adjusted R-squared:  -0.01921 
+## F-statistic: 0.5476 on 1 and 23 DF,  p-value: 0.4668</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="polinômios-ortogonais.html#cb378-1"></a>m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(CA<span class="op">~</span><span class="kw">poly</span>(FAD, <span class="dt">degree=</span><span class="dv">2</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
+<span id="cb378-2"><a href="polinômios-ortogonais.html#cb378-2"></a><span class="kw">anova</span>(m2)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: CA
+##                                   Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## poly(FAD, degree = 2, raw = TRUE)  2 4.6051 2.30257  16.159 4.811e-05 ***
+## Residuals                         22 3.1349 0.14249                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="polinômios-ortogonais.html#cb380-1"></a><span class="kw">summary</span>(m2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = CA ~ poly(FAD, degree = 2, raw = TRUE))
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.65714 -0.21714 -0.01714  0.16857  0.84286 
+## 
+## Coefficients:
+##                                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                         6.4571429  0.1588764  40.643  &lt; 2e-16 ***
+## poly(FAD, degree = 2, raw = TRUE)1  0.0630476  0.0125468   5.025 4.96e-05 ***
+## poly(FAD, degree = 2, raw = TRUE)2 -0.0011175  0.0002005  -5.573 1.33e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3775 on 22 degrees of freedom
+## Multiple R-squared:  0.595,  Adjusted R-squared:  0.5582 
+## F-statistic: 16.16 on 2 and 22 DF,  p-value: 4.811e-05</code></pre>
+<p><br></p>
+</div>
+<div id="gráficos" class="section level2">
+<h2><span class="header-section-number">5.21</span> Gráficos</h2>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="polinômios-ortogonais.html#cb382-1"></a>(<span class="dt">meditrat=</span><span class="kw">tapply</span>(CA,FAD,mean))</span></code></pre></div>
+<pre><code>##    0   15   30   45   60 
+## 6.44 7.14 7.48 6.86 6.28</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="polinômios-ortogonais.html#cb384-1"></a><span class="kw">plot</span>(CA<span class="op">~</span>FAD,<span class="dt">ylab=</span><span class="st">&quot;CA&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot; &quot;</span>)</span>
+<span id="cb384-2"><a href="polinômios-ortogonais.html#cb384-2"></a><span class="kw">curve</span>(<span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T)</span>
+<span id="cb384-3"><a href="polinômios-ortogonais.html#cb384-3"></a>dose=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>)</span>
+<span id="cb384-4"><a href="polinômios-ortogonais.html#cb384-4"></a><span class="kw">points</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="st">&quot;*&quot;</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="polinômios-ortogonais.html#cb385-1"></a><span class="kw">plot</span>(meditrat<span class="op">~</span>dose,</span>
+<span id="cb385-2"><a href="polinômios-ortogonais.html#cb385-2"></a>     <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb385-3"><a href="polinômios-ortogonais.html#cb385-3"></a>     <span class="dt">pch=</span><span class="dv">16</span>, </span>
+<span id="cb385-4"><a href="polinômios-ortogonais.html#cb385-4"></a>     <span class="dt">las=</span><span class="dv">1</span>, </span>
+<span id="cb385-5"><a href="polinômios-ortogonais.html#cb385-5"></a>     <span class="dt">ylab=</span><span class="st">&quot;Conversão alimentar&quot;</span>,</span>
+<span id="cb385-6"><a href="polinômios-ortogonais.html#cb385-6"></a>     <span class="dt">main=</span><span class="kw">expression</span>(<span class="kw">italic</span>(<span class="st">&quot;Conversão alimentar&quot;</span>)),</span>
+<span id="cb385-7"><a href="polinômios-ortogonais.html#cb385-7"></a>     <span class="dt">xlab=</span><span class="st">&quot;FAD (%)&quot;</span>)</span>
+<span id="cb385-8"><a href="polinômios-ortogonais.html#cb385-8"></a><span class="kw">curve</span>(<span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb385-9"><a href="polinômios-ortogonais.html#cb385-9"></a>(<span class="dt">xmax=</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">/-</span>(<span class="dv">2</span><span class="op">*</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]))</span></code></pre></div>
+<pre><code>## poly(FAD, degree = 2, raw = TRUE)1 
+##                           28.21023</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="polinômios-ortogonais.html#cb387-1"></a>(<span class="dt">ymax=</span><span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>xmax<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>xmax<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## (Intercept) 
+##    7.346437</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="polinômios-ortogonais.html#cb389-1"></a><span class="kw">abline</span>(<span class="dt">v=</span>xmax, <span class="dt">h=</span>ymax, <span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb389-2"><a href="polinômios-ortogonais.html#cb389-2"></a><span class="kw">points</span>(xmax,ymax, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">pch=</span><span class="dv">8</span>)</span>
+<span id="cb389-3"><a href="polinômios-ortogonais.html#cb389-3"></a><span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="kw">expression</span>(Y<span class="op">==</span><span class="fl">6.457143+0.06304762</span> <span class="op">*</span>x<span class="fl">-0.00111746</span><span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>), <span class="kw">expression</span>(R<span class="op">^</span><span class="dv">2</span><span class="op">==</span><span class="fl">0.595</span>)))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<p><br><br><br><br></p>
+<hr />
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="esquema-de-parcelas-subdivididas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="análise-conjunta.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["livroagro.pdf", "livroagro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
