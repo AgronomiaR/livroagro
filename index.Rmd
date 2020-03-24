@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Este é um livro para "
+description: "Este é um ..."
 ---
 
 ```{r setup, include=FALSE}
@@ -17,6 +17,10 @@ options(OutDec = ".", knitr.kable.NA="")
 ```
 
 # Apresentação
+
+![](CAPA1.png)
+
+# Estatística Experimental
 
 <br><br>
 
@@ -31,7 +35,7 @@ A Estatística Experimental tem por objetivo o estudo dos experimentos, incluind
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Delineamento Inteiramente Casualizado</span>
+# Delineamento Inteiramente Casualizado
 
 ****
 
@@ -716,7 +720,7 @@ O Erro gerado é:
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Transformação de dados </span>
+# Transformação de dados
 
 ****
 
@@ -1324,7 +1328,7 @@ with(dados,dic(TRAT,log(RESP), mcomp="tukey"))
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Delineamento em Blocos Casualizados</span>
+# Delineamento em Blocos Casualizados
 
 ****
 
@@ -1891,7 +1895,7 @@ with(dados,dbc(Tratamento, bloco,resp, mcomp="tukey"))
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Delineamento em Quadrado Latino</span>
+# Delineamento em Quadrado Latino
 
 ****
 
@@ -2239,7 +2243,7 @@ dql(TRAT,linha,coluna,RESP)
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema Fatorial (2 Fatores)</span> 
+# Esquema Fatorial (2 Fatores) 
 
 ****
 
@@ -2810,7 +2814,7 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema Fatorial (3 Fatores)</span>
+# Esquema Fatorial (3 Fatores)
 
 ****
 
@@ -3212,7 +3216,7 @@ Médias seguidas de mesma letra maiúscula na linha, minúscula em itálico dent
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Esquema de Parcelas Subdivididas</span>
+# Esquema de Parcelas Subdivididas
 
 ****
 
@@ -3871,7 +3875,7 @@ psub2.dbc(FATOR1,FATOR2,repe,RESP)
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Polinômios Ortogonais</span>
+# Polinômios Ortogonais
 
 ****
 
@@ -4249,7 +4253,7 @@ legend("bottomleft", bty="n",legend=c(expression(Y==6.457143+0.06304762 *x-0.001
 
 ****
 
-# <span style="font-family:impact; color:darkblue;font-size:1.2em;">Análise conjunta</span>
+# Análise conjunta
 
 ****
 
