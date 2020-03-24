@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Esquema Fatorial (3 Fatores) | Aplicações práticas do software R para Agronomia</title>
+  <title>Chapter 5 Delineamento em Blocos Casualizados | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um …" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Esquema Fatorial (3 Fatores) | Aplicações práticas do software R para Agronomia" />
+  <meta property="og:title" content="Chapter 5 Delineamento em Blocos Casualizados | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Esquema Fatorial (3 Fatores) | Aplicações práticas do software R para Agronomia" />
+  <meta name="twitter:title" content="Chapter 5 Delineamento em Blocos Casualizados | Aplicações práticas do software R para Agronomia" />
   
   <meta name="twitter:description" content="Este é um …" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="esquema-fatorial-2-fatores.html"/>
-<link rel="next" href="esquema-de-parcelas-subdivididas.html"/>
+<link rel="prev" href="transformação-de-dados.html"/>
+<link rel="next" href="delineamento-em-quadrado-latino.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -474,880 +474,1045 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="esquema-fatorial-3-fatores" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Esquema Fatorial (3 Fatores)</h1>
+<div id="delineamento-em-blocos-casualizados" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Delineamento em Blocos Casualizados</h1>
 <hr />
 <p><br><br><br><br></p>
-<p>Nos experimentos mais simples comparamos níveis (tratamentos) de apenas um fator; entretanto, existem casos em que dois ou mais fatores devem ser estudados simultaneamente para que possam nos conduzir a resultados de interesse;</p>
-<p>Em geral, os experimentos fatoriais são mais eficientes para este tipo de experimento, pois estudam, ao mesmo tempo, os efeitos de dois ou mais fatores, cada um deles com dois ou mais níveis.</p>
-<p>O fatorial é um tipo de esquema, ou seja, uma das maneiras de organizar os tratamentos e não um tipo de delineamento;</p>
-<p>Os experimentos fatoriais são montados segundo um tipo de delineamento experimental;</p>
-<p>Nos experimentos fatoriais, os tratamentos são obtidos pelas combinações dos níveis dos fatores.</p>
-<p><br></p>
-<hr />
-<div id="tipos-de-efeitos-avaliados-1" class="section level2">
-<h2><span class="header-section-number">8.1</span> Tipos de efeitos avaliados</h2>
-<hr />
-<p><br></p>
 <ul>
-<li><p>Efeito Principal: é o efeito de cada fator, independente do efeito dos outros fatores;</p></li>
-<li><p>Efeito de Interação: é o efeito simultâneo dos fatores sobre a variável em estudo. Dizemos que ocorre interação entre os fatores quando os efeitos dos níveis de um fator são modificados pelos níveis do outro fator.</p></li>
-</ul>
-<p><br></p>
-<hr />
-</div>
-<div id="vantagens-3" class="section level2">
-<h2><span class="header-section-number">8.2</span> Vantagens</h2>
-<hr />
-<p><br></p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Pode-se estudar dois ou mais fatores num único experimento.</p></li>
-<li><p>Pode-se, por meio dos efeitos das interações, verificar se um fator é independente ou dependente do(s) outro(s).</p></li>
-</ol>
-<hr />
-</div>
-<div id="desvantagens-3" class="section level2">
-<h2><span class="header-section-number">8.3</span> Desvantagens</h2>
-<hr />
-<p><br></p>
-<ol style="list-style-type: lower-alpha">
-<li><p>O número de tratamentos ou combinações de níveis de fatores cresce, rapidamente, com o aumento do número de níveis, em cada fator, ou mesmo com o aumento do número de fatores.</p></li>
-<li><p>A interpretação dos resultados se torna mais difícil é medida que aumentamos o número de níveis e de fatores no experimento.</p></li>
-</ol>
-<p><br></p>
-<hr />
-</div>
-<div id="modelo-estatístico-1" class="section level2">
-<h2><span class="header-section-number">8.4</span> Modelo estatístico</h2>
-<hr />
-<p><br></p>
-<p>As observações podem ser descritas pelo modelo estatístico linear:</p>
-<center>
-<p><span class="math inline">\(y_{ijk} = \mu+\beta_{1i}+\beta_{2j}+\beta_{3k}+(\beta_1\beta_2)_{ij}+(\beta_1\beta_3)_{ik}+(\beta_2\beta_3)_{jk}+(\beta_1\beta_2\beta_3)_{ijk}+\epsilon_{ijk}\)</span></p>
-</center>
-<ul>
-<li>i = 1; 2; : : : ; a</li>
-<li>j = 1; 2; : : : ; b</li>
-<li>k = 1; 2; : : : ; c</li>
-</ul>
-<p>em que:</p>
-<ul>
-<li><span class="math inline">\(y_{ijk}\)</span> é o valor observado no i-ésimo nível do fator A, j-ésima nível do fator B e k-ésimo nível do fator C;</li>
-<li><span class="math inline">\(\mu\)</span> é uma constante;</li>
-<li><span class="math inline">\(\beta_{1i}\)</span> é o efeito do i-ésimo nível do fator A;</li>
-<li><span class="math inline">\(\beta_{2j}\)</span> é o efeito do j-ésimo nível do fator B;</li>
-<li><span class="math inline">\(\beta_{3k}\)</span> é o efeito do j-ésimo nível do fator C;</li>
-<li><span class="math inline">\((\beta_1\beta_2)_ij\)</span> é o efeito da interação entre <span class="math inline">\(\beta_{1i}\)</span> e <span class="math inline">\(\beta_{2j}\)</span>;</li>
-<li><span class="math inline">\((\beta_1\beta_3)_ik\)</span> é o efeito da interação entre <span class="math inline">\(\beta_{1i}\)</span> e <span class="math inline">\(\beta_{3j}\)</span>;</li>
-<li><span class="math inline">\((\beta_2\beta_3)_jk\)</span> é o efeito da interação entre <span class="math inline">\(\beta_{2i}\)</span> e <span class="math inline">\(\beta_{3j}\)</span>;</li>
-<li><span class="math inline">\((\beta_1\beta_2\beta_3)_{ijk}\)</span> é o efeito da interação entre <span class="math inline">\(\beta_{1i}\)</span>, <span class="math inline">\(\beta_{2j}\)</span> e <span class="math inline">\(\beta_{3k}\)</span>;</li>
-<li><span class="math inline">\((\epsilon)ijk\)</span> é o componente de erro aleatório.</li>
-</ul>
-<p><br></p>
-<hr />
-</div>
-<div id="hipóteses-e-modelo-3" class="section level2">
-<h2><span class="header-section-number">8.5</span> Hipóteses e modelo</h2>
-<hr />
-<p><br></p>
-<p>No experimento fatorial com 3 fatores, deseja-se testar a signicância de ambos os fatores.</p>
-<p>No experimento fatorial com 2 fatores, deseja-se testar a signicância de ambos os fatores.</p>
-<p>Há interesse em testar hipóteses sobre a igualdade dos efeitos do fator A, isto é:</p>
-<ul>
-<li>H0 : <span class="math inline">\(\beta_{11}\)</span> = <span class="math inline">\(\beta_{12}\)</span> = : : : <span class="math inline">\(\beta_{1a}\)</span> = 0</li>
-<li>H1 : Pelo menos um <span class="math inline">\(\beta_{1i} \neq 0\)</span></li>
-</ul>
-<p>e a igualdade nos efeitos do fator B, ou seja:</p>
-<ul>
-<li>H0 : <span class="math inline">\(\beta_{21}\)</span> = <span class="math inline">\(\beta_{22}\)</span> = : : : <span class="math inline">\(\beta_{2b}\)</span> = 0</li>
-<li>H1 : Pelo menos um <span class="math inline">\(\beta_{2j} \neq 0\)</span></li>
-</ul>
-<p>e, ainda, se há interação entre os fatores A e B:</p>
-<ul>
-<li>H0 : <span class="math inline">\((\beta_1\beta_2)_{ij}\)</span> = 0 para todo i ; j</li>
-<li>H1 : Pelo menos um <span class="math inline">\((\beta_1\beta_2)_{ij} \neq 0\)</span></li>
-</ul>
-<p>e, ainda, se há interação entre os fatores A e C:</p>
-<ul>
-<li>H0 : <span class="math inline">\((\beta_1\beta_3)_{ik}\)</span> = 0 para todo i ; k</li>
-<li>H1 : Pelo menos um <span class="math inline">\((\beta_1\beta_3)_{ik} \neq 0\)</span></li>
-</ul>
-<p>e, ainda, se há interação entre os fatores B e C:</p>
-<ul>
-<li>H0 : <span class="math inline">\((\beta_2\beta_3)_{jk}\)</span> = 0 para todo j ; k</li>
-<li>H1 : Pelo menos um <span class="math inline">\((\beta_2\beta_3)_{jk} \neq 0\)</span></li>
-</ul>
-<p>e, ainda, se há interação entre os fatores A e B e C:</p>
-<ul>
-<li>H0 : <span class="math inline">\((\beta_1\beta_2\beta_3)_{ijk}\)</span> = 0 para todo i ; j; k</li>
-<li>H1 : Pelo menos um <span class="math inline">\((\beta_1\beta_2\beta_3)_{ijk} \neq 0\)</span></li>
-</ul>
-<p><br><br><br></p>
-<hr />
-</div>
-<div id="exemplo-1-5" class="section level2">
-<h2><span class="header-section-number">8.6</span> Exemplo 1</h2>
-<hr />
-<p><br></p>
-<p>Neste exemplo, vamos trabalhar com um experimento conduzido em delineamento inteiramente casualziado em esquema fatorial 3 x 3 x 3, em que todos os níveis dos fatores são qualitativos. Cada tratamento foi composto por quatro repetições, totalizando 108 parcelas. Os tratamentos consistem em:</p>
-<ul>
-<li>Fator 1: A1; A2 e A3</li>
-<li>Fator 2: B1; B2 e B3</li>
-<li>Fator 3: C1; C2 e C3</li>
-</ul>
-<p>Variável analisada: Produtividade em kg ha<span class="math inline">\(^{-1}\)</span></p>
-<p><br><br></p>
-</div>
-<div id="conjunto-de-dados-6" class="section level2">
-<h2><span class="header-section-number">8.7</span> Conjunto de dados</h2>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="esquema-fatorial-3-fatores.html#cb254-1"></a>RENDIMENTO=<span class="kw">c</span>(<span class="fl">4599.55</span>,<span class="fl">6203.50</span>,<span class="fl">4566.02</span>,<span class="fl">5616.38</span>,<span class="fl">4978.35</span>,<span class="fl">5126.15</span>,<span class="fl">4816.23</span>,<span class="fl">4251.00</span>,<span class="fl">4106.79</span>,</span>
-<span id="cb254-2"><a href="esquema-fatorial-3-fatores.html#cb254-2"></a>             <span class="fl">4600.58</span>,<span class="fl">4012.14</span>,<span class="fl">4623.41</span>,<span class="fl">4274.16</span>,<span class="fl">4683.50</span>,<span class="fl">4433.33</span>,<span class="fl">4326.16</span>,<span class="fl">4932.66</span>,<span class="fl">5066.67</span>,</span>
-<span id="cb254-3"><a href="esquema-fatorial-3-fatores.html#cb254-3"></a>             <span class="fl">4697.29</span>,<span class="fl">5011.38</span>,<span class="fl">5156.72</span>,<span class="fl">4744.21</span>,<span class="fl">4826.80</span>,<span class="fl">4663.26</span>,<span class="fl">4807.19</span>,<span class="fl">4377.19</span>,<span class="fl">4442.07</span>,</span>
-<span id="cb254-4"><a href="esquema-fatorial-3-fatores.html#cb254-4"></a>             <span class="fl">4685.58</span>,<span class="fl">5066.90</span>,<span class="fl">5317.66</span>,<span class="fl">5144.19</span>,<span class="fl">4580.18</span>,<span class="fl">4860.37</span>,<span class="fl">5204.21</span>,<span class="fl">5146.19</span>,<span class="fl">5015.67</span>,</span>
-<span id="cb254-5"><a href="esquema-fatorial-3-fatores.html#cb254-5"></a>             <span class="fl">5801.99</span>,<span class="fl">4668.05</span>,<span class="fl">5393.16</span>,<span class="fl">5282.27</span>,<span class="fl">5369.41</span>,<span class="fl">5494.43</span>,<span class="fl">4980.32</span>,<span class="fl">5715.76</span>,<span class="fl">4754.54</span>,</span>
-<span id="cb254-6"><a href="esquema-fatorial-3-fatores.html#cb254-6"></a>             <span class="fl">5000.83</span>,<span class="fl">4664.11</span>,<span class="fl">4969.41</span>,<span class="fl">5315.43</span>,<span class="fl">4872.29</span>,<span class="fl">5546.79</span>,<span class="fl">4765.79</span>,<span class="fl">4649.63</span>,<span class="fl">4899.31</span>,</span>
-<span id="cb254-7"><a href="esquema-fatorial-3-fatores.html#cb254-7"></a>             <span class="fl">4890.89</span>,<span class="fl">5117.10</span>,<span class="fl">4942.97</span>,<span class="fl">4548.97</span>,<span class="fl">4916.97</span>,<span class="fl">4225.38</span>,<span class="fl">4820.21</span>,<span class="fl">4150.44</span>,<span class="fl">4648.46</span>,</span>
-<span id="cb254-8"><a href="esquema-fatorial-3-fatores.html#cb254-8"></a>             <span class="fl">4271.57</span>,<span class="fl">5143.54</span>,<span class="fl">4808.97</span>,<span class="fl">5459.66</span>,<span class="fl">4928.35</span>,<span class="fl">5224.70</span>,<span class="fl">4900.90</span>,<span class="fl">4770.88</span>,<span class="fl">4977.68</span>,</span>
-<span id="cb254-9"><a href="esquema-fatorial-3-fatores.html#cb254-9"></a>             <span class="fl">5816.80</span>,<span class="fl">5107.11</span>,<span class="fl">5555.80</span>,<span class="fl">5767.65</span>,<span class="fl">5117.10</span>,<span class="fl">5573.08</span>,<span class="fl">5673.87</span>,<span class="fl">4859.00</span>,<span class="fl">4687.26</span>,</span>
-<span id="cb254-10"><a href="esquema-fatorial-3-fatores.html#cb254-10"></a>             <span class="fl">5055.22</span>,<span class="fl">5235.22</span>,<span class="fl">4961.72</span>,<span class="fl">4984.93</span>,<span class="fl">5425.67</span>,<span class="fl">4978.33</span>,<span class="fl">5172.60</span>,<span class="fl">5328.07</span>,<span class="fl">4973.87</span>,</span>
-<span id="cb254-11"><a href="esquema-fatorial-3-fatores.html#cb254-11"></a>             <span class="fl">5296.55</span>,<span class="fl">4928.01</span>,<span class="fl">4528.12</span>,<span class="fl">5337.93</span>,<span class="fl">5809.20</span>,<span class="fl">4914.70</span>,<span class="fl">5191.89</span>,<span class="fl">5261.24</span>,<span class="fl">5287.53</span>,</span>
-<span id="cb254-12"><a href="esquema-fatorial-3-fatores.html#cb254-12"></a>             <span class="fl">5680.55</span>,<span class="fl">5080.06</span>,<span class="fl">5425.53</span>,<span class="fl">4949.13</span>,<span class="fl">5300.57</span>,<span class="fl">4481.23</span>,<span class="fl">5039.54</span>,<span class="fl">5223.75</span>,<span class="fl">4581.65</span>)</span>
-<span id="cb254-13"><a href="esquema-fatorial-3-fatores.html#cb254-13"></a>FATOR1=<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>,<span class="st">&quot;A3&quot;</span>), <span class="dt">e=</span><span class="dv">12</span>),<span class="dv">3</span>)</span>
-<span id="cb254-14"><a href="esquema-fatorial-3-fatores.html#cb254-14"></a>FATOR2=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>), <span class="dt">e=</span><span class="dv">36</span>)</span>
-<span id="cb254-15"><a href="esquema-fatorial-3-fatores.html#cb254-15"></a>FATOR3=<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>,<span class="st">&quot;c2&quot;</span>,<span class="st">&quot;c3&quot;</span>),<span class="dt">e=</span><span class="dv">4</span>),<span class="dv">9</span>)</span>
-<span id="cb254-16"><a href="esquema-fatorial-3-fatores.html#cb254-16"></a>dados=<span class="kw">data.frame</span>(FATOR1,FATOR2,FATOR3,RENDIMENTO)</span></code></pre></div>
-<p><br><br></p>
-</div>
-<div id="análise-exploratória-dos-dados" class="section level2">
-<h2><span class="header-section-number">8.8</span> Análise Exploratória dos dados</h2>
-<p><br></p>
-<div id="análise-exploratória-dos-dados-geral" class="section level3">
-<h3><span class="header-section-number">8.8.1</span> Análise Exploratória dos dados (Geral)</h3>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="esquema-fatorial-3-fatores.html#cb255-1"></a>media=<span class="kw">mean</span>(RENDIMENTO)</span>
-<span id="cb255-2"><a href="esquema-fatorial-3-fatores.html#cb255-2"></a>variancia=<span class="kw">var</span>(RENDIMENTO)</span>
-<span id="cb255-3"><a href="esquema-fatorial-3-fatores.html#cb255-3"></a>desvio=<span class="kw">sd</span>(RENDIMENTO)</span>
-<span id="cb255-4"><a href="esquema-fatorial-3-fatores.html#cb255-4"></a>cv=desvio<span class="op">/</span>media<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb255-5"><a href="esquema-fatorial-3-fatores.html#cb255-5"></a><span class="kw">cbind</span>(media,variancia,desvio,cv)</span></code></pre></div>
-<pre><code>##         media variancia   desvio       cv
-## [1,] 4985.604  172705.4 415.5784 8.335568</code></pre>
-<p><br></p>
-</div>
-<div id="análise-exploratória-dos-dados-fator-1" class="section level3">
-<h3><span class="header-section-number">8.8.2</span> Análise Exploratória dos dados (Fator 1)</h3>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="esquema-fatorial-3-fatores.html#cb257-1"></a>media=<span class="kw">tapply</span>(RENDIMENTO, FATOR1,mean)</span>
-<span id="cb257-2"><a href="esquema-fatorial-3-fatores.html#cb257-2"></a>variancia=<span class="kw">tapply</span>(RENDIMENTO, FATOR1,var)</span>
-<span id="cb257-3"><a href="esquema-fatorial-3-fatores.html#cb257-3"></a>desvio=<span class="kw">tapply</span>(RENDIMENTO, FATOR1,sd)</span>
-<span id="cb257-4"><a href="esquema-fatorial-3-fatores.html#cb257-4"></a>cv=desvio<span class="op">/</span>media<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb257-5"><a href="esquema-fatorial-3-fatores.html#cb257-5"></a><span class="kw">cbind</span>(media,variancia,desvio,cv)</span></code></pre></div>
-<pre><code>##       media variancia   desvio        cv
-## A1 5083.450  263382.8 513.2084 10.095670
-## A2 4921.823  124860.9 353.3566  7.179384
-## A3 4951.540  124516.3 352.8687  7.126444</code></pre>
-<p><br>
-### Análise Exploratória dos dados (Fator 2)</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="esquema-fatorial-3-fatores.html#cb259-1"></a>media=<span class="kw">tapply</span>(RENDIMENTO, FATOR2,mean)</span>
-<span id="cb259-2"><a href="esquema-fatorial-3-fatores.html#cb259-2"></a>variancia=<span class="kw">tapply</span>(RENDIMENTO, FATOR2,var)</span>
-<span id="cb259-3"><a href="esquema-fatorial-3-fatores.html#cb259-3"></a>desvio=<span class="kw">tapply</span>(RENDIMENTO, FATOR2,sd)</span>
-<span id="cb259-4"><a href="esquema-fatorial-3-fatores.html#cb259-4"></a>cv=desvio<span class="op">/</span>media<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb259-5"><a href="esquema-fatorial-3-fatores.html#cb259-5"></a><span class="kw">cbind</span>(media,variancia,desvio,cv)</span></code></pre></div>
-<pre><code>##       media variancia   desvio       cv
-## B1 4804.546  184134.8 429.1093 8.931319
-## B2 4969.199  150227.6 387.5920 7.799889
-## B3 5183.069  119520.8 345.7178 6.670136</code></pre>
-<p><br></p>
-</div>
-<div id="análise-exploratória-dos-dados-fator-3" class="section level3">
-<h3><span class="header-section-number">8.8.3</span> Análise Exploratória dos dados (Fator 3)</h3>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="esquema-fatorial-3-fatores.html#cb261-1"></a>media=<span class="kw">tapply</span>(RENDIMENTO, FATOR3,mean)</span>
-<span id="cb261-2"><a href="esquema-fatorial-3-fatores.html#cb261-2"></a>variancia=<span class="kw">tapply</span>(RENDIMENTO,FATOR3,var)</span>
-<span id="cb261-3"><a href="esquema-fatorial-3-fatores.html#cb261-3"></a>desvio=<span class="kw">tapply</span>(RENDIMENTO,FATOR3,sd)</span>
-<span id="cb261-4"><a href="esquema-fatorial-3-fatores.html#cb261-4"></a>cv=desvio<span class="op">/</span>media<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb261-5"><a href="esquema-fatorial-3-fatores.html#cb261-5"></a><span class="kw">cbind</span>(media,variancia,desvio,cv)</span></code></pre></div>
-<pre><code>##       media variancia   desvio        cv
-## C1 5021.699 277212.38 526.5096 10.484690
-## c2 5081.969  97030.46 311.4971  6.129458
-## c3 4853.145 124804.19 353.2764  7.279328</code></pre>
-<p><br></p>
-</div>
-<div id="análise-exploratória-dos-dados-juntando-tratamentos" class="section level3">
-<h3><span class="header-section-number">8.8.4</span> Análise Exploratória dos dados (Juntando tratamentos)</h3>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="esquema-fatorial-3-fatores.html#cb263-1"></a>media=<span class="kw">tapply</span>(RENDIMENTO, <span class="kw">paste</span>(FATOR1,FATOR2,FATOR3),mean)</span>
-<span id="cb263-2"><a href="esquema-fatorial-3-fatores.html#cb263-2"></a>variancia=<span class="kw">tapply</span>(RENDIMENTO, <span class="kw">paste</span>(FATOR1,FATOR2,FATOR3),var)</span>
-<span id="cb263-3"><a href="esquema-fatorial-3-fatores.html#cb263-3"></a>desvio=<span class="kw">tapply</span>(RENDIMENTO, <span class="kw">paste</span>(FATOR1,FATOR2,FATOR3),sd)</span>
-<span id="cb263-4"><a href="esquema-fatorial-3-fatores.html#cb263-4"></a>cv=desvio<span class="op">/</span>media<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb263-5"><a href="esquema-fatorial-3-fatores.html#cb263-5"></a><span class="kw">cbind</span>(media,variancia,desvio,cv)</span></code></pre></div>
-<pre><code>##             media variancia   desvio        cv
-## A1 B1 C1 5246.363 644752.49 802.9648 15.305172
-## A1 B1 c2 4792.932 146549.05 382.8173  7.987120
-## A1 B1 c3 4335.730 103343.11 321.4702  7.414443
-## A1 B2 C1 5286.368 219868.17 468.9010  8.870004
-## A1 B2 c2 5389.980  95095.62 308.3758  5.721279
-## A1 B2 c3 4847.222  26881.76 163.9566  3.382485
-## A1 B3 C1 5561.840 104726.07 323.6141  5.818472
-## A1 B3 c2 5305.762 147384.02 383.9063  7.235647
-## A1 B3 c3 4984.855  52243.96 228.5694  4.585276
-## A2 B1 C1 4429.288  33113.39 181.9708  4.108355
-## A2 B1 c2 4927.000  26475.47 162.7128  3.302473
-## A2 B1 c3 4847.748  46886.15 216.5321  4.466654
-## A2 B2 C1 5125.075 135688.18 368.3588  7.187383
-## A2 B2 c2 4889.233  36479.09 190.9950  3.906441
-## A2 B2 c3 4658.573 115773.22 340.2546  7.303839
-## A2 B3 C1 5140.382  44284.47 210.4388  4.093835
-## A2 B3 c2 5131.625  44045.53 209.8703  4.089743
-## A2 B3 c3 5147.488 303979.30 551.3432 10.710918
-## A3 B1 C1 4578.007  40967.71 202.4048  4.421243
-## A3 B1 c2 5027.233  99818.88 315.9413  6.284596
-## A3 B1 c3 5056.610  23332.19 152.7488  3.020774
-## A3 B2 C1 4472.670  98653.19 314.0910  7.022451
-## A3 B2 c2 5085.130  81509.59 285.4988  5.614386
-## A3 B2 c3 4968.540  36448.71 190.9155  3.842486
-## A3 B3 C1 5355.302  48643.48 220.5527  4.118398
-## A3 B3 c2 5188.823  45933.24 214.3204  4.130425
-## A3 B3 c3 4831.542 127418.26 356.9569  7.388054</code></pre>
-<p><br><br></p>
-</div>
-</div>
-<div id="gráfico-exploratório" class="section level2">
-<h2><span class="header-section-number">8.9</span> Gráfico exploratório</h2>
-<p><br></p>
-<div id="gráfico-de-caixas-6" class="section level3">
-<h3><span class="header-section-number">8.9.1</span> Gráfico de caixas</h3>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="esquema-fatorial-3-fatores.html#cb265-1"></a><span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="fl">0.8</span>,<span class="fl">0.5</span>,<span class="fl">0.5</span>))</span>
-<span id="cb265-2"><a href="esquema-fatorial-3-fatores.html#cb265-2"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(RENDIMENTO<span class="op">~</span><span class="kw">paste</span>(FATOR1,FATOR2,FATOR3), <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-170-1.png" width="1152" /></p>
-<p><br></p>
-</div>
-<div id="gráfico-de-interação-1" class="section level3">
-<h3><span class="header-section-number">8.9.2</span> Gráfico de interação</h3>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="esquema-fatorial-3-fatores.html#cb266-1"></a>FATOR1=FATOR1</span>
-<span id="cb266-2"><a href="esquema-fatorial-3-fatores.html#cb266-2"></a>FATOR2=FATOR2</span>
-<span id="cb266-3"><a href="esquema-fatorial-3-fatores.html#cb266-3"></a>FATOR3=FATOR3</span>
-<span id="cb266-4"><a href="esquema-fatorial-3-fatores.html#cb266-4"></a>RESP=RENDIMENTO</span>
-<span id="cb266-5"><a href="esquema-fatorial-3-fatores.html#cb266-5"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">bty=</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb266-6"><a href="esquema-fatorial-3-fatores.html#cb266-6"></a><span class="kw">interaction.plot</span>(FATOR1,FATOR2,RESP, <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span>
-<span id="cb266-7"><a href="esquema-fatorial-3-fatores.html#cb266-7"></a><span class="kw">interaction.plot</span>(FATOR2,FATOR1,RESP, <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-171-1.png" width="768" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="esquema-fatorial-3-fatores.html#cb267-1"></a><span class="kw">interaction.plot</span>(FATOR1,FATOR3,RESP, <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span>
-<span id="cb267-2"><a href="esquema-fatorial-3-fatores.html#cb267-2"></a><span class="kw">interaction.plot</span>(FATOR2,FATOR1,RESP, <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-171-2.png" width="768" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="esquema-fatorial-3-fatores.html#cb268-1"></a><span class="kw">interaction.plot</span>(FATOR2,FATOR3,RESP, <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span>
-<span id="cb268-2"><a href="esquema-fatorial-3-fatores.html#cb268-2"></a><span class="kw">interaction.plot</span>(FATOR3,FATOR2,RESP, <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-171-3.png" width="768" style="display: block; margin: auto;" /></p>
-<p><br></p>
-</div>
-</div>
-<div id="análise-de-variância-8" class="section level2">
-<h2><span class="header-section-number">8.10</span> Análise de variância</h2>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="esquema-fatorial-3-fatores.html#cb269-1"></a>modelo=<span class="kw">aov</span>(RESP<span class="op">~</span>FATOR1<span class="op">*</span>FATOR2<span class="op">*</span>FATOR3)</span>
-<span id="cb269-2"><a href="esquema-fatorial-3-fatores.html#cb269-2"></a><span class="kw">anova</span>(modelo)</span></code></pre></div>
-<pre><code>## Analysis of Variance Table
-## 
-## Response: RESP
-##                      Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
-## FATOR1                2  532881  266440  2.4550  0.092230 .  
-## FATOR2                2 2593572 1296786 11.9487 2.836e-05 ***
-## FATOR3                2 1012836  506418  4.6662  0.012078 *  
-## FATOR1:FATOR2         4  568196  142049  1.3089  0.273715    
-## FATOR1:FATOR3         4 2177621  544405  5.0162  0.001158 ** 
-## FATOR2:FATOR3         4  548172  137043  1.2627  0.291478    
-## FATOR1:FATOR2:FATOR3  8 2255321  281915  2.5976  0.014010 *  
-## Residuals            81 8790883  108529                      
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>O que se observa nesta análise:</p>
-<ul>
-<li>Efeito de interação tripla: F1 x F2 x F3;</li>
-<li>Efeito de interação dupla: F1 x F3;</li>
-<li>Efeito isolado dos fatores F2 e F3.</li>
+<li>O delineamento em blocos ao acaso ou o delineamento em blocos casualizados são aqueles que levam em consideração os 3 princípios básicos da experimentação;</li>
+<li>O controle local é feito na sua forma mais simples e é chamado de blocos;</li>
+<li>Sempre que não houver homogeneidade das condições experimentais, deve-se utilizar o princípio do controle local;</li>
+<li>Estabelece-se, então, sub-ambientes homogêneos (blocos) e instalando, em cada um deles, todos os tratamentos, igualmente repetidos;</li>
+<li>Nessas condições, o delineamento em blocos casualizados é mais eficiente que o inteiramente ao acaso e, essa eficiência depende da uniformidade das parcelas de cada bloco;</li>
+<li>Pode-se haver diferenças bem acentuadas de um bloco para outro.</li>
+<li>O número de blocos e de repetições coincide apenas quando os tratamentos ocorrem uma única vez em cada bloco.</li>
 </ul>
 <p><br><br></p>
-</div>
-<div id="pressuposições-7" class="section level2">
-<h2><span class="header-section-number">8.11</span> Pressuposições</h2>
+<hr />
+<div id="vantagens-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Vantagens</h2>
+<hr />
 <p><br></p>
-<div id="normalidade-dos-erros-10" class="section level3">
-<h3><span class="header-section-number">8.11.1</span> Normalidade dos erros</h3>
-<p>Análise gráfica e pelo teste de normalidade de Shapiro-Wilk</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="esquema-fatorial-3-fatores.html#cb271-1"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
-<pre><code>## 
-##  Shapiro-Wilk normality test
-## 
-## data:  modelo$residuals
-## W = 0.98386, p-value = 0.217</code></pre>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="esquema-fatorial-3-fatores.html#cb273-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(modelo)</span></code></pre></div>
-<pre><code>## Gaussian model (aov object)</code></pre>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-173-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Como p-valor calculado (<span class="math inline">\(p=0.217\)</span>) é menor que o nível de significância adotado (<span class="math inline">\(\alpha=0.05\)</span>), não rejeita-se <span class="math inline">\(H_0\)</span>. Logo, os erros podem ser considerados normais</p>
+<ul>
+<li>Controla as diferenças que ocorrem nas condições ambientais, de um bloco para outro;</li>
+<li>Conduz a uma estimativa mais exata para a variância residual, uma vez que a variação ambiental entre blocos é isolada.</li>
+</ul>
+<hr />
+</div>
+<div id="desvantagens-1" class="section level2">
+<h2><span class="header-section-number">5.2</span> Desvantagens</h2>
+<hr />
 <p><br></p>
-</div>
-<div id="homogeneidade-das-variâncias-5" class="section level3">
-<h3><span class="header-section-number">8.11.2</span> Homogeneidade das variâncias</h3>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="esquema-fatorial-3-fatores.html#cb275-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span><span class="kw">paste</span>(FATOR1,FATOR2,FATOR3))</span></code></pre></div>
-<pre><code>## 
-##  Bartlett test of homogeneity of variances
-## 
-## data:  modelo$residuals by paste(FATOR1, FATOR2, FATOR3)
-## Bartlett&#39;s K-squared = 26.434, df = 26, p-value = 0.4394</code></pre>
-<p>Como p-valor calculado (<span class="math inline">\(p=0.4394\)</span>) é menor que o nível de significância adotado (<span class="math inline">\(\alpha=0.05\)</span>), não rejeita-se <span class="math inline">\(H_0\)</span>. Logo, as variâncias podem ser consideradas homogêneas.</p>
+<ul>
+<li>Pela utilização do princípio do controle local, há uma redução no número de graus de liberdade do resíduo;</li>
+<li>Exigência de homogeneidade das parcelas dentro de cada bloco limita o número de tratamentos, que não pode ser muito elevado.</li>
+</ul>
 <p><br></p>
+<hr />
 </div>
-<div id="independência-dos-erros-7" class="section level3">
-<h3><span class="header-section-number">8.11.3</span> Independência dos erros</h3>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="esquema-fatorial-3-fatores.html#cb277-1"></a>lmtest<span class="op">::</span><span class="kw">dwtest</span>(modelo)</span></code></pre></div>
-<pre><code>## 
-##  Durbin-Watson test
-## 
-## data:  modelo
-## DW = 2.8115, p-value = 0.9728
-## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
-<p>Como p-valor calculado (<span class="math inline">\(p=0.9728\)</span>) é menor que o nível de significância adotado (<span class="math inline">\(\alpha=0.05\)</span>), não rejeita-se <span class="math inline">\(H_0\)</span>. Logo, os erros podem ser considerados independentes.</p>
+<div id="modelo-matemático" class="section level2">
+<h2><span class="header-section-number">5.3</span> Modelo matemático</h2>
+<hr />
 <p><br></p>
+<p><span class="math display">\[\begin{eqnarray}
+y_{ji}=\mu+\tau_i+\beta_j+\varepsilon_{ij}
+\end{eqnarray}\]</span></p>
+<p><span class="math inline">\(y_{ji}\)</span>: é a observação referente ao tratamento i no bloco j;</p>
+<p><span class="math inline">\(\mu\)</span>: é a média geral (ou constante comum a todas as observações);</p>
+<p><span class="math inline">\(\tau_i\)</span>: é o efeito de tratamento, com <span class="math inline">\(i = 1, 2, . . . , I\)</span>;</p>
+<p><span class="math inline">\(\beta_j\)</span>: é o efeito do bloco;</p>
+<p><span class="math inline">\(\varepsilon_{ij}\)</span>: é o erro experimental, tal que <span class="math inline">\(\varepsilon_{ij}\)</span>~N(0; <span class="math inline">\(\sigma^2\)</span>).</p>
+<hr />
 </div>
-<div id="gráfico-de-residuos-padronizados" class="section level3">
-<h3><span class="header-section-number">8.11.4</span> Gráfico de residuos padronizados</h3>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="esquema-fatorial-3-fatores.html#cb279-1"></a>a=<span class="kw">anova</span>(modelo)</span>
-<span id="cb279-2"><a href="esquema-fatorial-3-fatores.html#cb279-2"></a><span class="kw">plot</span>(modelo<span class="op">$</span>residuals<span class="op">/</span><span class="kw">sqrt</span>(a<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">7</span>]),</span>
-<span id="cb279-3"><a href="esquema-fatorial-3-fatores.html#cb279-3"></a>     <span class="dt">ylab=</span><span class="st">&quot;Resíduos padronizados&quot;</span>,</span>
-<span id="cb279-4"><a href="esquema-fatorial-3-fatores.html#cb279-4"></a>     <span class="dt">pch=</span><span class="dv">16</span>,</span>
-<span id="cb279-5"><a href="esquema-fatorial-3-fatores.html#cb279-5"></a>     <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb279-6"><a href="esquema-fatorial-3-fatores.html#cb279-6"></a>     <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb279-7"><a href="esquema-fatorial-3-fatores.html#cb279-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">3</span>),</span>
-<span id="cb279-8"><a href="esquema-fatorial-3-fatores.html#cb279-8"></a>       <span class="dt">lty=</span><span class="dv">2</span>,</span>
-<span id="cb279-9"><a href="esquema-fatorial-3-fatores.html#cb279-9"></a>       <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-176-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p><br><br></p>
-</div>
-</div>
-<div id="teste-de-comparação" class="section level2">
-<h2><span class="header-section-number">8.12</span> Teste de comparação</h2>
-<p><br></p>
-<div id="pacote-expdes.pt" class="section level3">
-<h3><span class="header-section-number">8.12.1</span> Pacote ExpDes.pt</h3>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="esquema-fatorial-3-fatores.html#cb280-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb280-2"><a href="esquema-fatorial-3-fatores.html#cb280-2"></a><span class="kw">fat3.dic</span>(FATOR1,FATOR2,FATOR3,RESP)</span></code></pre></div>
-<pre><code>## ------------------------------------------------------------------------
-## Legenda:
-## FATOR 1:  F1 
-## FATOR 2:  F2 
-## FATOR 3:  F3 
-## ------------------------------------------------------------------------
-## 
-## ------------------------------------------------------------------------
-## Quadro da analise de variancia
-## ------------------------------------------------------------------------
-##           GL         SQ            QM      Fc  Pr&gt;Fc
-## F1         2   532880.7  266440.36564   2.455 0.0922
-## F2         2  2593572.1 1296786.06573 11.9487      0
-## F3         2  1012836.0  506417.98458  4.6662 0.0121
-## F1*F2      4   568195.7  142048.92116  1.3089 0.2737
-## F1*F3      4  2177620.9  544405.22841  5.0162 0.0012
-## F2*F3      4   548172.3  137043.08275  1.2627 0.2915
-## F1*F2*F3   8  2255321.1   281915.1382  2.5976  0.014
-## Residuo   81  8790882.9  108529.41824               
-## Total    107 18479481.7                             
-## ------------------------------------------------------------------------
-## CV = 0.03 %
-## 
-## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos (Shapiro-Wilk)
-## valor-p:  0.2169645 
-## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
-## ------------------------------------------------------------------------
-## 
-## 
-## 
-## Interacao F1*F2*F3  significativa: desdobrando a interacao
-## ------------------------------------------------------------------------
-## 
-## Desdobrando  F1  dentro de cada nivel de  F2 e F3 
-## ------------------------------------------------------------------------
-## ------------------------------------------------------------------------
-## Quadro da analise de variancia
-## ------------------------------------------------------------------------
-##           GL         SQ        QM       Fc    Pr&gt;Fc
-## F1: B1 C1  2 1515236.80 757618.40 6.980765 0.001596
-## F1: B1 c2  2  110556.18  55278.09 0.509337 0.602805
-## F1: B1 c3  2 1100604.58 550302.29 5.070536 0.008418
-## F1: B2 C1  2 1485001.57 742500.78  6.84147 0.001797
-## F1: B2 c2  2  509409.88 254704.94 2.346875 0.102142
-## F1: B2 c3  2  195182.15  97591.07 0.899213 0.410912
-## F1: B3 C1  2  355299.69 177649.85 1.636882 0.200956
-## F1: B3 c2  2   63027.18  31513.59 0.290369 0.748763
-## F1: B3 c3  2  199700.39  99850.20 0.920029 0.402631
-## Residuo   81 8790882.88 108529.42                  
-## ------------------------------------------------------------------------
-## 
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B1  de  F2  e  C1  de  F3 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     A1      5246.363 
-##  b    A3      4578.007 
-##  b    A2      4429.288 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B1  de  F2  e  c2  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       A1   4792.932
-## 2       A2   4927.000
-## 3       A3   5027.233
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B1  de  F2  e  c3  de  F3 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     A3      5056.61 
-## ab    A2      4847.748 
-##  b    A1      4335.73 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B2  de  F2  e  C1  de  F3 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     A1      5286.368 
-## a     A2      5125.075 
-##  b    A3      4472.67 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B2  de  F2  e  c2  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       A1   5389.980
-## 2       A2   4889.233
-## 3       A3   5085.130
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B2  de  F2  e  c3  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       A1   4847.222
-## 2       A2   4658.573
-## 3       A3   4968.540
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B3  de  F2  e  C1  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       A1   5561.840
-## 2       A2   5140.382
-## 3       A3   5355.302
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B3  de  F2  e  c2  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       A1   5305.762
-## 2       A2   5131.625
-## 3       A3   5188.823
-## ------------------------------------------------------------------------
-## 
-## 
-##  F1  dentro da combinacao dos niveis  B3  de  F2  e  c3  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       A1   4984.855
-## 2       A2   5147.488
-## 3       A3   4831.542
-## ------------------------------------------------------------------------
-## 
-## 
-## 
-## Desdobrando  F2  dentro de cada nivel de  F1 e F3 
-## ------------------------------------------------------------------------
-## ------------------------------------------------------------------------
-## Quadro da analise de variancia
-## ------------------------------------------------------------------------
-##           GL         SQ        QM       Fc    Pr&gt;Fc
-## F2: A1 C1  2  236015.40 118007.70 1.087334 0.341983
-## F2: A1 c2  2  835403.88 417701.94 3.848744 0.025307
-## F2: A1 c3  2  935907.40 467953.70 4.311768 0.016617
-## F2: A2 C1  2 1320014.22 660007.11 6.081366 0.003462
-## F2: A2 c2  2  136069.20  68034.60 0.626877 0.536829
-## F2: A2 c3  2  486225.50 243112.75 2.240063 0.113007
-## F2: A3 C1  2 1859098.18 929549.09  8.56495 0.000422
-## F2: A3 c2  2   53620.78  26810.39 0.247033 0.781701
-## F2: A3 c3  2  102906.69  51453.35 0.474096 0.624164
-## Residuo   81 8790882.88 108529.42                  
-## ------------------------------------------------------------------------
-## 
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A1  de  F1  e  C1  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       B1   5246.363
-## 2       B2   5286.368
-## 3       B3   5561.840
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A1  de  F1  e  c2  de  F3 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     B2      5389.98 
-## ab    B3      5305.762 
-##  b    B1      4792.932 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A1  de  F1  e  c3  de  F3 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     B3      4984.855 
-## ab    B2      4847.222 
-##  b    B1      4335.73 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A2  de  F1  e  C1  de  F3 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     B3      5140.382 
-## a     B2      5125.075 
-##  b    B1      4429.288 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A2  de  F1  e  c2  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       B1   4927.000
-## 2       B2   4889.233
-## 3       B3   5131.625
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A2  de  F1  e  c3  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       B1   4847.748
-## 2       B2   4658.573
-## 3       B3   5147.488
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A3  de  F1  e  C1  de  F3 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     B3      5355.302 
-##  b    B1      4578.007 
-##  b    B2      4472.67 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A3  de  F1  e  c2  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       B1   5027.233
-## 2       B2   5085.130
-## 3       B3   5188.823
-## ------------------------------------------------------------------------
-## 
-## 
-##  F2  dentro da combinacao dos niveis  A3  de  F1  e  c3  de  F3 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       B1   5056.610
-## 2       B2   4968.540
-## 3       B3   4831.542
-## ------------------------------------------------------------------------
-## 
-## Desdobrando  F3  dentro de cada nivel de  F1 e F2 
-## ------------------------------------------------------------------------
-## ------------------------------------------------------------------------
-## Quadro da analise de variancia
-## ------------------------------------------------------------------------
-##           GL           SQ          QM       Fc    Pr&gt;Fc
-## F3: A1 B1  2 1658512.5880 829256.2940 7.640843 0.000912
-## F3: A1 B2  2  664226.1133 332113.0567  3.06012 0.052338
-## F3: A1 B3  2  668625.3330 334312.6665 3.080388 0.051362
-## F3: A2 B1  2  572143.2840 286071.6420  2.63589 0.077796
-## F3: A2 B2  2  435267.0706 217633.5353 2.005295 0.141249
-## F3: A2 B3  2     505.0583    252.5292 0.002327 0.997676
-## F3: A3 B1  2  575635.3215 287817.6608 2.651978  0.07663
-## F3: A3 B2  2  846116.7155 423058.3577 3.898098 0.024192
-## F3: A3 B3  2  572918.8352 286459.4176 2.639463 0.077536
-## Residuo   81 8790882.8771 108529.4182                  
-## ------------------------------------------------------------------------
-## 
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A1  de  F1  e  B1  de  F2 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     C1      5246.363 
-## ab    c2      4792.932 
-##  b    c3      4335.73 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A1  de  F1  e  B2  de  F2 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       C1   5286.368
-## 2       c2   5389.980
-## 3       c3   4847.222
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A1  de  F1  e  B3  de  F2 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       C1   5561.840
-## 2       c2   5305.762
-## 3       c3   4984.855
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A2  de  F1  e  B1  de  F2 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       C1   4429.288
-## 2       c2   4927.000
-## 3       c3   4847.748
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A2  de  F1  e  B2  de  F2 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       C1   5125.075
-## 2       c2   4889.233
-## 3       c3   4658.573
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A2  de  F1  e  B3  de  F2 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       C1   5140.382
-## 2       c2   5131.625
-## 3       c3   5147.488
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A3  de  F1  e  B1  de  F2 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       C1   4578.007
-## 2       c2   5027.233
-## 3       c3   5056.610
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A3  de  F1  e  B2  de  F2 
-## ------------------------------------------------------------------------
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a     c2      5085.13 
-## ab    c3      4968.54 
-##  b    C1      4472.67 
-## ------------------------------------------------------------------------
-## 
-## 
-##  F3  dentro da combinacao dos niveis  A3  de  F1  e  B3  de  F2 
-## 
-## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
-## ------------------------------------------------------------------------
-##     Niveis     Medias
-## 1       C1   5355.302
-## 2       c2   5188.823
-## 3       c3   4831.542
-## ------------------------------------------------------------------------</code></pre>
-<p><br></p>
-</div>
-<div id="pacote-easyanova" class="section level3">
-<h3><span class="header-section-number">8.12.2</span> Pacote easyanova</h3>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="esquema-fatorial-3-fatores.html#cb282-1"></a><span class="kw">library</span>(easyanova)</span>
-<span id="cb282-2"><a href="esquema-fatorial-3-fatores.html#cb282-2"></a><span class="kw">ea2</span>(<span class="kw">data.frame</span>(FATOR1,FATOR2,FATOR3,RESP),<span class="dt">design =</span> <span class="dv">7</span>)</span></code></pre></div>
-<p><strong>Obs.</strong> Em função da saída extensa da <em>package</em> easyanova, foi ocultado o resultado do mesmo.</p>
-<p><br></p>
-</div>
-</div>
-<div id="tabela-final" class="section level2">
-<h2><span class="header-section-number">8.13</span> Tabela Final</h2>
-<p><br></p>
-<p><strong>Sugestão de tabela</strong></p>
+<div id="hipóteses-e-modelo-1" class="section level2">
+<h2><span class="header-section-number">5.4</span> Hipóteses e Modelo</h2>
+<hr />
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 =\mu_i\\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
 <table>
 <colgroup>
-<col width="12%" />
-<col width="12%" />
-<col width="24%" />
-<col width="24%" />
-<col width="24%" />
+<col width="11%" />
+<col width="8%" />
+<col width="11%" />
+<col width="20%" />
+<col width="20%" />
+<col width="27%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>FATOR1</th>
-<th>FATOR 2</th>
+<th align="right">CV</th>
+<th align="center">G.L.</th>
+<th align="center">S.Q.</th>
+<th align="center">Q.M.</th>
+<th align="center">Fcalc</th>
+<th align="left">Ftab</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">Tratamentos</td>
+<td align="center"><span class="math inline">\(a - 1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Trat}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{Trat}}{a-1}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QMTrat}{QMRes}\)</span></td>
+<td align="left"><span class="math inline">\(F(\alpha;GL_{Trat} ;GL_{Res})\)</span></td>
+</tr>
+<tr class="even">
+<td align="right">Blocos</td>
+<td align="center"><span class="math inline">\(b-1\)</span></td>
+<td align="center"><span class="math inline">\(Sq_{Blocos}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQ_{Blocos}}{b-1}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{QM_{bloco}}{QM_{Res}}\)</span></td>
+<td align="left"><span class="math inline">\(F(\alpha;GL_{bloco} ;GL_{Res})\)</span></td>
+</tr>
+<tr class="odd">
+<td align="right">resíduo</td>
+<td align="center"><span class="math inline">\((a-1)(b-1)\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Res}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{SQRes}{(a-1)(b-1)}\)</span></td>
+<td align="center">-</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="right">Total</td>
+<td align="center"><span class="math inline">\(ab-1\)</span></td>
+<td align="center"><span class="math inline">\(SQ_{Total}\)</span></td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+<div id="croqui" class="section level2">
+<h2><span class="header-section-number">5.5</span> Croqui</h2>
+<p><br></p>
+<p>Criando uma função para fazer um croqui (Bloco em coluna)</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="delineamento-em-blocos-casualizados.html#cb130-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb130-2"><a href="delineamento-em-blocos-casualizados.html#cb130-2"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb130-3"><a href="delineamento-em-blocos-casualizados.html#cb130-3"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb130-4"><a href="delineamento-em-blocos-casualizados.html#cb130-4"></a><span class="kw">library</span>(grid)</span>
+<span id="cb130-5"><a href="delineamento-em-blocos-casualizados.html#cb130-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
+<span id="cb130-6"><a href="delineamento-em-blocos-casualizados.html#cb130-6"></a>  sort=<span class="kw">design.rcbd</span>(trat,r,<span class="dt">serie=</span><span class="dv">0</span>)</span>
+<span id="cb130-7"><a href="delineamento-em-blocos-casualizados.html#cb130-7"></a>  sort<span class="op">$</span>book[,<span class="dv">3</span>]=<span class="kw">as.factor</span>(<span class="kw">matrix</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>],r,,T))</span>
+<span id="cb130-8"><a href="delineamento-em-blocos-casualizados.html#cb130-8"></a>  ncol=r</span>
+<span id="cb130-9"><a href="delineamento-em-blocos-casualizados.html#cb130-9"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>], <span class="cf">function</span>(ii)</span>
+<span id="cb130-10"><a href="delineamento-em-blocos-casualizados.html#cb130-10"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
+<span id="cb130-11"><a href="delineamento-em-blocos-casualizados.html#cb130-11"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<p><br></p>
+<p>Vetor de tratamentos</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="delineamento-em-blocos-casualizados.html#cb131-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<p>Usando a função</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="delineamento-em-blocos-casualizados.html#cb132-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-82-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>Criando uma função para fazer um croqui (Bloco em linha)</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="delineamento-em-blocos-casualizados.html#cb133-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb133-2"><a href="delineamento-em-blocos-casualizados.html#cb133-2"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb133-3"><a href="delineamento-em-blocos-casualizados.html#cb133-3"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb133-4"><a href="delineamento-em-blocos-casualizados.html#cb133-4"></a><span class="kw">library</span>(grid)</span>
+<span id="cb133-5"><a href="delineamento-em-blocos-casualizados.html#cb133-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
+<span id="cb133-6"><a href="delineamento-em-blocos-casualizados.html#cb133-6"></a>  sort=<span class="kw">design.rcbd</span>(trat,r,<span class="dt">serie=</span><span class="dv">0</span>)</span>
+<span id="cb133-7"><a href="delineamento-em-blocos-casualizados.html#cb133-7"></a>  sort<span class="op">$</span>book[,<span class="dv">3</span>]=<span class="kw">as.factor</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>],r,,T)))</span>
+<span id="cb133-8"><a href="delineamento-em-blocos-casualizados.html#cb133-8"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>]))</span>
+<span id="cb133-9"><a href="delineamento-em-blocos-casualizados.html#cb133-9"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>], <span class="cf">function</span>(ii)</span>
+<span id="cb133-10"><a href="delineamento-em-blocos-casualizados.html#cb133-10"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
+<span id="cb133-11"><a href="delineamento-em-blocos-casualizados.html#cb133-11"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<p><br></p>
+<p>Vetor de tratamentos</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="delineamento-em-blocos-casualizados.html#cb134-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<p>Usando a função</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="delineamento-em-blocos-casualizados.html#cb135-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><br><br></p>
+<hr />
+</div>
+<div id="exemplo-1-2" class="section level2">
+<h2><span class="header-section-number">5.6</span> Exemplo 1</h2>
+<hr />
+<p><br></p>
+<p><strong>Exemplo do Livro Planejamento e Análise Estatística de Experimentos Agronômicos (2013) - Décio Barbin - pg. 72</strong></p>
+<p><img src="laranja.png" /></p>
+<p>Um experimento foi conduzido com o objetivo de estudar o comportamento de nove porta-enxertos para a laranjeira Valência.</p>
+<p>Os porta-enxertos são:</p>
+<ul>
+<li>T1: Tangerina Sunki</li>
+<li>T2: Limão rugoso Nacional</li>
+<li>T3: Limão rugoso da Flórida</li>
+<li>T4: Tangerina Cleópatra</li>
+<li>T5: Citranger-troyer</li>
+<li>T6: Trifoliata</li>
+<li>T7: Tangerina Cravo</li>
+<li>T8: Laranja caipira</li>
+<li>T9: Limão Cravo</li>
+</ul>
+<p><strong>Delineamento experimental</strong>: Blocos casualizados.</p>
+<p><strong>Repetições/Tratamento</strong>: 3 repetições</p>
+<p><br></p>
+<p>Croqui experimental é apresentado abaixo:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Bloco</th>
 <th></th>
-<th>FATOR 3</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
-<td>C1</td>
-<td>C2</td>
-<td>C3</td>
+<td>B1</td>
+<td>T3</td>
+<td>T1</td>
+<td>T4</td>
+<td>T8</td>
+<td>T6</td>
+<td>T7</td>
+<td>T2</td>
+<td>T9</td>
+<td>T5</td>
 </tr>
 <tr class="even">
-<td>A1</td>
-<td><ul>
-<li>B1</li>
-<li>B2</li>
-<li>B3</li>
-</ul></td>
-<td><ul>
-<li>5245,36 <em>a</em>aA</li>
-<li>5286,37 <em>a</em>aA</li>
-<li>5561,84 <em>a</em>aA</li>
-</ul></td>
-<td><ul>
-<li>4335,73 <em>b</em>bB</li>
-<li>4847,22 <em>a</em>abA</li>
-<li>4984,86 <em>a</em>aA</li>
-</ul></td>
-<td><ul>
-<li>4792,93 <em>a</em>aAB</li>
-<li>5389,98 <em>a</em>aA</li>
-<li>5305,76 <em>a</em>abA</li>
-</ul></td>
+<td>B2</td>
+<td>T7</td>
+<td>T3</td>
+<td>T9</td>
+<td>T4</td>
+<td>T2</td>
+<td>T5</td>
+<td>T1</td>
+<td>T6</td>
+<td>T8</td>
 </tr>
 <tr class="odd">
-<td>A2</td>
-<td><ul>
-<li>B1</li>
-<li>B2</li>
-<li>B3</li>
-</ul></td>
-<td><ul>
-<li>4429,29 <em>b</em>bA</li>
-<li>5125,08 <em>a</em>aA</li>
-<li>5140,38 <em>a</em>aA</li>
-</ul></td>
-<td><ul>
-<li>4847,75 <em>ab</em>aA</li>
-<li>4658,57 <em>a</em>aA</li>
-<li>5147,49 <em>a</em>aA</li>
-</ul></td>
-<td><ul>
-<li>4927,00 <em>a</em>aA</li>
-<li>4889,23 <em>a</em>aA</li>
-<li>5131,63 <em>a</em>aA</li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>A3</td>
-<td><ul>
-<li>B1</li>
-<li>B2</li>
-<li>B3</li>
-</ul></td>
-<td><ul>
-<li>4578,00 <em>b</em>bA</li>
-<li>4472,67 <em>b</em>bB</li>
-<li>5355,30 <em>a</em>aA</li>
-</ul></td>
-<td><ul>
-<li>5056,61 <em>a</em>aA</li>
-<li>4968,54 <em>a</em>aAB</li>
-<li>4831,54 <em>a</em>aA</li>
-</ul></td>
-<td><ul>
-<li>5027,23 <em>a</em>aA</li>
-<li>5085,13 <em>a</em>aA</li>
-<li>5188,82 <em>a</em>aA</li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td><ul>
-<li>F1</li>
-<li>F2</li>
-<li>F3</li>
-<li>F1xF2</li>
-<li>F1xF3</li>
-<li>F1xF3</li>
-<li>F1xF2xF3</li>
-</ul></td>
-<td><ul>
-<li>0,0922<span class="math inline">\(^{ns}\)</span></li>
-<li>0,0000<span class="math inline">\(^{**}\)</span></li>
-<li>0,0121<span class="math inline">\(^*\)</span></li>
-<li>0,2737<span class="math inline">\(^{ns}\)</span></li>
-<li>0,0012<span class="math inline">\(^{**}\)</span></li>
-<li>0,2915<span class="math inline">\(^{ns}\)</span></li>
-<li>0,0140<span class="math inline">\(^*\)</span></li>
-</ul></td>
-<td></td>
-<td></td>
-<td></td>
+<td>B3</td>
+<td>T8</td>
+<td>T6</td>
+<td>T2</td>
+<td>T1</td>
+<td>T7</td>
+<td>T9</td>
+<td>T3</td>
+<td>T4</td>
+<td>T5</td>
 </tr>
 </tbody>
 </table>
-<p>Médias seguidas de mesma letra maiúscula na linha, minúscula em itálico dentro dos níveis do Fator 2, e minúsculo dentro dos níveis do Fator 1 não diferem pelo teste de Tukey (<span class="math inline">\(p\leqslant 0,05\)</span>). <span class="math inline">\(^*,^{**},^{ns}\)</span>, significativo a 5%, 1% e não significativo pelo teste F.</p>
+<p>Para o ano de 1973 (Plantas com 12 anos de idade), os resultados de produção, em número médio de frutos por planta, foram:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tratamentos</th>
+<th>B1</th>
+<th>B2</th>
+<th>B3</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>145</td>
+<td>155</td>
+<td>166</td>
+<td>466</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>200</td>
+<td>190</td>
+<td>190</td>
+<td>580</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>183</td>
+<td>186</td>
+<td>208</td>
+<td>577</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>190</td>
+<td>175</td>
+<td>186</td>
+<td>551</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>180</td>
+<td>160</td>
+<td>156</td>
+<td>496</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>130</td>
+<td>160</td>
+<td>130</td>
+<td>420</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>206</td>
+<td>165</td>
+<td>170</td>
+<td>541</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>250</td>
+<td>271</td>
+<td>230</td>
+<td>751</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>164</td>
+<td>190</td>
+<td>193</td>
+<td>547</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>1648</td>
+<td>1652</td>
+<td>1629</td>
+<td>4929</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div id="conjunto-de-dados-3" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> Conjunto de dados</h3>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="delineamento-em-blocos-casualizados.html#cb136-1"></a>resposta=<span class="kw">c</span>(<span class="dv">145</span>,<span class="dv">155</span>,<span class="dv">166</span>,</span>
+<span id="cb136-2"><a href="delineamento-em-blocos-casualizados.html#cb136-2"></a>           <span class="dv">200</span>,<span class="dv">190</span>,<span class="dv">190</span>,</span>
+<span id="cb136-3"><a href="delineamento-em-blocos-casualizados.html#cb136-3"></a>           <span class="dv">183</span>,<span class="dv">186</span>,<span class="dv">208</span>,</span>
+<span id="cb136-4"><a href="delineamento-em-blocos-casualizados.html#cb136-4"></a>           <span class="dv">190</span>,<span class="dv">175</span>,<span class="dv">186</span>,</span>
+<span id="cb136-5"><a href="delineamento-em-blocos-casualizados.html#cb136-5"></a>           <span class="dv">180</span>,<span class="dv">160</span>,<span class="dv">156</span>,</span>
+<span id="cb136-6"><a href="delineamento-em-blocos-casualizados.html#cb136-6"></a>           <span class="dv">130</span>,<span class="dv">160</span>,<span class="dv">130</span>,</span>
+<span id="cb136-7"><a href="delineamento-em-blocos-casualizados.html#cb136-7"></a>           <span class="dv">206</span>,<span class="dv">165</span>,<span class="dv">170</span>,</span>
+<span id="cb136-8"><a href="delineamento-em-blocos-casualizados.html#cb136-8"></a>           <span class="dv">250</span>,<span class="dv">271</span>,<span class="dv">230</span>,</span>
+<span id="cb136-9"><a href="delineamento-em-blocos-casualizados.html#cb136-9"></a>           <span class="dv">164</span>,<span class="dv">190</span>,<span class="dv">193</span>)</span>
+<span id="cb136-10"><a href="delineamento-em-blocos-casualizados.html#cb136-10"></a>cultivar=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>)),<span class="dt">e=</span><span class="dv">3</span>)</span>
+<span id="cb136-11"><a href="delineamento-em-blocos-casualizados.html#cb136-11"></a>cultivar=<span class="kw">as.factor</span>(cultivar)</span>
+<span id="cb136-12"><a href="delineamento-em-blocos-casualizados.html#cb136-12"></a>bloco=<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)),<span class="dv">9</span>))</span></code></pre></div>
+<p><br><br></p>
+</div>
+</div>
+<div id="gráficos-exploratórios-2" class="section level2">
+<h2><span class="header-section-number">5.7</span> Gráficos exploratórios</h2>
+<p><br></p>
+<div id="gráfico-de-caixas-3" class="section level3">
+<h3><span class="header-section-number">5.7.1</span> Gráfico de caixas</h3>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="delineamento-em-blocos-casualizados.html#cb137-1"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(resposta<span class="op">~</span>cultivar)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p><br></p>
+</div>
+<div id="histograma-2" class="section level3">
+<h3><span class="header-section-number">5.7.2</span> Histograma</h3>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="delineamento-em-blocos-casualizados.html#cb138-1"></a><span class="kw">hist</span>(resposta)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<p><br></p>
+</div>
+</div>
+<div id="análise-de-variância-4" class="section level2">
+<h2><span class="header-section-number">5.8</span> Análise de variância</h2>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="delineamento-em-blocos-casualizados.html#cb139-1"></a>modelo=<span class="kw">aov</span>(resposta<span class="op">~</span>cultivar<span class="op">+</span>bloco)</span>
+<span id="cb139-2"><a href="delineamento-em-blocos-casualizados.html#cb139-2"></a><span class="kw">anova</span>(modelo) <span class="co"># Conferir GL</span></span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: resposta
+##           Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+## cultivar   8 22981.3 2872.67 11.4114 2.637e-05 ***
+## bloco      2    33.6   16.78  0.0666    0.9358    
+## Residuals 16  4027.8  251.74                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p><br><br></p>
+</div>
+<div id="pressuposições-3" class="section level2">
+<h2><span class="header-section-number">5.9</span> Pressuposições</h2>
+<p><br></p>
+<div id="normalidade-dos-erros-6" class="section level3">
+<h3><span class="header-section-number">5.9.1</span> Normalidade dos erros</h3>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="delineamento-em-blocos-casualizados.html#cb141-1"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  modelo$residuals
+## W = 0.94759, p-value = 0.1873</code></pre>
+<p>Os erros seguem distribuição normal</p>
+<p><br></p>
+</div>
+<div id="homogeneidade-das-variâncias-4" class="section level3">
+<h3><span class="header-section-number">5.9.2</span> Homogeneidade das variâncias</h3>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="delineamento-em-blocos-casualizados.html#cb143-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>cultivar)</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  modelo$residuals by cultivar
+## Bartlett&#39;s K-squared = 4.0369, df = 8, p-value = 0.8538</code></pre>
+<p>As variâncias são homogêneas</p>
+<p><br></p>
+</div>
+<div id="independência-dos-erros-3" class="section level3">
+<h3><span class="header-section-number">5.9.3</span> Independência dos erros</h3>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="delineamento-em-blocos-casualizados.html#cb145-1"></a>lmtest<span class="op">::</span><span class="kw">dwtest</span>(modelo)</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  modelo
+## DW = 2.3246, p-value = 0.2484
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<p>Os erros são independentes.</p>
+<p><br></p>
+</div>
+<div id="teste-de-aditividade-de-tukey" class="section level3">
+<h3><span class="header-section-number">5.9.4</span> Teste de Aditividade de Tukey</h3>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="delineamento-em-blocos-casualizados.html#cb147-1"></a><span class="kw">library</span>(asbio)</span>
+<span id="cb147-2"><a href="delineamento-em-blocos-casualizados.html#cb147-2"></a><span class="kw">tukey.add.test</span>(resposta,cultivar,bloco)</span></code></pre></div>
+<pre><code>## 
+## Tukey&#39;s one df test for additivity 
+## F = 0.6866169   Denom df = 15    p-value = 0.4203076</code></pre>
+<p><br></p>
+</div>
+<div id="gráfico-de-resíduos-padronizados-2" class="section level3">
+<h3><span class="header-section-number">5.9.5</span> Gráfico de resíduos padronizados</h3>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="delineamento-em-blocos-casualizados.html#cb149-1"></a>a=<span class="kw">anova</span>(modelo)</span>
+<span id="cb149-2"><a href="delineamento-em-blocos-casualizados.html#cb149-2"></a><span class="kw">plot</span>(modelo<span class="op">$</span>residuals<span class="op">/</span><span class="kw">sqrt</span>(a<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]), <span class="dt">ylab=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</span>
+<span id="cb149-3"><a href="delineamento-em-blocos-casualizados.html#cb149-3"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p><br><br></p>
+</div>
+</div>
+<div id="comparação-múltipla-1" class="section level2">
+<h2><span class="header-section-number">5.10</span> Comparação múltipla</h2>
+<p><br></p>
+<div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-multcomp-2" class="section level3">
+<h3><span class="header-section-number">5.10.1</span> Teste de Comparação Múltipla de Tukey (Utilizando o multcomp)</h3>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="delineamento-em-blocos-casualizados.html#cb150-1"></a><span class="kw">library</span>(multcomp)</span>
+<span id="cb150-2"><a href="delineamento-em-blocos-casualizados.html#cb150-2"></a>mcomp=<span class="kw">glht</span>(modelo, <span class="kw">mcp</span>(<span class="dt">cultivar=</span><span class="st">&quot;Tukey&quot;</span>))</span>
+<span id="cb150-3"><a href="delineamento-em-blocos-casualizados.html#cb150-3"></a><span class="kw">plot</span>(mcomp)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="delineamento-em-blocos-casualizados.html#cb151-1"></a><span class="kw">cld</span>(mcomp)</span></code></pre></div>
+<pre><code>##  T 1  T 2  T 3  T 4  T 5  T 6  T 7  T 8  T 9 
+## &quot;ab&quot;  &quot;b&quot;  &quot;b&quot; &quot;ab&quot; &quot;ab&quot;  &quot;a&quot; &quot;ab&quot;  &quot;c&quot; &quot;ab&quot;</code></pre>
+<p><br></p>
+</div>
+<div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-tukeyhsd-do-r-2" class="section level3">
+<h3><span class="header-section-number">5.10.2</span> Teste de Comparação Múltipla de Tukey (Utilizando o TukeyHSD do R)</h3>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="delineamento-em-blocos-casualizados.html#cb153-1"></a>(<span class="dt">tukey=</span><span class="kw">TukeyHSD</span>(modelo))</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = resposta ~ cultivar + bloco)
+## 
+## $cultivar
+##               diff         lwr        upr     p adj
+## T 2-T 1  38.000000   -8.085796  84.085796 0.1520249
+## T 3-T 1  37.000000   -9.085796  83.085796 0.1728150
+## T 4-T 1  28.333333  -17.752463  74.419129 0.4559717
+## T 5-T 1  10.000000  -36.085796  56.085796 0.9962223
+## T 6-T 1 -15.333333  -61.419129  30.752463 0.9489958
+## T 7-T 1  25.000000  -21.085796  71.085796 0.6053536
+## T 8-T 1  95.000000   48.914204 141.085796 0.0000460
+## T 9-T 1  27.000000  -19.085796  73.085796 0.5143733
+## T 3-T 2  -1.000000  -47.085796  45.085796 1.0000000
+## T 4-T 2  -9.666667  -55.752463  36.419129 0.9969942
+## T 5-T 2 -28.000000  -74.085796  18.085796 0.4703201
+## T 6-T 2 -53.333333  -99.419129  -7.247537 0.0172692
+## T 7-T 2 -13.000000  -59.085796  33.085796 0.9799785
+## T 8-T 2  57.000000   10.914204 103.085796 0.0099947
+## T 9-T 2 -11.000000  -57.085796  35.085796 0.9929220
+## T 4-T 3  -8.666667  -54.752463  37.419129 0.9985839
+## T 5-T 3 -27.000000  -73.085796  19.085796 0.5143733
+## T 6-T 3 -52.333333  -98.419129  -6.247537 0.0200347
+## T 7-T 3 -12.000000  -58.085796  34.085796 0.9877062
+## T 8-T 3  58.000000   11.914204 104.085796 0.0086074
+## T 9-T 3 -10.000000  -56.085796  36.085796 0.9962223
+## T 5-T 4 -18.333333  -64.419129  27.752463 0.8763516
+## T 6-T 4 -43.666667  -89.752463   2.419129 0.0705323
+## T 7-T 4  -3.333333  -49.419129  42.752463 0.9999989
+## T 8-T 4  66.666667   20.580871 112.752463 0.0023716
+## T 9-T 4  -1.333333  -47.419129  44.752463 1.0000000
+## T 6-T 5 -25.333333  -71.419129  20.752463 0.5900630
+## T 7-T 5  15.000000  -31.085796  61.085796 0.9546944
+## T 8-T 5  85.000000   38.914204 131.085796 0.0001740
+## T 9-T 5  17.000000  -29.085796  63.085796 0.9134401
+## T 7-T 6  40.333333   -5.752463  86.419129 0.1116698
+## T 8-T 6 110.333333   64.247537 156.419129 0.0000069
+## T 9-T 6  42.333333   -3.752463  88.419129 0.0849582
+## T 8-T 7  70.000000   23.914204 116.085796 0.0014541
+## T 9-T 7   2.000000  -44.085796  48.085796 1.0000000
+## T 9-T 8 -68.000000 -114.085796 -21.914204 0.0019490
+## 
+## $bloco
+##               diff       lwr      upr     p adj
+## B 2-B 1  0.4444444 -18.85487 19.74376 0.9980554
+## B 3-B 1 -2.1111111 -21.41043 17.18820 0.9571497
+## B 3-B 2 -2.5555556 -21.85487 16.74376 0.9379209</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="delineamento-em-blocos-casualizados.html#cb155-1"></a><span class="kw">plot</span>(tukey)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-96-1.png" width="672" /><img src="livroagro_files/figure-html/unnamed-chunk-96-2.png" width="672" /></p>
+<p><br></p>
+</div>
+<div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-hsd.test-do-agricolae-2" class="section level3">
+<h3><span class="header-section-number">5.10.3</span> Teste de Comparação Múltipla de Tukey (Utilizando o HSD.test do Agricolae)</h3>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="delineamento-em-blocos-casualizados.html#cb156-1"></a><span class="kw">library</span>(agricolae)</span>
+<span id="cb156-2"><a href="delineamento-em-blocos-casualizados.html#cb156-2"></a>tukey=<span class="kw">HSD.test</span>(modelo,<span class="st">&quot;cultivar&quot;</span>)</span>
+<span id="cb156-3"><a href="delineamento-em-blocos-casualizados.html#cb156-3"></a><span class="kw">plot</span>(tukey)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+<p><br></p>
+</div>
+<div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-ea1-do-pacote-easyanova-2" class="section level3">
+<h3><span class="header-section-number">5.10.4</span> Teste de Comparação Múltipla de Tukey (Utilizando o ea1() do pacote easyanova)</h3>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="delineamento-em-blocos-casualizados.html#cb157-1"></a><span class="kw">library</span>(easyanova)</span>
+<span id="cb157-2"><a href="delineamento-em-blocos-casualizados.html#cb157-2"></a>tukey=<span class="kw">ea1</span>(<span class="kw">data.frame</span>(cultivar,bloco,resposta), <span class="dt">design =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="delineamento-em-blocos-casualizados.html#cb158-1"></a><span class="kw">cbind</span>(tukey<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">1</span>],tukey<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">2</span>],tukey<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">4</span>])</span></code></pre></div>
+<pre><code>##   treatment adjusted.mean tukey
+## 1       T 8      250.3333     a
+## 2       T 2      193.3333     b
+## 3       T 3      192.3333     b
+## 4       T 4      183.6667    bc
+## 5       T 9      182.3333    bc
+## 6       T 7      180.3333    bc
+## 7       T 5      165.3333    bc
+## 8       T 1      155.3333    bc
+## 9       T 6      140.0000     c</code></pre>
+<p><br></p>
+<div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-dbc-do-pacote-expdes.pt" class="section level4">
+<h4><span class="header-section-number">5.10.4.1</span> Teste de Comparação Múltipla de Tukey (Utilizando o dbc do pacote ExpDes.pt)</h4>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="delineamento-em-blocos-casualizados.html#cb160-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
+<span id="cb160-2"><a href="delineamento-em-blocos-casualizados.html#cb160-2"></a><span class="kw">dbc</span>(cultivar,bloco,resposta)</span></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL      SQ      QM      Fc   Pr&gt;Fc
+## Tratamento  8 22981.3 2872.67 11.4114 0.00003
+## Bloco       2    33.6   16.78  0.0666 0.93578
+## Residuo    16  4027.8  251.74                
+## Total      26 27042.7                        
+## ------------------------------------------------------------------------
+## CV = 8.69 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## valor-p:  0.187264 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.7817409 
+## De acordo com o teste de oneillmathews a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     T 8     250.3333 
+##  b    T 2     193.3333 
+##  b    T 3     192.3333 
+##  bc   T 4     183.6667 
+##  bc   T 9     182.3333 
+##  bc   T 7     180.3333 
+##  bc   T 5     165.3333 
+##  bc   T 1     155.3333 
+##   c   T 6     140 
+## ------------------------------------------------------------------------</code></pre>
+<p><br><br></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="exemplo-2-2" class="section level2">
+<h2><span class="header-section-number">5.11</span> Exemplo 2</h2>
+<hr />
+<p><img src="sojanovo.jpeg" /></p>
+<p>Um experimento foi realizado com o intuito de avaliar a produtividade de 15 cultivares comerciais de soja no munícipio de Londrina-PR. O experimento foi instalado em Delineamento em blocos casualizados com 3 repetições por tratamento.</p>
+<p><strong>Fonte da foto</strong>: <a href="http://www.agricultura.gov.br/noticias/entra-em-vigor-novo-sistema-de-registro-de-cultivares/@@nitf_galleria">Agricultura</a></p>
+<p><br></p>
+<div id="conjunto-de-dados-4" class="section level3">
+<h3><span class="header-section-number">5.11.1</span> Conjunto de dados</h3>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="delineamento-em-blocos-casualizados.html#cb162-1"></a>PRO=<span class="kw">c</span>(<span class="fl">2444.44</span>,<span class="fl">2870.37</span>,<span class="fl">2314.81</span>,<span class="fl">2629.63</span>,<span class="fl">2444.44</span>,<span class="fl">2592.59</span>,<span class="fl">2962.96</span>,<span class="fl">3037.04</span>,<span class="fl">3037.04</span>,<span class="fl">2592.59</span>,<span class="fl">2296.30</span>,<span class="fl">2444.44</span>,<span class="fl">2370.37</span>,<span class="fl">3481.48</span>,<span class="fl">2555.56</span>,<span class="fl">1981.48</span>,<span class="fl">2611.11</span>,<span class="fl">1925.93</span>,<span class="fl">1870.37</span>,<span class="fl">2518.52</span>,<span class="fl">2370.37</span>,<span class="fl">2462.96</span>,<span class="fl">2351.85</span>,<span class="fl">2000.00</span>,<span class="fl">2703.70</span>,<span class="fl">2685.19</span>,<span class="fl">2166.67</span>,<span class="fl">2129.63</span>,<span class="fl">2222.22</span>,<span class="fl">1814.81</span>,<span class="fl">2537.04</span>,<span class="fl">2351.85</span>,<span class="fl">2333.33</span>,<span class="fl">3370.37</span>,<span class="fl">2462.96</span>,<span class="fl">3129.63</span>,<span class="fl">2666.67</span>,<span class="fl">2796.30</span>,<span class="fl">2055.56</span>,<span class="fl">2333.33</span>,<span class="fl">2240.74</span>,<span class="fl">2092.59</span>,<span class="fl">2703.70</span>,<span class="fl">2129.63</span>,<span class="fl">2740.74</span>)</span>
+<span id="cb162-2"><a href="delineamento-em-blocos-casualizados.html#cb162-2"></a>Cultivares=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>)),<span class="dt">e=</span><span class="dv">3</span>)</span>
+<span id="cb162-3"><a href="delineamento-em-blocos-casualizados.html#cb162-3"></a>Bloco=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)),<span class="dv">15</span>)</span>
+<span id="cb162-4"><a href="delineamento-em-blocos-casualizados.html#cb162-4"></a>Tratamento =<span class="st"> </span><span class="kw">as.factor</span>(Cultivares)</span>
+<span id="cb162-5"><a href="delineamento-em-blocos-casualizados.html#cb162-5"></a>bloco=<span class="kw">as.factor</span>(Bloco)</span>
+<span id="cb162-6"><a href="delineamento-em-blocos-casualizados.html#cb162-6"></a>dados =<span class="st"> </span><span class="kw">data.frame</span>(Tratamento, <span class="dt">TRAT=</span>Tratamento, bloco,<span class="dt">resp=</span>PRO)</span>
+<span id="cb162-7"><a href="delineamento-em-blocos-casualizados.html#cb162-7"></a>dados =<span class="st"> </span>dados[<span class="kw">order</span>(dados<span class="op">$</span>Tratamento), ]</span>
+<span id="cb162-8"><a href="delineamento-em-blocos-casualizados.html#cb162-8"></a>X =<span class="st"> &#39;Cultivares de soja&#39;</span></span>
+<span id="cb162-9"><a href="delineamento-em-blocos-casualizados.html#cb162-9"></a>(<span class="dt">Y =</span> <span class="kw">expression</span>(<span class="kw">Produtividade</span> (Kg.ha<span class="op">^-</span><span class="dv">1</span>)))</span></code></pre></div>
+<pre><code>## expression(Produtividade(Kg.ha^-1))</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="delineamento-em-blocos-casualizados.html#cb164-1"></a>alfa=<span class="st">&quot;0,05&quot;</span></span></code></pre></div>
+<p><br><br></p>
+</div>
+</div>
+<div id="estatística-descritiva-1" class="section level2">
+<h2><span class="header-section-number">5.12</span> Estatística descritiva</h2>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="delineamento-em-blocos-casualizados.html#cb165-1"></a>Média =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">mean</span>(resp))</span>
+<span id="cb165-2"><a href="delineamento-em-blocos-casualizados.html#cb165-2"></a>Variância =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">var</span>(resp))</span>
+<span id="cb165-3"><a href="delineamento-em-blocos-casualizados.html#cb165-3"></a>Desvio =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sd</span>(resp))</span>
+<span id="cb165-4"><a href="delineamento-em-blocos-casualizados.html#cb165-4"></a>CV =<span class="st"> </span>Desvio <span class="op">/</span><span class="st"> </span>Média <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb165-5"><a href="delineamento-em-blocos-casualizados.html#cb165-5"></a></span>
+<span id="cb165-6"><a href="delineamento-em-blocos-casualizados.html#cb165-6"></a>desc =<span class="st"> </span><span class="kw">cbind</span>(Média, Variância, Desvio, CV)</span>
+<span id="cb165-7"><a href="delineamento-em-blocos-casualizados.html#cb165-7"></a><span class="kw">rownames</span>(desc) =<span class="st"> &#39;Produvidade (Kg/ha)&#39;</span></span>
+<span id="cb165-8"><a href="delineamento-em-blocos-casualizados.html#cb165-8"></a><span class="kw">kable</span>(<span class="kw">round</span>(desc,<span class="dv">2</span>), <span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Média</th>
+<th align="left">Variância</th>
+<th align="left">Desvio</th>
+<th align="left">CV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Produvidade (Kg/ha)</td>
+<td align="left">2485.18</td>
+<td align="left">141049.6</td>
+<td align="left">375.57</td>
+<td align="left">15.11</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<div id="por-cultivar-1" class="section level3">
+<h3><span class="header-section-number">5.12.1</span> Por Cultivar</h3>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="delineamento-em-blocos-casualizados.html#cb166-1"></a>Médias =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, Tratamento, mean))</span>
+<span id="cb166-2"><a href="delineamento-em-blocos-casualizados.html#cb166-2"></a>Variâncias =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, Tratamento, var))</span>
+<span id="cb166-3"><a href="delineamento-em-blocos-casualizados.html#cb166-3"></a>Desvios =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, Tratamento, sd))</span>
+<span id="cb166-4"><a href="delineamento-em-blocos-casualizados.html#cb166-4"></a>CV =<span class="st"> </span>Desvios <span class="op">/</span><span class="st"> </span>Médias <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
+<span id="cb166-5"><a href="delineamento-em-blocos-casualizados.html#cb166-5"></a>Desc =<span class="st"> </span><span class="kw">cbind</span>(Médias, Variâncias, Desvios, CV)</span>
+<span id="cb166-6"><a href="delineamento-em-blocos-casualizados.html#cb166-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Médias</th>
+<th align="left">Variâncias</th>
+<th align="left">Desvios</th>
+<th align="left">CV</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T 1</td>
+<td align="left">2543.21</td>
+<td align="left">84477.87</td>
+<td align="left">290.65</td>
+<td align="left">11.43</td>
+</tr>
+<tr class="even">
+<td>T 10</td>
+<td align="left">2055.55</td>
+<td align="left">45611.24</td>
+<td align="left">213.57</td>
+<td align="left">10.39</td>
+</tr>
+<tr class="odd">
+<td>T 11</td>
+<td align="left">2407.41</td>
+<td align="left">12689.35</td>
+<td align="left">112.65</td>
+<td align="left">4.68</td>
+</tr>
+<tr class="even">
+<td>T 12</td>
+<td align="left">2987.65</td>
+<td align="left">220966.26</td>
+<td align="left">470.07</td>
+<td align="left">15.73</td>
+</tr>
+<tr class="odd">
+<td>T 13</td>
+<td align="left">2506.18</td>
+<td align="left">156492.52</td>
+<td align="left">395.59</td>
+<td align="left">15.78</td>
+</tr>
+<tr class="even">
+<td>T 14</td>
+<td align="left">2222.22</td>
+<td align="left">14746.18</td>
+<td align="left">121.43</td>
+<td align="left">5.46</td>
+</tr>
+<tr class="odd">
+<td>T 15</td>
+<td align="left">2524.69</td>
+<td align="left">117397.29</td>
+<td align="left">342.63</td>
+<td align="left">13.57</td>
+</tr>
+<tr class="even">
+<td>T 2</td>
+<td align="left">2555.55</td>
+<td align="left">9602.62</td>
+<td align="left">97.99</td>
+<td align="left">3.83</td>
+</tr>
+<tr class="odd">
+<td>T 3</td>
+<td align="left">3012.35</td>
+<td align="left">1829.28</td>
+<td align="left">42.77</td>
+<td align="left">1.42</td>
+</tr>
+<tr class="even">
+<td>T 4</td>
+<td align="left">2444.44</td>
+<td align="left">21946.94</td>
+<td align="left">148.15</td>
+<td align="left">6.06</td>
+</tr>
+<tr class="odd">
+<td>T 5</td>
+<td align="left">2802.47</td>
+<td align="left">354364.77</td>
+<td align="left">595.29</td>
+<td align="left">21.24</td>
+</tr>
+<tr class="even">
+<td>T 6</td>
+<td align="left">2172.84</td>
+<td align="left">144831.90</td>
+<td align="left">380.57</td>
+<td align="left">17.51</td>
+</tr>
+<tr class="odd">
+<td>T 7</td>
+<td align="left">2253.09</td>
+<td align="left">115341.14</td>
+<td align="left">339.62</td>
+<td align="left">15.07</td>
+</tr>
+<tr class="even">
+<td>T 8</td>
+<td align="left">2271.60</td>
+<td align="left">58412.64</td>
+<td align="left">241.69</td>
+<td align="left">10.64</td>
+</tr>
+<tr class="odd">
+<td>T 9</td>
+<td align="left">2518.52</td>
+<td align="left">92934.47</td>
+<td align="left">304.85</td>
+<td align="left">12.10</td>
+</tr>
+</tbody>
+</table>
+<p>As Médias e as Variâncias estão apresentadas na Tabela . Nota-se uma variação nos valores médios, sendo a menor Média igual a <span class="math inline">\(2055.55\)</span> e a maior Média de <span class="math inline">\(3012.35\)</span>. Já em relação às Variâncias, o menor valor é de <span class="math inline">\(1829.28\)</span> e a maior variablidade de <span class="math inline">\(3.5436477\times 10^{5}\)</span>.</p>
+<p><br><br></p>
+</div>
+</div>
+<div id="gráfico-de-caixas-4" class="section level2">
+<h2><span class="header-section-number">5.13</span> Gráfico de Caixas</h2>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="delineamento-em-blocos-casualizados.html#cb167-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
+<span id="cb167-2"><a href="delineamento-em-blocos-casualizados.html#cb167-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb167-3"><a href="delineamento-em-blocos-casualizados.html#cb167-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>TRAT, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb167-4"><a href="delineamento-em-blocos-casualizados.html#cb167-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span>
+<span id="cb167-5"><a href="delineamento-em-blocos-casualizados.html#cb167-5"></a>mediab=<span class="kw">tapply</span>(dados<span class="op">$</span>resp, dados<span class="op">$</span><span class="st"> </span>TRAT, mean)</span>
+<span id="cb167-6"><a href="delineamento-em-blocos-casualizados.html#cb167-6"></a><span class="kw">points</span>(mediab, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-103"></span>
+<img src="livroagro_files/figure-html/unnamed-chunk-103-1.png" alt="Gráfico de caixas" width="672" />
+<p class="caption">
+Figure 5.1: Gráfico de caixas
+</p>
+</div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="delineamento-em-blocos-casualizados.html#cb168-1"></a><span class="kw">names</span>(Desvios)[<span class="kw">which.min</span>(Desvios)]</span></code></pre></div>
+<p>Não observa-se <em>outliers</em>. Há maior variabilidade em T 5 e menor em T 3, com 595.285 e 42.77, respectivamente. Há evidências de diferença entre as Médias dos tratamentos.</p>
+<p><br><br></p>
+</div>
+<div id="análise-de-variância-5" class="section level2">
+<h2><span class="header-section-number">5.14</span> Análise de Variância</h2>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{15} \\[.2cm]
+H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="delineamento-em-blocos-casualizados.html#cb169-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(resp <span class="op">~</span><span class="st"> </span>Tratamento<span class="op">+</span>bloco))</span>
+<span id="cb169-2"><a href="delineamento-em-blocos-casualizados.html#cb169-2"></a>av=<span class="kw">anova</span>(mod)</span>
+<span id="cb169-3"><a href="delineamento-em-blocos-casualizados.html#cb169-3"></a><span class="kw">kable</span>(av, <span class="dt">align =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">Df</th>
+<th align="left">Sum Sq</th>
+<th align="left">Mean Sq</th>
+<th align="left">F value</th>
+<th align="left">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tratamento</td>
+<td align="left">14</td>
+<td align="left">3302891.5</td>
+<td align="left">235920.82</td>
+<td align="left">2.545837</td>
+<td align="left">0.0171400</td>
+</tr>
+<tr class="even">
+<td>bloco</td>
+<td align="left">2</td>
+<td align="left">308550.2</td>
+<td align="left">154275.11</td>
+<td align="left">1.664793</td>
+<td align="left">0.2074184</td>
+</tr>
+<tr class="odd">
+<td>Residuals</td>
+<td align="left">28</td>
+<td align="left">2594738.7</td>
+<td align="left">92669.24</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Como p-valor calculado (p=<span class="math inline">\(0.01714\)</span>) é menor que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), rejeita-se <span class="math inline">\(H0\)</span>. Logo,
+ao menos dois tratamentos se diferem entre si</p>
+<p><br><br></p>
+</div>
+<div id="pressuposições-4" class="section level2">
+<h2><span class="header-section-number">5.15</span> Pressuposições</h2>
+<p><br></p>
+<div id="normalidade-dos-erros-7" class="section level3">
+<h3><span class="header-section-number">5.15.1</span> Normalidade dos erros</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mbox{Os erros seguem distribuição normal}\\[.2cm]
+H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="delineamento-em-blocos-casualizados.html#cb170-1"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res))</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  mod$res
+## W = 0.97989, p-value = 0.6151</code></pre>
+<p>Como p-valor calculado (p=<span class="math inline">\(0.6151\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(\alpha=0,05\)</span>), não rejeita-se <span class="math inline">\(H_O\)</span>. Logo, os erros seguem distribuição normal.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="delineamento-em-blocos-casualizados.html#cb172-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">xlab=</span><span class="st">&quot;Quantis teóricos&quot;, pch=16)</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-106"></span>
+<img src="livroagro_files/figure-html/unnamed-chunk-106-1.png" alt="Gráfico QQplot \label{Fig:QQ}" width="672" />
+<p class="caption">
+Figure 5.2: Gráfico QQplot 
+</p>
+</div>
+<p><br></p>
+</div>
+<div id="homogeneidade-de-variâncias-2" class="section level3">
+<h3><span class="header-section-number">5.15.2</span> Homogeneidade de Variâncias</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: &amp; \mbox{ As Variâncias são homogêneas}\\[.2cm]
+H_1: &amp; \mbox{ As Variâncias não são homogêneas}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="delineamento-em-blocos-casualizados.html#cb173-1"></a>(<span class="dt">homog=</span><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>res <span class="op">~</span><span class="st"> </span>Tratamento)))</span></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  mod$res by Tratamento
+## Bartlett&#39;s K-squared = 15.293, df = 14, p-value = 0.3584</code></pre>
+<p>Como p-valor calculado (p=<span class="math inline">\(0.3584\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não rejeita-se <span class="math inline">\(H_0\)</span>. Logo, as Variâncias são homogêneas.</p>
+<p><br></p>
+</div>
+<div id="independência-dos-erros-4" class="section level3">
+<h3><span class="header-section-number">5.15.3</span> Independência dos erros</h3>
+<p><span class="math display">\[\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{Os erros são independentes}\\[.2cm]
+H_1: \mbox{Os erros não são independentes}.
+\end{array}
+\right.
+\end{eqnarray*}\]</span></p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="delineamento-em-blocos-casualizados.html#cb175-1"></a>(<span class="dt">ind=</span>lmtest<span class="op">::</span><span class="kw">dwtest</span>(mod))</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  mod
+## DW = 2.9611, p-value = 0.9272
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<p>Como p-valor calculado (p=<span class="math inline">\(0.9272\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não rejeita-se <span class="math inline">\(H_0\)</span>. Logo, os erros são independentes. A Figura  apresenta os resíduos brutos. Percebe-se que os resíduos estão distribuídos de forma totalmente aleatória, evidenciando a sua independência.</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="delineamento-em-blocos-casualizados.html#cb177-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>res, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Resíduos brutos&#39;</span>)</span>
+<span id="cb177-2"><a href="delineamento-em-blocos-casualizados.html#cb177-2"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-109"></span>
+<img src="livroagro_files/figure-html/unnamed-chunk-109-1.png" alt="Gráfico de resíduos brutos \label{fig:res}" width="672" />
+<p class="caption">
+Figure 5.3: Gráfico de resíduos brutos 
+</p>
+</div>
+<p><br><br></p>
+</div>
+</div>
+<div id="teste-de-comparações" class="section level2">
+<h2><span class="header-section-number">5.16</span> Teste de comparações</h2>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="delineamento-em-blocos-casualizados.html#cb178-1"></a>mod<span class="fl">.1</span> =<span class="st"> </span>easyanova<span class="op">::</span><span class="kw">ea1</span>(dados[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>)], <span class="dt">design=</span><span class="dv">2</span>, <span class="dt">plot=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="delineamento-em-blocos-casualizados.html#cb179-1"></a>tabela=<span class="kw">cbind</span>(mod<span class="fl">.1</span><span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">1</span>],</span>
+<span id="cb179-2"><a href="delineamento-em-blocos-casualizados.html#cb179-2"></a>             mod<span class="fl">.1</span><span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">2</span>],</span>
+<span id="cb179-3"><a href="delineamento-em-blocos-casualizados.html#cb179-3"></a>             mod<span class="fl">.1</span><span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">8</span>])</span>
+<span id="cb179-4"><a href="delineamento-em-blocos-casualizados.html#cb179-4"></a><span class="kw">names</span>(tabela)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]=<span class="kw">c</span>(<span class="st">&quot;Cultivar&quot;</span>,<span class="st">&quot;Média&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb179-5"><a href="delineamento-em-blocos-casualizados.html#cb179-5"></a><span class="kw">kable</span>(tabela, <span class="dt">align =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">booktabs=</span>T, <span class="dt">caption=</span><span class="st">&quot;Teste de comparação de Scott-Knott&quot;</span>, <span class="dt">format=</span><span class="st">&quot;pandoc&quot;</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">big.mark=</span><span class="st">&quot;.&quot;</span>))</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-110">Table 5.1: </span>Teste de comparação de Scott-Knott</caption>
+<thead>
+<tr class="header">
+<th align="left">Cultivar</th>
+<th align="left">Média</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">T 3</td>
+<td align="left">3.012.347</td>
+<td>a</td>
+</tr>
+<tr class="even">
+<td align="left">T 12</td>
+<td align="left">2.987.653</td>
+<td>a</td>
+</tr>
+<tr class="odd">
+<td align="left">T 5</td>
+<td align="left">2.802.470</td>
+<td>a</td>
+</tr>
+<tr class="even">
+<td align="left">T 2</td>
+<td align="left">2.555.553</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td align="left">T 1</td>
+<td align="left">2.543.207</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td align="left">T 15</td>
+<td align="left">2.524.690</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td align="left">T 9</td>
+<td align="left">2.518.520</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td align="left">T 13</td>
+<td align="left">2.506.177</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td align="left">T 4</td>
+<td align="left">2.444.443</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td align="left">T 11</td>
+<td align="left">2.407.407</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td align="left">T 8</td>
+<td align="left">2.271.603</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td align="left">T 7</td>
+<td align="left">2.253.087</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td align="left">T 14</td>
+<td align="left">2.222.220</td>
+<td>b</td>
+</tr>
+<tr class="even">
+<td align="left">T 6</td>
+<td align="left">2.172.840</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td align="left">T 10</td>
+<td align="left">2.055.553</td>
+<td>b</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="delineamento-em-blocos-casualizados.html#cb180-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
+<span id="cb180-2"><a href="delineamento-em-blocos-casualizados.html#cb180-2"></a><span class="kw">with</span>(dados,<span class="kw">dbc</span>(Tratamento, bloco,resp, <span class="dt">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL      SQ     QM     Fc   Pr&gt;Fc
+## Tratamento 14 3302891 235921 2.5458 0.01714
+## Bloco       2  308550 154275 1.6648 0.20742
+## Residuo    28 2594739  92669               
+## Total      44 6206180                      
+## ------------------------------------------------------------------------
+## CV = 12.25 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## valor-p:  0.6150834 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.1187836 
+## De acordo com o teste de oneillmathews a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     T 3     3012.347 
+## a     T 12    2987.653 
+## ab    T 5     2802.47 
+## ab    T 2     2555.553 
+## ab    T 1     2543.207 
+## ab    T 15    2524.69 
+## ab    T 9     2518.52 
+## ab    T 13    2506.177 
+## ab    T 4     2444.443 
+## ab    T 11    2407.407 
+## ab    T 8     2271.603 
+## ab    T 7     2253.087 
+## ab    T 14    2222.22 
+## ab    T 6     2172.84 
+##  b    T 10    2055.553 
+## ------------------------------------------------------------------------</code></pre>
 <p><br><br><br><br></p>
 <hr />
 </div>
@@ -1357,8 +1522,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="esquema-fatorial-2-fatores.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="esquema-de-parcelas-subdivididas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="transformação-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="delineamento-em-quadrado-latino.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

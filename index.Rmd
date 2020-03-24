@@ -166,8 +166,6 @@ Criando uma função para fazer um croqui (Número de colunas igual a número de
 
 <br>
 
-<div style="column-count: 1;">
-
 ```{r}
 # Não alterar os comandos da função
 library(agricolae)
@@ -463,8 +461,6 @@ dic(tratamentos, resposta)
 
 **Dados reais de um experimento conduzido na Universidade Estadual de Londrina**
 
-<div style="column-count: 2;">
-
 ![](Romã.jpg)
 
 Um experimento foi conduzido com o objetivo de estudar diferentes produtos para redução da perda de massa em pós-colheita de frutos de romã. O experimento foi conduzido em delineamento inteiramente casualizado com quatro repetições.
@@ -477,8 +473,6 @@ Um experimento foi conduzido com o objetivo de estudar diferentes produtos para 
 - T4: Óleo de Laranja Interno + Externo
 - T5: Hipoclorito de sódio Externo
 - T6: Hipoclorito de sódio Interno + Externo
-
-</div>
 
 <br>
 
@@ -713,7 +707,7 @@ Obs. O Comando do pacote laercio (Versão 1.0-1) não funciona no Rmarkdown e ge
 
 O Erro gerado é: 
 
-`Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,:line 4 did not have 2 elements`
+``Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,:line 4 did not have 2 elements``
 
 
 <br><br><br><br>
@@ -891,16 +885,11 @@ Se o intervalo de confiança incluir o valor $\lambda = 1$, isto quer dizer que 
 
 ****
 
-
-<div style="column-count: 2;">
-
 ![](pessego.jpg)
 
 Vamos considerar os dados adaptados de ZAMBÃO; SAMPAIO; BARBIN, 1982 (Livro Planejamento e Análise Estatística de Experimentos Agronômicos - Décio Barbin) como exemplo, em que o pesquisador pretende comparar quatro cultivares de pêssego quanto ao enraizamento de estacas. Foi utilizado cinco repetições por tratamento e o delineamento experimental foi inteiramente casualizado. 
 
 **Fonte da foto**: Rosa, G.G., 2014 (Pelotas)
-
-</div>
 
 <br><br>
 
@@ -1496,8 +1485,6 @@ croqui(trat,r=3)
 
 **Exemplo do Livro Planejamento e Análise Estatística de Experimentos Agronômicos (2013) - Décio Barbin - pg. 72**
 
-<div style="column-count: 2;">
-
 ![](laranja.png)
 
 Um experimento foi conduzido com o objetivo de estudar o comportamento de nove porta-enxertos para a laranjeira Valência. 
@@ -1517,8 +1504,6 @@ Os porta-enxertos são:
 **Delineamento experimental**: Blocos casualizados.
 
 **Repetições/Tratamento**: 3 repetições
-
-</div>
 
 <br>
 
@@ -1707,15 +1692,11 @@ dbc(cultivar,bloco,resposta)
 
 ****
 
-<div style="column-count: 2;">
-
 ![](sojanovo.jpeg)
 
 Um experimento foi realizado com o intuito de avaliar a produtividade de 15 cultivares comerciais de soja no munícipio de Londrina-PR. O experimento foi instalado em Delineamento em blocos casualizados com 3 repetições por tratamento.
 
 **Fonte da foto**: [Agricultura](http://www.agricultura.gov.br/noticias/entra-em-vigor-novo-sistema-de-registro-de-cultivares/@@nitf_galleria)
-
-</div>
 
 <br>
 
@@ -2011,8 +1992,6 @@ croqui(trat)
 
 ****
 
-<div style="column-count: 2;">
-
 Considere um experimento, cujo objetivo foi estudar o efeito da idade de castração no desenvolvimento e produção de suínos, avaliando-se o peso dos leitões. Quatro tratamentos foram estudados:
 
 - A - castração aos 56 dias de idade;
@@ -2025,7 +2004,6 @@ Foi utilizado o delineamento em quadrado latino buscando controlar a variação 
 
 ![](porco.jpg)
 
-</div>
 
 Linhas      | Coluna 1 | Coluna 2 | Coluna 3 | Coluna 4 | Coluna 5 | Totais
 ------------|----------|----------|----------|----------|----------|------------
@@ -2517,7 +2495,6 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-</div>
 
 <br><br><br>
 
@@ -2529,15 +2506,12 @@ croqui(trat,r=3)
 
 <br>
 
-<div style="column-count: 2;">
-
 Um experimento foi conduzido em casa de vegetação em vasos na Universidade Estadual de Londrina. O trabalho tem o objetivo de avaliar a aplicação de dicloroisocianurato de sódio (DUP) em soja em 4 épocas de aplicação em soja inoculada ou não com *Rhizobium* e sua influência sobre o número de nódulos. O experimento foi conduzido em delineamento inteiramente casualizado com cinco repetições.
 
 ![](soja.jpg)
 
 **Fonte da foto**: https://blog.aegro.com.br/inoculante-para-soja/ 
 
-</div>
 
 <br>
 
