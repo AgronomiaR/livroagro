@@ -4,6 +4,10 @@ bookdown::gitbook:
     toc:
       before: |
         <li><a href="./">Aplicações práticas do software R para Agronomia</a></li>
+        <center><img src="CAPA.png"  style="width:200px;height:300px;"></center>
+        <br>
+        <center><b>Gabriel Danilo Shimizu</b></center>
+        <br>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     download: ["pdf", "epub"]

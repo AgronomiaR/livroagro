@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 10 Polinômios Ortogonais | Aplicações práticas do software R para Agronomia</title>
+  <title> 32 Análise de sobrevivência | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um …" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 10 Polinômios Ortogonais | Aplicações práticas do software R para Agronomia" />
+  <meta property="og:title" content=" 32 Análise de sobrevivência | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 10 Polinômios Ortogonais | Aplicações práticas do software R para Agronomia" />
+  <meta name="twitter:title" content=" 32 Análise de sobrevivência | Aplicações práticas do software R para Agronomia" />
   
   <meta name="twitter:description" content="Este é um …" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="esquema-de-parcelas-subdivididas.html"/>
-<link rel="next" href="análise-conjunta.html"/>
+<link rel="prev" href="análise-de-regressão-linear-e-não-linear.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -1036,709 +1036,678 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="polinômios-ortogonais" class="section level1">
-<h1><span class="header-section-number"> 10</span> Polinômios Ortogonais</h1>
+<div id="análise-de-sobrevivência" class="section level1">
+<h1><span class="header-section-number"> 32</span> Análise de sobrevivência</h1>
 <hr />
-<p><br><br><br><br></p>
-<ul>
-<li>A variável analisada na análise de variância nos delineamentos discutidos anteriormente pode ser qualitativa ou quantitativa.</li>
-<li>Uma variável quantitativa é aquela cujos níveis podem ser associados com pontos em uma escala numérica, tal como temperatura, pressão ou tempo.</li>
-<li>Variáveis qualitativas, por outro lado, apresentam valores que não podem ser colocados em ordem de magnitude.</li>
-</ul>
-<p><br></p>
+<p><br><br></p>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-713-1.png" width="480" /></p>
+<p>Análise de sobrevivência, também denominada análise de sobrevida, é um ramo da estatística que estuda o tempo de duração esperado até a ocorrência de um ou mais eventos, tais como morte em organismos biológicos ou falha em sistemas mecânicos. Na agronomia, tem sido bastante utilizada na avaliação residual de produtos fitossanitários em insetos, tempo até a morte em função de um doença, etc.</p>
+<p><br><br></p>
 <hr />
-<div id="teste-f" class="section level2">
-<h2><span class="header-section-number">10.1</span> Teste F</h2>
 <hr />
-<p><br></p>
-<ul>
-<li>Se o efeito de tratamentos for significativo e, os níveis forem quantitativos, deve-se decompor os graus de liberdade dos tratamentos em regressão linear, quadrática e cúbica.</li>
-<li>Em situações em que os níveis da variável possuem o mesmo espaçamento, esta decomposição pode ser feita de modo simples pelo método dos polinômios ortogonais, com o auxílio de coeficientes dados em tabelas.</li>
-</ul>
-<p><br></p>
+<div id="conjunto-de-dados-39" class="section level2">
+<h2><span class="header-section-number">32.1</span> Conjunto de dados</h2>
+<hr />
+<p>O conjunto de dados é de um experimento cujo objetivo é avaliar a mortalidade de insetos em função de alguns produtos comerciais.</p>
+<div class="sourceCode" id="cb1036"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1036-1"><a href="análise-de-sobrevivência.html#cb1036-1"></a>tempo=<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">48</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">48</span>,<span class="dv">48</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">96</span>,<span class="dv">96</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">48</span>,<span class="dv">96</span>,<span class="dv">96</span>,<span class="dv">144</span>,<span class="dv">144</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">72</span>,<span class="dv">96</span>,<span class="dv">96</span>,<span class="dv">120</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">48</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">24</span>,<span class="dv">120</span>,<span class="dv">120</span>,<span class="dv">144</span>,<span class="dv">144</span>,<span class="dv">144</span>,<span class="dv">144</span>,<span class="dv">144</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">144</span>,<span class="dv">144</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">24</span>,<span class="dv">72</span>,<span class="dv">96</span>,<span class="dv">96</span>,<span class="dv">120</span>,<span class="dv">144</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">24</span>,<span class="dv">72</span>,<span class="dv">96</span>,<span class="dv">120</span>,<span class="dv">144</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">72</span>,<span class="dv">96</span>,<span class="dv">168</span>,<span class="dv">168</span>,<span class="dv">168</span>)</span>
+<span id="cb1036-2"><a href="análise-de-sobrevivência.html#cb1036-2"></a><span class="co"># criando vetor de status (Ocorreu ou nao o evento)</span></span>
+<span id="cb1036-3"><a href="análise-de-sobrevivência.html#cb1036-3"></a>status=<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb1036-4"><a href="análise-de-sobrevivência.html#cb1036-4"></a>trat=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&#39;T3&#39;</span>),<span class="dt">e=</span><span class="dv">48</span>)</span>
+<span id="cb1036-5"><a href="análise-de-sobrevivência.html#cb1036-5"></a>dados=<span class="kw">data.frame</span>(trat,tempo,status)</span></code></pre></div>
+<p><br><br></p>
+</div>
+<div id="histograma-5" class="section level2">
+<h2><span class="header-section-number">32.2</span> Histograma</h2>
+<div class="sourceCode" id="cb1037"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1037-1"><a href="análise-de-sobrevivência.html#cb1037-1"></a><span class="kw">hist</span>(tempo)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-715-1.png" width="672" /></p>
+<p><br><br></p>
 <hr />
 </div>
-<div id="quadro-da-análise-de-variância" class="section level2">
-<h2><span class="header-section-number">10.2</span> Quadro da Análise de variância</h2>
+<div id="método-não-paramétrico-de-kaplan-meier" class="section level2">
+<h2><span class="header-section-number">32.3</span> Método não-paramétrico de Kaplan-meier</h2>
 <hr />
-<p><br></p>
+<p><br><br></p>
+<div id="sem-considerar-tratamentos" class="section level3">
+<h3><span class="header-section-number">32.3.1</span> Sem considerar tratamentos</h3>
+<p>Somente uma análise exploratória geral</p>
+<div class="sourceCode" id="cb1038"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1038-1"><a href="análise-de-sobrevivência.html#cb1038-1"></a><span class="kw">library</span>(survival)</span>
+<span id="cb1038-2"><a href="análise-de-sobrevivência.html#cb1038-2"></a><span class="kw">library</span>(survminer)</span>
+<span id="cb1038-3"><a href="análise-de-sobrevivência.html#cb1038-3"></a>KM &lt;-<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">type=</span><span class="st">&quot;kaplan-meier&quot;</span>)</span>
+<span id="cb1038-4"><a href="análise-de-sobrevivência.html#cb1038-4"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## Call: survfit(formula = Surv(tempo, status) ~ 1, type = &quot;kaplan-meier&quot;)
+## 
+##  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+##    10    144      44    0,694  0,0384       0,6231        0,774
+##    24    100      19    0,562  0,0413       0,4870        0,650
+##    48     81       5    0,528  0,0416       0,4522        0,616
+##    72     76      20    0,389  0,0406       0,3169        0,477
+##    96     56      10    0,319  0,0389       0,2517        0,405
+##   120     46       5    0,285  0,0376       0,2198        0,369
+##   144     41      11    0,208  0,0338       0,1515        0,286
+##   168     30      12    0,125  0,0276       0,0811        0,193</code></pre>
+<div class="sourceCode" id="cb1040"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1040-1"><a href="análise-de-sobrevivência.html#cb1040-1"></a><span class="kw">ggsurvplot</span>(</span>
+<span id="cb1040-2"><a href="análise-de-sobrevivência.html#cb1040-2"></a>  <span class="dt">fit =</span> <span class="kw">survfit</span>(<span class="kw">Surv</span>(tempo, status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>),<span class="dt">data=</span>dados, </span>
+<span id="cb1040-3"><a href="análise-de-sobrevivência.html#cb1040-3"></a>  <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, </span>
+<span id="cb1040-4"><a href="análise-de-sobrevivência.html#cb1040-4"></a>  <span class="dt">ylab =</span> <span class="st">&quot;Overall survival probability&quot;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-716-1.png" width="1152" /></p>
+</div>
+<div id="tempo-médio-de-sobrevivência" class="section level3">
+<h3><span class="header-section-number">32.3.2</span> Tempo médio de sobrevivência</h3>
+<div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1041-1"><a href="análise-de-sobrevivência.html#cb1041-1"></a>a=survival<span class="op">:::</span><span class="kw">survmean</span>(KM, <span class="dt">rmean=</span><span class="dv">48</span>)</span>
+<span id="cb1041-2"><a href="análise-de-sobrevivência.html#cb1041-2"></a>a<span class="op">$</span>matrix[<span class="dv">5</span>]</span></code></pre></div>
+<pre><code>##   *rmean 
+## 33,22222</code></pre>
+<p><br><br></p>
+</div>
+<div id="considerando-tratamentos" class="section level3">
+<h3><span class="header-section-number">32.3.3</span> Considerando tratamentos</h3>
+</div>
+<div id="conferindo-diferenças-par-a-par" class="section level3">
+<h3><span class="header-section-number">32.3.4</span> Conferindo diferenças par a par</h3>
+<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="análise-de-sobrevivência.html#cb1043-1"></a>pvalor=<span class="kw">pairwise_survdiff</span>(<span class="kw">Surv</span>(tempo,status)<span class="op">~</span>trat,<span class="dt">data=</span>dados, <span class="dt">rho=</span><span class="dv">0</span>)</span>
+<span id="cb1043-2"><a href="análise-de-sobrevivência.html#cb1043-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(pvalor<span class="op">$</span>p.value)</span></code></pre></div>
 <table>
-<colgroup>
-<col width="12%" />
-<col width="12%" />
-<col width="14%" />
-<col width="22%" />
-<col width="29%" />
-<col width="7%" />
-</colgroup>
 <thead>
 <tr class="header">
-<th align="right">CV</th>
-<th align="center">G.L.</th>
-<th align="center">S.Q.</th>
-<th align="center">Q.M.</th>
-<th align="center">Fcalc</th>
-<th align="left">Ftab</th>
+<th></th>
+<th align="right">T1</th>
+<th align="right">T2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">Trat</td>
-<td align="center"><span class="math inline">\(a-1\)</span></td>
-<td align="center"><span class="math inline">\(SQ_{trat}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{SQ_{trat}}{a-1}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{QM_{trat}}{QM_{Res}}\)</span></td>
-<td align="left"><span class="math inline">\(F(\alpha;GL_{Trat};GL_{Res})\)</span></td>
+<td>T2</td>
+<td align="right">0,0003111</td>
+<td align="right"></td>
 </tr>
 <tr class="even">
-<td align="right"><em>Linear</em></td>
-<td align="center">1</td>
-<td align="center"><span class="math inline">\(SQ_{\hat{y}L}\)</span></td>
-<td align="center"><span class="math inline">\(QM_{\hat{y}L}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{QM_{\hat{y}L}}{QM_{res}}\)</span></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right"><em>Quadrático</em></td>
-<td align="center">1</td>
-<td align="center"><span class="math inline">\(SQ_{\hat{y}Q}\)</span></td>
-<td align="center"><span class="math inline">\(QM_{\hat{y}Q}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{QM_{\hat{y}Q}}{QM_{res}}\)</span></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right"><em>Cúbico</em></td>
-<td align="center">1</td>
-<td align="center"><span class="math inline">\(SQ_{\hat{y}C}\)</span></td>
-<td align="center"><span class="math inline">\(QM_{\hat{y}C}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{QM_{\hat{y}C}}{QM_{res}}\)</span></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="right">resíduo</td>
-<td align="center"><span class="math inline">\(a(b-1)\)</span></td>
-<td align="center"><span class="math inline">\(SQ_{res}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{SQ_{res}}{a(b-1)}\)</span></td>
-<td align="center"></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="right">Total</td>
-<td align="center"><span class="math inline">\(ab-1\)</span></td>
-<td align="center"><span class="math inline">\(SQ_{Total}\)</span></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="left"></td>
+<td>T3</td>
+<td align="right">0,0000000</td>
+<td align="right">0,0006521</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
+<p>Todos diferem entre si</p>
+</div>
+<div id="grafico-por-tratamento-usando-o-método-de-kaplan-meier" class="section level3">
+<h3><span class="header-section-number">32.3.5</span> Grafico por tratamento usando o método de Kaplan-Meier</h3>
+<div class="sourceCode" id="cb1044"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1044-1"><a href="análise-de-sobrevivência.html#cb1044-1"></a>KM1 &lt;-<span class="st"> </span><span class="kw">survfit</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span>trat, <span class="dt">type=</span><span class="st">&quot;kaplan-meier&quot;</span>)</span>
+<span id="cb1044-2"><a href="análise-de-sobrevivência.html#cb1044-2"></a><span class="kw">ggsurvplot</span>(</span>
+<span id="cb1044-3"><a href="análise-de-sobrevivência.html#cb1044-3"></a>  <span class="dt">fit =</span> <span class="kw">survfit</span>(<span class="kw">Surv</span>(tempo, status) <span class="op">~</span><span class="st"> </span>trat),<span class="dt">data=</span>dados, </span>
+<span id="cb1044-4"><a href="análise-de-sobrevivência.html#cb1044-4"></a>  <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, </span>
+<span id="cb1044-5"><a href="análise-de-sobrevivência.html#cb1044-5"></a>  <span class="dt">ylab =</span> <span class="st">&quot;Overall survival probability&quot;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-719-1.png" width="1152" /></p>
+</div>
+<div id="tempo-médio-de-sobrevivência-1" class="section level3">
+<h3><span class="header-section-number">32.3.6</span> Tempo médio de sobrevivência</h3>
+<div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1045-1"><a href="análise-de-sobrevivência.html#cb1045-1"></a>survival<span class="op">:::</span><span class="kw">survmean</span>(KM1, <span class="dt">rmean=</span><span class="dv">48</span>)<span class="op">$</span>matrix[,<span class="dv">5</span>]</span></code></pre></div>
+<pre><code>##  trat=T1  trat=T2  trat=T3 
+## 27,37500 32,12500 40,16667</code></pre>
+<p><br><br></p>
 <hr />
 </div>
-<div id="exemplo-1-7" class="section level2">
-<h2><span class="header-section-number">10.3</span> Exemplo 1</h2>
+</div>
+<div id="modelo-paramétrico" class="section level2">
+<h2><span class="header-section-number">32.4</span> Modelo paramétrico</h2>
 <hr />
-<p><br></p>
-<p><strong>Avaliação e Caracterização de Silagem de Triticale (X <em>Triticosecale</em> Wittimack)</strong></p>
-<p>No Brasil, quando se fala em produção de volumoso conservado, logo se imagina silagem de milho ou sorgo. No entanto, em clima subtropical e temperado, silagens de cereais de inverno tornam-se uma alternativa interessante para produção dos mesmos, principalmente em situações onde culturas de verão não são possíveis de serem cultivadas.</p>
-<p>Assim, um trabalho foi desenvolvido com o objetivo de avaliar a silagem de triticale em substituição à silagem de sorgo na alimentação de bovinos corte. O ensaio foi realizado no Laboratório de análises de Alimentos e Nutrição Animal (LANA) do Departamento de Zootecnia da Universidade Estadual de Londrina.</p>
-<p>Foi estudado a silagem de triticale em substituição a silagem de sorgo com os teores de 0, 25, 50, 75 e 100% de substituição à de sorgo, a fim de melhor avaliar o valor nutritivo deste volumoso. Foi realizada a determinação da matéria seca (MS). O delineamento experimental utilizado foi o inteiramente casualizado com 4 repetições.</p>
-<p>Fonte: <a href="http://www.uel.br/pessoal/silvano/Experimental/R/Polinomios/Sorgo_Sandra.R" class="uri">http://www.uel.br/pessoal/silvano/Experimental/R/Polinomios/Sorgo_Sandra.R</a></p>
-<p><br></p>
-<div id="conjunto-de-dados-7" class="section level3">
-<h3><span class="header-section-number">10.3.1</span> Conjunto de dados</h3>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="polinômios-ortogonais.html#cb337-1"></a>MS=<span class="kw">c</span>(<span class="fl">93.517</span>, <span class="fl">93.246</span>, <span class="fl">93.216</span>, <span class="fl">93.224</span>,</span>
-<span id="cb337-2"><a href="polinômios-ortogonais.html#cb337-2"></a>     <span class="fl">93.168</span>, <span class="fl">93.645</span>, <span class="fl">93.640</span>, <span class="fl">93.357</span>,</span>
-<span id="cb337-3"><a href="polinômios-ortogonais.html#cb337-3"></a>     <span class="fl">92.985</span>, <span class="fl">92.644</span>, <span class="fl">92.506</span>, <span class="fl">92.293</span>, </span>
-<span id="cb337-4"><a href="polinômios-ortogonais.html#cb337-4"></a>     <span class="fl">93.124</span>, <span class="fl">93.375</span>, <span class="fl">93.138</span>, <span class="fl">92.678</span>,</span>
-<span id="cb337-5"><a href="polinômios-ortogonais.html#cb337-5"></a>     <span class="fl">92.529</span>, <span class="fl">92.150</span>, <span class="fl">92.603</span>, <span class="fl">92.415</span>)</span>
-<span id="cb337-6"><a href="polinômios-ortogonais.html#cb337-6"></a>AMOSTRA=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb337-7"><a href="polinômios-ortogonais.html#cb337-7"></a>          <span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,</span>
-<span id="cb337-8"><a href="polinômios-ortogonais.html#cb337-8"></a>          <span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,</span>
-<span id="cb337-9"><a href="polinômios-ortogonais.html#cb337-9"></a>          <span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,</span>
-<span id="cb337-10"><a href="polinômios-ortogonais.html#cb337-10"></a>          <span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>)</span>
-<span id="cb337-11"><a href="polinômios-ortogonais.html#cb337-11"></a>dados=<span class="kw">data.frame</span>(<span class="dt">Amostra=</span><span class="kw">factor</span>(AMOSTRA),MS)</span>
-<span id="cb337-12"><a href="polinômios-ortogonais.html#cb337-12"></a><span class="kw">attach</span>(dados)</span></code></pre></div>
-<p><br></p>
+<p><br><br></p>
+<hr />
+<div id="distribuição-exponencial" class="section level3">
+<h3><span class="header-section-number">32.4.1</span> Distribuição exponencial</h3>
+<hr />
+<p><br><br></p>
 </div>
-<div id="média-e-variância" class="section level3">
-<h3><span class="header-section-number">10.3.2</span> Média e Variância</h3>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="polinômios-ortogonais.html#cb338-1"></a>(<span class="dt">meditrat=</span><span class="kw">tapply</span>(MS,AMOSTRA,mean))</span></code></pre></div>
-<pre><code>##        0       25       50       75      100 
-## 93.30075 93.45250 92.60700 93.07875 92.42425</code></pre>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="polinômios-ortogonais.html#cb340-1"></a>(<span class="dt">variatrat=</span><span class="kw">tapply</span>(MS,AMOSTRA,var))</span></code></pre></div>
-<pre><code>##          0         25         50         75        100 
-## 0.02094492 0.05409100 0.08435000 0.08464092 0.03940758</code></pre>
-<p><br></p>
-</div>
-</div>
-<div id="análise-de-variância-10" class="section level2">
-<h2><span class="header-section-number">10.4</span> Análise de Variância</h2>
-<p><span class="math display">\[\begin{eqnarray*}
-\left\{
-\begin{array}{ll}
-H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{5} \\[.2cm]
-H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
-\end{array}
-\right.
-\end{eqnarray*}\]</span></p>
-<p><br></p>
-</div>
-<div id="análise-de-variância-para-matéria-seca" class="section level2">
-<h2><span class="header-section-number">10.5</span> Análise de Variância para Matéria Seca</h2>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="polinômios-ortogonais.html#cb342-1"></a>mod =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>Amostra)</span>
-<span id="cb342-2"><a href="polinômios-ortogonais.html#cb342-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-## Amostra      4 3.1344  0.7836   13.82 6.42e-05 ***
-## Residuals   15 0.8503  0.0567                     
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><br></p>
-</div>
-<div id="polinômio-até-4-grau" class="section level2">
-<h2><span class="header-section-number">10.6</span> Polinômio até 4 grau</h2>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="polinômios-ortogonais.html#cb344-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">4</span>))</span>
-<span id="cb344-2"><a href="polinômios-ortogonais.html#cb344-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
-<pre><code>##              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-## AMOSTRA       1 1.8092  1.8092  31.916 4.62e-05 ***
-## I(AMOSTRA^2)  1 0.0249  0.0249   0.439 0.517484    
-## I(AMOSTRA^3)  1 0.0067  0.0067   0.117 0.736600    
-## I(AMOSTRA^4)  1 1.2936  1.2936  22.821 0.000245 ***
-## Residuals    15 0.8503  0.0567                     
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><br></p>
-</div>
-<div id="polinômio-de-3-grau" class="section level2">
-<h2><span class="header-section-number">10.7</span> Polinômio de 3 grau</h2>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="polinômios-ortogonais.html#cb346-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>))</span>
-<span id="cb346-2"><a href="polinômios-ortogonais.html#cb346-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
-<pre><code>##              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
-## AMOSTRA       1 1.8092  1.8092  13.502 0.00205 **
-## I(AMOSTRA^2)  1 0.0249  0.0249   0.186 0.67212   
-## I(AMOSTRA^3)  1 0.0067  0.0067   0.050 0.82645   
-## Residuals    16 2.1439  0.1340                   
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><br></p>
-</div>
-<div id="polinômio-de-2-grau" class="section level2">
-<h2><span class="header-section-number">10.8</span> Polinômio de 2 grau</h2>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="polinômios-ortogonais.html#cb348-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb348-2"><a href="polinômios-ortogonais.html#cb348-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
-<pre><code>##              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
-## AMOSTRA       1 1.8092  1.8092  14.302 0.00149 **
-## I(AMOSTRA^2)  1 0.0249  0.0249   0.197 0.66285   
-## Residuals    17 2.1506  0.1265                   
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><br></p>
-</div>
-<div id="polinômio-de-1-grau" class="section level2">
-<h2><span class="header-section-number">10.9</span> Polinômio de 1 grau</h2>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="polinômios-ortogonais.html#cb350-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA)</span>
-<span id="cb350-2"><a href="polinômios-ortogonais.html#cb350-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
-## AMOSTRA      1  1.809  1.8092   14.97 0.00112 **
-## Residuals   18  2.175  0.1209                   
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><br></p>
-</div>
-<div id="coeficientes-do-modelo" class="section level2">
-<h2><span class="header-section-number">10.10</span> Coeficientes do modelo</h2>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="polinômios-ortogonais.html#cb352-1"></a>mod.reg =<span class="st"> </span><span class="kw">lm</span>(MS <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">4</span>))</span>
-<span id="cb352-2"><a href="polinômios-ortogonais.html#cb352-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<div id="sem-considerar-tratamentos-1" class="section level3">
+<h3><span class="header-section-number">32.4.2</span> Sem considerar tratamentos</h3>
+<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="análise-de-sobrevivência.html#cb1047-1"></a>KM &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">dist=</span><span class="st">&quot;exponential&quot;</span>)</span>
+<span id="cb1047-2"><a href="análise-de-sobrevivência.html#cb1047-2"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = MS ~ I(AMOSTRA) + I(AMOSTRA^2) + I(AMOSTRA^3) + 
-##     I(AMOSTRA^4))
+## survreg(formula = Surv(tempo, status) ~ 1, dist = &quot;exponential&quot;)
+##              Value Std. Error    z      p
+## (Intercept) 4,4473     0,0891 49,9 &lt;2e-16
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.40075 -0.09688  0.01388  0.18094  0.37800 
+## Scale fixed at 1 
 ## 
-## Coefficients:
-##                Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   9.330e+01  1.190e-01 783.743  &lt; 2e-16 ***
-## I(AMOSTRA)    1.045e-01  2.659e-02   3.928 0.001341 ** 
-## I(AMOSTRA^2) -6.139e-03  1.335e-03  -4.598 0.000348 ***
-## I(AMOSTRA^3)  1.008e-04  2.134e-05   4.724 0.000272 ***
-## I(AMOSTRA^4) -5.075e-07  1.062e-07  -4.777 0.000245 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.2381 on 15 degrees of freedom
-## Multiple R-squared:  0.7866, Adjusted R-squared:  0.7297 
-## F-statistic: 13.82 on 4 and 15 DF,  p-value: 6.422e-05</code></pre>
-<p><br></p>
+## Exponential distribution
+## Loglik(model)= -686,4   Loglik(intercept only)= -686,4
+## Number of Newton-Raphson Iterations: 4 
+## n= 144</code></pre>
+<div class="sourceCode" id="cb1049"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1049-1"><a href="análise-de-sobrevivência.html#cb1049-1"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, <span class="fl">.99</span>, <span class="dt">by =</span> <span class="fl">.01</span>)</span>
+<span id="cb1049-2"><a href="análise-de-sobrevivência.html#cb1049-2"></a>t_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat=</span><span class="kw">paste</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>)), </span>
+<span id="cb1049-3"><a href="análise-de-sobrevivência.html#cb1049-3"></a>                 <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1049-4"><a href="análise-de-sobrevivência.html#cb1049-4"></a>smod &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="kw">c</span>(t_<span class="dv">0</span>), <span class="co"># acrescentar os tratamentos </span></span>
+<span id="cb1049-5"><a href="análise-de-sobrevivência.html#cb1049-5"></a>                   <span class="dt">surv =</span> <span class="kw">rep</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>s, <span class="dt">times =</span> <span class="dv">1</span>), <span class="co"># mudar o times</span></span>
+<span id="cb1049-6"><a href="análise-de-sobrevivência.html#cb1049-6"></a>                   <span class="dt">upper =</span> <span class="ot">NA</span>, <span class="dt">lower =</span> <span class="ot">NA</span>)</span>
+<span id="cb1049-7"><a href="análise-de-sobrevivência.html#cb1049-7"></a><span class="kw">ggsurvplot</span>(smod)  </span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-721-1.png" width="1152" /></p>
 </div>
-<div id="curva-estimada" class="section level2">
-<h2><span class="header-section-number">10.11</span> Curva Estimada</h2>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="polinômios-ortogonais.html#cb354-1"></a>m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(MS<span class="op">~</span><span class="kw">poly</span>(AMOSTRA, <span class="dt">degree=</span><span class="dv">1</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
-<span id="cb354-2"><a href="polinômios-ortogonais.html#cb354-2"></a><span class="co"># ou</span></span>
-<span id="cb354-3"><a href="polinômios-ortogonais.html#cb354-3"></a>m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(MS<span class="op">~</span>AMOSTRA)</span>
-<span id="cb354-4"><a href="polinômios-ortogonais.html#cb354-4"></a><span class="kw">anova</span>(m1)</span></code></pre></div>
-<pre><code>## Analysis of Variance Table
+<div id="considerando-tratamentos-1" class="section level3">
+<h3><span class="header-section-number">32.4.3</span> Considerando tratamentos</h3>
+<div class="sourceCode" id="cb1050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1050-1"><a href="análise-de-sobrevivência.html#cb1050-1"></a><span class="kw">library</span>(survival)</span>
+<span id="cb1050-2"><a href="análise-de-sobrevivência.html#cb1050-2"></a><span class="kw">library</span>(survminer)</span>
+<span id="cb1050-3"><a href="análise-de-sobrevivência.html#cb1050-3"></a>KM2 &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span>trat, <span class="dt">dist=</span><span class="st">&quot;exponential&quot;</span>)</span>
+<span id="cb1050-4"><a href="análise-de-sobrevivência.html#cb1050-4"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ 1, dist = &quot;exponential&quot;)
+##              Value Std. Error    z      p
+## (Intercept) 4,4473     0,0891 49,9 &lt;2e-16
 ## 
-## Response: MS
-##                                       Df Sum Sq Mean Sq F value   Pr(&gt;F)   
-## poly(AMOSTRA, degree = 1, raw = TRUE)  1 1.8092 1.80923   14.97 0.001124 **
-## Residuals                             18 2.1755 0.12086                    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><br></p>
+## Scale fixed at 1 
+## 
+## Exponential distribution
+## Loglik(model)= -686,4   Loglik(intercept only)= -686,4
+## Number of Newton-Raphson Iterations: 4 
+## n= 144</code></pre>
+<div class="sourceCode" id="cb1052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1052-1"><a href="análise-de-sobrevivência.html#cb1052-1"></a><span class="kw">anova</span>(KM2)</span></code></pre></div>
+<pre><code>##      Df Deviance Resid. Df    -2*LL     Pr(&gt;Chi)
+## NULL NA       NA       143 1372,722           NA
+## trat  2 44,24522       141 1328,477 2,467593e-10</code></pre>
+<div class="sourceCode" id="cb1054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1054-1"><a href="análise-de-sobrevivência.html#cb1054-1"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, <span class="fl">.99</span>, <span class="dt">by =</span> <span class="fl">.01</span>)</span>
+<span id="cb1054-2"><a href="análise-de-sobrevivência.html#cb1054-2"></a>t_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM2, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T1&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1054-3"><a href="análise-de-sobrevivência.html#cb1054-3"></a>t_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM2, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T2&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1054-4"><a href="análise-de-sobrevivência.html#cb1054-4"></a>t_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM2, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T3&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1054-5"><a href="análise-de-sobrevivência.html#cb1054-5"></a>smod &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="kw">c</span>(t_<span class="dv">0</span>, t_<span class="dv">1</span>, t_<span class="dv">2</span>), <span class="co"># acrescentar os tratamentos </span></span>
+<span id="cb1054-6"><a href="análise-de-sobrevivência.html#cb1054-6"></a>                   <span class="dt">surv =</span> <span class="kw">rep</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>s, <span class="dt">times =</span> <span class="dv">3</span>), <span class="co"># mudar o times</span></span>
+<span id="cb1054-7"><a href="análise-de-sobrevivência.html#cb1054-7"></a>                   <span class="dt">strata =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>), <span class="dt">each =</span> <span class="kw">length</span>(s)),</span>
+<span id="cb1054-8"><a href="análise-de-sobrevivência.html#cb1054-8"></a>                   <span class="dt">upper =</span> <span class="ot">NA</span>, <span class="dt">lower =</span> <span class="ot">NA</span>)</span>
+<span id="cb1054-9"><a href="análise-de-sobrevivência.html#cb1054-9"></a><span class="kw">ggsurvplot</span>(smod)  </span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-722-1.png" width="1152" /></p>
+<p><br><br></p>
+<hr />
 </div>
-<div id="usando-o-expdes.pt-1" class="section level2">
-<h2><span class="header-section-number">10.12</span> Usando o ExpDes.pt</h2>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="polinômios-ortogonais.html#cb356-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb356-2"><a href="polinômios-ortogonais.html#cb356-2"></a><span class="kw">dic</span>(AMOSTRA,MS,<span class="dt">quali =</span> F)</span></code></pre></div>
-<pre><code>## ------------------------------------------------------------------------
-## Quadro da analise de variancia
-## ------------------------------------------------------------------------
-##            GL     SQ      QM     Fc      Pr&gt;Fc
-## Tratamento  4 3.1344 0.78361 13.823 6.4215e-05
-## Residuo    15 0.8503 0.05669                  
-## Total      19 3.9847                          
-## ------------------------------------------------------------------------
-## CV = 0.26 %
-## 
-## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
-## Valor-p:  0.8052063 
-## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
-## ------------------------------------------------------------------------
-## 
-## ------------------------------------------------------------------------
-## Teste de homogeneidade de variancia 
-## valor-p:  0.807195 
-## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
-## ------------------------------------------------------------------------
-## 
-## Ajuste de modelos polinomiais de regressao
-## ------------------------------------------------------------------------
-## 
-## Modelo Linear
-## ============================================
-##    Estimativa Erro.padrao     tc     valor.p
-## --------------------------------------------
-## b0  93.3980     0.0922    1,012.8630    0   
-## b1  -0.0085     0.0015     -5.6494   0.00005
-## --------------------------------------------
-## 
-## R2 do modelo linear
-## --------
-## 0.577212
-## --------
-## 
-## Analise de variancia do modelo linear
-## ===================================================
-##                      GL   SQ     QM    Fc   valor.p
-## ---------------------------------------------------
-## Efeito linear        1  1.8092 1.8092 31.92  5e-05 
-## Desvios de Regressao 3  1.3252 0.4417 7.79  0.00228
-## Residuos             15 0.8503 0.0567              
-## ---------------------------------------------------
-## ------------------------------------------------------------------------
-## 
-## Modelo quadratico
-## ==========================================
-##    Estimativa Erro.padrao    tc    valor.p
-## ------------------------------------------
-## b0  93.3558     0.1120    833.2653    0   
-## b1  -0.0051     0.0053    -0.9669  0.3489 
-## b2  -0.00003    0.00005   -0.6629  0.5175 
-## ------------------------------------------
-## 
-## R2 do modelo quadratico
-## --------
-## 0.585158
-## --------
-## 
-## Analise de variancia do modelo quadratico
-## ===================================================
-##                      GL   SQ     QM    Fc   valor.p
-## ---------------------------------------------------
-## Efeito linear        1  1.8092 1.8092 31.92  5e-05 
-## Efeito quadratico    1  0.0249 0.0249 0.44  0.51748
-## Desvios de Regressao 2  1.3003 0.6501 11.47 0.00095
-## Residuos             15 0.8503 0.0567              
-## ---------------------------------------------------
-## ------------------------------------------------------------------------
-## 
-## Modelo cubico
-## ==========================================
-##    Estimativa Erro.padrao    tc    valor.p
-## ------------------------------------------
-## b0  93.3687     0.1182    789.9773    0   
-## b1  -0.0088     0.0120    -0.7343  0.4741 
-## b2   0.0001     0.0003     0.2274  0.8232 
-## b3 -0.000001       0      -0.3427  0.7366 
-## ------------------------------------------
-## 
-## R2 do modelo cubico
-## --------
-## 0.587282
-## --------
-## 
-## Analise de variancia do modelo cubico
-## ===================================================
-##                      GL   SQ     QM    Fc   valor.p
-## ---------------------------------------------------
-## Efeito linear        1  1.8092 1.8092 31.92  5e-05 
-## Efeito quadratico    1  0.0249 0.0249 0.44  0.51748
-## Efeito cubico        1  0.0067 0.0067 0.12  0.7366 
-## Desvios de Regressao 1  1.2936 1.2936 22.82 0.00024
-## Residuos             15 0.8503 0.0567              
-## ---------------------------------------------------
-## ------------------------------------------------------------------------</code></pre>
-<p><br></p>
 </div>
-<div id="gráfico" class="section level2">
-<h2><span class="header-section-number">10.13</span> Gráfico</h2>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="polinômios-ortogonais.html#cb358-1"></a><span class="kw">plot</span>(MS<span class="op">~</span>AMOSTRA,<span class="dt">ylab=</span><span class="st">&quot;Massa Seca&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot; &quot;</span>)</span>
-<span id="cb358-2"><a href="polinômios-ortogonais.html#cb358-2"></a><span class="kw">abline</span>(m1,<span class="dt">col=</span><span class="dv">2</span>)</span>
-<span id="cb358-3"><a href="polinômios-ortogonais.html#cb358-3"></a>dose=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>)</span>
-<span id="cb358-4"><a href="polinômios-ortogonais.html#cb358-4"></a><span class="kw">points</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="st">&quot;*&quot;</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
-<p><br></p>
+<div id="distribuição-gaussiano" class="section level2">
+<h2><span class="header-section-number">32.5</span> Distribuição gaussiano</h2>
+<hr />
+<div id="sem-considerar-tratamentos-2" class="section level3">
+<h3><span class="header-section-number">32.5.1</span> Sem considerar tratamentos</h3>
+<div class="sourceCode" id="cb1055"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1055-1"><a href="análise-de-sobrevivência.html#cb1055-1"></a>KM &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">dist=</span><span class="st">&quot;gaussian&quot;</span>)</span>
+<span id="cb1055-2"><a href="análise-de-sobrevivência.html#cb1055-2"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ 1, dist = &quot;gaussian&quot;)
+##               Value Std. Error    z      p
+## (Intercept) 78,8982     5,9303 13,3 &lt;2e-16
+## Log(scale)   4,2519     0,0652 65,2 &lt;2e-16
+## 
+## Scale= 70,2 
+## 
+## Gaussian distribution
+## Loglik(model)= -735,6   Loglik(intercept only)= -735,6
+## Number of Newton-Raphson Iterations: 5 
+## n= 144</code></pre>
 </div>
-<div id="gráfico-somente-com-a-média" class="section level2">
-<h2><span class="header-section-number">10.14</span> Gráfico somente com a média</h2>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="polinômios-ortogonais.html#cb359-1"></a><span class="kw">plot</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">las=</span><span class="dv">1</span>)</span>
-<span id="cb359-2"><a href="polinômios-ortogonais.html#cb359-2"></a><span class="kw">curve</span>(m1<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>m1<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>x, <span class="dt">add=</span>T)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
+<div id="considerando-tratamentos-2" class="section level3">
+<h3><span class="header-section-number">32.5.2</span> Considerando tratamentos</h3>
+<div class="sourceCode" id="cb1057"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1057-1"><a href="análise-de-sobrevivência.html#cb1057-1"></a>KM3 &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span>trat, <span class="dt">dist=</span><span class="st">&quot;gaussian&quot;</span>)</span>
+<span id="cb1057-2"><a href="análise-de-sobrevivência.html#cb1057-2"></a><span class="kw">summary</span>(KM3)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ trat, dist = &quot;gaussian&quot;)
+##               Value Std. Error     z       p
+## (Intercept) 36,3750     8,5829  4,24 2,3e-05
+## tratT2      37,3906    12,1867  3,07  0,0022
+## tratT3      89,7879    12,3737  7,26 4,0e-13
+## Log(scale)   4,0854     0,0649 62,96 &lt; 2e-16
+## 
+## Scale= 59,5 
+## 
+## Gaussian distribution
+## Loglik(model)= -712,5   Loglik(intercept only)= -735,6
+##  Chisq= 46,23 on 2 degrees of freedom, p= 9,2e-11 
+## Number of Newton-Raphson Iterations: 4 
+## n= 144</code></pre>
+<div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1059-1"><a href="análise-de-sobrevivência.html#cb1059-1"></a><span class="kw">anova</span>(KM3)</span></code></pre></div>
+<pre><code>##      Df Deviance Resid. Df    -2*LL     Pr(&gt;Chi)
+## NULL NA       NA       142 1471,295           NA
+## trat  2 46,22645       140 1425,069 9,163355e-11</code></pre>
+<div class="sourceCode" id="cb1061"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1061-1"><a href="análise-de-sobrevivência.html#cb1061-1"></a>t_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM3, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T1&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;lp&quot;</span>)</span>
+<span id="cb1061-2"><a href="análise-de-sobrevivência.html#cb1061-2"></a>t_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM3, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T2&quot;</span>),<span class="dt">type =</span> <span class="st">&quot;lp&quot;</span>)</span>
+<span id="cb1061-3"><a href="análise-de-sobrevivência.html#cb1061-3"></a>t_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM3, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T3&quot;</span>),<span class="dt">type =</span> <span class="st">&quot;lp&quot;</span>)</span>
+<span id="cb1061-4"><a href="análise-de-sobrevivência.html#cb1061-4"></a>x_grid &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">400</span></span>
+<span id="cb1061-5"><a href="análise-de-sobrevivência.html#cb1061-5"></a>sur_curves &lt;-<span class="st"> </span><span class="kw">sapply</span>(t_<span class="dv">0</span>, <span class="cf">function</span>(x)survreg.distributions[[KM3<span class="op">$</span>dist]]<span class="op">$</span><span class="kw">density</span>((x <span class="op">-</span><span class="st"> </span>x_grid)<span class="op">/</span>KM3<span class="op">$</span>scale)[, <span class="dv">1</span>])</span>
+<span id="cb1061-6"><a href="análise-de-sobrevivência.html#cb1061-6"></a>sur_curves1 &lt;-<span class="st"> </span><span class="kw">sapply</span>(t_<span class="dv">1</span>, <span class="cf">function</span>(x)survreg.distributions[[KM3<span class="op">$</span>dist]]<span class="op">$</span><span class="kw">density</span>((x <span class="op">-</span><span class="st"> </span>x_grid)<span class="op">/</span>KM3<span class="op">$</span>scale)[, <span class="dv">1</span>])</span>
+<span id="cb1061-7"><a href="análise-de-sobrevivência.html#cb1061-7"></a>sur_curves2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(t_<span class="dv">2</span>, <span class="cf">function</span>(x)survreg.distributions[[KM3<span class="op">$</span>dist]]<span class="op">$</span><span class="kw">density</span>((x <span class="op">-</span><span class="st"> </span>x_grid)<span class="op">/</span>KM3<span class="op">$</span>scale)[, <span class="dv">1</span>])</span>
+<span id="cb1061-8"><a href="análise-de-sobrevivência.html#cb1061-8"></a><span class="kw">matplot</span>(x_grid, sur_curves, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">1</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb1061-9"><a href="análise-de-sobrevivência.html#cb1061-9"></a><span class="kw">lines</span>(x_grid,sur_curves1,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb1061-10"><a href="análise-de-sobrevivência.html#cb1061-10"></a><span class="kw">lines</span>(x_grid,sur_curves2,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-724-1.png" width="1152" /></p>
+<p><br><br></p>
+<hr />
+</div>
+</div>
+<div id="distribuição-logistico" class="section level2">
+<h2><span class="header-section-number">32.6</span> Distribuição logistico</h2>
+<hr />
+<div id="sem-considerar-tratamentos-3" class="section level3">
+<h3><span class="header-section-number">32.6.1</span> Sem considerar tratamentos</h3>
+<div class="sourceCode" id="cb1062"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1062-1"><a href="análise-de-sobrevivência.html#cb1062-1"></a>KM &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">dist=</span><span class="st">&quot;logistic&quot;</span>)</span>
+<span id="cb1062-2"><a href="análise-de-sobrevivência.html#cb1062-2"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ 1, dist = &quot;logistic&quot;)
+##               Value Std. Error    z      p
+## (Intercept) 72,5020     6,3768 11,4 &lt;2e-16
+## Log(scale)   3,7594     0,0722 52,0 &lt;2e-16
+## 
+## Scale= 42,9 
+## 
+## Logistic distribution
+## Loglik(model)= -739,5   Loglik(intercept only)= -739,5
+## Number of Newton-Raphson Iterations: 5 
+## n= 144</code></pre>
+</div>
+<div id="considerando-tratamentos-3" class="section level3">
+<h3><span class="header-section-number">32.6.2</span> Considerando tratamentos</h3>
+<div class="sourceCode" id="cb1064"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1064-1"><a href="análise-de-sobrevivência.html#cb1064-1"></a>KM4 &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span>trat, <span class="dt">dist=</span><span class="st">&quot;logistic&quot;</span>)</span>
+<span id="cb1064-2"><a href="análise-de-sobrevivência.html#cb1064-2"></a><span class="kw">summary</span>(KM4)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ trat, dist = &quot;logistic&quot;)
+##               Value Std. Error     z       p
+## (Intercept) 35,4968     7,7296  4,59 4,4e-06
+## tratT2      31,3587    12,2695  2,56   0,011
+## tratT3      98,9211    12,4589  7,94 2,0e-15
+## Log(scale)   3,5544     0,0737 48,20 &lt; 2e-16
+## 
+## Scale= 35 
+## 
+## Logistic distribution
+## Loglik(model)= -714,3   Loglik(intercept only)= -739,5
+##  Chisq= 50,45 on 2 degrees of freedom, p= 1,1e-11 
+## Number of Newton-Raphson Iterations: 4 
+## n= 144</code></pre>
+<div class="sourceCode" id="cb1066"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1066-1"><a href="análise-de-sobrevivência.html#cb1066-1"></a><span class="kw">anova</span>(KM4)</span></code></pre></div>
+<pre><code>##      Df Deviance Resid. Df    -2*LL     Pr(&gt;Chi)
+## NULL NA       NA       142 1479,091           NA
+## trat  2 50,45218       140 1428,639 1,107765e-11</code></pre>
+<div class="sourceCode" id="cb1068"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1068-1"><a href="análise-de-sobrevivência.html#cb1068-1"></a>t_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM4, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T1&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;lp&quot;</span>)</span>
+<span id="cb1068-2"><a href="análise-de-sobrevivência.html#cb1068-2"></a>t_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM4, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T2&quot;</span>),<span class="dt">type =</span> <span class="st">&quot;lp&quot;</span>)</span>
+<span id="cb1068-3"><a href="análise-de-sobrevivência.html#cb1068-3"></a>t_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM4, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T3&quot;</span>),<span class="dt">type =</span> <span class="st">&quot;lp&quot;</span>)</span>
+<span id="cb1068-4"><a href="análise-de-sobrevivência.html#cb1068-4"></a>x_grid &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">400</span></span>
+<span id="cb1068-5"><a href="análise-de-sobrevivência.html#cb1068-5"></a>sur_curves &lt;-<span class="st"> </span><span class="kw">sapply</span>(t_<span class="dv">0</span>, <span class="cf">function</span>(x)survreg.distributions[[KM4<span class="op">$</span>dist]]<span class="op">$</span><span class="kw">density</span>((x <span class="op">-</span><span class="st"> </span>x_grid)<span class="op">/</span>KM4<span class="op">$</span>scale)[, <span class="dv">1</span>])</span>
+<span id="cb1068-6"><a href="análise-de-sobrevivência.html#cb1068-6"></a>sur_curves1 &lt;-<span class="st"> </span><span class="kw">sapply</span>(t_<span class="dv">1</span>, <span class="cf">function</span>(x)survreg.distributions[[KM4<span class="op">$</span>dist]]<span class="op">$</span><span class="kw">density</span>((x <span class="op">-</span><span class="st"> </span>x_grid)<span class="op">/</span>KM4<span class="op">$</span>scale)[, <span class="dv">1</span>])</span>
+<span id="cb1068-7"><a href="análise-de-sobrevivência.html#cb1068-7"></a>sur_curves2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(t_<span class="dv">2</span>, <span class="cf">function</span>(x)survreg.distributions[[KM4<span class="op">$</span>dist]]<span class="op">$</span><span class="kw">density</span>((x <span class="op">-</span><span class="st"> </span>x_grid)<span class="op">/</span>KM4<span class="op">$</span>scale)[, <span class="dv">1</span>])</span>
+<span id="cb1068-8"><a href="análise-de-sobrevivência.html#cb1068-8"></a><span class="kw">matplot</span>(x_grid, sur_curves, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lty =</span> <span class="dv">1</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb1068-9"><a href="análise-de-sobrevivência.html#cb1068-9"></a><span class="kw">lines</span>(x_grid,sur_curves1,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb1068-10"><a href="análise-de-sobrevivência.html#cb1068-10"></a><span class="kw">lines</span>(x_grid,sur_curves2,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-726-1.png" width="1152" /></p>
+<p><br><br></p>
+<hr />
+</div>
+</div>
+<div id="distribuição-log-normal" class="section level2">
+<h2><span class="header-section-number">32.7</span> Distribuição Log normal</h2>
+<hr />
+<div id="sem-considerar-tratamentos-4" class="section level3">
+<h3><span class="header-section-number">32.7.1</span> Sem considerar tratamentos</h3>
+<div class="sourceCode" id="cb1069"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1069-1"><a href="análise-de-sobrevivência.html#cb1069-1"></a>KM &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">dist=</span><span class="st">&quot;lognormal&quot;</span>)</span>
+<span id="cb1069-2"><a href="análise-de-sobrevivência.html#cb1069-2"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ 1, dist = &quot;lognormal&quot;)
+##              Value Std. Error     z       p
+## (Intercept) 3,8658     0,1080 35,80 &lt; 2e-16
+## Log(scale)  0,2438     0,0648  3,76 0,00017
+## 
+## Scale= 1,28 
+## 
+## Log Normal distribution
+## Loglik(model)= -681,1   Loglik(intercept only)= -681,1
+## Number of Newton-Raphson Iterations: 5 
+## n= 144</code></pre>
+</div>
+<div id="considerando-tratamentos-4" class="section level3">
+<h3><span class="header-section-number">32.7.2</span> Considerando tratamentos</h3>
+<div class="sourceCode" id="cb1071"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1071-1"><a href="análise-de-sobrevivência.html#cb1071-1"></a>KM5 &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span>trat, <span class="dt">dist=</span><span class="st">&quot;lognormal&quot;</span>)</span>
+<span id="cb1071-2"><a href="análise-de-sobrevivência.html#cb1071-2"></a><span class="kw">summary</span>(KM5)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ trat, dist = &quot;lognormal&quot;)
+##              Value Std. Error     z      p
+## (Intercept) 3,2165     0,1655 19,43 &lt;2e-16
+## tratT2      0,5650     0,2352  2,40  0,016
+## tratT3      1,3925     0,2394  5,82  6e-09
+## Log(scale)  0,1369     0,0644  2,12  0,034
+## 
+## Scale= 1,15 
+## 
+## Log Normal distribution
+## Loglik(model)= -665,4   Loglik(intercept only)= -681,1
+##  Chisq= 31,54 on 2 degrees of freedom, p= 1,4e-07 
+## Number of Newton-Raphson Iterations: 4 
+## n= 144</code></pre>
+<div class="sourceCode" id="cb1073"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1073-1"><a href="análise-de-sobrevivência.html#cb1073-1"></a><span class="kw">anova</span>(KM5)</span></code></pre></div>
+<pre><code>##      Df Deviance Resid. Df    -2*LL     Pr(&gt;Chi)
+## NULL NA       NA       142 1362,288           NA
+## trat  2 31,54326       140 1330,744 1,414059e-07</code></pre>
+<div class="sourceCode" id="cb1075"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1075-1"><a href="análise-de-sobrevivência.html#cb1075-1"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, <span class="fl">.99</span>, <span class="dt">by =</span> <span class="fl">.01</span>)</span>
+<span id="cb1075-2"><a href="análise-de-sobrevivência.html#cb1075-2"></a>t_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM5, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T1&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1075-3"><a href="análise-de-sobrevivência.html#cb1075-3"></a>t_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM5, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T2&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1075-4"><a href="análise-de-sobrevivência.html#cb1075-4"></a>t_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM5, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T3&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1075-5"><a href="análise-de-sobrevivência.html#cb1075-5"></a>smod &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="kw">c</span>(t_<span class="dv">0</span>, t_<span class="dv">1</span>, t_<span class="dv">2</span>), <span class="co"># acrescentar os tratamentos </span></span>
+<span id="cb1075-6"><a href="análise-de-sobrevivência.html#cb1075-6"></a>                   <span class="dt">surv =</span> <span class="kw">rep</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>s, <span class="dt">times =</span> <span class="dv">3</span>), <span class="co"># mudar o times</span></span>
+<span id="cb1075-7"><a href="análise-de-sobrevivência.html#cb1075-7"></a>                   <span class="dt">strata =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>), <span class="dt">each =</span> <span class="kw">length</span>(s)),</span>
+<span id="cb1075-8"><a href="análise-de-sobrevivência.html#cb1075-8"></a>                   <span class="dt">upper =</span> <span class="ot">NA</span>, <span class="dt">lower =</span> <span class="ot">NA</span>)</span>
+<span id="cb1075-9"><a href="análise-de-sobrevivência.html#cb1075-9"></a><span class="kw">ggsurvplot</span>(smod)  </span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-728-1.png" width="1152" /></p>
+<p><br><br></p>
+<hr />
+</div>
+</div>
+<div id="distribuição-log-logístico" class="section level2">
+<h2><span class="header-section-number">32.8</span> Distribuição Log-Logístico</h2>
+<hr />
+<div id="sem-considerar-tratamentos-5" class="section level3">
+<h3><span class="header-section-number">32.8.1</span> Sem considerar tratamentos</h3>
+<div class="sourceCode" id="cb1076"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1076-1"><a href="análise-de-sobrevivência.html#cb1076-1"></a>KM &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">dist=</span><span class="st">&quot;loglogistic&quot;</span>)</span>
+<span id="cb1076-2"><a href="análise-de-sobrevivência.html#cb1076-2"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ 1, dist = &quot;loglogistic&quot;)
+##               Value Std. Error     z      p
+## (Intercept)  3,8717     0,1192 32,49 &lt;2e-16
+## Log(scale)  -0,2265     0,0711 -3,19 0,0014
+## 
+## Scale= 0,797 
+## 
+## Log logistic distribution
+## Loglik(model)= -687   Loglik(intercept only)= -687
+## Number of Newton-Raphson Iterations: 5 
+## n= 144</code></pre>
+</div>
+<div id="considerando-tratamentos-5" class="section level3">
+<h3><span class="header-section-number">32.8.2</span> Considerando tratamentos</h3>
+<div class="sourceCode" id="cb1078"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1078-1"><a href="análise-de-sobrevivência.html#cb1078-1"></a>KM6 &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span>trat, <span class="dt">dist=</span><span class="st">&quot;loglogistic&quot;</span>)</span>
+<span id="cb1078-2"><a href="análise-de-sobrevivência.html#cb1078-2"></a><span class="kw">summary</span>(KM6)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ trat, dist = &quot;loglogistic&quot;)
+##               Value Std. Error     z       p
+## (Intercept)  3,1947     0,1689 18,92 &lt; 2e-16
+## tratT2       0,5839     0,2530  2,31   0,021
+## tratT3       1,5687     0,2441  6,43 1,3e-10
+## Log(scale)  -0,3709     0,0725 -5,11 3,2e-07
+## 
+## Scale= 0,69 
+## 
+## Log logistic distribution
+## Loglik(model)= -669,2   Loglik(intercept only)= -687
+##  Chisq= 35,64 on 2 degrees of freedom, p= 1,8e-08 
+## Number of Newton-Raphson Iterations: 4 
+## n= 144</code></pre>
+<div class="sourceCode" id="cb1080"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1080-1"><a href="análise-de-sobrevivência.html#cb1080-1"></a><span class="kw">anova</span>(KM6)</span></code></pre></div>
+<pre><code>##      Df Deviance Resid. Df    -2*LL     Pr(&gt;Chi)
+## NULL NA       NA       142 1373,973           NA
+## trat  2 35,64462       140 1338,328 1,819156e-08</code></pre>
+<div class="sourceCode" id="cb1082"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1082-1"><a href="análise-de-sobrevivência.html#cb1082-1"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, <span class="fl">.99</span>, <span class="dt">by =</span> <span class="fl">.01</span>)</span>
+<span id="cb1082-2"><a href="análise-de-sobrevivência.html#cb1082-2"></a>t_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM6, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T1&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1082-3"><a href="análise-de-sobrevivência.html#cb1082-3"></a>t_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM6, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T2&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1082-4"><a href="análise-de-sobrevivência.html#cb1082-4"></a>t_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM6, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T3&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1082-5"><a href="análise-de-sobrevivência.html#cb1082-5"></a>smod &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="kw">c</span>(t_<span class="dv">0</span>, t_<span class="dv">1</span>, t_<span class="dv">2</span>), <span class="co"># acrescentar os tratamentos </span></span>
+<span id="cb1082-6"><a href="análise-de-sobrevivência.html#cb1082-6"></a>                   <span class="dt">surv =</span> <span class="kw">rep</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>s, <span class="dt">times =</span> <span class="dv">3</span>), <span class="co"># mudar o times</span></span>
+<span id="cb1082-7"><a href="análise-de-sobrevivência.html#cb1082-7"></a>                   <span class="dt">strata =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>), <span class="dt">each =</span> <span class="kw">length</span>(s)),</span>
+<span id="cb1082-8"><a href="análise-de-sobrevivência.html#cb1082-8"></a>                   <span class="dt">upper =</span> <span class="ot">NA</span>, <span class="dt">lower =</span> <span class="ot">NA</span>)</span>
+<span id="cb1082-9"><a href="análise-de-sobrevivência.html#cb1082-9"></a><span class="kw">ggsurvplot</span>(smod)  </span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-730-1.png" width="1152" /></p>
+<p><br><br></p>
+<hr />
+</div>
+</div>
+<div id="distribuição-weibull-default" class="section level2">
+<h2><span class="header-section-number">32.9</span> Distribuição Weibull (default)</h2>
+<hr />
+<div id="sem-considerar-tratamentos-6" class="section level3">
+<h3><span class="header-section-number">32.9.1</span> Sem considerar tratamentos</h3>
+<div class="sourceCode" id="cb1083"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1083-1"><a href="análise-de-sobrevivência.html#cb1083-1"></a>KM &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">dist=</span><span class="st">&quot;weibull&quot;</span>)</span>
+<span id="cb1083-2"><a href="análise-de-sobrevivência.html#cb1083-2"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ 1, dist = &quot;weibull&quot;)
+##              Value Std. Error     z      p
+## (Intercept) 4,4310     0,0969 45,72 &lt;2e-16
+## Log(scale)  0,0685     0,0740  0,93   0,35
+## 
+## Scale= 1,07 
+## 
+## Weibull distribution
+## Loglik(model)= -685,9   Loglik(intercept only)= -685,9
+## Number of Newton-Raphson Iterations: 6 
+## n= 144</code></pre>
+</div>
+<div id="considerando-tratamentos-6" class="section level3">
+<h3><span class="header-section-number">32.9.2</span> Considerando tratamentos</h3>
+<div class="sourceCode" id="cb1085"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1085-1"><a href="análise-de-sobrevivência.html#cb1085-1"></a>KM7 &lt;-<span class="st"> </span><span class="kw">survreg</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span>trat, <span class="dt">dist=</span><span class="st">&quot;weibull&quot;</span>)</span>
+<span id="cb1085-2"><a href="análise-de-sobrevivência.html#cb1085-2"></a><span class="kw">summary</span>(KM7)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## survreg(formula = Surv(tempo, status) ~ trat, dist = &quot;weibull&quot;)
+##               Value Std. Error     z       p
+## (Intercept)  3,6259     0,1334 27,18 &lt; 2e-16
+## tratT2       0,7769     0,1906  4,08 4,6e-05
+## tratT3       1,4392     0,2043  7,05 1,8e-12
+## Log(scale)  -0,0969     0,0744 -1,30    0,19
+## 
+## Scale= 0,908 
+## 
+## Weibull distribution
+## Loglik(model)= -663,4   Loglik(intercept only)= -685,9
+##  Chisq= 45 on 2 degrees of freedom, p= 1,7e-10 
+## Number of Newton-Raphson Iterations: 5 
+## n= 144</code></pre>
+<div class="sourceCode" id="cb1087"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1087-1"><a href="análise-de-sobrevivência.html#cb1087-1"></a><span class="kw">anova</span>(KM7)</span></code></pre></div>
+<pre><code>##      Df Deviance Resid. Df    -2*LL     Pr(&gt;Chi)
+## NULL NA       NA       142 1371,840           NA
+## trat  2 44,99626       140 1326,844 1,695061e-10</code></pre>
+<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1089-1"><a href="análise-de-sobrevivência.html#cb1089-1"></a>s &lt;-<span class="st"> </span><span class="kw">seq</span>(.<span class="dv">01</span>, <span class="fl">.99</span>, <span class="dt">by =</span> <span class="fl">.01</span>)</span>
+<span id="cb1089-2"><a href="análise-de-sobrevivência.html#cb1089-2"></a>t_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM7, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T1&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1089-3"><a href="análise-de-sobrevivência.html#cb1089-3"></a>t_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM7, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T2&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1089-4"><a href="análise-de-sobrevivência.html#cb1089-4"></a>t_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">predict</span>(KM7, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">trat =</span> <span class="st">&quot;T3&quot;</span>), <span class="dt">type =</span> <span class="st">&quot;quantile&quot;</span>, <span class="dt">p =</span> s)</span>
+<span id="cb1089-5"><a href="análise-de-sobrevivência.html#cb1089-5"></a>smod &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="kw">c</span>(t_<span class="dv">0</span>, t_<span class="dv">1</span>, t_<span class="dv">2</span>), <span class="co"># acrescentar os tratamentos </span></span>
+<span id="cb1089-6"><a href="análise-de-sobrevivência.html#cb1089-6"></a>                   <span class="dt">surv =</span> <span class="kw">rep</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>s, <span class="dt">times =</span> <span class="dv">3</span>), <span class="co"># mudar o times</span></span>
+<span id="cb1089-7"><a href="análise-de-sobrevivência.html#cb1089-7"></a>                   <span class="dt">strata =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>, <span class="st">&quot;T3&quot;</span>), <span class="dt">each =</span> <span class="kw">length</span>(s)),</span>
+<span id="cb1089-8"><a href="análise-de-sobrevivência.html#cb1089-8"></a>                   <span class="dt">upper =</span> <span class="ot">NA</span>, <span class="dt">lower =</span> <span class="ot">NA</span>)</span>
+<span id="cb1089-9"><a href="análise-de-sobrevivência.html#cb1089-9"></a><span class="kw">ggsurvplot</span>(smod)  </span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-732-1.png" width="1152" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
-<div id="exemplo-2-3" class="section level2">
-<h2><span class="header-section-number">10.15</span> Exemplo 2</h2>
+</div>
+<div id="gompertz" class="section level2">
+<h2><span class="header-section-number">32.10</span> Gompertz</h2>
 <hr />
-<p><br></p>
-<p>Num experimento estudou-se o efeito do farelo de arroz desengordurado (FAD) como fatores de retardamento da maturidade sexual de frangas. O ensaio, organizado em blocos completos casualizados, abrangeu duas fases distintas e foi constituído de 5 tratamentos e 5 repetições com 8 aves por unidade experimental. Os tratamentos, na primeira fase eram formados por rações que continham 0, 15, 30, 45, 60 % de FAD em substituição ao milho. Os resultados obtidos na primeira fase do ensaio, para conversão alimentar foram os seguintes:</p>
-<p>Fonte: <a href="http://www.uel.br/pessoal/lscunha/pages/arquivos/uel/Especializa%C3%A7%C3%A3o/Aula_9_-_Polin%C3%B4mios_Ortogonais(1).pdf" class="uri">http://www.uel.br/pessoal/lscunha/pages/arquivos/uel/Especializa%C3%A7%C3%A3o/Aula_9_-_Polin%C3%B4mios_Ortogonais(1).pdf</a></p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="polinômios-ortogonais.html#cb360-1"></a>CA=<span class="kw">c</span>(<span class="fl">6.5</span>, <span class="fl">6.4</span>, <span class="fl">6.2</span>, <span class="fl">5.8</span>, <span class="fl">7.3</span>,</span>
-<span id="cb360-2"><a href="polinômios-ortogonais.html#cb360-2"></a>    <span class="fl">7.1</span>, <span class="fl">7.4</span>, <span class="fl">6.9</span>, <span class="fl">7.3</span>, <span class="fl">7.0</span>,</span>
-<span id="cb360-3"><a href="polinômios-ortogonais.html#cb360-3"></a>    <span class="fl">7.5</span>, <span class="fl">8.1</span>, <span class="fl">6.7</span>, <span class="fl">7.4</span>, <span class="fl">7.7</span>,</span>
-<span id="cb360-4"><a href="polinômios-ortogonais.html#cb360-4"></a>    <span class="fl">7.2</span>, <span class="fl">7.0</span>, <span class="fl">6.9</span>, <span class="fl">6.7</span>, <span class="fl">6.5</span>,</span>
-<span id="cb360-5"><a href="polinômios-ortogonais.html#cb360-5"></a>    <span class="fl">6.4</span>, <span class="fl">6.5</span>, <span class="fl">6.0</span>, <span class="fl">6.3</span>, <span class="fl">6.2</span>)</span>
-<span id="cb360-6"><a href="polinômios-ortogonais.html#cb360-6"></a>Bloco=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dv">5</span>)</span>
-<span id="cb360-7"><a href="polinômios-ortogonais.html#cb360-7"></a>FAD=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>),<span class="dt">e=</span><span class="dv">5</span>)</span>
-<span id="cb360-8"><a href="polinômios-ortogonais.html#cb360-8"></a>dados=<span class="kw">data.frame</span>(<span class="dt">fad=</span><span class="kw">factor</span>(FAD),<span class="dt">Bloco=</span><span class="kw">factor</span>(Bloco),CA)</span></code></pre></div>
-<p><br><br></p>
-</div>
-<div id="análise-de-variância-11" class="section level2">
-<h2><span class="header-section-number">10.16</span> Análise de Variância</h2>
-<p><span class="math display">\[\begin{eqnarray*}
-\left\{
-\begin{array}{ll}
-H_0: &amp; \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{5} \\[.2cm]
-H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
-\end{array}
-\right.
-\end{eqnarray*}\]</span></p>
-<p><br></p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="polinômios-ortogonais.html#cb361-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados,<span class="kw">aov</span>(CA <span class="op">~</span><span class="st"> </span>fad<span class="op">+</span>Bloco))</span>
-<span id="cb361-2"><a href="polinômios-ortogonais.html#cb361-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-## fad          4  4.868   1.217  10.058 0.000289 ***
-## Bloco        4  0.936   0.234   1.934 0.153795    
-## Residuals   16  1.936   0.121                     
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><br><br></p>
-</div>
-<div id="pressuposições-8" class="section level2">
-<h2><span class="header-section-number">10.17</span> Pressuposições</h2>
-<p><br></p>
-<div id="normalidade-dos-erros-12" class="section level3">
-<h3><span class="header-section-number">10.17.1</span> Normalidade dos erros</h3>
-<p><br></p>
-<p><span class="math display">\[\begin{eqnarray*}
-\left\{
-\begin{array}{ll}
-H_0: &amp; \mbox{Os erros seguem distribuição normal}\\[.2cm]
-H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
-\end{array}
-\right.
-\end{eqnarray*}\]</span></p>
-<p><br></p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="polinômios-ortogonais.html#cb363-1"></a><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res)</span></code></pre></div>
-<pre><code>## 
-##  Shapiro-Wilk normality test
+<div class="sourceCode" id="cb1090"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1090-1"><a href="análise-de-sobrevivência.html#cb1090-1"></a><span class="kw">library</span>(flexsurv)</span>
+<span id="cb1090-2"><a href="análise-de-sobrevivência.html#cb1090-2"></a>KM9=<span class="kw">flexsurvreg</span>(<span class="kw">Surv</span>(tempo,status)<span class="op">~</span>trat,<span class="dt">dist=</span><span class="st">&quot;Gompertz&quot;</span>)</span>
+<span id="cb1090-3"><a href="análise-de-sobrevivência.html#cb1090-3"></a><span class="kw">summary</span>(KM9)</span></code></pre></div>
+<pre><code>## trat=T1 
+##   time         est          lcl        ucl
+## 1   10 0,786371074 7,217036e-01 0,83670214
+## 2   24 0,549854904 4,491171e-01 0,63929512
+## 3   48 0,279640531 1,839060e-01 0,38450707
+## 4   72 0,130206542 6,718524e-02 0,21916226
+## 5   96 0,054871360 2,035735e-02 0,11570802
+## 6  120 0,020657887 4,633433e-03 0,05818793
+## 7  144 0,006846406 8,009858e-04 0,02808131
+## 8  168 0,001964497 9,461558e-05 0,01260615
 ## 
-## data:  mod$res
-## W = 0.95907, p-value = 0.3963</code></pre>
-<p><br></p>
-</div>
-<div id="homogeneidade-das-variâncias-6" class="section level3">
-<h3><span class="header-section-number">10.17.2</span> Homogeneidade das Variâncias</h3>
-<p><br></p>
-<p><span class="math display">\[\begin{eqnarray*}
-\left\{
-\begin{array}{ll}
-H_0: &amp; \mbox{ As Variâncias são homogêneas}\\[.2cm]
-H_1: &amp; \mbox{ As Variâncias não são homogêneas}.
-\end{array}
-\right.
-\end{eqnarray*}\]</span></p>
-<p><br></p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="polinômios-ortogonais.html#cb365-1"></a><span class="kw">bartlett.test</span>(<span class="kw">residuals</span>(mod)<span class="op">~</span><span class="kw">as.factor</span>(dados<span class="op">$</span>fad))</span></code></pre></div>
-<pre><code>## 
-##  Bartlett test of homogeneity of variances
+## trat=T2 
+##   time        est        lcl       ucl
+## 1   10 0,91229451 0,86575721 0,9403324
+## 2   24 0,79577094 0,70448808 0,8554563
+## 3   48 0,61465240 0,48535470 0,7097821
+## 4   72 0,45902365 0,32862031 0,5703498
+## 5   96 0,32998531 0,21652331 0,4451944
+## 6  120 0,22722132 0,13388782 0,3320264
+## 7  144 0,14902446 0,07594742 0,2454403
+## 8  168 0,09250403 0,03736292 0,1763878
 ## 
-## data:  residuals(mod) by as.factor(dados$fad)
-## Bartlett&#39;s K-squared = 6.4994, df = 4, p-value = 0.1648</code></pre>
-<p><br></p>
-</div>
-<div id="independência-dos-erros-9" class="section level3">
-<h3><span class="header-section-number">10.17.3</span> Independência dos erros</h3>
-<p><br></p>
-<p><span class="math display">\[\begin{eqnarray*}
-\left\{
-\begin{array}{ll}
-H_0: \mbox{Os erros são independentes}\\[.2cm]
-H_1: \mbox{Os erros não são independentes}.
-\end{array}
-\right.
-\end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="polinômios-ortogonais.html#cb367-1"></a><span class="kw">library</span>(lmtest)</span>
-<span id="cb367-2"><a href="polinômios-ortogonais.html#cb367-2"></a><span class="kw">dwtest</span>(mod)</span></code></pre></div>
-<pre><code>## 
-##  Durbin-Watson test
-## 
-## data:  mod
-## DW = 2.8659, p-value = 0.923
-## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="polinômios-ortogonais.html#cb369-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
-<p><br></p>
-</div>
-</div>
-<div id="coeficientes-do-modelo-1" class="section level2">
-<h2><span class="header-section-number">10.18</span> Coeficientes do modelo</h2>
-<p><br></p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="polinômios-ortogonais.html#cb370-1"></a>mod.reg =<span class="st"> </span><span class="kw">lm</span>(CA <span class="op">~</span><span class="st"> </span>FAD <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">4</span>))</span>
-<span id="cb370-2"><a href="polinômios-ortogonais.html#cb370-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = CA ~ FAD + I(FAD^2) + I(FAD^3) + I(FAD^4))
-## 
-## Residuals:
-##    Min     1Q Median     3Q    Max 
-##  -0.78  -0.16   0.02   0.16   0.86 
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  6.440e+00  1.695e-01  38.001   &lt;2e-16 ***
-## FAD          1.867e-02  6.309e-02   0.296    0.770    
-## I(FAD^2)     3.793e-03  5.279e-03   0.718    0.481    
-## I(FAD^3)    -1.481e-04  1.407e-04  -1.053    0.305    
-## I(FAD^4)     1.317e-06  1.167e-06   1.128    0.272    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.3789 on 20 degrees of freedom
-## Multiple R-squared:  0.6289, Adjusted R-squared:  0.5547 
-## F-statistic: 8.475 on 4 and 20 DF,  p-value: 0.0003607</code></pre>
-<p><br></p>
-</div>
-<div id="usando-o-expdes.pt-2" class="section level2">
-<h2><span class="header-section-number">10.19</span> Usando o ExpDes.pt</h2>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="polinômios-ortogonais.html#cb372-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb372-2"><a href="polinômios-ortogonais.html#cb372-2"></a><span class="kw">dic</span>(FAD,CA, <span class="dt">quali=</span>F)</span></code></pre></div>
-<pre><code>## ------------------------------------------------------------------------
-## Quadro da analise de variancia
-## ------------------------------------------------------------------------
-##            GL    SQ     QM     Fc      Pr&gt;Fc
-## Tratamento  4 4.868 1.2170 8.4749 0.00036068
-## Residuo    20 2.872 0.1436                  
-## Total      24 7.740                         
-## ------------------------------------------------------------------------
-## CV = 5.54 %
-## 
-## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
-## Valor-p:  0.5382094 
-## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
-## ------------------------------------------------------------------------
-## 
-## ------------------------------------------------------------------------
-## Teste de homogeneidade de variancia 
-## valor-p:  0.1426676 
-## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
-## ------------------------------------------------------------------------
-## 
-## Ajuste de modelos polinomiais de regressao
-## ------------------------------------------------------------------------
-## 
-## Modelo Linear
-## =========================================
-##    Estimativa Erro.padrao   tc    valor.p
-## -----------------------------------------
-## b0   6.9600     0.1313    53.0202    0   
-## b1  -0.0040     0.0036    -1.1196 0.2762 
-## -----------------------------------------
-## 
-## R2 do modelo linear
-## --------
-## 0.036976
-## --------
-## 
-## Analise de variancia do modelo linear
-## ===================================================
-##                      GL   SQ     QM    Fc   valor.p
-## ---------------------------------------------------
-## Efeito linear        1  0.1800 0.1800 1.25  0.27615
-## Desvios de Regressao 3  4.6880 1.5627 10.88 0.00019
-## Residuos             20 2.8720 0.1436              
-## ---------------------------------------------------
-## ------------------------------------------------------------------------
-## 
-## Modelo quadratico
-## =========================================
-##    Estimativa Erro.padrao   tc    valor.p
-## -----------------------------------------
-## b0   6.4571     0.1595    40.4857    0   
-## b1   0.0630     0.0126    5.0056  0.0001 
-## b2  -0.0011     0.0002    -5.5512 0.00002
-## -----------------------------------------
-## 
-## R2 do modelo quadratico
-## --------
-## 0.946003
-## --------
-## 
-## Analise de variancia do modelo quadratico
-## ===================================================
-##                      GL   SQ     QM    Fc   valor.p
-## ---------------------------------------------------
-## Efeito linear        1  0.1800 0.1800 1.25  0.27615
-## Efeito quadratico    1  4.4251 4.4251 30.82  2e-05 
-## Desvios de Regressao 2  0.2629 0.1314 0.92  0.41655
-## Residuos             20 2.8720 0.1436              
-## ---------------------------------------------------
-## ------------------------------------------------------------------------
-## 
-## Modelo cubico
-## =========================================
-##    Estimativa Erro.padrao   tc    valor.p
-## -----------------------------------------
-## b0   6.4171     0.1682    38.1394    0   
-## b1   0.0822     0.0285    2.8792  0.0093 
-## b2  -0.0020     0.0012    -1.6611 0.1123 
-## b3  0.00001     0.00001   0.7464  0.4641 
-## -----------------------------------------
-## 
-## R2 do modelo cubico
-## --------
-## 0.962437
-## --------
-## 
-## Analise de variancia do modelo cubico
-## ===================================================
-##                      GL   SQ     QM    Fc   valor.p
-## ---------------------------------------------------
-## Efeito linear        1  0.1800 0.1800 1.25  0.27615
-## Efeito quadratico    1  4.4251 4.4251 30.82  2e-05 
-## Efeito cubico        1  0.0800 0.0800 0.56  0.46411
-## Desvios de Regressao 1  0.1829 0.1829 1.27  0.27249
-## Residuos             20 2.8720 0.1436              
-## ---------------------------------------------------
-## ------------------------------------------------------------------------</code></pre>
-<p><br></p>
-</div>
-<div id="curva-estimada-1" class="section level2">
-<h2><span class="header-section-number">10.20</span> Curva Estimada</h2>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="polinômios-ortogonais.html#cb374-1"></a>m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(CA<span class="op">~</span><span class="kw">poly</span>(FAD, <span class="dt">degree=</span><span class="dv">1</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
-<span id="cb374-2"><a href="polinômios-ortogonais.html#cb374-2"></a><span class="kw">anova</span>(m1)</span></code></pre></div>
-<pre><code>## Analysis of Variance Table
-## 
-## Response: CA
-##                                   Df Sum Sq Mean Sq F value Pr(&gt;F)
-## poly(FAD, degree = 1, raw = TRUE)  1   0.18  0.1800  0.5476 0.4668
-## Residuals                         23   7.56  0.3287</code></pre>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="polinômios-ortogonais.html#cb376-1"></a><span class="kw">summary</span>(m1)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = CA ~ poly(FAD, degree = 1, raw = TRUE))
-## 
-## Residuals:
-##    Min     1Q Median     3Q    Max 
-##  -1.16  -0.42   0.00   0.40   1.26 
-## 
-## Coefficients:
-##                                    Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)                        6.960000   0.198604   35.05   &lt;2e-16 ***
-## poly(FAD, degree = 1, raw = TRUE) -0.004000   0.005405   -0.74    0.467    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.5733 on 23 degrees of freedom
-## Multiple R-squared:  0.02326,    Adjusted R-squared:  -0.01921 
-## F-statistic: 0.5476 on 1 and 23 DF,  p-value: 0.4668</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="polinômios-ortogonais.html#cb378-1"></a>m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(CA<span class="op">~</span><span class="kw">poly</span>(FAD, <span class="dt">degree=</span><span class="dv">2</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
-<span id="cb378-2"><a href="polinômios-ortogonais.html#cb378-2"></a><span class="kw">anova</span>(m2)</span></code></pre></div>
-<pre><code>## Analysis of Variance Table
-## 
-## Response: CA
-##                                   Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## poly(FAD, degree = 2, raw = TRUE)  2 4.6051 2.30257  16.159 4.811e-05 ***
-## Residuals                         22 3.1349 0.14249                      
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="polinômios-ortogonais.html#cb380-1"></a><span class="kw">summary</span>(m2)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = CA ~ poly(FAD, degree = 2, raw = TRUE))
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.65714 -0.21714 -0.01714  0.16857  0.84286 
-## 
-## Coefficients:
-##                                      Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)                         6.4571429  0.1588764  40.643  &lt; 2e-16 ***
-## poly(FAD, degree = 2, raw = TRUE)1  0.0630476  0.0125468   5.025 4.96e-05 ***
-## poly(FAD, degree = 2, raw = TRUE)2 -0.0011175  0.0002005  -5.573 1.33e-05 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.3775 on 22 degrees of freedom
-## Multiple R-squared:  0.595,  Adjusted R-squared:  0.5582 
-## F-statistic: 16.16 on 2 and 22 DF,  p-value: 4.811e-05</code></pre>
-<p><br></p>
-</div>
-<div id="gráficos" class="section level2">
-<h2><span class="header-section-number">10.21</span> Gráficos</h2>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="polinômios-ortogonais.html#cb382-1"></a>(<span class="dt">meditrat=</span><span class="kw">tapply</span>(CA,FAD,mean))</span></code></pre></div>
-<pre><code>##    0   15   30   45   60 
-## 6.44 7.14 7.48 6.86 6.28</code></pre>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="polinômios-ortogonais.html#cb384-1"></a><span class="kw">plot</span>(CA<span class="op">~</span>FAD,<span class="dt">ylab=</span><span class="st">&quot;CA&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot; &quot;</span>)</span>
-<span id="cb384-2"><a href="polinômios-ortogonais.html#cb384-2"></a><span class="kw">curve</span>(<span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T)</span>
-<span id="cb384-3"><a href="polinômios-ortogonais.html#cb384-3"></a>dose=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>)</span>
-<span id="cb384-4"><a href="polinômios-ortogonais.html#cb384-4"></a><span class="kw">points</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="st">&quot;*&quot;</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="polinômios-ortogonais.html#cb385-1"></a><span class="kw">plot</span>(meditrat<span class="op">~</span>dose,</span>
-<span id="cb385-2"><a href="polinômios-ortogonais.html#cb385-2"></a>     <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb385-3"><a href="polinômios-ortogonais.html#cb385-3"></a>     <span class="dt">pch=</span><span class="dv">16</span>, </span>
-<span id="cb385-4"><a href="polinômios-ortogonais.html#cb385-4"></a>     <span class="dt">las=</span><span class="dv">1</span>, </span>
-<span id="cb385-5"><a href="polinômios-ortogonais.html#cb385-5"></a>     <span class="dt">ylab=</span><span class="st">&quot;Conversão alimentar&quot;</span>,</span>
-<span id="cb385-6"><a href="polinômios-ortogonais.html#cb385-6"></a>     <span class="dt">main=</span><span class="kw">expression</span>(<span class="kw">italic</span>(<span class="st">&quot;Conversão alimentar&quot;</span>)),</span>
-<span id="cb385-7"><a href="polinômios-ortogonais.html#cb385-7"></a>     <span class="dt">xlab=</span><span class="st">&quot;FAD (%)&quot;</span>)</span>
-<span id="cb385-8"><a href="polinômios-ortogonais.html#cb385-8"></a><span class="kw">curve</span>(<span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb385-9"><a href="polinômios-ortogonais.html#cb385-9"></a>(<span class="dt">xmax=</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">/-</span>(<span class="dv">2</span><span class="op">*</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]))</span></code></pre></div>
-<pre><code>## poly(FAD, degree = 2, raw = TRUE)1 
-##                           28.21023</code></pre>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="polinômios-ortogonais.html#cb387-1"></a>(<span class="dt">ymax=</span><span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>xmax<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>xmax<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## (Intercept) 
-##    7.346437</code></pre>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="polinômios-ortogonais.html#cb389-1"></a><span class="kw">abline</span>(<span class="dt">v=</span>xmax, <span class="dt">h=</span>ymax, <span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb389-2"><a href="polinômios-ortogonais.html#cb389-2"></a><span class="kw">points</span>(xmax,ymax, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">pch=</span><span class="dv">8</span>)</span>
-<span id="cb389-3"><a href="polinômios-ortogonais.html#cb389-3"></a><span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="kw">expression</span>(Y<span class="op">==</span><span class="fl">6.457143+0.06304762</span> <span class="op">*</span>x<span class="fl">-0.00111746</span><span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>), <span class="kw">expression</span>(R<span class="op">^</span><span class="dv">2</span><span class="op">==</span><span class="fl">0.595</span>)))</span></code></pre></div>
-<p><img src="livroagro_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
-<p><br><br><br><br></p>
+## trat=T3 
+##   time       est       lcl       ucl
+## 1   10 0,9585577 0,9335958 0,9747080
+## 2   24 0,9000225 0,8460003 0,9369671
+## 3   48 0,7989822 0,7105146 0,8641142
+## 4   72 0,6983485 0,5904945 0,7847070
+## 5   96 0,5997606 0,4821634 0,6956082
+## 6  120 0,5049620 0,3847635 0,6127203
+## 7  144 0,4157087 0,2937037 0,5284119
+## 8  168 0,3336543 0,2168233 0,4543410</code></pre>
+<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="análise-de-sobrevivência.html#cb1092-1"></a><span class="kw">plot</span>(KM9,<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-733-1.png" width="672" /></p>
 <hr />
+</div>
+<div id="gamma" class="section level2">
+<h2><span class="header-section-number">32.11</span> Gamma</h2>
+<hr />
+<div class="sourceCode" id="cb1093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1093-1"><a href="análise-de-sobrevivência.html#cb1093-1"></a><span class="kw">library</span>(flexsurv)</span>
+<span id="cb1093-2"><a href="análise-de-sobrevivência.html#cb1093-2"></a>KM10=<span class="kw">flexsurvreg</span>(<span class="kw">Surv</span>(tempo,status)<span class="op">~</span>trat,<span class="dt">dist=</span><span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb1093-3"><a href="análise-de-sobrevivência.html#cb1093-3"></a><span class="kw">summary</span>(KM10)</span></code></pre></div>
+<pre><code>## trat=T1 
+##   time         est         lcl        ucl
+## 1   10 0,790201487 0,709966646 0,85893415
+## 2   24 0,537681788 0,434485641 0,64090258
+## 3   48 0,267748022 0,172239912 0,37202618
+## 4   72 0,130741530 0,065957005 0,21430824
+## 5   96 0,063206831 0,024350634 0,12675243
+## 6  120 0,030369861 0,008911952 0,07330668
+## 7  144 0,014531118 0,003182211 0,04299919
+## 8  168 0,006931519 0,001137989 0,02521377
+## 
+## trat=T2 
+##   time       est        lcl       ucl
+## 1   10 0,9055576 0,85200723 0,9461820
+## 2   24 0,7671054 0,68178306 0,8412064
+## 3   48 0,5650288 0,45411312 0,6655914
+## 4   72 0,4110387 0,29761085 0,5187758
+## 5   96 0,2969771 0,18997017 0,4056439
+## 6  120 0,2136179 0,12050687 0,3139151
+## 7  144 0,1531754 0,07772390 0,2457060
+## 8  168 0,1095770 0,04880704 0,1905611
+## 
+## trat=T3 
+##   time       est       lcl       ucl
+## 1   10 0,9552715 0,9259418 0,9769590
+## 2   24 0,8838874 0,8296134 0,9278691
+## 3   48 0,7645536 0,6811250 0,8348968
+## 4   72 0,6563859 0,5552139 0,7457532
+## 5   96 0,5610497 0,4492434 0,6658450
+## 6  120 0,4781342 0,3589378 0,5919754
+## 7  144 0,4065841 0,2874197 0,5246213
+## 8  168 0,3451603 0,2264167 0,4652829</code></pre>
+<div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1095-1"><a href="análise-de-sobrevivência.html#cb1095-1"></a><span class="kw">plot</span>(KM10,<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-734-1.png" width="672" /></p>
+<p><br><br></p>
+<hr />
+</div>
+<div id="método-semi-paramétrico-de-cox" class="section level2">
+<h2><span class="header-section-number">32.12</span> Método semi-paramétrico de Cox</h2>
+<hr />
+<p>Serve para um modelo de regressão de riscos proporcionais de Cox. Variáveis dependentes do tempo, estratos dependentes do tempo, vários eventos por assunto e outras extensões são incorporadas usando a formulação do processo de contagem de Andersen e Gill.</p>
+<p><strong>Reference</strong>: Andersen, P. and Gill, R. (1982). Cox’s regression model for counting processes, a large sample study. Annals of Statistics 10, 1100-1120.</p>
+<div id="sem-considerar-tratamentos-7" class="section level3">
+<h3><span class="header-section-number">32.12.1</span> Sem considerar tratamentos</h3>
+<div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1096-1"><a href="análise-de-sobrevivência.html#cb1096-1"></a>KM &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="dv">1</span>)</span>
+<span id="cb1096-2"><a href="análise-de-sobrevivência.html#cb1096-2"></a><span class="kw">summary</span>(KM)</span></code></pre></div>
+<pre><code>## Call:  coxph(formula = Surv(tempo, status) ~ 1)
+## 
+## Null model
+##   log likelihood= -538,6621 
+##   n= 144</code></pre>
+</div>
+<div id="considerando-tratamentos-7" class="section level3">
+<h3><span class="header-section-number">32.12.2</span> Considerando tratamentos</h3>
+<div class="sourceCode" id="cb1098"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1098-1"><a href="análise-de-sobrevivência.html#cb1098-1"></a>KM8 &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(tempo,status) <span class="op">~</span><span class="st"> </span><span class="kw">strata</span>(trat),<span class="dt">data=</span>dados)</span>
+<span id="cb1098-2"><a href="análise-de-sobrevivência.html#cb1098-2"></a><span class="kw">summary</span>(KM8)</span></code></pre></div>
+<pre><code>## Call:  coxph(formula = Surv(tempo, status) ~ strata(trat), data = dados)
+## 
+## Null model
+##   log likelihood= -394,6821 
+##   n= 144</code></pre>
+<div class="sourceCode" id="cb1100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1100-1"><a href="análise-de-sobrevivência.html#cb1100-1"></a><span class="kw">library</span>(ggfortify)</span>
+<span id="cb1100-2"><a href="análise-de-sobrevivência.html#cb1100-2"></a><span class="kw">autoplot</span>(<span class="kw">survfit</span>(KM8),<span class="dt">conf.int =</span> F)<span class="op">+</span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-736-1.png" width="1152" /></p>
+<p><br><br></p>
+<hr />
+</div>
+</div>
+<div id="modelo-de-riscos-proporcionais-de-cox" class="section level2">
+<h2><span class="header-section-number">32.13</span> Modelo de riscos proporcionais de COX</h2>
+<hr />
+<p><br><br></p>
+<p>Mostra as taxas de risco (HR) derivadas do modelo para todas as covariáveis incluídas na fórmula coxph. Resumidamente, uma FC&gt; 1 indica um risco aumentado de morte (de acordo com a definição de h(t)) se uma condição específica for atendida por um paciente. Uma FC &lt;1, por outro lado, indica uma diminuição do risco.</p>
+<p><br><br></p>
+<div id="considerando-trat" class="section level3">
+<h3><span class="header-section-number">32.13.1</span> Considerando trat</h3>
+<div class="sourceCode" id="cb1101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1101-1"><a href="análise-de-sobrevivência.html#cb1101-1"></a><span class="kw">library</span>(forestmodel)</span>
+<span id="cb1101-2"><a href="análise-de-sobrevivência.html#cb1101-2"></a><span class="kw">colnames</span>(dados)=<span class="kw">c</span>(<span class="st">&quot;Treatments&quot;</span>,<span class="st">&quot;tempo&quot;</span>,<span class="st">&quot;status&quot;</span>)</span>
+<span id="cb1101-3"><a href="análise-de-sobrevivência.html#cb1101-3"></a>fit.coxph &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(tempo, status) <span class="op">~</span><span class="st"> </span>Treatments, <span class="dt">data =</span> dados)</span>
+<span id="cb1101-4"><a href="análise-de-sobrevivência.html#cb1101-4"></a><span class="co">#ggforest(fit.coxph, data = dados)</span></span>
+<span id="cb1101-5"><a href="análise-de-sobrevivência.html#cb1101-5"></a><span class="kw">print</span>(<span class="kw">forest_model</span>(fit.coxph, <span class="dt">limits=</span><span class="kw">log</span>( <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="dv">5</span>))))</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-737-1.png" width="1152" /></p>
+</div>
+</div>
+<div id="critério-de-inferência-de-akaike" class="section level2">
+<h2><span class="header-section-number">32.14</span> Critério de inferência de Akaike</h2>
+<div class="sourceCode" id="cb1102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1102-1"><a href="análise-de-sobrevivência.html#cb1102-1"></a><span class="kw">library</span>(car)</span>
+<span id="cb1102-2"><a href="análise-de-sobrevivência.html#cb1102-2"></a><span class="kw">AIC</span>(KM2) <span class="co"># exponencial</span></span></code></pre></div>
+<pre><code>## [1] 1334,477</code></pre>
+<div class="sourceCode" id="cb1104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1104-1"><a href="análise-de-sobrevivência.html#cb1104-1"></a><span class="kw">AIC</span>(KM3) <span class="co"># normal</span></span></code></pre></div>
+<pre><code>## [1] 1433,069</code></pre>
+<div class="sourceCode" id="cb1106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1106-1"><a href="análise-de-sobrevivência.html#cb1106-1"></a><span class="kw">AIC</span>(KM4) <span class="co"># logistico</span></span></code></pre></div>
+<pre><code>## [1] 1436,639</code></pre>
+<div class="sourceCode" id="cb1108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1108-1"><a href="análise-de-sobrevivência.html#cb1108-1"></a><span class="kw">AIC</span>(KM5) <span class="co"># lognormal</span></span></code></pre></div>
+<pre><code>## [1] 1338,744</code></pre>
+<div class="sourceCode" id="cb1110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1110-1"><a href="análise-de-sobrevivência.html#cb1110-1"></a><span class="kw">AIC</span>(KM6) <span class="co"># loglogistic</span></span></code></pre></div>
+<pre><code>## [1] 1346,328</code></pre>
+<div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1112-1"><a href="análise-de-sobrevivência.html#cb1112-1"></a><span class="kw">AIC</span>(KM7) <span class="co"># weibull</span></span></code></pre></div>
+<pre><code>## [1] 1334,844</code></pre>
+<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1114-1"><a href="análise-de-sobrevivência.html#cb1114-1"></a><span class="kw">AIC</span>(KM8) <span class="co"># coxph</span></span></code></pre></div>
+<pre><code>## [1] 789,3642</code></pre>
+<div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1116-1"><a href="análise-de-sobrevivência.html#cb1116-1"></a><span class="kw">AIC</span>(KM9) <span class="co"># Gompertz</span></span></code></pre></div>
+<pre><code>## [1] 1331,275</code></pre>
+</div>
+<div id="resíduo" class="section level2">
+<h2><span class="header-section-number">32.15</span> Resíduo</h2>
+<div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1118-1"><a href="análise-de-sobrevivência.html#cb1118-1"></a>residuo2 &lt;-<span class="st"> </span><span class="kw">residuals</span>(KM2, <span class="dt">type =</span> <span class="st">&quot;deviance&quot;</span>)</span>
+<span id="cb1118-2"><a href="análise-de-sobrevivência.html#cb1118-2"></a>g2=<span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> tempo, <span class="dt">y =</span> residuo2)) <span class="op">+</span></span>
+<span id="cb1118-3"><a href="análise-de-sobrevivência.html#cb1118-3"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Exponential&quot;</span>)<span class="op">+</span></span>
+<span id="cb1118-4"><a href="análise-de-sobrevivência.html#cb1118-4"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
+<span id="cb1118-5"><a href="análise-de-sobrevivência.html#cb1118-5"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb1118-6"><a href="análise-de-sobrevivência.html#cb1118-6"></a>residuo3 &lt;-<span class="st"> </span><span class="kw">residuals</span>(KM3, <span class="dt">type =</span> <span class="st">&quot;deviance&quot;</span>)</span>
+<span id="cb1118-7"><a href="análise-de-sobrevivência.html#cb1118-7"></a>g3=<span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> tempo, <span class="dt">y =</span> residuo3)) <span class="op">+</span></span>
+<span id="cb1118-8"><a href="análise-de-sobrevivência.html#cb1118-8"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Normal&quot;</span>)<span class="op">+</span></span>
+<span id="cb1118-9"><a href="análise-de-sobrevivência.html#cb1118-9"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
+<span id="cb1118-10"><a href="análise-de-sobrevivência.html#cb1118-10"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb1118-11"><a href="análise-de-sobrevivência.html#cb1118-11"></a>residuo4 &lt;-<span class="st"> </span><span class="kw">residuals</span>(KM4, <span class="dt">type =</span> <span class="st">&quot;deviance&quot;</span>)</span>
+<span id="cb1118-12"><a href="análise-de-sobrevivência.html#cb1118-12"></a>g4=<span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> tempo, <span class="dt">y =</span> residuo4)) <span class="op">+</span></span>
+<span id="cb1118-13"><a href="análise-de-sobrevivência.html#cb1118-13"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Logístico&quot;</span>)<span class="op">+</span></span>
+<span id="cb1118-14"><a href="análise-de-sobrevivência.html#cb1118-14"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
+<span id="cb1118-15"><a href="análise-de-sobrevivência.html#cb1118-15"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb1118-16"><a href="análise-de-sobrevivência.html#cb1118-16"></a>residuo5 &lt;-<span class="st"> </span><span class="kw">residuals</span>(KM5, <span class="dt">type =</span> <span class="st">&quot;deviance&quot;</span>)</span>
+<span id="cb1118-17"><a href="análise-de-sobrevivência.html#cb1118-17"></a>g5=<span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> tempo, <span class="dt">y =</span> residuo5)) <span class="op">+</span></span>
+<span id="cb1118-18"><a href="análise-de-sobrevivência.html#cb1118-18"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;lognormal&quot;</span>)<span class="op">+</span></span>
+<span id="cb1118-19"><a href="análise-de-sobrevivência.html#cb1118-19"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
+<span id="cb1118-20"><a href="análise-de-sobrevivência.html#cb1118-20"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb1118-21"><a href="análise-de-sobrevivência.html#cb1118-21"></a>residuo6 &lt;-<span class="st"> </span><span class="kw">residuals</span>(KM6, <span class="dt">type =</span> <span class="st">&quot;deviance&quot;</span>)</span>
+<span id="cb1118-22"><a href="análise-de-sobrevivência.html#cb1118-22"></a>g6=<span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> tempo, <span class="dt">y =</span> residuo6)) <span class="op">+</span></span>
+<span id="cb1118-23"><a href="análise-de-sobrevivência.html#cb1118-23"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;loglogistico&quot;</span>)<span class="op">+</span></span>
+<span id="cb1118-24"><a href="análise-de-sobrevivência.html#cb1118-24"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
+<span id="cb1118-25"><a href="análise-de-sobrevivência.html#cb1118-25"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb1118-26"><a href="análise-de-sobrevivência.html#cb1118-26"></a>residuo7 &lt;-<span class="st"> </span><span class="kw">residuals</span>(KM7, <span class="dt">type =</span> <span class="st">&quot;deviance&quot;</span>)</span>
+<span id="cb1118-27"><a href="análise-de-sobrevivência.html#cb1118-27"></a>g7=<span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> tempo, <span class="dt">y =</span> residuo7)) <span class="op">+</span></span>
+<span id="cb1118-28"><a href="análise-de-sobrevivência.html#cb1118-28"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;weibull&quot;</span>)<span class="op">+</span></span>
+<span id="cb1118-29"><a href="análise-de-sobrevivência.html#cb1118-29"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
+<span id="cb1118-30"><a href="análise-de-sobrevivência.html#cb1118-30"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb1118-31"><a href="análise-de-sobrevivência.html#cb1118-31"></a>residuo8 &lt;-<span class="st"> </span><span class="kw">residuals</span>(KM8, <span class="dt">type =</span> <span class="st">&quot;deviance&quot;</span>)</span>
+<span id="cb1118-32"><a href="análise-de-sobrevivência.html#cb1118-32"></a>g8=<span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> tempo, <span class="dt">y =</span> residuo8)) <span class="op">+</span></span>
+<span id="cb1118-33"><a href="análise-de-sobrevivência.html#cb1118-33"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;coxph&quot;</span>)<span class="op">+</span></span>
+<span id="cb1118-34"><a href="análise-de-sobrevivência.html#cb1118-34"></a><span class="st">    </span><span class="kw">geom_smooth</span>() <span class="op">+</span></span>
+<span id="cb1118-35"><a href="análise-de-sobrevivência.html#cb1118-35"></a><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.key =</span> <span class="kw">element_blank</span>())</span>
+<span id="cb1118-36"><a href="análise-de-sobrevivência.html#cb1118-36"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb1118-37"><a href="análise-de-sobrevivência.html#cb1118-37"></a><span class="kw">grid.arrange</span>(g2,g3,g4,g5,g6,g7,g8,<span class="dt">ncol=</span><span class="dv">4</span>)</span></code></pre></div>
+<p><img src="livroagro_files/figure-html/unnamed-chunk-739-1.png" width="672" /></p>
+
 </div>
 </div>
             </section>
@@ -1746,8 +1715,8 @@ H_1: \mbox{Os erros não são independentes}.
           </div>
         </div>
       </div>
-<a href="esquema-de-parcelas-subdivididas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="análise-conjunta.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="análise-de-regressão-linear-e-não-linear.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

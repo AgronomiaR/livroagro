@@ -10362,7 +10362,7 @@ grid.arrange(a,b,c,
 <br><br><br>
 
 
-# Aplicações práticas do software R para Ciências Agrárias (Análise de regressão linear e não-linear)
+# Análise de regressão linear e não-linear
 
 Nas mais diversas áreas da pesquisa, seja ela na área médica, biológica, industrial, química entre outras, é de grande interesse verificar se duas ou mais variáveis estão relacionadas de alguma forma. Para expressar esta relação é muito importante estabelecer um modelo matemático. Este tipo de modelagem é chamado de regressão, e ajuda a entender como determinadas variáveis influenciam outra variável, ou seja, verifica como o comportamento de uma ou mais variáveis podem mudar o comportamento de outra.
 
@@ -10377,8 +10377,6 @@ library(ggplot2)
 ggplot(diamonds, aes(x=carat, y=price)) + 
   geom_point(aes(color=cut)) + geom_smooth() +theme_bw() 
 ```
-
-</div>
 
 **Obs. Este é um tutorial para demonstração dos modelos de regressão. Alguns casos ele não é significativo ou uma das pressuposições não é atendida. É um tutorial apenas para fins didáticos.**
 
@@ -11390,12 +11388,12 @@ rownames(analise)=c("Linear","Quadrático","Cúbico","Log",
 knitr::kable(analise)
 ```
 
-# Aplicações práticas do software R para Ciências Agrárias (Análise de sobrevivência ou Análise de Sobrevida)
+
+# Análise de sobrevivência
 
 *****
 
 <br><br>
-<div style="column-count: 2;">
 
 ```{r, fig.width=5, fig.height=5,echo=F,results='hide', warning=F,message=F}
 tempo=c(10,10,10,10,10,10,10,24,24,24,24,48,10,10,10,10,10,10,10,10,10,10,10,10,24,24,48,48,72,72,72,72,72,72,72,72,10,10,24,24,72,72,72,72,72,72,96,96,10,10,10,48,96,96,144,144,168,168,168,168,10,10,24,24,72,72,72,96,96,120,168,168,10,10,10,10,10,10,10,24,24,24,24,48,10,10,10,24,24,120,120,144,144,144,144,144,10,10,144,144,168,168,168,168,168,168,168,168,24,72,96,96,120,144,168,168,168,168,168,168,24,72,96,120,144,168,168,168,168,168,168,168,10,10,10,10,10,10,24,72,96,168,168,168)
@@ -11418,8 +11416,6 @@ ggsurvplot(smod)
 ```
 
 Análise de sobrevivência, também denominada análise de sobrevida, é um ramo da estatística que estuda o tempo de duração esperado até a ocorrência de um ou mais eventos, tais como morte em organismos biológicos ou falha em sistemas mecânicos. Na agronomia, tem sido bastante utilizada na avaliação residual de produtos fitossanitários em insetos, tempo até a morte em função de um doença, etc.
-
-</div>
 
 <br><br>
 
