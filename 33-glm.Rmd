@@ -1,0 +1,284 @@
+# Modelo linear generalizado
+
+## Conjunto de dados
+
+Considera um conjunto de dados simulados de germinação com oito repetições e quatro tratamento qualitativos. Conforme a regra de análise de sementes, em um teste de germinação é estabelecido a quantidade mínima de 50 sementes por rolo de papel. Logo, sabemos que a quantidade máxima de cada repetição e de 50 sementes.
+
+```{r}
+trat=rep(paste("T",1:4),e=8)
+germ=c(33,35,34,30,38,30,37,30,36,38,34,38,38,38,35,35,30,15,31,17,25,24,24,18,27,20,28,35,30,30,30,29)
+```
+
+## Modelo linear generalizado
+
+No R, podemos realizar a entrada dos dados de duas formas. Pela proporção ou por dados dicotomizados (Respostas do tipo 0 ou 1).
+
+Nosso exemplo usaremos pela proporção.
+
+```{r}
+modelo=glm(cbind(germ,50-germ)~trat, family=binomial)
+```
+
+**Explicação**: `germ` é nossa resposta, ou seja, total de sementes germinadas (ou podemos chamar de total de sucessos na repetição). O valor `50` indica o total de observações na repetição (Deve ser conhecido). `trat` é nossa variável explicativa qualitativa, `binomial` é a distrbuição provável que estamos considerando.
+
+## Análise de deviance
+
+```{r}
+summary(modelo)
+anova(modelo, test="Chisq")
+```
+
+## Diagnóstico
+
+```{r}
+par(mfrow=c(2,2))
+plot(modelo)
+```
+
+## Halfnormaplot
+
+```{r}
+hnp::hnp(modelo, print.on=T)
+```
+
+## Constrastes
+
+```{r}
+library(emmeans)
+media=emmeans(modelo,~trat)
+```
+
+## Retornando a função logistica
+
+```{r}
+medfin=regrid(media)
+library(multcompView)
+library(multcomp)
+cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
+```
+
+## Supondo que não sabemos o total de cada repetição
+
+Nesse caso, vamos optar pela distribuição poisson
+
+```{r}
+modelo=glm(germ~trat, family=poisson)
+```
+
+## Análise de deviance
+
+```{r}
+summary(modelo)
+anova(modelo, test="Chisq")
+```
+
+## Diagnóstico
+
+```{r}
+par(mfrow=c(2,2))
+plot(modelo)
+```
+
+## Halfnormaplot
+
+```{r}
+hnp::hnp(modelo, print.on=T)
+```
+
+## Constrastes
+
+```{r}
+library(emmeans)
+media=emmeans(modelo,~trat)
+```
+
+## Retornando a função logistica
+
+```{r}
+medfin=regrid(media)
+library(multcompView)
+library(multcomp)
+cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
+```
+
+## Analisando sobredispersão
+
+```{r}
+library(AER)
+dispersiontest(modelo, trafo=1) 
+## se for menor que 0,01 há sbredispersão, nesse caso usar quasipoisson
+```
+
+Caso fosse menor que 0,01 ou 0,05, podemos testar a distribuição quasipoisson. 
+Vamos treinar, ainda que não seja necessário.
+
+```{r}
+modelo=glm(germ~trat, family=quasipoisson)
+```
+
+## Análise de deviance
+
+```{r}
+summary(modelo)
+anova(modelo, test="Chisq")
+```
+
+## Diagnóstico
+
+```{r}
+par(mfrow=c(2,2))
+plot(modelo)
+```
+
+## Halfnormaplot
+
+```{r}
+hnp::hnp(modelo, print.on=T)
+```
+
+## Constrastes
+
+```{r}
+library(emmeans)
+media=emmeans(modelo,~trat)
+```
+
+## Retornando a função logistica
+
+```{r}
+medfin=regrid(media)
+library(multcompView)
+library(multcomp)
+cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
+```
+
+## Distribuição quasibinomial
+
+```{r}
+quasibin<-glm(cbind(germ,50-germ)~trat, family = quasibinomial)
+```
+
+## Análise de deviance
+
+```{r}
+summary(modelo)
+anova(modelo, test="Chisq")
+```
+
+## Diagnóstico
+
+```{r}
+par(mfrow=c(2,2))
+plot(modelo)
+```
+
+## Halfnormaplot
+
+```{r}
+hnp::hnp(modelo, print.on=T)
+```
+
+## Constrastes
+
+```{r}
+library(emmeans)
+media=emmeans(modelo,~trat)
+summary(pairs(media), type = "response")
+```
+
+## Retornando a função logistica
+
+```{r}
+medfin=regrid(media)
+library(multcompView)
+library(multcomp)
+cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
+```
+
+## Fatorial qualitativo e quantitativo
+
+Supondo um outro exemplo de um experimento em esquema fatorial 2 x 5, em que o primeiro fator e qualitativo e o segundo fator quantitativo com 5 doses (2, 4, 6, 8, 10) e três repetições cada. Total de semenetes e conhecido e o valor e 30.
+
+```{r}
+resp=c(0,0,0,3,3,2,6,6,5,17,18,14,25,26,23,
+       0,1,0,1,1,2,15,14,15,15,16,16,20,20,19)
+f1=rep(c("T1","T2"),e=15) ## fator qualitativo
+d=rep(c(2,4,6,8,10),e=3,2) ## dose como numerico
+D=factor(d) ## considerando dose como fator
+```
+
+## Modelo
+
+Vamos considerar os dois fatores como qualitativos
+
+```{r}
+bin=glm(cbind(resp,30-resp)~f1*D, family = binomial)
+```
+
+## Deviance
+
+```{r}
+summary(bin)
+anova(bin, test="Chisq")
+referencia <- ref_grid(bin)
+referencia ## Aqui deve aparecer os niveis dos fatores, se dose so aparecer 1, está errado
+```
+
+## Teste de comparação 
+
+Se não fosse um fator quantitativo, podemos fazer assim:
+
+```{r}
+media <- emmeans(bin, ~f1|D)
+medfin<-regrid(media)
+cld(medfin, alpha=0.05, Letters=letters, adjust="tukey")
+media <- emmeans(bin, ~D|f1)
+medfin<-regrid(media)
+cld(medfin, alpha=0.05, Letters=letters, adjust="tukey")
+```
+
+## Regressão
+
+Como há interação entre os fatores, necessitamos construir duas curvas, vejamos: 
+
+## Dividindo o conjunto de dados
+
+```{r}
+resp1=resp[1:15]  ## resposta de T1, nesse caso as observações de T1 estão na posição de  1 a 15
+resp2=resp[16:30] ## resposta de T2, nesse caso as observações de T2 estão na posição de  16 a 30
+d=d[1:15] ## cortando dose, nesse caso somente uma vez é necessário
+```
+
+## modelo para T1
+
+```{r}
+bin1=glm(cbind(resp1,30-resp1)~d, family = binomial)
+summary(bin1)
+```
+
+## modelo para T2
+
+```{r}
+bin2=glm(cbind(resp2,30-resp2)~d, family = binomial)
+summary(bin2)
+```
+
+## Gráfico
+
+### Calculando vetores
+
+```{r}
+med1=tapply(resp1/30, d, mean)
+med2=tapply(resp2/30, d, mean)
+DOSE=c(2,4,6,8,10)
+```
+
+### Gráfico final
+
+```{r}
+plot(med1~DOSE,xlab="Dose(mg/L)",ylab="Probabilidade")
+points(med2~DOSE,pch=16,col="darkblue")
+curve(predict(bin1,data.frame(d=x),type="resp"),add=TRUE) ## curva de T1
+##points(d,fitted(bin1),pch=20) 
+curve(predict(bin2,data.frame(d=x),type="resp"),add=TRUE, lty=2,col="darkblue") ## Curva de T2
+```

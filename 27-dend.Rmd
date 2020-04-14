@@ -1,0 +1,193 @@
+
+# Dendrograma
+
+****
+
+
+### Conjunto de dados
+
+Violent Crime Rates by US State
+
+Description
+
+This data set contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. Also given is the percent of the population living in urban areas. 
+
+McNeil, D. R. (1977) Interactive Data Analysis. New York: Wiley.
+
+```{r}
+data("USArrests")
+USArrests
+```
+
+<br>
+
+### Calculando as distâncias
+
+```{r}
+d=dist(USArrests)
+R=hclust(d)
+```
+
+<br>
+
+### Dendrograma
+
+```{r}
+plot(R)
+```
+
+<br>
+
+### Altura dos rótulos
+
+```{r}
+plot(R, hang=-1)
+```
+
+<br>
+
+### Editando argumentos
+
+```{r}
+plot(R, 
+     las=1, # Escala do eixo na horizontal
+     hang=-1, # alinhar altura dos rótulos
+     main="", # Título vazio
+     ylab="Distância") # Título do eixo Y
+```  
+
+<br>
+
+### Separando em grupos
+
+Neste exemplo vamos considerar dois grupos
+
+```{r}
+# Chamando package dendextend
+library(dendextend)
+
+# Construindo o dendrograma
+dend=as.dendrogram(hclust(dist(USArrests), method='average'))
+
+# Definindo cores e grupos para o dendrograma
+dend=set(dend,"branches_k_color", 
+             value = c("red", "blue"), k = 2)
+
+# Plotando o gráfico
+par(cex=0.7)
+plot(dend, 
+     las=1, 
+     ylab="Distância")
+```
+
+<br>
+
+### Caixas separando grupos
+
+```{r}
+library(dendextend)
+dend=as.dendrogram(hclust(dist(USArrests), 
+                          method='average'))
+dend=set(dend,
+         "branches_k_color", 
+             value = c("red", "blue"), 
+         k = 2)
+par(cex=0.7, mai=c(1.2,0.8,0,0))
+plot(dend, 
+     las=1,
+     ylab="Distância")
+par(cex=0.8)
+# Construindo caixa de separação entre os grupos
+rect.dendrogram(dend,
+                k=2, # Dois grupos
+                border = 8, # cor da borda (8: cinza)
+                lty = 5, # formato da linha
+                lwd = 2) # espessura da linha
+```
+
+<br>
+
+### Árvore filogenética (Em círculo)
+
+```{r}
+library(ape)
+par(mar=c(0,0,1,0))
+plot(as.phylo(R),
+     cex=0.7, 
+     type="fan")
+```
+
+<br>
+
+### Cor e separando por grupo
+
+```{r}
+par(mar=c(0,0,1,0))
+clus=cutree(R,2)
+colors=c("red","blue")
+plot(as.phylo(R), 
+     cex=0.7,
+     type="fan", 
+     tip.color=colors[clus])
+```
+
+<br>
+
+### Formato radial
+
+```{r}
+par(mar=c(0,0,1,0))
+plot(as.phylo(R),
+     cex=0.7, 
+     type="radial")
+```
+
+<br><br><br>
+
+****
+
+# Diagrama de Venn
+
+****
+
+## Pacote venneuler
+
+```{r}
+require(venneuler)
+v <- venneuler(c(A=450, B=1800, "A&B"=230))
+plot(v)
+```
+
+## Pacote eulerr
+
+```{r}
+library(eulerr)
+fit <- euler(c(A = 450, B = 1800, "A&B" = 230))
+plot(fit)
+```
+
+Existe um app Shiny: `eulerr.co`
+
+## Pacote gplots
+
+```{r}
+require(gplots) 
+oneName <- function() paste(sample(LETTERS,5,replace=TRUE),collapse="")
+geneNames <- replicate(1000, oneName())
+GroupA <- sample(geneNames, 400, replace=FALSE)
+GroupB <- sample(geneNames, 750, replace=FALSE)
+GroupC <- sample(geneNames, 250, replace=FALSE)
+GroupD <- sample(geneNames, 300, replace=FALSE)
+venn(list(GrpA=GroupA,GrpB=GroupB,GrpC=GroupC,GrpD=GroupD))
+```
+
+## Pacote VennDiagram
+
+```{r}
+require(VennDiagram)
+vp <- venn.diagram(list(A=1:5,B=1,C=c(4,8:10),D=c(4:12)), 
+                   fill = 2:5, alpha = 0.3, filename = NULL);
+grid.draw(vp)
+```
+
+

@@ -1,0 +1,129 @@
+# Radar
+
+****
+
+<br>
+
+Um gráfico de radar é um método gráfico de apresentar dados multivariáveis na forma de um gráfico bidimensional de três ou mais variáveis quantitativas representadas em eixos que partem do mesmo ponto. A posição relativa e o ãngulo dos eixos normalmente é pouco informativo.
+
+O gráfico de radar é também conhecido como gráfico de teia, gráfico de aranha, gráfico de estrela, polígono irregular, gráfico polar, ou diagrama Kiviat.
+
+<br>
+
+### Conjunto de dados
+
+```{r}
+cor=c(6,6,6,7,7,7,3,4,3,3,3,3,6,6,7,6,6,7,6,7,5,6,5,3,3,5,5,5,3,3)
+aroma=c(6,7,5,6,6,7,3,3,3,3,5,3,4,6,6,6,5,7,5,6,5,3,3,6,4,4,5,5,4,3)
+sabor=c(5,6,6,6,5,6,3,4,3,4,2,2,3,6,7,6,7,7,6,6,5,4,5,3,6,6,5,5,4,6)
+corpo=c(6,5,4,6,4,5,4,4,4,5,2,4,6,6,5,6,6,7,5,6,4,5,5,4,4,5,5,4,2,4)
+global=c(5,6,6,7,5,6,3,4,3,3,2,3,4,6,6,6,6,7,6,6,5,6,5,5,4,5,5,4,3,5)
+(Amostra=rep(c(paste("A", 1:5)), e=6))
+dados=data.frame(Amostra, cor, aroma, sabor, corpo, global)
+```
+
+**Tratamentos**:
+
+- B100: 100% de B (Amostra A1)
+- N100: 100% de N (Amostra A2)
+- B75N25: 75% de B e 25% de N (Amostra A3)
+- B50N50: 50% de B e 50% de N (Amostra A4)
+- B25N75: 25% de B e 75% de N (Amostra A5)
+
+### Média por variável
+
+```{r}
+mediacor=tapply(cor, Amostra, mean)
+mediaaroma=tapply(aroma, Amostra, mean)
+mediasabor=tapply(sabor, Amostra, mean)
+mediacorpo=tapply(corpo, Amostra, mean)
+mediaglobal=tapply(global, Amostra, mean)
+medias=c(mediacor,mediaaroma, mediasabor,mediacorpo,mediaglobal)
+```
+
+<br>
+
+### Pacote radarchart
+
+<br>
+
+### Lista com as médias
+
+<br>
+
+```{r}
+labs=c("Cor","Aroma","Sabor","Corpo","Global")
+scores=list("B100"=as.numeric(medias[c(1,6,11,16,21)]),
+            "N100"=as.numeric(medias[c(2,7,12,17,22)]),
+            "B75N25"=as.numeric(medias[c(3,8,13,18,23)]),  
+            "B50N50"=as.numeric(medias[c(4,9,14,19,24)]),
+            "B25N75"=as.numeric(medias[c(5,10,15,20,25)]))
+```
+
+Instalar pacote radarchart
+
+```{r}
+library(radarchart)
+chartJSRadar(scores = scores,
+             labs=labs, 
+             plwd=4 , 
+             plty=1,
+             axistype=0, 
+             maxmin=F,
+             cglcol="grey", 
+             cglty=1, 
+             axislabcol="grey", 
+             caxislabels=seq(0,20,5), 
+             cglwd=0.8,
+             vlcex=0.8)
+```
+
+<br>
+
+### Pacote plotly
+
+<br>
+
+### Médias por tratamento
+
+```{r}
+B100=c(as.numeric(medias[c(1,6,11,16,21)]))
+N100=c(as.numeric(medias[c(2,7,12,17,22)]))
+B75N25=c(as.numeric(medias[c(3,8,13,18,23)]))  
+B50N50=c(as.numeric(medias[c(4,9,14,19,24)]))
+B25N75=c(as.numeric(medias[c(5,10,15,20,25)]))
+```
+
+<br>
+
+<center>
+
+```{r}
+library(plotly)
+(p <- plot_ly(type = 'scatterpolar',fill = 'toself') %>%
+  add_trace(r = B100,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'B100') %>%
+  add_trace(r = N100,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'N100') %>%
+  add_trace(r = B75N25,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'B75N25') %>%
+  add_trace(r = B50N50,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'B50N50') %>%
+  add_trace(r = B25N75,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'B25N75') %>% layout(polar = list(radialaxis = list(visible = T))))
+```
+
+</center>
+
+```{r}
+library(fmsb)
+data=rbind(round(B100,1),
+           round(N100,1),
+           round(B75N25,1),
+           round(B50N50,1),
+           round(B25N75,1))
+rownames(data)=c("B100","N100","B75N25","B50N50","B25N75")
+colnames(data)=c('Cor','Aroma','Sabor', 'Corpo', 'Global')
+data=data.frame(data)
+radarchart(data,axistype = 2)
+```
+
+<br><br><br>
+
+****
+

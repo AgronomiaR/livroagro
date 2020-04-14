@@ -1,0 +1,557 @@
+# Delineamento em Blocos Casualizados
+
+****
+
+<br><br><br><br>
+
+- O delineamento em blocos ao acaso ou o delineamento em blocos casualizados são aqueles que levam em consideração os 3 princípios básicos da experimentação;
+- O controle local é feito na sua forma mais simples e é chamado de blocos;
+- Sempre que não houver homogeneidade das condições experimentais, deve-se utilizar o princípio do controle local;
+- Estabelece-se, então, sub-ambientes homogêneos (blocos) e instalando, em cada um deles, todos os tratamentos, igualmente repetidos;
+- Nessas condições, o delineamento em blocos casualizados é mais eficiente que o inteiramente ao acaso e, essa eficiência depende da uniformidade das parcelas de cada bloco;
+- Pode-se haver diferenças bem acentuadas de um bloco para outro.
+- O número de blocos e de repetições coincide apenas quando os tratamentos ocorrem uma única vez em cada bloco.
+
+<br><br>
+
+****
+
+## Vantagens
+
+****
+
+<br>
+
+- Controla as diferenças que ocorrem nas condições ambientais, de um bloco para outro;
+- Conduz a uma estimativa mais exata para a variância residual, uma vez que a variação ambiental entre blocos é isolada.
+
+****
+
+## Desvantagens
+
+****
+
+<br>
+
+- Pela utilização do princípio do controle local, há uma redução no número de graus de liberdade do resíduo;
+- Exigência de homogeneidade das parcelas dentro de cada bloco limita o número de tratamentos, que não pode ser muito elevado.
+
+<br>
+
+****
+
+## Modelo matemático 
+
+****
+
+<br>
+
+\begin{eqnarray}
+y_{ji}=\mu+\tau_i+\beta_j+\varepsilon_{ij}
+\end{eqnarray}
+
+$y_{ji}$: é a observação referente ao tratamento i no bloco j;
+
+$\mu$: é a média geral (ou constante comum a todas as observações);
+
+$\tau_i$: é o efeito de tratamento, com $i = 1, 2, . . . , I$;
+
+$\beta_j$: é o efeito do bloco;
+
+$\varepsilon_{ij}$: é o erro experimental, tal que $\varepsilon_{ij}$~N(0; $\sigma^2$).
+
+****
+
+## Hipóteses e Modelo 
+
+****
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mu_1 = \mu_2 =\mu_i\\[.2cm]
+H_1: & \mu_i \neq \mu_i' \qquad i \neq i'.
+\end{array}
+\right.
+\end{eqnarray*}
+
+CV            | G.L.    |S.Q.         |Q.M.                     |  Fcalc                 | Ftab
+--------------:|:---------:|:-------------:|:-------------------------:|:------------------------:|:----------------------------------
+Tratamentos   | $a - 1$ | $SQ_{Trat}$ | $\frac{SQ_{Trat}}{a-1}$ | $\frac{QMTrat}{QMRes}$ | $F(\alpha;GL_{Trat} ;GL_{Res})$
+Blocos        | $b-1$   | $Sq_{Blocos}$|$\frac{SQ_{Blocos}}{b-1}$|$\frac{QM_{bloco}}{QM_{Res}}$ | $F(\alpha;GL_{bloco} ;GL_{Res})$
+resíduo       | $(a-1)(b-1)$| $SQ_{Res}$  |$\frac{SQRes}{(a-1)(b-1)}$                  | -                      |
+Total         | $ab-1$  |$SQ_{Total}$ | -                       | -                      |
+
+<br>
+
+## Croqui 
+
+<br>
+
+Criando uma função para fazer um croqui (Bloco em coluna)
+
+```{r}
+# Não alterar os comandos da função
+library(agricolae)
+library(gridExtra)
+library(grid)
+croqui=function(trat,r){
+  sort=design.rcbd(trat,r,serie=0)
+  sort$book[,3]=as.factor(matrix(sort$book[,3],r,,T))
+  ncol=r
+  gs <- lapply(sort$book[,3], function(ii)
+    grobTree(rectGrob(gp=gpar(fill=ii, alpha=0.5)),textGrob(ii)))
+  grid.arrange(grobs=gs, ncol=ncol)}
+``` 
+
+<br>
+
+Vetor de tratamentos
+
+```{r}
+trat=c("T1","T2","T3","T4")
+```
+
+<br>
+
+Usando a função
+
+```{r, fig.align='center'}
+croqui(trat,r=3)
+```
+
+<br>
+
+Criando uma função para fazer um croqui (Bloco em linha)
+
+```{r}
+# Não alterar os comandos da função
+library(agricolae)
+library(gridExtra)
+library(grid)
+croqui=function(trat,r){
+  sort=design.rcbd(trat,r,serie=0)
+  sort$book[,3]=as.factor(t(matrix(sort$book[,3],r,,T)))
+  ncol=length(levels(sort$book[,3]))
+  gs <- lapply(sort$book[,3], function(ii)
+    grobTree(rectGrob(gp=gpar(fill=ii, alpha=0.5)),textGrob(ii)))
+  grid.arrange(grobs=gs, ncol=ncol)}
+``` 
+
+<br>
+
+Vetor de tratamentos
+
+```{r}
+trat=c("T1","T2","T3","T4")
+```
+
+<br>
+
+Usando a função
+
+```{r, fig.align='center'}
+croqui(trat,r=3)
+```
+
+<br><br>
+
+****
+
+## Exemplo 1
+
+****
+
+<br>
+
+**Exemplo do Livro Planejamento e Análise Estatística de Experimentos Agronômicos (2013) - Décio Barbin - pg. 72**
+
+![](laranja.png)
+
+Um experimento foi conduzido com o objetivo de estudar o comportamento de nove porta-enxertos para a laranjeira Valência. 
+
+Os porta-enxertos são:
+
+- T1: Tangerina Sunki
+- T2: Limão rugoso Nacional
+- T3: Limão rugoso da Flórida
+- T4: Tangerina Cleópatra
+- T5: Citranger-troyer
+- T6: Trifoliata
+- T7: Tangerina Cravo
+- T8: Laranja caipira
+- T9: Limão Cravo
+
+**Delineamento experimental**: Blocos casualizados.
+
+**Repetições/Tratamento**: 3 repetições
+
+<br>
+
+Croqui experimental é apresentado abaixo:
+
+Bloco |     |     |     |     |     |     |     |     |
+------|-----|-----|-----|-----|-----|-----|-----|-----|-----
+B1    |T3   |T1   |T4   |T8   |T6   |T7   |T2   |T9   |T5
+B2    |T7   |T3   |T9   |T4   |T2   |T5   |T1   |T6   |T8
+B3    |T8   |T6   |T2   |T1   |T7   |T9   |T3   |T4   |T5
+
+Para o ano de 1973 (Plantas com 12 anos de idade), os resultados de produção, em número médio de frutos por planta, foram:
+
+Tratamentos | B1      |B2       |B3       |Total
+------------|---------|---------|---------|---------
+1           |145      |155      |166      |466
+2           |200      |190      |190      |580
+3           |183      |186      |208      |577
+4           |190      |175      |186      |551
+5           |180      |160      |156      |496
+6           |130      |160      |130      |420
+7           |206      |165      |170      |541
+8           |250      |271      |230      |751
+9           |164      |190      |193      |547
+Total       |1648     |1652     |1629     |4929
+
+<br>
+
+### Conjunto de dados
+
+```{r}
+resposta=c(145,155,166,
+           200,190,190,
+           183,186,208,
+           190,175,186,
+           180,160,156,
+           130,160,130,
+           206,165,170,
+           250,271,230,
+           164,190,193)
+cultivar=rep(c(paste("T",1:9)),e=3)
+cultivar=as.factor(cultivar)
+bloco=as.factor(rep(c(paste("B",1:3)),9))
+```
+
+<br><br>
+
+## Gráficos exploratórios
+
+<br>
+
+### Gráfico de caixas
+
+```{r}
+car::Boxplot(resposta~cultivar)
+```
+
+<br>
+
+### Histograma
+
+```{r}
+hist(resposta)
+```
+
+<br>
+
+## Análise de variância
+
+```{r}
+modelo=aov(resposta~cultivar+bloco)
+anova(modelo) # Conferir GL
+```
+
+<br><br>
+
+## Pressuposições
+
+<br>
+
+### Normalidade dos erros
+
+```{r}
+shapiro.test(modelo$residuals)
+```
+
+Os erros seguem distribuição normal
+
+<br>
+
+### Homogeneidade das variâncias
+
+```{r}
+bartlett.test(modelo$residuals~cultivar)
+```
+
+As variâncias são homogêneas
+
+<br>
+
+### Independência dos erros
+
+```{r}
+lmtest::dwtest(modelo)
+```
+
+Os erros são independentes.
+
+<br>
+
+### Teste de Aditividade de Tukey
+
+```{r}
+library(asbio)
+tukey.add.test(resposta,cultivar,bloco)
+```
+
+<br>
+
+### Gráfico de resíduos padronizados
+
+```{r}
+a=anova(modelo)
+plot(modelo$residuals/sqrt(a$`Mean Sq`[3]), ylab="Resíduos Padronizados")
+abline(h=0)
+```
+
+<br><br>
+
+## Comparação múltipla
+
+<br>
+
+### Teste de Comparação Múltipla de Tukey (Utilizando o multcomp)
+
+```{r}
+library(multcomp)
+mcomp=glht(modelo, mcp(cultivar="Tukey"))
+plot(mcomp)
+cld(mcomp)
+```
+
+<br>
+
+### Teste de Comparação Múltipla de Tukey (Utilizando o TukeyHSD do R)
+
+```{r}
+(tukey=TukeyHSD(modelo))
+plot(tukey)
+```
+
+<br>
+
+### Teste de Comparação Múltipla de Tukey (Utilizando o HSD.test do Agricolae)
+
+```{r}
+library(agricolae)
+tukey=HSD.test(modelo,"cultivar")
+plot(tukey)
+```
+
+<br>
+
+### Teste de Comparação Múltipla de Tukey (Utilizando o ea1() do pacote easyanova)
+
+```{r, fig.show='hide'}
+library(easyanova)
+tukey=ea1(data.frame(cultivar,bloco,resposta), design = 2)
+cbind(tukey$`Adjusted means`[1],tukey$`Adjusted means`[2],tukey$`Adjusted means`[4])
+```
+
+<br>
+
+#### Teste de Comparação Múltipla de Tukey (Utilizando o dbc do pacote ExpDes.pt)
+
+```{r}
+library(ExpDes.pt)
+dbc(cultivar,bloco,resposta)
+```
+
+<br><br>
+
+****
+
+## Exemplo 2
+
+****
+
+![](sojanovo.jpeg)
+
+Um experimento foi realizado com o intuito de avaliar a produtividade de 15 cultivares comerciais de soja no munícipio de Londrina-PR. O experimento foi instalado em Delineamento em blocos casualizados com 3 repetições por tratamento.
+
+**Fonte da foto**: [Agricultura](http://www.agricultura.gov.br/noticias/entra-em-vigor-novo-sistema-de-registro-de-cultivares/@@nitf_galleria)
+
+<br>
+
+### Conjunto de dados
+
+```{r}
+PRO=c(2444.44,2870.37,2314.81,2629.63,2444.44,2592.59,2962.96,3037.04,3037.04,2592.59,2296.30,2444.44,2370.37,3481.48,2555.56,1981.48,2611.11,1925.93,1870.37,2518.52,2370.37,2462.96,2351.85,2000.00,2703.70,2685.19,2166.67,2129.63,2222.22,1814.81,2537.04,2351.85,2333.33,3370.37,2462.96,3129.63,2666.67,2796.30,2055.56,2333.33,2240.74,2092.59,2703.70,2129.63,2740.74)
+Cultivares=rep(c(paste("T",1:15)),e=3)
+Bloco=rep(c(paste("B",1:3)),15)
+Tratamento = as.factor(Cultivares)
+bloco=as.factor(Bloco)
+dados = data.frame(Tratamento, TRAT=Tratamento, bloco,resp=PRO)
+dados = dados[order(dados$Tratamento), ]
+X = 'Cultivares de soja'
+(Y = expression(Produtividade (Kg.ha^-1)))
+alfa="0,05"
+```
+
+<br><br>
+
+## Estatística descritiva
+
+```{r}
+Média = with(dados, mean(resp))
+Variância = with(dados, var(resp))
+Desvio = with(dados, sd(resp))
+CV = Desvio / Média * 100
+
+desc = cbind(Média, Variância, Desvio, CV)
+rownames(desc) = 'Produvidade (Kg/ha)'
+library(knitr)
+kable(round(desc,2), align="l")
+```
+
+<br><br>
+
+### Por Cultivar
+
+```{r}
+Médias = with(dados, tapply(resp, Tratamento, mean))
+Variâncias = with(dados, tapply(resp, Tratamento, var))
+Desvios = with(dados, tapply(resp, Tratamento, sd))
+CV = Desvios / Médias * 100
+Desc = cbind(Médias, Variâncias, Desvios, CV)
+kable(round(Desc,2),align="l")
+```
+
+As Médias e as Variâncias estão apresentadas na Tabela \ref{tab:MedVar}. Nota-se uma variação nos valores médios, sendo a menor Média igual a $`r round(min(Médias), 2)`$ e a maior Média de $`r round(max(Médias), 2)`$. Já em relação às Variâncias, o menor valor é de $`r round(min(Variâncias), 2)`$ e a maior variablidade de $`r round(max(Variâncias), 2)`$. 
+
+<br><br>
+
+## Gráfico de Caixas
+
+```{r, results='hide', fig.cap="Gráfico de caixas", fig.pos="H", fig.align='center'}
+par(bty='l', mai=c(1, 1, .2, .2))
+par(cex=0.7)
+caixas=with(dados, car::Boxplot(resp ~ dados$TRAT, vertical=T,las=1, col='Lightyellow',
+                    xlab=X, ylab=Y))
+mediab=tapply(dados$resp, dados$ TRAT, mean)
+points(mediab, pch='+', cex=1.5, col='red')
+names(Desvios)[which.min(Desvios)]
+```
+
+Não observa-se *outliers*. Há maior variabilidade em `r names(Desvios)[which.max(Desvios)]` e menor em `r names(Desvios)[which.min(Desvios)]`, com `r round(max(Desvios),3)` e `r round(min(Desvios),3)`, respectivamente. Há evidências de diferença entre as Médias dos tratamentos.
+
+<br><br>
+
+## Análise de Variância
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_{15} \\[.2cm]
+H_1: & \mu_i \neq \mu_i' \qquad i \neq i'.
+\end{array}
+\right.
+\end{eqnarray*}
+
+```{r}
+mod = with(dados, aov(resp ~ Tratamento+bloco))
+av=anova(mod)
+kable(av, align = "l")
+```
+
+Como p-valor calculado (p=$`r av[1,5]`$) é `r ifelse(av[1,5]>0.05, "maior", "menor")` que o nível de significância adotado ($p=`r alfa`$), `r ifelse(av[1,5]>0.05, "não rejeita-se","rejeita-se")` $H0$. Logo, 
+`r ifelse(av[1,5]>0.05, "os tratamentos não se diferem","ao menos dois tratamentos se diferem entre si")`
+
+<br><br>
+
+## Pressuposições
+
+<br>
+
+### Normalidade dos erros
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{Os erros seguem distribuição normal}\\[.2cm]
+H_1: & \mbox{Os erros não seguem distribuição normal}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+```{r}
+(norm=shapiro.test(mod$res))
+```
+
+Como p-valor calculado (p=$`r round(norm$p.value,4)`$) é `r ifelse(norm$p.value>0.05, "maior", "menor")` que o nível de significância adotado ($\alpha=`r alfa`$), `r ifelse(norm$p.value>0.05, "não rejeita-se", "rejeita-se")` $H_O$. Logo, os erros `r ifelse(norm$p.value>0.05, "seguem", "não seguem")` distribuição normal.
+
+```{r, results='hide', fig.cap="Gráfico QQplot \\label{Fig:QQ}", fig.pos="H", fig.align='center'}
+hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
+```
+
+<br>
+
+### Homogeneidade de Variâncias
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{ As Variâncias são homogêneas}\\[.2cm]
+H_1: & \mbox{ As Variâncias não são homogêneas}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+```{r}
+(homog=with(dados, bartlett.test(mod$res ~ Tratamento)))
+```
+
+Como p-valor calculado (p=$`r round(homog$p.value,4)`$) é `r ifelse(homog$p.value>0.05, "maior", "menor")` que o nível de significância adotado ($p=`r alfa`$), `r ifelse(homog$p.value>0.05, "não rejeita-se", "rejeita-se")` $H_0$. Logo, as Variâncias `r ifelse(homog$p.value>0.05, "são", "não são")` homogêneas.
+
+<br>
+
+### Independência dos erros
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{Os erros são independentes}\\[.2cm]
+H_1: \mbox{Os erros não são independentes}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+```{r}
+(ind=lmtest::dwtest(mod))
+```
+
+Como p-valor calculado (p=$`r round(ind$p.value,4)`$) é `r ifelse(ind$p.value>0.05, "maior", "menor")` que o nível de significância adotado ($p=`r alfa`$), `r ifelse(homog$p.value>0.05, "não rejeita-se", "rejeita-se")` $H_0$. Logo, os erros `r ifelse(ind$p.value>0.05, "são", "não são")` independentes. A Figura \ref{fig:res} apresenta os resíduos brutos. Percebe-se que os resíduos estão distribuídos de forma totalmente aleatória, evidenciando a sua independência.
+
+```{r, fig.cap="Gráfico de resíduos brutos \\label{fig:res}", fig.pos="H", fig.align='center'}
+plot(mod$res, las=1, pch=19, col='red', ylab='Resíduos brutos')
+abline(h=0)
+```
+
+<br><br>
+
+## Teste de comparações
+ 
+```{r, fig.show='hide'}
+mod.1 = easyanova::ea1(dados[,c(1,3,4)], design=2, plot=2)
+tabela=cbind(mod.1$`Adjusted means`[1],
+             mod.1$`Adjusted means`[2],
+             mod.1$`Adjusted means`[8])
+names(tabela)[1:3]=c("Cultivar","Média","")
+kable(tabela, align = 'l', booktabs=T, caption="Teste de comparação de Scott-Knott", format="pandoc", format.args = list(big.mark="."))
+```
+
+```{r}
+library(ExpDes.pt)
+with(dados,dbc(Tratamento, bloco,resp, mcomp="tukey"))
+```
+
+
+<br><br><br><br>

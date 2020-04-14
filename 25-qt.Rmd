@@ -1,0 +1,70 @@
+# Quantis Teóricos 
+
+****
+
+<br>
+
+### Conjunto de dados
+
+Um experimento foi realizado com o intuito de avaliar a massa seca da raiz de soja no munícipio de Londrina-PR. O experimento foi instalado em delineamento inteiramente casualizado (DIC), 5 repetições, no esquema fatorial 4 x 2 (4 aplicações de dicloroisocianurato de sódio (DUP) e 2 inoculações de *Rhizobium*).
+
+```{r}
+msraiz=c(4.87, 4.64, 3.71, 3.04, 4.57, 4.13,  3.8, 1.17, 3.28, 1.73, 1.87, 2.85, 3.32, 2.19, 2.33, 4.09, 2.85, 1.86, 2.17, 2.12, 3.03, 3.52, 3.72, 3.09,  5.11,  3.6, 2.14, 2.25, 1.93, 3.35, 2.03, 4.72, 3.39, 3.05, 2.98, 2.53, 5.61, 3.74, 2.89, 4.8)
+(Inoculação=rep(c("IN","NI"),e=20))
+(Época=rep(c("Plantio","V1+15","V3+15","R1+15"),e=5,2))
+F1=as.factor(Inoculação)
+F2=as.factor(Época)
+Trat=paste(F1,F2)
+dados=data.frame(Trat,resp=msraiz)
+```
+
+<br>
+
+### Análise de variância
+
+```{r}
+mod = with(dados, aov(msraiz~F1*F2))
+anova(mod)
+```
+
+<br>
+
+### Envelope simulado
+
+```{r,fig.align='center',results='hide'}
+hnp::hnp(mod,
+         las=1,
+         seed=1,
+         pch=16)
+```
+
+<br>
+
+### Porcentagem de pontos fora
+
+```{r,fig.align='center',results='hide'}
+hnp::hnp(mod,
+         seed=1,
+         las=1, 
+         pch=16,
+         print.on=T)
+```
+
+<br>
+
+### Colorir pontos fora 
+
+```{r,fig.align='center',results='hide'}
+hnp::hnp(mod, 
+         seed=1,
+         las=1, 
+         pch=16,
+         print.on=T,
+         paint.out=T, 
+         col.paint.out="red")
+```
+
+<br><br><br>
+
+****
+

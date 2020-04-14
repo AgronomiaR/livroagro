@@ -16,9 +16,17 @@ library(knitr)
 options(OutDec = ".", knitr.kable.NA="")
 ```
 
+
+
+
+<!--chapter:end:index.Rmd-->
+
 # Apresentação
 
-![](CAPA.png)
+![](capanovo.png)
+
+
+<!--chapter:end:01-apre.Rmd-->
 
 # Estatística Descritiva
 
@@ -336,6 +344,8 @@ Descritiva = cbind(Médias=round(médias, 1),
 Descritiva
 ```
 
+<!--chapter:end:02-descritiva.Rmd-->
+
 # Estatística Experimental
 
 <br><br>
@@ -349,7 +359,7 @@ A Estatística Experimental tem por objetivo o estudo dos experimentos, incluind
 
 <br><br><br><br>
 
-****
+<!--chapter:end:03-exp.Rmd-->
 
 # Delineamento Inteiramente Casualizado
 
@@ -1028,7 +1038,7 @@ O Erro gerado é:
 
 <br><br><br><br>
 
-****
+<!--chapter:end:04-dic.Rmd-->
 
 # Transformação de dados
 
@@ -1631,7 +1641,7 @@ with(dados,dic(TRAT,log(RESP), mcomp="tukey"))
 
 <br><br><br><br>
 
-****
+<!--chapter:end:05-transf.Rmd-->
 
 # Delineamento em Blocos Casualizados
 
@@ -2190,7 +2200,7 @@ with(dados,dbc(Tratamento, bloco,resp, mcomp="tukey"))
 
 <br><br><br><br>
 
-****
+<!--chapter:end:06-dbc.Rmd-->
 
 # Delineamento em Quadrado Latino
 
@@ -2535,7 +2545,7 @@ dql(TRAT,linha,coluna,RESP)
 
 <br><br><br><br>
 
-****
+<!--chapter:end:07-dql.Rmd-->
 
 # Esquema Fatorial (2 Fatores) 
 
@@ -3102,7 +3112,8 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 
 <br><br><br><br>
 
-****
+<!--chapter:end:08-fat2.Rmd-->
+
 
 # Esquema Fatorial (3 Fatores)
 
@@ -3505,7 +3516,7 @@ Médias seguidas de mesma letra maiúscula na linha, minúscula em itálico dent
 
 <br><br><br><br>
 
-****
+<!--chapter:end:09-fat3.Rmd-->
 
 # Esquema de Parcelas Subdivididas
 
@@ -4164,7 +4175,7 @@ psub2.dbc(FATOR1,FATOR2,repe,RESP)
 
 <br><br><br><br>
 
-****
+<!--chapter:end:10-psub.Rmd-->
 
 # Polinômios Ortogonais
 
@@ -4542,7 +4553,7 @@ legend("bottomleft", bty="n",legend=c(expression(Y==6.457143+0.06304762 *x-0.001
 
 <br><br><br><br>
 
-****
+<!--chapter:end:11-pol.Rmd-->
 
 # Análise conjunta
 
@@ -4988,12 +4999,15 @@ kable(tabela, align = "c", col.names = c("Mês 2"," ","Mês 4"," ","Mês 6"," ")
 <br><br><br><br>
 
 
+<!--chapter:end:12-conjdbc.Rmd-->
 
 # Gráficos em R
 
 <br><br>
 
 ****
+
+<!--chapter:end:13-graph.Rmd-->
 
 # Gráfico de Colunas 
 
@@ -6501,7 +6515,7 @@ arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 
 <br><br><br>
 
-****
+<!--chapter:end:14-coluna.Rmd-->
 
 # Caixas (Boxplot)
 
@@ -6906,6 +6920,8 @@ ggboxplot(dados,
 
 ****
 
+<!--chapter:end:15-caixas.Rmd-->
+
 # Regressão
 
 ****
@@ -7279,7 +7295,7 @@ curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue"
 
 <br><br><br>
 
-****
+<!--chapter:end:16-regplot.Rmd-->
 
 # Histograma
 
@@ -7515,6 +7531,9 @@ axis(1)
 
 ****
 
+
+<!--chapter:end:17-hist.Rmd-->
+
 # Setores circulares 
 
 ****
@@ -7631,6 +7650,9 @@ pie3D(proporção*100,
 <br><br><br>
 
 ****
+
+
+<!--chapter:end:18-pizza.Rmd-->
 
 # Interação
 
@@ -8021,6 +8043,9 @@ interaction.ABC.plot(media,F1,F2,F3,data=data,
 
 ****
 
+
+<!--chapter:end:19-interaction.Rmd-->
+
 # Perfil Individual
 
 ****
@@ -8065,6 +8090,9 @@ with(dados, xyplot(RESP ~ FATOR2|FATOR1, groups=repe, type="o", ylab='CBM', stri
 <br><br><br>
 
 ****
+
+
+<!--chapter:end:20-perfil.Rmd-->
 
 # Linhas
 
@@ -8481,6 +8509,8 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
 
 ****
 
+<!--chapter:end:21-linhas.Rmd-->
+
 # Correlação
 
 ****
@@ -8800,6 +8830,9 @@ qgraph(corre, shape="circle",
 
 ****
 
+
+<!--chapter:end:22-corre.Rmd-->
+
 # Radar
 
 ****
@@ -8918,6 +8951,9 @@ library(plotly)
 
 ****
 
+
+<!--chapter:end:23-radar.Rmd-->
+
 # Intervalo de confiança
 
 ****
@@ -8983,6 +9019,9 @@ abline(h=0)
 <br><br><br>
 
 ****
+
+
+<!--chapter:end:24-ic.Rmd-->
 
 # Quantis Teóricos 
 
@@ -9053,6 +9092,9 @@ hnp::hnp(mod,
 <br><br><br>
 
 ****
+
+
+<!--chapter:end:25-qt.Rmd-->
 
 # Componentes principais
 
@@ -10020,6 +10062,9 @@ sorted.loadings3 <- load[order(load[,3]),3]
 
 ****
 
+<!--chapter:end:26-cp.Rmd-->
+
+
 # Dendograma
 
 ****
@@ -10169,6 +10214,9 @@ plot(as.phylo(R),
 <br><br><br>
 
 ****
+
+
+<!--chapter:end:27-dend.Rmd-->
 
 # Expression()
 
@@ -10407,6 +10455,9 @@ legend=expression(hat(Y)==ax^2+bx+c),
 
 ****
 
+
+<!--chapter:end:28-expression.Rmd-->
+
 # layout (graphics)
 
 ****
@@ -10585,6 +10636,9 @@ plot(c(1,6,1,6,1,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blu
 
 ****
 
+
+<!--chapter:end:29-layoutgraphics.Rmd-->
+
 # ggplot2
 
 ****
@@ -10677,6 +10731,9 @@ grid.arrange(a,b,c,
 
 <br><br><br>
 
+
+
+<!--chapter:end:30-ggplot2.Rmd-->
 
 # Análise de regressão linear e não-linear
 
@@ -11705,6 +11762,8 @@ knitr::kable(analise)
 ```
 
 
+<!--chapter:end:31-regression.Rmd-->
+
 # Análise de sobrevivência
 
 *****
@@ -12175,6 +12234,8 @@ grid.arrange(g2,g3,g4,g5,g6,g7,g8,ncol=4)
 
 <br><br><br><br><br><br>
 
+<!--chapter:end:32-survival.Rmd-->
+
 # Modelo linear generalizado
 
 ## Conjunto de dados
@@ -12460,5 +12521,5 @@ curve(predict(bin1,data.frame(d=x),type="resp"),add=TRUE) ## curva de T1
 curve(predict(bin2,data.frame(d=x),type="resp"),add=TRUE, lty=2,col="darkblue") ## Curva de T2
 ```
 
-<!--chapter:end:index.Rmd-->
+<!--chapter:end:33-glm.Rmd-->
 
