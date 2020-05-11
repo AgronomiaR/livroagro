@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R para Agronomia"
 author: "Gabriel Danilo Shimizu"
-date: "2020-04-14"
+date: "2020-05-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -12,17 +12,9 @@ description: "Este é um ..."
 
 
 
-
-
-
-<!--chapter:end:index.Rmd-->
-
 # Apresentação
 
 ![](capanovo.png)
-
-
-<!--chapter:end:01-apre.Rmd-->
 
 # Estatística Descritiva
 
@@ -463,8 +455,6 @@ Descritiva
 ## T5  255.8    254.5     266     248         18    76.2500         8.7321    3.4
 ```
 
-<!--chapter:end:02-descritiva.Rmd-->
-
 # Estatística Experimental
 
 <br><br>
@@ -478,7 +468,7 @@ A Estatística Experimental tem por objetivo o estudo dos experimentos, incluind
 
 <br><br><br><br>
 
-<!--chapter:end:03-exp.Rmd-->
+****
 
 # Delineamento Inteiramente Casualizado
 
@@ -644,7 +634,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -683,7 +673,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -791,18 +781,10 @@ car::Boxplot(resposta~tratamentos,
              las=1,
              col="lightblue", xlab="",
              ylab=expression("Produtividade"*" "* (Kg*" "*ha^-1)))
-```
-
-```
-## Warning in Boxplot.default(mf[[response]], x, id = list(method = id.method, :
-## NAs introduzidos por coerção
-```
-
-```r
 points(Media,col="red", pch=8)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Análise de Variância
 
@@ -834,7 +816,7 @@ kable(anova, align="l")
               Df   Sum Sq     Mean Sq       F value    Pr(>F) 
 ------------  ---  ---------  ------------  ---------  -------
 tratamentos   4    57442.50   14360.62500   178.4298   0      
-Residuals     15   1207.25    80.48333      NA         NA     
+Residuals     15   1207.25    80.48333                        
 
 Como o p-valor calculado ($p=1.8747417\times 10^{-12}$) é menor que o nível de significância adotado ($\alpha=0,05$), rejeita $H_0$. Logo, ao menos dois tratamentos se diferem entre si.
 
@@ -884,7 +866,7 @@ HNP=hnp::hnp(modelo, paint.on=T, col="red" , las=1, pch=8)
 plot(HNP,lty=c(2,3,2),  col=c(2,1,2,1))
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -930,24 +912,6 @@ H_1: & \mbox{ Os erros não são independentes.}
 
 ```r
 library(lmtest)
-```
-
-```
-## Carregando pacotes exigidos: zoo
-```
-
-```
-## 
-## Attaching package: 'zoo'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-```
-
-```r
 ind=dwtest(modelo)
 ```
 
@@ -961,7 +925,7 @@ plot(modelo$res, col="blue",
 abline(h=0, col="red", lwd=2)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -1009,33 +973,13 @@ text(c(1:5),
      paste(Media,tukey))
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Usando o ExpDes.pt
 
 
 ```r
 library(ExpDes.pt)
-```
-
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following objects are masked from 'package:agricolae':
-## 
-##     lastC, order.group, tapply.stat
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-```
-
-```r
 dic(tratamentos, resposta)
 ```
 
@@ -1127,7 +1071,7 @@ trat=as.factor(rep(paste("T",1:6, sep=""),e=4))
 car::Boxplot(resp~trat)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-45-1.png" width="672" />
 
 <br><br>
 
@@ -1138,7 +1082,7 @@ car::Boxplot(resp~trat)
 hist(resp)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
 <br><br>
 
@@ -1244,7 +1188,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[2]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 <br><br>
 
@@ -1261,52 +1205,11 @@ abline(h=0)
 
 ```r
 library(multcomp)
-```
-
-```
-## Carregando pacotes exigidos: mvtnorm
-```
-
-```
-## Carregando pacotes exigidos: survival
-```
-
-```
-## Carregando pacotes exigidos: TH.data
-```
-
-```
-## Carregando pacotes exigidos: MASS
-```
-
-```
-## 
-## Attaching package: 'MASS'
-```
-
-```
-## The following object is masked from 'package:ExpDes.pt':
-## 
-##     ginv
-```
-
-```
-## 
-## Attaching package: 'TH.data'
-```
-
-```
-## The following object is masked from 'package:MASS':
-## 
-##     geyser
-```
-
-```r
 mcomp=glht(modelo, mcp(trat="Tukey"))
 plot(mcomp)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 ```r
 cld(mcomp)
@@ -1355,7 +1258,7 @@ cld(mcomp)
 plot(tukey)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-53-1.png" width="672" />
 
 <br>
 
@@ -1368,7 +1271,7 @@ tukey=HSD.test(modelo,"trat")
 plot(tukey)
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 <br>
 
@@ -1593,7 +1496,7 @@ plot(sk)
 box()
 ```
 
-<img src="04-dic_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-61-1.png" width="672" />
 
 <br>
 
@@ -1638,7 +1541,7 @@ O Erro gerado é:
 
 <br><br><br><br>
 
-<!--chapter:end:04-dic.Rmd-->
+****
 
 # Transformação de dados
 
@@ -1850,7 +1753,7 @@ cultivar=as.factor(cultivar)
 car::Boxplot(resposta~cultivar)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-65-1.png" width="672" />
 
 ```
 ## [1] "18"
@@ -1865,7 +1768,7 @@ car::Boxplot(resposta~cultivar)
 hist(resposta)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-66-1.png" width="672" />
 
 <br>
 
@@ -1957,7 +1860,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[2]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-71-1.png" width="672" />
 
 As pressuposições de normalidade dos erros e homogeneidade das variâncias não foram atendidas. Dessa forma, vamos transformar os dados e conferir novamente as pressuposições!
 
@@ -1978,7 +1881,7 @@ As pressuposições de normalidade dos erros e homogeneidade das variâncias nã
 MASS::boxcox(aov(resposta+0.000001~cultivar))
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-72-1.png" width="672" />
 
 <br>
 
@@ -1989,7 +1892,7 @@ MASS::boxcox(aov(resposta+0.000001~cultivar))
 bc=MASS::boxcox(aov(resposta+0.000001~cultivar))
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-73-1.png" width="672" />
 
 ```r
 bc$x[which.max(bc$y)]
@@ -2085,7 +1988,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[2]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-78-1.png" width="672" />
 
 <br>
 
@@ -2098,45 +2001,11 @@ abline(h=0)
 
 ```r
 library(multcomp)
-```
-
-```
-## Carregando pacotes exigidos: mvtnorm
-```
-
-```
-## Carregando pacotes exigidos: survival
-```
-
-```
-## Warning: package 'survival' was built under R version 3.6.3
-```
-
-```
-## Carregando pacotes exigidos: TH.data
-```
-
-```
-## Carregando pacotes exigidos: MASS
-```
-
-```
-## 
-## Attaching package: 'TH.data'
-```
-
-```
-## The following object is masked from 'package:MASS':
-## 
-##     geyser
-```
-
-```r
 mcomp=glht(modelo, mcp(cultivar="Tukey"))
 plot(mcomp)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-79-1.png" width="672" />
 
 ```r
 cld(mcomp)
@@ -2176,7 +2045,7 @@ cld(mcomp)
 plot(tukey)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-80-1.png" width="672" />
 
 <br>
 
@@ -2189,7 +2058,7 @@ tukey=HSD.test(modelo,"cultivar")
 plot(tukey)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-81-1.png" width="672" />
 
 <br>
 
@@ -2220,32 +2089,6 @@ cbind(tukey$Means[1],tukey$Means[2],tukey$Means[4])
 
 ```r
 library(ExpDes.pt)
-```
-
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following objects are masked from 'package:agricolae':
-## 
-##     lastC, order.group, tapply.stat
-```
-
-```
-## The following object is masked from 'package:MASS':
-## 
-##     ginv
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-```
-
-```r
 dic(cultivar,resposta^0.5)
 ```
 
@@ -2320,7 +2163,6 @@ Desvio = with(dados, sd(RESP))
 CV = Desvio / Média * 100
 
 desc = cbind(Média, Variância, Desvio, CV)
-library(knitr)
 kable(round(desc,2), align="l")
 ```
 
@@ -2368,7 +2210,7 @@ mediab=tapply(RESP, TRAT, mean)
 points(mediab, pch='+', cex=1.5, col='red')
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-87-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -2393,7 +2235,7 @@ kable(av, align = "l")
             Df   Sum Sq     Mean Sq    F value   Pr(>F)    
 ----------  ---  ---------  ---------  --------  ----------
 TRAT        3    2196.375   732.1250   2.23221   0.1064722 
-Residuals   28   9183.500   327.9821   NA        NA        
+Residuals   28   9183.500   327.9821                       
 
 <br><br>
 
@@ -2432,7 +2274,7 @@ Como p-valor calculado ($p=0,07878$) é maior que o nível de significância ado
 hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -2472,7 +2314,7 @@ library(MASS)
 bc=boxcox(mod)
 ```
 
-<img src="05-transf_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-92-1.png" width="672" />
 
 ```r
 bc$x[which.max(bc$y)]
@@ -2673,7 +2515,7 @@ with(dados,dic(TRAT,log(RESP), mcomp="tukey"))
 
 <br><br><br><br>
 
-<!--chapter:end:05-transf.Rmd-->
+****
 
 # Delineamento em Blocos Casualizados
 
@@ -2800,7 +2642,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -2839,7 +2681,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -2931,7 +2773,7 @@ bloco=as.factor(rep(c(paste("B",1:3)),9))
 car::Boxplot(resposta~cultivar)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-106-1.png" width="672" />
 
 <br>
 
@@ -2942,7 +2784,7 @@ car::Boxplot(resposta~cultivar)
 hist(resposta)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-107-1.png" width="672" />
 
 <br>
 
@@ -3035,17 +2877,6 @@ Os erros são independentes.
 
 ```r
 library(asbio)
-```
-
-```
-## Warning: package 'asbio' was built under R version 3.6.3
-```
-
-```
-## Carregando pacotes exigidos: tcltk
-```
-
-```r
 tukey.add.test(resposta,cultivar,bloco)
 ```
 
@@ -3066,7 +2897,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[3]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-113-1.png" width="672" />
 
 <br><br>
 
@@ -3079,62 +2910,14 @@ abline(h=0)
 
 ```r
 library(multcomp)
-```
-
-```
-## Carregando pacotes exigidos: mvtnorm
-```
-
-```
-## Carregando pacotes exigidos: survival
-```
-
-```
-## Warning: package 'survival' was built under R version 3.6.3
-```
-
-```
-## Carregando pacotes exigidos: TH.data
-```
-
-```
-## Carregando pacotes exigidos: MASS
-```
-
-```
-## 
-## Attaching package: 'TH.data'
-```
-
-```
-## The following object is masked from 'package:MASS':
-## 
-##     geyser
-```
-
-```r
 mcomp=glht(modelo, mcp(cultivar="Tukey"))
 plot(mcomp)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-114-1.png" width="672" />
 
 ```r
 cld(mcomp)
-```
-
-```
-## Warning in RET$pfunction("adjusted", ...): Completion with error > abseps
-```
-
-```
-## Warning in RET$pfunction("adjusted", ...): Completion with error > abseps
-
-## Warning in RET$pfunction("adjusted", ...): Completion with error > abseps
-
-## Warning in RET$pfunction("adjusted", ...): Completion with error > abseps
-
-## Warning in RET$pfunction("adjusted", ...): Completion with error > abseps
 ```
 
 ```
@@ -3207,7 +2990,7 @@ cld(mcomp)
 plot(tukey)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-17-1.png" width="672" /><img src="06-dbc_files/figure-html/unnamed-chunk-17-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-115-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-115-2.png" width="672" />
 
 <br>
 
@@ -3220,7 +3003,7 @@ tukey=HSD.test(modelo,"cultivar")
 plot(tukey)
 ```
 
-<img src="06-dbc_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-116-1.png" width="672" />
 
 <br>
 
@@ -3256,32 +3039,6 @@ cbind(tukey$`Adjusted means`[1],tukey$`Adjusted means`[2],tukey$`Adjusted means`
 
 ```r
 library(ExpDes.pt)
-```
-
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following object is masked from 'package:MASS':
-## 
-##     ginv
-```
-
-```
-## The following objects are masked from 'package:agricolae':
-## 
-##     lastC, order.group, tapply.stat
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-```
-
-```r
 dbc(cultivar,bloco,resposta)
 ```
 
@@ -3376,7 +3133,6 @@ CV = Desvio / Média * 100
 
 desc = cbind(Média, Variância, Desvio, CV)
 rownames(desc) = 'Produvidade (Kg/ha)'
-library(knitr)
 kable(round(desc,2), align="l")
 ```
 
@@ -3433,8 +3189,8 @@ points(mediab, pch='+', cex=1.5, col='red')
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06-dbc_files/figure-html/unnamed-chunk-24-1.png" alt="Gráfico de caixas" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-24)Gráfico de caixas</p>
+<img src="index_files/figure-html/unnamed-chunk-122-1.png" alt="Gráfico de caixas" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-122)Gráfico de caixas</p>
 </div>
 
 ```r
@@ -3467,7 +3223,7 @@ kable(av, align = "l")
 -----------  ---  ----------  ----------  ---------  ----------
 Tratamento   14   3302891.5   235920.82   2.545837   0.0171400 
 bloco        2    308550.2    154275.11   1.664793   0.2074184 
-Residuals    28   2594738.7   92669.24    NA         NA        
+Residuals    28   2594738.7   92669.24                         
 
 Como p-valor calculado (p=$0.01714$) é menor que o nível de significância adotado ($p=0,05$), rejeita-se $H0$. Logo, 
 ao menos dois tratamentos se diferem entre si
@@ -3510,8 +3266,8 @@ hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06-dbc_files/figure-html/unnamed-chunk-27-1.png" alt="Gráfico QQplot \label{Fig:QQ}" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-27)Gráfico QQplot \label{Fig:QQ}</p>
+<img src="index_files/figure-html/unnamed-chunk-125-1.png" alt="Gráfico QQplot \label{Fig:QQ}" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-125)Gráfico QQplot \label{Fig:QQ}</p>
 </div>
 
 <br>
@@ -3578,8 +3334,8 @@ abline(h=0)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06-dbc_files/figure-html/unnamed-chunk-30-1.png" alt="Gráfico de resíduos brutos \label{fig:res}" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-30)Gráfico de resíduos brutos \label{fig:res}</p>
+<img src="index_files/figure-html/unnamed-chunk-128-1.png" alt="Gráfico de resíduos brutos \label{fig:res}" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-128)Gráfico de resíduos brutos \label{fig:res}</p>
 </div>
 
 <br><br>
@@ -3601,7 +3357,7 @@ kable(tabela, align = 'l', booktabs=T, caption="Teste de comparação de Scott-K
 
 
 
-Table: (\#tab:unnamed-chunk-31)Teste de comparação de Scott-Knott
+Table: (\#tab:unnamed-chunk-129)Teste de comparação de Scott-Knott
 
 Cultivar   Média          
 ---------  ----------  ---
@@ -3675,7 +3431,7 @@ with(dados,dbc(Tratamento, bloco,resp, mcomp="tukey"))
 
 <br><br><br><br>
 
-<!--chapter:end:06-dbc.Rmd-->
+****
 
 # Delineamento em Quadrado Latino
 
@@ -3788,7 +3544,7 @@ Usando a função
 croqui(trat)
 ```
 
-<img src="07-dql_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-133-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -3876,7 +3632,6 @@ descritiva=cbind(Media,
                  Maximo, 
                  Minimo, 
                  Mediana)
-library(knitr)
 kable(descritiva)
 ```
 
@@ -3938,18 +3693,10 @@ car::Boxplot(RESP~TRAT,
              las=1,
              col="lightblue", xlab="",
              ylab=expression("Resposta"))
-```
-
-```
-## Warning in Boxplot.default(mf[[response]], x, id = list(method = id.method, :
-## NAs introduzidos por coerção
-```
-
-```r
 points(Media,col="red", pch=8)
 ```
 
-<img src="07-dql_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-138-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -3977,7 +3724,7 @@ kable(av, align = "l", format="pandoc")
 TRAT        4    2020.0544   505.0136   9.0167153   0.0013321 
 linha       4    257.8264    64.4566    1.1508340   0.3796397 
 coluna      4    48.4984     12.1246    0.2164775   0.9241758 
-Residuals   12   672.1032    56.0086    NA          NA        
+Residuals   12   672.1032    56.0086                          
 
 Como p-valor calculado (p=$0.0013321$) é menor que o nível de significância adotado ($p=0.05$), rejeita-se $H0$. Logo, 
 ao menos dois tratamentos se diferem entre si
@@ -4019,7 +3766,7 @@ Como p-valor calculado (p=$0.438$) é maior que o nível de significância adota
 hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
-<img src="07-dql_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-141-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4084,7 +3831,7 @@ plot(mod$res, las=1, pch=19, col='red')
 abline(h=0)
 ```
 
-<img src="07-dql_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -4167,13 +3914,6 @@ ea1(dados,design = 3)
 
 ```r
 require(laercio)
-```
-
-```
-## Carregando pacotes exigidos: laercio
-```
-
-```r
 LTukey(mod,"trat",conf.level=0.95)
 ```
 
@@ -4249,7 +3989,7 @@ TukeyHSD(mod, "TRAT", ordered = TRUE)
 plot(TukeyHSD(mod, "TRAT"), col='blue', las=1)
 ```
 
-<img src="07-dql_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-147-1.png" width="672" />
 
 <br>
 
@@ -4258,26 +3998,6 @@ plot(TukeyHSD(mod, "TRAT"), col='blue', las=1)
 
 ```r
 library(ExpDes.pt)
-```
-
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following objects are masked from 'package:agricolae':
-## 
-##     lastC, order.group, tapply.stat
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-```
-
-```r
 dql(TRAT,linha,coluna,RESP)
 ```
 
@@ -4313,7 +4033,7 @@ dql(TRAT,linha,coluna,RESP)
 
 <br><br><br><br>
 
-<!--chapter:end:07-dql.Rmd-->
+****
 
 # Esquema Fatorial (2 Fatores) 
 
@@ -4483,7 +4203,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-151-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4523,7 +4243,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-154-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -4567,7 +4287,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4607,7 +4327,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-160-1.png" width="672" style="display: block; margin: auto;" />
 
 
 <br><br><br>
@@ -4751,7 +4471,7 @@ mediab=with(dados,tapply(resp, F1, mean))
 points(mediab, pch='+', cex=1.5, col='red')
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-168-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4767,7 +4487,7 @@ mediab=with(dados,tapply(resp, F2, mean))
 points(mediab, pch='+', cex=1.5, col='red')
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-169-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4781,7 +4501,7 @@ caixas=with(dados, car::Boxplot(resp ~ F1*F2, vertical=T,las=1, col='Lightyellow
                     xlab=X, ylab=Y))
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-170-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -4793,7 +4513,7 @@ with(dados, interaction.plot(F2, F1, resp, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="FATOR1"))
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-171-1.png" width="672" />
 
 
 ```r
@@ -4802,7 +4522,7 @@ with(dados, interaction.plot(F1, F2, resp, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="FATOR2"))
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-172-1.png" width="672" />
 
 <br><br>
 
@@ -4853,7 +4573,7 @@ anova(mod)
 F1          1    11696.4    11696.40   2.757934    0.1065420 
 F2          3    84754.5    28251.50   6.661518    0.0012721 
 F1:F2       3    212960.2   70986.73   16.738206   0.0000010 
-Residuals   32   135712.0   4241.00    NA          NA        
+Residuals   32   135712.0   4241.00                          
 
 <br><br>
 
@@ -4890,7 +4610,7 @@ H_1: & \mbox{Os erros não seguem distribuição normal}.
 hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-176-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4988,7 +4708,7 @@ plot(mod$res, las=1, pch=19, col='red', ylab='Resíduos brutos')
 abline(h=0)
 ```
 
-<img src="08-fat2_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4997,26 +4717,6 @@ abline(h=0)
 
 ```r
 library(ExpDes.pt)
-```
-
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following objects are masked from 'package:agricolae':
-## 
-##     lastC, order.group, tapply.stat
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-```
-
-```r
 with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 ```
 
@@ -5149,8 +4849,7 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 
 <br><br><br><br>
 
-<!--chapter:end:08-fat2.Rmd-->
-
+****
 
 # Esquema Fatorial (3 Fatores)
 
@@ -5469,12 +5168,7 @@ par(mai=c(2,0.8,0.5,0.5))
 car::Boxplot(RENDIMENTO~paste(FATOR1,FATOR2,FATOR3), las=2, xlab="")
 ```
 
-```
-## Warning in Boxplot.default(mf[[response]], x, id = list(method = id.method, :
-## NAs introduzidos por coerção
-```
-
-<img src="09-fat3_files/figure-html/unnamed-chunk-7-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-189-1.png" width="1152" />
 
 <br>
 
@@ -5491,21 +5185,21 @@ interaction.plot(FATOR1,FATOR2,RESP, ylab="Resposta")
 interaction.plot(FATOR2,FATOR1,RESP, ylab="Resposta")
 ```
 
-<img src="09-fat3_files/figure-html/unnamed-chunk-8-1.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-190-1.png" width="768" style="display: block; margin: auto;" />
 
 ```r
 interaction.plot(FATOR1,FATOR3,RESP, ylab="Resposta")
 interaction.plot(FATOR2,FATOR1,RESP, ylab="Resposta")
 ```
 
-<img src="09-fat3_files/figure-html/unnamed-chunk-8-2.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-190-2.png" width="768" style="display: block; margin: auto;" />
 
 ```r
 interaction.plot(FATOR2,FATOR3,RESP, ylab="Resposta")
 interaction.plot(FATOR3,FATOR2,RESP, ylab="Resposta")
 ```
 
-<img src="09-fat3_files/figure-html/unnamed-chunk-8-3.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-190-3.png" width="768" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5571,7 +5265,7 @@ hnp::hnp(modelo)
 ## Gaussian model (aov object)
 ```
 
-<img src="09-fat3_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-192-1.png" width="672" style="display: block; margin: auto;" />
 
 Como p-valor calculado ($p=0.217$) é menor que o nível de significância adotado ($\alpha=0.05$), não rejeita-se $H_0$. Logo, os erros podem ser considerados normais
 
@@ -5631,7 +5325,7 @@ abline(h=c(0,3,-3),
        col="blue")
 ```
 
-<img src="09-fat3_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-195-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -5644,20 +5338,6 @@ abline(h=c(0,3,-3),
 
 ```r
 library(ExpDes.pt)
-```
-
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-```
-
-```r
 fat3.dic(FATOR1,FATOR2,FATOR3,RESP)
 ```
 
@@ -6103,7 +5783,7 @@ Médias seguidas de mesma letra maiúscula na linha, minúscula em itálico dent
 
 <br><br><br><br>
 
-<!--chapter:end:09-fat3.Rmd-->
+****
 
 # Esquema de Parcelas Subdivididas
 
@@ -6293,7 +5973,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6334,7 +6014,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -6383,7 +6063,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-206-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6424,7 +6104,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-209-1.png" width="672" style="display: block; margin: auto;" />
 
 ****
 
@@ -6469,23 +6149,7 @@ CV = Desvio / Média * 100
 
 desc = cbind(Média, Variância, Desvio, CV)
 rownames(desc) = 'CBM'
-library(knitr)
-
 kable(round(desc,2), align="l", format="pandoc", format.args = list(big.mark="."))
-```
-
-```
-## Warning in prettyNum(.Internal(format(x, trim, digits, nsmall, width, 3L, :
-## 'big.mark' and 'decimal.mark' are both '.', which could be confusing
-
-## Warning in prettyNum(.Internal(format(x, trim, digits, nsmall, width, 3L, :
-## 'big.mark' and 'decimal.mark' are both '.', which could be confusing
-
-## Warning in prettyNum(.Internal(format(x, trim, digits, nsmall, width, 3L, :
-## 'big.mark' and 'decimal.mark' are both '.', which could be confusing
-
-## Warning in prettyNum(.Internal(format(x, trim, digits, nsmall, width, 3L, :
-## 'big.mark' and 'decimal.mark' are both '.', which could be confusing
 ```
 
       Média    Variância   Desvio   CV   
@@ -6606,7 +6270,7 @@ caixas=with(dados, car::Boxplot(RESP ~ FATOR1, vertical=T,las=1, col='Lightyello
 points(Médias1, pch='+', cex=1.5, col='red')
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-216-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6618,7 +6282,7 @@ caixas=with(dados, car::Boxplot(RESP ~ FATOR2, vertical=T,las=1, col='Lightyello
 points(Médias2, pch='+', cex=1.5, col='red')
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-217-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6629,7 +6293,7 @@ points(Médias2, pch='+', cex=1.5, col='red')
 caixas=with(dados, car::Boxplot(RESP ~ FATOR1*FATOR2, vertical=T,las=1, col='Lightyellow'))
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-218-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6638,30 +6302,12 @@ caixas=with(dados, car::Boxplot(RESP ~ FATOR1*FATOR2, vertical=T,las=1, col='Lig
 
 ```r
 library(gplots)
-```
-
-```
-## Warning: package 'gplots' was built under R version 3.6.3
-```
-
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
 library(lattice)
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o", ylab='CBM',
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-219-1.png" width="672" />
 
 
 ```r
@@ -6669,7 +6315,7 @@ with(dados, xyplot(RESP ~ FATOR1|repe, groups=FATOR2, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-23-1.png" width="1440" />
+<img src="index_files/figure-html/unnamed-chunk-220-1.png" width="1440" />
 
 
 ```r
@@ -6677,7 +6323,7 @@ with(dados, xyplot(RESP ~ FATOR2|repe, groups=FATOR1, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-221-1.png" width="672" />
 
 
 ```r
@@ -6685,7 +6331,7 @@ with(dados, interaction.plot(FATOR2, FATOR1, RESP, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="repe"))
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-222-1.png" width="672" />
 
 
 ```r
@@ -6694,7 +6340,7 @@ with(dados, interaction.plot(FATOR1, FATOR2, RESP, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="FATOR2"))
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-223-1.png" width="672" />
 
 <br><br>
 
@@ -6974,24 +6620,6 @@ H_1: \mbox{Os erros não são independentes}
 
 ```r
 library(lmtest)
-```
-
-```
-## Carregando pacotes exigidos: zoo
-```
-
-```
-## 
-## Attaching package: 'zoo'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-```
-
-```r
 dwtest(mod.pres)
 ```
 
@@ -7016,7 +6644,7 @@ plot(RESP-mean(RESP), pch=16, col="red")
 abline(h=0, col="blue")
 ```
 
-<img src="10-psub_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" />
 
 <br><br>
 
@@ -7096,7 +6724,7 @@ psub2.dbc(FATOR1,FATOR2,repe,RESP)
 
 <br><br><br><br>
 
-<!--chapter:end:10-psub.Rmd-->
+****
 
 # Polinômios Ortogonais
 
@@ -7179,12 +6807,6 @@ AMOSTRA=c(0,0,0,0,
           100,100,100,100)
 dados=data.frame(Amostra=factor(AMOSTRA),MS)
 attach(dados)
-```
-
-```
-## The following object is masked _by_ .GlobalEnv:
-## 
-##     MS
 ```
 
 <br>
@@ -7384,20 +7006,6 @@ anova(m1)
 
 ```r
 library(ExpDes.pt)
-```
-
-```
-## 
-## Attaching package: 'ExpDes.pt'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-```
-
-```r
 dic(AMOSTRA,MS,quali = F)
 ```
 
@@ -7515,7 +7123,7 @@ dose=c(0,25,50,75,100)
 points(meditrat~dose,col="blue",pch="*",cex=1.5)
 ```
 
-<img src="11-pol_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-246-1.png" width="672" />
 
 <br>
 
@@ -7527,7 +7135,7 @@ plot(meditrat~dose,col="red",pch=16, las=1)
 curve(m1$coefficients[1]+m1$coefficients[2]*x, add=T)
 ```
 
-<img src="11-pol_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-247-1.png" width="672" />
 
 <br><br><br>
 
@@ -7667,24 +7275,6 @@ H_1: \mbox{Os erros não são independentes}.
 
 ```r
 library(lmtest)
-```
-
-```
-## Carregando pacotes exigidos: zoo
-```
-
-```
-## 
-## Attaching package: 'zoo'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-```
-
-```r
 dwtest(mod)
 ```
 
@@ -7701,7 +7291,7 @@ dwtest(mod)
 plot(mod$residuals)
 ```
 
-<img src="11-pol_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-252-1.png" width="672" />
 
 <br>
 
@@ -7959,7 +7549,7 @@ dose=c(0,15,30,45,60)
 points(meditrat~dose,col="blue",pch="*",cex=1.5)
 ```
 
-<img src="11-pol_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-257-1.png" width="672" />
 
 
 ```r
@@ -7994,11 +7584,11 @@ points(xmax,ymax, col="red", pch=8)
 legend("bottomleft", bty="n",legend=c(expression(Y==6.457143+0.06304762 *x-0.00111746*x^2), expression(R^2==0.595)))
 ```
 
-<img src="11-pol_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-258-1.png" width="672" />
 
 <br><br><br><br>
 
-<!--chapter:end:11-pol.Rmd-->
+****
 
 # Análise conjunta
 
@@ -8218,7 +7808,7 @@ interaction.plot(Comprimento,
                  ylab="Resposta")
 ```
 
-<img src="12-conjdbc_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-264-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -8252,14 +7842,6 @@ Teste F para efeito do Tratamento
 
 ```r
 mod=aov(resposta~Tempo+Tempo:Repe+Comprimento+Error(Tempo:(Repe+Comprimento)), data=dados)
-```
-
-```
-## Warning in aov(resposta ~ Tempo + Tempo:Repe + Comprimento + Error(Tempo:(Repe
-## + : Error() model is singular
-```
-
-```r
 summary(mod)
 ```
 
@@ -8465,7 +8047,7 @@ HNP=hnp::hnp(mod1, paint.on=T, col="red" , las=1, pch=8)
 plot(HNP,lty=c(2,3,2),  col=c(2,1,2,1))
 ```
 
-<img src="12-conjdbc_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-269-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -8511,24 +8093,6 @@ H_1: & \mbox{ Os erros não são independentes.}
 
 ```r
 library(lmtest)
-```
-
-```
-## Carregando pacotes exigidos: zoo
-```
-
-```
-## 
-## Attaching package: 'zoo'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-```
-
-```r
 ind=dwtest(mod1)
 ```
 
@@ -8542,7 +8106,7 @@ plot(mod1$res, col="blue",
 abline(h=0, col="red", lwd=2)
 ```
 
-<img src="12-conjdbc_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-272-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
@@ -8586,13 +8150,7 @@ summary(mod.conj,
 # O QMres é 178 e o GL é 18
 
 require(agricolae)
-```
 
-```
-## Carregando pacotes exigidos: agricolae
-```
-
-```r
 #dentro de Tempo 2
 tukey.l1<-HSD.test(dados$resposta[dados$Tempo=="2"],
              dados$Comprimento[dados$Tempo=="2"],
@@ -8651,7 +8209,7 @@ bar.group(tukey.l3$groups, ylim=c(0,120),
           ylab="resposta",las=1) 
 ```
 
-<img src="12-conjdbc_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" />
 
 <br><br><br>
 
@@ -8667,8 +8225,6 @@ tabela=data.frame("Mês 2"=media[,1],
              " "=c("B","B","A"),
              "Mês 6"=media[,3],
              " "=c("B","A","A"))
-library(knitr)
-
 kable(tabela, align = "c", col.names = c("Mês 2"," ","Mês 4"," ","Mês 6"," "))
 ```
 
@@ -8681,15 +8237,12 @@ kable(tabela, align = "c", col.names = c("Mês 2"," ","Mês 4"," ","Mês 6"," ")
 <br><br><br><br>
 
 
-<!--chapter:end:12-conjdbc.Rmd-->
 
 # Gráficos em R
 
 <br><br>
 
 ****
-
-<!--chapter:end:13-graph.Rmd-->
 
 # Gráfico de Colunas 
 
@@ -8727,7 +8280,7 @@ desvio=tapply(resposta,tratamentos,sd)
 barplot(media)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-278-1.png" width="672" />
 
 <br>
 
@@ -8744,7 +8297,7 @@ barplot(media,
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-279-1.png" width="672" />
 
 **Comandos**:
 
@@ -8774,7 +8327,7 @@ abline(h=0)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-280-1.png" width="672" />
 
 <br>
 
@@ -8794,7 +8347,7 @@ abline(h=0)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-281-1.png" width="672" />
 
 <br>
 
@@ -8813,7 +8366,7 @@ text(bar,media+desvio+10,media)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-282-1.png" width="672" />
 
 <br>
 
@@ -8833,7 +8386,7 @@ text(bar,media+desvio+10,media)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-283-1.png" width="672" />
 
 
 
@@ -8856,7 +8409,7 @@ text(bar,media+desvio+10,paste(round(media,0),tukey))
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-285-1.png" width="672" />
 
 <br><br>
 
@@ -8900,7 +8453,7 @@ a=HSD.test(modelo,"tratamentos", group = T)
 plot(a, las=1)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" />
 
 <br>
 
@@ -8914,7 +8467,7 @@ bar.group(a$groups, col="lightblue",
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" />
 
 <br>
 
@@ -8929,7 +8482,7 @@ bar.err(a$means,
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-291-1.png" width="672" />
 
 <br>
 
@@ -8944,7 +8497,7 @@ bar.err(a$means,
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-292-1.png" width="672" />
 
 <br>
 
@@ -8959,7 +8512,7 @@ bar.err(a$means,
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-293-1.png" width="672" />
 
 <br>
 
@@ -8974,7 +8527,7 @@ bar.err(a$means,
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-294-1.png" width="672" />
 
 <br><br><br>
 
@@ -9013,13 +8566,6 @@ ExpDes.pt::dic(Trat,exp1)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-```
-
-```
-## Warning in data.matrix(x): NAs introduzidos por coerção
-```
-
-```
 ##            GL     SQ QM     Fc      Pr>Fc
 ## Tratamento  3 719,58    130,83 3,8864e-07
 ## Residuo     8  14,67                     
@@ -9062,13 +8608,6 @@ ExpDes.pt::dic(Trat,exp2)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-```
-
-```
-## Warning in data.matrix(x): NAs introduzidos por coerção
-```
-
-```
 ##            GL     SQ QM     Fc      Pr>Fc
 ## Tratamento  3 684,92    78,276 2,8606e-06
 ## Residuo     8  23,33                     
@@ -9111,13 +8650,6 @@ ExpDes.pt::dic(Trat,exp3)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-```
-
-```
-## Warning in data.matrix(x): NAs introduzidos por coerção
-```
-
-```
 ##            GL     SQ QM     Fc      Pr>Fc
 ## Tratamento  3 894,25    47,066 1,9902e-05
 ## Residuo     8  50,67                     
@@ -9180,7 +8712,7 @@ ggplot(dados1,
   geom_col()
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" />
 
 ### Média no gráfico
 
@@ -9192,7 +8724,7 @@ ggplot(dados1,
   geom_text(label=round(media,1), vjust=-1) 
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-302-1.png" width="672" />
 
 ```r
 # Obs. Round é para arrendondar o valor, neste caso estamos pedindo até a primeira casa decimal
@@ -9210,7 +8742,7 @@ ggplot(dados1,
   geom_text(label=paste(round(media,1),c("c","b","d","a")), vjust=-1)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-303-1.png" width="672" />
 
 ```r
 #Obs. a função paste serve para juntar palavras, nesse caso está juntando cada média com suas respectivas letras do teste de comparação de médias
@@ -9229,7 +8761,7 @@ ggplot(dados1,
   ylim(c(0,40))
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-304-1.png" width="672" />
 
 <br>
 
@@ -9244,7 +8776,7 @@ ggplot(dados1,
   ylim(c(0,40))
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-305-1.png" width="672" />
 
 <br>
 
@@ -9260,7 +8792,7 @@ ggplot(dados1,
   theme_bw()
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-306-1.png" width="672" />
 
 <br>
 
@@ -9277,7 +8809,7 @@ ggplot(dados1,
   theme_classic()
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-307-1.png" width="672" />
 
 <br>
 
@@ -9297,7 +8829,7 @@ ggplot(dados1, aes(x=Trat,y=media))+
   xlab(" ")
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-308-1.png" width="672" />
 
 <br>
 
@@ -9316,7 +8848,7 @@ ggplot(dados1,
   xlab(" ")
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-309-1.png" width="672" />
 
 <br>
 
@@ -9335,7 +8867,7 @@ ggplot(dados1, aes(x=Trat,y=media))+
   geom_errorbar(aes(ymax=media+desvio,ymin=media-desvio), width=0.25) # Width é a largura da barra
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-310-1.png" width="672" />
 
 <br>
 
@@ -9402,7 +8934,7 @@ c=ggplot(dados3, aes(x=Trat,y=media))+
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-38-1.png" width="960" />
+<img src="index_files/figure-html/unnamed-chunk-314-1.png" width="960" />
 
 <br><br>
 
@@ -9427,13 +8959,6 @@ dados$Trat=as.factor(Trat)
 
 ```r
 library(ggpubr)
-```
-
-```
-## Carregando pacotes exigidos: magrittr
-```
-
-```r
 library(gridExtra)
 ```
 
@@ -9449,7 +8974,7 @@ ggbarplot(dados,
           add="mean")
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-41-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" />
 
 <br>
 
@@ -9463,7 +8988,7 @@ ggbarplot(dados,
           add = "mean_sd")
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" />
 
 <br>
 
@@ -9478,7 +9003,7 @@ ggbarplot(dados,
           fill = "Trat")
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-319-1.png" width="672" />
 
 
 ```r
@@ -9490,7 +9015,7 @@ ggbarplot(dados,
           palette = c(1,2,3,4))
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-320-1.png" width="672" />
 
 <br>
 
@@ -9507,7 +9032,7 @@ ggbarplot(dados,
           lab.vjust=-2)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-321-1.png" width="672" />
 
 <br>
 
@@ -9525,7 +9050,7 @@ ggbarplot(dados,
           lab.vjust=-2)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-322-1.png" width="672" />
 
 <br>
 
@@ -9542,7 +9067,7 @@ ggbarplot(dados,
           lab.vjust=-2)+ylim(c(0,40))
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-323-1.png" width="672" />
 
 <br>
 
@@ -9560,7 +9085,7 @@ ggbarplot(dados,
           legend="n")+ylim(c(0,40))
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-324-1.png" width="672" />
 
 <br>
 
@@ -9622,7 +9147,7 @@ c=ggbarplot(dados,
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-52-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-328-1.png" width="1152" />
 
 <br>
 
@@ -9688,7 +9213,7 @@ c=ggbarplot(dados,
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-56-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-332-1.png" width="1152" />
 
 <br><br><br>
 
@@ -9722,7 +9247,7 @@ desvio=with(dados, tapply(resposta,list(Fator1, Fator2), sd))
 barplot(media, beside = T)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-334-1.png" width="672" />
 
 O argumento beside=T é refente a um gráfico de barras em que as barras são posicionadas lado a lado. Do contrário, as barras serão empilhadas (*stacked*). 
 
@@ -9740,7 +9265,7 @@ barplot(media, beside = T,
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-335-1.png" width="672" />
 
 **Comandos**:
 
@@ -9766,7 +9291,7 @@ barplot(1:21, col=c("red","white","black","lightyellow","green","blue","orange",
                         "LightSalmon", "Sienna", "Tomato", "DeepPink1"))
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-60-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-336-1.png" width="672" />
 
 <br>
 
@@ -9783,7 +9308,7 @@ abline(h=0)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-61-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-337-1.png" width="672" />
 
 <br>
 
@@ -9802,7 +9327,7 @@ abline(h=0)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-62-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-338-1.png" width="672" />
 
 <br>
 
@@ -9820,7 +9345,7 @@ text(bar,media+desvio+10,media, cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-63-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-339-1.png" width="672" />
 
 <br>
 
@@ -9839,7 +9364,7 @@ text(bar,media+desvio+10,media, cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-64-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-340-1.png" width="672" />
 
 <br>
 
@@ -9859,7 +9384,7 @@ text(bar,media+desvio+10,paste(round(media,0),tukey), cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-65-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-341-1.png" width="672" />
 
 <br>
 
@@ -9886,7 +9411,7 @@ text(bar,media+desvio+10,paste(round(media,0),tukey), cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-66-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-342-1.png" width="672" />
 
 <br><br><br>
 
@@ -9922,7 +9447,7 @@ desvio=with(dados, tapply(resposta,list(Fator1, Fator2), sd))
 barplot(media, beside=F)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-68-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-344-1.png" width="672" />
 
 O argumento beside=F é refente a um gráfico de barras em que as barras são posicionadas lado a lado. Do contrário, as barras serão empilhadas (*stacked*). 
 
@@ -9940,7 +9465,7 @@ barplot(media, beside=F,
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-345-1.png" width="672" />
 
 **Comandos**:
 
@@ -9968,7 +9493,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-346-1.png" width="672" />
 
 <br>
 
@@ -9988,7 +9513,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-347-1.png" width="672" />
 
 ### Média acima das barras
 
@@ -10006,7 +9531,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-72-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-348-1.png" width="672" />
 
 <br>
 
@@ -10027,7 +9552,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-349-1.png" width="672" />
 
 <br>
 
@@ -10049,7 +9574,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-74-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-350-1.png" width="672" />
 
 <br>
 
@@ -10078,7 +9603,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-75-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-351-1.png" width="672" />
 
 <br><br><br>
 
@@ -10141,7 +9666,7 @@ b2=barplot(m2,
            las=1)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-79-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-355-1.png" width="672" />
 
 <br>
 
@@ -10166,7 +9691,7 @@ b1=barplot(m2,
 axis(2,seq(0,50,10),las=1)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-80-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-356-1.png" width="672" />
 
 <br>
 
@@ -10193,7 +9718,7 @@ axis(2,seq(0,50,10),las=1)
 arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-81-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-357-1.png" width="672" />
 
 <br>
 
@@ -10222,7 +9747,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-82-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-358-1.png" width="672" />
 
 <br>
 
@@ -10251,7 +9776,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-83-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-359-1.png" width="672" />
 
 <br>
 
@@ -10282,7 +9807,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-84-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-360-1.png" width="672" />
 
 <br>
 
@@ -10318,7 +9843,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-85-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-361-1.png" width="672" />
 
 <br>
 
@@ -10356,7 +9881,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-86-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-362-1.png" width="672" />
 
 <br>
 
@@ -10395,7 +9920,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-87-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-363-1.png" width="672" />
 
 <br><br><br>
 
@@ -10436,7 +9961,7 @@ desvio=tapply(resposta,tratamentos,sd)
 barplot(media, horiz = T)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-89-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-365-1.png" width="672" />
 
 <br>
 
@@ -10453,7 +9978,7 @@ barplot(media, horiz = T,
 abline(v=0)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-90-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-366-1.png" width="672" />
 
 <br>
 
@@ -10471,7 +9996,7 @@ abline(v=0)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-91-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-367-1.png" width="672" />
 
 <br>
 
@@ -10491,7 +10016,7 @@ abline(v=0)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-92-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-368-1.png" width="672" />
 
 <br>
 
@@ -10510,7 +10035,7 @@ text(media+desvio+20,bar,media)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-93-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-369-1.png" width="672" />
 
 <br>
 
@@ -10530,7 +10055,7 @@ text(media+desvio+20,bar,media)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-94-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-370-1.png" width="672" />
 
 <br>
 
@@ -10551,11 +10076,11 @@ text(media+desvio+20,bar,paste(round(media,0),tukey))
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="14-coluna_files/figure-html/unnamed-chunk-95-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-371-1.png" width="672" />
 
 <br><br><br>
 
-<!--chapter:end:14-coluna.Rmd-->
+****
 
 # Caixas (Boxplot)
 
@@ -10592,7 +10117,7 @@ resposta = c(100, 120, 110,  90, 150, 145, 149, 165, 150, 144, 134, 139, 220, 20
 
 ```
 ##     T1     T2     T3     T4     T5 
-## 105.00 152.25 141.75 211.50 255.75
+## 105,00 152,25 141,75 211,50 255,75
 ```
 
 ```r
@@ -10601,7 +10126,7 @@ resposta = c(100, 120, 110,  90, 150, 145, 149, 165, 150, 144, 134, 139, 220, 20
 
 ```
 ##        T1        T2        T3        T4        T5 
-## 12.909944  8.770215  6.849574  5.972158  8.732125
+## 12,909944  8,770215  6,849574  5,972158  8,732125
 ```
 
 <br>
@@ -10611,30 +10136,10 @@ resposta = c(100, 120, 110,  90, 150, 145, 149, 165, 150, 144, 134, 139, 220, 20
 boxplot(resposta ~ tratamentos)
 # Ou, pode-se usar o comando ``Boxplot`` do pacote ``car``
 require(car)
-```
-
-```
-## Carregando pacotes exigidos: car
-```
-
-```
-## Warning: package 'car' was built under R version 3.6.3
-```
-
-```
-## Carregando pacotes exigidos: carData
-```
-
-```r
 Boxplot(resposta ~ tratamentos)
 ```
 
-```
-## Warning in Boxplot.default(mf[[response]], x, id = list(method = id.method, :
-## NAs introduzidos por coerção
-```
-
-<img src="15-caixas_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-373-1.png" width="672" />
 
 <br>
 
@@ -10654,7 +10159,7 @@ boxplot(resposta ~ tratamentos,
         ylim=c(0,300))
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-374-1.png" width="672" />
 
 <br>
 
@@ -10684,7 +10189,7 @@ boxplot(resposta ~ tratamentos,
 points(Médias, pch='+', col="red")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-375-1.png" width="672" />
 
 <br>
 
@@ -10703,7 +10208,7 @@ boxplot(resposta ~ tratamentos,
 points(Médias, pch='+', col="red")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-376-1.png" width="672" />
 
 <br>
 
@@ -10735,7 +10240,7 @@ points(Médias, pch='+', col="red")
 text(c(1:5), superior + 10, Médias)
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-378-1.png" width="672" />
 
 <br>
 
@@ -10754,7 +10259,7 @@ points(Médias, pch='+', col="red")
 text(c(1:5), superior + 20, Médias)
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-379-1.png" width="672" />
 
 <br>
 
@@ -10774,7 +10279,7 @@ points(Médias, pch='+', col="red")
 text(c(1:5), superior + 20, paste(round(Médias, 0), tukey))
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-380-1.png" width="672" />
 
 <br><br>
 
@@ -10805,13 +10310,6 @@ ExpDes.pt::dic(Trat,exp1)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-```
-
-```
-## Warning in data.matrix(x): NAs introduzidos por coerção
-```
-
-```
 ##            GL     SQ QM     Fc     Pr>Fc
 ## Tratamento  3 582,75    7,9556 0,0034723
 ## Residuo    12 293,00                    
@@ -10861,7 +10359,7 @@ ggplot(dados,
   geom_boxplot()
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-384-1.png" width="672" />
 
 <br>
 
@@ -10878,7 +10376,7 @@ ggplot(dados,
                outlier.size = 2)           # Tamanho do outlier
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-385-1.png" width="672" />
 
 <br>
 
@@ -10891,7 +10389,7 @@ ggplot(dados,
   geom_boxplot(aes(fill=dados$Trat))
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-386-1.png" width="672" />
 
 <br>
 
@@ -10910,7 +10408,7 @@ ggplot(dados,
   xlab("Tratamentos")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-387-1.png" width="672" />
 
 <br>
 
@@ -10931,7 +10429,7 @@ ggplot(dados,
   theme_classic()
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-388-1.png" width="672" />
 
 <br>
 
@@ -10959,7 +10457,7 @@ ggplot(dados,
   geom_text(data = a, aes(label = letra))
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-389-1.png" width="672" />
 
 <br>
 
@@ -10968,19 +10466,12 @@ ggplot(dados,
 
 ```r
 library(ggpubr)
-```
-
-```
-## Carregando pacotes exigidos: magrittr
-```
-
-```r
 ggboxplot(dados,            # data.frame com os dados e tratamentos
           'Trat',           # Nome do tratamento entre aspas
           'exp1')           # Nome da resposta
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-390-1.png" width="672" />
 
 <br>
 
@@ -10994,7 +10485,7 @@ ggboxplot(dados,
           fill="red")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-391-1.png" width="672" />
 
 <br>
 
@@ -11009,7 +10500,7 @@ ggboxplot(dados,
           color = "blue")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-392-1.png" width="672" />
 
 <br>
 
@@ -11025,7 +10516,7 @@ ggboxplot(dados,
           title="(A)")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-393-1.png" width="672" />
 
 <br>
 
@@ -11043,7 +10534,7 @@ ggboxplot(dados,
           ylab="Resposta")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" />
 
 <br>
 
@@ -11062,7 +10553,7 @@ ggboxplot(dados,
           add="mean")
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-395-1.png" width="672" />
 
 <br>
 
@@ -11099,13 +10590,11 @@ ggboxplot(dados,
   geom_text(data = a, aes(label = letra))
 ```
 
-<img src="15-caixas_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-396-1.png" width="672" />
 
 <br><br><br>
 
 ****
-
-<!--chapter:end:15-caixas.Rmd-->
 
 # Regressão
 
@@ -11136,7 +10625,7 @@ desvio=tapply(resposta,tratamentos,sd)
 plot(media~Dose)
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-398-1.png" width="672" />
 
 ### Melhorias
 
@@ -11148,7 +10637,7 @@ plot(media~Dose,
         xlab="Dose")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-399-1.png" width="672" />
 
 <br>
 
@@ -11163,7 +10652,7 @@ reg=plot(media~Dose,
 arrows(Dose,media+desvio,Dose,media-desvio,length = 0.05,angle=90,code=3)
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-400-1.png" width="672" />
 
 Adicionando barras de desvio-padrão de largura 0.05 (length=0.05), com angulo de 90 graus e tipo de flecha 3 (T ou T invertido)
 
@@ -11182,7 +10671,7 @@ reg=plot(media~Dose,
 arrows(Dose,media+desvio,Dose,media-desvio,length = 0.02,angle=90,code=3)
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-401-1.png" width="672" />
 
 A função expression também pode ser usada para textos em gráficos (Função "text()" - veremos posteriormente).
 
@@ -11200,7 +10689,7 @@ reg=plot(media~Dose,
 arrows(Dose,media+desvio,Dose,media-desvio,length = 0.02,angle=90,code=3)
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-402-1.png" width="672" />
 
 A função "options(OutDec=",")" converte a casa decimal de todas as saídas posteriores ao comando para vírgula, entretanto a função não altera para gráficos do pacote ggplot2.
 
@@ -11248,7 +10737,7 @@ arrows(Dose,media+desvio,Dose,media-desvio,length = 0.02,angle=90,code=3)
 curve(modelo$coefficients[1]+modelo$coefficients[2]*x+modelo$coefficients[3]*x^2, add=T,col="blue")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-403-1.png" width="672" />
 
 <br>
 
@@ -11291,7 +10780,7 @@ abline(v=x,col="red",lty=2)
 points(x,y,pch=8,col="black")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-405-1.png" width="672" />
 
 <br>
 
@@ -11315,7 +10804,7 @@ text(100,50,expression(Y==7.76013+1.881102*x-0.005567102 *x^2),cex=0.8)
 text(100,40,expression(R^2==1.00),cex=0.8)
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-406-1.png" width="672" />
 
 <br><br>
 
@@ -11336,7 +10825,7 @@ dados=data.frame(Dose,media)
 ggplot(dados, aes(x=Dose, y=media)) + geom_point()
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-407-1.png" width="672" />
 
 <br>
 
@@ -11353,7 +10842,7 @@ ggplot(dados, aes(x=Dose, y=media)) + geom_point()
        caption = "Fonte: O autor"))
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-408-1.png" width="672" />
 
 geom_point(colour="red", size=3, shape=1): gráfico de dispersão, com pontos de cor vermelha, de tamanho 3 e formato 2 (Círculo sem preenchimento interno)
 
@@ -11380,7 +10869,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    geom_text(aes(x=x, y=y, label=texto), hjust=1, vjust=16))
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-410-1.png" width="672" />
 
 <br>
 
@@ -11392,7 +10881,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    theme_bw())
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-411-1.png" width="672" />
 
 <br>
 
@@ -11404,7 +10893,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    theme_classic())
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-412-1.png" width="672" />
 
 
 ```r
@@ -11413,7 +10902,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
           axis.text = element_text(size = 12)))
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-413-1.png" width="672" />
 
 <br>
 
@@ -11426,7 +10915,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    geom_hline(yintercept =y,colour='red', linetype='dotted', size=1.3))
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-414-1.png" width="672" />
 
 <br>
 
@@ -11444,7 +10933,7 @@ ggplot()+
   geom_segment(data=d, mapping=aes(x=0, xend=1, y=d$lt, yend=d$lt, linetype=d$lt))
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-415-1.png" width="672" />
 
 
 <br><br><br>
@@ -11529,7 +11018,7 @@ curve(coef(modelo)[1]+coef(modelo)[2]*x+coef(modelo)[3]*x^2, add=T,col="red")
 legend("topleft",expression(Y==7.76013+1.88110*x-0.00557 *x^2, R^2==1.00), bty="n")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-418-1.png" width="672" />
 
 <br>
 
@@ -11574,7 +11063,7 @@ curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue"
 legend("topleft",expression(Y==28.70908+1.77830*x-0.00520*x^2, R^2==0.99), bty="n")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-419-1.png" width="672" />
 
 <br>
 
@@ -11594,7 +11083,7 @@ points(media1~Dose, col="blue")
 curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-420-1.png" width="672" />
 
 
 ```r
@@ -11608,7 +11097,7 @@ points(media1~Dose, col="blue")
 curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-421-1.png" width="672" />
 
 <br>
 
@@ -11631,11 +11120,11 @@ curve(coef(modelo)[1]+coef(modelo)[2]*x+coef(modelo)[3]*x^2, add=T,col="red")
 curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue")
 ```
 
-<img src="16-regplot_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-422-1.png" width="672" />
 
 <br><br><br>
 
-<!--chapter:end:16-regplot.Rmd-->
+****
 
 # Histograma
 
@@ -11661,7 +11150,7 @@ data=data.frame(tratamentos, resposta)
 hist(resposta)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-424-1.png" width="672" />
 
 <br>
 
@@ -11679,7 +11168,7 @@ hist(resposta,
 abline(h=0)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-425-1.png" width="672" />
 
 **Comandos**:
 
@@ -11723,7 +11212,7 @@ yfit <- yfit*diff(histograma$mids[1:2])*length(resposta)
 lines(xfit, yfit, col="blue", lwd=2)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-426-1.png" width="672" />
 
 <br>
 
@@ -11756,7 +11245,7 @@ stat_function(fun = function(x) dnorm(x, mean = mean, sd = sd) * n * largura,
     color = "red", size = 1)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-427-1.png" width="672" />
 
 **binwidth** = largura de caixa
 
@@ -11798,7 +11287,7 @@ plot(x,
      ylab="")
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-429-1.png" width="672" />
 
 <br>
 
@@ -11810,7 +11299,7 @@ plot(x,y,type="l",axes=F,xlab="",ylim=c(-0.1,0.5),
      ylab="")
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-430-1.png" width="672" />
 
 <br>
 
@@ -11823,7 +11312,7 @@ plot(x,y,type="l",axes=F,xlab="",ylim=c(-0.1,0.5),
 polygon(c(-3,x,3),c(0,y,0),density = 30)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-431-1.png" width="672" />
 
 <br>
 
@@ -11841,7 +11330,7 @@ abline(h=0);
 lines(x=c(0,0),y=c(0,max(y)),lty=2)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-432-1.png" width="672" />
 
 <br>
 
@@ -11859,7 +11348,7 @@ abline(h=0);
 lines(x=c(0,0),y=c(0,max(y)),lty=2)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-433-1.png" width="672" />
 
 <br>
 
@@ -11877,7 +11366,7 @@ abline(h=0);
 lines(x=c(0,0),y=c(0,max(y)),lty=2)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-434-1.png" width="672" />
 
 <br>
 
@@ -11900,14 +11389,11 @@ text(+2.5,0.1,expression(frac(alpha,2)))
 axis(1)
 ```
 
-<img src="17-hist_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-435-1.png" width="672" />
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:17-hist.Rmd-->
 
 # Setores circulares 
 
@@ -11972,7 +11458,7 @@ proporção = prop.table(table(variedade))
 pie(proporção*100)
 ```
 
-<img src="18-pizza_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-438-1.png" width="672" />
 
 <br>
 
@@ -11987,7 +11473,7 @@ pie(proporção*100,
     main="Variedades de abacate")
 ```
 
-<img src="18-pizza_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-439-1.png" width="672" />
 
 <br>
 
@@ -12005,7 +11491,7 @@ pie(proporção*100,
     main="Variedades de abacate")
 ```
 
-<img src="18-pizza_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-440-1.png" width="672" />
 
 <br><br>
 
@@ -12066,7 +11552,7 @@ library(plotrix)
 pie3D(proporção*100)
 ```
 
-<img src="18-pizza_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-442-1.png" width="672" />
 
 <br>
 
@@ -12079,7 +11565,7 @@ pie3D(proporção*100,
       main="Variedades de abacate")
 ```
 
-<img src="18-pizza_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-443-1.png" width="672" />
 
 <br>
 
@@ -12095,14 +11581,11 @@ pie3D(proporção*100,
       main="Variedades de abacate")
 ```
 
-<img src="18-pizza_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-444-1.png" width="672" />
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:18-pizza.Rmd-->
 
 # Interação
 
@@ -12130,7 +11613,7 @@ dados = data.frame(FATOR1,FATOR2,repe,RESP)
 with(dados, interaction.plot(FATOR1, FATOR2, RESP))
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-446-1.png" width="672" />
 
 ### Editando o gráfico
 
@@ -12140,7 +11623,7 @@ with(dados, interaction.plot(FATOR1, FATOR2, RESP, las=1, col=1:6, bty='l',
                              ylab='CBM', trace.label="FATOR2"))
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-447-1.png" width="672" />
 
 ### Fator2 x Fator 1
 
@@ -12149,7 +11632,7 @@ with(dados, interaction.plot(FATOR1, FATOR2, RESP, las=1, col=1:6, bty='l',
 with(dados, interaction.plot(FATOR2, FATOR1, RESP))
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-448-1.png" width="672" />
 
 ### Editando o gráfico
 
@@ -12158,7 +11641,7 @@ with(dados, interaction.plot(FATOR2, FATOR1, RESP))
 with(dados, interaction.plot(FATOR2,FATOR1, RESP, las=1, col=c("blue","red"), bty='l',xlab='', ylab='CBM', trace.label="repe"))
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-449-1.png" width="672" />
 
 ## Usando o interaction(s)
 
@@ -12201,30 +11684,30 @@ data
 
 ```
 ##     N fatorA fatorB fatorC rep resp
-## 1   1      1      1      1   1 10.0
-## 2   2      1      1      1   2 10.8
-## 3   3      1      1      1   3  9.8
-## 4   4      1      1      2   1 10.3
-## 5   5      1      1      2   2 11.3
-## 6   6      1      1      2   3 10.3
-## 7   7      1      2      1   1  9.7
-## 8   8      1      2      1   2 10.1
-## 9   9      1      2      1   3 10.2
-## 10 10      1      2      2   1  9.4
-## 11 11      1      2      2   2 11.6
-## 12 12      1      2      2   3  9.1
-## 13 13      2      1      1   1  9.2
-## 14 14      2      1      1   2  8.6
-## 15 15      2      1      1   3 10.1
-## 16 16      2      1      2   1  9.3
-## 17 17      2      1      2   2 10.3
-## 18 18      2      1      2   3  9.1
-## 19 19      2      2      1   1 11.5
-## 20 20      2      2      1   2  9.5
-## 21 21      2      2      1   3 10.8
-## 22 22      2      2      2   1 10.7
-## 23 23      2      2      2   2 10.4
-## 24 24      2      2      2   3  9.6
+## 1   1      1      1      1   1 10,0
+## 2   2      1      1      1   2 10,8
+## 3   3      1      1      1   3  9,8
+## 4   4      1      1      2   1 10,3
+## 5   5      1      1      2   2 11,3
+## 6   6      1      1      2   3 10,3
+## 7   7      1      2      1   1  9,7
+## 8   8      1      2      1   2 10,1
+## 9   9      1      2      1   3 10,2
+## 10 10      1      2      2   1  9,4
+## 11 11      1      2      2   2 11,6
+## 12 12      1      2      2   3  9,1
+## 13 13      2      1      1   1  9,2
+## 14 14      2      1      1   2  8,6
+## 15 15      2      1      1   3 10,1
+## 16 16      2      1      2   1  9,3
+## 17 17      2      1      2   2 10,3
+## 18 18      2      1      2   3  9,1
+## 19 19      2      2      1   1 11,5
+## 20 20      2      2      1   2  9,5
+## 21 21      2      2      1   3 10,8
+## 22 22      2      2      2   1 10,7
+## 23 23      2      2      2   2 10,4
+## 24 24      2      2      2   3  9,6
 ```
 
 ### Separado por Fator A
@@ -12240,7 +11723,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  data$resp[data$fatorA=="2"])
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-451-1.png" width="672" />
 
 ### Alterando escala do eixo Y
 
@@ -12257,7 +11740,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  las=1)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-452-1.png" width="672" />
 
 ### Título do eixo x e y
 
@@ -12278,7 +11761,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  ylab="Resposta")
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-453-1.png" width="672" />
 
 ### Removendo linhas da caixa
 
@@ -12301,7 +11784,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  bty="l")
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-454-1.png" width="672" />
 
 ### Cor da linhas
 
@@ -12326,7 +11809,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  col = c("red","blue"))
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-455-1.png" width="672" />
 
 ### Título dos gráficos
 
@@ -12353,7 +11836,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  main="Fator A = 2")
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-456-1.png" width="672" />
 
 ### Título da legenda
 
@@ -12382,7 +11865,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  trace.label = "Fator C")
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-457-1.png" width="672" />
 
 
 ### Pontos da média
@@ -12435,7 +11918,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
 points(c(1,2,1,2),media1, col="red", pch=16)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-459-1.png" width="672" />
 
 ### Barras de desvio-padrão
 
@@ -12471,37 +11954,6 @@ interaction.plot(data$fatorB[data$fatorA=="1"],
                  col = c("red","blue"),
                  main="Fator A = 1",
                  trace.label = "Fator C")
-```
-
-```
-## Warning in plot.window(...): "args.legend" não é um parâmetro gráfico
-```
-
-```
-## Warning in plot.xy(xy, type, ...): "args.legend" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(side = side, at = at, labels = labels, ...): "args.legend" não é
-## um parâmetro gráfico
-
-## Warning in axis(side = side, at = at, labels = labels, ...): "args.legend" não é
-## um parâmetro gráfico
-```
-
-```
-## Warning in box(...): "args.legend" não é um parâmetro gráfico
-```
-
-```
-## Warning in title(...): "args.legend" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(1, x, ...): "args.legend" não é um parâmetro gráfico
-```
-
-```r
 points(c(1,2,1,2),media, col="red", pch=16)
 arrows(c(1,2,1,2), media+desvio,c(1,2,1,2),media-desvio, code=3,angle=90,length = 0.1, col=c("red","red","blue","blue"))
 
@@ -12519,7 +11971,7 @@ points(c(1,2,1,2),media1, col="red", pch=16)
 arrows(c(1,2,1,2), media1+desvio1,c(1,2,1,2),media1-desvio1, code=3,angle=90,length = 0.1, col=c("red","red","blue","blue"))
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-461-1.png" width="672" />
 
 ## Pacote dae
 
@@ -12554,47 +12006,40 @@ Para se construir esse gráfico é necessário instalar o pacote `dae`
 
 ```r
 library(dae)
-```
-
-```
-## Carregando pacotes exigidos: ggplot2
-```
-
-```r
 interaction.ABC.plot(resp,FATOR1,FATOR2,FATOR3,data=dados)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-463-1.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR1,FATOR3,FATOR2,data=dados)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-19-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-463-2.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR2,FATOR3,FATOR1,data=dados)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-19-3.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-463-3.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR2,FATOR1,FATOR3,data=dados)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-19-4.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-463-4.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR3,FATOR2,FATOR1,data=dados)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-19-5.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-463-5.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR3,FATOR1,FATOR2,data=dados)
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-19-6.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-463-6.png" width="672" />
 
 ### Média e desvio-padrão
 
@@ -12663,14 +12108,11 @@ interaction.ABC.plot(media,F1,F2,F3,data=data,
                                                    width=0.2)))
 ```
 
-<img src="19-interaction_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-467-1.png" width="672" />
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:19-interaction.Rmd-->
 
 # Perfil Individual
 
@@ -12697,28 +12139,28 @@ library(lattice)
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe))
 ```
 
-<img src="20-perfil_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-469-1.png" width="672" />
 
 
 ```r
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy"))
 ```
 
-<img src="20-perfil_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-470-1.png" width="672" />
 
 
 ```r
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o"))
 ```
 
-<img src="20-perfil_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-471-1.png" width="672" />
 
 
 ```r
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o", ylab='CBM',strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="20-perfil_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-472-1.png" width="672" />
 
 ### Fator 1 x Fator 2
 
@@ -12727,14 +12169,11 @@ with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o", yla
 with(dados, xyplot(RESP ~ FATOR2|FATOR1, groups=repe, type="o", ylab='CBM', strip=strip.custom(strip.names=TRUE,strip.levels=TRUE)))
 ```
 
-<img src="20-perfil_files/figure-html/unnamed-chunk-6-1.png" width="960" />
+<img src="index_files/figure-html/unnamed-chunk-473-1.png" width="960" />
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:20-perfil.Rmd-->
 
 # Linhas
 
@@ -12766,7 +12205,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-475-1.png" width="672" />
 
 <br>
 
@@ -12780,12 +12219,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-```
-## Warning in plot.xy(xy, type, ...): gráfico do tipo 'lines' vai ser truncado para
-## o primeiro caractere
-```
-
-<img src="21-linhas_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-476-1.png" width="672" />
 
 <br>
 
@@ -12799,7 +12233,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-477-1.png" width="672" />
 
 
 ```r
@@ -12809,7 +12243,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-478-1.png" width="672" />
 
 <br>
 
@@ -12823,7 +12257,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-479-1.png" width="672" />
 
 <br>
 
@@ -12837,7 +12271,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-480-1.png" width="672" />
 
 <br>
 
@@ -12853,14 +12287,6 @@ plot(UR~TEMPO,cex=0.5,
      ylab="Umidade Relativa (%)", xlab="Tempo (Dias)",
      type="lines", 
      col="blue", las=1)
-```
-
-```
-## Warning in plot.xy(xy, type, ...): gráfico do tipo 'lines' vai ser truncado para
-## o primeiro caractere
-```
-
-```r
 plot(UR~TEMPO,cex=0.5,
      ylab="Umidade Relativa (%)", xlab="Tempo (Dias)",
      type="b", 
@@ -12879,7 +12305,7 @@ plot(UR~TEMPO,cex=0.5,
      col="blue", las=1)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-8-1.png" width="864" />
+<img src="index_files/figure-html/unnamed-chunk-481-1.png" width="864" />
 
 <br>
 
@@ -12909,7 +12335,7 @@ plot(TM~TEMPO, ylab="Temperatura")
 plot(UR~TEMPO, ylab="Umidade relativa")
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-483-1.png" width="672" />
 
 <br>
 
@@ -12933,7 +12359,7 @@ plot(UR~TEMPO,
      lty=4) # modificando formato de linha
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-484-1.png" width="672" />
 
 <br>
 
@@ -12958,7 +12384,7 @@ plot(UR~TEMPO,
      lty=4)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-485-1.png" width="672" />
 
 <br>
 
@@ -12985,7 +12411,7 @@ plot(UR~TEMPO,
      lty=4)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-486-1.png" width="672" />
 
 
 ```r
@@ -13012,7 +12438,7 @@ axis(4,las=2) # escala do eixo y secundário
 axis(side=1,las=1, at=seq(0, 100, by=10)) # escala do eixo x 
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-487-1.png" width="672" />
 
 ```r
 ## Obs. at=seq(0, 100, by=10) estou definindo um intervalo de 0 a 100 como marca a cada 10 unidades
@@ -13048,7 +12474,7 @@ axis(side=1,las=1, at=seq(0, 100, by=10))
 text(par("usr")[2]*1.11,mean(par("usr")[3:4]), "UR (%)", srt = -90, xpd = TRUE, pos = 4)
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-488-1.png" width="672" />
 
 <br>
 
@@ -13084,7 +12510,7 @@ legend("bottomleft", # posição da legenda
        bty="n") # caixa da legenda sem margem
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-489-1.png" width="672" />
 
 <br>
 
@@ -13112,12 +12538,7 @@ plot(TM~TEMPO,
      col="red", las=1)
 ```
 
-```
-## Warning in plot.xy(xy, type, ...): gráfico do tipo 'lines' vai ser truncado para
-## o primeiro caractere
-```
-
-<img src="21-linhas_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-491-1.png" width="672" />
 
 
 ```r
@@ -13127,12 +12548,7 @@ plot(UR~TEMPO,
      las=1)
 ```
 
-```
-## Warning in plot.xy(xy, type, ...): gráfico do tipo 'lines' vai ser truncado para
-## o primeiro caractere
-```
-
-<img src="21-linhas_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-492-1.png" width="672" />
 
 <br>
 
@@ -13167,14 +12583,14 @@ ggplot(data,
   xlab("Tempo (dias)")
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-494-1.png" width="672" />
 
 
 ```r
 ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col="blue")+ xlab("Tempo (dias)")
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-495-1.png" width="672" />
 
 <br>
 
@@ -13190,7 +12606,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
                 colour = "Temperatura")))
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-496-1.png" width="672" />
 
 <br>
 
@@ -13203,7 +12619,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
     limits = c(0, 100)))
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-497-1.png" width="672" />
 
 <br>
 
@@ -13217,12 +12633,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
                                          name = expression("Temperatura"^o*"C"))))
 ```
 
-```
-## Scale for 'y' is already present. Adding another scale for 'y', which will
-## replace the existing scale.
-```
-
-<img src="21-linhas_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-498-1.png" width="672" />
 
 <br>
 
@@ -13236,7 +12647,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
                        values = c("red","blue")))
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-499-1.png" width="672" />
 
 <br>
 
@@ -13249,13 +12660,11 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
          panel.grid.minor = element_blank()))
 ```
 
-<img src="21-linhas_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-500-1.png" width="672" />
 
 <br><br><br>
 
 ****
-
-<!--chapter:end:21-linhas.Rmd-->
 
 # Correlação
 
@@ -13306,12 +12715,12 @@ head(round(M,2))
 
 ```
 ##      DPF  APF  DPM  APM  IPV  ACA   PRO   MCG
-## DPF 1.00 0.56 0.39 0.39 0.21 0.33 -0.13 -0.04
-## APF 0.56 1.00 0.12 0.57 0.17 0.41 -0.23 -0.03
-## DPM 0.39 0.12 1.00 0.37 0.11 0.00 -0.08 -0.09
-## APM 0.39 0.57 0.37 1.00 0.32 0.35 -0.09  0.09
-## IPV 0.21 0.17 0.11 0.32 1.00 0.36  0.10  0.28
-## ACA 0.33 0.41 0.00 0.35 0.36 1.00 -0.14  0.30
+## DPF 1,00 0,56 0,39 0,39 0,21 0,33 -0,13 -0,04
+## APF 0,56 1,00 0,12 0,57 0,17 0,41 -0,23 -0,03
+## DPM 0,39 0,12 1,00 0,37 0,11 0,00 -0,08 -0,09
+## APM 0,39 0,57 0,37 1,00 0,32 0,35 -0,09  0,09
+## IPV 0,21 0,17 0,11 0,32 1,00 0,36  0,10  0,28
+## ACA 0,33 0,41 0,00 0,35 0,36 1,00 -0,14  0,30
 ```
 
 Instalar pacote corrplot
@@ -13323,17 +12732,10 @@ Instalar pacote corrplot
 
 ```r
 library(corrplot)
-```
-
-```
-## corrplot 0.84 loaded
-```
-
-```r
 corrplot(M, method="circle")
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-503-1.png" width="672" />
 
 <br>
 
@@ -13344,7 +12746,7 @@ corrplot(M, method="circle")
 corrplot(M, method="color")
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-504-1.png" width="672" />
 
 <br>
 
@@ -13355,7 +12757,7 @@ corrplot(M, method="color")
 corrplot(M, method="number")
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-505-1.png" width="672" />
 
 <br>
 
@@ -13366,7 +12768,7 @@ corrplot(M, method="number")
 corrplot(M, type="upper")
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-506-1.png" width="672" />
 
 <br>
 
@@ -13377,7 +12779,7 @@ corrplot(M, type="upper")
 corrplot(M, type="lower")
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-507-1.png" width="672" />
 
 <br>
 
@@ -13390,7 +12792,7 @@ corrplot(M, method="color",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-508-1.png" width="672" />
 
 <br>
 
@@ -13403,7 +12805,7 @@ corrplot(M, method="color",
          addCoef.col = "black", insig = "blank", diag=FALSE)
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-509-1.png" width="672" />
 
 <br>
 
@@ -13416,7 +12818,7 @@ corrplot(M, method="color", tl.col="black",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-510-1.png" width="672" />
 
 <br>
 
@@ -13430,7 +12832,7 @@ corrplot(M, method="color", tl.col="black",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-511-1.png" width="672" />
 
 <br>
 
@@ -13445,7 +12847,7 @@ corrplot(M, method="color", tl.col="black",
          )
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-512-1.png" width="672" />
 
 <br><br><br>
 
@@ -13499,43 +12901,10 @@ Instalar pacote (PerformanceAnalytics)
 
 ```r
 library(PerformanceAnalytics)
-```
-
-```
-## Carregando pacotes exigidos: xts
-```
-
-```
-## Carregando pacotes exigidos: zoo
-```
-
-```
-## 
-## Attaching package: 'zoo'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-```
-
-```
-## 
-## Attaching package: 'PerformanceAnalytics'
-```
-
-```
-## The following object is masked from 'package:graphics':
-## 
-##     legend
-```
-
-```r
 chart.Correlation(dados, pch=19)
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-516-1.png" width="672" />
 
 ### Conjunto de dados
 
@@ -13558,23 +12927,10 @@ dados=data.frame(ph,HAL,K,P,Ca,Mg,V)
 
 ```r
 library(GGally)
-```
-
-```
-## Carregando pacotes exigidos: ggplot2
-```
-
-```
-## Registered S3 method overwritten by 'GGally':
-##   method from   
-##   +.gg   ggplot2
-```
-
-```r
 ggpairs(dados)
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-518-1.png" width="672" />
 
 <br>
 
@@ -13583,24 +12939,10 @@ ggpairs(dados)
 
 ```r
 library(psych)
-```
-
-```
-## 
-## Attaching package: 'psych'
-```
-
-```
-## The following objects are masked from 'package:ggplot2':
-## 
-##     %+%, alpha
-```
-
-```r
 pairs.panels(dados)
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-519-1.png" width="672" />
 
 <br><br>
 
@@ -13654,14 +12996,7 @@ library(qgraph)
 ```
 
 ```
-## Warning: package 'qgraph' was built under R version 3.6.3
-```
-
-```
-## Registered S3 methods overwritten by 'huge':
-##   method    from   
-##   plot.sim  BDgraph
-##   print.sim BDgraph
+## Error : invalid version specification '1,5'
 ```
 
 ```r
@@ -13670,7 +13005,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-523-1.png" width="672" />
 
 <br>
 
@@ -13695,7 +13030,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-525-1.png" width="672" />
 
 <br>
 
@@ -13720,14 +13055,11 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="22-corre_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-527-1.png" width="672" />
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:22-corre.Rmd-->
 
 # Radar
 
@@ -13822,8 +13154,8 @@ chartJSRadar(scores = scores,
              vlcex=0.8)
 ```
 
-<!--html_preserve--><canvas id="htmlwidget-13c5628323ac9d0ab825" class="chartJSRadar html-widget" width="672" height="480"></canvas>
-<script type="application/json" data-for="htmlwidget-13c5628323ac9d0ab825">{"x":{"data":{"labels":["Cor","Aroma","Sabor","Corpo","Global"],"datasets":[{"label":"B100","data":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"backgroundColor":"rgba(255,0,0,0.2)","borderColor":"rgba(255,0,0,0.8)","pointBackgroundColor":"rgba(255,0,0,0.8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(255,0,0,0.8)"},{"label":"N100","data":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"backgroundColor":"rgba(0,255,0,0.2)","borderColor":"rgba(0,255,0,0.8)","pointBackgroundColor":"rgba(0,255,0,0.8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(0,255,0,0.8)"},{"label":"B75N25","data":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"backgroundColor":"rgba(0,0,255,0.2)","borderColor":"rgba(0,0,255,0.8)","pointBackgroundColor":"rgba(0,0,255,0.8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(0,0,255,0.8)"},{"label":"B50N50","data":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"backgroundColor":"rgba(255,255,0,0.2)","borderColor":"rgba(255,255,0,0.8)","pointBackgroundColor":"rgba(255,255,0,0.8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(255,255,0,0.8)"},{"label":"B25N75","data":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"backgroundColor":"rgba(255,0,255,0.2)","borderColor":"rgba(255,0,255,0.8)","pointBackgroundColor":"rgba(255,0,255,0.8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(255,0,255,0.8)"}]},"options":{"responsive":true,"title":{"display":false,"text":null},"scale":{"ticks":{"min":0},"pointLabels":{"fontSize":18}},"tooltips":{"enabled":true,"mode":"label"},"legend":{"display":true},"plwd":4,"plty":1,"axistype":0,"maxmin":false,"cglcol":"grey","cglty":1,"axislabcol":"grey","caxislabels":[0,5,10,15,20],"cglwd":0.8,"vlcex":0.8}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><canvas id="htmlwidget-1e064003c72134332329" class="chartJSRadar html-widget" width="672" height="480"></canvas>
+<script type="application/json" data-for="htmlwidget-1e064003c72134332329">{"x":{"data":{"labels":["Cor","Aroma","Sabor","Corpo","Global"],"datasets":[{"label":"B100","data":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"backgroundColor":"rgba(255,0,0,0,2)","borderColor":"rgba(255,0,0,0,8)","pointBackgroundColor":"rgba(255,0,0,0,8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(255,0,0,0,8)"},{"label":"N100","data":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"backgroundColor":"rgba(0,255,0,0,2)","borderColor":"rgba(0,255,0,0,8)","pointBackgroundColor":"rgba(0,255,0,0,8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(0,255,0,0,8)"},{"label":"B75N25","data":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"backgroundColor":"rgba(0,0,255,0,2)","borderColor":"rgba(0,0,255,0,8)","pointBackgroundColor":"rgba(0,0,255,0,8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(0,0,255,0,8)"},{"label":"B50N50","data":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"backgroundColor":"rgba(255,255,0,0,2)","borderColor":"rgba(255,255,0,0,8)","pointBackgroundColor":"rgba(255,255,0,0,8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(255,255,0,0,8)"},{"label":"B25N75","data":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"backgroundColor":"rgba(255,0,255,0,2)","borderColor":"rgba(255,0,255,0,8)","pointBackgroundColor":"rgba(255,0,255,0,8)","pointBorderColor":"#fff","pointHoverBackgroundColor":"#fff","pointHoverBorderColor":"rgba(255,0,255,0,8)"}]},"options":{"responsive":true,"title":{"display":false,"text":null},"scale":{"ticks":{"min":0},"pointLabels":{"fontSize":18}},"tooltips":{"enabled":true,"mode":"label"},"legend":{"display":true},"plwd":4,"plty":1,"axistype":0,"maxmin":false,"cglcol":"grey","cglty":1,"axislabcol":"grey","caxislabels":[0,5,10,15,20],"cglwd":0.8,"vlcex":0.8}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 <br>
 
@@ -13844,41 +13176,13 @@ B25N75=c(as.numeric(medias[c(5,10,15,20,25)]))
 
 <br>
 
+### Pacote plotly
+
 <center>
 
 
 ```r
 library(plotly)
-```
-
-```
-## Carregando pacotes exigidos: ggplot2
-```
-
-```
-## 
-## Attaching package: 'plotly'
-```
-
-```
-## The following object is masked from 'package:ggplot2':
-## 
-##     last_plot
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     filter
-```
-
-```
-## The following object is masked from 'package:graphics':
-## 
-##     layout
-```
-
-```r
 (p <- plot_ly(type = 'scatterpolar',fill = 'toself') %>%
   add_trace(r = B100,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'B100') %>%
   add_trace(r = N100,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'N100') %>%
@@ -13887,57 +13191,29 @@ library(plotly)
   add_trace(r = B25N75,theta = c('Cor','Aroma','Sabor', 'Corpo', 'Global'),name = 'B25N75') %>% layout(polar = list(radialaxis = list(visible = T))))
 ```
 
-```
-## No scatterpolar mode specifed:
-##   Setting the mode to markers
-##   Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
-```
-
-```
-## No scatterpolar mode specifed:
-##   Setting the mode to markers
-##   Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
-## No scatterpolar mode specifed:
-##   Setting the mode to markers
-##   Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
-## No scatterpolar mode specifed:
-##   Setting the mode to markers
-##   Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
-## No scatterpolar mode specifed:
-##   Setting the mode to markers
-##   Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
-## No scatterpolar mode specifed:
-##   Setting the mode to markers
-##   Read more about this attribute -> https://plot.ly/r/reference/#scatter-mode
-```
-
-<!--html_preserve--><div id="htmlwidget-4ae4f73ed7e8253cab9c" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4ae4f73ed7e8253cab9c">{"x":{"visdat":{"783f6f69aa":["function () ","plotlyVisDat"]},"cur_data":"783f6f69aa","attrs":{"783f6f69aa":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"783f6f69aa.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"783f6f69aa.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"783f6f69aa.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"783f6f69aa.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"783f6f69aa.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0.5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0.5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0.5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0.5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0.5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0.5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-a3540d683b69f0d4c71c" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a3540d683b69f0d4c71c">{"x":{"visdat":{"423864706fb4":["function () ","plotlyVisDat"]},"cur_data":"423864706fb4","attrs":{"423864706fb4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"423864706fb4.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"423864706fb4.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"423864706fb4.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"423864706fb4.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"423864706fb4.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0,5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0,5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0,5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0,5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0,5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0,5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 </center>
 
 
-```r
-library(fmsb)
-data=rbind(round(B100,1),
-           round(N100,1),
-           round(B75N25,1),
-           round(B50N50,1),
-           round(B25N75,1))
-rownames(data)=c("B100","N100","B75N25","B50N50","B25N75")
-colnames(data)=c('Cor','Aroma','Sabor', 'Corpo', 'Global')
-data=data.frame(data)
-radarchart(data,axistype = 2)
-```
 
-<img src="23-radar_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+```r
+# library(fmsb)
+# data=rbind(round(B100,1),
+           # round(N100,1),
+           # round(B75N25,1),
+           # round(B50N50,1),
+           # round(B25N75,1))
+# rownames(data)=c("B100","N100","B75N25","B50N50","B25N75")
+# colnames(data)=c('Cor','Aroma','Sabor', 'Corpo', 'Global')
+# data=data.frame(data)
+# radarchart(data,axistype = 2)
+```
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:23-radar.Rmd-->
 
 # Intervalo de confiança
 
@@ -13992,36 +13268,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="l",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-```
-## Warning in plot.window(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in plot.xy(xy, type, ...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(side = side, at = at, labels = labels, ...): "cex.names" não é
-## um parâmetro gráfico
-
-## Warning in axis(side = side, at = at, labels = labels, ...): "cex.names" não é
-## um parâmetro gráfico
-```
-
-```
-## Warning in box(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in title(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(1, labels = names(mn.data), at = nlevels.x, cex.axis =
-## cex.axis, : "cex.names" não é um parâmetro gráfico
-```
-
-<img src="24-ic_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-536-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -14034,36 +13281,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="p",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-```
-## Warning in plot.window(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in plot.xy(xy, type, ...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(side = side, at = at, labels = labels, ...): "cex.names" não é
-## um parâmetro gráfico
-
-## Warning in axis(side = side, at = at, labels = labels, ...): "cex.names" não é
-## um parâmetro gráfico
-```
-
-```
-## Warning in box(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in title(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(1, labels = names(mn.data), at = nlevels.x, cex.axis =
-## cex.axis, : "cex.names" não é um parâmetro gráfico
-```
-
-<img src="24-ic_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-537-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -14076,36 +13294,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="b",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-```
-## Warning in plot.window(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in plot.xy(xy, type, ...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(side = side, at = at, labels = labels, ...): "cex.names" não é
-## um parâmetro gráfico
-
-## Warning in axis(side = side, at = at, labels = labels, ...): "cex.names" não é
-## um parâmetro gráfico
-```
-
-```
-## Warning in box(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in title(...): "cex.names" não é um parâmetro gráfico
-```
-
-```
-## Warning in axis(1, labels = names(mn.data), at = nlevels.x, cex.axis =
-## cex.axis, : "cex.names" não é um parâmetro gráfico
-```
-
-<img src="24-ic_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-538-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -14120,14 +13309,11 @@ sciplot::bargraph.CI(Trat,msraiz,las=2,xlab="",
 abline(h=0)
 ```
 
-<img src="24-ic_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-539-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:24-ic.Rmd-->
 
 # Quantis Teóricos 
 
@@ -14186,12 +13372,12 @@ anova(mod)
 ## 
 ## Response: msraiz
 ##           Df  Sum Sq Mean Sq F value  Pr(>F)  
-## F1         1  1.1868 1.18680  1.2950 0.26358  
-## F2         3  8.5762 2.85872  3.1193 0.03961 *
-## F1:F2      3  4.9430 1.64766  1.7978 0.16744  
-## Residuals 32 29.3268 0.91646                  
+## F1         1  1,1868 1,18680  1,2950 0,26358  
+## F2         3  8,5762 2,85872  3,1193 0,03961 *
+## F1:F2      3  4,9430 1,64766  1,7978 0,16744  
+## Residuals 32 29,3268 0,91646                  
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 <br>
@@ -14206,7 +13392,7 @@ hnp::hnp(mod,
          pch=16)
 ```
 
-<img src="25-qt_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-542-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -14221,7 +13407,7 @@ hnp::hnp(mod,
          print.on=T)
 ```
 
-<img src="25-qt_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-543-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -14238,14 +13424,11 @@ hnp::hnp(mod,
          col.paint.out="red")
 ```
 
-<img src="25-qt_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-544-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:25-qt.Rmd-->
 
 # Componentes principais
 
@@ -14279,14 +13462,14 @@ dados <- iris[c(1, 2, 3, 4)]
 
 ```
 ## Standard deviations (1, .., p=4):
-## [1] 1.7083611 0.9560494 0.3830886 0.1439265
+## [1] 1,7083611 0,9560494 0,3830886 0,1439265
 ## 
 ## Rotation (n x k) = (4 x 4):
 ##                     PC1         PC2        PC3        PC4
-## Sepal.Length  0.5210659 -0.37741762  0.7195664  0.2612863
-## Sepal.Width  -0.2693474 -0.92329566 -0.2443818 -0.1235096
-## Petal.Length  0.5804131 -0.02449161 -0.1421264 -0.8014492
-## Petal.Width   0.5648565 -0.06694199 -0.6342727  0.5235971
+## Sepal.Length  0,5210659 -0,37741762  0,7195664  0,2612863
+## Sepal.Width  -0,2693474 -0,92329566 -0,2443818 -0,1235096
+## Petal.Length  0,5804131 -0,02449161 -0,1421264 -0,8014492
+## Petal.Width   0,5648565 -0,06694199 -0,6342727  0,5235971
 ```
 
 <br>
@@ -14296,17 +13479,10 @@ dados <- iris[c(1, 2, 3, 4)]
 
 ```r
 library(ggfortify)
-```
-
-```
-## Carregando pacotes exigidos: ggplot2
-```
-
-```r
 autoplot(pca,data=iris)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-547-1.png" width="672" />
 
 <br>
 
@@ -14320,7 +13496,7 @@ library(ggfortify)
 autoplot(pca,data=iris,colour="Species")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-548-1.png" width="672" />
 
 <br>
 
@@ -14335,7 +13511,7 @@ autoplot(pca,
          loadings=T)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-549-1.png" width="672" />
 
 <br>
 
@@ -14351,7 +13527,7 @@ autoplot(pca,
          loadings.label=T)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-550-1.png" width="672" />
 
 <br>
 
@@ -14369,7 +13545,7 @@ autoplot(pca,
          frame=T)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-551-1.png" width="672" />
 
 <br>
 
@@ -14388,7 +13564,7 @@ autoplot(pca,
          frame.type="norm")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-552-1.png" width="672" />
 
 <br>
 
@@ -14409,7 +13585,7 @@ autoplot(pca,
          loadings.label.colour="black")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-553-1.png" width="672" />
 
 <br>
 
@@ -14432,7 +13608,7 @@ autoplot(pca,
   theme(text = element_text(family="serif"))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-554-1.png" width="672" />
 
 <br>
 
@@ -14456,7 +13632,7 @@ autoplot(pca,
   geom_hline(,yintercept = 0,linetype=2)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-555-1.png" width="672" />
 
 <br><br>
 
@@ -14489,30 +13665,19 @@ dados=data.frame(Tratamento,DPF,APF,DPM,APM,IPV,ACA,PRO,MCG)
 
 ```r
 require(FactoMineR)
-```
-
-```
-## Carregando pacotes exigidos: FactoMineR
-```
-
-```
-## Warning: package 'FactoMineR' was built under R version 3.6.3
-```
-
-```r
 pca=PCA(dados[c(2,3,4,5,6,7,9)],scale.unit=T,graph=F)
 round(pca$eig,3)
 ```
 
 ```
 ##        eigenvalue percentage of variance cumulative percentage of variance
-## comp 1      2.648                 37.821                            37.821
-## comp 2      1.411                 20.152                            57.974
-## comp 3      0.939                 13.418                            71.392
-## comp 4      0.650                  9.282                            80.673
-## comp 5      0.608                  8.692                            89.365
-## comp 6      0.479                  6.842                            96.207
-## comp 7      0.266                  3.793                           100.000
+## comp 1      2,648                 37,821                            37,821
+## comp 2      1,411                 20,152                            57,974
+## comp 3      0,939                 13,418                            71,392
+## comp 4      0,650                  9,282                            80,673
+## comp 5      0,608                  8,692                            89,365
+## comp 6      0,479                  6,842                            96,207
+## comp 7      0,266                  3,793                           100,000
 ```
 
 <br>
@@ -14522,21 +13687,10 @@ round(pca$eig,3)
 
 ```r
 require(factoextra)
-```
-
-```
-## Carregando pacotes exigidos: factoextra
-```
-
-```
-## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa
-```
-
-```r
 fviz_pca_biplot(pca,geom = c("point"))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-558-1.png" width="672" />
 
 <br>
 
@@ -14549,7 +13703,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 addEllipses = T)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-559-1.png" width="672" />
 
 <br>
 
@@ -14562,7 +13716,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 addEllipses = T, fill.ind = dados$Tratamento)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-560-1.png" width="672" />
 
 <br>
 
@@ -14577,7 +13731,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 title = "")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-561-1.png" width="672" />
 
 <br>
 
@@ -14593,7 +13747,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 repel=T)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-562-1.png" width="672" />
 
 <br>
 
@@ -14610,7 +13764,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 pointshape=21,pointsize=2,textsize=0.5, col.var="black")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-563-1.png" width="672" />
 
 <br>
 
@@ -14627,7 +13781,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 pointshape=21,pointsize=2,textsize=0.5, col.var="black",fill= "Cultivares")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-564-1.png" width="672" />
 
 <br>
 
@@ -14645,7 +13799,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 col.var="black",fill= "Cultivares")+ylab("CP2(20,2%)")+xlab("CP1(37,8%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-565-1.png" width="672" />
 
 <br><br>
 
@@ -14698,7 +13852,7 @@ plot(dend)
 abline(h=8, lty=2, col="red")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-568-1.png" width="672" />
 
 ```r
 ## Cluster 1: T8, T10, T6,T9,T2,T4
@@ -14718,13 +13872,13 @@ round(pca$eig,3)
 
 ```
 ##        eigenvalue percentage of variance cumulative percentage of variance
-## comp 1      5.057                 72.243                            72.243
-## comp 2      1.037                 14.812                            87.055
-## comp 3      0.639                  9.128                            96.183
-## comp 4      0.237                  3.387                            99.571
-## comp 5      0.022                  0.312                            99.883
-## comp 6      0.008                  0.109                            99.992
-## comp 7      0.001                  0.008                           100.000
+## comp 1      5,057                 72,243                            72,243
+## comp 2      1,037                 14,812                            87,055
+## comp 3      0,639                  9,128                            96,183
+## comp 4      0,237                  3,387                            99,571
+## comp 5      0,022                  0,312                            99,883
+## comp 6      0,008                  0,109                            99,992
+## comp 7      0,001                  0,008                           100,000
 ```
 
 <br>
@@ -14737,7 +13891,7 @@ library(factoextra)
 fviz_pca_var(pca)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-570-1.png" width="672" />
 
 <br>
 
@@ -14748,7 +13902,7 @@ fviz_pca_var(pca)
 fviz_pca_var(pca)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-571-1.png" width="672" />
 
 <br>
 
@@ -14759,7 +13913,7 @@ fviz_pca_var(pca)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 fviz_pca_var(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-572-1.png" width="672" />
 
 <br>
 
@@ -14771,7 +13925,7 @@ rownames(pca$var$coord)=c("pH","H+AL","K","P","Ca","Mg","V")
 fviz_pca_var(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-573-1.png" width="672" />
 
 <br>
 
@@ -14785,7 +13939,7 @@ fviz_pca_var(pca,
              repel=T)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-574-1.png" width="672" />
 
 <br>
 
@@ -14802,7 +13956,7 @@ fviz_pca_var(pca,
   theme_classic()
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-575-1.png" width="672" />
 
 <br>
 
@@ -14813,7 +13967,7 @@ fviz_pca_var(pca,
 fviz_pca_ind(pca)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-576-1.png" width="672" />
 
 <br>
 
@@ -14824,7 +13978,7 @@ fviz_pca_ind(pca)
 fviz_pca_ind(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-33-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-577-1.png" width="672" />
 
 <br>
 
@@ -14844,7 +13998,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-34-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-578-1.png" width="672" />
 
 <br>
 
@@ -14865,12 +14019,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-```
-## Warning in if (shape %in% colnames(data)) {: a condição tem comprimento > 1 e
-## somente o primeiro elemento será usado
-```
-
-<img src="26-cp_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-579-1.png" width="672" />
 
 <br>
 
@@ -14889,7 +14038,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-580-1.png" width="672" />
 
 <br>
 
@@ -14908,7 +14057,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")+theme_classic()
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-37-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-581-1.png" width="672" />
 
 
 ```r
@@ -14918,7 +14067,7 @@ library(gridExtra)
 grid.arrange(a,b, ncol=2)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-38-1.png" width="960" />
+<img src="index_files/figure-html/unnamed-chunk-582-1.png" width="960" />
 
 <br><br>
 
@@ -14959,7 +14108,7 @@ plot(dend)
 abline(h=8, lty=2, col="red")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-584-1.png" width="672" />
 
 ```r
 ## Cluster 1: T8, T10, T6,T9,T2,T4
@@ -14971,40 +14120,6 @@ ou,
 
 ```r
 library(dendextend)
-```
-
-```
-## Warning: package 'dendextend' was built under R version 3.6.3
-```
-
-```
-## 
-## ---------------------
-## Welcome to dendextend version 1.13.4
-## Type citation('dendextend') for how to cite the package.
-## 
-## Type browseVignettes(package = 'dendextend') for the package vignette.
-## The github page is: https://github.com/talgalili/dendextend/
-## 
-## Suggestions and bug-reports can be submitted at: https://github.com/talgalili/dendextend/issues
-## Or contact: <tal.galili@gmail.com>
-## 
-## 	To suppress this message use:  suppressPackageStartupMessages(library(dendextend))
-## ---------------------
-```
-
-```
-## 
-## Attaching package: 'dendextend'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     cutree
-```
-
-```r
 dend=as.dendrogram(hclust(dist(dadosm), method='average'))
 dend=set(dend,"branches_k_color", value = c("red", "blue"), k = 2)
 par(cex=0.7, mai=c(1.2,0.8,0.5,0.5))
@@ -15013,7 +14128,7 @@ par(cex=0.8)
 rect.dendrogram(dend, k=2,border = 8, lty = 5, lwd = 2)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-41-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-585-1.png" width="672" />
 
 <br>
 
@@ -15028,13 +14143,13 @@ round(pca$eig,3)
 
 ```
 ##        eigenvalue percentage of variance cumulative percentage of variance
-## comp 1      5.057                 72.243                            72.243
-## comp 2      1.037                 14.812                            87.055
-## comp 3      0.639                  9.128                            96.183
-## comp 4      0.237                  3.387                            99.571
-## comp 5      0.022                  0.312                            99.883
-## comp 6      0.008                  0.109                            99.992
-## comp 7      0.001                  0.008                           100.000
+## comp 1      5,057                 72,243                            72,243
+## comp 2      1,037                 14,812                            87,055
+## comp 3      0,639                  9,128                            96,183
+## comp 4      0,237                  3,387                            99,571
+## comp 5      0,022                  0,312                            99,883
+## comp 6      0,008                  0,109                            99,992
+## comp 7      0,001                  0,008                           100,000
 ```
 
 <br>
@@ -15046,7 +14161,7 @@ round(pca$eig,3)
 plot(pca$eig[,2], type="b",ylab="Porcentagem de variância",xlab="CP")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-587-1.png" width="672" />
 
 <br>
 
@@ -15061,7 +14176,7 @@ plot(pca$ind$coord, # Extraindo da pca os valores das coordenadas em x e CP1 e y
 abline(h=0,v=0, lty=2) # traçando linha em x e y = 0; lty=2 é linha tracejada 
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-588-1.png" width="672" />
 
 <br>
 
@@ -15079,7 +14194,7 @@ text(pca$ind$coord[,1],
      rownames(pca$ind$coord))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-589-1.png" width="672" />
 
 <br>
 
@@ -15098,7 +14213,7 @@ text(pca$ind$coord[,1],
      rownames(pca$ind$coord))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-590-1.png" width="672" />
 
 <br>
 
@@ -15115,7 +14230,7 @@ plot(pca$var$coord, # Extraindo da pca os valores da coordenadas em x e y dos ve
 abline(h=0,v=0, lty=2) # traçando linha em x e y = 0; lty=2 é linha tracejada 
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-591-1.png" width="672" />
 
 <br>
 
@@ -15147,7 +14262,7 @@ arrows(0,0,pca$var$coord[7,1],pca$var$coord[7,2], length = 0.1) # vetor 7 - V
 text(pca$var$coord-0.01,rownames(pca$var$coord)) # Estou colocando os nomes dos vetores (-0.01 significa abaixo da coordenada a 0.01)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-592-1.png" width="672" />
 
 <br>
 
@@ -15176,7 +14291,7 @@ text(pca$var$coord[,1]+
      pca$var$coord[,2],rownames(pca$var$coord))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-49-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-593-1.png" width="672" />
 
 `ifelse(pca$var$coord[,1]<0,-0.2,+0.2)`: estamos definindo que se `pca$var$coord[,1]` for menor que 0, irá adicionar -0.2, do contrário irá somar 0.2
 
@@ -15210,7 +14325,7 @@ draw.circle(0,0,max(ifelse(c(pca$var$coord[,1],pca$var$coord[,2])<0,
                            c(pca$var$coord[,1],pca$var$coord[,2]))))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-594-1.png" width="672" />
 
 <br>
 
@@ -15242,7 +14357,7 @@ draw.circle(0,0,max(ifelse(c(pca$var$coord[,1],pca$var$coord[,2])<0,
                            c(pca$var$coord[,1],pca$var$coord[,2]))))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-595-1.png" width="672" />
 
 <br><br>
 
@@ -15288,7 +14403,7 @@ library(FactoMineR)
 pca=PCA(dadosm)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-54-1.png" width="672" /><img src="26-cp_files/figure-html/unnamed-chunk-54-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-598-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-598-2.png" width="672" />
 
 <br>
 
@@ -15300,7 +14415,7 @@ library(factoextra)
 fviz_screeplot(pca)
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-599-1.png" width="672" />
 
 
 ```r
@@ -15314,7 +14429,7 @@ fviz_screeplot(pca,
   ylab("Porcentagem de explicação da variância") # nomeando eixo y
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-600-1.png" width="672" />
 
 <br>
 
@@ -15335,7 +14450,7 @@ bar=barplot(pca$eig[,2],
         ylim=c(0,100))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-57-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-601-1.png" width="768" />
 
 <br>
 
@@ -15351,7 +14466,7 @@ points(bar,
        type = "o")
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-58-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-602-1.png" width="768" />
 
 <br>
 
@@ -15370,7 +14485,7 @@ text(bar,
      round(pca$eig[,2],2))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-59-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-603-1.png" width="768" />
 
 <br>
 
@@ -15395,7 +14510,7 @@ text(bar,
      round(pca$eig[,2],2))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-60-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-604-1.png" width="768" />
 
 <br><br>
 
@@ -15428,26 +14543,6 @@ dadosm=data.frame(mph,mHAL,mK,mP,mCa,mMg,mV)
 
 ```r
 library(psych)
-```
-
-```
-## 
-## Attaching package: 'psych'
-```
-
-```
-## The following object is masked from 'package:plotrix':
-## 
-##     rescale
-```
-
-```
-## The following objects are masked from 'package:ggplot2':
-## 
-##     %+%, alpha
-```
-
-```r
 pca.solo <- principal(scale(dadosm), # scale é para padronizar dados
                       nfactors=5,  # Numero de componentes
                       n.obs=10, # possui 10 observações/ variável
@@ -15462,22 +14557,22 @@ pca.solo
 ##     scores = TRUE)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
 ##        PC1   PC2   PC3   PC4   PC5 h2      u2 com
-## mph   0.95  0.26 -0.02 -0.14  0.12  1 3.1e-04 1.2
-## mHAL -0.93  0.09  0.20  0.28  0.06  1 5.4e-04 1.3
-## mK    0.69  0.24  0.69 -0.01 -0.02  1 7.4e-04 2.2
-## mP   -0.27  0.95 -0.17  0.03 -0.04  1 5.4e-05 1.2
-## mCa   0.92  0.03 -0.28  0.28  0.02  1 2.9e-03 1.4
-## mMg   0.96 -0.09  0.08  0.24 -0.04  1 2.9e-03 1.2
-## mV    0.99 -0.01 -0.13 -0.08 -0.03  1 8.4e-04 1.1
+## mph   0,95  0,26 -0,02 -0,14  0,12  1 3,1e-04 1,2
+## mHAL -0,93  0,09  0,20  0,28  0,06  1 5,4e-04 1,3
+## mK    0,69  0,24  0,69 -0,01 -0,02  1 7,4e-04 2,2
+## mP   -0,27  0,95 -0,17  0,03 -0,04  1 5,4e-05 1,2
+## mCa   0,92  0,03 -0,28  0,28  0,02  1 2,9e-03 1,4
+## mMg   0,96 -0,09  0,08  0,24 -0,04  1 2,9e-03 1,2
+## mV    0,99 -0,01 -0,13 -0,08 -0,03  1 8,4e-04 1,1
 ## 
 ##                        PC1  PC2  PC3  PC4  PC5
-## SS loadings           5.06 1.04 0.64 0.24 0.02
-## Proportion Var        0.72 0.15 0.09 0.03 0.00
-## Cumulative Var        0.72 0.87 0.96 1.00 1.00
-## Proportion Explained  0.72 0.15 0.09 0.03 0.00
-## Cumulative Proportion 0.72 0.87 0.96 1.00 1.00
+## SS loadings           5,06 1,04 0,64 0,24 0,02
+## Proportion Var        0,72 0,15 0,09 0,03 0,00
+## Cumulative Var        0,72 0,87 0,96 1,00 1,00
+## Proportion Explained  0,72 0,15 0,09 0,03 0,00
+## Cumulative Proportion 0,72 0,87 0,96 1,00 1,00
 ## 
-## Mean item complexity =  1.4
+## Mean item complexity =  1,4
 ## Test of the hypothesis that 5 components are sufficient.
 ## 
 ## The root mean square of the residuals (RMSR) is  0 
@@ -15499,18 +14594,18 @@ pca.solo
 ## 
 ## Loadings:
 ##      PC1    PC2    PC3    PC4    PC5   
-## mph   0.949  0.258        -0.137  0.116
-## mHAL -0.933         0.201  0.278       
-## mK    0.687  0.240  0.685              
-## mP   -0.270  0.946 -0.171              
-## mCa   0.918        -0.277  0.276       
-## mMg   0.961                0.239       
-## mV    0.987        -0.129              
+## mph   0,949  0,258        -0,137  0,116
+## mHAL -0,933         0,201  0,278       
+## mK    0,687  0,240  0,685              
+## mP   -0,270  0,946 -0,171              
+## mCa   0,918        -0,277  0,276       
+## mMg   0,961                0,239       
+## mV    0,987        -0,129              
 ## 
 ##                  PC1   PC2   PC3   PC4   PC5
-## SS loadings    5.057 1.037 0.639 0.237 0.022
-## Proportion Var 0.722 0.148 0.091 0.034 0.003
-## Cumulative Var 0.722 0.871 0.962 0.996 0.999
+## SS loadings    5,057 1,037 0,639 0,237 0,022
+## Proportion Var 0,722 0,148 0,091 0,034 0,003
+## Cumulative Var 0,722 0,871 0,962 0,996 0,999
 ```
 
 <br>
@@ -15530,7 +14625,7 @@ sorted.loadings1 <- load[order(load[,1]),1]
                  pch=16))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-64-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-608-1.png" width="672" />
 
 <br>
 
@@ -15547,7 +14642,7 @@ sorted.loadings2 <- load[order(load[,2]),2]
                  pch=16))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-65-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-609-1.png" width="672" />
 
 <br>
 
@@ -15564,7 +14659,7 @@ sorted.loadings3 <- load[order(load[,3]),3]
                  pch=16))
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-66-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-610-1.png" width="672" />
 
 <br><br><br>
 
@@ -15619,12 +14714,11 @@ rownames(data)=dados$trat
 fviz_pca_biplot(PCA(data),col.ind = cluster, addEllipses = T) # default e padronizado
 ```
 
-<img src="26-cp_files/figure-html/unnamed-chunk-70-1.png" width="672" /><img src="26-cp_files/figure-html/unnamed-chunk-70-2.png" width="672" /><img src="26-cp_files/figure-html/unnamed-chunk-70-3.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-614-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-614-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-614-3.png" width="672" />
 
-<!--chapter:end:26-cp.Rmd-->
+****
 
-
-# Dendrograma
+# Dendograma
 
 ****
 
@@ -15647,56 +14741,56 @@ USArrests
 
 ```
 ##                Murder Assault UrbanPop Rape
-## Alabama          13.2     236       58 21.2
-## Alaska           10.0     263       48 44.5
-## Arizona           8.1     294       80 31.0
-## Arkansas          8.8     190       50 19.5
-## California        9.0     276       91 40.6
-## Colorado          7.9     204       78 38.7
-## Connecticut       3.3     110       77 11.1
-## Delaware          5.9     238       72 15.8
-## Florida          15.4     335       80 31.9
-## Georgia          17.4     211       60 25.8
-## Hawaii            5.3      46       83 20.2
-## Idaho             2.6     120       54 14.2
-## Illinois         10.4     249       83 24.0
-## Indiana           7.2     113       65 21.0
-## Iowa              2.2      56       57 11.3
-## Kansas            6.0     115       66 18.0
-## Kentucky          9.7     109       52 16.3
-## Louisiana        15.4     249       66 22.2
-## Maine             2.1      83       51  7.8
-## Maryland         11.3     300       67 27.8
-## Massachusetts     4.4     149       85 16.3
-## Michigan         12.1     255       74 35.1
-## Minnesota         2.7      72       66 14.9
-## Mississippi      16.1     259       44 17.1
-## Missouri          9.0     178       70 28.2
-## Montana           6.0     109       53 16.4
-## Nebraska          4.3     102       62 16.5
-## Nevada           12.2     252       81 46.0
-## New Hampshire     2.1      57       56  9.5
-## New Jersey        7.4     159       89 18.8
-## New Mexico       11.4     285       70 32.1
-## New York         11.1     254       86 26.1
-## North Carolina   13.0     337       45 16.1
-## North Dakota      0.8      45       44  7.3
-## Ohio              7.3     120       75 21.4
-## Oklahoma          6.6     151       68 20.0
-## Oregon            4.9     159       67 29.3
-## Pennsylvania      6.3     106       72 14.9
-## Rhode Island      3.4     174       87  8.3
-## South Carolina   14.4     279       48 22.5
-## South Dakota      3.8      86       45 12.8
-## Tennessee        13.2     188       59 26.9
-## Texas            12.7     201       80 25.5
-## Utah              3.2     120       80 22.9
-## Vermont           2.2      48       32 11.2
-## Virginia          8.5     156       63 20.7
-## Washington        4.0     145       73 26.2
-## West Virginia     5.7      81       39  9.3
-## Wisconsin         2.6      53       66 10.8
-## Wyoming           6.8     161       60 15.6
+## Alabama          13,2     236       58 21,2
+## Alaska           10,0     263       48 44,5
+## Arizona           8,1     294       80 31,0
+## Arkansas          8,8     190       50 19,5
+## California        9,0     276       91 40,6
+## Colorado          7,9     204       78 38,7
+## Connecticut       3,3     110       77 11,1
+## Delaware          5,9     238       72 15,8
+## Florida          15,4     335       80 31,9
+## Georgia          17,4     211       60 25,8
+## Hawaii            5,3      46       83 20,2
+## Idaho             2,6     120       54 14,2
+## Illinois         10,4     249       83 24,0
+## Indiana           7,2     113       65 21,0
+## Iowa              2,2      56       57 11,3
+## Kansas            6,0     115       66 18,0
+## Kentucky          9,7     109       52 16,3
+## Louisiana        15,4     249       66 22,2
+## Maine             2,1      83       51  7,8
+## Maryland         11,3     300       67 27,8
+## Massachusetts     4,4     149       85 16,3
+## Michigan         12,1     255       74 35,1
+## Minnesota         2,7      72       66 14,9
+## Mississippi      16,1     259       44 17,1
+## Missouri          9,0     178       70 28,2
+## Montana           6,0     109       53 16,4
+## Nebraska          4,3     102       62 16,5
+## Nevada           12,2     252       81 46,0
+## New Hampshire     2,1      57       56  9,5
+## New Jersey        7,4     159       89 18,8
+## New Mexico       11,4     285       70 32,1
+## New York         11,1     254       86 26,1
+## North Carolina   13,0     337       45 16,1
+## North Dakota      0,8      45       44  7,3
+## Ohio              7,3     120       75 21,4
+## Oklahoma          6,6     151       68 20,0
+## Oregon            4,9     159       67 29,3
+## Pennsylvania      6,3     106       72 14,9
+## Rhode Island      3,4     174       87  8,3
+## South Carolina   14,4     279       48 22,5
+## South Dakota      3,8      86       45 12,8
+## Tennessee        13,2     188       59 26,9
+## Texas            12,7     201       80 25,5
+## Utah              3,2     120       80 22,9
+## Vermont           2,2      48       32 11,2
+## Virginia          8,5     156       63 20,7
+## Washington        4,0     145       73 26,2
+## West Virginia     5,7      81       39  9,3
+## Wisconsin         2,6      53       66 10,8
+## Wyoming           6,8     161       60 15,6
 ```
 
 <br>
@@ -15711,14 +14805,14 @@ R=hclust(d)
 
 <br>
 
-### Dendrograma
+### Dendograma
 
 
 ```r
 plot(R)
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-617-1.png" width="672" />
 
 <br>
 
@@ -15729,7 +14823,7 @@ plot(R)
 plot(R, hang=-1)
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-618-1.png" width="672" />
 
 <br>
 
@@ -15739,12 +14833,12 @@ plot(R, hang=-1)
 ```r
 plot(R, 
      las=1, # Escala do eixo na horizontal
-     hang=-1, # alinhar altura dos rótulos
+     hang=-1, # alinhas altura dos rótulos
      main="", # Título vazio
-     ylab="Distância") # Título do eixo Y
+     ylab="Dist?ncia") # Título do eixo Y
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-619-1.png" width="672" />
 
 <br>
 
@@ -15756,44 +14850,11 @@ Neste exemplo vamos considerar dois grupos
 ```r
 # Chamando package dendextend
 library(dendextend)
-```
 
-```
-## Warning: package 'dendextend' was built under R version 3.6.3
-```
-
-```
-## 
-## ---------------------
-## Welcome to dendextend version 1.13.4
-## Type citation('dendextend') for how to cite the package.
-## 
-## Type browseVignettes(package = 'dendextend') for the package vignette.
-## The github page is: https://github.com/talgalili/dendextend/
-## 
-## Suggestions and bug-reports can be submitted at: https://github.com/talgalili/dendextend/issues
-## Or contact: <tal.galili@gmail.com>
-## 
-## 	To suppress this message use:  suppressPackageStartupMessages(library(dendextend))
-## ---------------------
-```
-
-```
-## 
-## Attaching package: 'dendextend'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     cutree
-```
-
-```r
-# Construindo o dendrograma
+# Construindo o dendograma
 dend=as.dendrogram(hclust(dist(USArrests), method='average'))
 
-# Definindo cores e grupos para o dendrograma
+# Definindo cores e grupos para o dendograma
 dend=set(dend,"branches_k_color", 
              value = c("red", "blue"), k = 2)
 
@@ -15804,7 +14865,7 @@ plot(dend,
      ylab="Distância")
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-620-1.png" width="672" />
 
 <br>
 
@@ -15832,7 +14893,7 @@ rect.dendrogram(dend,
                 lwd = 2) # espessura da linha
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-621-1.png" width="672" />
 
 <br>
 
@@ -15841,27 +14902,14 @@ rect.dendrogram(dend,
 
 ```r
 library(ape)
-```
-
-```
-## 
-## Attaching package: 'ape'
-```
-
-```
-## The following objects are masked from 'package:dendextend':
-## 
-##     ladderize, rotate
-```
-
-```r
 par(mar=c(0,0,1,0))
 plot(as.phylo(R),
      cex=0.7, 
+     hang=-1, 
      type="fan")
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-622-1.png" width="672" />
 
 <br>
 
@@ -15874,11 +14922,12 @@ clus=cutree(R,2)
 colors=c("red","blue")
 plot(as.phylo(R), 
      cex=0.7,
+     hang=-1, 
      type="fan", 
      tip.color=colors[clus])
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-623-1.png" width="672" />
 
 <br>
 
@@ -15889,166 +14938,15 @@ plot(as.phylo(R),
 par(mar=c(0,0,1,0))
 plot(as.phylo(R),
      cex=0.7, 
+     hang=-1, 
      type="radial")
 ```
 
-<img src="27-dend_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-624-1.png" width="672" />
 
 <br><br><br>
 
 ****
-
-# Diagrama de Venn
-
-****
-
-## Pacote venneuler
-
-
-```r
-require(venneuler)
-```
-
-```
-## Carregando pacotes exigidos: venneuler
-```
-
-```
-## Warning: package 'venneuler' was built under R version 3.6.3
-```
-
-```
-## Carregando pacotes exigidos: rJava
-```
-
-```
-## Warning: package 'rJava' was built under R version 3.6.3
-```
-
-```r
-v <- venneuler(c(A=450, B=1800, "A&B"=230))
-plot(v)
-```
-
-<img src="27-dend_files/figure-html/unnamed-chunk-11-1.png" width="672" />
-
-## Pacote eulerr
-
-
-```r
-library(eulerr)
-```
-
-```
-## Warning: package 'eulerr' was built under R version 3.6.3
-```
-
-```r
-fit <- euler(c(A = 450, B = 1800, "A&B" = 230))
-plot(fit)
-```
-
-<img src="27-dend_files/figure-html/unnamed-chunk-12-1.png" width="672" />
-
-Existe um app Shiny: `eulerr.co`
-
-## Pacote gplots
-
-
-```r
-require(gplots) 
-```
-
-```
-## Carregando pacotes exigidos: gplots
-```
-
-```
-## Warning: package 'gplots' was built under R version 3.6.3
-```
-
-```
-## Registered S3 method overwritten by 'gplots':
-##   method    from  
-##   plot.venn eulerr
-```
-
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:eulerr':
-## 
-##     venn
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
-oneName <- function() paste(sample(LETTERS,5,replace=TRUE),collapse="")
-geneNames <- replicate(1000, oneName())
-GroupA <- sample(geneNames, 400, replace=FALSE)
-GroupB <- sample(geneNames, 750, replace=FALSE)
-GroupC <- sample(geneNames, 250, replace=FALSE)
-GroupD <- sample(geneNames, 300, replace=FALSE)
-venn(list(GrpA=GroupA,GrpB=GroupB,GrpC=GroupC,GrpD=GroupD))
-```
-
-<img src="27-dend_files/figure-html/unnamed-chunk-13-1.png" width="672" />
-
-## Pacote VennDiagram
-
-
-```r
-require(VennDiagram)
-```
-
-```
-## Carregando pacotes exigidos: VennDiagram
-```
-
-```
-## Carregando pacotes exigidos: grid
-```
-
-```
-## Carregando pacotes exigidos: futile.logger
-```
-
-```
-## 
-## Attaching package: 'VennDiagram'
-```
-
-```
-## The following object is masked from 'package:ape':
-## 
-##     rotate
-```
-
-```
-## The following object is masked from 'package:dendextend':
-## 
-##     rotate
-```
-
-```r
-vp <- venn.diagram(list(A=1:5,B=1,C=c(4,8:10),D=c(4:12)), 
-                   fill = 2:5, alpha = 0.3, filename = NULL);
-grid.draw(vp)
-```
-
-<img src="27-dend_files/figure-html/unnamed-chunk-14-1.png" width="672" />
-
-
-
-<!--chapter:end:27-dend.Rmd-->
 
 # Expression()
 
@@ -16072,7 +14970,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-625-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16083,7 +14981,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-626-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16094,7 +14992,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-627-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16105,7 +15003,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-628-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16116,7 +15014,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-629-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16127,7 +15025,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-630-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16138,7 +15036,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-631-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16149,7 +15047,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-632-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16160,7 +15058,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-633-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16171,7 +15069,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-634-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16182,7 +15080,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-635-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16193,7 +15091,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-636-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16204,7 +15102,7 @@ legend("center",legend=
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-637-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16215,7 +15113,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-638-1.png" width="672" />
 
 <br>
 
@@ -16228,7 +15126,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-639-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16239,7 +15137,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-640-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16250,7 +15148,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-641-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16261,7 +15159,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-642-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16272,7 +15170,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-643-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16283,7 +15181,7 @@ bty="n",
 cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-644-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16294,7 +15192,7 @@ bty="n",
 cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-645-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16304,7 +15202,7 @@ legend=expression(hat(Y)==ax^2+bx+c,R^2==0.99,italic(p-valor)==0.0001),
 bty="n", cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-646-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16315,7 +15213,7 @@ legend=expression(Produtividade~(kg~ha^-1)),
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-647-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16326,7 +15224,7 @@ expression(H[2]*0[2]~(mu*"mol"~g^-1~MFPA)),
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-648-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16337,7 +15235,7 @@ legend=expression(MSPA~(g~kg^-1)),
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-649-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -16349,7 +15247,7 @@ expression(bold(italic(A)) == "bold(italic(A))"),
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-650-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -16360,16 +15258,13 @@ legend=expression(hat(Y)==ax^2+bx+c),
        cex=2)
 ```
 
-<img src="28-expression_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-651-1.png" width="672" style="display: block; margin: auto;" />
 
 </div>
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:28-expression.Rmd-->
 
 # layout (graphics)
 
@@ -16400,7 +15295,7 @@ Não iremos trabalhar com um conjunto de dados neste exemplo, dessa forma, a lin
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-652-1.png" width="672" />
 
 ****
 
@@ -16422,7 +15317,7 @@ par(mai=c(1,1,1,1))
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-653-1.png" width="672" />
 
 ****
 
@@ -16440,7 +15335,7 @@ par(family="serif")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-654-1.png" width="672" />
 
 <br>
 
@@ -16458,7 +15353,7 @@ par(col="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-655-1.png" width="672" />
 
 Especificando a cor da escala dos eixos do gráfico
 
@@ -16468,7 +15363,7 @@ par(col.axis="red")
 plot(1,1, ylab="",xlab="")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-656-1.png" width="672" />
 
 Especificando cor do nome dos eixos
 
@@ -16478,7 +15373,7 @@ par(col.lab="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-657-1.png" width="672" />
 
 Especificando cor do título
 
@@ -16488,7 +15383,7 @@ par(col.main="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X",main="title")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-658-1.png" width="672" />
 
 <br>
 
@@ -16504,7 +15399,7 @@ par(cex=1.3)
 plot(1,1, ylab="Eixo Y",xlab="Eixo X",main="title")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-659-1.png" width="672" />
 
  - `cex.axis` : Tamanho da fonte das escalas de Y e X
  - `cex.lab` : Tamaho da fonte do nome dos eixos
@@ -16525,7 +15420,7 @@ par(new=T)
 plot(c(6,5,4,3,2,1), ylab="",xlab="",main="", type="o",col="blue")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-660-1.png" width="672" />
 
 <br>
 
@@ -16544,7 +15439,7 @@ plot(c(1,2,3,4,5,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="red
 plot(c(6,5,4,3,2,1), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blue")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-661-1.png" width="672" />
 
 <br>
 
@@ -16579,7 +15474,7 @@ plot(c(6,5,4,3,2,1), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blu
 plot(c(1,6,1,6,1,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blue")
 ```
 
-<img src="29-layoutgraphics_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-663-1.png" width="672" />
 
 <br>
 
@@ -16588,9 +15483,6 @@ plot(c(1,6,1,6,1,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blu
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:29-layoutgraphics.Rmd-->
 
 # ggplot2
 
@@ -16653,7 +15545,7 @@ library(gridExtra)
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="30-ggplot2_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-666-1.png" width="672" />
 
 ### Gráficos um abaixo do outro
 
@@ -16663,7 +15555,7 @@ library(gridExtra)
 grid.arrange(a,b,c,ncol=1)
 ```
 
-<img src="30-ggplot2_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-667-1.png" width="672" />
 
 ### Dois na primeira linha e uma no lado esquerdo da segunda linha
 
@@ -16673,7 +15565,7 @@ library(gridExtra)
 grid.arrange(a,b,c,ncol=2)
 ```
 
-<img src="30-ggplot2_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-668-1.png" width="672" />
 
 ### Dois na primeira linha e uma centralizado na segunda linha
 
@@ -16684,7 +15576,7 @@ grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,3,3,NA)))
 ```
 
-<img src="30-ggplot2_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-669-1.png" width="672" />
 
 ### Dois na primeira linha e uma a direita na segunda linha
 
@@ -16697,13 +15589,10 @@ grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,NA,3,3)))
 ```
 
-<img src="30-ggplot2_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-670-1.png" width="672" />
 
 <br><br><br>
 
-
-
-<!--chapter:end:30-ggplot2.Rmd-->
 
 # Análise de regressão linear e não-linear
 
@@ -16715,7 +15604,7 @@ Popularmente, é comum a utilização de curva do tipo polinomial, visto a facil
 
 Neste tutorial, você irá reparar que em quase todos os modelos, o coeficientes serão significativos, demonstrando que quase todos os modelos são válidos para explicar o comportamento dos dados. A questão é, qual o melhor modelo?
 
-<img src="31-regression_files/figure-html/unnamed-chunk-1-1.png" width="480" />
+<img src="index_files/figure-html/unnamed-chunk-671-1.png" width="480" />
 
 **Obs. Este é um tutorial para demonstração dos modelos de regressão. Alguns casos ele não é significativo ou uma das pressuposições não é atendida. É um tutorial apenas para fins didáticos.**
 
@@ -16750,7 +15639,7 @@ data=data.frame(y,x)
 
 ```
 ##       60      210      390      720      930     1410     1890     2370 
-## 18.50708 39.42140 48.00979 65.64748 69.88131 71.21905 71.34541 71.47176
+## 18,50708 39,42140 48,00979 65,64748 69,88131 71,21905 71,34541 71,47176
 ```
 
 ```r
@@ -16759,7 +15648,7 @@ data=data.frame(y,x)
 
 ```
 ##       60      210      390      720      930     1410     1890     2370 
-## 2.485224 3.479257 3.133973 1.229025 1.080134 1.007882 1.004939 1.002227
+## 2,485224 3,479257 3,133973 1,229025 1,080134 1,007882 1,004939 1,002227
 ```
 
 ```r
@@ -16787,7 +15676,7 @@ data=data.frame(y,x)
 boxplot(y~x)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-674-1.png" width="672" />
 
 ### Gráfico de dispersão
 
@@ -16796,7 +15685,7 @@ boxplot(y~x)
 plot(y~x)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-675-1.png" width="672" />
 
 ### Gráfico de dispersão com médias
 
@@ -16806,7 +15695,7 @@ plot(y~x)
 points(media~tempo,pch=16,col="red")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-676-1.png" width="672" />
 
 ### Gráfico de linhas com as médias
 
@@ -16817,7 +15706,7 @@ plot(media~tempo, type="b")
 plot(media~tempo, type="l")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-7-1.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-677-1.png" width="768" style="display: block; margin: auto;" />
 
 ### Histograma
 
@@ -16826,7 +15715,7 @@ plot(media~tempo, type="l")
 hist(y)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-678-1.png" width="672" />
 
 <br><br><br>
 
@@ -16855,18 +15744,18 @@ summary(modl)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -24.4181  -8.1253   0.4191   8.8542  16.0914 
+## -24,4181  -8,1253   0,4191   8,8542  16,0914 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 38.099512   2.368998   16.08  < 2e-16 ***
-## x            0.018886   0.001876   10.07 1.15e-14 ***
+## (Intercept) 38,099512   2,368998   16,08  < 2e-16 ***
+## x            0,018886   0,001876   10,07 1,15e-14 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 11.62 on 62 degrees of freedom
-## Multiple R-squared:  0.6205,	Adjusted R-squared:  0.6144 
-## F-statistic: 101.4 on 1 and 62 DF,  p-value: 1.147e-14
+## Residual standard error: 11,62 on 62 degrees of freedom
+## Multiple R-squared:  0,6205,	Adjusted R-squared:  0,6144 
+## F-statistic: 101,4 on 1 and 62 DF,  p-value: 1,147e-14
 ```
 
 ### Diagnóstico
@@ -16882,7 +15771,7 @@ hnp::hnp(modl)
 ## Gaussian model (lm object)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-680-1.png" width="672" />
 
 ```r
 shapiro.test(resid(modl)) # erros não normais
@@ -16893,7 +15782,7 @@ shapiro.test(resid(modl)) # erros não normais
 ## 	Shapiro-Wilk normality test
 ## 
 ## data:  resid(modl)
-## W = 0.94067, p-value = 0.004079
+## W = 0,94067, p-value = 0,004079
 ```
 
 ### Falta de ajuste (Desvio da regressão)
@@ -16910,10 +15799,10 @@ anova(modl,modq)
 ## Model 1: y ~ x
 ## Model 2: y ~ as.factor(x)
 ##   Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
-## 1     62 8377.2                                  
-## 2     56  236.7  6    8140.5 321.02 < 2.2e-16 ***
+## 1     62 8377,2                                  
+## 2     56  236,7  6    8140,5 321,02 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ### Construindo gráfico
@@ -16933,7 +15822,7 @@ legend("topleft",
        legend = c(expression(hat(Y)==38.09951+0.01889*x)))
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-682-1.png" width="672" />
 
 ### ggplot2
 
@@ -16949,7 +15838,7 @@ ggplot(da,aes(y=media,x=tempo))+
   xlab("Time (Minutes)") 
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-683-1.png" width="672" />
 
 <br><br><br>
 
@@ -16976,19 +15865,19 @@ summary(mod1)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -11.428  -5.288   1.756   4.360   8.018 
+## -11,428  -5,288   1,756   4,360   8,018 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  2.226e+01  1.528e+00   14.57   <2e-16 ***
-## x            6.763e-02  3.367e-03   20.09   <2e-16 ***
-## I(x^2)      -2.055e-05  1.371e-06  -14.99   <2e-16 ***
+## (Intercept)  2,226e+01  1,528e+00   14,57   <2e-16 ***
+## x            6,763e-02  3,367e-03   20,09   <2e-16 ***
+## I(x^2)      -2,055e-05  1,371e-06  -14,99   <2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 5.415 on 61 degrees of freedom
-## Multiple R-squared:  0.919,	Adjusted R-squared:  0.9163 
-## F-statistic: 345.9 on 2 and 61 DF,  p-value: < 2.2e-16
+## Residual standard error: 5,415 on 61 degrees of freedom
+## Multiple R-squared:  0,919,	Adjusted R-squared:  0,9163 
+## F-statistic: 345,9 on 2 and 61 DF,  p-value: < 2,2e-16
 ```
 
 ### Diagnóstico do modelo
@@ -17004,7 +15893,7 @@ hnp::hnp(mod1)
 ## Gaussian model (lm object)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-685-1.png" width="672" />
 
 ```r
 shapiro.test(resid(mod1)) # erros nao normais
@@ -17015,7 +15904,7 @@ shapiro.test(resid(mod1)) # erros nao normais
 ## 	Shapiro-Wilk normality test
 ## 
 ## data:  resid(mod1)
-## W = 0.92285, p-value = 0.000655
+## W = 0,92285, p-value = 0,000655
 ```
 
 ### Fator de inflação de variância (Multicolinearidade)
@@ -17027,7 +15916,7 @@ car::vif(mod1) # problema de multicolinearidade
 
 ```
 ##        x   I(x^2) 
-## 14.84834 14.84834
+## 14,84834 14,84834
 ```
 
 ### Falta de ajuste (Desvio da regressão)
@@ -17044,10 +15933,10 @@ anova(mod1,modq)
 ## Model 1: y ~ x + I(x^2)
 ## Model 2: y ~ as.factor(x)
 ##   Res.Df     RSS Df Sum of Sq      F    Pr(>F)    
-## 1     61 1788.55                                  
-## 2     56  236.68  5    1551.9 73.438 < 2.2e-16 ***
+## 1     61 1788,55                                  
+## 2     56  236,68  5    1551,9 73,438 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ### Construindo gráfico
@@ -17067,7 +15956,7 @@ legend("topleft",
        legend = c(expression(hat(Y)==22.26+0.006763*x-0.00002055*x^2)))
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-688-1.png" width="672" />
 
 ### Ponto de máximo (Ou mínimo)
 
@@ -17082,7 +15971,7 @@ O ponto de máximo ou mínimo podem ser encontrados de várias formas
 
 ```
 ##        x 
-## 1645.317
+## 1645,317
 ```
 
 ```r
@@ -17091,7 +15980,7 @@ O ponto de máximo ou mínimo podem ser encontrados de várias formas
 
 ```
 ## (Intercept) 
-##    77.89475
+##    77,89475
 ```
 
 ### Usando o which.max ou which.min
@@ -17107,7 +15996,7 @@ tend$x[which.max(tend$y)]
 ```
 
 ```
-## [1] 1653.9
+## [1] 1653,9
 ```
 
 ```r
@@ -17128,7 +16017,7 @@ ggplot(da,aes(y=media,x=tempo))+
   xlab("Time (Minutes)") 
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-691-1.png" width="672" />
 
 <br><br><br>
 
@@ -17155,20 +16044,20 @@ summary(mod2)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -6.0186 -1.3299 -0.3928  1.3155  8.0377 
+## -6,0186 -1,3299 -0,3928  1,3155  8,0377 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  1.406e+01  9.927e-01   14.16   <2e-16 ***
-## x            1.174e-01  4.125e-03   28.47   <2e-16 ***
-## I(x^2)      -7.536e-05  4.189e-06  -17.99   <2e-16 ***
-## I(x^3)       1.524e-08  1.149e-09   13.27   <2e-16 ***
+## (Intercept)  1,406e+01  9,927e-01   14,16   <2e-16 ***
+## x            1,174e-01  4,125e-03   28,47   <2e-16 ***
+## I(x^2)      -7,536e-05  4,189e-06  -17,99   <2e-16 ***
+## I(x^3)       1,524e-08  1,149e-09   13,27   <2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 2.753 on 60 degrees of freedom
-## Multiple R-squared:  0.9794,	Adjusted R-squared:  0.9784 
-## F-statistic: 951.1 on 3 and 60 DF,  p-value: < 2.2e-16
+## Residual standard error: 2,753 on 60 degrees of freedom
+## Multiple R-squared:  0,9794,	Adjusted R-squared:  0,9784 
+## F-statistic: 951,1 on 3 and 60 DF,  p-value: < 2,2e-16
 ```
 
 ### Diagnóstico do modelo
@@ -17184,7 +16073,7 @@ hnp::hnp(mod2)
 ## Gaussian model (lm object)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-693-1.png" width="672" />
 
 ```r
 shapiro.test(resid(mod2)) # Erros nao normais
@@ -17195,7 +16084,7 @@ shapiro.test(resid(mod2)) # Erros nao normais
 ## 	Shapiro-Wilk normality test
 ## 
 ## data:  resid(mod2)
-## W = 0.94796, p-value = 0.009093
+## W = 0,94796, p-value = 0,009093
 ```
 
 ### Fator de inflação de variância (Multicolinearidade) 
@@ -17207,7 +16096,7 @@ car::vif(mod2) # alta multicolinearidade
 
 ```
 ##         x    I(x^2)    I(x^3) 
-##  86.25922 536.46498 221.25164
+##  86,25922 536,46498 221,25164
 ```
 
 ### Falta de ajuste (Desvio da regressão)
@@ -17224,10 +16113,10 @@ anova(mod2,modq)
 ## Model 1: y ~ x + I(x^2) + I(x^3)
 ## Model 2: y ~ as.factor(x)
 ##   Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
-## 1     60 454.60                                  
-## 2     56 236.68  4    217.93 12.891 1.666e-07 ***
+## 1     60 454,60                                  
+## 2     56 236,68  4    217,93 12,891 1,666e-07 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ### Construindo o gráfico
@@ -17247,7 +16136,7 @@ legend("topleft",
        legend = c(expression(hat(Y)==14.06+0.01174*x-0.00007536*x^2+0.00000001524*x^3)))
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-696-1.png" width="672" />
 
 ### ponto de máximo, mínimo e inflexão
 
@@ -17275,7 +16164,7 @@ curva=curve(coef(mod2)[1]+coef(mod2)[2]*x+coef(mod2)[3]*x^2+coef(mod2)[4]*x^3, a
 abline(v=c(xmax,xmin,pi),lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-28-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-698-1.png" width="672" />
 
 ### ggplot2
 
@@ -17291,7 +16180,7 @@ ggplot(da,aes(y=media,x=tempo))+
   xlab("Time (Minutes)") 
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-699-1.png" width="672" />
 
 <br><br><br>
 
@@ -17318,18 +16207,18 @@ summary(modelog)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -8.5359 -3.5194 -0.5506  3.6366  8.4348 
+## -8,5359 -3,5194 -0,5506  3,6366  8,4348 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -42.7285     3.3261  -12.85   <2e-16 ***
-## log(x)       15.5158     0.5096   30.45   <2e-16 ***
+## (Intercept) -42,7285     3,3261  -12,85   <2e-16 ***
+## log(x)       15,5158     0,5096   30,45   <2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 4.724 on 62 degrees of freedom
-## Multiple R-squared:  0.9373,	Adjusted R-squared:  0.9363 
-## F-statistic: 927.1 on 1 and 62 DF,  p-value: < 2.2e-16
+## Residual standard error: 4,724 on 62 degrees of freedom
+## Multiple R-squared:  0,9373,	Adjusted R-squared:  0,9363 
+## F-statistic: 927,1 on 1 and 62 DF,  p-value: < 2,2e-16
 ```
 
 ### Diagnóstico do modelo
@@ -17343,7 +16232,7 @@ hnp::hnp(modelog)
 ## Gaussian model (lm object)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-701-1.png" width="672" />
 
 ```r
 shapiro.test(resid(modelog))
@@ -17354,7 +16243,7 @@ shapiro.test(resid(modelog))
 ## 	Shapiro-Wilk normality test
 ## 
 ## data:  resid(modelog)
-## W = 0.94476, p-value = 0.006371
+## W = 0,94476, p-value = 0,006371
 ```
 
 ### Construindo gráfico
@@ -17373,7 +16262,7 @@ legend("topleft",
        legend = c(expression(hat(Y)==-42.73+15.52*log(x))))
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-702-1.png" width="672" />
 
 <br><br><br>
 
@@ -17395,12 +16284,12 @@ n0 <- nls(formula=y~A*x/(V+x), data=data,
 ```
 
 ```
-## 2726.427 :   72.72733 100.00000
-## 820.4424 :   78.84265 179.59765
-## 691.338 :   80.90678 212.88993
-## 690.8008 :   81.02471 215.24858
-## 690.8006 :   81.02129 215.20409
-## 690.8006 :   81.02137 215.20519
+## 2726,427 :   72,72733 100,00000
+## 820,4424 :   78,84265 179,59765
+## 691,338 :   80,90678 212,88993
+## 690,8008 :   81,02471 215,24858
+## 690,8006 :   81,02129 215,20409
+## 690,8006 :   81,02137 215,20519
 ```
 
 ```r
@@ -17413,15 +16302,15 @@ summary(n0)
 ## 
 ## Parameters:
 ##   Estimate Std. Error t value Pr(>|t|)    
-## A   81.021      1.004   80.67   <2e-16 ***
-## V  215.205     11.711   18.38   <2e-16 ***
+## A   81,021      1,004   80,67   <2e-16 ***
+## V  215,205     11,711   18,38   <2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 3.338 on 62 degrees of freedom
+## Residual standard error: 3,338 on 62 degrees of freedom
 ## 
 ## Number of iterations to convergence: 5 
-## Achieved convergence tolerance: 3.035e-07
+## Achieved convergence tolerance: 3,035e-07
 ```
 
 ### Diagnóstico do modelo
@@ -17436,7 +16325,7 @@ shapiro.test(resid(n0))
 ## 	Shapiro-Wilk normality test
 ## 
 ## data:  resid(n0)
-## W = 0.9717, p-value = 0.1482
+## W = 0,9717, p-value = 0,1482
 ```
 
 ### Construindo o gráfico
@@ -17457,7 +16346,7 @@ legend("topleft",
        legend = c(expression(hat(Y)==frac(81.021*x,(215.205+x)))))
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-705-1.png" width="672" />
 
 ### Utilizando outro método
 
@@ -17472,11 +16361,11 @@ m.m
 ##   model: y ~ SSmicmen(x, Vm, K)
 ##    data: data
 ##     Vm      K 
-##  81.02 215.20 
-##  residual sum-of-squares: 690.8
+##  81,02 215,20 
+##  residual sum-of-squares: 690,8
 ## 
 ## Number of iterations to convergence: 0 
-## Achieved convergence tolerance: 2.047e-06
+## Achieved convergence tolerance: 2,047e-06
 ```
 
 ```r
@@ -17488,7 +16377,7 @@ plot(media~tempo, main="Michaelis-Menten",
 curve((81.02135*x)/(215.20499+x), add=T)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-706-1.png" width="672" />
 
 <br><br><br>
 
@@ -17510,14 +16399,14 @@ n1 <- nls(formula=y~A*x/(V+x)+D*x, data=data,
 ```
 
 ```
-## 10206286603 :   72.72733 100.00000  10.00000
-## 802.0047 :   8.061554e+01  1.857416e+02 -9.194725e-04
-## 545.3405 :   91.710079373 263.748404929  -0.004630648
-## 521.8705 :   96.954052340 297.103221016  -0.006224234
-## 521.0745 :   98.085315801 303.935203239  -0.006567869
-## 521.0613 :   98.241471280 304.881731574  -0.006617559
-## 521.0611 :   98.261118528 305.001695810  -0.006623916
-## 521.0611 :   98.263575225 305.016711452  -0.006624713
+## 10206286603 :   72,72733 100,00000  10,00000
+## 802,0047 :   8,061554e+01  1,857416e+02 -9,194725e-04
+## 545,3405 :   91,710079373 263,748404929  -0,004630648
+## 521,8705 :   96,954052340 297,103221016  -0,006224234
+## 521,0745 :   98,085315801 303,935203239  -0,006567869
+## 521,0613 :   98,241471280 304,881731574  -0,006617559
+## 521,0611 :   98,261118528 305,001695810  -0,006623916
+## 521,0611 :   98,263575225 305,016711452  -0,006624713
 ```
 
 ```r
@@ -17530,16 +16419,16 @@ summary(n1)
 ## 
 ## Parameters:
 ##     Estimate Std. Error t value Pr(>|t|)    
-## A  98.263575   4.439290  22.135  < 2e-16 ***
-## V 305.016711  25.778649  11.832  < 2e-16 ***
-## D  -0.006625   0.001563  -4.239 7.73e-05 ***
+## A  98,263575   4,439290  22,135  < 2e-16 ***
+## V 305,016711  25,778649  11,832  < 2e-16 ***
+## D  -0,006625   0,001563  -4,239 7,73e-05 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 2.923 on 61 degrees of freedom
+## Residual standard error: 2,923 on 61 degrees of freedom
 ## 
 ## Number of iterations to convergence: 7 
-## Achieved convergence tolerance: 9.342e-06
+## Achieved convergence tolerance: 9,342e-06
 ```
 
 ### Construindo gráfico
@@ -17560,7 +16449,7 @@ legend("topleft",
        legend = c(expression(hat(Y)==frac(98.263572*x,(305.016698+x))-0.006625*x)))
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-708-1.png" width="672" />
 
 <br><br><br>
 
@@ -17587,18 +16476,18 @@ summary(modelo_linear)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -24.4181  -8.1253   0.4191   8.8542  16.0914 
+## -24,4181  -8,1253   0,4191   8,8542  16,0914 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 38.099512   2.368998   16.08  < 2e-16 ***
-## x            0.018886   0.001876   10.07 1.15e-14 ***
+## (Intercept) 38,099512   2,368998   16,08  < 2e-16 ***
+## x            0,018886   0,001876   10,07 1,15e-14 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 11.62 on 62 degrees of freedom
-## Multiple R-squared:  0.6205,	Adjusted R-squared:  0.6144 
-## F-statistic: 101.4 on 1 and 62 DF,  p-value: 1.147e-14
+## Residual standard error: 11,62 on 62 degrees of freedom
+## Multiple R-squared:  0,6205,	Adjusted R-squared:  0,6144 
+## F-statistic: 101,4 on 1 and 62 DF,  p-value: 1,147e-14
 ```
 
 ### Construindo o modelo segmentado
@@ -17615,11 +16504,11 @@ modelo_pieciwise
 ## 
 ## Meaningful coefficients of the linear terms:
 ## (Intercept)            x         U1.x  
-##    15.94664      0.08803     -0.08524  
+##    19,83682      0,06684     -0,06582  
 ## 
 ## Estimated Break-Point(s):
 ## psi1.x  
-##  585.2
+##  751,4
 ```
 
 ```r
@@ -17634,19 +16523,19 @@ summary(modelo_pieciwise)
 ## segmented.lm(obj = modelo_linear, seg.Z = ~x, psi = 1000)
 ## 
 ## Estimated Break-Point(s):
-##           Est. St.Err
-## psi1.x 585.22 24.498
+##            Est. St.Err
+## psi1.x 751,438 26,797
 ## 
 ## Meaningful coefficients of the linear terms:
 ##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 15.946644   1.251665   12.74   <2e-16 ***
-## x            0.088028   0.004850   18.15   <2e-16 ***
-## U1.x        -0.085239   0.004921  -17.32       NA    
+## (Intercept) 19,836818   1,106834   17,92   <2e-16 ***
+## x            0,066839   0,002612   25,59   <2e-16 ***
+## U1.x        -0,065819   0,002873  -22,91       NA    
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 3.205 on 60 degrees of freedom
-## Multiple R-Squared: 0.9721,  Adjusted R-squared: 0.9707 
+## Residual standard error: 3,635 on 60 degrees of freedom
+## Multiple R-Squared: 0,9641,  Adjusted R-squared: 0,9623 
 ## 
 ## Convergence attained in 2 iter. (rel. change 0)
 ```
@@ -17673,19 +16562,19 @@ summary(mod)
 ## lm(formula = y1 ~ x11)
 ## 
 ## Residuals:
-##    Min     1Q Median     3Q    Max 
-## -6.414 -3.174 -0.520  2.435  9.139 
+##     Min      1Q  Median      3Q     Max 
+## -9,0327 -2,9998 -0,7374  2,1557  9,6988 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 15.946644   1.854475   8.599 1.74e-08 ***
-## x11          0.088028   0.007186  12.250 2.67e-11 ***
+## (Intercept) 19,836818   1,532481   12,94 8,22e-14 ***
+## x11          0,066839   0,003617   18,48  < 2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 4.749 on 22 degrees of freedom
-## Multiple R-squared:  0.8721,	Adjusted R-squared:  0.8663 
-## F-statistic: 150.1 on 1 and 22 DF,  p-value: 2.673e-11
+## Residual standard error: 5,033 on 30 degrees of freedom
+## Multiple R-squared:  0,9193,	Adjusted R-squared:  0,9166 
+## F-statistic: 341,6 on 1 and 30 DF,  p-value: < 2,2e-16
 ```
 
 ### Construindo gráfico
@@ -17708,7 +16597,7 @@ legend("topleft",
        legend=expression(hat(Y)==19.836817+0.066839*x~("if"~x~"<"~751.4)), bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-713-1.png" width="672" />
 
 <br><br><br>
 
@@ -17735,19 +16624,19 @@ summary(modelo_linear)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -11.428  -5.288   1.756   4.360   8.018 
+## -11,428  -5,288   1,756   4,360   8,018 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  2.226e+01  1.528e+00   14.57   <2e-16 ***
-## x            6.763e-02  3.367e-03   20.09   <2e-16 ***
-## I(x^2)      -2.055e-05  1.371e-06  -14.99   <2e-16 ***
+## (Intercept)  2,226e+01  1,528e+00   14,57   <2e-16 ***
+## x            6,763e-02  3,367e-03   20,09   <2e-16 ***
+## I(x^2)      -2,055e-05  1,371e-06  -14,99   <2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 5.415 on 61 degrees of freedom
-## Multiple R-squared:  0.919,	Adjusted R-squared:  0.9163 
-## F-statistic: 345.9 on 2 and 61 DF,  p-value: < 2.2e-16
+## Residual standard error: 5,415 on 61 degrees of freedom
+## Multiple R-squared:  0,919,	Adjusted R-squared:  0,9163 
+## F-statistic: 345,9 on 2 and 61 DF,  p-value: < 2,2e-16
 ```
 
 ### Construindo o modelo segmentado
@@ -17764,11 +16653,11 @@ modelo_pieciwise1
 ## 
 ## Meaningful coefficients of the linear terms:
 ## (Intercept)            x       I(x^2)         U1.x  
-##   1.580e+01    9.004e-02   -4.424e-06   -7.368e-02  
+##   1,580e+01    9,004e-02   -4,424e-06   -7,368e-02  
 ## 
 ## Estimated Break-Point(s):
 ## psi1.x  
-##  560.2
+##  560,2
 ```
 
 ```r
@@ -17784,19 +16673,19 @@ summary(modelo_pieciwise1)
 ## 
 ## Estimated Break-Point(s):
 ##            Est. St.Err
-## psi1.x 560.234 28.392
+## psi1.x 560,234 28,392
 ## 
 ## Meaningful coefficients of the linear terms:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  1.580e+01  1.201e+00  13.151   <2e-16 ***
-## x            9.004e-02  4.718e-03  19.083   <2e-16 ***
-## I(x^2)      -4.424e-06  1.764e-06  -2.508   0.0149 *  
-## U1.x        -7.368e-02  6.596e-03 -11.171       NA    
+## (Intercept)  1,580e+01  1,201e+00  13,151   <2e-16 ***
+## x            9,004e-02  4,718e-03  19,083   <2e-16 ***
+## I(x^2)      -4,424e-06  1,764e-06  -2,508   0,0149 *  
+## U1.x        -7,368e-02  6,596e-03 -11,171       NA    
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 3.073 on 59 degrees of freedom
-## Multiple R-Squared: 0.9748,  Adjusted R-squared: 0.973 
+## Residual standard error: 3,073 on 59 degrees of freedom
+## Multiple R-Squared: 0,9748,  Adjusted R-squared: 0,973 
 ## 
 ## Convergence attained in 2 iter. (rel. change 0)
 ```
@@ -17820,19 +16709,19 @@ summary(mod)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -5.5773 -2.1731  0.0432  1.2608  8.0591 
+## -5,5773 -2,1731  0,0432  1,2608  8,0591 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  1.357e+01  1.379e+00   9.839 7.13e-12 ***
-## x11          1.175e-01  7.321e-03  16.047  < 2e-16 ***
-## I(x11^2)    -6.173e-05  7.151e-06  -8.632 2.15e-10 ***
+## (Intercept)  1,357e+01  1,379e+00   9,839 7,13e-12 ***
+## x11          1,175e-01  7,321e-03  16,047  < 2e-16 ***
+## I(x11^2)    -6,173e-05  7,151e-06  -8,632 2,15e-10 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 3.293 on 37 degrees of freedom
-## Multiple R-squared:  0.9715,	Adjusted R-squared:   0.97 
-## F-statistic: 630.9 on 2 and 37 DF,  p-value: < 2.2e-16
+## Residual standard error: 3,293 on 37 degrees of freedom
+## Multiple R-squared:  0,9715,	Adjusted R-squared:   0,97 
+## F-statistic: 630,9 on 2 and 37 DF,  p-value: < 2,2e-16
 ```
 
 ### Construindo o gráfico
@@ -17856,7 +16745,7 @@ legend("topleft",
        legend=expression(Y==13.57+0.1175*x-0.00006173*x^2~("if"~x~"<"~951.5095)), bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-717-1.png" width="672" />
 
 <br><br><br>
 
@@ -17881,16 +16770,16 @@ summary(modelo2)
 ## 
 ## Parameters:
 ##     Estimate Std. Error t value Pr(>|t|)    
-## A  7.232e+01  5.606e-01 129.004  < 2e-16 ***
-## B -4.438e+01  8.610e+00  -5.155  2.9e-06 ***
-## C  2.874e-03  1.302e-04  22.066  < 2e-16 ***
+## A  7,232e+01  5,606e-01 129,004  < 2e-16 ***
+## B -4,438e+01  8,610e+00  -5,155  2,9e-06 ***
+## C  2,874e-03  1,302e-04  22,066  < 2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 2.63 on 61 degrees of freedom
+## Residual standard error: 2,63 on 61 degrees of freedom
 ## 
 ## Number of iterations to convergence: 7 
-## Achieved convergence tolerance: 8.634e-07
+## Achieved convergence tolerance: 8,634e-07
 ```
 
 ```r
@@ -17908,7 +16797,7 @@ a=curve(A*(1-exp((B*C)-(C*x))),lty=2,add=T)
 legend("topleft",expression(Y==72.31912*(1-e^{(-44.382759*0.002873)-(0.002873*x)})),bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-718-1.png" width="672" />
 
 <br><br><br>
 
@@ -17923,37 +16812,6 @@ $$Y = \frac{d}{1+exp(b(x-e))}$$
 
 ```r
 library(drc)
-```
-
-```
-## Carregando pacotes exigidos: MASS
-```
-
-```
-## 
-## 'drc' has been loaded.
-```
-
-```
-## Please cite R and 'drc' if used for a publication,
-```
-
-```
-## for references type 'citation()' and 'citation('drc')'.
-```
-
-```
-## 
-## Attaching package: 'drc'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     gaussian, getInitial
-```
-
-```r
 model <- drm(y ~ x, fct = LL.3(), data = data)
 summary(model)
 ```
@@ -17965,15 +16823,15 @@ summary(model)
 ## Parameter estimates:
 ## 
 ##                 Estimate Std. Error t-value   p-value    
-## b:(Intercept)  -1.058194   0.062275 -16.992 < 2.2e-16 ***
-## d:(Intercept)  79.599836   1.684582  47.252 < 2.2e-16 ***
-## e:(Intercept) 208.408451  12.445682  16.745 < 2.2e-16 ***
+## b:(Intercept)  -1,058194   0,062275 -16,992 < 2,2e-16 ***
+## d:(Intercept)  79,599836   1,684582  47,252 < 2,2e-16 ***
+## e:(Intercept) 208,408451  12,445682  16,745 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  3.340759 (61 degrees of freedom)
+##  3,340759 (61 degrees of freedom)
 ```
 
 ```r
@@ -17988,7 +16846,7 @@ legend("topleft",
                                       1+exp(-1.058194(x-208.408455)))), bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-49-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-719-1.png" width="672" />
 
 ### ED, DL ou EC
 
@@ -18002,7 +16860,7 @@ ED(model,10) ## Ed10
 ## Estimated effective doses
 ## 
 ##        Estimate Std. Error
-## e:1:10   26.131      2.755
+## e:1:10   26,131      2,755
 ```
 
 ```r
@@ -18014,7 +16872,7 @@ ED(model,50) ## ED50
 ## Estimated effective doses
 ## 
 ##        Estimate Std. Error
-## e:1:50  208.408     12.446
+## e:1:50  208,408     12,446
 ```
 
 ```r
@@ -18026,7 +16884,7 @@ ED(model,90) ## ED90
 ## Estimated effective doses
 ## 
 ##        Estimate Std. Error
-## e:1:90   1662.2      267.4
+## e:1:90   1662,2      267,4
 ```
 
 <br><br><br>
@@ -18052,16 +16910,16 @@ summary(model1)
 ## Parameter estimates:
 ## 
 ##               Estimate Std. Error  t-value   p-value    
-## b:(Intercept)  -1.6960     0.1552 -10.9279 6.668e-16 ***
-## c:(Intercept)  15.1899     1.9728   7.6995 1.597e-10 ***
-## d:(Intercept)  74.5348     1.0697  69.6796 < 2.2e-16 ***
-## e:(Intercept) 289.3971    16.5292  17.5082 < 2.2e-16 ***
+## b:(Intercept)  -1,6960     0,1552 -10,9279 6,668e-16 ***
+## c:(Intercept)  15,1899     1,9728   7,6995 1,597e-10 ***
+## d:(Intercept)  74,5348     1,0697  69,6796 < 2,2e-16 ***
+## e:(Intercept) 289,3971    16,5292  17,5082 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  2.950196 (60 degrees of freedom)
+##  2,950196 (60 degrees of freedom)
 ```
 
 ```r
@@ -18076,7 +16934,7 @@ legend("topleft",
                                               1+exp(-1.6960(x-289.3971)))), bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-721-1.png" width="672" />
 
 ### ED, DL ou EC
 
@@ -18090,7 +16948,7 @@ ED(model,10) ## Ed10
 ## Estimated effective doses
 ## 
 ##        Estimate Std. Error
-## e:1:10   26.131      2.755
+## e:1:10   26,131      2,755
 ```
 
 ```r
@@ -18102,7 +16960,7 @@ ED(model,50) ## ED50
 ## Estimated effective doses
 ## 
 ##        Estimate Std. Error
-## e:1:50  208.408     12.446
+## e:1:50  208,408     12,446
 ```
 
 ```r
@@ -18114,7 +16972,7 @@ ED(model,90) ## ED90
 ## Estimated effective doses
 ## 
 ##        Estimate Std. Error
-## e:1:90   1662.2      267.4
+## e:1:90   1662,2      267,4
 ```
 
 <br><br><br>
@@ -18133,31 +16991,6 @@ $$\hat{Y}=\frac{i\times x}{1+\frac{i\times x}{A}}$$
 #install_github("OnofriAndreaPG/aomisc")
 par(family="serif")
 library(aomisc)
-```
-
-```
-## Carregando pacotes exigidos: plyr
-```
-
-```
-## Carregando pacotes exigidos: car
-```
-
-```
-## Warning: package 'car' was built under R version 3.6.3
-```
-
-```
-## Carregando pacotes exigidos: carData
-```
-
-```
-## Registered S3 method overwritten by 'aomisc':
-##   method   from
-##   plot.nls nlme
-```
-
-```r
 model2 <- drm(y ~ x, fct = DRC.YL(), data = data)
 summary(model2)
 ```
@@ -18169,14 +17002,14 @@ summary(model2)
 ## Parameter estimates:
 ## 
 ##                Estimate Std. Error t-value   p-value    
-## i:(Intercept)  0.376483   0.016637  22.629 < 2.2e-16 ***
-## A:(Intercept) 81.021404   0.996137  81.336 < 2.2e-16 ***
+## i:(Intercept)  0,376483   0,016637  22,629 < 2,2e-16 ***
+## A:(Intercept) 81,021404   0,996137  81,336 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  3.337955 (62 degrees of freedom)
+##  3,337955 (62 degrees of freedom)
 ```
 
 ```r
@@ -18190,7 +17023,7 @@ legend("topleft",
                                        1+frac(0.376483*x,81.021705))), bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-53-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-723-1.png" width="672" />
 
 <br><br><br>
 
@@ -18215,15 +17048,15 @@ summary(model3)
 ## Parameter estimates:
 ## 
 ##                 Estimate Std. Error t-value   p-value    
-## b:(Intercept)  -0.621433   0.051944 -11.963 < 2.2e-16 ***
-## d:(Intercept)  88.316665   3.466514  25.477 < 2.2e-16 ***
-## e:(Intercept) 135.558602  10.937572  12.394 < 2.2e-16 ***
+## b:(Intercept)  -0,621433   0,051944 -11,963 < 2,2e-16 ***
+## d:(Intercept)  88,316665   3,466514  25,477 < 2,2e-16 ***
+## e:(Intercept) 135,558602  10,937572  12,394 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  3.702132 (61 degrees of freedom)
+##  3,702132 (61 degrees of freedom)
 ```
 
 ```r
@@ -18236,7 +17069,7 @@ legend("topleft",
        legend=expression(hat(YL)==88.316665*e^(-e^{(-0.621433*(log(x)-135.558606))})), bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-54-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-724-1.png" width="672" />
 
 <br><br><br>
 
@@ -18262,16 +17095,16 @@ summary(model4)
 ## Parameter estimates:
 ## 
 ##               Estimate Std. Error t-value   p-value    
-## b:(Intercept)  -1.2171     0.1156 -10.528 2.911e-15 ***
-## c:(Intercept)  18.4270     1.2668  14.546 < 2.2e-16 ***
-## d:(Intercept)  76.5754     1.5142  50.571 < 2.2e-16 ***
-## e:(Intercept) 230.4661    11.7439  19.624 < 2.2e-16 ***
+## b:(Intercept)  -1,2171     0,1156 -10,528 2,911e-15 ***
+## c:(Intercept)  18,4270     1,2668  14,546 < 2,2e-16 ***
+## d:(Intercept)  76,5754     1,5142  50,571 < 2,2e-16 ***
+## e:(Intercept) 230,4661    11,7439  19,624 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  3.134519 (60 degrees of freedom)
+##  3,134519 (60 degrees of freedom)
 ```
 
 ```r
@@ -18284,7 +17117,7 @@ legend("topleft",
        legend=expression(hat(YL)==18.4270+(76.5754-18.4270)(1-e^(-e^(-1.2171*(log(x)-log(230.4661)))))), bty="n")
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-725-1.png" width="672" />
 
 <br><br><br>
 
@@ -18308,14 +17141,14 @@ summary(model5)
 ## Parameter estimates:
 ## 
 ##                Estimate Std. Error t-value   p-value    
-## d:(Intercept)  71.36776    0.64016 111.484 < 2.2e-16 ***
-## e:(Intercept) 285.21787   10.77269  26.476 < 2.2e-16 ***
+## d:(Intercept)  71,36776    0,64016 111,484 < 2,2e-16 ***
+## e:(Intercept) 285,21787   10,77269  26,476 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  3.364715 (62 degrees of freedom)
+##  3,364715 (62 degrees of freedom)
 ```
 
 ```r
@@ -18326,7 +17159,7 @@ plot(model5,main="Assintótica 2",
      pch=16,lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-56-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-726-1.png" width="672" />
 
 <br><br><br>
 
@@ -18350,15 +17183,15 @@ summary(model6)
 ## Parameter estimates:
 ## 
 ##                Estimate Std. Error  t-value   p-value    
-## c:(Intercept)   8.65955    1.29240   6.7003 7.565e-09 ***
-## d:(Intercept)  72.31924    0.55231 130.9390 < 2.2e-16 ***
-## e:(Intercept) 348.01446   15.20460  22.8888 < 2.2e-16 ***
+## c:(Intercept)   8,65955    1,29240   6,7003 7,565e-09 ***
+## d:(Intercept)  72,31924    0,55231 130,9390 < 2,2e-16 ***
+## e:(Intercept) 348,01446   15,20460  22,8888 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  2.630211 (61 degrees of freedom)
+##  2,630211 (61 degrees of freedom)
 ```
 
 ```r
@@ -18369,7 +17202,7 @@ plot(model6,main="Assintótica 3",
      pch=16,lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-57-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-727-1.png" width="672" />
 
 <br><br><br>
 
@@ -18392,16 +17225,16 @@ summary(model7)
 ## Parameter estimates:
 ## 
 ##                  Estimate  Std. Error  t-value   p-value    
-## b:(Intercept)  -0.7419957   0.0628498 -11.8059 < 2.2e-16 ***
-## d:(Intercept) 149.6381450  28.0543384   5.3339 1.539e-06 ***
-## e:(Intercept) 842.5975169 384.1854662   2.1932  0.032179 *  
-## f:(Intercept)  -0.0196017   0.0066143  -2.9635  0.004356 ** 
+## b:(Intercept)  -0,7419957   0,0628498 -11,8059 < 2,2e-16 ***
+## d:(Intercept) 149,6381450  28,0543384   5,3339 1,539e-06 ***
+## e:(Intercept) 842,5975169 384,1854662   2,1932  0,032179 *  
+## f:(Intercept)  -0,0196017   0,0066143  -2,9635  0,004356 ** 
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  2.642605 (60 degrees of freedom)
+##  2,642605 (60 degrees of freedom)
 ```
 
 ```r
@@ -18413,7 +17246,7 @@ plot(model,main="Brain-Counsens 4",
      pch=16,lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-728-1.png" width="672" />
 
 <br><br><br>
 
@@ -18437,17 +17270,17 @@ summary(model8)
 ## Parameter estimates:
 ## 
 ##                  Estimate  Std. Error t-value   p-value    
-## b:(Intercept)  -1.0445094   0.2286639 -4.5679 2.561e-05 ***
-## c:(Intercept)   8.7627115   4.7730274  1.8359  0.071416 .  
-## d:(Intercept) 109.0339449  20.0242731  5.4451 1.055e-06 ***
-## e:(Intercept) 486.0685001 143.3483090  3.3908  0.001248 ** 
-## f:(Intercept)  -0.0112154   0.0051383 -2.1827  0.033048 *  
+## b:(Intercept)  -1,0445094   0,2286639 -4,5679 2,561e-05 ***
+## c:(Intercept)   8,7627115   4,7730274  1,8359  0,071416 .  
+## d:(Intercept) 109,0339449  20,0242731  5,4451 1,055e-06 ***
+## e:(Intercept) 486,0685001 143,3483090  3,3908  0,001248 ** 
+## f:(Intercept)  -0,0112154   0,0051383 -2,1827  0,033048 *  
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  2.632805 (59 degrees of freedom)
+##  2,632805 (59 degrees of freedom)
 ```
 
 ```r
@@ -18458,7 +17291,7 @@ plot(model8,main="Brain-Cousens 5",
      pch=16,lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-729-1.png" width="672" />
 
 <br><br><br>
 
@@ -18482,16 +17315,16 @@ summary(model9)
 ## Parameter estimates:
 ## 
 ##                Estimate Std. Error t-value   p-value    
-## b:(Intercept)   1.70356    0.15617 10.9084 6.917e-16 ***
-## d:(Intercept)  74.51053    1.06473 69.9805 < 2.2e-16 ***
-## e:(Intercept) 291.21663   16.71405 17.4235 < 2.2e-16 ***
-## f:(Intercept) -15.54808    1.99553 -7.7915 1.112e-10 ***
+## b:(Intercept)   1,70356    0,15617 10,9084 6,917e-16 ***
+## d:(Intercept)  74,51053    1,06473 69,9805 < 2,2e-16 ***
+## e:(Intercept) 291,21663   16,71405 17,4235 < 2,2e-16 ***
+## f:(Intercept) -15,54808    1,99553 -7,7915 1,112e-10 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  2.947189 (60 degrees of freedom)
+##  2,947189 (60 degrees of freedom)
 ```
 
 ```r
@@ -18502,7 +17335,7 @@ plot(model9,main="Cedergreen-Ritz-Streibig 3",
      pch=16,lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-60-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-730-1.png" width="672" />
 
 <br><br><br>
 
@@ -18526,17 +17359,17 @@ summary(model10)
 ## Parameter estimates:
 ## 
 ##                  Estimate  Std. Error  t-value   p-value    
-## b:(Intercept)     4.64106     0.47568   9.7568 6.416e-14 ***
-## c:(Intercept) -1701.15137    94.96264 -17.9139 < 2.2e-16 ***
-## d:(Intercept)    71.53869     0.42799 167.1489 < 2.2e-16 ***
-## e:(Intercept)   544.23492    21.39639  25.4358 < 2.2e-16 ***
-## f:(Intercept) -1748.54548    96.09285 -18.1964 < 2.2e-16 ***
+## b:(Intercept)     4,64106     0,47568   9,7568 6,416e-14 ***
+## c:(Intercept) -1701,15137    94,96264 -17,9139 < 2,2e-16 ***
+## d:(Intercept)    71,53869     0,42799 167,1489 < 2,2e-16 ***
+## e:(Intercept)   544,23492    21,39639  25,4358 < 2,2e-16 ***
+## f:(Intercept) -1748,54548    96,09285 -18,1964 < 2,2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## Residual standard error:
 ## 
-##  2.008856 (59 degrees of freedom)
+##  2,008856 (59 degrees of freedom)
 ```
 
 ```r
@@ -18547,7 +17380,7 @@ plot(model,main="Cedergreen-Ritz-Streibig 4",
      pch=16,lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-61-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-731-1.png" width="672" />
 
 <br><br><br>
 
@@ -18569,18 +17402,18 @@ modelexp=lm(log(y)~x);summary(modelexp)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -0.8722 -0.1354  0.1129  0.2682  0.3722 
+## -0,8722 -0,1354  0,1129  0,2682  0,3722 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 3.543e+00  6.534e-02  54.216  < 2e-16 ***
-## x           4.188e-04  5.174e-05   8.095 2.71e-11 ***
+## (Intercept) 3,543e+00  6,534e-02  54,216  < 2e-16 ***
+## x           4,188e-04  5,174e-05   8,095 2,71e-11 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 0.3206 on 62 degrees of freedom
-## Multiple R-squared:  0.5138,	Adjusted R-squared:  0.506 
-## F-statistic: 65.52 on 1 and 62 DF,  p-value: 2.711e-11
+## Residual standard error: 0,3206 on 62 degrees of freedom
+## Multiple R-squared:  0,5138,	Adjusted R-squared:  0,506 
+## F-statistic: 65,52 on 1 and 62 DF,  p-value: 2,711e-11
 ```
 
 ```r
@@ -18596,15 +17429,15 @@ summary(model11)
 ## 
 ## Parameters:
 ##    Estimate Std. Error t value Pr(>|t|)    
-## A 4.237e+01  2.255e+00  18.790  < 2e-16 ***
-## B 2.762e-04  3.386e-05   8.156 2.12e-11 ***
+## A 4,237e+01  2,255e+00  18,790  < 2e-16 ***
+## B 2,762e-04  3,386e-05   8,156 2,12e-11 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## Residual standard error: 12.77 on 62 degrees of freedom
+## Residual standard error: 12,77 on 62 degrees of freedom
 ## 
 ## Number of iterations to convergence: 6 
-## Achieved convergence tolerance: 5.434e-06
+## Achieved convergence tolerance: 5,434e-06
 ```
 
 ```r
@@ -18616,7 +17449,7 @@ lines(seq(min(x), max(x), length.out = 100),
       col="red",lwd=2,lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-62-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-732-1.png" width="672" />
 
 <br><br><br>
 
@@ -18637,15 +17470,15 @@ summary(model12)
 ## loess(formula = y ~ x)
 ## 
 ## Number of Observations: 64 
-## Equivalent Number of Parameters: 4.94 
-## Residual Standard Error: 2.7 
-## Trace of smoother matrix: 5.42  (exact)
+## Equivalent Number of Parameters: 4,94 
+## Residual Standard Error: 2,7 
+## Trace of smoother matrix: 5,42  (exact)
 ## 
 ## Control settings:
-##   span     :  0.75 
+##   span     :  0,75 
 ##   degree   :  2 
 ##   family   :  gaussian
-##   surface  :  interpolate	  cell = 0.2
+##   surface  :  interpolate	  cell = 0,2
 ##   normalize:  TRUE
 ##  parametric:  FALSE
 ## drop.square:  FALSE
@@ -18661,7 +17494,7 @@ plot(media~tempo, main="Modelo Loess",
 lines(x,predict(model12,x),lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-63-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-733-1.png" width="672" />
 
 ```r
 ## ou
@@ -18675,7 +17508,7 @@ plot(media~tempo, main="modelo loess",
 lines(seq(60,2370,5),predict(model12,seq(60,2370,5)),lty=2)
 ```
 
-<img src="31-regression_files/figure-html/unnamed-chunk-63-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-733-2.png" width="672" />
 
 ```r
 ## ou
@@ -18690,11 +17523,7 @@ ggplot(data,aes(y=y,x=x))+
   ylab("Weight loss (%)")
 ```
 
-```
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-```
-
-<img src="31-regression_files/figure-html/unnamed-chunk-63-3.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-733-3.png" width="672" />
 
 ****
 
@@ -18807,30 +17636,28 @@ knitr::kable(analise)
 
                                      aic        bic          r2
 -----------------------------  ---------  ---------  ----------
-Linear                          499.5847   506.0614   0.6204884
-Quadrático                      402.7620   411.3975   0.9189732
-Cúbico                          317.0989   327.8933   0.9794051
-Log                             384.3339   390.8105   0.9373170
-Michaelis-Mente                 339.8781   346.3547   0.9687055
-Michaelis Menten (Corrigido)    323.8311   332.4667   0.9765013
-Segmentada Linear               336.5958   347.3902   0.9720705
-Segmentada Quadrática           332.1142   345.0675   0.9747606
-Mitscherlich                    310.3357   318.9713   0.9808822
-Logístico LL.3                  340.9449   349.5804   0.9691758
-Logístico LL.4                  325.9732   336.7677   0.9763419
-Yield Loss                      339.8781   346.3547   0.9687055
-Weibull 3                       354.0919   362.7274   0.9621318
-Weibull 4                       333.7306   344.5250   0.9732933
-Assintótica 2                   340.9002   347.3768   0.9688639
-Assintótica 3                   310.3357   318.9713   0.9808822
-Brain-Counsens 4                311.8796   322.6740   0.9810184
-Brain-Counsens 5                312.3284   325.2817   0.9814725
-Cedergreen-Ritz-Streibig 3      325.8427   336.6371   0.9763901
-Cedergreen-Ritz-Streibig 4      277.7064   290.6597   0.9892136
-Exponencial                     511.5978   518.0744   0.5422488
+Linear                          499,5847   506,0614   0,6204884
+Quadrático                      402,7620   411,3975   0,9189732
+Cúbico                          317,0989   327,8933   0,9794051
+Log                             384,3339   390,8105   0,9373170
+Michaelis-Mente                 339,8781   346,3547   0,9687055
+Michaelis Menten (Corrigido)    323,8311   332,4667   0,9765013
+Segmentada Linear               352,6998   363,4943   0,9640795
+Segmentada Quadrática           332,1142   345,0675   0,9747606
+Mitscherlich                    310,3357   318,9713   0,9808822
+Logístico LL.3                  340,9449   349,5804   0,9691758
+Logístico LL.4                  325,9732   336,7677   0,9763419
+Yield Loss                      339,8781   346,3547   0,9687055
+Weibull 3                       354,0919   362,7274   0,9621318
+Weibull 4                       333,7306   344,5250   0,9732933
+Assintótica 2                   340,9002   347,3768   0,9688639
+Assintótica 3                   310,3357   318,9713   0,9808822
+Brain-Counsens 4                311,8796   322,6740   0,9810184
+Brain-Counsens 5                312,3284   325,2817   0,9814725
+Cedergreen-Ritz-Streibig 3      325,8427   336,6371   0,9763901
+Cedergreen-Ritz-Streibig 4      277,7064   290,6597   0,9892136
+Exponencial                     511,5978   518,0744   0,5422488
 
-
-<!--chapter:end:31-regression.Rmd-->
 
 # Análise de sobrevivência
 
@@ -18838,7 +17665,7 @@ Exponencial                     511.5978   518.0744   0.5422488
 
 <br><br>
 
-<img src="32-survival_files/figure-html/unnamed-chunk-1-1.png" width="480" />
+<img src="index_files/figure-html/unnamed-chunk-737-1.png" width="480" />
 
 Análise de sobrevivência, também denominada análise de sobrevida, é um ramo da estatística que estuda o tempo de duração esperado até a ocorrência de um ou mais eventos, tais como morte em organismos biológicos ou falha em sistemas mecânicos. Na agronomia, tem sido bastante utilizada na avaliação residual de produtos fitossanitários em insetos, tempo até a morte em função de um doença, etc.
 
@@ -18872,7 +17699,7 @@ dados=data.frame(trat,tempo,status)
 hist(tempo)
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-739-1.png" width="672" />
 
 <br><br>
 
@@ -18900,14 +17727,14 @@ summary(KM)
 ## Call: survfit(formula = Surv(tempo, status) ~ 1, type = "kaplan-meier")
 ## 
 ##  time n.risk n.event survival std.err lower 95% CI upper 95% CI
-##    10    144      44    0.694  0.0384       0.6231        0.774
-##    24    100      19    0.562  0.0413       0.4870        0.650
-##    48     81       5    0.528  0.0416       0.4522        0.616
-##    72     76      20    0.389  0.0406       0.3169        0.477
-##    96     56      10    0.319  0.0389       0.2517        0.405
-##   120     46       5    0.285  0.0376       0.2198        0.369
-##   144     41      11    0.208  0.0338       0.1515        0.286
-##   168     30      12    0.125  0.0276       0.0811        0.193
+##    10    144      44    0,694  0,0384       0,6231        0,774
+##    24    100      19    0,562  0,0413       0,4870        0,650
+##    48     81       5    0,528  0,0416       0,4522        0,616
+##    72     76      20    0,389  0,0406       0,3169        0,477
+##    96     56      10    0,319  0,0389       0,2517        0,405
+##   120     46       5    0,285  0,0376       0,2198        0,369
+##   144     41      11    0,208  0,0338       0,1515        0,286
+##   168     30      12    0,125  0,0276       0,0811        0,193
 ```
 
 ```r
@@ -18917,7 +17744,7 @@ ggsurvplot(
   ylab = "Overall survival probability")
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-4-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-740-1.png" width="1152" />
 
 ### Tempo médio de sobrevivência
 
@@ -18929,7 +17756,7 @@ a$matrix[5]
 
 ```
 ##   *rmean 
-## 33.22222
+## 33,22222
 ```
 
 <br><br>
@@ -18946,8 +17773,8 @@ knitr::kable(pvalor$p.value)
 
              T1          T2
 ---  ----------  ----------
-T2    0.0003111          NA
-T3    0.0000000   0.0006521
+T2    0,0003111            
+T3    0,0000000   0,0006521
 
 Todos diferem entre si
 
@@ -18962,7 +17789,7 @@ ggsurvplot(
   ylab = "Overall survival probability")
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-7-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-743-1.png" width="1152" />
 
 ### Tempo médio de sobrevivência
 
@@ -18973,7 +17800,7 @@ survival:::survmean(KM1, rmean=48)$matrix[,5]
 
 ```
 ##  trat=T1  trat=T2  trat=T3 
-## 27.37500 32.12500 40.16667
+## 27,37500 32,12500 40,16667
 ```
 
 <br><br>
@@ -19007,12 +17834,12 @@ summary(KM)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ 1, dist = "exponential")
 ##              Value Std. Error    z      p
-## (Intercept) 4.4473     0.0891 49.9 <2e-16
+## (Intercept) 4,4473     0,0891 49,9 <2e-16
 ## 
 ## Scale fixed at 1 
 ## 
 ## Exponential distribution
-## Loglik(model)= -686.4   Loglik(intercept only)= -686.4
+## Loglik(model)= -686,4   Loglik(intercept only)= -686,4
 ## Number of Newton-Raphson Iterations: 4 
 ## n= 144
 ```
@@ -19027,7 +17854,7 @@ smod <- data.frame(time = c(t_0), # acrescentar os tratamentos
 ggsurvplot(smod)  
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-9-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-745-1.png" width="1152" />
 
 ### Considerando tratamentos
 
@@ -19044,12 +17871,12 @@ summary(KM)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ 1, dist = "exponential")
 ##              Value Std. Error    z      p
-## (Intercept) 4.4473     0.0891 49.9 <2e-16
+## (Intercept) 4,4473     0,0891 49,9 <2e-16
 ## 
 ## Scale fixed at 1 
 ## 
 ## Exponential distribution
-## Loglik(model)= -686.4   Loglik(intercept only)= -686.4
+## Loglik(model)= -686,4   Loglik(intercept only)= -686,4
 ## Number of Newton-Raphson Iterations: 4 
 ## n= 144
 ```
@@ -19060,8 +17887,8 @@ anova(KM2)
 
 ```
 ##      Df Deviance Resid. Df    -2*LL     Pr(>Chi)
-## NULL NA       NA       143 1372.722           NA
-## trat  2 44.24522       141 1328.477 2.467593e-10
+## NULL NA       NA       143 1372,722           NA
+## trat  2 44,24522       141 1328,477 2,467593e-10
 ```
 
 ```r
@@ -19076,7 +17903,7 @@ smod <- data.frame(time = c(t_0, t_1, t_2), # acrescentar os tratamentos
 ggsurvplot(smod)  
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-10-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-746-1.png" width="1152" />
 
 <br><br>
 
@@ -19099,13 +17926,13 @@ summary(KM)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ 1, dist = "gaussian")
 ##               Value Std. Error    z      p
-## (Intercept) 78.8982     5.9303 13.3 <2e-16
-## Log(scale)   4.2519     0.0652 65.2 <2e-16
+## (Intercept) 78,8982     5,9303 13,3 <2e-16
+## Log(scale)   4,2519     0,0652 65,2 <2e-16
 ## 
-## Scale= 70.2 
+## Scale= 70,2 
 ## 
 ## Gaussian distribution
-## Loglik(model)= -735.6   Loglik(intercept only)= -735.6
+## Loglik(model)= -735,6   Loglik(intercept only)= -735,6
 ## Number of Newton-Raphson Iterations: 5 
 ## n= 144
 ```
@@ -19123,16 +17950,16 @@ summary(KM3)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ trat, dist = "gaussian")
 ##               Value Std. Error     z       p
-## (Intercept) 36.3750     8.5829  4.24 2.3e-05
-## tratT2      37.3906    12.1867  3.07  0.0022
-## tratT3      89.7879    12.3737  7.26 4.0e-13
-## Log(scale)   4.0854     0.0649 62.96 < 2e-16
+## (Intercept) 36,3750     8,5829  4,24 2,3e-05
+## tratT2      37,3906    12,1867  3,07  0,0022
+## tratT3      89,7879    12,3737  7,26 4,0e-13
+## Log(scale)   4,0854     0,0649 62,96 < 2e-16
 ## 
-## Scale= 59.5 
+## Scale= 59,5 
 ## 
 ## Gaussian distribution
-## Loglik(model)= -712.5   Loglik(intercept only)= -735.6
-## 	Chisq= 46.23 on 2 degrees of freedom, p= 9.2e-11 
+## Loglik(model)= -712,5   Loglik(intercept only)= -735,6
+## 	Chisq= 46,23 on 2 degrees of freedom, p= 9,2e-11 
 ## Number of Newton-Raphson Iterations: 4 
 ## n= 144
 ```
@@ -19143,8 +17970,8 @@ anova(KM3)
 
 ```
 ##      Df Deviance Resid. Df    -2*LL     Pr(>Chi)
-## NULL NA       NA       142 1471.295           NA
-## trat  2 46.22645       140 1425.069 9.163355e-11
+## NULL NA       NA       142 1471,295           NA
+## trat  2 46,22645       140 1425,069 9,163355e-11
 ```
 
 ```r
@@ -19160,7 +17987,7 @@ lines(x_grid,sur_curves1,col="red")
 lines(x_grid,sur_curves2,col="blue")
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-12-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-748-1.png" width="1152" />
 
 <br><br>
 
@@ -19183,13 +18010,13 @@ summary(KM)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ 1, dist = "logistic")
 ##               Value Std. Error    z      p
-## (Intercept) 72.5020     6.3768 11.4 <2e-16
-## Log(scale)   3.7594     0.0722 52.0 <2e-16
+## (Intercept) 72,5020     6,3768 11,4 <2e-16
+## Log(scale)   3,7594     0,0722 52,0 <2e-16
 ## 
-## Scale= 42.9 
+## Scale= 42,9 
 ## 
 ## Logistic distribution
-## Loglik(model)= -739.5   Loglik(intercept only)= -739.5
+## Loglik(model)= -739,5   Loglik(intercept only)= -739,5
 ## Number of Newton-Raphson Iterations: 5 
 ## n= 144
 ```
@@ -19207,16 +18034,16 @@ summary(KM4)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ trat, dist = "logistic")
 ##               Value Std. Error     z       p
-## (Intercept) 35.4968     7.7296  4.59 4.4e-06
-## tratT2      31.3587    12.2695  2.56   0.011
-## tratT3      98.9211    12.4589  7.94 2.0e-15
-## Log(scale)   3.5544     0.0737 48.20 < 2e-16
+## (Intercept) 35,4968     7,7296  4,59 4,4e-06
+## tratT2      31,3587    12,2695  2,56   0,011
+## tratT3      98,9211    12,4589  7,94 2,0e-15
+## Log(scale)   3,5544     0,0737 48,20 < 2e-16
 ## 
 ## Scale= 35 
 ## 
 ## Logistic distribution
-## Loglik(model)= -714.3   Loglik(intercept only)= -739.5
-## 	Chisq= 50.45 on 2 degrees of freedom, p= 1.1e-11 
+## Loglik(model)= -714,3   Loglik(intercept only)= -739,5
+## 	Chisq= 50,45 on 2 degrees of freedom, p= 1,1e-11 
 ## Number of Newton-Raphson Iterations: 4 
 ## n= 144
 ```
@@ -19227,8 +18054,8 @@ anova(KM4)
 
 ```
 ##      Df Deviance Resid. Df    -2*LL     Pr(>Chi)
-## NULL NA       NA       142 1479.091           NA
-## trat  2 50.45218       140 1428.639 1.107765e-11
+## NULL NA       NA       142 1479,091           NA
+## trat  2 50,45218       140 1428,639 1,107765e-11
 ```
 
 ```r
@@ -19244,7 +18071,7 @@ lines(x_grid,sur_curves1,col="red")
 lines(x_grid,sur_curves2,col="blue")
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-14-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-750-1.png" width="1152" />
 
 <br><br>
 
@@ -19267,13 +18094,13 @@ summary(KM)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ 1, dist = "lognormal")
 ##              Value Std. Error     z       p
-## (Intercept) 3.8658     0.1080 35.80 < 2e-16
-## Log(scale)  0.2438     0.0648  3.76 0.00017
+## (Intercept) 3,8658     0,1080 35,80 < 2e-16
+## Log(scale)  0,2438     0,0648  3,76 0,00017
 ## 
-## Scale= 1.28 
+## Scale= 1,28 
 ## 
 ## Log Normal distribution
-## Loglik(model)= -681.1   Loglik(intercept only)= -681.1
+## Loglik(model)= -681,1   Loglik(intercept only)= -681,1
 ## Number of Newton-Raphson Iterations: 5 
 ## n= 144
 ```
@@ -19291,16 +18118,16 @@ summary(KM5)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ trat, dist = "lognormal")
 ##              Value Std. Error     z      p
-## (Intercept) 3.2165     0.1655 19.43 <2e-16
-## tratT2      0.5650     0.2352  2.40  0.016
-## tratT3      1.3925     0.2394  5.82  6e-09
-## Log(scale)  0.1369     0.0644  2.12  0.034
+## (Intercept) 3,2165     0,1655 19,43 <2e-16
+## tratT2      0,5650     0,2352  2,40  0,016
+## tratT3      1,3925     0,2394  5,82  6e-09
+## Log(scale)  0,1369     0,0644  2,12  0,034
 ## 
-## Scale= 1.15 
+## Scale= 1,15 
 ## 
 ## Log Normal distribution
-## Loglik(model)= -665.4   Loglik(intercept only)= -681.1
-## 	Chisq= 31.54 on 2 degrees of freedom, p= 1.4e-07 
+## Loglik(model)= -665,4   Loglik(intercept only)= -681,1
+## 	Chisq= 31,54 on 2 degrees of freedom, p= 1,4e-07 
 ## Number of Newton-Raphson Iterations: 4 
 ## n= 144
 ```
@@ -19311,8 +18138,8 @@ anova(KM5)
 
 ```
 ##      Df Deviance Resid. Df    -2*LL     Pr(>Chi)
-## NULL NA       NA       142 1362.288           NA
-## trat  2 31.54326       140 1330.744 1.414059e-07
+## NULL NA       NA       142 1362,288           NA
+## trat  2 31,54326       140 1330,744 1,414059e-07
 ```
 
 ```r
@@ -19327,7 +18154,7 @@ smod <- data.frame(time = c(t_0, t_1, t_2), # acrescentar os tratamentos
 ggsurvplot(smod)  
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-16-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-752-1.png" width="1152" />
 
 <br><br>
 
@@ -19350,10 +18177,10 @@ summary(KM)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ 1, dist = "loglogistic")
 ##               Value Std. Error     z      p
-## (Intercept)  3.8717     0.1192 32.49 <2e-16
-## Log(scale)  -0.2265     0.0711 -3.19 0.0014
+## (Intercept)  3,8717     0,1192 32,49 <2e-16
+## Log(scale)  -0,2265     0,0711 -3,19 0,0014
 ## 
-## Scale= 0.797 
+## Scale= 0,797 
 ## 
 ## Log logistic distribution
 ## Loglik(model)= -687   Loglik(intercept only)= -687
@@ -19374,16 +18201,16 @@ summary(KM6)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ trat, dist = "loglogistic")
 ##               Value Std. Error     z       p
-## (Intercept)  3.1947     0.1689 18.92 < 2e-16
-## tratT2       0.5839     0.2530  2.31   0.021
-## tratT3       1.5687     0.2441  6.43 1.3e-10
-## Log(scale)  -0.3709     0.0725 -5.11 3.2e-07
+## (Intercept)  3,1947     0,1689 18,92 < 2e-16
+## tratT2       0,5839     0,2530  2,31   0,021
+## tratT3       1,5687     0,2441  6,43 1,3e-10
+## Log(scale)  -0,3709     0,0725 -5,11 3,2e-07
 ## 
-## Scale= 0.69 
+## Scale= 0,69 
 ## 
 ## Log logistic distribution
-## Loglik(model)= -669.2   Loglik(intercept only)= -687
-## 	Chisq= 35.64 on 2 degrees of freedom, p= 1.8e-08 
+## Loglik(model)= -669,2   Loglik(intercept only)= -687
+## 	Chisq= 35,64 on 2 degrees of freedom, p= 1,8e-08 
 ## Number of Newton-Raphson Iterations: 4 
 ## n= 144
 ```
@@ -19394,8 +18221,8 @@ anova(KM6)
 
 ```
 ##      Df Deviance Resid. Df    -2*LL     Pr(>Chi)
-## NULL NA       NA       142 1373.973           NA
-## trat  2 35.64462       140 1338.328 1.819156e-08
+## NULL NA       NA       142 1373,973           NA
+## trat  2 35,64462       140 1338,328 1,819156e-08
 ```
 
 ```r
@@ -19410,7 +18237,7 @@ smod <- data.frame(time = c(t_0, t_1, t_2), # acrescentar os tratamentos
 ggsurvplot(smod)  
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-18-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-754-1.png" width="1152" />
 
 <br><br>
 
@@ -19433,13 +18260,13 @@ summary(KM)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ 1, dist = "weibull")
 ##              Value Std. Error     z      p
-## (Intercept) 4.4310     0.0969 45.72 <2e-16
-## Log(scale)  0.0685     0.0740  0.93   0.35
+## (Intercept) 4,4310     0,0969 45,72 <2e-16
+## Log(scale)  0,0685     0,0740  0,93   0,35
 ## 
-## Scale= 1.07 
+## Scale= 1,07 
 ## 
 ## Weibull distribution
-## Loglik(model)= -685.9   Loglik(intercept only)= -685.9
+## Loglik(model)= -685,9   Loglik(intercept only)= -685,9
 ## Number of Newton-Raphson Iterations: 6 
 ## n= 144
 ```
@@ -19457,16 +18284,16 @@ summary(KM7)
 ## Call:
 ## survreg(formula = Surv(tempo, status) ~ trat, dist = "weibull")
 ##               Value Std. Error     z       p
-## (Intercept)  3.6259     0.1334 27.18 < 2e-16
-## tratT2       0.7769     0.1906  4.08 4.6e-05
-## tratT3       1.4392     0.2043  7.05 1.8e-12
-## Log(scale)  -0.0969     0.0744 -1.30    0.19
+## (Intercept)  3,6259     0,1334 27,18 < 2e-16
+## tratT2       0,7769     0,1906  4,08 4,6e-05
+## tratT3       1,4392     0,2043  7,05 1,8e-12
+## Log(scale)  -0,0969     0,0744 -1,30    0,19
 ## 
-## Scale= 0.908 
+## Scale= 0,908 
 ## 
 ## Weibull distribution
-## Loglik(model)= -663.4   Loglik(intercept only)= -685.9
-## 	Chisq= 45 on 2 degrees of freedom, p= 1.7e-10 
+## Loglik(model)= -663,4   Loglik(intercept only)= -685,9
+## 	Chisq= 45 on 2 degrees of freedom, p= 1,7e-10 
 ## Number of Newton-Raphson Iterations: 5 
 ## n= 144
 ```
@@ -19477,8 +18304,8 @@ anova(KM7)
 
 ```
 ##      Df Deviance Resid. Df    -2*LL     Pr(>Chi)
-## NULL NA       NA       142 1371.840           NA
-## trat  2 44.99626       140 1326.844 1.695061e-10
+## NULL NA       NA       142 1371,840           NA
+## trat  2 44,99626       140 1326,844 1,695061e-10
 ```
 
 ```r
@@ -19493,7 +18320,7 @@ smod <- data.frame(time = c(t_0, t_1, t_2), # acrescentar os tratamentos
 ggsurvplot(smod)  
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-20-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-756-1.png" width="1152" />
 
 
 <br><br><br>
@@ -19514,43 +18341,43 @@ summary(KM9)
 ```
 ## trat=T1 
 ##   time         est          lcl        ucl
-## 1   10 0.786371074 7.187338e-01 0.83738134
-## 2   24 0.549854904 4.451279e-01 0.63862411
-## 3   48 0.279640531 1.790314e-01 0.38288353
-## 4   72 0.130206542 6.334527e-02 0.21531499
-## 5   96 0.054871360 1.911752e-02 0.11354777
-## 6  120 0.020657887 4.247756e-03 0.05747200
-## 7  144 0.006846406 7.114686e-04 0.02824022
-## 8  168 0.001964497 7.212948e-05 0.01341603
+## 1   10 0,786371074 7,232752e-01 0,83911162
+## 2   24 0,549854904 4,479971e-01 0,64283646
+## 3   48 0,279640531 1,840537e-01 0,38407503
+## 4   72 0,130206542 6,796248e-02 0,21484853
+## 5   96 0,054871360 2,038831e-02 0,11454678
+## 6  120 0,020657887 4,376664e-03 0,05889927
+## 7  144 0,006846406 7,235971e-04 0,02828755
+## 8  168 0,001964497 6,983711e-05 0,01339412
 ## 
 ## trat=T2 
 ##   time        est        lcl       ucl
-## 1   10 0.91229451 0.87233985 0.9413002
-## 2   24 0.79577094 0.71969924 0.8575090
-## 3   48 0.61465240 0.50410842 0.7127744
-## 4   72 0.45902365 0.34168956 0.5705144
-## 5   96 0.32998531 0.22378318 0.4357505
-## 6  120 0.22722132 0.13795535 0.3222539
-## 7  144 0.14902446 0.07589203 0.2354252
-## 8  168 0.09250403 0.03798742 0.1668742
+## 1   10 0,91229451 0,87331154 0,9413935
+## 2   24 0,79577094 0,71808347 0,8578590
+## 3   48 0,61465240 0,50609979 0,7107700
+## 4   72 0,45902365 0,34252835 0,5697133
+## 5   96 0,32998531 0,22192375 0,4376911
+## 6  120 0,22722132 0,13328083 0,3293009
+## 7  144 0,14902446 0,07470928 0,2383306
+## 8  168 0,09250403 0,03800506 0,1703754
 ## 
 ## trat=T3 
 ##   time       est       lcl       ucl
-## 1   10 0.9585577 0.9322168 0.9746135
-## 2   24 0.9000225 0.8442063 0.9363724
-## 3   48 0.7989822 0.7077183 0.8630863
-## 4   72 0.6983485 0.5870620 0.7832759
-## 5   96 0.5997606 0.4737519 0.6965202
-## 6  120 0.5049620 0.3783229 0.6111961
-## 7  144 0.4157087 0.2887969 0.5281183
-## 8  168 0.3336543 0.2144052 0.4515043
+## 1   10 0,9585577 0,9322980 0,9737424
+## 2   24 0,9000225 0,8424858 0,9343911
+## 3   48 0,7989822 0,7018413 0,8614044
+## 4   72 0,6983485 0,5817678 0,7819800
+## 5   96 0,5997606 0,4745195 0,7011188
+## 6  120 0,5049620 0,3789321 0,6143491
+## 7  144 0,4157087 0,2914415 0,5351033
+## 8  168 0,3336543 0,2121430 0,4532552
 ```
 
 ```r
 plot(KM9,col=c(1,2,3))
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-757-1.png" width="672" />
 
 ****
 
@@ -19568,43 +18395,43 @@ summary(KM10)
 ```
 ## trat=T1 
 ##   time         est         lcl        ucl
-## 1   10 0.790201487 0.716314014 0.85306545
-## 2   24 0.537681788 0.442594349 0.62835481
-## 3   48 0.267748022 0.182488188 0.36404586
-## 4   72 0.130741530 0.071150531 0.21047110
-## 5   96 0.063206831 0.027455096 0.12386594
-## 6  120 0.030369861 0.010503693 0.07206528
-## 7  144 0.014531118 0.003959448 0.04223269
-## 8  168 0.006931519 0.001462594 0.02411293
+## 1   10 0,790201487 0,719309848 0,85487605
+## 2   24 0,537681788 0,441769852 0,63355947
+## 3   48 0,267748022 0,178325147 0,37513023
+## 4   72 0,130741530 0,068561707 0,21612689
+## 5   96 0,063206831 0,025867793 0,12418913
+## 6  120 0,030369861 0,009663219 0,07230255
+## 7  144 0,014531118 0,003516686 0,04179215
+## 8  168 0,006931519 0,001255214 0,02432217
 ## 
 ## trat=T2 
 ##   time       est        lcl       ucl
-## 1   10 0.9055576 0.85483298 0.9450987
-## 2   24 0.7671054 0.67758957 0.8397180
-## 3   48 0.5650288 0.44835976 0.6679526
-## 4   72 0.4110387 0.29288694 0.5259440
-## 5   96 0.2969771 0.19041900 0.4113474
-## 6  120 0.2136179 0.12080451 0.3199308
-## 7  144 0.1531754 0.07659963 0.2492097
-## 8  168 0.1095770 0.04714501 0.1936260
+## 1   10 0,9055576 0,85492217 0,9441662
+## 2   24 0,7671054 0,68798616 0,8376454
+## 3   48 0,5650288 0,46168895 0,6610689
+## 4   72 0,4110387 0,29916324 0,5184281
+## 5   96 0,2969771 0,19325853 0,4014741
+## 6  120 0,2136179 0,12442969 0,3138910
+## 7  144 0,1531754 0,07776916 0,2437258
+## 8  168 0,1095770 0,04881060 0,1896404
 ## 
 ## trat=T3 
 ##   time       est       lcl       ucl
-## 1   10 0.9552715 0.9229031 0.9763875
-## 2   24 0.8838874 0.8278315 0.9274564
-## 3   48 0.7645536 0.6784217 0.8317849
-## 4   72 0.6563859 0.5532722 0.7411864
-## 5   96 0.5610497 0.4466789 0.6608527
-## 6  120 0.4781342 0.3574859 0.5870168
-## 7  144 0.4065841 0.2856213 0.5232180
-## 8  168 0.3451603 0.2255266 0.4599759
+## 1   10 0,9552715 0,9205263 0,9751594
+## 2   24 0,8838874 0,8244174 0,9260402
+## 3   48 0,7645536 0,6748641 0,8339494
+## 4   72 0,6563859 0,5496685 0,7468414
+## 5   96 0,5610497 0,4435391 0,6641375
+## 6  120 0,4781342 0,3584966 0,5900300
+## 7  144 0,4065841 0,2875838 0,5252627
+## 8  168 0,3451603 0,2319613 0,4664246
 ```
 
 ```r
 plot(KM10,col=c(1,2,3))
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-758-1.png" width="672" />
 
 <br><br>
 
@@ -19630,7 +18457,7 @@ summary(KM)
 ## Call:  coxph(formula = Surv(tempo, status) ~ 1)
 ## 
 ## Null model
-##   log likelihood= -538.6621 
+##   log likelihood= -538,6621 
 ##   n= 144
 ```
 
@@ -19646,7 +18473,7 @@ summary(KM8)
 ## Call:  coxph(formula = Surv(tempo, status) ~ strata(trat), data = dados)
 ## 
 ## Null model
-##   log likelihood= -394.6821 
+##   log likelihood= -394,6821 
 ##   n= 144
 ```
 
@@ -19655,7 +18482,7 @@ library(ggfortify)
 autoplot(survfit(KM8),conf.int = F)+theme_classic()
 ```
 
-<img src="32-survival_files/figure-html/unnamed-chunk-24-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-760-1.png" width="1152" />
 
 <br><br>
 
@@ -19682,33 +18509,18 @@ fit.coxph <- coxph(Surv(tempo, status) ~ Treatments, data = dados)
 print(forest_model(fit.coxph, limits=log( c(0.05, 5))))
 ```
 
-```
-## Warning: Ignoring unknown aesthetics: x
-```
-
-<img src="32-survival_files/figure-html/unnamed-chunk-25-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-761-1.png" width="1152" />
 
 ## Critério de inferência de Akaike
 
 
 ```r
 library(car)
-```
-
-```
-## Warning: package 'car' was built under R version 3.6.3
-```
-
-```
-## Carregando pacotes exigidos: carData
-```
-
-```r
 AIC(KM2) # exponencial
 ```
 
 ```
-## [1] 1334.477
+## [1] 1334,477
 ```
 
 ```r
@@ -19716,7 +18528,7 @@ AIC(KM3) # normal
 ```
 
 ```
-## [1] 1433.069
+## [1] 1433,069
 ```
 
 ```r
@@ -19724,7 +18536,7 @@ AIC(KM4) # logistico
 ```
 
 ```
-## [1] 1436.639
+## [1] 1436,639
 ```
 
 ```r
@@ -19732,7 +18544,7 @@ AIC(KM5) # lognormal
 ```
 
 ```
-## [1] 1338.744
+## [1] 1338,744
 ```
 
 ```r
@@ -19740,7 +18552,7 @@ AIC(KM6) # loglogistic
 ```
 
 ```
-## [1] 1346.328
+## [1] 1346,328
 ```
 
 ```r
@@ -19748,7 +18560,7 @@ AIC(KM7) # weibull
 ```
 
 ```
-## [1] 1334.844
+## [1] 1334,844
 ```
 
 ```r
@@ -19756,7 +18568,7 @@ AIC(KM8) # coxph
 ```
 
 ```
-## [1] 789.3642
+## [1] 789,3642
 ```
 
 ```r
@@ -19764,7 +18576,7 @@ AIC(KM9) # Gompertz
 ```
 
 ```
-## [1] 1331.275
+## [1] 1331,275
 ```
 
 ## Resíduo
@@ -19810,21 +18622,9 @@ library(gridExtra)
 grid.arrange(g2,g3,g4,g5,g6,g7,g8,ncol=4)
 ```
 
-```
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-```
-
-<img src="32-survival_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-763-1.png" width="672" />
 
 <br><br><br><br><br><br>
-
-<!--chapter:end:32-survival.Rmd-->
 
 # Modelo linear generalizado
 
@@ -19865,22 +18665,22 @@ summary(modelo)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -2.4488  -0.5500   0.2359   0.4838   2.2701  
+## -2,4488  -0,5500   0,2359   0,4838   2,2701  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)   0.6969     0.1061   6.566 5.16e-11 ***
-## tratT 2       0.2977     0.1548   1.924  0.05437 .  
-## tratT 3      -0.8572     0.1460  -5.870 4.36e-09 ***
-## tratT 4      -0.4048     0.1466  -2.762  0.00574 ** 
+## (Intercept)   0,6969     0,1061   6,566 5,16e-11 ***
+## tratT 2       0,2977     0,1548   1,924  0,05437 .  
+## tratT 3      -0,8572     0,1460  -5,870 4,36e-09 ***
+## tratT 4      -0,4048     0,1466  -2,762  0,00574 ** 
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 108.818  on 31  degrees of freedom
-## Residual deviance:  38.676  on 28  degrees of freedom
-## AIC: 182.75
+##     Null deviance: 108,818  on 31  degrees of freedom
+## Residual deviance:  38,676  on 28  degrees of freedom
+## AIC: 182,75
 ## 
 ## Number of Fisher Scoring iterations: 3
 ```
@@ -19900,10 +18700,10 @@ anova(modelo, test="Chisq")
 ## 
 ## 
 ##      Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
-## NULL                    31    108.818              
-## trat  3   70.142        28     38.676 3.979e-15 ***
+## NULL                    31    108,818              
+## trat  3   70,142        28     38,676 3,979e-15 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ## Diagnóstico
@@ -19914,12 +18714,7 @@ par(mfrow=c(2,2))
 plot(modelo)
 ```
 
-```
-## hat values (leverages) are all = 0.125
-##  and there are no factor predictors; no plot no. 5
-```
-
-<img src="33-glm_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-767-1.png" width="672" />
 
 ## Halfnormaplot
 
@@ -19932,23 +18727,13 @@ hnp::hnp(modelo, print.on=T)
 ## Binomial model
 ```
 
-<img src="33-glm_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-768-1.png" width="672" />
 
 ## Constrastes
 
 
 ```r
 library(emmeans)
-```
-
-```
-## Welcome to emmeans.
-## NOTE -- Important change from versions <= 1.41:
-##     Indicator predictors are now treated as 2-level factors by default.
-##     To revert to old behavior, use emm_options(cov.keep = character(0))
-```
-
-```r
 media=emmeans(modelo,~trat)
 ```
 
@@ -19959,50 +18744,20 @@ media=emmeans(modelo,~trat)
 medfin=regrid(media)
 library(multcompView)
 library(multcomp)
-```
-
-```
-## Carregando pacotes exigidos: mvtnorm
-```
-
-```
-## Carregando pacotes exigidos: survival
-```
-
-```
-## Carregando pacotes exigidos: TH.data
-```
-
-```
-## Carregando pacotes exigidos: MASS
-```
-
-```
-## 
-## Attaching package: 'TH.data'
-```
-
-```
-## The following object is masked from 'package:MASS':
-## 
-##     geyser
-```
-
-```r
 cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
 ```
 
 ```
 ##  trat  prob     SE  df asymp.LCL asymp.UCL .group
-##  T 3  0.460 0.0249 Inf     0.398     0.522  a    
-##  T 4  0.573 0.0247 Inf     0.511     0.634   b   
-##  T 1  0.667 0.0236 Inf     0.609     0.726    c  
-##  T 2  0.730 0.0222 Inf     0.675     0.785    c  
+##  T 3  0,460 0,0249 Inf     0,398     0,522  a    
+##  T 4  0,573 0,0247 Inf     0,511     0,634   b   
+##  T 1  0,667 0,0236 Inf     0,609     0,726    c  
+##  T 2  0,730 0,0222 Inf     0,675     0,785    c  
 ## 
-## Confidence level used: 0.95 
+## Confidence level used: 0,95 
 ## Conf-level adjustment: sidak method for 4 estimates 
 ## P value adjustment: tukey method for comparing a family of 4 estimates 
-## significance level used: alpha = 0.05
+## significance level used: alpha = 0,05
 ```
 
 ## Supondo que não sabemos o total de cada repetição
@@ -20028,22 +18783,22 @@ summary(modelo)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.7823  -0.3347   0.1574   0.2550   1.5832  
+## -1,7823  -0,3347   0,1574   0,2550   1,5832  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)  3.50781    0.06120  57.318  < 2e-16 ***
-## tratT 2      0.08951    0.08468   1.057 0.290496    
-## tratT 3     -0.37231    0.09581  -3.886 0.000102 ***
-## tratT 4     -0.15353    0.09007  -1.705 0.088274 .  
+## (Intercept)  3,50781    0,06120  57,318  < 2e-16 ***
+## tratT 2      0,08951    0,08468   1,057 0,290496    
+## tratT 3     -0,37231    0,09581  -3,886 0,000102 ***
+## tratT 4     -0,15353    0,09007  -1,705 0,088274 .  
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## (Dispersion parameter for poisson family taken to be 1)
 ## 
-##     Null deviance: 46.061  on 31  degrees of freedom
-## Residual deviance: 18.017  on 28  degrees of freedom
-## AIC: 193.41
+##     Null deviance: 46,061  on 31  degrees of freedom
+## Residual deviance: 18,017  on 28  degrees of freedom
+## AIC: 193,41
 ## 
 ## Number of Fisher Scoring iterations: 4
 ```
@@ -20063,10 +18818,10 @@ anova(modelo, test="Chisq")
 ## 
 ## 
 ##      Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
-## NULL                    31     46.061              
-## trat  3   28.045        28     18.017 3.555e-06 ***
+## NULL                    31     46,061              
+## trat  3   28,045        28     18,017 3,555e-06 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ## Diagnóstico
@@ -20077,12 +18832,7 @@ par(mfrow=c(2,2))
 plot(modelo)
 ```
 
-```
-## hat values (leverages) are all = 0.125
-##  and there are no factor predictors; no plot no. 5
-```
-
-<img src="33-glm_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-773-1.png" width="672" />
 
 ## Halfnormaplot
 
@@ -20095,7 +18845,7 @@ hnp::hnp(modelo, print.on=T)
 ## Poisson model
 ```
 
-<img src="33-glm_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-774-1.png" width="672" />
 
 ## Constrastes
 
@@ -20117,15 +18867,15 @@ cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
 
 ```
 ##  trat rate   SE  df asymp.LCL asymp.UCL .group
-##  T 3  23.0 1.70 Inf      18.8      27.2  a    
-##  T 4  28.6 1.89 Inf      23.9      33.3  ab   
-##  T 1  33.4 2.04 Inf      28.3      38.5   bc  
-##  T 2  36.5 2.14 Inf      31.2      41.8    c  
+##  T 3  23,0 1,70 Inf      18,8      27,2  a    
+##  T 4  28,6 1,89 Inf      23,9      33,3  ab   
+##  T 1  33,4 2,04 Inf      28,3      38,5   bc  
+##  T 2  36,5 2,14 Inf      31,2      41,8    c  
 ## 
-## Confidence level used: 0.95 
+## Confidence level used: 0,95 
 ## Conf-level adjustment: sidak method for 4 estimates 
 ## P value adjustment: tukey method for comparing a family of 4 estimates 
-## significance level used: alpha = 0.05
+## significance level used: alpha = 0,05
 ```
 
 ## Analisando sobredispersão
@@ -20133,40 +18883,6 @@ cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
 
 ```r
 library(AER)
-```
-
-```
-## Carregando pacotes exigidos: car
-```
-
-```
-## Carregando pacotes exigidos: carData
-```
-
-```
-## Carregando pacotes exigidos: lmtest
-```
-
-```
-## Carregando pacotes exigidos: zoo
-```
-
-```
-## 
-## Attaching package: 'zoo'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-```
-
-```
-## Carregando pacotes exigidos: sandwich
-```
-
-```r
 dispersiontest(modelo, trafo=1) 
 ```
 
@@ -20175,11 +18891,11 @@ dispersiontest(modelo, trafo=1)
 ## 	Overdispersion test
 ## 
 ## data:  modelo
-## z = -2.8129, p-value = 0.9975
+## z = -2,8129, p-value = 0,9975
 ## alternative hypothesis: true alpha is greater than 0
 ## sample estimates:
 ##      alpha 
-## -0.4488216
+## -0,4488216
 ```
 
 ```r
@@ -20208,21 +18924,21 @@ summary(modelo)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.7823  -0.3347   0.1574   0.2550   1.5832  
+## -1,7823  -0,3347   0,1574   0,2550   1,5832  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  3.50781    0.04857  72.219  < 2e-16 ***
-## tratT 2      0.08951    0.06720   1.332   0.1937    
-## tratT 3     -0.37231    0.07604  -4.896 3.69e-05 ***
-## tratT 4     -0.15353    0.07148  -2.148   0.0405 *  
+## (Intercept)  3,50781    0,04857  72,219  < 2e-16 ***
+## tratT 2      0,08951    0,06720   1,332   0,1937    
+## tratT 3     -0,37231    0,07604  -4,896 3,69e-05 ***
+## tratT 4     -0,15353    0,07148  -2,148   0,0405 *  
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## (Dispersion parameter for quasipoisson family taken to be 0.6299182)
+## (Dispersion parameter for quasipoisson family taken to be 0,6299182)
 ## 
-##     Null deviance: 46.061  on 31  degrees of freedom
-## Residual deviance: 18.017  on 28  degrees of freedom
+##     Null deviance: 46,061  on 31  degrees of freedom
+## Residual deviance: 18,017  on 28  degrees of freedom
 ## AIC: NA
 ## 
 ## Number of Fisher Scoring iterations: 4
@@ -20243,10 +18959,10 @@ anova(modelo, test="Chisq")
 ## 
 ## 
 ##      Df Deviance Resid. Df Resid. Dev Pr(>Chi)    
-## NULL                    31     46.061             
-## trat  3   28.045        28     18.017 1.17e-09 ***
+## NULL                    31     46,061             
+## trat  3   28,045        28     18,017 1,17e-09 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ## Diagnóstico
@@ -20257,12 +18973,7 @@ par(mfrow=c(2,2))
 plot(modelo)
 ```
 
-```
-## hat values (leverages) are all = 0.125
-##  and there are no factor predictors; no plot no. 5
-```
-
-<img src="33-glm_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-780-1.png" width="672" />
 
 ## Halfnormaplot
 
@@ -20275,7 +18986,7 @@ hnp::hnp(modelo, print.on=T)
 ## Quasi-Poisson model
 ```
 
-<img src="33-glm_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-781-1.png" width="672" />
 
 ## Constrastes
 
@@ -20297,15 +19008,15 @@ cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
 
 ```
 ##  trat rate   SE  df asymp.LCL asymp.UCL .group
-##  T 3  23.0 1.35 Inf      19.6      26.4  a    
-##  T 4  28.6 1.50 Inf      24.9      32.4   b   
-##  T 1  33.4 1.62 Inf      29.3      37.4   bc  
-##  T 2  36.5 1.70 Inf      32.3      40.7    c  
+##  T 3  23,0 1,35 Inf      19,6      26,4  a    
+##  T 4  28,6 1,50 Inf      24,9      32,4   b   
+##  T 1  33,4 1,62 Inf      29,3      37,4   bc  
+##  T 2  36,5 1,70 Inf      32,3      40,7    c  
 ## 
-## Confidence level used: 0.95 
+## Confidence level used: 0,95 
 ## Conf-level adjustment: sidak method for 4 estimates 
 ## P value adjustment: tukey method for comparing a family of 4 estimates 
-## significance level used: alpha = 0.05
+## significance level used: alpha = 0,05
 ```
 
 ## Distribuição quasibinomial
@@ -20329,21 +19040,21 @@ summary(modelo)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.7823  -0.3347   0.1574   0.2550   1.5832  
+## -1,7823  -0,3347   0,1574   0,2550   1,5832  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  3.50781    0.04857  72.219  < 2e-16 ***
-## tratT 2      0.08951    0.06720   1.332   0.1937    
-## tratT 3     -0.37231    0.07604  -4.896 3.69e-05 ***
-## tratT 4     -0.15353    0.07148  -2.148   0.0405 *  
+## (Intercept)  3,50781    0,04857  72,219  < 2e-16 ***
+## tratT 2      0,08951    0,06720   1,332   0,1937    
+## tratT 3     -0,37231    0,07604  -4,896 3,69e-05 ***
+## tratT 4     -0,15353    0,07148  -2,148   0,0405 *  
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
-## (Dispersion parameter for quasipoisson family taken to be 0.6299182)
+## (Dispersion parameter for quasipoisson family taken to be 0,6299182)
 ## 
-##     Null deviance: 46.061  on 31  degrees of freedom
-## Residual deviance: 18.017  on 28  degrees of freedom
+##     Null deviance: 46,061  on 31  degrees of freedom
+## Residual deviance: 18,017  on 28  degrees of freedom
 ## AIC: NA
 ## 
 ## Number of Fisher Scoring iterations: 4
@@ -20364,10 +19075,10 @@ anova(modelo, test="Chisq")
 ## 
 ## 
 ##      Df Deviance Resid. Df Resid. Dev Pr(>Chi)    
-## NULL                    31     46.061             
-## trat  3   28.045        28     18.017 1.17e-09 ***
+## NULL                    31     46,061             
+## trat  3   28,045        28     18,017 1,17e-09 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ## Diagnóstico
@@ -20378,12 +19089,7 @@ par(mfrow=c(2,2))
 plot(modelo)
 ```
 
-```
-## hat values (leverages) are all = 0.125
-##  and there are no factor predictors; no plot no. 5
-```
-
-<img src="33-glm_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-786-1.png" width="672" />
 
 ## Halfnormaplot
 
@@ -20396,7 +19102,7 @@ hnp::hnp(modelo, print.on=T)
 ## Quasi-Poisson model
 ```
 
-<img src="33-glm_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-787-1.png" width="672" />
 
 ## Constrastes
 
@@ -20409,12 +19115,12 @@ summary(pairs(media), type = "response")
 
 ```
 ##  contrast  ratio     SE  df z.ratio p.value
-##  T 1 / T 2 0.914 0.0615 Inf -1.332  0.5425 
-##  T 1 / T 3 1.451 0.1103 Inf  4.896  <.0001 
-##  T 1 / T 4 1.166 0.0833 Inf  2.148  0.1382 
-##  T 2 / T 3 1.587 0.1186 Inf  6.182  <.0001 
-##  T 2 / T 4 1.275 0.0893 Inf  3.469  0.0029 
-##  T 3 / T 4 0.803 0.0631 Inf -2.784  0.0275 
+##  T 1 / T 2 0,914 0,0615 Inf -1,332  0,5425 
+##  T 1 / T 3 1,451 0,1103 Inf  4,896  0,0000 
+##  T 1 / T 4 1,166 0,0833 Inf  2,148  0,1382 
+##  T 2 / T 3 1,587 0,1186 Inf  6,182  0,0000 
+##  T 2 / T 4 1,275 0,0893 Inf  3,469  0,0029 
+##  T 3 / T 4 0,803 0,0631 Inf -2,784  0,0275 
 ## 
 ## P value adjustment: tukey method for comparing a family of 4 estimates 
 ## Tests are performed on the log scale
@@ -20432,15 +19138,15 @@ cld(medfin, alpha=0.05, Letters=letters, decreasing=FALSE, adjust="tukey")
 
 ```
 ##  trat rate   SE  df asymp.LCL asymp.UCL .group
-##  T 3  23.0 1.35 Inf      19.6      26.4  a    
-##  T 4  28.6 1.50 Inf      24.9      32.4   b   
-##  T 1  33.4 1.62 Inf      29.3      37.4   bc  
-##  T 2  36.5 1.70 Inf      32.3      40.7    c  
+##  T 3  23,0 1,35 Inf      19,6      26,4  a    
+##  T 4  28,6 1,50 Inf      24,9      32,4   b   
+##  T 1  33,4 1,62 Inf      29,3      37,4   bc  
+##  T 2  36,5 1,70 Inf      32,3      40,7    c  
 ## 
-## Confidence level used: 0.95 
+## Confidence level used: 0,95 
 ## Conf-level adjustment: sidak method for 4 estimates 
 ## P value adjustment: tukey method for comparing a family of 4 estimates 
-## significance level used: alpha = 0.05
+## significance level used: alpha = 0,05
 ```
 
 ## Fatorial qualitativo e quantitativo
@@ -20479,26 +19185,26 @@ summary(bin)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -0.8532  -0.2951   0.1217   0.1590   0.9375  
+## -0,8532  -0,2951   0,1217   0,1590   0,9375  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(>|z|)
-## (Intercept)   -23.14    6757.51  -0.003    0.997
-## f1T2           18.65    6757.51   0.003    0.998
-## D4             20.81    6757.51   0.003    0.998
-## D6             21.68    6757.51   0.003    0.997
-## D8             23.31    6757.51   0.003    0.997
-## D10            24.67    6757.51   0.004    0.997
-## f1T2:D4       -19.39    6757.51  -0.003    0.998
-## f1T2:D6       -17.24    6757.51  -0.003    0.998
-## f1T2:D8       -18.74    6757.51  -0.003    0.998
-## f1T2:D10      -19.54    6757.51  -0.003    0.998
+## (Intercept)   -23,14    6757,51  -0,003    0,997
+## f1T2           18,65    6757,51   0,003    0,998
+## D4             20,81    6757,51   0,003    0,998
+## D6             21,68    6757,51   0,003    0,997
+## D8             23,31    6757,51   0,003    0,997
+## D10            24,67    6757,51   0,004    0,997
+## f1T2:D4       -19,39    6757,51  -0,003    0,998
+## f1T2:D6       -17,24    6757,51  -0,003    0,998
+## f1T2:D8       -18,74    6757,51  -0,003    0,998
+## f1T2:D10      -19,54    6757,51  -0,003    0,998
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 397.0255  on 29  degrees of freedom
-## Residual deviance:   5.6398  on 20  degrees of freedom
-## AIC: 108.6
+##     Null deviance: 397,0255  on 29  degrees of freedom
+## Residual deviance:   5,6398  on 20  degrees of freedom
+## AIC: 108,6
 ## 
 ## Number of Fisher Scoring iterations: 19
 ```
@@ -20518,12 +19224,12 @@ anova(bin, test="Chisq")
 ## 
 ## 
 ##      Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
-## NULL                    29     397.03              
-## f1    1     0.24        28     396.78    0.6215    
-## D     4   363.46        24      33.33 < 2.2e-16 ***
-## f1:D  4    27.69        20       5.64 1.443e-05 ***
+## NULL                    29     397,03              
+## f1    1     0,24        28     396,78    0,6215    
+## D     4   363,46        24      33,33 < 2,2e-16 ***
+## f1:D  4    27,69        20       5,64 1,443e-05 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ```
 
 ```r
@@ -20552,32 +19258,32 @@ cld(medfin, alpha=0.05, Letters=letters, adjust="tukey")
 ```
 ## D = 2:
 ##  f1   prob       SE  df asymp.LCL asymp.UCL .group
-##  T1 0.0000 6.00e-07 Inf -1.40e-06  1.40e-06  a    
-##  T2 0.0111 1.10e-02 Inf -1.36e-02  3.58e-02  a    
+##  T1 0,0000 6,00e-07 Inf -1,40e-06  1,40e-06  a    
+##  T2 0,0111 1,10e-02 Inf -1,36e-02  3,58e-02  a    
 ## 
 ## D = 4:
 ##  f1   prob       SE  df asymp.LCL asymp.UCL .group
-##  T2 0.0444 2.17e-02 Inf -4.14e-03  9.30e-02  a    
-##  T1 0.0889 3.00e-02 Inf  2.18e-02  1.56e-01  a    
+##  T2 0,0444 2,17e-02 Inf -4,14e-03  9,30e-02  a    
+##  T1 0,0889 3,00e-02 Inf  2,18e-02  1,56e-01  a    
 ## 
 ## D = 6:
 ##  f1   prob       SE  df asymp.LCL asymp.UCL .group
-##  T1 0.1889 4.13e-02 Inf  9.66e-02  2.81e-01  a    
-##  T2 0.4889 5.27e-02 Inf  3.71e-01  6.07e-01   b   
+##  T1 0,1889 4,13e-02 Inf  9,66e-02  2,81e-01  a    
+##  T2 0,4889 5,27e-02 Inf  3,71e-01  6,07e-01   b   
 ## 
 ## D = 8:
 ##  f1   prob       SE  df asymp.LCL asymp.UCL .group
-##  T2 0.5222 5.27e-02 Inf  4.04e-01  6.40e-01  a    
-##  T1 0.5444 5.25e-02 Inf  4.27e-01  6.62e-01  a    
+##  T2 0,5222 5,27e-02 Inf  4,04e-01  6,40e-01  a    
+##  T1 0,5444 5,25e-02 Inf  4,27e-01  6,62e-01  a    
 ## 
 ## D = 10:
 ##  f1   prob       SE  df asymp.LCL asymp.UCL .group
-##  T2 0.6556 5.01e-02 Inf  5.44e-01  7.68e-01  a    
-##  T1 0.8222 4.03e-02 Inf  7.32e-01  9.12e-01   b   
+##  T2 0,6556 5,01e-02 Inf  5,44e-01  7,68e-01  a    
+##  T1 0,8222 4,03e-02 Inf  7,32e-01  9,12e-01   b   
 ## 
-## Confidence level used: 0.95 
+## Confidence level used: 0,95 
 ## Conf-level adjustment: sidak method for 2 estimates 
-## significance level used: alpha = 0.05
+## significance level used: alpha = 0,05
 ```
 
 ```r
@@ -20589,24 +19295,24 @@ cld(medfin, alpha=0.05, Letters=letters, adjust="tukey")
 ```
 ## f1 = T1:
 ##  D    prob       SE  df asymp.LCL asymp.UCL .group
-##  2  0.0000 6.00e-07 Inf -1.60e-06  1.60e-06  a    
-##  4  0.0889 3.00e-02 Inf  1.18e-02  1.66e-01   b   
-##  6  0.1889 4.13e-02 Inf  8.29e-02  2.95e-01   b   
-##  8  0.5444 5.25e-02 Inf  4.10e-01  6.79e-01    c  
-##  10 0.8222 4.03e-02 Inf  7.19e-01  9.26e-01     d 
+##  2  0,0000 6,00e-07 Inf -1,60e-06  1,60e-06  a    
+##  4  0,0889 3,00e-02 Inf  1,18e-02  1,66e-01   b   
+##  6  0,1889 4,13e-02 Inf  8,29e-02  2,95e-01   b   
+##  8  0,5444 5,25e-02 Inf  4,10e-01  6,79e-01    c  
+##  10 0,8222 4,03e-02 Inf  7,19e-01  9,26e-01     d 
 ## 
 ## f1 = T2:
 ##  D    prob       SE  df asymp.LCL asymp.UCL .group
-##  2  0.0111 1.10e-02 Inf -1.73e-02  3.95e-02  a    
-##  4  0.0444 2.17e-02 Inf -1.14e-02  1.00e-01  a    
-##  6  0.4889 5.27e-02 Inf  3.54e-01  6.24e-01   b   
-##  8  0.5222 5.27e-02 Inf  3.87e-01  6.57e-01   b   
-##  10 0.6556 5.01e-02 Inf  5.27e-01  7.84e-01   b   
+##  2  0,0111 1,10e-02 Inf -1,73e-02  3,95e-02  a    
+##  4  0,0444 2,17e-02 Inf -1,14e-02  1,00e-01  a    
+##  6  0,4889 5,27e-02 Inf  3,54e-01  6,24e-01   b   
+##  8  0,5222 5,27e-02 Inf  3,87e-01  6,57e-01   b   
+##  10 0,6556 5,01e-02 Inf  5,27e-01  7,84e-01   b   
 ## 
-## Confidence level used: 0.95 
+## Confidence level used: 0,95 
 ## Conf-level adjustment: sidak method for 5 estimates 
 ## P value adjustment: tukey method for comparing a family of 5 estimates 
-## significance level used: alpha = 0.05
+## significance level used: alpha = 0,05
 ```
 
 ## Regressão
@@ -20637,20 +19343,20 @@ summary(bin1)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -0.9384  -0.7855  -0.1458   0.4803   0.8687  
+## -0,9384  -0,7855  -0,1458   0,4803   0,8687  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(>|z|)    
-## (Intercept) -5.66100    0.51900  -10.91   <2e-16 ***
-## d            0.72347    0.06751   10.72   <2e-16 ***
+## (Intercept) -5,66100    0,51900  -10,91   <2e-16 ***
+## d            0,72347    0,06751   10,72   <2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 223.1818  on 14  degrees of freedom
-## Residual deviance:   6.8923  on 13  degrees of freedom
-## AIC: 50.895
+##     Null deviance: 223,1818  on 14  degrees of freedom
+## Residual deviance:   6,8923  on 13  degrees of freedom
+## AIC: 50,895
 ## 
 ## Number of Fisher Scoring iterations: 4
 ```
@@ -20670,20 +19376,20 @@ summary(bin2)
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -1.8205  -1.5467  -0.9111   0.1884   2.4892  
+## -1,8205  -1,5467  -0,9111   0,1884   2,4892  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(>|z|)    
-## (Intercept) -3.89248    0.37250 -10.449   <2e-16 ***
-## d            0.49464    0.05016   9.862   <2e-16 ***
+## (Intercept) -3,89248    0,37250 -10,449   <2e-16 ***
+## d            0,49464    0,05016   9,862   <2e-16 ***
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 173.600  on 14  degrees of freedom
-## Residual deviance:  34.827  on 13  degrees of freedom
-## AIC: 81.781
+##     Null deviance: 173,600  on 14  degrees of freedom
+## Residual deviance:  34,827  on 13  degrees of freedom
+## AIC: 81,781
 ## 
 ## Number of Fisher Scoring iterations: 5
 ```
@@ -20710,14 +19416,14 @@ curve(predict(bin1,data.frame(d=x),type="resp"),add=TRUE) ## curva de T1
 curve(predict(bin2,data.frame(d=x),type="resp"),add=TRUE, lty=2,col="darkblue") ## Curva de T2
 ```
 
-<img src="33-glm_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-798-1.png" width="672" />
 
-<!--chapter:end:33-glm.Rmd-->
+<!--chapter:end:index.Rmd-->
 
 --- 
 title: "Aplicações práticas do software R para Agronomia"
 author: "Gabriel Danilo Shimizu"
-date: "2020-04-14"
+date: "2020-05-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -20729,16 +19435,9 @@ description: "Este é um ..."
 
 
 
-
-
-<!--chapter:end:index.Rmd-->
-
 # Apresentação
 
 ![](capanovo.png)
-
-
-<!--chapter:end:01-apre.Rmd-->
 
 # Estatística Descritiva
 
@@ -21179,7 +19878,6 @@ Descritiva
 ## T5  255.8    254.5     266     248         18    76.2500         8.7321    3.4
 ```
 
-<!--chapter:end:02-descritiva.Rmd-->
 
 # Estatística Experimental
 
@@ -21193,8 +19891,6 @@ A Estatística Experimental tem por objetivo o estudo dos experimentos, incluind
 [**Fonte**: Exame](https://exame.abril.com.br/ciencia/a-ciencia-por-tras-do-experimento-agricola-mais-longo-da-historia/)
 
 <br><br><br><br>
-
-<!--chapter:end:03-exp.Rmd-->
 
 # Delineamento Inteiramente Casualizado
 
@@ -22267,8 +20963,6 @@ O Erro gerado é:
 
 <br><br><br><br>
 
-<!--chapter:end:04-dic.Rmd-->
-
 # Transformação de dados
 
 ****
@@ -23241,8 +21935,6 @@ with(dados,dic(TRAT,log(RESP), mcomp="tukey"))
 
 <br><br><br><br>
 
-<!--chapter:end:05-transf.Rmd-->
-
 # Delineamento em Blocos Casualizados
 
 ****
@@ -24157,8 +22849,6 @@ with(dados,dbc(Tratamento, bloco,resp, mcomp="tukey"))
 
 <br><br><br><br>
 
-<!--chapter:end:06-dbc.Rmd-->
-
 # Delineamento em Quadrado Latino
 
 ****
@@ -24758,8 +23448,6 @@ dql(TRAT,linha,coluna,RESP)
 ```
 
 <br><br><br><br>
-
-<!--chapter:end:07-dql.Rmd-->
 
 # Esquema Fatorial (2 Fatores) 
 
@@ -25574,9 +24262,6 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 ```
 
 <br><br><br><br>
-
-<!--chapter:end:08-fat2.Rmd-->
-
 
 # Esquema Fatorial (3 Fatores)
 
@@ -26509,8 +25194,6 @@ ea2(data.frame(FATOR1,FATOR2,FATOR3,RESP),design = 7)
 Médias seguidas de mesma letra maiúscula na linha, minúscula em itálico dentro dos níveis do Fator 2, e minúsculo dentro dos níveis do Fator 1 não diferem pelo teste de Tukey ($p\leqslant 0,05$). $^*,^{**},^{ns}$, significativo a 5%, 1% e não significativo pelo teste F.
 
 <br><br><br><br>
-
-<!--chapter:end:09-fat3.Rmd-->
 
 # Esquema de Parcelas Subdivididas
 
@@ -27451,8 +26134,6 @@ psub2.dbc(FATOR1,FATOR2,repe,RESP)
 
 <br><br><br><br>
 
-<!--chapter:end:10-psub.Rmd-->
-
 # Polinômios Ortogonais
 
 ****
@@ -28315,8 +26996,6 @@ legend("bottomleft", bty="n",legend=c(expression(Y==6.457143+0.06304762 *x-0.001
 
 <br><br><br><br>
 
-<!--chapter:end:11-pol.Rmd-->
-
 # Análise conjunta
 
 ****
@@ -28963,16 +27642,11 @@ kable(tabela, align = "c", col.names = c("Mês 2"," ","Mês 4"," ","Mês 6"," ")
 
 <br><br><br><br>
 
-
-<!--chapter:end:12-conjdbc.Rmd-->
-
 # Gráficos em R
 
 <br><br>
 
 ****
-
-<!--chapter:end:13-graph.Rmd-->
 
 # Gráfico de Colunas 
 
@@ -30810,8 +29484,6 @@ arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 
 <br><br><br>
 
-<!--chapter:end:14-coluna.Rmd-->
-
 # Caixas (Boxplot)
 
 ****
@@ -31325,8 +29997,6 @@ ggboxplot(dados,
 <br><br><br>
 
 ****
-
-<!--chapter:end:15-caixas.Rmd-->
 
 # Regressão
 
@@ -31856,8 +30526,6 @@ curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue"
 
 <br><br><br>
 
-<!--chapter:end:16-regplot.Rmd-->
-
 # Histograma
 
 ****
@@ -32127,9 +30795,6 @@ axis(1)
 
 ****
 
-
-<!--chapter:end:17-hist.Rmd-->
-
 # Setores circulares 
 
 ****
@@ -32321,9 +30986,6 @@ pie3D(proporção*100,
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:18-pizza.Rmd-->
 
 # Interação
 
@@ -32852,9 +31514,6 @@ interaction.ABC.plot(media,F1,F2,F3,data=data,
 
 ****
 
-
-<!--chapter:end:19-interaction.Rmd-->
-
 # Perfil Individual
 
 ****
@@ -32915,9 +31574,6 @@ with(dados, xyplot(RESP ~ FATOR2|FATOR1, groups=repe, type="o", ylab='CBM', stri
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:20-perfil.Rmd-->
 
 # Linhas
 
@@ -33410,8 +32066,6 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
 
 ****
 
-<!--chapter:end:21-linhas.Rmd-->
-
 # Correlação
 
 ****
@@ -33807,9 +32461,6 @@ qgraph(corre, shape="circle",
 
 ****
 
-
-<!--chapter:end:22-corre.Rmd-->
-
 # Radar
 
 ****
@@ -33941,16 +32592,13 @@ library(plotly)
 ```
 
 <!--html_preserve--><div id="htmlwidget-a3540d683b69f0d4c71c" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a3540d683b69f0d4c71c">{"x":{"visdat":{"1c2c6f4d362d":["function () ","plotlyVisDat"]},"cur_data":"1c2c6f4d362d","attrs":{"1c2c6f4d362d":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"1c2c6f4d362d.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"1c2c6f4d362d.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"1c2c6f4d362d.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"1c2c6f4d362d.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"1c2c6f4d362d.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0,5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0,5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0,5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0,5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0,5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0,5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-a3540d683b69f0d4c71c">{"x":{"visdat":{"42481219655d":["function () ","plotlyVisDat"]},"cur_data":"42481219655d","attrs":{"42481219655d":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"42481219655d.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"42481219655d.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"42481219655d.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"42481219655d.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"42481219655d.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0,5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0,5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0,5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0,5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0,5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0,5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 </center>
 
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:23-radar.Rmd-->
 
 # Intervalo de confiança
 
@@ -34051,9 +32699,6 @@ abline(h=0)
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:24-ic.Rmd-->
 
 # Quantis Teóricos 
 
@@ -34169,9 +32814,6 @@ hnp::hnp(mod,
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:25-qt.Rmd-->
 
 # Componentes principais
 
@@ -35408,9 +34050,6 @@ sorted.loadings3 <- load[order(load[,3]),3]
 
 ****
 
-<!--chapter:end:26-cp.Rmd-->
-
-
 # Dendograma
 
 ****
@@ -35640,9 +34279,6 @@ plot(as.phylo(R),
 <br><br><br>
 
 ****
-
-
-<!--chapter:end:27-dend.Rmd-->
 
 # Expression()
 
@@ -35962,9 +34598,6 @@ legend=expression(hat(Y)==ax^2+bx+c),
 
 ****
 
-
-<!--chapter:end:28-expression.Rmd-->
-
 # layout (graphics)
 
 ****
@@ -36183,9 +34816,6 @@ plot(c(1,6,1,6,1,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blu
 
 ****
 
-
-<!--chapter:end:29-layoutgraphics.Rmd-->
-
 # ggplot2
 
 ****
@@ -36294,10 +34924,6 @@ grid.arrange(a,b,c,
 <img src="livroagro_files/figure-html/unnamed-chunk-665-1.png" width="672" />
 
 <br><br><br>
-
-
-
-<!--chapter:end:30-ggplot2.Rmd-->
 
 # Análise de regressão linear e não-linear
 
@@ -38363,9 +36989,6 @@ Cedergreen-Ritz-Streibig 3      325,8427   336,6371   0,9763901
 Cedergreen-Ritz-Streibig 4      277,7064   290,6597   0,9892136
 Exponencial                     511,5978   518,0744   0,5422488
 
-
-<!--chapter:end:31-regression.Rmd-->
-
 # Análise de sobrevivência
 
 *****
@@ -39333,8 +37956,6 @@ grid.arrange(g2,g3,g4,g5,g6,g7,g8,ncol=4)
 
 <br><br><br><br><br><br>
 
-<!--chapter:end:32-survival.Rmd-->
-
 # Modelo linear generalizado
 
 ## Conjunto de dados
@@ -40126,9 +38747,6 @@ curve(predict(bin2,data.frame(d=x),type="resp"),add=TRUE, lty=2,col="darkblue") 
 ```
 
 <img src="livroagro_files/figure-html/unnamed-chunk-793-1.png" width="672" />
-
-<!--chapter:end:33-glm.Rmd-->
-
 
 <!--chapter:end:livroagro.Rmd-->
 

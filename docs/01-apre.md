@@ -1,4 +1,0 @@
-# Apresentação
-
-![](capanovo.png)
-
