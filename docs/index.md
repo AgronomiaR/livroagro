@@ -14,6 +14,10 @@ description: "Este é um livro virtual desenvolvido com a finalidade de fornecer
 
 # Apresentação
 
+**Obs. Em função do tamanho do arquivo, separei em várias "páginas". O acesso para as demais pode ser encontrado ao final do sumário**
+
+<br><br>
+
 ![](capanovo.png)
 
 # Estatística Descritiva
