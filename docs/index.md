@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R para Agronomia"
 author: "Gabriel Danilo Shimizu"
-date: "2020-05-13"
+date: "2020-05-31"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -14,11 +14,1390 @@ description: "Este é um livro virtual desenvolvido com a finalidade de fornecer
 
 # Apresentação
 
-**Obs. Em função do tamanho do arquivo, separei em várias "páginas". O acesso para as demais pode ser encontrado ao final do sumário**
+Este livro virtual partiu de uma idéia de ajudar os profissionais da agronomia, em especial a área acadêmica, fornecendo tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. Esse projeto não é vinculado diretamente a nenhuma instituição, e tampouco custeada financeiramente, ela é unicamente desenvolvida por iniciativa própria.
+
+O R é uma linguagem de programação muito utilizada na âmbito da estatística e na ciência de dados. Na Agronomia, o conhecimento sobre essa linguagem é um diferencial, sobretudo na carreira acadêmica, pois sua limitação gráfica e de análises é praticamente inexistente. 
+
+Dúvidas, sugestões e críticas podem ser encaminhadas ao e-mail: shimizu@uel.br
+
+**Obs.** Em função do tamanho do arquivo, separei em várias "páginas". O acesso para as demais pode ser encontrado ao final do sumário
 
 <br><br>
 
 ![](capanovo.png)
+
+# O que é o R
+
+R é um ambiente computacional e uma linguagem de programação especializada em manipulação, análise e visualização gráfica de dados. Na atualidade é considerado o melhor ambiente computacional para essa finalidade. O ambiente está disponível para diferentes sistemas operacionais: Unix/Linux, Mac e Windows.
+
+Foi criado originalmente por Ross Ihaka e por Robert Gentleman no departamento de Estatística da Universidade de Auckland, Nova Zelândia. Posteriormente, foi desenvolvido pelo esforço colaborativo de pessoas em vários locais do mundo.
+
+O nome R provém em parte das iniciais dos criadores (Ross Ihaka e Robert Gentleman) e também de um jogo figurado com a linguagem S (da Bell Laboratories, antiga AT&T).
+
+R é um ambiente e uma linguagem de programação similar ao S, contudo, é uma implementação distinta do S. Muitos códigos escritos para o S podem ser executados inalterados no R e vice-versa.
+
+R é altamente expansível com o uso dos pacotes. Os pacotes são bibliotecas com dados e funções para diferentes áreas do conhecimento relacionado a estatística e áreas afins.
+
+Um conjunto básico de pacotes vem embutido na instalação do R, com muito outros disponíveis na rede de distribuição do R (em inglês CRAN).
+
+A linguagem R é largamente usada entre estatísticos e analistas de dados para desenvolver software de estatística e análise de dados. Pesquisas e levantamentos com profissionais da área mostram que a popularidade do R aumentou substancialmente nos últimos anos.
+
+## Porque utilizar o R?
+
+ - Software gratuito com código aberto com uma linguagem acessível; Expansão exponencial entre pesquisadores, engenheiros e estatísticos;
+ - Se reinventa constantemente através de novas aplicações (aproximadamente 14.762 pacotes);
+ - Cobertura inigualável, tecnologia de ponta;
+ - Totalmente flexível, permitindo desenvolver facilmente funções e pacotes para facilitar o trabalho;
+ - Capacidade gráfica;
+ - Disponível para diferentes plataformas: Windows, Linux e Mac.
+
+Atualizado em: 04/11/2019 ([CRAN](https://cran.r-project.org/web/packages/))
+
+[Script](https://agronomiar.000webhostapp.com/script.R)
+
+[Dados](https://agronomiar.000webhostapp.com/dados.xlsx)
+
+![](packages.gif)
+
+# Instalação do software R
+
+link para download:
+
+[Software R](https://www.r-project.org/)
+
+[R Studio](https://www.rstudio.com/products/rstudio/download/)
+
+Acessar: https://www.r-project.org/ 
+ 
+Ir em: Download > CRAN
+
+![](install1.png) 
+
+Ir em: Universidade Federal do Paraná
+
+![](install2.png) 
+ 
+Ir em: Escolher a opção do sistema operacional do computador
+
+![](install3.png)  
+
+Ir em: Instalar R pela primeira vez
+
+![](install4.png) 
+
+![](install5.png) 
+
+[Versões anteriores do R](https://cran.r-project.org/bin/windows/base/old/)
+
+Executar o instalador
+
+## Instalando RStudio
+
+Acessar: https://www.rstudio.com/ 
+ 
+Ir em: Download 
+
+![](install6.png)
+
+![](install7.png)
+ 
+Baixar a versão do Rstudio correspondente ao seu sistema operacional
+
+![](install8.png)
+
+Executar o instalador.
+
+## Primeiros passos
+
+Abra o Rstudio
+
+![](install9.png)
+ 
+Ambiente Rstudio
+
+![](install10.png)
+ 
+Source: é seu script (Sempre construir o script aqui, nunca no console)
+Console: é a saída
+Dados e histórico: é onde está os dados e tudo que foi realizado durante a análise
+Plots, files, packages, ajuda: é a saída gráfica, as pastas do diretório atual, os pacotes instalados e a ajuda
+
+## Instalando packages
+
+![](install11.png)
+
+![](install12.png) 
+
+![](install13.png)
+ 
+Digitar o nome do pacote desejado e depois em “Install”.
+
+![](install16.png) 
+Toda vez que aparecer o ícone em vermelho, o Rstudio está trabalhando, dessa forma, não executar mais nada até o ícone desaparecer.
+ 
+![](install15.png) 
+
+## Chamando pacote no Rstudio
+
+Função: 
+
+`library(nome do pacote)`
+`require(nome do pacote)`
+
+nome do pacote::
+
+Ex. library(readxl); require(readxl); readxl::
+
+# Importação de dados 
+
+## Importação de dados do excel
+
+<center>
+
+[![](excelR.png)]()
+
+</center>
+
+### Utilizando a package readxl
+
+Existem diversas formas de exportar arquivos para o R. Uma das mais utilizadas é a importação de um arquivo em excel.
+
+O excel pode possuir dois tipos de extensão, **.xls** ou **.xlsx**, sendo as versões anteriores e superiores ao office 2010, respectivamente. 
+
+Uma das packages mais utilizadas para exportar os dados de um arquivo em excel é chamado de **"readxl"**. 
+
+Para importar por esse pacote, devemos seguir os passos a seguir:
+
+### Especificar o diretório onde fica o arquivo em excel.
+
+Uma das formas de especificar o diretório buscando a pasta manualmente, como na Figura 1 (copiar e colar no Source do Rstudio). 
+
+<center>
+
+![Figura 1: Especificando diretório de trabalho](pasta.png)
+
+</center>
+
+A seguir, é necessário trocar as barras de \ para / ou adicionar mais uma \\ (\\ para \\) e colocar dentro do comando setwd e o diretório entre aspas.
+
+Obs. O diretório abaixo é do **meu computador**!!!
+
+
+```r
+setwd("C:\\Users\\Gabriel Shimizu\\Dropbox\\ProjetoExperimental\\Análise Descritiva")
+
+## ou
+
+setwd("C:/Users/Gabriel Shimizu/Dropbox/ProjetoExperimental/Análise Descritiva")
+```
+
+Obs. **Sempre que for alterar a local da pasta, devemos alterar a localização do diretório!!!**
+
+### Opção 2 para especificar diretório
+
+Atalho: ctrl+shift+h
+
+Este comando irá buscar as **pastas** (não irá aparecer nenhum arquivo a menos que seja uma pasta). Buscar a pasta que contém o arquivo (Deverá saber onde fica, pois por esse método, o arquivo em extensão excel não irá aparecer, uma vez que o excel não é uma pasta)
+
+Após encontrar, clicar em **"open"**. No console do R irá aparecer **setwd(localização)**, esta é a localização. Recomendo copiar e colar no **Source** do Rstudio
+
+### Conferir se o arquivo está no diretório especificado
+
+
+```r
+dir()
+```
+
+### Ativando a package e importando o arquivo
+
+Antes de ativar o pacote, deve-se instalar o mesmo (Ver guia de instalação - [Instalação](https://agronomiar.000webhostapp.com/manual_instalacao.pdf))
+
+
+```r
+library(readxl)
+dados=read_excel("DIC.xlsx", sheet=1)
+```
+
+O argumento sheet=1, está se referindo a planilha 1 do arquivo em excel (podemos exportar de outras planilhas)
+
+**Obs. No caso de extensão ".xls", não esquecer de mudar!!!**
+
+### Ajuda
+
+
+```r
+?readxl
+```
+
+[Conjunto de dados](https://agronomiar.000webhostapp.com/DIC.xlsx)
+
+## Importação de dados em csv
+
+Existem diversas formas de exportar arquivos para o R. Uma das mais utilizadas é a importação de um arquivo em extensão .csv.
+
+Para importar dados de um arquivo em .csv, podemos usar os comandos read.csv (arquivo separado por vírgula e decimal por ponto) ou read.csv2 (Arquivo separado por ponto e vírgula e decimental por vírgula). 
+
+Para importar dados em extensão .csv, devemos seguir os passos a seguir:
+
+### Especificar o diretório onde fica o arquivo de dados.
+
+Uma das formas de especificar o diretório buscando a pasta manualmente, como na Figura 1 (copiar e colar no Source do Rstudio). 
+
+<center>
+
+![Figura 1: Especificando diretório de trabalho](pasta.png)
+
+</center>
+
+A seguir, é necessário trocar as barras de \ para / ou adicionar mais uma \\ (\\ para \\) e colocar dentro do comando setwd e o diretório entre aspas.
+
+Obs. O diretório abaixo é do **meu computador**!!!
+
+
+```r
+setwd("C:\\Users\\Gabriel Shimizu\\Dropbox\\SITE\\EXPERIMENTAL")
+
+## ou
+
+setwd("C:/Users/Gabriel Shimizu/Dropbox/SITE/EXPERIMENTAL")
+```
+
+Obs. **Sempre que for alterar a local da pasta, devemos alterar a localização do diretório!!!**
+
+### Opção 2 para especificar diretório
+
+Atalho: ctrl+shift+h
+
+Este comando irá buscar as **pastas** (não irá aparecer nenhum arquivo a menos que seja uma pasta). Buscar a pasta que contém o arquivo (Deverá saber onde fica, pois por esse método, o arquivo em extensão excel não irá aparecer, uma vez que o excel não é uma pasta)
+
+Após encontrar, clicar em **"open"**. No console do R irá aparecer **setwd(localização)**, esta é a localização. Recomendo copiar e colar no **Source** do Rstudio
+
+### Conferir se o arquivo está no diretório especificado
+
+
+```r
+dir()
+```
+
+### Importando o arquivo
+
+## Arquivo separado por ponto e vírgula e decimal separado por vírgula
+
+
+```r
+dados=read.csv2("DIC (CSV ponto e virgula).csv")
+dados
+```
+
+### Arquivo separado por vírgula e decimal com ponto
+
+
+```r
+dados=read.csv("DIC (CSV virgula).csv", sep=",")
+dados
+```
+
+
+[Dados (Separado por vírgula)](https://agronomiar.000webhostapp.com/DIC (CSV virgula).csv)
+
+[Dados (Separado por ponto e vírgula)](https://agronomiar.000webhostapp.com/DIC (CSV ponto e virgula).csv)
+
+# Tabulação de dados
+
+Apesar da simplicidade em se tabular dados em uma planilha excel, a grande maioria dos acadêmicos tem dificuldade em se efetuar tal tarefa. Isso torna-se ainda pior, quando os mesmos precisam tabular de uma forma específica para um determinado *Software*. Nesse contexto, o presente tutorial tem a finalidade de auxiliar os usuários de R a estruturar a planilha em excel de tal forma a facilitar as análises com ênfase em experimentação agronômica.
+
+****
+
+**O que não colocar em sua planilha!**
+
+<br>
+
+ - Frequentemente é comum que os usuários de excel realizem cálculos de medidas de posição e dispersão, tais como média, variância, desvio-padrão, etc… Entretanto, essas células preenchidas por tais estatísticas de nada contribuem para quem irá trabalhar com o R, muito pelo contrário, acabam gerando mais trabalho, visto que em alguns casos podem ocasionar confundimento no *Software*;
+
+ - Deve-se evitar nomes de colunas muito extensos, pois operacionalmente digitar tais nomes pode gerar complicações futuras;
+
+ - Nome de colunas sempre na primeira linha;
+
+ - Evitar nome dos níveis do fator (Tratamentos) como numérico (1,2,3,4,…), exceto quando os tratamentos são quantitativos;
+
+ - Evitar pular células (Células em branco), a menos que tenha dados faltantes (parcelas perdidas).
+
+<br>
+
+<center>
+
+**Monte a planilha da forma mais simples possível!!!**
+
+</center>
+
+<br>
+
+****
+
+## DIC unifatorial
+
+<br>
+
+Experimentos em delineamento inteiramente casualizado só possuem o tratamento como fator. Dessa forma, em uma planilha, só necessitamos de **uma coluna de tratamentos e uma coluna de resposta**. 
+
+Quando há mais de uma variável resposta, pode-se adicionar as variáveis em cada coluna, lado a lado.
+
+Abaixo, segue um imagem de como montar um arquivo em excel de um experimento em DIC com seis tratamentos e quatro repetições e o link para o download de um arquivo em excel (extensão .xlsx)
+
+<center>
+
+![](dic.png){ width=1000}
+
+</center>
+
+**Download**: [DIC](https://agronomiar.000webhostapp.com/excel_DIC.xlsx)
+
+<br>
+
+****
+
+<br>
+
+## DBC unifatorial
+
+<br>
+
+Experimentos em delineamento em blocos casualizados possuem o tratamento e o bloco como fatores. Dessa forma, em uma planilha necessitamos de **uma coluna de tratamentos, uma coluna do bloco e uma coluna de resposta**. 
+
+Quando há mais de uma variável resposta, pode-se adicionar as variáveis em cada coluna, lado a lado.
+
+Abaixo, segue um imagem de como montar um arquivo em excel de um experimento em DBC com seis tratamentos e quatro blocos e o link para o download de um arquivo em excel (extensão .xlsx)
+
+<center>
+
+![](dbc.png){ width=1000}
+
+</center>
+
+**Download**: [DBC](https://agronomiar.000webhostapp.com/excel_DBC.xlsx)
+
+<br>
+
+****
+
+<br>
+
+## DQL
+
+<br>
+
+Experimentos em delineamento em quadrado latino possuem o tratamento, a linha e a coluna como fatores. Dessa forma, em uma planilha necessitamos de **uma coluna de tratamentos, uma da linha, uma da coluna e uma da resposta**. 
+
+Quando há mais de uma variável resposta, pode-se adicionar as variáveis em cada coluna, lado a lado.
+
+Abaixo, segue um imagem de como montar um arquivo em excel de um experimento em DBC com seis tratamentos e quatro blocos e o link para o download de um arquivo em excel (extensão .xlsx)
+
+<center>
+
+![](dql.png){ width=1000}
+
+</center>
+
+**Download**: [DQL](https://agronomiar.000webhostapp.com/excel_DQL.xlsx)
+
+<br>
+
+****
+
+<br>
+
+## Fatorial duplo em DIC
+
+<br>
+
+Experimentos em delineamento inteiramente casualizado em que há mais de um fator estudado, ou seja, possui um fator A e um fator B, necessitam ser tabulados da seguinte forma: **uma coluna do fator A, uma coluna do Fator B e uma coluna de resposta**. 
+
+Quando há mais de uma variável resposta, pode-se adicionar as variáveis em cada coluna, lado a lado.
+
+Quando há mais um fator (três fatores), adicionar uma coluna ao lado do fator 3.
+
+Abaixo, segue um imagem de como montar um arquivo em excel de um experimento em DBC com seis tratamentos e quatro blocos e o link para o download de um arquivo em excel (extensão .xlsx)
+
+<center>
+
+![](fatdic.png){ width=1000}
+
+</center>
+
+**Download**: [DIC Fatorial](https://agronomiar.000webhostapp.com/excel_fatdic.xlsx)
+
+<br>
+
+****
+
+<br>
+
+## Fatorial Duplo em DBC
+
+<br>
+
+Experimentos em delineamento inteiramente casualizado em que há mais de um fator estudado, ou seja, possui um fator A e um fator B, necessitam ser tabulados da seguinte forma: **uma coluna do fator A, uma coluna do Fator B e uma coluna de resposta**. 
+
+Quando há mais de uma variável resposta, pode-se adicionar as variáveis em cada coluna, lado a lado.
+
+Quando há mais um fator (três fatores), adicionar uma coluna ao lado do fator 3.
+
+Abaixo, segue um imagem de como montar um arquivo em excel de um experimento em esquema fatorial 2 x 3, com dois níveis do fator A e três níveis do fator B, com quatro repetições e o link para o download de um arquivo em excel (extensão .xlsx)
+
+<center>
+
+![](fatdbc.png){ width=1000}
+
+</center>
+
+**Download**: [DBC Fatorial](https://agronomiar.000webhostapp.com/excel_fatdbc.xlsx)
+
+<br>
+
+****
+
+<br>
+
+## Parcela subdividida em DIC
+
+<br>
+
+Experimentos em delineamento inteiramente casualizado em que os tratamentos são posicionados em parcelas e subparcelas, caracterizam o esquema de parcela subdividida e possuem dois fatores estudados, dessa forma, necessitam ser tabulados da seguinte forma: **uma coluna do fator A, uma coluna da repetição, uma coluna do Fator B e uma coluna de resposta**. 
+
+Quando há mais de uma variável resposta, pode-se adicionar as variáveis em cada coluna, lado a lado.
+
+Abaixo, segue um imagem de como montar um arquivo em excel de um experimento em esquema de parcelas subdivididas 2 x 3, com dois níveis da parcela e três níveis da subparcela, com três repetições e o link para o download de um arquivo em excel (extensão .xlsx)
+
+<center>
+
+![](psub.png){ width=1000}
+
+</center>
+
+**Download**: [DIC Parcela subdividida](https://agronomiar.000webhostapp.com/excel_psubdic.xlsx)
+
+<br>
+
+****
+
+<br>
+
+## Parcela subdividida em DBC
+
+<br>
+
+Experimentos em delineamento em blocos casualizados em que os tratamentos são posicionados em parcelas e subparcelas, caracterizam o esquema de parcela subdividida e possuem dois fatores estudados, bem como o bloco, dessa forma, necessitam ser tabulados da seguinte forma: **uma coluna da parcela, uma coluna dos blocos, uma coluna da subparcela e uma coluna de resposta**. 
+
+Quando há mais de uma variável resposta, pode-se adicionar as variáveis em cada coluna, lado a lado.
+
+Abaixo, segue um imagem de como montar um arquivo em excel de um experimento em esquema de parcelas subdivididas 2 x 3, com dois níveis da parcela e três níveis da subparcela, com quatro blocos e o link para o download de um arquivo em excel (extensão .xlsx)
+
+<center>
+
+![](psubdbc.png){ width=1000}
+
+</center>
+
+**Download**: [DBC Parcela subdividida](https://agronomiar.000webhostapp.com/excel_psubdbc.xlsx)
+
+<br>
+
+****
+
+<br>
+
+
+# Introdução à estatística
+
+<br>
+
+<center>
+
+
+<h1><span style="color:darkblue"> "Estatística é a Ciência que permite obter conclusões a
+partir de dados"</h1></span> (Paul Velleman)
+
+</center>
+
+****
+
+<br>
+
+A Estatística (ou ciência Estatística) é um conjunto de técnicas e métodos de pesquisa que entre outros típicos envolve o planejamento do experimento a ser realizado, a coleta qualificada dos dados, a inferência, o processamento, a análise e a disseminação das informações.
+
+Na estatística trabalhamos com dados, nos quais podem ser obtidos por meio de uma amostra da população em estudo. Como as populações são caracterizadas por medidas numéricas descritivas, denominadas parâmetros, a inferência estatística diz respeito é realização de inferências sobre esses parâmetros populacionais. As inferências podem ser feitas por estimação de parâmetros ou por testes de hipóteses.
+
+<br>
+
+**População**: conjunto de elementos que tem pelo menos uma característica em comum. Esta característica deve delimitar corretamente quais são os elementos da população. A população pode ser classificado como:
+
+  * população ilimitada ou infinita - possui um grande número de elementos que na prática não são possíveis de serem
+contados.
+  * população limitada ou finita - possui um número determinado de elementos, possíveis de serem contados.
+
+**Amostra**: subconjunto de elementos de uma população, que são representativos para estudar a característica de interesse da população. A seleção dos elementos que irão compor a amostra pode ser feita de várias maneiras e irá depender do conhecimento que se tem da população e da quantidade de recursos disponíveis.
+
+<center>
+
+[![](Pop.png)]()
+
+</center>
+
+Uma das principais subdivisões da Estatística é a AMOSTRAGEM. Que reúne os métodos necessários para coletar adequadamente amostras representativas e suficientes para que os resultados obtidos possam ser generalizados para a população de interesse
+
+****
+
+## Etapas de um levantamento por amostragem
+
+****
+
+* Explicitação dos objetivos com bastante clareza - para evitar dúvidas posteriores ou mesmo esquecimentos, devendo ficar bem definida qual a unidade elementar (elemento) ou unidade de análise a ser trabalhada
+
+* Definição da população a ser amostrada - em certas situações isso pode ser relativamente fácil, como no caso
+em que se deseja selecionar uma amostra de uma população de crianças que estejam matriculadas e frequentando certo grupo escolar.
+
+**Escolha das variáveis a serem observadas em cada unidade de análise**
+  
+  * Verificar todos os dados relevantes para a pesquisa e se nenhum dado foi omitido
+  * Existe uma tendência, particularmente ao se trabalhar com populações humanas, usando questionário, com muitas perguntas, um grande número das quais nunca analisadas
+  * Questionários longos, em geral, levam a diminuir a qualidade das respostas
+
+**Escolha da unidade amostral:**
+
+* É a menor parte distinta e identificável da população, para fins de enumeração e sorteio da amostra
+
+* Uma unidade amostral pode ser:
+    * O próprio elemento de estudo
+    * Um conjunto de elementos.
+
+* As unidades amostrais devem cobrir toda a população e um elemento de estudo não pode pertencer ao mesmo tempo a mais de uma unidade amostral
+
+<br>
+
+****
+
+## Estatísticas e parâmetros
+
+****
+
+* Já sabemos a diferença entre amostra e população. Agora, precisamos estabelecer a distinção entre valores obtidos da amostra e valores obtidos da população;
+* O parâmetro resume uma **característica da população**
+* são valores fixos, geralmente desconhecidos e usualmente representados por caracteres gregos
+
+Exemplos:
+
+$\mu$ (média populacional)
+
+$\sigma^2$ (variância populacional)
+
+$\sigma$ (desvio-padrão populacional)
+
+$\rho$ ou $\pi$ proporção populacional
+
+
+* A estatística resume uma característica da amostra
+* É representada por caracteres latinos
+
+* Exemplos:
+
+$\bar{X}$ (média amostral)
+
+$S^2$ (variância amostral)
+
+$S$ (desvio-padrão amostral)
+
+$\hat{p}$ ou $\hat{\pi}$ (proporção amostral)
+
+<br>
+
+****
+
+## Tamanho Amostral
+
+****
+
+<br>
+
+**DETERMINAÇÃO DO TAMANHO DE UMA AMOSTRA COM BASE NA ESTIMATIVA DA MÉDIA POPULACIONAL**
+
+A determinação do tamanho de uma amostra é problema de grande importância, porque:
+ - amostras desnecessariamente grandes acarretam desperdício de tempo e de dinheiro;
+ - e amostras excessivamente pequenas podem levar a resultados não confiáveis.
+
+Em muitos casos é possível determinar o tamanho mínimo de uma amostra para estimar um parâmetro estatístico, como por exemplo, a MÉDIA POPULACIONAL ($\mu$).
+
+A fórmula para cálculo do tamanho da amostra para uma estimativa confiável da MÉDIA POPULACIONAL ($\mu$) é dada por:
+
+<center>
+$n=[\frac{Z_{\frac{\alpha}{2}}\sigma}{e}]$
+</center>
+
+em que:
+
+- n = número de indivíduos na amostra
+- $Z_{\alpha/2}$ = Valor crítico que corresponde ao grau de confiança desejado.
+- $\sigma$ = Desvio-padrão populacional da variável estudada.
+- $e$ = Margem de erro ou ERRO MÁXIMO DE ESTIMATIVA. Identifica a diferença máxima entre a MÉDIA AMOSTRAL ( X ) e a verdadeira MÉDIA POPULACIONAL
+
+<center>
+$e=Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}$
+</center>
+
+Os valores de confiança mais utilizados e os valores de Z:
+
+- Grau de confiança:90%,$\alpha$=0,10, Valor crítico $Z_{\alpha/2}$=1,645
+- Grau de confiança:95%,$\alpha$=0,05, Valor crítico $Z_{\alpha/2}$=1,96
+- Grau de confiança:99%,$\alpha$=0,01, Valor crítico $Z_{\alpha/2}$=2,575
+
+<br>
+
+**DETERMINAÇÃO DO TAMANHO DE UMA AMOSTRA COM DESVIO-PADRÃO DESCONHECIDO**
+
+Não conhecendo o desvio-padrão da população, substituímos $\sigma$ por sua estimativa $s$ e usamos a distribuição t de Student. Porém, se ainda não retiramos a amostra como teremos o $s$?
+
+<center>
+$n=(\frac{t_{n'-1S}}{e})^2$
+</center>
+
+Se $n \leq n'$, a amostra-piloto já terá sido suficiente para a estimação. Caso contrário, deveremos retirar, ainda, da população, os elementos necessários à complementação do tamanho mínimo da amostra.
+
+<br>
+
+****
+
+<h1><span style="color:darkblue">Tipos de Amostragem</h1></span>
+
+****
+
+* Para se obter uma amostra, é preciso definir os critérios que serão usados para selecionar as unidades que irão compor essa amostra
+* De acordo com a técnica usada, podem ser realizados três tipos de amostragem: 
+
+**Amostragem aleatória, casual ou probabilística**
+  
+  * Aleatória simples
+  * Estratificada
+  
+**Amostragem semiprobabilística**
+  
+  * Sistemática
+  * Por conglomerados
+  * Por cotas
+  
+**Amostragem não-probabilística ou de conveniência**
+
+<br>
+
+****
+
+**Amostragem simples**
+
+- É constituída por n unidades retiradas ao acaso da população de tamanho N;
+- Toda unidade da população tem probabilidade conhecida $\frac{n}{N}$ de pertencer à amostra;
+- Para obter uma amostra aleatória simples - a população deve ser conhecida e cada unidade identificada por nome ou por número;
+- Os elementos que constituirão a amostra serão escolhidos por sorteio, que pode ser feito usando-se um software estatístico
+- Na maioria das vezes, usa-se a amostragem sem reposição
+
+<br>
+
+**Amostragem aleatória estratificada**
+
+- é usada quando a população é constituída por unidades heterogêneas para a variável que se quer estudar
+- As unidades da população de tamanho N, devem ser
+identificadas e depois as unidades similares devem ser reunidas em subgrupos chamados estratos de tamanhos $N_1, N_2, ..., N_k$
+- em que $N_1 + N_2 + : : : + N_k = N$
+- Exemplos de estratos:
+    - sexo
+    - renda
+    - idade, etc
+
+- O sorteio dos elementos da amostra é feito dentro de cada estrato
+- Se a população é composta de k estratos:
+- N é o tamanho da população
+- Nh é o tamanho de cada estrato populacional
+- n é o tamanho total da amostra
+- nh é o tamanho da amostra do estrato h, e $n1 + n2 + : : : nk = n$
+
+<br>
+
+**Amostragem sistemática**
+
+- Para realizar a amostragem sistemática é preciso que a população esteja organizada em:
+    - filas
+    - arquivos
+    - domicílios de uma cidade, etc
+- Por exemplo, para tomar uma amostra dos domicílios de uma cidade, parte-se de um ponto sorteado e toma-se, de tantos
+em tantos, um domicílio para a amostra.
+- Devido a sua simplicidade operacional - a amostragem sistemática é amplamente adotada para o sorteio de amostras estratificadas sob o critério de proporcionalidade
+- Na amostragem sistemática, os N elementos da população são reunidos em grupos definidos por um intervalo de amplitude
+j = N=n
+- Desse intervalo, deve ser sorteado um elemento de cada grupo para compor a amostra
+
+<br>
+
+**Amostragem por conglomerado**
+
+- A população é dividida em subpopulações (conglomerados) distintas
+    - Asilo
+    - Quarteirões
+    - Residências
+    - Famílias
+    - Universidade
+    - Serviço militar
+    - Bairros, etc
+- Esse tipo de amostragem é realizado em duas etapas
+    - Primeira etapa - Um subconjunto dos conglomerados é aleatoriamente escolhido;
+    - Segunda etapa - Para cada conglomerado selecionado é escolhida uma amostra aleatória simples para ser incluída na
+amostra aleatória final, ou quando possível analisam-se todos os indivíduos pertencentes aos conglomerados selecionados;
+- Esse tipo de amostragem é menos eficiente que a amostragem aleatória simples ou amostragem estratificada. Porém, é um tipo de amostragem mais econômica;
+- Esse procedimento amostral é adequado quando é possível dividir a população em um grande número de pequenas subpopulações.
+
+<br>
+
+**Amostragem por cotas**
+
+- A idéia de cota é semelhante à de estrato, com uma diferença básica: a amostra é selecionada por julgamento e depois
+confirmadas as características das unidades a amostradas;
+- A amostragem por cotas não é feita de forma aleatória;
+- A vantagem é ser relativamente barata, e por esta razão é muito usada em levantamentos de opinião e pesquisa de mercado;
+- É constituída por n unidades retiradas da população de tamanho N segundo cotas estabelecidas de acordo com a distribuição desses elementos na população;
+- A amostra por cotas exige algum conhecimento da população, mas as unidades não precisam estar numeradas ou identificadas
+
+<br>
+
+**Amostra não-probabilística ou de conveniência**
+
+- A amostragem não-probabilística pode prejudicar sensivelmente a validade de um estudo
+- Isso ocorre porque muitos fatores podem influir na escolha de uma unidade amostral para pertencer à amostra
+- Isso prejudica a sua representatividade em relação à população
+- Existem situações em que ela é (ou necessita) ser utilizada
+
+<br>
+
+# Manipulação de objeto
+
+## Como remover um ponto no R?
+
+*Conjunto de dados*: Neste tutorial iremos trabalhar com dados simulados, considerando um experimento inteiramente casualizado com cinco repetições e cinco tratamentos. Abaixo segue os valores da resposta e os tratamentos.
+
+
+```r
+resposta=c(3.1,3.2,3.4,3.8,4,5.0,5.1,5.6,6.2,7,10,10.2,10.7,11,12,6,6.5,6.2,7,6.9,20,5.2,5.6,5.8,6)
+Trat=rep(c(paste("T",1:5)),e=5)
+```
+
+Este conjunto de dados apresenta um ponto discrepante das demais repetições de um dos tratamentos. Uma das formas de descobrir este ponto é através de um gráfico de caixas, conforme segue abaixo.
+
+<br>
+
+
+```r
+## Utilizando o pacote car
+car::Boxplot(resposta~Trat)
+```
+
+```
+## [1] "21"
+```
+
+<center>
+
+![](boxplot1.png)
+</center>
+
+Inicialmente vamos construir um modelo de análise de variância em DIC sem remover o ponto discrepante e analisar quanto aos pressupostos de normalidade dos erros e homogeneidade das variâncias.
+
+
+```r
+modelo=aov(resposta~Trat)
+shapiro.test(modelo$residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  modelo$residuals
+## W = 0.60825, p-value = 5.291e-07
+```
+
+```r
+bartlett.test(modelo$residuals~Trat)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  modelo$residuals by Trat
+## Bartlett's K-squared = 41.623, df = 4, p-value = 1.997e-08
+```
+
+Pode-se concluir que os pressupostos foram corrompidos e análise de variância não é válida. Dessa forma, poderiamos transformar os dados pela metodologia de Box-Cox (1964), conforme segue abaixo: 
+
+
+```r
+bc=MASS::boxcox(modelo)
+```
+
+<center>
+![](boxcox1.png)
+</center>
+
+
+```r
+lambda=bc$x[which.max(bc$y)]
+modelo=aov((resposta^lambda-1)/lambda~Trat)
+shapiro.test(modelo$residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  modelo$residuals
+## W = 0.9009, p-value = 0.01919
+```
+
+```r
+bartlett.test(modelo$residuals~Trat)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  modelo$residuals by Trat
+## Bartlett's K-squared = 17.295, df = 4, p-value = 0.001693
+```
+
+Nesse exemplo em questão a transformação de dados não resolve os problemas de normalidade dos erros e homogeneidade das variâncias. Neste sentido, as vezes a simples remoção de um ponto discrepante poderia resolver esses problemas. Dessa forma, vamos remover o ponto 21, conforme acusado pela gráfico de caixas.
+
+Para remover o ponto, podemos efetuar de várias formas. Manualmente em cada um dos vetores, criando uma nova variável, usando o comando `with`, entre outros.
+
+**Removendo manualmente em cada vetor**
+
+
+```r
+modelo=aov(resposta[-21]~Trat[-21])
+shapiro.test(modelo$residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  modelo$residuals
+## W = 0.94239, p-value = 0.1844
+```
+
+```r
+bartlett.test(modelo$residuals~Trat[-21])
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  modelo$residuals by Trat[-21]
+## Bartlett's K-squared = 4.5314, df = 4, p-value = 0.3388
+```
+
+
+```r
+car::Boxplot(resposta[-21]~Trat[-21])
+```
+
+<center>
+
+![](boxplot2.png)
+
+</center>
+
+**Criando novos vetores de dados**
+
+
+```r
+Trat1=Trat[-21]
+resposta1=resposta[-21]
+modelo=aov(resposta1~Trat1)
+shapiro.test(modelo$residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  modelo$residuals
+## W = 0.94239, p-value = 0.1844
+```
+
+```r
+bartlett.test(modelo$residuals~Trat1)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  modelo$residuals by Trat1
+## Bartlett's K-squared = 4.5314, df = 4, p-value = 0.3388
+```
+
+
+```r
+car::Boxplot(resposta1~Trat1)
+```
+
+<center>
+![](boxplot2.png)
+</center>
+
+**Removendo utilizando o `with`**
+
+
+```r
+dados=data.frame(Trat,resposta)
+modelo=with(dados[-21,],aov(resposta~Trat))
+shapiro.test(modelo$residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  modelo$residuals
+## W = 0.94239, p-value = 0.1844
+```
+
+```r
+with(dados[-21,],bartlett.test(modelo$residuals~Trat))
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  modelo$residuals by Trat
+## Bartlett's K-squared = 4.5314, df = 4, p-value = 0.3388
+```
+
+
+```r
+with(dados[-21,],car::Boxplot(resposta~Trat))
+```
+
+<center>
+![](boxplot2.png)
+</center>
+
+****
+
+## Como remover um Tratamento?
+
+****
+
+
+```r
+dados=data.frame(Trat,resposta)
+modelo=with(dados[!Trat=="T 5",],aov(resposta~Trat))
+shapiro.test(modelo$residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  modelo$residuals
+## W = 0.93316, p-value = 0.1776
+```
+
+```r
+with(dados[!Trat=="T 5",],bartlett.test(modelo$residuals~Trat))
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  modelo$residuals by Trat
+## Bartlett's K-squared = 3.1774, df = 3, p-value = 0.3651
+```
+
+
+```r
+with(dados[!Trat=="T 5",],car::Boxplot(resposta~Trat))
+```
+
+<center>
+![](boxplot3.png)
+</center>
+
+# Funções úteis 
+
+****
+
+## Como criar um sequência repetida de observações?
+
+****
+
+O primeiro argumento indica o valor que será repetido e o segundo argumento será o número de vezes que será repetido
+
+
+```r
+rep(0,10)        # criando uma sequência de 10 observações 0
+```
+
+```
+##  [1] 0 0 0 0 0 0 0 0 0 0
+```
+
+<br>
+
+
+```r
+rep("T",10)      # criando uma sequência de 10 observações T
+```
+
+```
+##  [1] "T" "T" "T" "T" "T" "T" "T" "T" "T" "T"
+```
+
+<br><br>
+
+Criando uma sequência de cinco observações 1 e 2, sendo cada uma repetida de forma alternada
+
+
+```r
+rep(c(1,2),5)
+```
+
+```
+##  [1] 1 2 1 2 1 2 1 2 1 2
+```
+
+<br><br>
+
+Criando uma sequência de cinco observações 1 e 2, sendo cada uma repetida de forma sequencial (5 primeiras observações são 1 e as demais 2).
+
+
+```r
+rep(c(1,2),e=5)
+```
+
+```
+##  [1] 1 1 1 1 1 2 2 2 2 2
+```
+
+<br><br>
+
+****
+
+## Como criar um sequência númerica com intervalo fixo?
+
+****
+
+
+```r
+seq(1,100,1) # sequencia de 1 a 100 com intervalo de 1 em 1
+```
+
+```
+##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100
+```
+
+<br><br>
+
+****
+
+## Como arredondar valores?
+
+****
+
+
+```r
+ds=rnorm(10,8,2) # Criando um vetor numérico de 10 observações com média 8 e desvio-padrão 2
+```
+
+<br>
+
+
+```r
+round(ds,2)      # Se a observação for menor que .5 arredonda para baixo, do contrário arredonda para cima
+```
+
+```
+##  [1]  9.40  9.21  6.26  5.50  6.42  6.48  7.95  8.36 10.12  9.38
+```
+
+<br>
+
+
+```r
+ceiling(ds)      # sempre arredonda para cima
+```
+
+```
+##  [1] 10 10  7  6  7  7  8  9 11 10
+```
+
+<br>
+
+
+```r
+floor(ds)        # sempre arredonda para baixo
+```
+
+```
+##  [1]  9  9  6  5  6  6  7  8 10  9
+```
+
+# Introdução aos loops
+
+Os *loops* em R são muito utilizados na construção de *packages*, entretanto, podem ser aplicados de diversas formas. Nesta seção iremos abordar os comandos `if()`, `else()`, `ifelse()` e `for()`.
+
+<br><br>
+
+****
+
+## Comando *if* e *else*
+
+****
+
+O comando `if` indica a expressão "se", ou seja, irá retornar uma saída apenas se a condição for atendida.
+
+O comando `else` indica a expressão "do contrário", ou seja, se a condição não for atendida.
+
+<br><br>
+
+**Vejamos um exemplo**:
+
+Queremos testar se x é maior que 0. Vamos adotar em um primeiro caso que x é 10, dessa forma temos:
+
+
+```r
+x=10
+if(x<0){"Menor"}else{"Maior"} 
+```
+
+```
+## [1] "Maior"
+```
+
+<br>
+
+Agora iremos adotar que x é -10, dessa forma temos:
+
+
+```r
+x=-10
+if(x<0){"Menor"}else{"Maior"} 
+```
+
+```
+## [1] "Menor"
+```
+
+<br><br>
+
+****
+
+### Exemplo aplicado à estatística experimental
+
+****
+
+Considere um experimento em delineamento inteiramente casualizado em que o conjunto de dados foi simulado. Foi utilizado cinco tratamentos e quatro repetições, totalizando 20 parcelas.  
+
+
+```r
+set.seed(1) # vamos fixar o conjunto de dados simulados para obter os mesmos valores
+resp=rnorm(20,50,4) # 20 observações de média 50 e desvio-padrão 4
+trat=rep(c(paste("T",1:5)),e=4); trat=as.factor(trat)
+```
+
+<br>
+
+**Vamos criar o modelo da análise de variância**: 
+
+
+```r
+modelo=aov(resp~trat)
+```
+
+<br><br>
+
+Vamos testar a normalidade dos erros e nomear como `norm`
+
+
+```r
+norm=shapiro.test(modelo$residuals)
+norm$p.value # extraindo p-valor
+```
+
+```
+## [1] 0.752246
+```
+
+<br><br>
+
+Vamos usar o *if* e *else* para caso a pressuposição não seja rejeitada, irá retornar a análise de variância, do contrário irá retornar `"Erros não seguem distribuição normal"`. Dessa forma, temos:
+
+
+```r
+if(norm$p.value>0.05){anova(modelo)}else{"Erros não seguem distribuição normal"}
+```
+
+```
+## Analysis of Variance Table
+## 
+## Response: resp
+##           Df  Sum Sq Mean Sq F value Pr(>F)
+## trat       4  44.104  11.026  0.7897 0.5497
+## Residuals 15 209.442  13.963
+```
+
+<br>
+
+Como o *p-valor* calculado foi maior que 0.05, não rejeitamos a hipótese nula que os erros seguem distribuição normal e dessa forma, retornou-se a análise de variância. Entretanto, de forma didática, vamos modificar o *p-valor* da normalidade dos erros e solicitar novamente o *loop*. Dessa forma, temos que:
+
+
+```r
+norm$p.value=0.0001 # Vamos alterar o valor de p para 0.0001 (De forma didática, jamais fazer isso!!!)
+if(norm$p.value>0.05){anova(modelo)}else{"Erros não seguem distribuição normal"}
+```
+
+```
+## [1] "Erros não seguem distribuição normal"
+```
+
+<br>
+
+Assim, como p-valor foi menor que 0.05, o R irá retornar a opção `else`.
+
+<br><br>
+
+****
+
+## Comando ifelse
+
+****
+
+Considere o mesmo exemplo da seção anterior.  
+
+
+```r
+set.seed(1) # vamos fixar o conjunto de dados simulados para obter os mesmos valores
+resp=rnorm(20,50,4) # 20 observações de média 50 e desvio-padrão 4
+trat=rep(c(paste("T",1:5)),e=4); trat=as.factor(trat)
+```
+
+<br>
+
+**Vamos criar o modelo da análise de variância e testar a normalidade dos erros**: 
+
+
+```r
+modelo=aov(resp~trat)
+norm=shapiro.test(modelo$residuals)
+```
+
+O Comando `ifelse` é a união dos comandos `if` e `else`. O primeiro argumento é a pargunta, o segundo argumento é a saída de `if` e o terceiro é a saída de `else`. Vamos gerar a saída de `if` como sendo `"Erros seguem distribuição normal"` e a saída de `else` como `"Erros não seguem distribuição normal"`.
+
+
+```r
+ifelse(norm$p.value>0.05, "Erros seguem distribuição normal","Erros não seguem distribuição normal")
+```
+
+```
+## [1] "Erros seguem distribuição normal"
+```
+
+
+<br><br>
+
+****
+
+## Comando for
+
+****
+
+Chamando o conjunto de dados através do comando for()
+
+
+```r
+set.seed(1)
+x=rnorm(10,0,1)
+for(i in x){print(i)}
+```
+
+```
+## [1] -0.6264538
+## [1] 0.1836433
+## [1] -0.8356286
+## [1] 1.595281
+## [1] 0.3295078
+## [1] -0.8204684
+## [1] 0.4874291
+## [1] 0.7383247
+## [1] 0.5757814
+## [1] -0.3053884
+```
+
+<br><br>
+
+Somando cada observação a um valor constante
+
+
+```r
+set.seed(1)
+x=rnorm(10,0,1)
+for(i in x){result=i+1
+            print(result)}
+```
+
+```
+## [1] 0.3735462
+## [1] 1.183643
+## [1] 0.1643714
+## [1] 2.595281
+## [1] 1.329508
+## [1] 0.1795316
+## [1] 1.487429
+## [1] 1.738325
+## [1] 1.575781
+## [1] 0.6946116
+```
+
+<br><br>
+
+Solicitando se cada valor é maior ou menor que zero
+
+
+```r
+set.seed(1)
+x=rnorm(10,0,1)
+for(i in x){result=if(i<0){"Menor"}else{"Maior"}
+            print(result)}
+```
+
+```
+## [1] "Menor"
+## [1] "Maior"
+## [1] "Menor"
+## [1] "Maior"
+## [1] "Maior"
+## [1] "Menor"
+## [1] "Maior"
+## [1] "Maior"
+## [1] "Maior"
+## [1] "Menor"
+```
+
+<br>
 
 # Estatística Descritiva
 
@@ -638,7 +2017,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-65-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -677,7 +2056,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-68-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -788,7 +2167,7 @@ car::Boxplot(resposta~tratamentos,
 points(Media,col="red", pch=8)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Análise de Variância
 
@@ -870,7 +2249,7 @@ HNP=hnp::hnp(modelo, paint.on=T, col="red" , las=1, pch=8)
 plot(HNP,lty=c(2,3,2),  col=c(2,1,2,1))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -929,7 +2308,7 @@ plot(modelo$res, col="blue",
 abline(h=0, col="red", lwd=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-82-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -977,7 +2356,7 @@ text(c(1:5),
      paste(Media,tukey))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Usando o ExpDes.pt
 
@@ -1075,7 +2454,7 @@ trat=as.factor(rep(paste("T",1:6, sep=""),e=4))
 car::Boxplot(resp~trat)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-88-1.png" width="672" />
 
 <br><br>
 
@@ -1086,7 +2465,7 @@ car::Boxplot(resp~trat)
 hist(resp)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-89-1.png" width="672" />
 
 <br><br>
 
@@ -1192,7 +2571,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[2]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-94-1.png" width="672" />
 
 <br><br>
 
@@ -1213,7 +2592,7 @@ mcomp=glht(modelo, mcp(trat="Tukey"))
 plot(mcomp)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-52-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-95-1.png" width="672" />
 
 ```r
 cld(mcomp)
@@ -1262,7 +2641,7 @@ cld(mcomp)
 plot(tukey)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-53-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-96-1.png" width="672" />
 
 <br>
 
@@ -1275,7 +2654,7 @@ tukey=HSD.test(modelo,"trat")
 plot(tukey)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-54-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-97-1.png" width="672" />
 
 <br>
 
@@ -1500,7 +2879,7 @@ plot(sk)
 box()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-61-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-104-1.png" width="672" />
 
 <br>
 
@@ -1757,7 +3136,7 @@ cultivar=as.factor(cultivar)
 car::Boxplot(resposta~cultivar)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-65-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-108-1.png" width="672" />
 
 ```
 ## [1] "18"
@@ -1772,7 +3151,7 @@ car::Boxplot(resposta~cultivar)
 hist(resposta)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-66-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-109-1.png" width="672" />
 
 <br>
 
@@ -1864,7 +3243,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[2]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-114-1.png" width="672" />
 
 As pressuposições de normalidade dos erros e homogeneidade das variâncias não foram atendidas. Dessa forma, vamos transformar os dados e conferir novamente as pressuposições!
 
@@ -1885,7 +3264,7 @@ As pressuposições de normalidade dos erros e homogeneidade das variâncias nã
 MASS::boxcox(aov(resposta+0.000001~cultivar))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-72-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-115-1.png" width="672" />
 
 <br>
 
@@ -1896,7 +3275,7 @@ MASS::boxcox(aov(resposta+0.000001~cultivar))
 bc=MASS::boxcox(aov(resposta+0.000001~cultivar))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-116-1.png" width="672" />
 
 ```r
 bc$x[which.max(bc$y)]
@@ -1992,7 +3371,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[2]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-78-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-121-1.png" width="672" />
 
 <br>
 
@@ -2009,7 +3388,7 @@ mcomp=glht(modelo, mcp(cultivar="Tukey"))
 plot(mcomp)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-79-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-122-1.png" width="672" />
 
 ```r
 cld(mcomp)
@@ -2049,7 +3428,7 @@ cld(mcomp)
 plot(tukey)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-80-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-123-1.png" width="672" />
 
 <br>
 
@@ -2062,7 +3441,7 @@ tukey=HSD.test(modelo,"cultivar")
 plot(tukey)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-81-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-124-1.png" width="672" />
 
 <br>
 
@@ -2214,7 +3593,7 @@ mediab=tapply(RESP, TRAT, mean)
 points(mediab, pch='+', cex=1.5, col='red')
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-87-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-130-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -2278,7 +3657,7 @@ Como p-valor calculado ($p=0,07878$) é maior que o nível de significância ado
 hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-90-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-133-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -2318,7 +3697,7 @@ library(MASS)
 bc=boxcox(mod)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-92-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-135-1.png" width="672" />
 
 ```r
 bc$x[which.max(bc$y)]
@@ -2646,7 +4025,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -2685,7 +4064,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-104-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-147-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -2777,7 +4156,7 @@ bloco=as.factor(rep(c(paste("B",1:3)),9))
 car::Boxplot(resposta~cultivar)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-106-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-149-1.png" width="672" />
 
 <br>
 
@@ -2788,7 +4167,7 @@ car::Boxplot(resposta~cultivar)
 hist(resposta)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-107-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-150-1.png" width="672" />
 
 <br>
 
@@ -2901,7 +4280,7 @@ plot(modelo$residuals/sqrt(a$`Mean Sq`[3]), ylab="Resíduos Padronizados")
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-113-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-156-1.png" width="672" />
 
 <br><br>
 
@@ -2918,7 +4297,7 @@ mcomp=glht(modelo, mcp(cultivar="Tukey"))
 plot(mcomp)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-114-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" />
 
 ```r
 cld(mcomp)
@@ -2994,7 +4373,7 @@ cld(mcomp)
 plot(tukey)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-115-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-115-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-158-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-158-2.png" width="672" />
 
 <br>
 
@@ -3007,7 +4386,7 @@ tukey=HSD.test(modelo,"cultivar")
 plot(tukey)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-116-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-159-1.png" width="672" />
 
 <br>
 
@@ -3193,8 +4572,8 @@ points(mediab, pch='+', cex=1.5, col='red')
 ```
 
 <div class="figure" style="text-align: center">
-<img src="index_files/figure-html/unnamed-chunk-122-1.png" alt="Gráfico de caixas" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-122)Gráfico de caixas</p>
+<img src="index_files/figure-html/unnamed-chunk-165-1.png" alt="Gráfico de caixas" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-165)Gráfico de caixas</p>
 </div>
 
 ```r
@@ -3270,8 +4649,8 @@ hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="index_files/figure-html/unnamed-chunk-125-1.png" alt="Gráfico QQplot \label{Fig:QQ}" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-125)Gráfico QQplot \label{Fig:QQ}</p>
+<img src="index_files/figure-html/unnamed-chunk-168-1.png" alt="Gráfico QQplot \label{Fig:QQ}" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-168)Gráfico QQplot \label{Fig:QQ}</p>
 </div>
 
 <br>
@@ -3338,8 +4717,8 @@ abline(h=0)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="index_files/figure-html/unnamed-chunk-128-1.png" alt="Gráfico de resíduos brutos \label{fig:res}" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-128)Gráfico de resíduos brutos \label{fig:res}</p>
+<img src="index_files/figure-html/unnamed-chunk-171-1.png" alt="Gráfico de resíduos brutos \label{fig:res}" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-171)Gráfico de resíduos brutos \label{fig:res}</p>
 </div>
 
 <br><br>
@@ -3361,7 +4740,7 @@ kable(tabela, align = 'l', booktabs=T, caption="Teste de comparação de Scott-K
 
 
 
-Table: (\#tab:unnamed-chunk-129)Teste de comparação de Scott-Knott
+Table: (\#tab:unnamed-chunk-172)Teste de comparação de Scott-Knott
 
 Cultivar   Média          
 ---------  ----------  ---
@@ -3548,7 +4927,7 @@ Usando a função
 croqui(trat)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-133-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-176-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -3700,7 +5079,7 @@ car::Boxplot(RESP~TRAT,
 points(Media,col="red", pch=8)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-138-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -3770,7 +5149,7 @@ Como p-valor calculado (p=$0.438$) é maior que o nível de significância adota
 hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-141-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-184-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -3835,7 +5214,7 @@ plot(mod$res, las=1, pch=19, col='red')
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-187-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -3993,7 +5372,7 @@ TukeyHSD(mod, "TRAT", ordered = TRUE)
 plot(TukeyHSD(mod, "TRAT"), col='blue', las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-147-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-190-1.png" width="672" />
 
 <br>
 
@@ -4207,7 +5586,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-151-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-194-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4247,7 +5626,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-154-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -4291,7 +5670,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4331,7 +5710,7 @@ Usando a função
 croqui(trat,r=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-160-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" />
 
 
 <br><br><br>
@@ -4475,7 +5854,7 @@ mediab=with(dados,tapply(resp, F1, mean))
 points(mediab, pch='+', cex=1.5, col='red')
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-168-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-211-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4491,7 +5870,7 @@ mediab=with(dados,tapply(resp, F2, mean))
 points(mediab, pch='+', cex=1.5, col='red')
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-169-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-212-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4505,7 +5884,7 @@ caixas=with(dados, car::Boxplot(resp ~ F1*F2, vertical=T,las=1, col='Lightyellow
                     xlab=X, ylab=Y))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-170-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-213-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -4517,7 +5896,7 @@ with(dados, interaction.plot(F2, F1, resp, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="FATOR1"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-171-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-214-1.png" width="672" />
 
 
 ```r
@@ -4526,7 +5905,7 @@ with(dados, interaction.plot(F1, F2, resp, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="FATOR2"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-172-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-215-1.png" width="672" />
 
 <br><br>
 
@@ -4614,7 +5993,7 @@ H_1: & \mbox{Os erros não seguem distribuição normal}.
 hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-176-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-219-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -4712,7 +6091,7 @@ plot(mod$res, las=1, pch=19, col='red', ylab='Resíduos brutos')
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-224-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5172,7 +6551,7 @@ par(mai=c(2,0.8,0.5,0.5))
 car::Boxplot(RENDIMENTO~paste(FATOR1,FATOR2,FATOR3), las=2, xlab="")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-189-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-232-1.png" width="1152" />
 
 <br>
 
@@ -5189,21 +6568,21 @@ interaction.plot(FATOR1,FATOR2,RESP, ylab="Resposta")
 interaction.plot(FATOR2,FATOR1,RESP, ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-190-1.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="768" style="display: block; margin: auto;" />
 
 ```r
 interaction.plot(FATOR1,FATOR3,RESP, ylab="Resposta")
 interaction.plot(FATOR2,FATOR1,RESP, ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-190-2.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-233-2.png" width="768" style="display: block; margin: auto;" />
 
 ```r
 interaction.plot(FATOR2,FATOR3,RESP, ylab="Resposta")
 interaction.plot(FATOR3,FATOR2,RESP, ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-190-3.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-233-3.png" width="768" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5269,7 +6648,7 @@ hnp::hnp(modelo)
 ## Gaussian model (aov object)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-192-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" style="display: block; margin: auto;" />
 
 Como p-valor calculado ($p=0.217$) é menor que o nível de significância adotado ($\alpha=0.05$), não rejeita-se $H_0$. Logo, os erros podem ser considerados normais
 
@@ -5329,7 +6708,7 @@ abline(h=c(0,3,-3),
        col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-195-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-238-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -5977,7 +7356,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-243-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6018,7 +7397,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-246-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -6067,7 +7446,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-206-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-249-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6108,7 +7487,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-209-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-252-1.png" width="672" style="display: block; margin: auto;" />
 
 ****
 
@@ -6274,7 +7653,7 @@ caixas=with(dados, car::Boxplot(RESP ~ FATOR1, vertical=T,las=1, col='Lightyello
 points(Médias1, pch='+', cex=1.5, col='red')
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-216-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-259-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6286,7 +7665,7 @@ caixas=with(dados, car::Boxplot(RESP ~ FATOR2, vertical=T,las=1, col='Lightyello
 points(Médias2, pch='+', cex=1.5, col='red')
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-217-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-260-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6297,7 +7676,7 @@ points(Médias2, pch='+', cex=1.5, col='red')
 caixas=with(dados, car::Boxplot(RESP ~ FATOR1*FATOR2, vertical=T,las=1, col='Lightyellow'))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-218-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-261-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6311,7 +7690,7 @@ with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-219-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-262-1.png" width="672" />
 
 
 ```r
@@ -6319,7 +7698,7 @@ with(dados, xyplot(RESP ~ FATOR1|repe, groups=FATOR2, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-220-1.png" width="1440" />
+<img src="index_files/figure-html/unnamed-chunk-263-1.png" width="1440" />
 
 
 ```r
@@ -6327,7 +7706,7 @@ with(dados, xyplot(RESP ~ FATOR2|repe, groups=FATOR1, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-221-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-264-1.png" width="672" />
 
 
 ```r
@@ -6335,7 +7714,7 @@ with(dados, interaction.plot(FATOR2, FATOR1, RESP, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="repe"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-222-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-265-1.png" width="672" />
 
 
 ```r
@@ -6344,7 +7723,7 @@ with(dados, interaction.plot(FATOR1, FATOR2, RESP, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="FATOR2"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-223-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-266-1.png" width="672" />
 
 <br><br>
 
@@ -6648,7 +8027,7 @@ plot(RESP-mean(RESP), pch=16, col="red")
 abline(h=0, col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-276-1.png" width="672" />
 
 <br><br>
 
@@ -7127,7 +8506,7 @@ dose=c(0,25,50,75,100)
 points(meditrat~dose,col="blue",pch="*",cex=1.5)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-246-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" />
 
 <br>
 
@@ -7139,7 +8518,7 @@ plot(meditrat~dose,col="red",pch=16, las=1)
 curve(m1$coefficients[1]+m1$coefficients[2]*x, add=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-247-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" />
 
 <br><br><br>
 
@@ -7295,7 +8674,7 @@ dwtest(mod)
 plot(mod$residuals)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-252-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-295-1.png" width="672" />
 
 <br>
 
@@ -7553,7 +8932,7 @@ dose=c(0,15,30,45,60)
 points(meditrat~dose,col="blue",pch="*",cex=1.5)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-257-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-300-1.png" width="672" />
 
 
 ```r
@@ -7588,7 +8967,7 @@ points(xmax,ymax, col="red", pch=8)
 legend("bottomleft", bty="n",legend=c(expression(Y==6.457143+0.06304762 *x-0.00111746*x^2), expression(R^2==0.595)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-258-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" />
 
 <br><br><br><br>
 
@@ -7812,7 +9191,7 @@ interaction.plot(Comprimento,
                  ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-264-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-307-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -8051,7 +9430,7 @@ HNP=hnp::hnp(mod1, paint.on=T, col="red" , las=1, pch=8)
 plot(HNP,lty=c(2,3,2),  col=c(2,1,2,1))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-269-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-312-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -8110,7 +9489,7 @@ plot(mod1$res, col="blue",
 abline(h=0, col="red", lwd=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-272-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-315-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
@@ -8213,7 +9592,7 @@ bar.group(tukey.l3$groups, ylim=c(0,120),
           ylab="resposta",las=1) 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" />
 
 <br><br><br>
 
