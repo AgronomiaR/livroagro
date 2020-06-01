@@ -1131,7 +1131,7 @@ round(ds,2)      # Se a observação for menor que .5 arredonda para baixo, do c
 ```
 
 ```
-##  [1]  9.40  9.21  6.26  5.50  6.42  6.48  7.95  8.36 10.12  9.38
+##  [1]  7.12  5.97 14.94  8.81 10.78  6.56  6.34  4.86  6.79  9.51
 ```
 
 <br>
@@ -1142,7 +1142,7 @@ ceiling(ds)      # sempre arredonda para cima
 ```
 
 ```
-##  [1] 10 10  7  6  7  7  8  9 11 10
+##  [1]  8  6 15  9 11  7  7  5  7 10
 ```
 
 <br>
@@ -1153,7 +1153,7 @@ floor(ds)        # sempre arredonda para baixo
 ```
 
 ```
-##  [1]  9  9  6  5  6  6  7  8 10  9
+##  [1]  7  5 14  8 10  6  6  4  6  9
 ```
 
 # Introdução aos loops
