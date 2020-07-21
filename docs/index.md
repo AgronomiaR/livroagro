@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R para Agronomia"
 author: "Gabriel Danilo Shimizu"
-date: "2020-05-31"
+date: "2020-07-21"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -14,9 +14,11 @@ description: "Este é um livro virtual desenvolvido com a finalidade de fornecer
 
 # Apresentação
 
-Este livro virtual partiu de uma idéia de ajudar os profissionais da agronomia, em especial a área acadêmica, fornecendo tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. Esse projeto não é vinculado diretamente a nenhuma instituição, e tampouco custeada financeiramente, ela é unicamente desenvolvida por iniciativa própria.
 
 O R é uma linguagem de programação muito utilizada na âmbito da estatística e na ciência de dados. Na Agronomia, o conhecimento sobre essa linguagem é um diferencial, sobretudo na carreira acadêmica, pois sua limitação gráfica e de análises é praticamente inexistente. 
+
+
+Este livro virtual tem a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. 
 
 Dúvidas, sugestões e críticas podem ser encaminhadas ao e-mail: shimizu@uel.br
 
@@ -160,11 +162,11 @@ Ex. library(readxl); require(readxl); readxl::
 
 ### Utilizando a package readxl
 
-Existem diversas formas de exportar arquivos para o R. Uma das mais utilizadas é a importação de um arquivo em excel.
+Existem diversas formas de importação arquivos para o R. Uma das mais utilizadas é a importação de um arquivo em excel.
 
 O excel pode possuir dois tipos de extensão, **.xls** ou **.xlsx**, sendo as versões anteriores e superiores ao office 2010, respectivamente. 
 
-Uma das packages mais utilizadas para exportar os dados de um arquivo em excel é chamado de **"readxl"**. 
+Uma das packages mais utilizadas para importação os dados de um arquivo em excel é chamado de **"readxl"**. 
 
 Para importar por esse pacote, devemos seguir os passos a seguir:
 
@@ -1131,7 +1133,7 @@ round(ds,2)      # Se a observação for menor que .5 arredonda para baixo, do c
 ```
 
 ```
-##  [1]  7.12  5.97 14.94  8.81 10.78  6.56  6.34  4.86  6.79  9.51
+##  [1]  6.49 12.38  8.44  7.18  5.49  8.87 11.47  4.80 10.37 10.49
 ```
 
 <br>
@@ -1142,7 +1144,7 @@ ceiling(ds)      # sempre arredonda para cima
 ```
 
 ```
-##  [1]  8  6 15  9 11  7  7  5  7 10
+##  [1]  7 13  9  8  6  9 12  5 11 11
 ```
 
 <br>
@@ -1153,7 +1155,7 @@ floor(ds)        # sempre arredonda para baixo
 ```
 
 ```
-##  [1]  7  5 14  8 10  6  6  4  6  9
+##  [1]  6 12  8  7  5  8 11  4 10 10
 ```
 
 # Introdução aos loops

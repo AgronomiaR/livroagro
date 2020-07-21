@@ -18,9 +18,11 @@ options(OutDec = ".", knitr.kable.NA="")
 
 # Apresentação
 
-Este livro virtual partiu de uma idéia de ajudar os profissionais da agronomia, em especial a área acadêmica, fornecendo tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. Esse projeto não é vinculado diretamente a nenhuma instituição, e tampouco custeada financeiramente, ela é unicamente desenvolvida por iniciativa própria.
 
 O R é uma linguagem de programação muito utilizada na âmbito da estatística e na ciência de dados. Na Agronomia, o conhecimento sobre essa linguagem é um diferencial, sobretudo na carreira acadêmica, pois sua limitação gráfica e de análises é praticamente inexistente. 
+
+
+Este livro virtual tem a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. 
 
 Dúvidas, sugestões e críticas podem ser encaminhadas ao e-mail: shimizu@uel.br
 
@@ -164,11 +166,11 @@ Ex. library(readxl); require(readxl); readxl::
 
 ### Utilizando a package readxl
 
-Existem diversas formas de exportar arquivos para o R. Uma das mais utilizadas é a importação de um arquivo em excel.
+Existem diversas formas de importação arquivos para o R. Uma das mais utilizadas é a importação de um arquivo em excel.
 
 O excel pode possuir dois tipos de extensão, **.xls** ou **.xlsx**, sendo as versões anteriores e superiores ao office 2010, respectivamente. 
 
-Uma das packages mais utilizadas para exportar os dados de um arquivo em excel é chamado de **"readxl"**. 
+Uma das packages mais utilizadas para importação os dados de um arquivo em excel é chamado de **"readxl"**. 
 
 Para importar por esse pacote, devemos seguir os passos a seguir:
 
