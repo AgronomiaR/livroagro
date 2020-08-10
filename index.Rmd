@@ -3935,7 +3935,7 @@ croqui(trat,r=3)
 
 ****
 
-## Exemplo 1
+## Exemplo 1 (Fatorial duplo em DIC)
 
 ****
 
@@ -4218,6 +4218,291 @@ abline(h=0)
 library(ExpDes.pt)
 with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 ```
+
+<br><br>
+
+****
+
+## Exemplo 2 (Fatorial duplo em DBC)
+
+****
+
+<br>
+
+Supondo o mesmo exemplo anterior. Todavia, iremos considerar que o experimento foi conduzido em delineamento em blocos casualizados com cinco repetições.
+
+<br>
+
+```{r}
+NN=c(339,332,163,230,300,163,172,123,083,161,171,069,095,046,079,335,235,217,174,222,284,136,225,098,110,082,038,092,053,046,
+      196,252,346,468,258,032,038,063,048,160)
+(Inoculacao=rep(c("IN","NI"),e=20))
+(epoca=rep(c("Plantio","V1+15","V3+15","R1+15"),e=5,2))
+(bloco=rep(paste("B",1:5),8))
+F1=as.factor(Inoculacao)
+F2=as.factor(epoca)
+bloco=as.factor(bloco)
+Trat=paste(F1,F2)
+dados=data.frame(F1,F2,bloco,resp=NN)
+attach(dados)
+X="";Y="Número de nódulos"
+```
+
+<br><br>
+
+## Estatística descritiva
+
+```{r, results='hide'}
+Media = with(dados, mean(resp))
+Variancia = with(dados, var(resp))
+Desvio = with(dados, sd(resp))
+CV = Desvio / Media * 100
+
+desc = cbind(Media, Variancia, Desvio, CV)
+desc
+```
+
+```{r, echo=F}
+kable(round(desc,2), align="l")
+```
+
+<br>
+
+### Por Inoculação
+
+```{r, results='hide'}
+MediaA = with(dados, tapply(resp, F1, mean))
+VarianciaA = with(dados, tapply(resp, F1, var))
+DesvioA = with(dados, tapply(resp, F1, sd))
+CVA = DesvioA / MediaA * 100
+Desc = cbind(MediaA, VarianciaA, DesvioA, CVA)
+Desc
+```
+
+```{r, echo=F}
+kable(round(Desc,2),align="l")
+```
+
+<br>
+
+### Por época de aplicação
+
+```{r, results='hide'}
+MediaB = with(dados, tapply(resp, F2, mean))
+VarianciaB = with(dados, tapply(resp, F2, var))
+DesvioB = with(dados, tapply(resp, F2, sd))
+CVB = DesvioB / MediaB * 100
+Desc = cbind(MediaB, VarianciaB, DesvioB, CVB)
+Desc
+```
+
+```{r, echo=F}
+kable(round(Desc,2),align="l")
+```
+
+<br><br>
+
+## Gráficos exploratórios
+
+<br>
+
+### Gráfico de Caixas
+
+#### Fator 1
+
+```{r, results='hide', fig.pos="H", fig.align='center'}
+par(bty='l', mai=c(1, 1, .2, .2))
+par(cex=0.7)
+caixas=with(dados, car::Boxplot(resp ~ F1, vertical=T,las=1, col='Lightyellow',
+                    xlab=X, ylab=Y))
+mediab=with(dados,tapply(resp, F1, mean))
+points(mediab, pch='+', cex=1.5, col='red')
+```
+
+<br>
+
+#### Fator 2
+
+```{r, results='hide', fig.pos="H", fig.align='center'}
+par(bty='l', mai=c(1, 1, .2, .2))
+par(cex=0.7)
+caixas=with(dados, car::Boxplot(resp ~ F2, vertical=T,las=1, col='Lightyellow',
+                    xlab=X, ylab=Y))
+mediab=with(dados,tapply(resp, F2, mean))
+points(mediab, pch='+', cex=1.5, col='red')
+```
+
+<br>
+
+#### Juntando Fatores
+
+```{r, results='hide', fig.pos="H", fig.align='center'}
+par(bty='l', mai=c(1, 1, .2, .2))
+par(cex=0.7)
+caixas=with(dados, car::Boxplot(resp ~ F1*F2, vertical=T,las=1, col='Lightyellow',
+                    xlab=X, ylab=Y))
+```
+
+<br><br>
+
+### Gráfico de interação
+
+```{r}
+with(dados, interaction.plot(F2, F1, resp, las=1, col=1:6, bty='l', 
+                             xlab='', ylab='CBM', trace.label="FATOR1"))
+```
+
+```{r}
+# FATOR1 e FATOR2
+with(dados, interaction.plot(F1, F2, resp, las=1, col=1:6, bty='l', 
+                             xlab='', ylab='CBM', trace.label="FATOR2"))
+```
+
+<br><br>
+
+## Análise de Variância
+
+**Hipótese do Fator 1**:
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mu_1 = \mu_2\\[.2cm]
+H_1: & \mu_i \neq \mu_i' \qquad i \neq i'.
+\end{array}
+\right.
+\end{eqnarray*}
+
+**Hipótese do Fator 2**:
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mu_1 = \mu_2 = \mu_3 = \mu_4 \\[.2cm]
+H_1: & \mu_i \neq \mu_i' \qquad i \neq i'.
+\end{array}
+\right.
+\end{eqnarray*}
+
+**Hipótese da interação**:
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{Todas as combinações entre os níveis do fator 1 e do fator 2 têm o mesmo efeito} \\[.2cm]
+H_1: & \mbox{Pelo menos duas combinações entre os níveis do fator 1 e do fator 2 têm efeitos diferentes}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+```{r, results='hide'}
+mod = with(dados, aov(resp~F1*F2+bloco))
+anova(mod)
+```
+
+```{r, echo=F}
+av=anova(mod)
+names(av)=c("GL","SQ","QM","Teste F", "p-valor")
+kable(av, align = "l")
+```
+
+<br><br>
+
+## Pressuposições
+
+<br>
+
+### Normalidade dos erros
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{Os erros seguem distribuição normal}\\[.2cm]
+H_1: & \mbox{Os erros não seguem distribuição normal}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+```{r}
+(norm=shapiro.test(mod$res))
+```
+
+```{r, results='hide', fig.pos="H", fig.align='center'}
+hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
+```
+
+<br>
+
+### Homogeneidade de variâncias
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{ As variâncias são homogêneas}\\[.2cm]
+H_1: & \mbox{ As variâncias não são homogêneas}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+#### Para Fator 1
+
+```{r}
+with(dados, bartlett.test(mod$residuals~F1))
+```
+
+<br>
+
+#### Para Fator 2
+
+```{r}
+with(dados, bartlett.test(mod$residuals~F2))
+```
+
+<br>
+
+#### Juntandos os fatores
+
+```{r}
+tratamentos=rep(c(paste("T",1:8)),e=5)
+with(dados, bartlett.test(mod$residuals~tratamentos))
+```
+
+<br>
+
+### Independência dos erros
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{Os erros são independentes}\\[.2cm]
+H_1: \mbox{Os erros não são independentes}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+```{r}
+(ind=lmtest::dwtest(mod))
+```
+
+```{r,  fig.pos="H", fig.align='center'}
+plot(mod$res, las=1, pch=19, col='red', ylab='Resíduos brutos')
+abline(h=0)
+```
+
+<br>
+
+## Teste de comparações
+
+```{r}
+library(ExpDes.pt)
+with(dados,fat2.dbc(F1,F2,bloco,resp, mcomp="tukey"))
+
+# ou
+
+library(easyanova)
+ea2(dados, design = 2)
+```
+
 
 <br><br><br><br>
 

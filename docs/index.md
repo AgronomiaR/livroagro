@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R para Agronomia"
 author: "Gabriel Danilo Shimizu"
-date: "2020-07-21"
+date: "2020-08-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -1133,7 +1133,7 @@ round(ds,2)      # Se a observação for menor que .5 arredonda para baixo, do c
 ```
 
 ```
-##  [1]  6.49 12.38  8.44  7.18  5.49  8.87 11.47  4.80 10.37 10.49
+##  [1]  6.23  8.26  8.65  5.93  5.91  5.49 11.08  6.27  9.80 12.57
 ```
 
 <br>
@@ -1144,7 +1144,7 @@ ceiling(ds)      # sempre arredonda para cima
 ```
 
 ```
-##  [1]  7 13  9  8  6  9 12  5 11 11
+##  [1]  7  9  9  6  6  6 12  7 10 13
 ```
 
 <br>
@@ -1155,7 +1155,7 @@ floor(ds)        # sempre arredonda para baixo
 ```
 
 ```
-##  [1]  6 12  8  7  5  8 11  4 10 10
+##  [1]  6  8  8  5  5  5 11  6  9 12
 ```
 
 # Introdução aos loops
@@ -5719,7 +5719,7 @@ croqui(trat,r=3)
 
 ****
 
-## Exemplo 1
+## Exemplo 1 (Fatorial duplo em DIC)
 
 ****
 
@@ -6232,6 +6232,688 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 ## ------------------------------------------------------------------------
 ```
 
+<br><br>
+
+****
+
+## Exemplo 2 (Fatorial duplo em DBC)
+
+****
+
+<br>
+
+Supondo o mesmo exemplo anterior. Todavia, iremos considerar que o experimento foi conduzido em delineamento em blocos casualizados com cinco repetições.
+
+<br>
+
+
+```r
+NN=c(339,332,163,230,300,163,172,123,083,161,171,069,095,046,079,335,235,217,174,222,284,136,225,098,110,082,038,092,053,046,
+      196,252,346,468,258,032,038,063,048,160)
+(Inoculacao=rep(c("IN","NI"),e=20))
+```
+
+```
+##  [1] "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN" "IN"
+## [16] "IN" "IN" "IN" "IN" "IN" "NI" "NI" "NI" "NI" "NI" "NI" "NI" "NI" "NI" "NI"
+## [31] "NI" "NI" "NI" "NI" "NI" "NI" "NI" "NI" "NI" "NI"
+```
+
+```r
+(epoca=rep(c("Plantio","V1+15","V3+15","R1+15"),e=5,2))
+```
+
+```
+##  [1] "Plantio" "Plantio" "Plantio" "Plantio" "Plantio" "V1+15"   "V1+15"  
+##  [8] "V1+15"   "V1+15"   "V1+15"   "V3+15"   "V3+15"   "V3+15"   "V3+15"  
+## [15] "V3+15"   "R1+15"   "R1+15"   "R1+15"   "R1+15"   "R1+15"   "Plantio"
+## [22] "Plantio" "Plantio" "Plantio" "Plantio" "V1+15"   "V1+15"   "V1+15"  
+## [29] "V1+15"   "V1+15"   "V3+15"   "V3+15"   "V3+15"   "V3+15"   "V3+15"  
+## [36] "R1+15"   "R1+15"   "R1+15"   "R1+15"   "R1+15"
+```
+
+```r
+(bloco=rep(paste("B",1:5),8))
+```
+
+```
+##  [1] "B 1" "B 2" "B 3" "B 4" "B 5" "B 1" "B 2" "B 3" "B 4" "B 5" "B 1" "B 2"
+## [13] "B 3" "B 4" "B 5" "B 1" "B 2" "B 3" "B 4" "B 5" "B 1" "B 2" "B 3" "B 4"
+## [25] "B 5" "B 1" "B 2" "B 3" "B 4" "B 5" "B 1" "B 2" "B 3" "B 4" "B 5" "B 1"
+## [37] "B 2" "B 3" "B 4" "B 5"
+```
+
+```r
+F1=as.factor(Inoculacao)
+F2=as.factor(epoca)
+bloco=as.factor(bloco)
+Trat=paste(F1,F2)
+dados=data.frame(F1,F2,bloco,resp=NN)
+attach(dados)
+X="";Y="Número de nódulos"
+```
+
+<br><br>
+
+## Estatística descritiva
+
+
+```r
+Media = with(dados, mean(resp))
+Variancia = with(dados, var(resp))
+Desvio = with(dados, sd(resp))
+CV = Desvio / Media * 100
+
+desc = cbind(Media, Variancia, Desvio, CV)
+desc
+```
+
+
+Media    Variancia   Desvio   CV    
+-------  ----------  -------  ------
+168.35   11413.41    106.83   63.46 
+
+<br>
+
+### Por Inoculação
+
+
+```r
+MediaA = with(dados, tapply(resp, F1, mean))
+VarianciaA = with(dados, tapply(resp, F1, var))
+DesvioA = with(dados, tapply(resp, F1, sd))
+CVA = DesvioA / MediaA * 100
+Desc = cbind(MediaA, VarianciaA, DesvioA, CVA)
+Desc
+```
+
+
+     MediaA   VarianciaA   DesvioA   CVA   
+---  -------  -----------  --------  ------
+IN   185.45   8229.21      90.71     48.92 
+NI   151.25   14582.72     120.76    79.84 
+
+<br>
+
+### Por época de aplicação
+
+
+```r
+MediaB = with(dados, tapply(resp, F2, mean))
+VarianciaB = with(dados, tapply(resp, F2, var))
+DesvioB = with(dados, tapply(resp, F2, sd))
+CVB = DesvioB / MediaB * 100
+Desc = cbind(MediaB, VarianciaB, DesvioB, CVB)
+Desc
+```
+
+
+          MediaB   VarianciaB   DesvioB   CVB   
+--------  -------  -----------  --------  ------
+Plantio   221.7    8287.34      91.03     41.06 
+R1+15     152.4    10686.93     103.38    67.83 
+V1+15     101.3    2559.12      50.59     49.94 
+V3+15     198.0    18507.56     136.04    68.71 
+
+<br><br>
+
+## Gráficos exploratórios
+
+<br>
+
+### Gráfico de Caixas
+
+#### Fator 1
+
+
+```r
+par(bty='l', mai=c(1, 1, .2, .2))
+par(cex=0.7)
+caixas=with(dados, car::Boxplot(resp ~ F1, vertical=T,las=1, col='Lightyellow',
+                    xlab=X, ylab=Y))
+mediab=with(dados,tapply(resp, F1, mean))
+points(mediab, pch='+', cex=1.5, col='red')
+```
+
+<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" style="display: block; margin: auto;" />
+
+<br>
+
+#### Fator 2
+
+
+```r
+par(bty='l', mai=c(1, 1, .2, .2))
+par(cex=0.7)
+caixas=with(dados, car::Boxplot(resp ~ F2, vertical=T,las=1, col='Lightyellow',
+                    xlab=X, ylab=Y))
+mediab=with(dados,tapply(resp, F2, mean))
+points(mediab, pch='+', cex=1.5, col='red')
+```
+
+<img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" style="display: block; margin: auto;" />
+
+<br>
+
+#### Juntando Fatores
+
+
+```r
+par(bty='l', mai=c(1, 1, .2, .2))
+par(cex=0.7)
+caixas=with(dados, car::Boxplot(resp ~ F1*F2, vertical=T,las=1, col='Lightyellow',
+                    xlab=X, ylab=Y))
+```
+
+<img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" style="display: block; margin: auto;" />
+
+<br><br>
+
+### Gráfico de interação
+
+
+```r
+with(dados, interaction.plot(F2, F1, resp, las=1, col=1:6, bty='l', 
+                             xlab='', ylab='CBM', trace.label="FATOR1"))
+```
+
+<img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" />
+
+
+```r
+# FATOR1 e FATOR2
+with(dados, interaction.plot(F1, F2, resp, las=1, col=1:6, bty='l', 
+                             xlab='', ylab='CBM', trace.label="FATOR2"))
+```
+
+<img src="index_files/figure-html/unnamed-chunk-237-1.png" width="672" />
+
+<br><br>
+
+## Análise de Variância
+
+**Hipótese do Fator 1**:
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mu_1 = \mu_2\\[.2cm]
+H_1: & \mu_i \neq \mu_i' \qquad i \neq i'.
+\end{array}
+\right.
+\end{eqnarray*}
+
+**Hipótese do Fator 2**:
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mu_1 = \mu_2 = \mu_3 = \mu_4 \\[.2cm]
+H_1: & \mu_i \neq \mu_i' \qquad i \neq i'.
+\end{array}
+\right.
+\end{eqnarray*}
+
+**Hipótese da interação**:
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{Todas as combinações entre os níveis do fator 1 e do fator 2 têm o mesmo efeito} \\[.2cm]
+H_1: & \mbox{Pelo menos duas combinações entre os níveis do fator 1 e do fator 2 têm efeitos diferentes}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+
+```r
+mod = with(dados, aov(resp~F1*F2+bloco))
+anova(mod)
+```
+
+
+            GL   SQ         QM          Teste F      p-valor   
+----------  ---  ---------  ----------  -----------  ----------
+F1          1    11696.4    11696.400   2.6390284    0.1154728 
+F2          3    84754.5    28251.500   6.3743126    0.0019764 
+bloco       4    11613.6    2903.400    0.6550866    0.6282168 
+F1:F2       3    212960.2   70986.733   16.0165525   0.0000030 
+Residuals   28   124098.4   4432.086                           
+
+<br><br>
+
+## Pressuposições
+
+<br>
+
+### Normalidade dos erros
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{Os erros seguem distribuição normal}\\[.2cm]
+H_1: & \mbox{Os erros não seguem distribuição normal}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+
+```r
+(norm=shapiro.test(mod$res))
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  mod$res
+## W = 0.95489, p-value = 0.1118
+```
+
+
+```r
+hnp::hnp(mod, las=1, xlab="Quantis teóricos", pch=16)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-241-1.png" width="672" style="display: block; margin: auto;" />
+
+<br>
+
+### Homogeneidade de variâncias
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: & \mbox{ As variâncias são homogêneas}\\[.2cm]
+H_1: & \mbox{ As variâncias não são homogêneas}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+#### Para Fator 1
+
+
+```r
+with(dados, bartlett.test(mod$residuals~F1))
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  mod$residuals by F1
+## Bartlett's K-squared = 4.6002, df = 1, p-value = 0.03197
+```
+
+<br>
+
+#### Para Fator 2
+
+
+```r
+with(dados, bartlett.test(mod$residuals~F2))
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  mod$residuals by F2
+## Bartlett's K-squared = 10.875, df = 3, p-value = 0.01242
+```
+
+<br>
+
+#### Juntandos os fatores
+
+
+```r
+tratamentos=rep(c(paste("T",1:8)),e=5)
+with(dados, bartlett.test(mod$residuals~tratamentos))
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  mod$residuals by tratamentos
+## Bartlett's K-squared = 16.111, df = 7, p-value = 0.02412
+```
+
+<br>
+
+### Independência dos erros
+
+\begin{eqnarray*}
+\left\{
+\begin{array}{ll}
+H_0: \mbox{Os erros são independentes}\\[.2cm]
+H_1: \mbox{Os erros não são independentes}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+
+```r
+(ind=lmtest::dwtest(mod))
+```
+
+```
+## 
+## 	Durbin-Watson test
+## 
+## data:  mod
+## DW = 1.8654, p-value = 0.06734
+## alternative hypothesis: true autocorrelation is greater than 0
+```
+
+
+```r
+plot(mod$res, las=1, pch=19, col='red', ylab='Resíduos brutos')
+abline(h=0)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-246-1.png" width="672" style="display: block; margin: auto;" />
+
+<br>
+
+## Teste de comparações
+
+
+```r
+library(ExpDes.pt)
+with(dados,fat2.dbc(F1,F2,bloco,resp, mcomp="tukey"))
+```
+
+```
+## ------------------------------------------------------------------------
+## Legenda:
+## FATOR 1:  F1 
+## FATOR 2:  F2 
+## ------------------------------------------------------------------------
+## 
+## 
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##         GL     SQ    QM      Fc   Pr>Fc
+## Bloco    4  11614  2903  0.6551 0.62822
+## F1       1  11696 11696  2.6390 0.11547
+## F2       3  84755 28252  6.3743 0.00198
+## F1*F2    3 212960 70987 16.0166 0.00000
+## Residuo 28 124098  4432                
+## Total   39 445123                      
+## ------------------------------------------------------------------------
+## CV = 39.54 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos (Shapiro-Wilk)
+## valor-p:  0.1117923 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## 
+## 
+## Interacao significativa: desdobrando a interacao
+## ------------------------------------------------------------------------
+## 
+## Desdobrando  F1  dentro de cada nivel de  F2 
+## ------------------------------------------------------------------------
+## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##               GL       SQ         QM      Fc  Pr.Fc
+## Bloco          4  11613.6   2903.400  0.6551 0.6282
+## F2             3  84754.5  28251.500  6.3743  0.002
+## F1:F2 Plantio  1  26112.1  26112.100  5.8916 0.0219
+## F1:F2 R1+15    1  70896.4  70896.400 15.9962  4e-04
+## F1:F2 V1+15    1  15288.1  15288.100  3.4494 0.0738
+## F1:F2 V3+15    1 112360.0 112360.000 25.3515      0
+## Residuo       28 124098.4   4432.086               
+## Total         39 445123.1  11413.413               
+## ------------------------------------------------------------------------
+## 
+## 
+## 
+##  F1  dentro do nivel  Plantio  de  F2 
+## ------------------------------------------------------------------------
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a 	 1 	 272.8 
+##  b 	 2 	 170.6 
+## ------------------------------------------------------------------------
+## 
+## 
+##  F1  dentro do nivel  R1+15  de  F2 
+## ------------------------------------------------------------------------
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a 	 1 	 236.6 
+##  b 	 2 	 68.2 
+## ------------------------------------------------------------------------
+## 
+## 
+##  F1  dentro do nivel  V1+15  de  F2 
+## 
+## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
+## ------------------------------------------------------------------------
+##     Niveis     Medias
+## 1        1      140.4
+## 2        2       62.2
+## ------------------------------------------------------------------------
+## 
+## 
+##  F1  dentro do nivel  V3+15  de  F2 
+## ------------------------------------------------------------------------
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a 	 2 	 304 
+##  b 	 1 	 92 
+## ------------------------------------------------------------------------
+## 
+## 
+## 
+## Desdobrando  F2  dentro de cada nivel de  F1 
+## ------------------------------------------------------------------------
+## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##          GL       SQ        QM      Fc  Pr.Fc
+## Bloco     4  11613.6  2903.400  0.6551 0.6282
+## F1        1  11696.4 11696.400   2.639 0.1155
+## F2:F1 IN  3 105043.8 35014.583  7.9002  6e-04
+## F2:F1 NI  3 192671.0 64223.650 14.4906      0
+## Residuo  28 124098.4  4432.086               
+## Total    39 445123.1 11413.413               
+## ------------------------------------------------------------------------
+## 
+## 
+## 
+##  F2  dentro do nivel  IN  de  F1 
+## ------------------------------------------------------------------------
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a 	 1 	 272.8 
+## ab 	 2 	 236.6 
+##  bc 	 3 	 140.4 
+##   c 	 4 	 92 
+## ------------------------------------------------------------------------
+## 
+## 
+##  F2  dentro do nivel  NI  de  F1 
+## ------------------------------------------------------------------------
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a 	 4 	 304 
+##  b 	 1 	 170.6 
+##  b 	 2 	 68.2 
+##  b 	 3 	 62.2 
+## ------------------------------------------------------------------------
+```
+
+```r
+# ou
+
+library(easyanova)
+ea2(dados, design = 2)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-247-1.png" width="672" />
+
+```
+## $`Analysis of variance`
+##                   df type III SS mean square F value    p>F
+## factor_1           1     11696.4   11696.400   2.639 0.1155
+## factor_2           3     84754.5   28251.500  6.3743  0.002
+## blocks             4     11613.6    2903.400  0.6551 0.6282
+## factor_1:factor_2  3    212960.2   70986.733 16.0166 <0.001
+## residuals         28    124098.4    4432.086       -      -
+## 
+## $`Adjusted means (factor 1)`
+##   factor_1 adjusted.mean standard.error tukey snk duncan t scott_knott
+## 1       IN        185.45        14.8864     a   a      a a           a
+## 2       NI        151.25        14.8864     a   a      a a           a
+## 
+## $`Multiple comparison test (factor 1)`
+##      pair contrast p(tukey) p(snk) p(duncan)   p(t)
+## 1 IN - NI     34.2   0.1155 0.1155    0.1155 0.1155
+## 
+## $`Adjusted means (factor 2)`
+##   factor_2 adjusted.mean standard.error tukey snk duncan  t scott_knott
+## 1  Plantio         221.7        21.0525     a   a      a  a           a
+## 2    V3+15         198.0        21.0525     a   a     ab ab           a
+## 3    R1+15         152.4        21.0525    ab  ab     bc bc           b
+## 4    V1+15         101.3        21.0525     b   b      c  c           b
+## 
+## $`Multiple comparison test (factor 2)`
+##              pair contrast p(tukey) p(snk) p(duncan)   p(t)
+## 1 Plantio - V3+15     23.7   0.8556 0.4327    0.4327 0.4327
+## 2 Plantio - R1+15     69.3   0.1158 0.0683    0.0347 0.0274
+## 3 Plantio - V1+15    120.4   0.0020 0.0020    0.0007 0.0004
+## 4   V3+15 - R1+15     45.6   0.4329 0.1368    0.1368 0.1368
+## 5   V3+15 - V1+15     96.7   0.0151 0.0082    0.0041 0.0030
+## 6   R1+15 - V1+15     51.1   0.3344 0.0971    0.0971 0.0971
+## 
+## $`Adjusted means (factor 1 in levels of factor 2)`
+## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  Plantio`
+##    treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 1 IN.Plantio         272.8        29.7728     a   a      a a           a
+## 2 NI.Plantio         170.6        29.7728     b   b      b b           b
+## 
+## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  R1+15`
+##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 3  IN.R1+15         236.6        29.7728     a   a      a a           a
+## 4  NI.R1+15          68.2        29.7728     b   b      b b           b
+## 
+## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  V1+15`
+##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 5  IN.V1+15         140.4        29.7728     a   a      a a           a
+## 6  NI.V1+15          62.2        29.7728     a   a      a a           a
+## 
+## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  V3+15`
+##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 8  NI.V3+15           304        29.7728     a   a      a a           a
+## 7  IN.V3+15            92        29.7728     b   b      b b           b
+## 
+## 
+## $`Multiple comparison test (factor 1 in levels of factor 2)`
+## $`Multiple comparison test (factor 1 in levels of factor 2)`$`factor_1 in  Plantio`
+##                      pair contrast p(tukey) p(snk) p(duncan)   p(t)
+## 1 IN.Plantio - NI.Plantio    102.2   0.0219 0.0219    0.0219 0.0219
+## 
+## $`Multiple comparison test (factor 1 in levels of factor 2)`$`factor_1 in  R1+15`
+##                  pair contrast p(tukey) p(snk) p(duncan)  p(t)
+## 1 IN.R1+15 - NI.R1+15    168.4    4e-04  4e-04     4e-04 4e-04
+## 
+## $`Multiple comparison test (factor 1 in levels of factor 2)`$`factor_1 in  V1+15`
+##                  pair contrast p(tukey) p(snk) p(duncan)   p(t)
+## 1 IN.V1+15 - NI.V1+15     78.2   0.0738 0.0738    0.0738 0.0738
+## 
+## $`Multiple comparison test (factor 1 in levels of factor 2)`$`factor_1 in  V3+15`
+##                  pair contrast p(tukey) p(snk) p(duncan) p(t)
+## 1 NI.V3+15 - IN.V3+15      212        0      0         0    0
+## 
+## 
+## $`Adjusted means (factor 2 in levels of factor 1)`
+## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  IN`
+##    treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 1 IN.Plantio         272.8        29.7728     a   a      a a           a
+## 3   IN.R1+15         236.6        29.7728    ab   a      a a           a
+## 5   IN.V1+15         140.4        29.7728    bc   b      b b           b
+## 7   IN.V3+15          92.0        29.7728     c   b      b b           b
+## 
+## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  NI`
+##    treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 8   NI.V3+15         304.0        29.7728     a   a      a a           a
+## 2 NI.Plantio         170.6        29.7728     b   b      b b           b
+## 4   NI.R1+15          68.2        29.7728     b   c      c c           c
+## 6   NI.V1+15          62.2        29.7728     b   c      c c           c
+## 
+## 
+## $`Multiple comparison test (factor 2 in levels of factor 1)`
+## $`Multiple comparison test (factor 2 in levels of factor 1)`$`factor_2 in  IN`
+##                    pair contrast p(tukey) p(snk) p(duncan)   p(t)
+## 1 IN.Plantio - IN.R1+15     36.2   0.8253 0.3972    0.3972 0.3972
+## 2 IN.Plantio - IN.V1+15    132.4   0.0193 0.0106    0.0053 0.0039
+## 3 IN.Plantio - IN.V3+15    180.8   0.0010 0.0010    0.0003 0.0002
+## 4   IN.R1+15 - IN.V1+15     96.2   0.1259 0.0301    0.0301 0.0301
+## 5   IN.R1+15 - IN.V3+15    144.6   0.0095 0.0051    0.0026 0.0019
+## 6   IN.V1+15 - IN.V3+15     48.4   0.6627 0.2601    0.2601 0.2601
+## 
+## $`Multiple comparison test (factor 2 in levels of factor 1)`$`factor_2 in  NI`
+##                    pair contrast p(tukey) p(snk) p(duncan)   p(t)
+## 1 NI.V3+15 - NI.Plantio    133.4   0.0182 0.0037    0.0037 0.0037
+## 2   NI.V3+15 - NI.R1+15    235.8   0.0000 0.0000    0.0000 0.0000
+## 3   NI.V3+15 - NI.V1+15    241.8   0.0000 0.0000    0.0000 0.0000
+## 4 NI.Plantio - NI.R1+15    102.4   0.0940 0.0217    0.0217 0.0217
+## 5 NI.Plantio - NI.V1+15    108.4   0.0700 0.0402    0.0203 0.0156
+## 6   NI.R1+15 - NI.V1+15      6.0   0.9989 0.8877    0.8877 0.8877
+## 
+## 
+## $`Residual analysis`
+## $`Residual analysis`$`residual analysis`
+##                                     values
+## p.value Shapiro-Wilk test           0.1118
+## p.value Bartlett test (factor_1)    0.0320
+## p.value Bartlett test (factor_2)    0.0124
+## p.value Bartlett test (treatments)  0.0241
+## coefficient of variation (%)       39.5400
+## first value most discrepant        34.0000
+## second value most discrepant       31.0000
+## third value most discrepant         3.0000
+## 
+## $`Residual analysis`$residuals
+##       1       2       3       4       5       6       7       8       9      10 
+##   34.30   68.55 -106.95  -24.45   28.55   -9.30   40.95  -14.55  -39.05   21.95 
+##      11      12      13      14      15      16      17      18      19      20 
+##   47.10  -13.65    5.85  -27.65  -11.65   66.50    7.75  -16.75  -44.25  -13.25 
+##      21      22      23      24      25      26      27      28      29      30 
+##   81.50  -25.25   57.25  -54.25  -59.25  -12.10  -14.85   32.65    9.15  -14.85 
+##      31      32      33      34      35      36      37      38      39      40 
+## -139.90  -42.65   44.85  182.35  -44.65  -68.10  -20.85   -2.35   -1.85   93.15 
+## 
+## $`Residual analysis`$`standardized residuals`
+##           1           2           3           4           5           6 
+##  0.60805566  1.21522493 -1.89596363 -0.43343909  0.50612213 -0.16486640 
+##           7           8           9          10          11          12 
+##  0.72594400 -0.25793615 -0.69226161  0.38912016  0.83496855 -0.24198133 
+##          13          14          15          16          17          18 
+##  0.10370629 -0.49016731 -0.20652619  1.17888341  0.13738867 -0.29693680 
+##          19          20          21          22          23          24 
+## -0.78444498 -0.23489030  1.44479697 -0.44762115  1.01490339 -0.96172068 
+##          25          26          27          28          29          30 
+## -1.05035853 -0.21450360 -0.26325442  0.57880517  0.16220727 -0.26325442 
+##          31          32          33          34          35          36 
+## -2.48008706 -0.75608087  0.79508152  3.23262242 -0.79153601 -1.20724753 
+##          37          38          39          40 
+## -0.36961984 -0.04165979 -0.03279600  1.65132316
+```
+
+
 <br><br><br><br>
 
 ****
@@ -6553,7 +7235,7 @@ par(mai=c(2,0.8,0.5,0.5))
 car::Boxplot(RENDIMENTO~paste(FATOR1,FATOR2,FATOR3), las=2, xlab="")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-232-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-254-1.png" width="1152" />
 
 <br>
 
@@ -6570,21 +7252,21 @@ interaction.plot(FATOR1,FATOR2,RESP, ylab="Resposta")
 interaction.plot(FATOR2,FATOR1,RESP, ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-255-1.png" width="768" style="display: block; margin: auto;" />
 
 ```r
 interaction.plot(FATOR1,FATOR3,RESP, ylab="Resposta")
 interaction.plot(FATOR2,FATOR1,RESP, ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-233-2.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-255-2.png" width="768" style="display: block; margin: auto;" />
 
 ```r
 interaction.plot(FATOR2,FATOR3,RESP, ylab="Resposta")
 interaction.plot(FATOR3,FATOR2,RESP, ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-233-3.png" width="768" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-255-3.png" width="768" style="display: block; margin: auto;" />
 
 <br>
 
@@ -6650,7 +7332,7 @@ hnp::hnp(modelo)
 ## Gaussian model (aov object)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-257-1.png" width="672" style="display: block; margin: auto;" />
 
 Como p-valor calculado ($p=0.217$) é menor que o nível de significância adotado ($\alpha=0.05$), não rejeita-se $H_0$. Logo, os erros podem ser considerados normais
 
@@ -6710,7 +7392,7 @@ abline(h=c(0,3,-3),
        col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-238-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-260-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -7358,7 +8040,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-243-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-265-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -7399,7 +8081,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-246-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-268-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -7448,7 +8130,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-249-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-271-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -7489,7 +8171,7 @@ Usando a função
 croqui(trat,trat1,r=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-252-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" style="display: block; margin: auto;" />
 
 ****
 
@@ -7655,7 +8337,7 @@ caixas=with(dados, car::Boxplot(RESP ~ FATOR1, vertical=T,las=1, col='Lightyello
 points(Médias1, pch='+', cex=1.5, col='red')
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-259-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-281-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -7667,7 +8349,7 @@ caixas=with(dados, car::Boxplot(RESP ~ FATOR2, vertical=T,las=1, col='Lightyello
 points(Médias2, pch='+', cex=1.5, col='red')
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-260-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-282-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -7678,7 +8360,7 @@ points(Médias2, pch='+', cex=1.5, col='red')
 caixas=with(dados, car::Boxplot(RESP ~ FATOR1*FATOR2, vertical=T,las=1, col='Lightyellow'))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-261-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-283-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -7692,7 +8374,7 @@ with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-262-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" />
 
 
 ```r
@@ -7700,7 +8382,7 @@ with(dados, xyplot(RESP ~ FATOR1|repe, groups=FATOR2, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-263-1.png" width="1440" />
+<img src="index_files/figure-html/unnamed-chunk-285-1.png" width="1440" />
 
 
 ```r
@@ -7708,7 +8390,7 @@ with(dados, xyplot(RESP ~ FATOR2|repe, groups=FATOR1, aspect="xy", type="o", yla
                    strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-264-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-286-1.png" width="672" />
 
 
 ```r
@@ -7716,7 +8398,7 @@ with(dados, interaction.plot(FATOR2, FATOR1, RESP, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="repe"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-265-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-287-1.png" width="672" />
 
 
 ```r
@@ -7725,7 +8407,7 @@ with(dados, interaction.plot(FATOR1, FATOR2, RESP, las=1, col=1:6, bty='l',
                              xlab='', ylab='CBM', trace.label="FATOR2"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-266-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-288-1.png" width="672" />
 
 <br><br>
 
@@ -8029,7 +8711,7 @@ plot(RESP-mean(RESP), pch=16, col="red")
 abline(h=0, col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-276-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-298-1.png" width="672" />
 
 <br><br>
 
@@ -8508,7 +9190,7 @@ dose=c(0,25,50,75,100)
 points(meditrat~dose,col="blue",pch="*",cex=1.5)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-311-1.png" width="672" />
 
 <br>
 
@@ -8520,7 +9202,7 @@ plot(meditrat~dose,col="red",pch=16, las=1)
 curve(m1$coefficients[1]+m1$coefficients[2]*x, add=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-312-1.png" width="672" />
 
 <br><br><br>
 
@@ -8676,7 +9358,7 @@ dwtest(mod)
 plot(mod$residuals)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-295-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" />
 
 <br>
 
@@ -8934,7 +9616,7 @@ dose=c(0,15,30,45,60)
 points(meditrat~dose,col="blue",pch="*",cex=1.5)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-300-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-322-1.png" width="672" />
 
 
 ```r
@@ -8969,7 +9651,7 @@ points(xmax,ymax, col="red", pch=8)
 legend("bottomleft", bty="n",legend=c(expression(Y==6.457143+0.06304762 *x-0.00111746*x^2), expression(R^2==0.595)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-323-1.png" width="672" />
 
 <br><br><br><br>
 
@@ -9193,7 +9875,7 @@ interaction.plot(Comprimento,
                  ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-307-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-329-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -9432,7 +10114,7 @@ HNP=hnp::hnp(mod1, paint.on=T, col="red" , las=1, pch=8)
 plot(HNP,lty=c(2,3,2),  col=c(2,1,2,1))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-312-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-334-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br>
 
@@ -9491,7 +10173,7 @@ plot(mod1$res, col="blue",
 abline(h=0, col="red", lwd=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-315-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-337-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
@@ -9594,7 +10276,7 @@ bar.group(tukey.l3$groups, ylim=c(0,120),
           ylab="resposta",las=1) 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-340-1.png" width="672" />
 
 <br><br><br>
 
