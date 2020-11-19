@@ -1,6 +1,6 @@
 --- 
-title: "Aplicações práticas do software R para Agronomia"
-author: "Gabriel Danilo Shimizu"
+title: "Aplicações práticas do software R"
+author: "Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -21,8 +21,7 @@ options(OutDec = ".", knitr.kable.NA="")
 
 O R é uma linguagem de programação muito utilizada na âmbito da estatística e na ciência de dados. Na Agronomia, o conhecimento sobre essa linguagem é um diferencial, sobretudo na carreira acadêmica, pois sua limitação gráfica e de análises é praticamente inexistente. 
 
-
-Este livro virtual tem a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. 
+Este livro virtual é a versão aprimorado do antigo website AgroR e tem a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. 
 
 Dúvidas, sugestões e críticas podem ser encaminhadas ao e-mail: shimizu@uel.br
 
@@ -30,7 +29,7 @@ Dúvidas, sugestões e críticas podem ser encaminhadas ao e-mail: shimizu@uel.b
 
 <br><br>
 
-![](capanovo.png)
+<!-- ![](capanovo.png) -->
 
 # O que é o R
 
