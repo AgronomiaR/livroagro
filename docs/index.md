@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R"
 author: "Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi"
-date: "2020-11-19"
+date: "2021-01-13"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -1132,7 +1132,7 @@ round(ds,2)      # Se a observação for menor que .5 arredonda para baixo, do c
 ```
 
 ```
-##  [1]  5.46 10.42  7.98  3.85  8.42  6.30  8.31  5.20  8.80  8.89
+##  [1]  6.10  8.94  7.02  9.39  8.73  6.45 11.91  7.44  5.51  4.79
 ```
 
 <br>
@@ -1143,7 +1143,7 @@ ceiling(ds)      # sempre arredonda para cima
 ```
 
 ```
-##  [1]  6 11  8  4  9  7  9  6  9  9
+##  [1]  7  9  8 10  9  7 12  8  6  5
 ```
 
 <br>
@@ -1154,7 +1154,7 @@ floor(ds)        # sempre arredonda para baixo
 ```
 
 ```
-##  [1]  5 10  7  3  8  6  8  5  8  8
+##  [1]  6  8  7  9  8  6 11  7  5  4
 ```
 
 # Introdução aos loops

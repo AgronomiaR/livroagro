@@ -1,6 +1,8 @@
 bookdown::gitbook:
   css: style.css
   config:
+    fontsettings:
+      theme: sepia
     toc:
       before: |
         <li><a href="./">Aplicações práticas do software R para Agronomia</a></li>
