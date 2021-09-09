@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 10 Estatística Descritiva | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 10 Estatística Descritiva | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="introdução-aos-loops.html"/>
 <link rel="next" href="estatística-experimental.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -652,12 +652,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <p>Existem várias formas de entrada ou leitura de dados no R. Para um conjunto de dados pequeno, pode-se entrar com as informações diretamente no console do programa. Considere um delineamento
 inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, entre outras, poderia ser da forma:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="estatística-descritiva.html#cb80-1"></a>tratamentos =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;&#39;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)), <span class="dt">each=</span><span class="dv">4</span>)</span>
-<span id="cb80-2"><a href="estatística-descritiva.html#cb80-2"></a>resposta =<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">110</span>,  <span class="dv">90</span>,</span>
-<span id="cb80-3"><a href="estatística-descritiva.html#cb80-3"></a>             <span class="dv">150</span>, <span class="dv">145</span>, <span class="dv">149</span>, <span class="dv">165</span>,</span>
-<span id="cb80-4"><a href="estatística-descritiva.html#cb80-4"></a>             <span class="dv">150</span>, <span class="dv">144</span>, <span class="dv">134</span>, <span class="dv">139</span>,</span>
-<span id="cb80-5"><a href="estatística-descritiva.html#cb80-5"></a>             <span class="dv">220</span>, <span class="dv">206</span>, <span class="dv">211</span>, <span class="dv">210</span>,</span>
-<span id="cb80-6"><a href="estatística-descritiva.html#cb80-6"></a>             <span class="dv">266</span>, <span class="dv">249</span>, <span class="dv">248</span>, <span class="dv">260</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="estatística-descritiva.html#cb80-1" aria-hidden="true" tabindex="-1"></a>tratamentos <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>, <span class="at">sep=</span><span class="st">&#39;&#39;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)), <span class="at">each=</span><span class="dv">4</span>)</span>
+<span id="cb80-2"><a href="estatística-descritiva.html#cb80-2" aria-hidden="true" tabindex="-1"></a>resposta <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">110</span>,  <span class="dv">90</span>,</span>
+<span id="cb80-3"><a href="estatística-descritiva.html#cb80-3" aria-hidden="true" tabindex="-1"></a>             <span class="dv">150</span>, <span class="dv">145</span>, <span class="dv">149</span>, <span class="dv">165</span>,</span>
+<span id="cb80-4"><a href="estatística-descritiva.html#cb80-4" aria-hidden="true" tabindex="-1"></a>             <span class="dv">150</span>, <span class="dv">144</span>, <span class="dv">134</span>, <span class="dv">139</span>,</span>
+<span id="cb80-5"><a href="estatística-descritiva.html#cb80-5" aria-hidden="true" tabindex="-1"></a>             <span class="dv">220</span>, <span class="dv">206</span>, <span class="dv">211</span>, <span class="dv">210</span>,</span>
+<span id="cb80-6"><a href="estatística-descritiva.html#cb80-6" aria-hidden="true" tabindex="-1"></a>             <span class="dv">266</span>, <span class="dv">249</span>, <span class="dv">248</span>, <span class="dv">260</span>)</span></code></pre></div>
 <p><br><br></p>
 <hr />
 </div>
@@ -672,14 +672,14 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <p>A medida de tendência central mais comumente usada para descrever resumidamente um conjunto de dados, tabelados ou não, é a média aritmética simples, ou simplesmente média e representa-se por <span class="math inline">\(\bar{x}\)</span>. é definida como a soma das observações dividida pelo número delas.</p>
 <p>Assim, a média amostral é dada por:</p>
 <p><span class="math display">\[\overline{x} = \frac{x_1 + \ldots + x_n}{n}, \qquad \mbox{ ou, resumidamente, como } \qquad \overline{x} = \displaystyle \frac {1}{n} \sum_{i=1}^{n} x_i. \]</span></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="estatística-descritiva.html#cb81-1"></a><span class="co">## Comando básico para o cálculo da média geral</span></span>
-<span id="cb81-2"><a href="estatística-descritiva.html#cb81-2"></a>(média =<span class="st"> </span><span class="kw">mean</span>(resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="estatística-descritiva.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comando básico para o cálculo da média geral</span></span>
+<span id="cb81-2"><a href="estatística-descritiva.html#cb81-2" aria-hidden="true" tabindex="-1"></a>(média <span class="ot">=</span> <span class="fu">mean</span>(resposta))</span></code></pre></div>
 <pre><code>## [1] 173.3</code></pre>
 <p>Para calcular a média por tratamento, pode-se usar o comando tapply(), que necessita dos seguintes argumentos:
 <code>tapply(vetor de dados, fator, análise)</code>.</p>
 <p>Assim</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="estatística-descritiva.html#cb83-1"></a><span class="co">## Cálculo da média por tratamento</span></span>
-<span id="cb83-2"><a href="estatística-descritiva.html#cb83-2"></a>(médias =<span class="st"> </span><span class="kw">tapply</span>(resposta, tratamentos, mean))</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="estatística-descritiva.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Cálculo da média por tratamento</span></span>
+<span id="cb83-2"><a href="estatística-descritiva.html#cb83-2" aria-hidden="true" tabindex="-1"></a>(médias <span class="ot">=</span> <span class="fu">tapply</span>(resposta, tratamentos, mean))</span></code></pre></div>
 <pre><code>##     T1     T2     T3     T4     T5 
 ## 105.00 152.25 141.75 211.75 255.75</code></pre>
 <p><br></p>
@@ -692,11 +692,11 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <p>É o valor que divide o conjunto ordenado de valores em duas partes com igual número de elementos, ou seja, 50% das observações ficam acima da mediana e 50% ficam abaixo.</p>
 <p>Para calcular a mediana deve-se, em primeiro lugar, ordenar os dados para que se possa localizar a posição da mediana e assim encontrar seu valor. O número que indica a ordem ou posição em que se encontra o valor correspondente à mediana é denominado elemento mediano (<span class="math inline">\(E_{Md}\)</span>).</p>
 <p>Se o número de observações for impar, a mediana será a observação central. Se o número de observações for par, a mediana será a média aritmática das duas observações centrais.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="estatística-descritiva.html#cb85-1"></a><span class="co">## Comando básico para o cálculo da mediana</span></span>
-<span id="cb85-2"><a href="estatística-descritiva.html#cb85-2"></a>(<span class="dt">mediana =</span> <span class="kw">median</span>(resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="estatística-descritiva.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comando básico para o cálculo da mediana</span></span>
+<span id="cb85-2"><a href="estatística-descritiva.html#cb85-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">mediana =</span> <span class="fu">median</span>(resposta))</span></code></pre></div>
 <pre><code>## [1] 150</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="estatística-descritiva.html#cb87-1"></a><span class="co">## Cálculo da mediana por tratamento</span></span>
-<span id="cb87-2"><a href="estatística-descritiva.html#cb87-2"></a>(<span class="dt">medianas =</span> <span class="kw">tapply</span>(resposta, tratamentos, median))</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="estatística-descritiva.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Cálculo da mediana por tratamento</span></span>
+<span id="cb87-2"><a href="estatística-descritiva.html#cb87-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">medianas =</span> <span class="fu">tapply</span>(resposta, tratamentos, median))</span></code></pre></div>
 <pre><code>##    T1    T2    T3    T4    T5 
 ## 105.0 149.5 141.5 210.5 254.5</code></pre>
 <p><br></p>
@@ -710,8 +710,8 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <p>Se mais de dois valores ocorrem com a mesma frequência máxima, cada um deles é uma moda, e o conjunto é <strong>multimodal</strong>.</p>
 <p>Quando nenhum valor é repetido, o conjunto não tem moda (<strong>amodal</strong>).</p>
 <p>A moda pode ser obtida mesmo que a variável seja <strong>qualitativa</strong>. Os comandos para se determinar a moda são:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="estatística-descritiva.html#cb89-1"></a>tab =<span class="st"> </span><span class="kw">table</span>(resposta)</span>
-<span id="cb89-2"><a href="estatística-descritiva.html#cb89-2"></a>(<span class="dt">moda =</span> <span class="kw">names</span>(tab)[tab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(tab)])</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="estatística-descritiva.html#cb89-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">=</span> <span class="fu">table</span>(resposta)</span>
+<span id="cb89-2"><a href="estatística-descritiva.html#cb89-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">moda =</span> <span class="fu">names</span>(tab)[tab <span class="sc">==</span> <span class="fu">max</span>(tab)])</span></code></pre></div>
 <pre><code>## [1] &quot;150&quot;</code></pre>
 <p><br></p>
 <hr />
@@ -720,11 +720,11 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <h3><span class="header-section-number">10.2.4</span> Máximo</h3>
 <hr />
 <p>O maior valor observado no conjunto de dados.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="estatística-descritiva.html#cb91-1"></a><span class="co">## Comando básico para o cálculo do valor máximo</span></span>
-<span id="cb91-2"><a href="estatística-descritiva.html#cb91-2"></a>(máximo =<span class="st"> </span><span class="kw">max</span>(resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="estatística-descritiva.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comando básico para o cálculo do valor máximo</span></span>
+<span id="cb91-2"><a href="estatística-descritiva.html#cb91-2" aria-hidden="true" tabindex="-1"></a>(máximo <span class="ot">=</span> <span class="fu">max</span>(resposta))</span></code></pre></div>
 <pre><code>## [1] 266</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="estatística-descritiva.html#cb93-1"></a><span class="co">## Cálculo do valor máximo para cada tratamento</span></span>
-<span id="cb93-2"><a href="estatística-descritiva.html#cb93-2"></a>(máximos =<span class="st"> </span><span class="kw">tapply</span>(resposta, tratamentos, max))</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="estatística-descritiva.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Cálculo do valor máximo para cada tratamento</span></span>
+<span id="cb93-2"><a href="estatística-descritiva.html#cb93-2" aria-hidden="true" tabindex="-1"></a>(máximos <span class="ot">=</span> <span class="fu">tapply</span>(resposta, tratamentos, max))</span></code></pre></div>
 <pre><code>##  T1  T2  T3  T4  T5 
 ## 120 165 150 220 266</code></pre>
 <p><br></p>
@@ -734,11 +734,11 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <h3><span class="header-section-number">10.2.5</span> Mínimo</h3>
 <hr />
 <p>O menor valor observado no conjunto de dados.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="estatística-descritiva.html#cb95-1"></a><span class="co">## Comando básico para valor mínimo</span></span>
-<span id="cb95-2"><a href="estatística-descritiva.html#cb95-2"></a>(mínimo =<span class="st"> </span><span class="kw">min</span>(resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="estatística-descritiva.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comando básico para valor mínimo</span></span>
+<span id="cb95-2"><a href="estatística-descritiva.html#cb95-2" aria-hidden="true" tabindex="-1"></a>(mínimo <span class="ot">=</span> <span class="fu">min</span>(resposta))</span></code></pre></div>
 <pre><code>## [1] 90</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="estatística-descritiva.html#cb97-1"></a><span class="co">## Cálculo do valor mínimo para cada tratamento</span></span>
-<span id="cb97-2"><a href="estatística-descritiva.html#cb97-2"></a>(mínimos =<span class="st"> </span><span class="kw">tapply</span>(resposta, tratamentos, min))</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="estatística-descritiva.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Cálculo do valor mínimo para cada tratamento</span></span>
+<span id="cb97-2"><a href="estatística-descritiva.html#cb97-2" aria-hidden="true" tabindex="-1"></a>(mínimos <span class="ot">=</span> <span class="fu">tapply</span>(resposta, tratamentos, min))</span></code></pre></div>
 <pre><code>##  T1  T2  T3  T4  T5 
 ##  90 145 134 206 248</code></pre>
 <p><br> <br></p>
@@ -759,10 +759,10 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <span class="math display">\[X_{(1)} \leq X_{(2)} \leq X_{(3)} \leq \cdots \leq X_{(n-1)} \leq X_{(n)}.\]</span></p>
 <p>A amplitude <span class="math inline">\(A_t\)</span> dos dados é dada por:</p>
 <p><span class="math display">\[A_t = X_{(n)} - X_{(1)}\]</span></p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="estatística-descritiva.html#cb99-1"></a>(<span class="dt">amplitude =</span> <span class="kw">max</span>(resposta) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="estatística-descritiva.html#cb99-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">amplitude =</span> <span class="fu">max</span>(resposta) <span class="sc">-</span> <span class="fu">min</span>(resposta))</span></code></pre></div>
 <pre><code>## [1] 176</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="estatística-descritiva.html#cb101-1"></a><span class="co"># ou</span></span>
-<span id="cb101-2"><a href="estatística-descritiva.html#cb101-2"></a>(<span class="dt">amplitude =</span> <span class="kw">diff</span>(<span class="kw">range</span>(resposta)))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="estatística-descritiva.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb101-2"><a href="estatística-descritiva.html#cb101-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">amplitude =</span> <span class="fu">diff</span>(<span class="fu">range</span>(resposta)))</span></code></pre></div>
 <pre><code>## [1] 176</code></pre>
 <p><br></p>
 <hr />
@@ -774,11 +774,11 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <p>A variância de uma amostra <span class="math inline">\(\left\{x_1, \ldots, x_n \right\}\)</span> de <span class="math inline">\(n\)</span> elementos é definida por:
 <span class="math display">\[s^2 = \sum_{i=1}^n \frac{(x_i - \overline{x})^2}{n-1} \qquad \mbox{ ou } \qquad s^2 = \frac{1}{n-1} \left[ 
 \sum_{i=1}^n x_i^2 - \frac{ \left( \displaystyle \sum_{i=1}^n x_i \right)^2  }{n} \right].\]</span></p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="estatística-descritiva.html#cb103-1"></a><span class="co">## Comando básico para o cálculo da variância amostral</span></span>
-<span id="cb103-2"><a href="estatística-descritiva.html#cb103-2"></a>(variância =<span class="st"> </span><span class="kw">var</span>(resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="estatística-descritiva.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comando básico para o cálculo da variância amostral</span></span>
+<span id="cb103-2"><a href="estatística-descritiva.html#cb103-2" aria-hidden="true" tabindex="-1"></a>(variância <span class="ot">=</span> <span class="fu">var</span>(resposta))</span></code></pre></div>
 <pre><code>## [1] 3090.747</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="estatística-descritiva.html#cb105-1"></a><span class="co">## Cálculo da variância amostral para cada tratamento</span></span>
-<span id="cb105-2"><a href="estatística-descritiva.html#cb105-2"></a>(variâncias =<span class="st"> </span><span class="kw">tapply</span>(resposta, tratamentos, var))</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="estatística-descritiva.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Cálculo da variância amostral para cada tratamento</span></span>
+<span id="cb105-2"><a href="estatística-descritiva.html#cb105-2" aria-hidden="true" tabindex="-1"></a>(variâncias <span class="ot">=</span> <span class="fu">tapply</span>(resposta, tratamentos, var))</span></code></pre></div>
 <pre><code>##        T1        T2        T3        T4        T5 
 ## 166.66667  76.91667  46.91667  34.91667  76.25000</code></pre>
 <p><br></p>
@@ -796,11 +796,11 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <p>Observe que, devido ao fato de se elevar os desvios ao quadrado, a unidade de medida também fica elevada ao quadrado, gerando escalas sem sentido prático. Assim, caso a unidade de mensuração seja metros (<span class="math inline">\(m\)</span>), a unidade de medida da variância será <span class="math inline">\(m^2\)</span>.</p>
 <p>Uma forma de se obter uma medida de dispersão com a mesma unidade de medida dos dados observados é, simplesmente, extrair a raiz quadrada da variância, obtendo-se o desvio padrão. Ele é representado por <span class="math inline">\(s\)</span>. Logo,</p>
 <p><span class="math display">\[ s = \sqrt{s^2} = \sqrt{\sum_{i=1}^n \frac{(x_i - \overline{x})^2}{n-1}}\]</span></p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="estatística-descritiva.html#cb107-1"></a><span class="co">## Comando básico para Desvio-padrão amostral</span></span>
-<span id="cb107-2"><a href="estatística-descritiva.html#cb107-2"></a>(<span class="dt">desvio =</span> <span class="kw">sd</span>(resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="estatística-descritiva.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comando básico para Desvio-padrão amostral</span></span>
+<span id="cb107-2"><a href="estatística-descritiva.html#cb107-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">desvio =</span> <span class="fu">sd</span>(resposta))</span></code></pre></div>
 <pre><code>## [1] 55.59449</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="estatística-descritiva.html#cb109-1"></a><span class="co">## Separando por tratamento</span></span>
-<span id="cb109-2"><a href="estatística-descritiva.html#cb109-2"></a>(<span class="dt">desvios =</span> <span class="kw">tapply</span>(resposta, tratamentos, sd))</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="estatística-descritiva.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Separando por tratamento</span></span>
+<span id="cb109-2"><a href="estatística-descritiva.html#cb109-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">desvios =</span> <span class="fu">tapply</span>(resposta, tratamentos, sd))</span></code></pre></div>
 <pre><code>##        T1        T2        T3        T4        T5 
 ## 12.909944  8.770215  6.849574  5.909033  8.732125</code></pre>
 <p><br></p>
@@ -814,14 +814,14 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <p>O coeficiente de variação de Pearson é a razão entre o desvio padrão e a média. Em geral, o resultado é multiplicado por 100, para que o coeficiente de variação seja expresso em porcentagem.</p>
 <p>É dado por:</p>
 <p><span class="math display">\[CV = \dfrac{s} {\overline{x} } \times 100\]</span></p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="estatística-descritiva.html#cb111-1"></a><span class="co">## Comando para o cálculo do Coeficiente de Variação</span></span>
-<span id="cb111-2"><a href="estatística-descritiva.html#cb111-2"></a>(<span class="dt">CV =</span> <span class="kw">sd</span>(resposta) <span class="op">/</span><span class="st"> </span><span class="kw">mean</span>(resposta)<span class="op">*</span><span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="estatística-descritiva.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comando para o cálculo do Coeficiente de Variação</span></span>
+<span id="cb111-2"><a href="estatística-descritiva.html#cb111-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">CV =</span> <span class="fu">sd</span>(resposta) <span class="sc">/</span> <span class="fu">mean</span>(resposta)<span class="sc">*</span><span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## [1] 32.07991</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="estatística-descritiva.html#cb113-1"></a><span class="co"># ou</span></span>
-<span id="cb113-2"><a href="estatística-descritiva.html#cb113-2"></a>(<span class="dt">CV =</span> desvio <span class="op">/</span><span class="st"> </span>média <span class="op">*</span><span class="st"> </span><span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="estatística-descritiva.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb113-2"><a href="estatística-descritiva.html#cb113-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">CV =</span> desvio <span class="sc">/</span> média <span class="sc">*</span> <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## [1] 32.07991</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="estatística-descritiva.html#cb115-1"></a><span class="co">## Cálculo do Coeficiente de Variação por tratamento</span></span>
-<span id="cb115-2"><a href="estatística-descritiva.html#cb115-2"></a>(<span class="dt">CVs =</span> <span class="kw">tapply</span>(resposta, tratamentos, sd) <span class="op">/</span><span class="st"> </span><span class="kw">tapply</span>(resposta, tratamentos, mean)<span class="op">*</span><span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="estatística-descritiva.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Cálculo do Coeficiente de Variação por tratamento</span></span>
+<span id="cb115-2"><a href="estatística-descritiva.html#cb115-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">CVs =</span> <span class="fu">tapply</span>(resposta, tratamentos, sd) <span class="sc">/</span> <span class="fu">tapply</span>(resposta, tratamentos, mean)<span class="sc">*</span><span class="dv">100</span>)</span></code></pre></div>
 <pre><code>##        T1        T2        T3        T4        T5 
 ## 12.295185  5.760404  4.832151  2.790570  3.414320</code></pre>
 <p><br></p>
@@ -832,16 +832,16 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <h2><span class="header-section-number">10.4</span> Gerando uma Tabela com as Estatísticas</h2>
 <hr />
 <p>Pode-se construir uma única tabela com as estatísticas geradas usando-se o comando <code>rbind</code> ou <code>cbind</code>. Assim,</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="estatística-descritiva.html#cb117-1"></a>descritiva =<span class="st"> </span><span class="kw">rbind</span>(Média =<span class="st"> </span>média,</span>
-<span id="cb117-2"><a href="estatística-descritiva.html#cb117-2"></a>                   <span class="dt">Mediana =</span> mediana,</span>
-<span id="cb117-3"><a href="estatística-descritiva.html#cb117-3"></a>                   Máximo=<span class="kw">max</span>(resposta),</span>
-<span id="cb117-4"><a href="estatística-descritiva.html#cb117-4"></a>                   Mínimo=<span class="kw">min</span>(resposta),</span>
-<span id="cb117-5"><a href="estatística-descritiva.html#cb117-5"></a>                   <span class="dt">Amplitude=</span>amplitude,</span>
-<span id="cb117-6"><a href="estatística-descritiva.html#cb117-6"></a>                   Variância=variância,</span>
-<span id="cb117-7"><a href="estatística-descritiva.html#cb117-7"></a>                   <span class="st">&quot;Desvio-padrão&quot;</span>=desvio,</span>
-<span id="cb117-8"><a href="estatística-descritiva.html#cb117-8"></a>                   <span class="st">&quot;CV(%)&quot;</span>=CV)</span>
-<span id="cb117-9"><a href="estatística-descritiva.html#cb117-9"></a><span class="kw">colnames</span>(descritiva) =<span class="st"> &#39;Estatísticas&#39;</span></span>
-<span id="cb117-10"><a href="estatística-descritiva.html#cb117-10"></a>descritiva</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="estatística-descritiva.html#cb117-1" aria-hidden="true" tabindex="-1"></a>descritiva <span class="ot">=</span> <span class="fu">rbind</span>(Média <span class="ot">=</span> média,</span>
+<span id="cb117-2"><a href="estatística-descritiva.html#cb117-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Mediana =</span> mediana,</span>
+<span id="cb117-3"><a href="estatística-descritiva.html#cb117-3" aria-hidden="true" tabindex="-1"></a>                   Máximo<span class="ot">=</span><span class="fu">max</span>(resposta),</span>
+<span id="cb117-4"><a href="estatística-descritiva.html#cb117-4" aria-hidden="true" tabindex="-1"></a>                   Mínimo<span class="ot">=</span><span class="fu">min</span>(resposta),</span>
+<span id="cb117-5"><a href="estatística-descritiva.html#cb117-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Amplitude=</span>amplitude,</span>
+<span id="cb117-6"><a href="estatística-descritiva.html#cb117-6" aria-hidden="true" tabindex="-1"></a>                   Variância<span class="ot">=</span>variância,</span>
+<span id="cb117-7"><a href="estatística-descritiva.html#cb117-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Desvio-padrão&quot;</span><span class="ot">=</span>desvio,</span>
+<span id="cb117-8"><a href="estatística-descritiva.html#cb117-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;CV(%)&quot;</span><span class="ot">=</span>CV)</span>
+<span id="cb117-9"><a href="estatística-descritiva.html#cb117-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(descritiva) <span class="ot">=</span> <span class="st">&#39;Estatísticas&#39;</span></span>
+<span id="cb117-10"><a href="estatística-descritiva.html#cb117-10" aria-hidden="true" tabindex="-1"></a>descritiva</span></code></pre></div>
 <pre><code>##               Estatísticas
 ## Média            173.30000
 ## Mediana          150.00000
@@ -857,17 +857,17 @@ inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, e
 <div id="gerando-as-estatísticas-por-tratamento" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> Gerando as estatísticas por tratamento:</h2>
 <hr />
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="estatística-descritiva.html#cb119-1"></a><span class="co"># Cálculo das Estatísticas por tratamento</span></span>
-<span id="cb119-2"><a href="estatística-descritiva.html#cb119-2"></a></span>
-<span id="cb119-3"><a href="estatística-descritiva.html#cb119-3"></a>Descritiva =<span class="st"> </span><span class="kw">cbind</span>(Médias=<span class="kw">round</span>(médias, <span class="dv">1</span>), </span>
-<span id="cb119-4"><a href="estatística-descritiva.html#cb119-4"></a>                   <span class="dt">Medianas=</span>medianas,</span>
-<span id="cb119-5"><a href="estatística-descritiva.html#cb119-5"></a>                   Máximos=máximos,</span>
-<span id="cb119-6"><a href="estatística-descritiva.html#cb119-6"></a>                   Mínimos=mínimos,</span>
-<span id="cb119-7"><a href="estatística-descritiva.html#cb119-7"></a>                   <span class="dt">Amplitudes=</span>máximos <span class="op">-</span><span class="st"> </span>mínimos,</span>
-<span id="cb119-8"><a href="estatística-descritiva.html#cb119-8"></a>                   Variâncias=<span class="kw">round</span>(variâncias, <span class="dv">4</span>), </span>
-<span id="cb119-9"><a href="estatística-descritiva.html#cb119-9"></a>                   <span class="st">&quot;Desvios-padrão&quot;</span>=<span class="kw">round</span>(desvios, <span class="dv">4</span>), </span>
-<span id="cb119-10"><a href="estatística-descritiva.html#cb119-10"></a>                   <span class="st">&quot;CVs(%)&quot;</span>=<span class="kw">round</span>(CVs, <span class="dv">1</span>))</span>
-<span id="cb119-11"><a href="estatística-descritiva.html#cb119-11"></a>Descritiva</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="estatística-descritiva.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo das Estatísticas por tratamento</span></span>
+<span id="cb119-2"><a href="estatística-descritiva.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="estatística-descritiva.html#cb119-3" aria-hidden="true" tabindex="-1"></a>Descritiva <span class="ot">=</span> <span class="fu">cbind</span>(Médias<span class="ot">=</span><span class="fu">round</span>(médias, <span class="dv">1</span>), </span>
+<span id="cb119-4"><a href="estatística-descritiva.html#cb119-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Medianas=</span>medianas,</span>
+<span id="cb119-5"><a href="estatística-descritiva.html#cb119-5" aria-hidden="true" tabindex="-1"></a>                   Máximos<span class="ot">=</span>máximos,</span>
+<span id="cb119-6"><a href="estatística-descritiva.html#cb119-6" aria-hidden="true" tabindex="-1"></a>                   Mínimos<span class="ot">=</span>mínimos,</span>
+<span id="cb119-7"><a href="estatística-descritiva.html#cb119-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Amplitudes=</span>máximos <span class="sc">-</span> mínimos,</span>
+<span id="cb119-8"><a href="estatística-descritiva.html#cb119-8" aria-hidden="true" tabindex="-1"></a>                   Variâncias<span class="ot">=</span><span class="fu">round</span>(variâncias, <span class="dv">4</span>), </span>
+<span id="cb119-9"><a href="estatística-descritiva.html#cb119-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;Desvios-padrão&quot;</span><span class="ot">=</span><span class="fu">round</span>(desvios, <span class="dv">4</span>), </span>
+<span id="cb119-10"><a href="estatística-descritiva.html#cb119-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">&quot;CVs(%)&quot;</span><span class="ot">=</span><span class="fu">round</span>(CVs, <span class="dv">1</span>))</span>
+<span id="cb119-11"><a href="estatística-descritiva.html#cb119-11" aria-hidden="true" tabindex="-1"></a>Descritiva</span></code></pre></div>
 <pre><code>##    Médias Medianas Máximos Mínimos Amplitudes Variâncias Desvios-padrão CVs(%)
 ## T1  105.0    105.0     120      90         30   166.6667        12.9099   12.3
 ## T2  152.2    149.5     165     145         20    76.9167         8.7702    5.8
@@ -905,10 +905,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

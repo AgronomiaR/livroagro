@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 18 Esquema de Parcelas Subdivididas | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 18 Esquema de Parcelas Subdivididas | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="esquema-fatorial-3-fatores.html"/>
 <link rel="next" href="polinômios-ortogonais.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -840,47 +840,47 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 <hr />
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de coluna igual número de repetições)</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="esquema-de-parcelas-subdivididas.html#cb435-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb435-2"><a href="esquema-de-parcelas-subdivididas.html#cb435-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb435-3"><a href="esquema-de-parcelas-subdivididas.html#cb435-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb435-4"><a href="esquema-de-parcelas-subdivididas.html#cb435-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb435-5"><a href="esquema-de-parcelas-subdivididas.html#cb435-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
-<span id="cb435-6"><a href="esquema-de-parcelas-subdivididas.html#cb435-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb435-7"><a href="esquema-de-parcelas-subdivididas.html#cb435-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r,<span class="dt">byrow=</span>T))</span>
-<span id="cb435-8"><a href="esquema-de-parcelas-subdivididas.html#cb435-8"></a>  ncol=r</span>
-<span id="cb435-9"><a href="esquema-de-parcelas-subdivididas.html#cb435-9"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb435-10"><a href="esquema-de-parcelas-subdivididas.html#cb435-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb435-11"><a href="esquema-de-parcelas-subdivididas.html#cb435-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb435-12"><a href="esquema-de-parcelas-subdivididas.html#cb435-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="esquema-de-parcelas-subdivididas.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb435-2"><a href="esquema-de-parcelas-subdivididas.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb435-3"><a href="esquema-de-parcelas-subdivididas.html#cb435-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb435-4"><a href="esquema-de-parcelas-subdivididas.html#cb435-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb435-5"><a href="esquema-de-parcelas-subdivididas.html#cb435-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb435-6"><a href="esquema-de-parcelas-subdivididas.html#cb435-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.split</span>(trat,trat1,r,<span class="at">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb435-7"><a href="esquema-de-parcelas-subdivididas.html#cb435-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat,sort<span class="sc">$</span>book<span class="sc">$</span>trat1),<span class="at">nrow =</span>r,<span class="at">byrow=</span>T))</span>
+<span id="cb435-8"><a href="esquema-de-parcelas-subdivididas.html#cb435-8" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span>r</span>
+<span id="cb435-9"><a href="esquema-de-parcelas-subdivididas.html#cb435-9" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb435-10"><a href="esquema-de-parcelas-subdivididas.html#cb435-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb435-11"><a href="esquema-de-parcelas-subdivididas.html#cb435-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb435-12"><a href="esquema-de-parcelas-subdivididas.html#cb435-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="esquema-de-parcelas-subdivididas.html#cb436-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
-<span id="cb436-2"><a href="esquema-de-parcelas-subdivididas.html#cb436-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="esquema-de-parcelas-subdivididas.html#cb436-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb436-2"><a href="esquema-de-parcelas-subdivididas.html#cb436-2" aria-hidden="true" tabindex="-1"></a>trat1<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="esquema-de-parcelas-subdivididas.html#cb437-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="esquema-de-parcelas-subdivididas.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,trat1,<span class="at">r=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-265-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de colunas igual número de tratamentos)</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="esquema-de-parcelas-subdivididas.html#cb438-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb438-2"><a href="esquema-de-parcelas-subdivididas.html#cb438-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb438-3"><a href="esquema-de-parcelas-subdivididas.html#cb438-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb438-4"><a href="esquema-de-parcelas-subdivididas.html#cb438-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb438-5"><a href="esquema-de-parcelas-subdivididas.html#cb438-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
-<span id="cb438-6"><a href="esquema-de-parcelas-subdivididas.html#cb438-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb438-7"><a href="esquema-de-parcelas-subdivididas.html#cb438-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r, <span class="dt">byrow=</span>T)))</span>
-<span id="cb438-8"><a href="esquema-de-parcelas-subdivididas.html#cb438-8"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb438-9"><a href="esquema-de-parcelas-subdivididas.html#cb438-9"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book<span class="op">$</span>trat))</span>
-<span id="cb438-10"><a href="esquema-de-parcelas-subdivididas.html#cb438-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb438-11"><a href="esquema-de-parcelas-subdivididas.html#cb438-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb438-12"><a href="esquema-de-parcelas-subdivididas.html#cb438-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="esquema-de-parcelas-subdivididas.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb438-2"><a href="esquema-de-parcelas-subdivididas.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb438-3"><a href="esquema-de-parcelas-subdivididas.html#cb438-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb438-4"><a href="esquema-de-parcelas-subdivididas.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb438-5"><a href="esquema-de-parcelas-subdivididas.html#cb438-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb438-6"><a href="esquema-de-parcelas-subdivididas.html#cb438-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.split</span>(trat,trat1,r,<span class="at">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb438-7"><a href="esquema-de-parcelas-subdivididas.html#cb438-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">t</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat,sort<span class="sc">$</span>book<span class="sc">$</span>trat1),<span class="at">nrow =</span>r, <span class="at">byrow=</span>T)))</span>
+<span id="cb438-8"><a href="esquema-de-parcelas-subdivididas.html#cb438-8" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb438-9"><a href="esquema-de-parcelas-subdivididas.html#cb438-9" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span><span class="fu">length</span>(<span class="fu">levels</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat))</span>
+<span id="cb438-10"><a href="esquema-de-parcelas-subdivididas.html#cb438-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb438-11"><a href="esquema-de-parcelas-subdivididas.html#cb438-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb438-12"><a href="esquema-de-parcelas-subdivididas.html#cb438-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="esquema-de-parcelas-subdivididas.html#cb439-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
-<span id="cb439-2"><a href="esquema-de-parcelas-subdivididas.html#cb439-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="esquema-de-parcelas-subdivididas.html#cb439-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb439-2"><a href="esquema-de-parcelas-subdivididas.html#cb439-2" aria-hidden="true" tabindex="-1"></a>trat1<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="esquema-de-parcelas-subdivididas.html#cb440-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="esquema-de-parcelas-subdivididas.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,trat1,<span class="at">r=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-268-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 <hr />
@@ -890,47 +890,47 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 <hr />
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de coluna igual número de repetições)</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="esquema-de-parcelas-subdivididas.html#cb441-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb441-2"><a href="esquema-de-parcelas-subdivididas.html#cb441-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb441-3"><a href="esquema-de-parcelas-subdivididas.html#cb441-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb441-4"><a href="esquema-de-parcelas-subdivididas.html#cb441-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb441-5"><a href="esquema-de-parcelas-subdivididas.html#cb441-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
-<span id="cb441-6"><a href="esquema-de-parcelas-subdivididas.html#cb441-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb441-7"><a href="esquema-de-parcelas-subdivididas.html#cb441-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r,<span class="dt">byrow=</span>T))</span>
-<span id="cb441-8"><a href="esquema-de-parcelas-subdivididas.html#cb441-8"></a>  ncol=r</span>
-<span id="cb441-9"><a href="esquema-de-parcelas-subdivididas.html#cb441-9"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb441-10"><a href="esquema-de-parcelas-subdivididas.html#cb441-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb441-11"><a href="esquema-de-parcelas-subdivididas.html#cb441-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb441-12"><a href="esquema-de-parcelas-subdivididas.html#cb441-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="esquema-de-parcelas-subdivididas.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb441-2"><a href="esquema-de-parcelas-subdivididas.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb441-3"><a href="esquema-de-parcelas-subdivididas.html#cb441-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb441-4"><a href="esquema-de-parcelas-subdivididas.html#cb441-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb441-5"><a href="esquema-de-parcelas-subdivididas.html#cb441-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb441-6"><a href="esquema-de-parcelas-subdivididas.html#cb441-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.split</span>(trat,trat1,r,<span class="at">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb441-7"><a href="esquema-de-parcelas-subdivididas.html#cb441-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat,sort<span class="sc">$</span>book<span class="sc">$</span>trat1),<span class="at">nrow =</span>r,<span class="at">byrow=</span>T))</span>
+<span id="cb441-8"><a href="esquema-de-parcelas-subdivididas.html#cb441-8" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span>r</span>
+<span id="cb441-9"><a href="esquema-de-parcelas-subdivididas.html#cb441-9" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb441-10"><a href="esquema-de-parcelas-subdivididas.html#cb441-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb441-11"><a href="esquema-de-parcelas-subdivididas.html#cb441-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb441-12"><a href="esquema-de-parcelas-subdivididas.html#cb441-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="esquema-de-parcelas-subdivididas.html#cb442-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
-<span id="cb442-2"><a href="esquema-de-parcelas-subdivididas.html#cb442-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="esquema-de-parcelas-subdivididas.html#cb442-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb442-2"><a href="esquema-de-parcelas-subdivididas.html#cb442-2" aria-hidden="true" tabindex="-1"></a>trat1<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="esquema-de-parcelas-subdivididas.html#cb443-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="esquema-de-parcelas-subdivididas.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,trat1,<span class="at">r=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-271-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de colunas igual número de tratamentos)</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="esquema-de-parcelas-subdivididas.html#cb444-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb444-2"><a href="esquema-de-parcelas-subdivididas.html#cb444-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb444-3"><a href="esquema-de-parcelas-subdivididas.html#cb444-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb444-4"><a href="esquema-de-parcelas-subdivididas.html#cb444-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb444-5"><a href="esquema-de-parcelas-subdivididas.html#cb444-5"></a>croqui=<span class="cf">function</span>(trat,trat1,r){</span>
-<span id="cb444-6"><a href="esquema-de-parcelas-subdivididas.html#cb444-6"></a>  sort=<span class="kw">design.split</span>(trat,trat1,r,<span class="dt">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb444-7"><a href="esquema-de-parcelas-subdivididas.html#cb444-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>trat,sort<span class="op">$</span>book<span class="op">$</span>trat1),<span class="dt">nrow =</span>r, <span class="dt">byrow=</span>T)))</span>
-<span id="cb444-8"><a href="esquema-de-parcelas-subdivididas.html#cb444-8"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb444-9"><a href="esquema-de-parcelas-subdivididas.html#cb444-9"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book<span class="op">$</span>trat))</span>
-<span id="cb444-10"><a href="esquema-de-parcelas-subdivididas.html#cb444-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb444-11"><a href="esquema-de-parcelas-subdivididas.html#cb444-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb444-12"><a href="esquema-de-parcelas-subdivididas.html#cb444-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="esquema-de-parcelas-subdivididas.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb444-2"><a href="esquema-de-parcelas-subdivididas.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb444-3"><a href="esquema-de-parcelas-subdivididas.html#cb444-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb444-4"><a href="esquema-de-parcelas-subdivididas.html#cb444-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb444-5"><a href="esquema-de-parcelas-subdivididas.html#cb444-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,trat1,r){</span>
+<span id="cb444-6"><a href="esquema-de-parcelas-subdivididas.html#cb444-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.split</span>(trat,trat1,r,<span class="at">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb444-7"><a href="esquema-de-parcelas-subdivididas.html#cb444-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">t</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat,sort<span class="sc">$</span>book<span class="sc">$</span>trat1),<span class="at">nrow =</span>r, <span class="at">byrow=</span>T)))</span>
+<span id="cb444-8"><a href="esquema-de-parcelas-subdivididas.html#cb444-8" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb444-9"><a href="esquema-de-parcelas-subdivididas.html#cb444-9" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span><span class="fu">length</span>(<span class="fu">levels</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat))</span>
+<span id="cb444-10"><a href="esquema-de-parcelas-subdivididas.html#cb444-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb444-11"><a href="esquema-de-parcelas-subdivididas.html#cb444-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb444-12"><a href="esquema-de-parcelas-subdivididas.html#cb444-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="esquema-de-parcelas-subdivididas.html#cb445-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
-<span id="cb445-2"><a href="esquema-de-parcelas-subdivididas.html#cb445-2"></a>trat1=<span class="kw">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="esquema-de-parcelas-subdivididas.html#cb445-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>,<span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb445-2"><a href="esquema-de-parcelas-subdivididas.html#cb445-2" aria-hidden="true" tabindex="-1"></a>trat1<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;B1&quot;</span>,<span class="st">&quot;B2&quot;</span>,<span class="st">&quot;B3&quot;</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="esquema-de-parcelas-subdivididas.html#cb446-1"></a><span class="kw">croqui</span>(trat,trat1,<span class="dt">r=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="esquema-de-parcelas-subdivididas.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,trat1,<span class="at">r=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" style="display: block; margin: auto;" /></p>
 <hr />
 </div>
@@ -939,34 +939,34 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 <hr />
 <p><br></p>
 <p>Um experimento foi realizado com o intuito de avaliar 5 tratamentos na linha e entrelinha de um pomar. O experimento foi instalado em Delineamento em blocos casualizados com 12 repetições por tratamento. Foi analisado o carbono da biomassa microbiana (CBM).</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="esquema-de-parcelas-subdivididas.html#cb447-1"></a>RESP=<span class="kw">c</span>(<span class="fl">224.92</span>, <span class="fl">180.32</span>, <span class="fl">130.19</span>, <span class="fl">110.31</span>, <span class="fl">163.74</span>,<span class="fl">193.03</span>, <span class="fl">211.49</span>, <span class="fl">137.65</span>, <span class="fl">127.15</span>, <span class="fl">203.39</span>,</span>
-<span id="cb447-2"><a href="esquema-de-parcelas-subdivididas.html#cb447-2"></a>       <span class="fl">182.36</span>, <span class="fl">124.75</span>, <span class="fl">177.70</span>, <span class="fl">231.01</span>, <span class="fl">202.14</span>,<span class="fl">214.89</span>, <span class="fl">198.42</span>, <span class="fl">267.85</span>, <span class="fl">207.67</span>, <span class="fl">176.74</span>,</span>
-<span id="cb447-3"><a href="esquema-de-parcelas-subdivididas.html#cb447-3"></a>       <span class="fl">162.18</span>, <span class="fl">124.59</span>, <span class="fl">158.99</span>, <span class="fl">209.12</span>, <span class="fl">128.14</span>,<span class="fl">113.95</span>, <span class="fl">215.53</span>, <span class="fl">190.51</span>, <span class="fl">174.58</span>, <span class="fl">148.70</span>,</span>
-<span id="cb447-4"><a href="esquema-de-parcelas-subdivididas.html#cb447-4"></a>       <span class="fl">150.90</span>, <span class="fl">209.03</span>, <span class="fl">210.40</span>, <span class="fl">199.03</span>, <span class="fl">237.05</span>,<span class="fl">196.97</span>, <span class="fl">176.06</span>, <span class="fl">263.27</span>, <span class="fl">240.19</span>, <span class="fl">160.72</span>,</span>
-<span id="cb447-5"><a href="esquema-de-parcelas-subdivididas.html#cb447-5"></a>       <span class="fl">239.90</span>, <span class="fl">188.07</span>, <span class="fl">251.35</span>, <span class="fl">215.45</span>, <span class="fl">198.50</span>,<span class="fl">271.42</span>, <span class="fl">226.56</span>, <span class="fl">217.65</span>, <span class="fl">213.69</span>, <span class="fl">101.26</span>,</span>
-<span id="cb447-6"><a href="esquema-de-parcelas-subdivididas.html#cb447-6"></a>       <span class="fl">115.41</span>, <span class="fl">140.10</span>, <span class="fl">117.67</span>, <span class="fl">106.45</span>, <span class="fl">139.34</span>,<span class="fl">104.22</span>, <span class="fl">206.13</span>, <span class="fl">195.89</span>, <span class="fl">147.11</span>, <span class="fl">122.93</span>,</span>
-<span id="cb447-7"><a href="esquema-de-parcelas-subdivididas.html#cb447-7"></a>       <span class="fl">176.55</span>, <span class="fl">173.63</span>, <span class="fl">112.83</span>, <span class="fl">184.82</span>, <span class="fl">178.18</span>, <span class="fl">115.85</span>, <span class="fl">183.89</span>, <span class="fl">134.92</span>, <span class="fl">086.49</span>, <span class="fl">103.96</span>,</span>
-<span id="cb447-8"><a href="esquema-de-parcelas-subdivididas.html#cb447-8"></a>       <span class="fl">096.33</span>, <span class="fl">091.64</span>, <span class="fl">157.76</span>, <span class="fl">107.45</span>, <span class="fl">106.61</span>, <span class="fl">095.28</span>, <span class="fl">152.37</span>, <span class="fl">066.02</span>, <span class="fl">125.75</span>, <span class="fl">075.34</span>,</span>
-<span id="cb447-9"><a href="esquema-de-parcelas-subdivididas.html#cb447-9"></a>       <span class="fl">088.64</span>, <span class="fl">104.00</span>, <span class="fl">066.38</span>, <span class="fl">084.74</span>, <span class="fl">101.76</span>,<span class="fl">173.70</span>, <span class="fl">101.24</span>, <span class="fl">143.71</span>, <span class="fl">119.88</span>, <span class="fl">157.79</span>,</span>
-<span id="cb447-10"><a href="esquema-de-parcelas-subdivididas.html#cb447-10"></a>       <span class="fl">070.42</span>, <span class="fl">152.75</span>, <span class="fl">111.65</span>, <span class="fl">153.08</span>, <span class="fl">146.64</span>,<span class="fl">142.57</span>, <span class="fl">098.96</span>, <span class="fl">065.92</span>, <span class="fl">065.62</span>, <span class="fl">063.26</span>,</span>
-<span id="cb447-11"><a href="esquema-de-parcelas-subdivididas.html#cb447-11"></a>       <span class="fl">095.72</span>, <span class="fl">084.14</span>, <span class="fl">054.92</span>, <span class="fl">090.49</span>, <span class="fl">112.11</span>,<span class="fl">102.68</span>, <span class="fl">144.77</span>, <span class="fl">122.58</span>, <span class="fl">125.14</span>, <span class="fl">127.61</span>,</span>
-<span id="cb447-12"><a href="esquema-de-parcelas-subdivididas.html#cb447-12"></a>       <span class="fl">117.14</span>, <span class="fl">147.87</span>, <span class="fl">156.18</span>, <span class="fl">154.82</span>, <span class="fl">183.91</span>,<span class="fl">159.11</span>, <span class="fl">155.41</span>, <span class="fl">184.55</span>, <span class="fl">121.39</span>, <span class="fl">155.77</span>)</span>
-<span id="cb447-13"><a href="esquema-de-parcelas-subdivididas.html#cb447-13"></a>FATOR1=<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;EL&quot;</span>), <span class="dt">e=</span><span class="dv">12</span>),<span class="dv">5</span>); FATOR1=<span class="kw">factor</span>(FATOR1)</span>
-<span id="cb447-14"><a href="esquema-de-parcelas-subdivididas.html#cb447-14"></a>FATOR2=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dt">e=</span><span class="dv">24</span>); FATOR2=<span class="kw">factor</span>(FATOR2)</span>
-<span id="cb447-15"><a href="esquema-de-parcelas-subdivididas.html#cb447-15"></a>repe=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>)),<span class="dv">10</span>); repe=<span class="kw">factor</span>(repe)</span>
-<span id="cb447-16"><a href="esquema-de-parcelas-subdivididas.html#cb447-16"></a>dados =<span class="st"> </span><span class="kw">data.frame</span>(FATOR1,FATOR2,repe,RESP)</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="esquema-de-parcelas-subdivididas.html#cb447-1" aria-hidden="true" tabindex="-1"></a>RESP<span class="ot">=</span><span class="fu">c</span>(<span class="fl">224.92</span>, <span class="fl">180.32</span>, <span class="fl">130.19</span>, <span class="fl">110.31</span>, <span class="fl">163.74</span>,<span class="fl">193.03</span>, <span class="fl">211.49</span>, <span class="fl">137.65</span>, <span class="fl">127.15</span>, <span class="fl">203.39</span>,</span>
+<span id="cb447-2"><a href="esquema-de-parcelas-subdivididas.html#cb447-2" aria-hidden="true" tabindex="-1"></a>       <span class="fl">182.36</span>, <span class="fl">124.75</span>, <span class="fl">177.70</span>, <span class="fl">231.01</span>, <span class="fl">202.14</span>,<span class="fl">214.89</span>, <span class="fl">198.42</span>, <span class="fl">267.85</span>, <span class="fl">207.67</span>, <span class="fl">176.74</span>,</span>
+<span id="cb447-3"><a href="esquema-de-parcelas-subdivididas.html#cb447-3" aria-hidden="true" tabindex="-1"></a>       <span class="fl">162.18</span>, <span class="fl">124.59</span>, <span class="fl">158.99</span>, <span class="fl">209.12</span>, <span class="fl">128.14</span>,<span class="fl">113.95</span>, <span class="fl">215.53</span>, <span class="fl">190.51</span>, <span class="fl">174.58</span>, <span class="fl">148.70</span>,</span>
+<span id="cb447-4"><a href="esquema-de-parcelas-subdivididas.html#cb447-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">150.90</span>, <span class="fl">209.03</span>, <span class="fl">210.40</span>, <span class="fl">199.03</span>, <span class="fl">237.05</span>,<span class="fl">196.97</span>, <span class="fl">176.06</span>, <span class="fl">263.27</span>, <span class="fl">240.19</span>, <span class="fl">160.72</span>,</span>
+<span id="cb447-5"><a href="esquema-de-parcelas-subdivididas.html#cb447-5" aria-hidden="true" tabindex="-1"></a>       <span class="fl">239.90</span>, <span class="fl">188.07</span>, <span class="fl">251.35</span>, <span class="fl">215.45</span>, <span class="fl">198.50</span>,<span class="fl">271.42</span>, <span class="fl">226.56</span>, <span class="fl">217.65</span>, <span class="fl">213.69</span>, <span class="fl">101.26</span>,</span>
+<span id="cb447-6"><a href="esquema-de-parcelas-subdivididas.html#cb447-6" aria-hidden="true" tabindex="-1"></a>       <span class="fl">115.41</span>, <span class="fl">140.10</span>, <span class="fl">117.67</span>, <span class="fl">106.45</span>, <span class="fl">139.34</span>,<span class="fl">104.22</span>, <span class="fl">206.13</span>, <span class="fl">195.89</span>, <span class="fl">147.11</span>, <span class="fl">122.93</span>,</span>
+<span id="cb447-7"><a href="esquema-de-parcelas-subdivididas.html#cb447-7" aria-hidden="true" tabindex="-1"></a>       <span class="fl">176.55</span>, <span class="fl">173.63</span>, <span class="fl">112.83</span>, <span class="fl">184.82</span>, <span class="fl">178.18</span>, <span class="fl">115.85</span>, <span class="fl">183.89</span>, <span class="fl">134.92</span>, <span class="fl">086.49</span>, <span class="fl">103.96</span>,</span>
+<span id="cb447-8"><a href="esquema-de-parcelas-subdivididas.html#cb447-8" aria-hidden="true" tabindex="-1"></a>       <span class="fl">096.33</span>, <span class="fl">091.64</span>, <span class="fl">157.76</span>, <span class="fl">107.45</span>, <span class="fl">106.61</span>, <span class="fl">095.28</span>, <span class="fl">152.37</span>, <span class="fl">066.02</span>, <span class="fl">125.75</span>, <span class="fl">075.34</span>,</span>
+<span id="cb447-9"><a href="esquema-de-parcelas-subdivididas.html#cb447-9" aria-hidden="true" tabindex="-1"></a>       <span class="fl">088.64</span>, <span class="fl">104.00</span>, <span class="fl">066.38</span>, <span class="fl">084.74</span>, <span class="fl">101.76</span>,<span class="fl">173.70</span>, <span class="fl">101.24</span>, <span class="fl">143.71</span>, <span class="fl">119.88</span>, <span class="fl">157.79</span>,</span>
+<span id="cb447-10"><a href="esquema-de-parcelas-subdivididas.html#cb447-10" aria-hidden="true" tabindex="-1"></a>       <span class="fl">070.42</span>, <span class="fl">152.75</span>, <span class="fl">111.65</span>, <span class="fl">153.08</span>, <span class="fl">146.64</span>,<span class="fl">142.57</span>, <span class="fl">098.96</span>, <span class="fl">065.92</span>, <span class="fl">065.62</span>, <span class="fl">063.26</span>,</span>
+<span id="cb447-11"><a href="esquema-de-parcelas-subdivididas.html#cb447-11" aria-hidden="true" tabindex="-1"></a>       <span class="fl">095.72</span>, <span class="fl">084.14</span>, <span class="fl">054.92</span>, <span class="fl">090.49</span>, <span class="fl">112.11</span>,<span class="fl">102.68</span>, <span class="fl">144.77</span>, <span class="fl">122.58</span>, <span class="fl">125.14</span>, <span class="fl">127.61</span>,</span>
+<span id="cb447-12"><a href="esquema-de-parcelas-subdivididas.html#cb447-12" aria-hidden="true" tabindex="-1"></a>       <span class="fl">117.14</span>, <span class="fl">147.87</span>, <span class="fl">156.18</span>, <span class="fl">154.82</span>, <span class="fl">183.91</span>,<span class="fl">159.11</span>, <span class="fl">155.41</span>, <span class="fl">184.55</span>, <span class="fl">121.39</span>, <span class="fl">155.77</span>)</span>
+<span id="cb447-13"><a href="esquema-de-parcelas-subdivididas.html#cb447-13" aria-hidden="true" tabindex="-1"></a>FATOR1<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;L&quot;</span>,<span class="st">&quot;EL&quot;</span>), <span class="at">e=</span><span class="dv">12</span>),<span class="dv">5</span>); FATOR1<span class="ot">=</span><span class="fu">factor</span>(FATOR1)</span>
+<span id="cb447-14"><a href="esquema-de-parcelas-subdivididas.html#cb447-14" aria-hidden="true" tabindex="-1"></a>FATOR2<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),<span class="at">e=</span><span class="dv">24</span>); FATOR2<span class="ot">=</span><span class="fu">factor</span>(FATOR2)</span>
+<span id="cb447-15"><a href="esquema-de-parcelas-subdivididas.html#cb447-15" aria-hidden="true" tabindex="-1"></a>repe<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)),<span class="dv">10</span>); repe<span class="ot">=</span><span class="fu">factor</span>(repe)</span>
+<span id="cb447-16"><a href="esquema-de-parcelas-subdivididas.html#cb447-16" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> <span class="fu">data.frame</span>(FATOR1,FATOR2,repe,RESP)</span></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="estatística-descritiva-5" class="section level2" number="18.8">
 <h2><span class="header-section-number">18.8</span> Estatística descritiva</h2>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="esquema-de-parcelas-subdivididas.html#cb448-1"></a><span class="st">&quot;Média&quot;</span> =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">mean</span>(RESP))</span>
-<span id="cb448-2"><a href="esquema-de-parcelas-subdivididas.html#cb448-2"></a><span class="st">&quot;Variância&quot;</span> =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">var</span>(RESP))</span>
-<span id="cb448-3"><a href="esquema-de-parcelas-subdivididas.html#cb448-3"></a>Desvio =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sd</span>(RESP))</span>
-<span id="cb448-4"><a href="esquema-de-parcelas-subdivididas.html#cb448-4"></a>CV =<span class="st"> </span>Desvio <span class="op">/</span><span class="st"> </span>Média <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb448-5"><a href="esquema-de-parcelas-subdivididas.html#cb448-5"></a></span>
-<span id="cb448-6"><a href="esquema-de-parcelas-subdivididas.html#cb448-6"></a>desc =<span class="st"> </span><span class="kw">cbind</span>(Média, Variância, Desvio, CV)</span>
-<span id="cb448-7"><a href="esquema-de-parcelas-subdivididas.html#cb448-7"></a><span class="kw">rownames</span>(desc) =<span class="st"> &#39;CBM&#39;</span></span>
-<span id="cb448-8"><a href="esquema-de-parcelas-subdivididas.html#cb448-8"></a><span class="kw">kable</span>(<span class="kw">round</span>(desc,<span class="dv">2</span>), <span class="dt">align=</span><span class="st">&quot;l&quot;</span>, <span class="dt">format=</span><span class="st">&quot;pandoc&quot;</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">big.mark=</span><span class="st">&quot;.&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="esquema-de-parcelas-subdivididas.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Média&quot;</span> <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(RESP))</span>
+<span id="cb448-2"><a href="esquema-de-parcelas-subdivididas.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Variância&quot;</span> <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">var</span>(RESP))</span>
+<span id="cb448-3"><a href="esquema-de-parcelas-subdivididas.html#cb448-3" aria-hidden="true" tabindex="-1"></a>Desvio <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(RESP))</span>
+<span id="cb448-4"><a href="esquema-de-parcelas-subdivididas.html#cb448-4" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">=</span> Desvio <span class="sc">/</span> Média <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb448-5"><a href="esquema-de-parcelas-subdivididas.html#cb448-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-6"><a href="esquema-de-parcelas-subdivididas.html#cb448-6" aria-hidden="true" tabindex="-1"></a>desc <span class="ot">=</span> <span class="fu">cbind</span>(Média, Variância, Desvio, CV)</span>
+<span id="cb448-7"><a href="esquema-de-parcelas-subdivididas.html#cb448-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(desc) <span class="ot">=</span> <span class="st">&#39;CBM&#39;</span></span>
+<span id="cb448-8"><a href="esquema-de-parcelas-subdivididas.html#cb448-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(desc,<span class="dv">2</span>), <span class="at">align=</span><span class="st">&quot;l&quot;</span>, <span class="at">format=</span><span class="st">&quot;pandoc&quot;</span>, <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark=</span><span class="st">&quot;.&quot;</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -990,12 +990,12 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 <p><br></p>
 <div id="fator-1-linha-e-entrelinha" class="section level3" number="18.8.1">
 <h3><span class="header-section-number">18.8.1</span> Fator 1 (Linha e Entrelinha)</h3>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="esquema-de-parcelas-subdivididas.html#cb449-1"></a>Médias1 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR1, mean))</span>
-<span id="cb449-2"><a href="esquema-de-parcelas-subdivididas.html#cb449-2"></a>Variâncias1 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR1, var))</span>
-<span id="cb449-3"><a href="esquema-de-parcelas-subdivididas.html#cb449-3"></a>Desvios1 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR1, sd))</span>
-<span id="cb449-4"><a href="esquema-de-parcelas-subdivididas.html#cb449-4"></a>CV1 =<span class="st"> </span>Desvios1 <span class="op">/</span><span class="st"> </span>Médias1 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb449-5"><a href="esquema-de-parcelas-subdivididas.html#cb449-5"></a>Desc1 =<span class="st"> </span><span class="kw">cbind</span>(Médias1, Variâncias1, Desvios1, CV1)</span>
-<span id="cb449-6"><a href="esquema-de-parcelas-subdivididas.html#cb449-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc1,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="esquema-de-parcelas-subdivididas.html#cb449-1" aria-hidden="true" tabindex="-1"></a>Médias1 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, FATOR1, mean))</span>
+<span id="cb449-2"><a href="esquema-de-parcelas-subdivididas.html#cb449-2" aria-hidden="true" tabindex="-1"></a>Variâncias1 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, FATOR1, var))</span>
+<span id="cb449-3"><a href="esquema-de-parcelas-subdivididas.html#cb449-3" aria-hidden="true" tabindex="-1"></a>Desvios1 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, FATOR1, sd))</span>
+<span id="cb449-4"><a href="esquema-de-parcelas-subdivididas.html#cb449-4" aria-hidden="true" tabindex="-1"></a>CV1 <span class="ot">=</span> Desvios1 <span class="sc">/</span> Médias1 <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb449-5"><a href="esquema-de-parcelas-subdivididas.html#cb449-5" aria-hidden="true" tabindex="-1"></a>Desc1 <span class="ot">=</span> <span class="fu">cbind</span>(Médias1, Variâncias1, Desvios1, CV1)</span>
+<span id="cb449-6"><a href="esquema-de-parcelas-subdivididas.html#cb449-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(Desc1,<span class="dv">2</span>),<span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1027,12 +1027,12 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 </div>
 <div id="fator-2-manejo" class="section level3" number="18.8.2">
 <h3><span class="header-section-number">18.8.2</span> Fator 2 (Manejo)</h3>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="esquema-de-parcelas-subdivididas.html#cb450-1"></a>Médias2 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR2, mean))</span>
-<span id="cb450-2"><a href="esquema-de-parcelas-subdivididas.html#cb450-2"></a>Variâncias2 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR2, var))</span>
-<span id="cb450-3"><a href="esquema-de-parcelas-subdivididas.html#cb450-3"></a>Desvios2 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, FATOR2, sd))</span>
-<span id="cb450-4"><a href="esquema-de-parcelas-subdivididas.html#cb450-4"></a>CV2 =<span class="st"> </span>Desvios2 <span class="op">/</span><span class="st"> </span>Médias2 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb450-5"><a href="esquema-de-parcelas-subdivididas.html#cb450-5"></a>Desc2 =<span class="st"> </span><span class="kw">cbind</span>(Médias2, Variâncias2, Desvios2, CV2)</span>
-<span id="cb450-6"><a href="esquema-de-parcelas-subdivididas.html#cb450-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc2,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="esquema-de-parcelas-subdivididas.html#cb450-1" aria-hidden="true" tabindex="-1"></a>Médias2 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, FATOR2, mean))</span>
+<span id="cb450-2"><a href="esquema-de-parcelas-subdivididas.html#cb450-2" aria-hidden="true" tabindex="-1"></a>Variâncias2 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, FATOR2, var))</span>
+<span id="cb450-3"><a href="esquema-de-parcelas-subdivididas.html#cb450-3" aria-hidden="true" tabindex="-1"></a>Desvios2 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, FATOR2, sd))</span>
+<span id="cb450-4"><a href="esquema-de-parcelas-subdivididas.html#cb450-4" aria-hidden="true" tabindex="-1"></a>CV2 <span class="ot">=</span> Desvios2 <span class="sc">/</span> Médias2 <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb450-5"><a href="esquema-de-parcelas-subdivididas.html#cb450-5" aria-hidden="true" tabindex="-1"></a>Desc2 <span class="ot">=</span> <span class="fu">cbind</span>(Médias2, Variâncias2, Desvios2, CV2)</span>
+<span id="cb450-6"><a href="esquema-de-parcelas-subdivididas.html#cb450-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(Desc2,<span class="dv">2</span>),<span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1085,12 +1085,12 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 </div>
 <div id="repetição" class="section level3" number="18.8.3">
 <h3><span class="header-section-number">18.8.3</span> Repetição</h3>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="esquema-de-parcelas-subdivididas.html#cb451-1"></a>Médias4 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, repe, mean))</span>
-<span id="cb451-2"><a href="esquema-de-parcelas-subdivididas.html#cb451-2"></a>Variâncias4 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, repe, var))</span>
-<span id="cb451-3"><a href="esquema-de-parcelas-subdivididas.html#cb451-3"></a>Desvios4 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, repe, sd))</span>
-<span id="cb451-4"><a href="esquema-de-parcelas-subdivididas.html#cb451-4"></a>CV4 =<span class="st"> </span>Desvios4<span class="op">/</span><span class="st"> </span>Médias4 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb451-5"><a href="esquema-de-parcelas-subdivididas.html#cb451-5"></a>Desc4 =<span class="st"> </span><span class="kw">cbind</span>(Médias4, Variâncias4, Desvios4, CV4)</span>
-<span id="cb451-6"><a href="esquema-de-parcelas-subdivididas.html#cb451-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc4,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="esquema-de-parcelas-subdivididas.html#cb451-1" aria-hidden="true" tabindex="-1"></a>Médias4 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, repe, mean))</span>
+<span id="cb451-2"><a href="esquema-de-parcelas-subdivididas.html#cb451-2" aria-hidden="true" tabindex="-1"></a>Variâncias4 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, repe, var))</span>
+<span id="cb451-3"><a href="esquema-de-parcelas-subdivididas.html#cb451-3" aria-hidden="true" tabindex="-1"></a>Desvios4 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, repe, sd))</span>
+<span id="cb451-4"><a href="esquema-de-parcelas-subdivididas.html#cb451-4" aria-hidden="true" tabindex="-1"></a>CV4 <span class="ot">=</span> Desvios4<span class="sc">/</span> Médias4 <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb451-5"><a href="esquema-de-parcelas-subdivididas.html#cb451-5" aria-hidden="true" tabindex="-1"></a>Desc4 <span class="ot">=</span> <span class="fu">cbind</span>(Médias4, Variâncias4, Desvios4, CV4)</span>
+<span id="cb451-6"><a href="esquema-de-parcelas-subdivididas.html#cb451-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(Desc4,<span class="dv">2</span>),<span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1192,13 +1192,13 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 </div>
 <div id="juntando-os-fatores" class="section level3" number="18.8.4">
 <h3><span class="header-section-number">18.8.4</span> Juntando os fatores</h3>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="esquema-de-parcelas-subdivididas.html#cb452-1"></a>Médias3 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, <span class="kw">list</span>(FATOR1,FATOR2), mean))</span>
-<span id="cb452-2"><a href="esquema-de-parcelas-subdivididas.html#cb452-2"></a>Variâncias3 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, <span class="kw">list</span>(FATOR1,FATOR2), var))</span>
-<span id="cb452-3"><a href="esquema-de-parcelas-subdivididas.html#cb452-3"></a>Desvios3 =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, <span class="kw">list</span>(FATOR1,FATOR2), sd))</span>
-<span id="cb452-4"><a href="esquema-de-parcelas-subdivididas.html#cb452-4"></a>CV3 =<span class="st"> </span>Desvios3<span class="op">/</span>Médias3 <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb452-5"><a href="esquema-de-parcelas-subdivididas.html#cb452-5"></a>Desc3 =<span class="st"> </span><span class="kw">rbind</span>(Médias3, Variâncias3, Desvios3, CV3)</span>
-<span id="cb452-6"><a href="esquema-de-parcelas-subdivididas.html#cb452-6"></a><span class="kw">rownames</span>(Desc3)=<span class="kw">c</span>(<span class="st">&quot;Média.L&quot;</span>,<span class="st">&quot;Média.EL&quot;</span>,<span class="st">&quot;Variância.L&quot;</span>,<span class="st">&quot;Variância.EL&quot;</span>, <span class="st">&quot;Desvio.L&quot;</span>,<span class="st">&quot;Desvio.EL&quot;</span>, <span class="st">&quot;CV.L&quot;</span>,<span class="st">&quot;CV.EL&quot;</span>)</span>
-<span id="cb452-7"><a href="esquema-de-parcelas-subdivididas.html#cb452-7"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc3,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="esquema-de-parcelas-subdivididas.html#cb452-1" aria-hidden="true" tabindex="-1"></a>Médias3 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, <span class="fu">list</span>(FATOR1,FATOR2), mean))</span>
+<span id="cb452-2"><a href="esquema-de-parcelas-subdivididas.html#cb452-2" aria-hidden="true" tabindex="-1"></a>Variâncias3 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, <span class="fu">list</span>(FATOR1,FATOR2), var))</span>
+<span id="cb452-3"><a href="esquema-de-parcelas-subdivididas.html#cb452-3" aria-hidden="true" tabindex="-1"></a>Desvios3 <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, <span class="fu">list</span>(FATOR1,FATOR2), sd))</span>
+<span id="cb452-4"><a href="esquema-de-parcelas-subdivididas.html#cb452-4" aria-hidden="true" tabindex="-1"></a>CV3 <span class="ot">=</span> Desvios3<span class="sc">/</span>Médias3 <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb452-5"><a href="esquema-de-parcelas-subdivididas.html#cb452-5" aria-hidden="true" tabindex="-1"></a>Desc3 <span class="ot">=</span> <span class="fu">rbind</span>(Médias3, Variâncias3, Desvios3, CV3)</span>
+<span id="cb452-6"><a href="esquema-de-parcelas-subdivididas.html#cb452-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(Desc3)<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Média.L&quot;</span>,<span class="st">&quot;Média.EL&quot;</span>,<span class="st">&quot;Variância.L&quot;</span>,<span class="st">&quot;Variância.EL&quot;</span>, <span class="st">&quot;Desvio.L&quot;</span>,<span class="st">&quot;Desvio.EL&quot;</span>, <span class="st">&quot;CV.L&quot;</span>,<span class="st">&quot;CV.EL&quot;</span>)</span>
+<span id="cb452-7"><a href="esquema-de-parcelas-subdivididas.html#cb452-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(Desc3,<span class="dv">2</span>),<span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1288,44 +1288,44 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 <p><br></p>
 <div id="fator-1-2" class="section level4" number="18.9.1.1">
 <h4><span class="header-section-number">18.9.1.1</span> Fator 1</h4>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="esquema-de-parcelas-subdivididas.html#cb453-1"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
-<span id="cb453-2"><a href="esquema-de-parcelas-subdivididas.html#cb453-2"></a><span class="kw">points</span>(Médias1, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="esquema-de-parcelas-subdivididas.html#cb453-1" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(RESP <span class="sc">~</span> FATOR1, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
+<span id="cb453-2"><a href="esquema-de-parcelas-subdivididas.html#cb453-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Médias1, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-281-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="fator-2-2" class="section level4" number="18.9.1.2">
 <h4><span class="header-section-number">18.9.1.2</span> Fator 2</h4>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="esquema-de-parcelas-subdivididas.html#cb454-1"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
-<span id="cb454-2"><a href="esquema-de-parcelas-subdivididas.html#cb454-2"></a><span class="kw">points</span>(Médias2, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="esquema-de-parcelas-subdivididas.html#cb454-1" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(RESP <span class="sc">~</span> FATOR2, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
+<span id="cb454-2"><a href="esquema-de-parcelas-subdivididas.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Médias2, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-282-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="juntando-fatores-2" class="section level4" number="18.9.1.3">
 <h4><span class="header-section-number">18.9.1.3</span> Juntando fatores</h4>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="esquema-de-parcelas-subdivididas.html#cb455-1"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">*</span>FATOR2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="esquema-de-parcelas-subdivididas.html#cb455-1" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(RESP <span class="sc">~</span> FATOR1<span class="sc">*</span>FATOR2, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-283-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 </div>
 <div id="interação" class="section level3" number="18.9.2">
 <h3><span class="header-section-number">18.9.2</span> Interação</h3>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="esquema-de-parcelas-subdivididas.html#cb456-1"></a><span class="kw">library</span>(gplots)</span>
-<span id="cb456-2"><a href="esquema-de-parcelas-subdivididas.html#cb456-2"></a><span class="kw">library</span>(lattice)</span>
-<span id="cb456-3"><a href="esquema-de-parcelas-subdivididas.html#cb456-3"></a><span class="kw">with</span>(dados, <span class="kw">xyplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">|</span>FATOR2, <span class="dt">groups=</span>repe, <span class="dt">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
-<span id="cb456-4"><a href="esquema-de-parcelas-subdivididas.html#cb456-4"></a>                   <span class="dt">strip=</span><span class="kw">strip.custom</span>(<span class="dt">strip.names=</span><span class="ot">TRUE</span>, <span class="dt">strip.levels=</span><span class="ot">TRUE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="esquema-de-parcelas-subdivididas.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb456-2"><a href="esquema-de-parcelas-subdivididas.html#cb456-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb456-3"><a href="esquema-de-parcelas-subdivididas.html#cb456-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">xyplot</span>(RESP <span class="sc">~</span> FATOR1<span class="sc">|</span>FATOR2, <span class="at">groups=</span>repe, <span class="at">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
+<span id="cb456-4"><a href="esquema-de-parcelas-subdivididas.html#cb456-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strip=</span><span class="fu">strip.custom</span>(<span class="at">strip.names=</span><span class="cn">TRUE</span>, <span class="at">strip.levels=</span><span class="cn">TRUE</span>)))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="esquema-de-parcelas-subdivididas.html#cb457-1"></a><span class="kw">with</span>(dados, <span class="kw">xyplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">|</span>repe, <span class="dt">groups=</span>FATOR2, <span class="dt">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
-<span id="cb457-2"><a href="esquema-de-parcelas-subdivididas.html#cb457-2"></a>                   <span class="dt">strip=</span><span class="kw">strip.custom</span>(<span class="dt">strip.names=</span><span class="ot">TRUE</span>, <span class="dt">strip.levels=</span><span class="ot">TRUE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="esquema-de-parcelas-subdivididas.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">xyplot</span>(RESP <span class="sc">~</span> FATOR1<span class="sc">|</span>repe, <span class="at">groups=</span>FATOR2, <span class="at">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
+<span id="cb457-2"><a href="esquema-de-parcelas-subdivididas.html#cb457-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strip=</span><span class="fu">strip.custom</span>(<span class="at">strip.names=</span><span class="cn">TRUE</span>, <span class="at">strip.levels=</span><span class="cn">TRUE</span>)))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-285-1.png" width="1440" /></p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="esquema-de-parcelas-subdivididas.html#cb458-1"></a><span class="kw">with</span>(dados, <span class="kw">xyplot</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR2<span class="op">|</span>repe, <span class="dt">groups=</span>FATOR1, <span class="dt">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
-<span id="cb458-2"><a href="esquema-de-parcelas-subdivididas.html#cb458-2"></a>                   <span class="dt">strip=</span><span class="kw">strip.custom</span>(<span class="dt">strip.names=</span><span class="ot">TRUE</span>, <span class="dt">strip.levels=</span><span class="ot">TRUE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="esquema-de-parcelas-subdivididas.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">xyplot</span>(RESP <span class="sc">~</span> FATOR2<span class="sc">|</span>repe, <span class="at">groups=</span>FATOR1, <span class="at">aspect=</span><span class="st">&quot;xy&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>,</span>
+<span id="cb458-2"><a href="esquema-de-parcelas-subdivididas.html#cb458-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">strip=</span><span class="fu">strip.custom</span>(<span class="at">strip.names=</span><span class="cn">TRUE</span>, <span class="at">strip.levels=</span><span class="cn">TRUE</span>)))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-286-1.png" width="672" /></p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="esquema-de-parcelas-subdivididas.html#cb459-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR2, FATOR1, RESP, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
-<span id="cb459-2"><a href="esquema-de-parcelas-subdivididas.html#cb459-2"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;repe&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="esquema-de-parcelas-subdivididas.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">interaction.plot</span>(FATOR2, FATOR1, RESP, <span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb459-2"><a href="esquema-de-parcelas-subdivididas.html#cb459-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">xlab=</span><span class="st">&#39;&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="at">trace.label=</span><span class="st">&quot;repe&quot;</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-287-1.png" width="672" /></p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="esquema-de-parcelas-subdivididas.html#cb460-1"></a><span class="co"># FATOR1 e FATOR2</span></span>
-<span id="cb460-2"><a href="esquema-de-parcelas-subdivididas.html#cb460-2"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR1, FATOR2, RESP, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
-<span id="cb460-3"><a href="esquema-de-parcelas-subdivididas.html#cb460-3"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="esquema-de-parcelas-subdivididas.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FATOR1 e FATOR2</span></span>
+<span id="cb460-2"><a href="esquema-de-parcelas-subdivididas.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">interaction.plot</span>(FATOR1, FATOR2, RESP, <span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb460-3"><a href="esquema-de-parcelas-subdivididas.html#cb460-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">xlab=</span><span class="st">&#39;&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="at">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
 <p><br><br></p>
 </div>
@@ -1358,8 +1358,8 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="esquema-de-parcelas-subdivididas.html#cb461-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(RESP <span class="op">~</span><span class="st"> </span>FATOR1<span class="op">*</span>FATOR2<span class="op">+</span><span class="kw">Error</span>(repe<span class="op">/</span>FATOR1)))</span>
-<span id="cb461-2"><a href="esquema-de-parcelas-subdivididas.html#cb461-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="esquema-de-parcelas-subdivididas.html#cb461-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">aov</span>(RESP <span class="sc">~</span> FATOR1<span class="sc">*</span>FATOR2<span class="sc">+</span><span class="fu">Error</span>(repe<span class="sc">/</span>FATOR1)))</span>
+<span id="cb461-2"><a href="esquema-de-parcelas-subdivididas.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>## 
 ## Error: repe
 ##           Df Sum Sq Mean Sq F value Pr(&gt;F)
@@ -1383,8 +1383,8 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 <p><br></p>
 <div id="usando-o-pacote-agricolae-1" class="section level3" number="18.10.1">
 <h3><span class="header-section-number">18.10.1</span> Usando o pacote agricolae</h3>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="esquema-de-parcelas-subdivididas.html#cb463-1"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb463-2"><a href="esquema-de-parcelas-subdivididas.html#cb463-2"></a>mod.parc =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sp.plot</span>(repe, FATOR1, FATOR2, RESP))</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="esquema-de-parcelas-subdivididas.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb463-2"><a href="esquema-de-parcelas-subdivididas.html#cb463-2" aria-hidden="true" tabindex="-1"></a>mod.parc <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">sp.plot</span>(repe, FATOR1, FATOR2, RESP))</span></code></pre></div>
 <pre><code>## 
 ## ANALYSIS SPLIT PLOT:  RESP 
 ## Class level information
@@ -1399,12 +1399,12 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 ## 
 ## Response: RESP
 ##               Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## repe          11   5772     525  0.2537  0.984072    
-## FATOR1         1  26339   26339 12.7363  0.004404 ** 
-## Ea            11  22748    2068                      
-## FATOR2         4 133672   33418 28.8821 2.442e-15 ***
-## FATOR1:FATOR2  4  12783    3196  2.7620  0.032468 *  
-## Eb            88 101820    1157                      
+## repe          11   5772     525     NaN       NaN    
+## FATOR1         1  26339   26339  12.736  0.004404 ** 
+## Ea            11  22748    2068     NaN       NaN    
+## FATOR2         4 133672   33418  28.882 2.442e-15 ***
+## FATOR1:FATOR2  4  12783    3196   2.762  0.032468 *  
+## Eb            88 101820    1157     NaN       NaN    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -1413,8 +1413,8 @@ H_1: &amp; \mbox{Pelo menos um} (\tau\beta)ij \neq 0
 </div>
 <div id="usando-o-pacote-easyanova-1" class="section level3" number="18.10.2">
 <h3><span class="header-section-number">18.10.2</span> Usando o pacote easyanova</h3>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="esquema-de-parcelas-subdivididas.html#cb465-1"></a>ano=easyanova<span class="op">::</span><span class="kw">ea2</span>(<span class="kw">data.frame</span>(FATOR1,repe,FATOR2,RESP),<span class="dt">design =</span> <span class="dv">5</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="esquema-de-parcelas-subdivididas.html#cb466-1"></a>ano[<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="esquema-de-parcelas-subdivididas.html#cb465-1" aria-hidden="true" tabindex="-1"></a>ano<span class="ot">=</span>easyanova<span class="sc">::</span><span class="fu">ea2</span>(<span class="fu">data.frame</span>(FATOR1,repe,FATOR2,RESP),<span class="at">design =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="esquema-de-parcelas-subdivididas.html#cb466-1" aria-hidden="true" tabindex="-1"></a>ano[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## $`Marginal anova (Type III Sum of Squares)`
 ##                 numDF denDF   F-value p-value
 ## plot                1    11 12.736294  0.0044
@@ -1438,7 +1438,7 @@ H_1: \mbox{Erros não seguem distribuição normal.}
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="esquema-de-parcelas-subdivididas.html#cb468-1"></a>mod.pres =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(RESP <span class="op">~</span><span class="st"> </span>repe <span class="op">+</span><span class="st"> </span>FATOR1<span class="op">*</span>FATOR2)); <span class="kw">summary</span>(mod.pres)</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="esquema-de-parcelas-subdivididas.html#cb468-1" aria-hidden="true" tabindex="-1"></a>mod.pres <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">aov</span>(RESP <span class="sc">~</span> repe <span class="sc">+</span> FATOR1<span class="sc">*</span>FATOR2)); <span class="fu">summary</span>(mod.pres)</span></code></pre></div>
 <pre><code>##               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## repe          11   5772     525   0.417   0.9455    
 ## FATOR1         1  26339   26339  20.933 1.38e-05 ***
@@ -1447,7 +1447,7 @@ H_1: \mbox{Erros não seguem distribuição normal.}
 ## Residuals     99 124568    1258                     
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="esquema-de-parcelas-subdivididas.html#cb470-1"></a><span class="kw">shapiro.test</span>(mod.pres<span class="op">$</span>res)</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="esquema-de-parcelas-subdivididas.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(mod.pres<span class="sc">$</span>res)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1469,7 +1469,7 @@ H_1: \mbox{As variâncias dos erros não são homogêneas}
 <p><br></p>
 <div id="para-fator-1-2" class="section level4" number="18.11.2.1">
 <h4><span class="header-section-number">18.11.2.1</span> Para Fator 1</h4>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="esquema-de-parcelas-subdivididas.html#cb472-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>FATOR1))</span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="esquema-de-parcelas-subdivididas.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod.pres<span class="sc">$</span>residuals<span class="sc">~</span>FATOR1))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1480,7 +1480,7 @@ H_1: \mbox{As variâncias dos erros não são homogêneas}
 </div>
 <div id="para-bloco" class="section level4" number="18.11.2.2">
 <h4><span class="header-section-number">18.11.2.2</span> Para Bloco</h4>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="esquema-de-parcelas-subdivididas.html#cb474-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>repe))</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="esquema-de-parcelas-subdivididas.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod.pres<span class="sc">$</span>residuals<span class="sc">~</span>repe))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1491,7 +1491,7 @@ H_1: \mbox{As variâncias dos erros não são homogêneas}
 </div>
 <div id="para-fator-2-2" class="section level4" number="18.11.2.3">
 <h4><span class="header-section-number">18.11.2.3</span> Para Fator 2</h4>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="esquema-de-parcelas-subdivididas.html#cb476-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>FATOR2))</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="esquema-de-parcelas-subdivididas.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod.pres<span class="sc">$</span>residuals<span class="sc">~</span>FATOR2))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1502,8 +1502,8 @@ H_1: \mbox{As variâncias dos erros não são homogêneas}
 </div>
 <div id="juntandos-os-fatores-2" class="section level4" number="18.11.2.4">
 <h4><span class="header-section-number">18.11.2.4</span> Juntandos os fatores</h4>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="esquema-de-parcelas-subdivididas.html#cb478-1"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)),<span class="dt">e=</span><span class="dv">12</span>)</span>
-<span id="cb478-2"><a href="esquema-de-parcelas-subdivididas.html#cb478-2"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod.pres<span class="op">$</span>residuals<span class="op">~</span>tratamentos))</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="esquema-de-parcelas-subdivididas.html#cb478-1" aria-hidden="true" tabindex="-1"></a>tratamentos<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)),<span class="at">e=</span><span class="dv">12</span>)</span>
+<span id="cb478-2"><a href="esquema-de-parcelas-subdivididas.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod.pres<span class="sc">$</span>residuals<span class="sc">~</span>tratamentos))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1523,8 +1523,8 @@ H_1: \mbox{Os erros não são independentes}
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="esquema-de-parcelas-subdivididas.html#cb480-1"></a><span class="kw">library</span>(lmtest)</span>
-<span id="cb480-2"><a href="esquema-de-parcelas-subdivididas.html#cb480-2"></a><span class="kw">dwtest</span>(mod.pres)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="esquema-de-parcelas-subdivididas.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb480-2"><a href="esquema-de-parcelas-subdivididas.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(mod.pres)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1536,8 +1536,8 @@ H_1: \mbox{Os erros não são independentes}
 </div>
 <div id="análise-gráfica" class="section level3" number="18.11.4">
 <h3><span class="header-section-number">18.11.4</span> Análise Gráfica</h3>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="esquema-de-parcelas-subdivididas.html#cb482-1"></a><span class="kw">plot</span>(RESP<span class="op">-</span><span class="kw">mean</span>(RESP), <span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb482-2"><a href="esquema-de-parcelas-subdivididas.html#cb482-2"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="esquema-de-parcelas-subdivididas.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(RESP<span class="sc">-</span><span class="fu">mean</span>(RESP), <span class="at">pch=</span><span class="dv">16</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb482-2"><a href="esquema-de-parcelas-subdivididas.html#cb482-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
 <p><br><br></p>
 </div>
@@ -1547,8 +1547,8 @@ H_1: \mbox{Os erros não são independentes}
 <p><br></p>
 <div id="pelo-pacote-easyanova" class="section level3" number="18.12.1">
 <h3><span class="header-section-number">18.12.1</span> Pelo pacote easyanova</h3>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="esquema-de-parcelas-subdivididas.html#cb483-1"></a>ano=easyanova<span class="op">::</span><span class="kw">ea2</span>(<span class="kw">data.frame</span>(FATOR1,repe,FATOR2,RESP),<span class="dt">design =</span> <span class="dv">5</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="esquema-de-parcelas-subdivididas.html#cb484-1"></a>ano<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means (plot in levels of split.plot)</span><span class="st">`</span></span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="esquema-de-parcelas-subdivididas.html#cb483-1" aria-hidden="true" tabindex="-1"></a>ano<span class="ot">=</span>easyanova<span class="sc">::</span><span class="fu">ea2</span>(<span class="fu">data.frame</span>(FATOR1,repe,FATOR2,RESP),<span class="at">design =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="esquema-de-parcelas-subdivididas.html#cb484-1" aria-hidden="true" tabindex="-1"></a>ano<span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means (plot in levels of split.plot)</span><span class="st">`</span></span></code></pre></div>
 <pre><code>## $`plot in  T 1`
 ##   plot.split.plot adjusted.mean standard.error tukey snk duncan t
 ## 1          EL.T 1       194.275        10.5643     a   a      a a
@@ -1573,7 +1573,7 @@ H_1: \mbox{Os erros não são independentes}
 ##    plot.split.plot adjusted.mean standard.error tukey snk duncan t
 ## 9           EL.T 5      149.0750        10.5643     a   a      a a
 ## 10           L.T 5       91.7642        10.5643     b   b      b b</code></pre>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="esquema-de-parcelas-subdivididas.html#cb486-1"></a>ano<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means (split.plot in levels of plot)</span><span class="st">`</span></span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="esquema-de-parcelas-subdivididas.html#cb486-1" aria-hidden="true" tabindex="-1"></a>ano<span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means (split.plot in levels of plot)</span><span class="st">`</span></span></code></pre></div>
 <pre><code>## $`split.plot in  EL`
 ##   plot.split.plot adjusted.mean standard.error tukey snk duncan t
 ## 3          EL.T 2      220.7617        10.5643     a   a      a a
@@ -1593,8 +1593,8 @@ H_1: \mbox{Os erros não são independentes}
 </div>
 <div id="pelo-pacote-expdes.pt" class="section level3" number="18.12.2">
 <h3><span class="header-section-number">18.12.2</span> Pelo pacote ExpDes.pt</h3>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="esquema-de-parcelas-subdivididas.html#cb488-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb488-2"><a href="esquema-de-parcelas-subdivididas.html#cb488-2"></a><span class="kw">psub2.dbc</span>(FATOR1,FATOR2,repe,RESP)</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="esquema-de-parcelas-subdivididas.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb488-2"><a href="esquema-de-parcelas-subdivididas.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="fu">psub2.dbc</span>(FATOR1,FATOR2,repe,RESP)</span></code></pre></div>
 <p><br><br><br><br></p>
 <hr />
 </div>
@@ -1629,10 +1629,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

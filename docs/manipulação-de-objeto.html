@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 7 Manipulação de objeto | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 7 Manipulação de objeto | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="introdução-à-estatística.html"/>
 <link rel="next" href="funções-úteis.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -646,44 +646,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="como-remover-um-ponto-no-r" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Como remover um ponto no R?</h2>
 <p><em>Conjunto de dados</em>: Neste tutorial iremos trabalhar com dados simulados, considerando um experimento inteiramente casualizado com cinco repetições e cinco tratamentos. Abaixo segue os valores da resposta e os tratamentos.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="manipulação-de-objeto.html#cb9-1"></a>resposta=<span class="kw">c</span>(<span class="fl">3.1</span>,<span class="fl">3.2</span>,<span class="fl">3.4</span>,<span class="fl">3.8</span>,<span class="dv">4</span>,<span class="fl">5.0</span>,<span class="fl">5.1</span>,<span class="fl">5.6</span>,<span class="fl">6.2</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="fl">10.2</span>,<span class="fl">10.7</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">6</span>,<span class="fl">6.5</span>,<span class="fl">6.2</span>,<span class="dv">7</span>,<span class="fl">6.9</span>,<span class="dv">20</span>,<span class="fl">5.2</span>,<span class="fl">5.6</span>,<span class="fl">5.8</span>,<span class="dv">6</span>)</span>
-<span id="cb9-2"><a href="manipulação-de-objeto.html#cb9-2"></a>Trat=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dt">e=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="manipulação-de-objeto.html#cb9-1" aria-hidden="true" tabindex="-1"></a>resposta<span class="ot">=</span><span class="fu">c</span>(<span class="fl">3.1</span>,<span class="fl">3.2</span>,<span class="fl">3.4</span>,<span class="fl">3.8</span>,<span class="dv">4</span>,<span class="fl">5.0</span>,<span class="fl">5.1</span>,<span class="fl">5.6</span>,<span class="fl">6.2</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="fl">10.2</span>,<span class="fl">10.7</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">6</span>,<span class="fl">6.5</span>,<span class="fl">6.2</span>,<span class="dv">7</span>,<span class="fl">6.9</span>,<span class="dv">20</span>,<span class="fl">5.2</span>,<span class="fl">5.6</span>,<span class="fl">5.8</span>,<span class="dv">6</span>)</span>
+<span id="cb9-2"><a href="manipulação-de-objeto.html#cb9-2" aria-hidden="true" tabindex="-1"></a>Trat<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),<span class="at">e=</span><span class="dv">5</span>)</span></code></pre></div>
 <p>Este conjunto de dados apresenta um ponto discrepante das demais repetições de um dos tratamentos. Uma das formas de descobrir este ponto é através de um gráfico de caixas, conforme segue abaixo.</p>
 <p><br></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="manipulação-de-objeto.html#cb10-1"></a><span class="co">## Utilizando o pacote car</span></span>
-<span id="cb10-2"><a href="manipulação-de-objeto.html#cb10-2"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(resposta<span class="op">~</span>Trat)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="manipulação-de-objeto.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Utilizando o pacote car</span></span>
+<span id="cb10-2"><a href="manipulação-de-objeto.html#cb10-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Boxplot</span>(resposta<span class="sc">~</span>Trat)</span></code></pre></div>
 <pre><code>## [1] &quot;21&quot;</code></pre>
 <center>
 <img src="boxplot1.png" />
 </center>
 <p>Inicialmente vamos construir um modelo de análise de variância em DIC sem remover o ponto discrepante e analisar quanto aos pressupostos de normalidade dos erros e homogeneidade das variâncias.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="manipulação-de-objeto.html#cb12-1"></a>modelo=<span class="kw">aov</span>(resposta<span class="op">~</span>Trat)</span>
-<span id="cb12-2"><a href="manipulação-de-objeto.html#cb12-2"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="manipulação-de-objeto.html#cb12-1" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(resposta<span class="sc">~</span>Trat)</span>
+<span id="cb12-2"><a href="manipulação-de-objeto.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  modelo$residuals
 ## W = 0.60825, p-value = 5.291e-07</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="manipulação-de-objeto.html#cb14-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>Trat)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="manipulação-de-objeto.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>Trat)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  modelo$residuals by Trat
 ## Bartlett&#39;s K-squared = 41.623, df = 4, p-value = 1.997e-08</code></pre>
 <p>Pode-se concluir que os pressupostos foram corrompidos e análise de variância não é válida. Dessa forma, poderiamos transformar os dados pela metodologia de Box-Cox (1964), conforme segue abaixo:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="manipulação-de-objeto.html#cb16-1"></a>bc=MASS<span class="op">::</span><span class="kw">boxcox</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="manipulação-de-objeto.html#cb16-1" aria-hidden="true" tabindex="-1"></a>bc<span class="ot">=</span>MASS<span class="sc">::</span><span class="fu">boxcox</span>(modelo)</span></code></pre></div>
 <center>
 <img src="boxcox1.png" />
 </center>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="manipulação-de-objeto.html#cb17-1"></a>lambda=bc<span class="op">$</span>x[<span class="kw">which.max</span>(bc<span class="op">$</span>y)]</span>
-<span id="cb17-2"><a href="manipulação-de-objeto.html#cb17-2"></a>modelo=<span class="kw">aov</span>((resposta<span class="op">^</span>lambda<span class="dv">-1</span>)<span class="op">/</span>lambda<span class="op">~</span>Trat)</span>
-<span id="cb17-3"><a href="manipulação-de-objeto.html#cb17-3"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="manipulação-de-objeto.html#cb17-1" aria-hidden="true" tabindex="-1"></a>lambda<span class="ot">=</span>bc<span class="sc">$</span>x[<span class="fu">which.max</span>(bc<span class="sc">$</span>y)]</span>
+<span id="cb17-2"><a href="manipulação-de-objeto.html#cb17-2" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>((resposta<span class="sc">^</span>lambda<span class="dv">-1</span>)<span class="sc">/</span>lambda<span class="sc">~</span>Trat)</span>
+<span id="cb17-3"><a href="manipulação-de-objeto.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  modelo$residuals
 ## W = 0.9009, p-value = 0.01919</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="manipulação-de-objeto.html#cb19-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>Trat)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="manipulação-de-objeto.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>Trat)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -692,59 +692,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nesse exemplo em questão a transformação de dados não resolve os problemas de normalidade dos erros e homogeneidade das variâncias. Neste sentido, as vezes a simples remoção de um ponto discrepante poderia resolver esses problemas. Dessa forma, vamos remover o ponto 21, conforme acusado pela gráfico de caixas.</p>
 <p>Para remover o ponto, podemos efetuar de várias formas. Manualmente em cada um dos vetores, criando uma nova variável, usando o comando <code>with</code>, entre outros.</p>
 <p><strong>Removendo manualmente em cada vetor</strong></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="manipulação-de-objeto.html#cb21-1"></a>modelo=<span class="kw">aov</span>(resposta[<span class="op">-</span><span class="dv">21</span>]<span class="op">~</span>Trat[<span class="op">-</span><span class="dv">21</span>])</span>
-<span id="cb21-2"><a href="manipulação-de-objeto.html#cb21-2"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="manipulação-de-objeto.html#cb21-1" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(resposta[<span class="sc">-</span><span class="dv">21</span>]<span class="sc">~</span>Trat[<span class="sc">-</span><span class="dv">21</span>])</span>
+<span id="cb21-2"><a href="manipulação-de-objeto.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  modelo$residuals
 ## W = 0.94239, p-value = 0.1844</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="manipulação-de-objeto.html#cb23-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>Trat[<span class="op">-</span><span class="dv">21</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="manipulação-de-objeto.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>Trat[<span class="sc">-</span><span class="dv">21</span>])</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  modelo$residuals by Trat[-21]
 ## Bartlett&#39;s K-squared = 4.5314, df = 4, p-value = 0.3388</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="manipulação-de-objeto.html#cb25-1"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(resposta[<span class="op">-</span><span class="dv">21</span>]<span class="op">~</span>Trat[<span class="op">-</span><span class="dv">21</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="manipulação-de-objeto.html#cb25-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Boxplot</span>(resposta[<span class="sc">-</span><span class="dv">21</span>]<span class="sc">~</span>Trat[<span class="sc">-</span><span class="dv">21</span>])</span></code></pre></div>
 <center>
 <p><img src="boxplot2.png" /></p>
 </center>
 <p><strong>Criando novos vetores de dados</strong></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="manipulação-de-objeto.html#cb26-1"></a>Trat1=Trat[<span class="op">-</span><span class="dv">21</span>]</span>
-<span id="cb26-2"><a href="manipulação-de-objeto.html#cb26-2"></a>resposta1=resposta[<span class="op">-</span><span class="dv">21</span>]</span>
-<span id="cb26-3"><a href="manipulação-de-objeto.html#cb26-3"></a>modelo=<span class="kw">aov</span>(resposta1<span class="op">~</span>Trat1)</span>
-<span id="cb26-4"><a href="manipulação-de-objeto.html#cb26-4"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="manipulação-de-objeto.html#cb26-1" aria-hidden="true" tabindex="-1"></a>Trat1<span class="ot">=</span>Trat[<span class="sc">-</span><span class="dv">21</span>]</span>
+<span id="cb26-2"><a href="manipulação-de-objeto.html#cb26-2" aria-hidden="true" tabindex="-1"></a>resposta1<span class="ot">=</span>resposta[<span class="sc">-</span><span class="dv">21</span>]</span>
+<span id="cb26-3"><a href="manipulação-de-objeto.html#cb26-3" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(resposta1<span class="sc">~</span>Trat1)</span>
+<span id="cb26-4"><a href="manipulação-de-objeto.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  modelo$residuals
 ## W = 0.94239, p-value = 0.1844</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="manipulação-de-objeto.html#cb28-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>Trat1)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="manipulação-de-objeto.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>Trat1)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  modelo$residuals by Trat1
 ## Bartlett&#39;s K-squared = 4.5314, df = 4, p-value = 0.3388</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="manipulação-de-objeto.html#cb30-1"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(resposta1<span class="op">~</span>Trat1)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="manipulação-de-objeto.html#cb30-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Boxplot</span>(resposta1<span class="sc">~</span>Trat1)</span></code></pre></div>
 <center>
 <img src="boxplot2.png" />
 </center>
 <p><strong>Removendo utilizando o <code>with</code></strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="manipulação-de-objeto.html#cb31-1"></a>dados=<span class="kw">data.frame</span>(Trat,resposta)</span>
-<span id="cb31-2"><a href="manipulação-de-objeto.html#cb31-2"></a>modelo=<span class="kw">with</span>(dados[<span class="op">-</span><span class="dv">21</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Trat))</span>
-<span id="cb31-3"><a href="manipulação-de-objeto.html#cb31-3"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="manipulação-de-objeto.html#cb31-1" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(Trat,resposta)</span>
+<span id="cb31-2"><a href="manipulação-de-objeto.html#cb31-2" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">with</span>(dados[<span class="sc">-</span><span class="dv">21</span>,],<span class="fu">aov</span>(resposta<span class="sc">~</span>Trat))</span>
+<span id="cb31-3"><a href="manipulação-de-objeto.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  modelo$residuals
 ## W = 0.94239, p-value = 0.1844</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="manipulação-de-objeto.html#cb33-1"></a><span class="kw">with</span>(dados[<span class="op">-</span><span class="dv">21</span>,],<span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>Trat))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="manipulação-de-objeto.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados[<span class="sc">-</span><span class="dv">21</span>,],<span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>Trat))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  modelo$residuals by Trat
 ## Bartlett&#39;s K-squared = 4.5314, df = 4, p-value = 0.3388</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="manipulação-de-objeto.html#cb35-1"></a><span class="kw">with</span>(dados[<span class="op">-</span><span class="dv">21</span>,],car<span class="op">::</span><span class="kw">Boxplot</span>(resposta<span class="op">~</span>Trat))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="manipulação-de-objeto.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados[<span class="sc">-</span><span class="dv">21</span>,],car<span class="sc">::</span><span class="fu">Boxplot</span>(resposta<span class="sc">~</span>Trat))</span></code></pre></div>
 <center>
 <img src="boxplot2.png" />
 </center>
@@ -753,21 +753,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="como-remover-um-tratamento" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Como remover um Tratamento?</h2>
 <hr />
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="manipulação-de-objeto.html#cb36-1"></a>dados=<span class="kw">data.frame</span>(Trat,resposta)</span>
-<span id="cb36-2"><a href="manipulação-de-objeto.html#cb36-2"></a>modelo=<span class="kw">with</span>(dados[<span class="op">!</span>Trat<span class="op">==</span><span class="st">&quot;T 5&quot;</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Trat))</span>
-<span id="cb36-3"><a href="manipulação-de-objeto.html#cb36-3"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="manipulação-de-objeto.html#cb36-1" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(Trat,resposta)</span>
+<span id="cb36-2"><a href="manipulação-de-objeto.html#cb36-2" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">with</span>(dados[<span class="sc">!</span>Trat<span class="sc">==</span><span class="st">&quot;T 5&quot;</span>,],<span class="fu">aov</span>(resposta<span class="sc">~</span>Trat))</span>
+<span id="cb36-3"><a href="manipulação-de-objeto.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  modelo$residuals
 ## W = 0.93316, p-value = 0.1776</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="manipulação-de-objeto.html#cb38-1"></a><span class="kw">with</span>(dados[<span class="op">!</span>Trat<span class="op">==</span><span class="st">&quot;T 5&quot;</span>,],<span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>Trat))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="manipulação-de-objeto.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados[<span class="sc">!</span>Trat<span class="sc">==</span><span class="st">&quot;T 5&quot;</span>,],<span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>Trat))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  modelo$residuals by Trat
 ## Bartlett&#39;s K-squared = 3.1774, df = 3, p-value = 0.3651</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="manipulação-de-objeto.html#cb40-1"></a><span class="kw">with</span>(dados[<span class="op">!</span>Trat<span class="op">==</span><span class="st">&quot;T 5&quot;</span>,],car<span class="op">::</span><span class="kw">Boxplot</span>(resposta<span class="op">~</span>Trat))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="manipulação-de-objeto.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados[<span class="sc">!</span>Trat<span class="sc">==</span><span class="st">&quot;T 5&quot;</span>,],car<span class="sc">::</span><span class="fu">Boxplot</span>(resposta<span class="sc">~</span>Trat))</span></code></pre></div>
 <center>
 <img src="boxplot3.png" />
 </center>
@@ -802,10 +802,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

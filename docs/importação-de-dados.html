@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 4 Importação de dados | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 4 Importação de dados | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="instalação-do-software-r.html"/>
 <link rel="next" href="tabulação-de-dados.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -666,11 +666,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </center>
 <p>A seguir, é necessário trocar as barras de  para / ou adicionar mais uma \ (\ para \) e colocar dentro do comando setwd e o diretório entre aspas.</p>
 <p>Obs. O diretório abaixo é do <strong>meu computador</strong>!!!</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="importação-de-dados.html#cb1-1"></a><span class="kw">setwd</span>(<span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">Gabriel Shimizu</span><span class="ch">\\</span><span class="st">Dropbox</span><span class="ch">\\</span><span class="st">ProjetoExperimental</span><span class="ch">\\</span><span class="st">Análise Descritiva&quot;</span>)</span>
-<span id="cb1-2"><a href="importação-de-dados.html#cb1-2"></a></span>
-<span id="cb1-3"><a href="importação-de-dados.html#cb1-3"></a><span class="co">## ou</span></span>
-<span id="cb1-4"><a href="importação-de-dados.html#cb1-4"></a></span>
-<span id="cb1-5"><a href="importação-de-dados.html#cb1-5"></a><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/Gabriel Shimizu/Dropbox/ProjetoExperimental/Análise Descritiva&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="importação-de-dados.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">Gabriel Shimizu</span><span class="sc">\\</span><span class="st">Dropbox</span><span class="sc">\\</span><span class="st">ProjetoExperimental</span><span class="sc">\\</span><span class="st">Análise Descritiva&quot;</span>)</span>
+<span id="cb1-2"><a href="importação-de-dados.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="importação-de-dados.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ou</span></span>
+<span id="cb1-4"><a href="importação-de-dados.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="importação-de-dados.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Users/Gabriel Shimizu/Dropbox/ProjetoExperimental/Análise Descritiva&quot;</span>)</span></code></pre></div>
 <p>Obs. <strong>Sempre que for alterar a local da pasta, devemos alterar a localização do diretório!!!</strong></p>
 </div>
 <div id="opção-2-para-especificar-diretório" class="section level3" number="4.1.3">
@@ -681,19 +681,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="conferir-se-o-arquivo-está-no-diretório-especificado" class="section level3" number="4.1.4">
 <h3><span class="header-section-number">4.1.4</span> Conferir se o arquivo está no diretório especificado</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="importação-de-dados.html#cb2-1"></a><span class="kw">dir</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="importação-de-dados.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>()</span></code></pre></div>
 </div>
 <div id="ativando-a-package-e-importando-o-arquivo" class="section level3" number="4.1.5">
 <h3><span class="header-section-number">4.1.5</span> Ativando a package e importando o arquivo</h3>
 <p>Antes de ativar o pacote, deve-se instalar o mesmo (Ver guia de instalação - <a href="https://agronomiar.000webhostapp.com/manual_instalacao.pdf">Instalação</a>)</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="importação-de-dados.html#cb3-1"></a><span class="kw">library</span>(readxl)</span>
-<span id="cb3-2"><a href="importação-de-dados.html#cb3-2"></a>dados=<span class="kw">read_excel</span>(<span class="st">&quot;DIC.xlsx&quot;</span>, <span class="dt">sheet=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="importação-de-dados.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-2"><a href="importação-de-dados.html#cb3-2" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">read_excel</span>(<span class="st">&quot;DIC.xlsx&quot;</span>, <span class="at">sheet=</span><span class="dv">1</span>)</span></code></pre></div>
 <p>O argumento sheet=1, está se referindo a planilha 1 do arquivo em excel (podemos exportar de outras planilhas)</p>
-<p><strong>Obs. No caso de extensão “.xls”, não esquecer de mudar!!!</strong></p>
+<p><strong>Obs. No caso de extensão “.xls,” não esquecer de mudar!!!</strong></p>
 </div>
 <div id="ajuda" class="section level3" number="4.1.6">
 <h3><span class="header-section-number">4.1.6</span> Ajuda</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="importação-de-dados.html#cb4-1"></a>?readxl</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="importação-de-dados.html#cb4-1" aria-hidden="true" tabindex="-1"></a>?readxl</span></code></pre></div>
 <p><a href="https://agronomiar.000webhostapp.com/DIC.xlsx">Conjunto de dados</a></p>
 </div>
 </div>
@@ -713,11 +713,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </center>
 <p>A seguir, é necessário trocar as barras de  para / ou adicionar mais uma \ (\ para \) e colocar dentro do comando setwd e o diretório entre aspas.</p>
 <p>Obs. O diretório abaixo é do <strong>meu computador</strong>!!!</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="importação-de-dados.html#cb5-1"></a><span class="kw">setwd</span>(<span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">Gabriel Shimizu</span><span class="ch">\\</span><span class="st">Dropbox</span><span class="ch">\\</span><span class="st">SITE</span><span class="ch">\\</span><span class="st">EXPERIMENTAL&quot;</span>)</span>
-<span id="cb5-2"><a href="importação-de-dados.html#cb5-2"></a></span>
-<span id="cb5-3"><a href="importação-de-dados.html#cb5-3"></a><span class="co">## ou</span></span>
-<span id="cb5-4"><a href="importação-de-dados.html#cb5-4"></a></span>
-<span id="cb5-5"><a href="importação-de-dados.html#cb5-5"></a><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/Gabriel Shimizu/Dropbox/SITE/EXPERIMENTAL&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="importação-de-dados.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">Gabriel Shimizu</span><span class="sc">\\</span><span class="st">Dropbox</span><span class="sc">\\</span><span class="st">SITE</span><span class="sc">\\</span><span class="st">EXPERIMENTAL&quot;</span>)</span>
+<span id="cb5-2"><a href="importação-de-dados.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="importação-de-dados.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ou</span></span>
+<span id="cb5-4"><a href="importação-de-dados.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="importação-de-dados.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Users/Gabriel Shimizu/Dropbox/SITE/EXPERIMENTAL&quot;</span>)</span></code></pre></div>
 <p>Obs. <strong>Sempre que for alterar a local da pasta, devemos alterar a localização do diretório!!!</strong></p>
 </div>
 <div id="opção-2-para-especificar-diretório-1" class="section level3" number="4.2.2">
@@ -728,7 +728,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="conferir-se-o-arquivo-está-no-diretório-especificado-1" class="section level3" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> Conferir se o arquivo está no diretório especificado</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="importação-de-dados.html#cb6-1"></a><span class="kw">dir</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="importação-de-dados.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>()</span></code></pre></div>
 </div>
 <div id="importando-o-arquivo" class="section level3" number="4.2.4">
 <h3><span class="header-section-number">4.2.4</span> Importando o arquivo</h3>
@@ -736,12 +736,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="arquivo-separado-por-ponto-e-vírgula-e-decimal-separado-por-vírgula" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Arquivo separado por ponto e vírgula e decimal separado por vírgula</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="importação-de-dados.html#cb7-1"></a>dados=<span class="kw">read.csv2</span>(<span class="st">&quot;DIC (CSV ponto e virgula).csv&quot;</span>)</span>
-<span id="cb7-2"><a href="importação-de-dados.html#cb7-2"></a>dados</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="importação-de-dados.html#cb7-1" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">read.csv2</span>(<span class="st">&quot;DIC (CSV ponto e virgula).csv&quot;</span>)</span>
+<span id="cb7-2"><a href="importação-de-dados.html#cb7-2" aria-hidden="true" tabindex="-1"></a>dados</span></code></pre></div>
 <div id="arquivo-separado-por-vírgula-e-decimal-com-ponto" class="section level3" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Arquivo separado por vírgula e decimal com ponto</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="importação-de-dados.html#cb8-1"></a>dados=<span class="kw">read.csv</span>(<span class="st">&quot;DIC (CSV virgula).csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb8-2"><a href="importação-de-dados.html#cb8-2"></a>dados</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="importação-de-dados.html#cb8-1" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">&quot;DIC (CSV virgula).csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb8-2"><a href="importação-de-dados.html#cb8-2" aria-hidden="true" tabindex="-1"></a>dados</span></code></pre></div>
 <p><a href="https://agronomiar.000webhostapp.com/DIC%20(CSV%20virgula).csv">Dados (Separado por vírgula)</a></p>
 <p><a href="https://agronomiar.000webhostapp.com/DIC%20(CSV%20ponto%20e%20virgula).csv">Dados (Separado por ponto e vírgula)</a></p>
 </div>
@@ -776,10 +776,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 14 Delineamento em Blocos Casualizados | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 14 Delineamento em Blocos Casualizados | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="transformação-de-dados.html"/>
 <link rel="next" href="delineamento-em-quadrado-latino.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -762,43 +762,43 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <h2><span class="header-section-number">14.5</span> Croqui</h2>
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Bloco em coluna)</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="delineamento-em-blocos-casualizados.html#cb250-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb250-2"><a href="delineamento-em-blocos-casualizados.html#cb250-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb250-3"><a href="delineamento-em-blocos-casualizados.html#cb250-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb250-4"><a href="delineamento-em-blocos-casualizados.html#cb250-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb250-5"><a href="delineamento-em-blocos-casualizados.html#cb250-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
-<span id="cb250-6"><a href="delineamento-em-blocos-casualizados.html#cb250-6"></a>  sort=<span class="kw">design.rcbd</span>(trat,r,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb250-7"><a href="delineamento-em-blocos-casualizados.html#cb250-7"></a>  sort<span class="op">$</span>book[,<span class="dv">3</span>]=<span class="kw">as.factor</span>(<span class="kw">matrix</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>],r,,T))</span>
-<span id="cb250-8"><a href="delineamento-em-blocos-casualizados.html#cb250-8"></a>  ncol=r</span>
-<span id="cb250-9"><a href="delineamento-em-blocos-casualizados.html#cb250-9"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>], <span class="cf">function</span>(ii)</span>
-<span id="cb250-10"><a href="delineamento-em-blocos-casualizados.html#cb250-10"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb250-11"><a href="delineamento-em-blocos-casualizados.html#cb250-11"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="delineamento-em-blocos-casualizados.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb250-2"><a href="delineamento-em-blocos-casualizados.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb250-3"><a href="delineamento-em-blocos-casualizados.html#cb250-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb250-4"><a href="delineamento-em-blocos-casualizados.html#cb250-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb250-5"><a href="delineamento-em-blocos-casualizados.html#cb250-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,r){</span>
+<span id="cb250-6"><a href="delineamento-em-blocos-casualizados.html#cb250-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.rcbd</span>(trat,r,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb250-7"><a href="delineamento-em-blocos-casualizados.html#cb250-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book[,<span class="dv">3</span>]<span class="ot">=</span><span class="fu">as.factor</span>(<span class="fu">matrix</span>(sort<span class="sc">$</span>book[,<span class="dv">3</span>],r,,T))</span>
+<span id="cb250-8"><a href="delineamento-em-blocos-casualizados.html#cb250-8" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span>r</span>
+<span id="cb250-9"><a href="delineamento-em-blocos-casualizados.html#cb250-9" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book[,<span class="dv">3</span>], <span class="cf">function</span>(ii)</span>
+<span id="cb250-10"><a href="delineamento-em-blocos-casualizados.html#cb250-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb250-11"><a href="delineamento-em-blocos-casualizados.html#cb250-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="delineamento-em-blocos-casualizados.html#cb251-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="delineamento-em-blocos-casualizados.html#cb251-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="delineamento-em-blocos-casualizados.html#cb252-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="delineamento-em-blocos-casualizados.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,<span class="at">r=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Bloco em linha)</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="delineamento-em-blocos-casualizados.html#cb253-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb253-2"><a href="delineamento-em-blocos-casualizados.html#cb253-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb253-3"><a href="delineamento-em-blocos-casualizados.html#cb253-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb253-4"><a href="delineamento-em-blocos-casualizados.html#cb253-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb253-5"><a href="delineamento-em-blocos-casualizados.html#cb253-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
-<span id="cb253-6"><a href="delineamento-em-blocos-casualizados.html#cb253-6"></a>  sort=<span class="kw">design.rcbd</span>(trat,r,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb253-7"><a href="delineamento-em-blocos-casualizados.html#cb253-7"></a>  sort<span class="op">$</span>book[,<span class="dv">3</span>]=<span class="kw">as.factor</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>],r,,T)))</span>
-<span id="cb253-8"><a href="delineamento-em-blocos-casualizados.html#cb253-8"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>]))</span>
-<span id="cb253-9"><a href="delineamento-em-blocos-casualizados.html#cb253-9"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book[,<span class="dv">3</span>], <span class="cf">function</span>(ii)</span>
-<span id="cb253-10"><a href="delineamento-em-blocos-casualizados.html#cb253-10"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb253-11"><a href="delineamento-em-blocos-casualizados.html#cb253-11"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="delineamento-em-blocos-casualizados.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb253-2"><a href="delineamento-em-blocos-casualizados.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb253-3"><a href="delineamento-em-blocos-casualizados.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb253-4"><a href="delineamento-em-blocos-casualizados.html#cb253-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb253-5"><a href="delineamento-em-blocos-casualizados.html#cb253-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,r){</span>
+<span id="cb253-6"><a href="delineamento-em-blocos-casualizados.html#cb253-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.rcbd</span>(trat,r,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb253-7"><a href="delineamento-em-blocos-casualizados.html#cb253-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book[,<span class="dv">3</span>]<span class="ot">=</span><span class="fu">as.factor</span>(<span class="fu">t</span>(<span class="fu">matrix</span>(sort<span class="sc">$</span>book[,<span class="dv">3</span>],r,,T)))</span>
+<span id="cb253-8"><a href="delineamento-em-blocos-casualizados.html#cb253-8" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span><span class="fu">length</span>(<span class="fu">levels</span>(sort<span class="sc">$</span>book[,<span class="dv">3</span>]))</span>
+<span id="cb253-9"><a href="delineamento-em-blocos-casualizados.html#cb253-9" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book[,<span class="dv">3</span>], <span class="cf">function</span>(ii)</span>
+<span id="cb253-10"><a href="delineamento-em-blocos-casualizados.html#cb253-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb253-11"><a href="delineamento-em-blocos-casualizados.html#cb253-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="delineamento-em-blocos-casualizados.html#cb254-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="delineamento-em-blocos-casualizados.html#cb254-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="delineamento-em-blocos-casualizados.html#cb255-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="delineamento-em-blocos-casualizados.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,<span class="at">r=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-147-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 <hr />
@@ -967,18 +967,18 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <div id="conjunto-de-dados-4" class="section level3" number="14.6.1">
 <h3><span class="header-section-number">14.6.1</span> Conjunto de dados</h3>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="delineamento-em-blocos-casualizados.html#cb256-1"></a>resposta=<span class="kw">c</span>(<span class="dv">145</span>,<span class="dv">155</span>,<span class="dv">166</span>,</span>
-<span id="cb256-2"><a href="delineamento-em-blocos-casualizados.html#cb256-2"></a>           <span class="dv">200</span>,<span class="dv">190</span>,<span class="dv">190</span>,</span>
-<span id="cb256-3"><a href="delineamento-em-blocos-casualizados.html#cb256-3"></a>           <span class="dv">183</span>,<span class="dv">186</span>,<span class="dv">208</span>,</span>
-<span id="cb256-4"><a href="delineamento-em-blocos-casualizados.html#cb256-4"></a>           <span class="dv">190</span>,<span class="dv">175</span>,<span class="dv">186</span>,</span>
-<span id="cb256-5"><a href="delineamento-em-blocos-casualizados.html#cb256-5"></a>           <span class="dv">180</span>,<span class="dv">160</span>,<span class="dv">156</span>,</span>
-<span id="cb256-6"><a href="delineamento-em-blocos-casualizados.html#cb256-6"></a>           <span class="dv">130</span>,<span class="dv">160</span>,<span class="dv">130</span>,</span>
-<span id="cb256-7"><a href="delineamento-em-blocos-casualizados.html#cb256-7"></a>           <span class="dv">206</span>,<span class="dv">165</span>,<span class="dv">170</span>,</span>
-<span id="cb256-8"><a href="delineamento-em-blocos-casualizados.html#cb256-8"></a>           <span class="dv">250</span>,<span class="dv">271</span>,<span class="dv">230</span>,</span>
-<span id="cb256-9"><a href="delineamento-em-blocos-casualizados.html#cb256-9"></a>           <span class="dv">164</span>,<span class="dv">190</span>,<span class="dv">193</span>)</span>
-<span id="cb256-10"><a href="delineamento-em-blocos-casualizados.html#cb256-10"></a>cultivar=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>)),<span class="dt">e=</span><span class="dv">3</span>)</span>
-<span id="cb256-11"><a href="delineamento-em-blocos-casualizados.html#cb256-11"></a>cultivar=<span class="kw">as.factor</span>(cultivar)</span>
-<span id="cb256-12"><a href="delineamento-em-blocos-casualizados.html#cb256-12"></a>bloco=<span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)),<span class="dv">9</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="delineamento-em-blocos-casualizados.html#cb256-1" aria-hidden="true" tabindex="-1"></a>resposta<span class="ot">=</span><span class="fu">c</span>(<span class="dv">145</span>,<span class="dv">155</span>,<span class="dv">166</span>,</span>
+<span id="cb256-2"><a href="delineamento-em-blocos-casualizados.html#cb256-2" aria-hidden="true" tabindex="-1"></a>           <span class="dv">200</span>,<span class="dv">190</span>,<span class="dv">190</span>,</span>
+<span id="cb256-3"><a href="delineamento-em-blocos-casualizados.html#cb256-3" aria-hidden="true" tabindex="-1"></a>           <span class="dv">183</span>,<span class="dv">186</span>,<span class="dv">208</span>,</span>
+<span id="cb256-4"><a href="delineamento-em-blocos-casualizados.html#cb256-4" aria-hidden="true" tabindex="-1"></a>           <span class="dv">190</span>,<span class="dv">175</span>,<span class="dv">186</span>,</span>
+<span id="cb256-5"><a href="delineamento-em-blocos-casualizados.html#cb256-5" aria-hidden="true" tabindex="-1"></a>           <span class="dv">180</span>,<span class="dv">160</span>,<span class="dv">156</span>,</span>
+<span id="cb256-6"><a href="delineamento-em-blocos-casualizados.html#cb256-6" aria-hidden="true" tabindex="-1"></a>           <span class="dv">130</span>,<span class="dv">160</span>,<span class="dv">130</span>,</span>
+<span id="cb256-7"><a href="delineamento-em-blocos-casualizados.html#cb256-7" aria-hidden="true" tabindex="-1"></a>           <span class="dv">206</span>,<span class="dv">165</span>,<span class="dv">170</span>,</span>
+<span id="cb256-8"><a href="delineamento-em-blocos-casualizados.html#cb256-8" aria-hidden="true" tabindex="-1"></a>           <span class="dv">250</span>,<span class="dv">271</span>,<span class="dv">230</span>,</span>
+<span id="cb256-9"><a href="delineamento-em-blocos-casualizados.html#cb256-9" aria-hidden="true" tabindex="-1"></a>           <span class="dv">164</span>,<span class="dv">190</span>,<span class="dv">193</span>)</span>
+<span id="cb256-10"><a href="delineamento-em-blocos-casualizados.html#cb256-10" aria-hidden="true" tabindex="-1"></a>cultivar<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)),<span class="at">e=</span><span class="dv">3</span>)</span>
+<span id="cb256-11"><a href="delineamento-em-blocos-casualizados.html#cb256-11" aria-hidden="true" tabindex="-1"></a>cultivar<span class="ot">=</span><span class="fu">as.factor</span>(cultivar)</span>
+<span id="cb256-12"><a href="delineamento-em-blocos-casualizados.html#cb256-12" aria-hidden="true" tabindex="-1"></a>bloco<span class="ot">=</span><span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),<span class="dv">9</span>))</span></code></pre></div>
 <p><br><br></p>
 </div>
 </div>
@@ -987,21 +987,21 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <div id="gráfico-de-caixas-3" class="section level3" number="14.7.1">
 <h3><span class="header-section-number">14.7.1</span> Gráfico de caixas</h3>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="delineamento-em-blocos-casualizados.html#cb257-1"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(resposta<span class="op">~</span>cultivar)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="delineamento-em-blocos-casualizados.html#cb257-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Boxplot</span>(resposta<span class="sc">~</span>cultivar)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="histograma-2" class="section level3" number="14.7.2">
 <h3><span class="header-section-number">14.7.2</span> Histograma</h3>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="delineamento-em-blocos-casualizados.html#cb258-1"></a><span class="kw">hist</span>(resposta)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="delineamento-em-blocos-casualizados.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resposta)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 <p><br></p>
 </div>
 </div>
 <div id="análise-de-variância-4" class="section level2" number="14.8">
 <h2><span class="header-section-number">14.8</span> Análise de variância</h2>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="delineamento-em-blocos-casualizados.html#cb259-1"></a>modelo=<span class="kw">aov</span>(resposta<span class="op">~</span>cultivar<span class="op">+</span>bloco)</span>
-<span id="cb259-2"><a href="delineamento-em-blocos-casualizados.html#cb259-2"></a><span class="kw">anova</span>(modelo) <span class="co"># Conferir GL</span></span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="delineamento-em-blocos-casualizados.html#cb259-1" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(resposta<span class="sc">~</span>cultivar<span class="sc">+</span>bloco)</span>
+<span id="cb259-2"><a href="delineamento-em-blocos-casualizados.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo) <span class="co"># Conferir GL</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: resposta
@@ -1018,7 +1018,7 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <div id="normalidade-dos-erros-6" class="section level3" number="14.9.1">
 <h3><span class="header-section-number">14.9.1</span> Normalidade dos erros</h3>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="delineamento-em-blocos-casualizados.html#cb261-1"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="delineamento-em-blocos-casualizados.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1029,7 +1029,7 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="homogeneidade-das-variâncias-4" class="section level3" number="14.9.2">
 <h3><span class="header-section-number">14.9.2</span> Homogeneidade das variâncias</h3>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="delineamento-em-blocos-casualizados.html#cb263-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>cultivar)</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="delineamento-em-blocos-casualizados.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>cultivar)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1040,7 +1040,7 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="independência-dos-erros-3" class="section level3" number="14.9.3">
 <h3><span class="header-section-number">14.9.3</span> Independência dos erros</h3>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="delineamento-em-blocos-casualizados.html#cb265-1"></a>lmtest<span class="op">::</span><span class="kw">dwtest</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="delineamento-em-blocos-casualizados.html#cb265-1" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(modelo)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1052,8 +1052,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="teste-de-aditividade-de-tukey" class="section level3" number="14.9.4">
 <h3><span class="header-section-number">14.9.4</span> Teste de Aditividade de Tukey</h3>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="delineamento-em-blocos-casualizados.html#cb267-1"></a><span class="kw">library</span>(asbio)</span>
-<span id="cb267-2"><a href="delineamento-em-blocos-casualizados.html#cb267-2"></a><span class="kw">tukey.add.test</span>(resposta,cultivar,bloco)</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="delineamento-em-blocos-casualizados.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(asbio)</span>
+<span id="cb267-2"><a href="delineamento-em-blocos-casualizados.html#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tukey.add.test</span>(resposta,cultivar,bloco)</span></code></pre></div>
 <pre><code>## 
 ## Tukey&#39;s one df test for additivity 
 ## F = 0.6866169   Denom df = 15    p-value = 0.4203076</code></pre>
@@ -1061,9 +1061,9 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="gráfico-de-resíduos-padronizados-2" class="section level3" number="14.9.5">
 <h3><span class="header-section-number">14.9.5</span> Gráfico de resíduos padronizados</h3>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="delineamento-em-blocos-casualizados.html#cb269-1"></a>a=<span class="kw">anova</span>(modelo)</span>
-<span id="cb269-2"><a href="delineamento-em-blocos-casualizados.html#cb269-2"></a><span class="kw">plot</span>(modelo<span class="op">$</span>residuals<span class="op">/</span><span class="kw">sqrt</span>(a<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]), <span class="dt">ylab=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</span>
-<span id="cb269-3"><a href="delineamento-em-blocos-casualizados.html#cb269-3"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="delineamento-em-blocos-casualizados.html#cb269-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">anova</span>(modelo)</span>
+<span id="cb269-2"><a href="delineamento-em-blocos-casualizados.html#cb269-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>residuals<span class="sc">/</span><span class="fu">sqrt</span>(a<span class="sc">$</span><span class="st">`</span><span class="at">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]), <span class="at">ylab=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</span>
+<span id="cb269-3"><a href="delineamento-em-blocos-casualizados.html#cb269-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
 <p><br><br></p>
 </div>
@@ -1073,18 +1073,18 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-multcomp-2" class="section level3" number="14.10.1">
 <h3><span class="header-section-number">14.10.1</span> Teste de Comparação Múltipla de Tukey (Utilizando o multcomp)</h3>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="delineamento-em-blocos-casualizados.html#cb270-1"></a><span class="kw">library</span>(multcomp)</span>
-<span id="cb270-2"><a href="delineamento-em-blocos-casualizados.html#cb270-2"></a>mcomp=<span class="kw">glht</span>(modelo, <span class="kw">mcp</span>(<span class="dt">cultivar=</span><span class="st">&quot;Tukey&quot;</span>))</span>
-<span id="cb270-3"><a href="delineamento-em-blocos-casualizados.html#cb270-3"></a><span class="kw">plot</span>(mcomp)</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="delineamento-em-blocos-casualizados.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb270-2"><a href="delineamento-em-blocos-casualizados.html#cb270-2" aria-hidden="true" tabindex="-1"></a>mcomp<span class="ot">=</span><span class="fu">glht</span>(modelo, <span class="fu">mcp</span>(<span class="at">cultivar=</span><span class="st">&quot;Tukey&quot;</span>))</span>
+<span id="cb270-3"><a href="delineamento-em-blocos-casualizados.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mcomp)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="delineamento-em-blocos-casualizados.html#cb271-1"></a><span class="kw">cld</span>(mcomp)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="delineamento-em-blocos-casualizados.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cld</span>(mcomp)</span></code></pre></div>
 <pre><code>##  T 1  T 2  T 3  T 4  T 5  T 6  T 7  T 8  T 9 
 ## &quot;ab&quot;  &quot;b&quot;  &quot;b&quot; &quot;ab&quot; &quot;ab&quot;  &quot;a&quot; &quot;ab&quot;  &quot;c&quot; &quot;ab&quot;</code></pre>
 <p><br></p>
 </div>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-tukeyhsd-do-r-2" class="section level3" number="14.10.2">
 <h3><span class="header-section-number">14.10.2</span> Teste de Comparação Múltipla de Tukey (Utilizando o TukeyHSD do R)</h3>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="delineamento-em-blocos-casualizados.html#cb273-1"></a>(<span class="dt">tukey=</span><span class="kw">TukeyHSD</span>(modelo))</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="delineamento-em-blocos-casualizados.html#cb273-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">tukey=</span><span class="fu">TukeyHSD</span>(modelo))</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -1134,23 +1134,23 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 ## B 2-B 1  0.4444444 -18.85487 19.74376 0.9980554
 ## B 3-B 1 -2.1111111 -21.41043 17.18820 0.9571497
 ## B 3-B 2 -2.5555556 -21.85487 16.74376 0.9379209</code></pre>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="delineamento-em-blocos-casualizados.html#cb275-1"></a><span class="kw">plot</span>(tukey)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="delineamento-em-blocos-casualizados.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-158-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-158-2.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-hsd.test-do-agricolae-2" class="section level3" number="14.10.3">
 <h3><span class="header-section-number">14.10.3</span> Teste de Comparação Múltipla de Tukey (Utilizando o HSD.test do Agricolae)</h3>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="delineamento-em-blocos-casualizados.html#cb276-1"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb276-2"><a href="delineamento-em-blocos-casualizados.html#cb276-2"></a>tukey=<span class="kw">HSD.test</span>(modelo,<span class="st">&quot;cultivar&quot;</span>)</span>
-<span id="cb276-3"><a href="delineamento-em-blocos-casualizados.html#cb276-3"></a><span class="kw">plot</span>(tukey)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="delineamento-em-blocos-casualizados.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb276-2"><a href="delineamento-em-blocos-casualizados.html#cb276-2" aria-hidden="true" tabindex="-1"></a>tukey<span class="ot">=</span><span class="fu">HSD.test</span>(modelo,<span class="st">&quot;cultivar&quot;</span>)</span>
+<span id="cb276-3"><a href="delineamento-em-blocos-casualizados.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-ea1-do-pacote-easyanova-2" class="section level3" number="14.10.4">
 <h3><span class="header-section-number">14.10.4</span> Teste de Comparação Múltipla de Tukey (Utilizando o ea1() do pacote easyanova)</h3>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="delineamento-em-blocos-casualizados.html#cb277-1"></a><span class="kw">library</span>(easyanova)</span>
-<span id="cb277-2"><a href="delineamento-em-blocos-casualizados.html#cb277-2"></a>tukey=<span class="kw">ea1</span>(<span class="kw">data.frame</span>(cultivar,bloco,resposta), <span class="dt">design =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="delineamento-em-blocos-casualizados.html#cb278-1"></a><span class="kw">cbind</span>(tukey<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">1</span>],tukey<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">2</span>],tukey<span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="delineamento-em-blocos-casualizados.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easyanova)</span>
+<span id="cb277-2"><a href="delineamento-em-blocos-casualizados.html#cb277-2" aria-hidden="true" tabindex="-1"></a>tukey<span class="ot">=</span><span class="fu">ea1</span>(<span class="fu">data.frame</span>(cultivar,bloco,resposta), <span class="at">design =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="delineamento-em-blocos-casualizados.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(tukey<span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means</span><span class="st">`</span>[<span class="dv">1</span>],tukey<span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means</span><span class="st">`</span>[<span class="dv">2</span>],tukey<span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means</span><span class="st">`</span>[<span class="dv">4</span>])</span></code></pre></div>
 <pre><code>##   treatment adjusted.mean tukey
 ## 1       T 8      250.3333     a
 ## 2       T 2      193.3333     b
@@ -1164,16 +1164,16 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-dbc-do-pacote-expdes.pt" class="section level4" number="14.10.4.1">
 <h4><span class="header-section-number">14.10.4.1</span> Teste de Comparação Múltipla de Tukey (Utilizando o dbc do pacote ExpDes.pt)</h4>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="delineamento-em-blocos-casualizados.html#cb280-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb280-2"><a href="delineamento-em-blocos-casualizados.html#cb280-2"></a><span class="kw">dbc</span>(cultivar,bloco,resposta)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="delineamento-em-blocos-casualizados.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb280-2"><a href="delineamento-em-blocos-casualizados.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbc</span>(cultivar,bloco,resposta)</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM      Fc   Pr&gt;Fc
-## Tratamento  8 22981.3  4 11.4114 0.00003
-## Bloco       2    33.6  2  0.0666 0.93578
-## Residuo    16  4027.8  3                
-## Total      26 27042.7  1                
+##            GL      SQ      QM      Fc   Pr&gt;Fc
+## Tratamento  8 22981.3 2872.67 11.4114 0.00003
+## Bloco       2    33.6   16.78  0.0666 0.93578
+## Residuo    16  4027.8  251.74                
+## Total      26 27042.7                        
 ## ------------------------------------------------------------------------
 ## CV = 8.69 %
 ## 
@@ -1216,30 +1216,30 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <div id="conjunto-de-dados-5" class="section level3" number="14.11.1">
 <h3><span class="header-section-number">14.11.1</span> Conjunto de dados</h3>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="delineamento-em-blocos-casualizados.html#cb282-1"></a>PRO=<span class="kw">c</span>(<span class="fl">2444.44</span>,<span class="fl">2870.37</span>,<span class="fl">2314.81</span>,<span class="fl">2629.63</span>,<span class="fl">2444.44</span>,<span class="fl">2592.59</span>,<span class="fl">2962.96</span>,<span class="fl">3037.04</span>,<span class="fl">3037.04</span>,<span class="fl">2592.59</span>,<span class="fl">2296.30</span>,<span class="fl">2444.44</span>,<span class="fl">2370.37</span>,<span class="fl">3481.48</span>,<span class="fl">2555.56</span>,<span class="fl">1981.48</span>,<span class="fl">2611.11</span>,<span class="fl">1925.93</span>,<span class="fl">1870.37</span>,<span class="fl">2518.52</span>,<span class="fl">2370.37</span>,<span class="fl">2462.96</span>,<span class="fl">2351.85</span>,<span class="fl">2000.00</span>,<span class="fl">2703.70</span>,<span class="fl">2685.19</span>,<span class="fl">2166.67</span>,<span class="fl">2129.63</span>,<span class="fl">2222.22</span>,<span class="fl">1814.81</span>,<span class="fl">2537.04</span>,<span class="fl">2351.85</span>,<span class="fl">2333.33</span>,<span class="fl">3370.37</span>,<span class="fl">2462.96</span>,<span class="fl">3129.63</span>,<span class="fl">2666.67</span>,<span class="fl">2796.30</span>,<span class="fl">2055.56</span>,<span class="fl">2333.33</span>,<span class="fl">2240.74</span>,<span class="fl">2092.59</span>,<span class="fl">2703.70</span>,<span class="fl">2129.63</span>,<span class="fl">2740.74</span>)</span>
-<span id="cb282-2"><a href="delineamento-em-blocos-casualizados.html#cb282-2"></a>Cultivares=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>)),<span class="dt">e=</span><span class="dv">3</span>)</span>
-<span id="cb282-3"><a href="delineamento-em-blocos-casualizados.html#cb282-3"></a>Bloco=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)),<span class="dv">15</span>)</span>
-<span id="cb282-4"><a href="delineamento-em-blocos-casualizados.html#cb282-4"></a>Tratamento =<span class="st"> </span><span class="kw">as.factor</span>(Cultivares)</span>
-<span id="cb282-5"><a href="delineamento-em-blocos-casualizados.html#cb282-5"></a>bloco=<span class="kw">as.factor</span>(Bloco)</span>
-<span id="cb282-6"><a href="delineamento-em-blocos-casualizados.html#cb282-6"></a>dados =<span class="st"> </span><span class="kw">data.frame</span>(Tratamento, <span class="dt">TRAT=</span>Tratamento, bloco,<span class="dt">resp=</span>PRO)</span>
-<span id="cb282-7"><a href="delineamento-em-blocos-casualizados.html#cb282-7"></a>dados =<span class="st"> </span>dados[<span class="kw">order</span>(dados<span class="op">$</span>Tratamento), ]</span>
-<span id="cb282-8"><a href="delineamento-em-blocos-casualizados.html#cb282-8"></a>X =<span class="st"> &#39;Cultivares de soja&#39;</span></span>
-<span id="cb282-9"><a href="delineamento-em-blocos-casualizados.html#cb282-9"></a>(<span class="dt">Y =</span> <span class="kw">expression</span>(<span class="kw">Produtividade</span> (Kg.ha<span class="op">^-</span><span class="dv">1</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="delineamento-em-blocos-casualizados.html#cb282-1" aria-hidden="true" tabindex="-1"></a>PRO<span class="ot">=</span><span class="fu">c</span>(<span class="fl">2444.44</span>,<span class="fl">2870.37</span>,<span class="fl">2314.81</span>,<span class="fl">2629.63</span>,<span class="fl">2444.44</span>,<span class="fl">2592.59</span>,<span class="fl">2962.96</span>,<span class="fl">3037.04</span>,<span class="fl">3037.04</span>,<span class="fl">2592.59</span>,<span class="fl">2296.30</span>,<span class="fl">2444.44</span>,<span class="fl">2370.37</span>,<span class="fl">3481.48</span>,<span class="fl">2555.56</span>,<span class="fl">1981.48</span>,<span class="fl">2611.11</span>,<span class="fl">1925.93</span>,<span class="fl">1870.37</span>,<span class="fl">2518.52</span>,<span class="fl">2370.37</span>,<span class="fl">2462.96</span>,<span class="fl">2351.85</span>,<span class="fl">2000.00</span>,<span class="fl">2703.70</span>,<span class="fl">2685.19</span>,<span class="fl">2166.67</span>,<span class="fl">2129.63</span>,<span class="fl">2222.22</span>,<span class="fl">1814.81</span>,<span class="fl">2537.04</span>,<span class="fl">2351.85</span>,<span class="fl">2333.33</span>,<span class="fl">3370.37</span>,<span class="fl">2462.96</span>,<span class="fl">3129.63</span>,<span class="fl">2666.67</span>,<span class="fl">2796.30</span>,<span class="fl">2055.56</span>,<span class="fl">2333.33</span>,<span class="fl">2240.74</span>,<span class="fl">2092.59</span>,<span class="fl">2703.70</span>,<span class="fl">2129.63</span>,<span class="fl">2740.74</span>)</span>
+<span id="cb282-2"><a href="delineamento-em-blocos-casualizados.html#cb282-2" aria-hidden="true" tabindex="-1"></a>Cultivares<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>)),<span class="at">e=</span><span class="dv">3</span>)</span>
+<span id="cb282-3"><a href="delineamento-em-blocos-casualizados.html#cb282-3" aria-hidden="true" tabindex="-1"></a>Bloco<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)),<span class="dv">15</span>)</span>
+<span id="cb282-4"><a href="delineamento-em-blocos-casualizados.html#cb282-4" aria-hidden="true" tabindex="-1"></a>Tratamento <span class="ot">=</span> <span class="fu">as.factor</span>(Cultivares)</span>
+<span id="cb282-5"><a href="delineamento-em-blocos-casualizados.html#cb282-5" aria-hidden="true" tabindex="-1"></a>bloco<span class="ot">=</span><span class="fu">as.factor</span>(Bloco)</span>
+<span id="cb282-6"><a href="delineamento-em-blocos-casualizados.html#cb282-6" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> <span class="fu">data.frame</span>(Tratamento, <span class="at">TRAT=</span>Tratamento, bloco,<span class="at">resp=</span>PRO)</span>
+<span id="cb282-7"><a href="delineamento-em-blocos-casualizados.html#cb282-7" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> dados[<span class="fu">order</span>(dados<span class="sc">$</span>Tratamento), ]</span>
+<span id="cb282-8"><a href="delineamento-em-blocos-casualizados.html#cb282-8" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="st">&#39;Cultivares de soja&#39;</span></span>
+<span id="cb282-9"><a href="delineamento-em-blocos-casualizados.html#cb282-9" aria-hidden="true" tabindex="-1"></a>(<span class="at">Y =</span> <span class="fu">expression</span>(<span class="fu">Produtividade</span> (Kg.ha<span class="sc">^-</span><span class="dv">1</span>)))</span></code></pre></div>
 <pre><code>## expression(Produtividade(Kg.ha^-1))</code></pre>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="delineamento-em-blocos-casualizados.html#cb284-1"></a>alfa=<span class="st">&quot;0,05&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="delineamento-em-blocos-casualizados.html#cb284-1" aria-hidden="true" tabindex="-1"></a>alfa<span class="ot">=</span><span class="st">&quot;0,05&quot;</span></span></code></pre></div>
 <p><br><br></p>
 </div>
 </div>
 <div id="estatística-descritiva-2" class="section level2" number="14.12">
 <h2><span class="header-section-number">14.12</span> Estatística descritiva</h2>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="delineamento-em-blocos-casualizados.html#cb285-1"></a>Média =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">mean</span>(resp))</span>
-<span id="cb285-2"><a href="delineamento-em-blocos-casualizados.html#cb285-2"></a>Variância =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">var</span>(resp))</span>
-<span id="cb285-3"><a href="delineamento-em-blocos-casualizados.html#cb285-3"></a>Desvio =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sd</span>(resp))</span>
-<span id="cb285-4"><a href="delineamento-em-blocos-casualizados.html#cb285-4"></a>CV =<span class="st"> </span>Desvio <span class="op">/</span><span class="st"> </span>Média <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb285-5"><a href="delineamento-em-blocos-casualizados.html#cb285-5"></a></span>
-<span id="cb285-6"><a href="delineamento-em-blocos-casualizados.html#cb285-6"></a>desc =<span class="st"> </span><span class="kw">cbind</span>(Média, Variância, Desvio, CV)</span>
-<span id="cb285-7"><a href="delineamento-em-blocos-casualizados.html#cb285-7"></a><span class="kw">rownames</span>(desc) =<span class="st"> &#39;Produvidade (Kg/ha)&#39;</span></span>
-<span id="cb285-8"><a href="delineamento-em-blocos-casualizados.html#cb285-8"></a><span class="kw">kable</span>(<span class="kw">round</span>(desc,<span class="dv">2</span>), <span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="delineamento-em-blocos-casualizados.html#cb285-1" aria-hidden="true" tabindex="-1"></a>Média <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(resp))</span>
+<span id="cb285-2"><a href="delineamento-em-blocos-casualizados.html#cb285-2" aria-hidden="true" tabindex="-1"></a>Variância <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">var</span>(resp))</span>
+<span id="cb285-3"><a href="delineamento-em-blocos-casualizados.html#cb285-3" aria-hidden="true" tabindex="-1"></a>Desvio <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(resp))</span>
+<span id="cb285-4"><a href="delineamento-em-blocos-casualizados.html#cb285-4" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">=</span> Desvio <span class="sc">/</span> Média <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb285-5"><a href="delineamento-em-blocos-casualizados.html#cb285-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb285-6"><a href="delineamento-em-blocos-casualizados.html#cb285-6" aria-hidden="true" tabindex="-1"></a>desc <span class="ot">=</span> <span class="fu">cbind</span>(Média, Variância, Desvio, CV)</span>
+<span id="cb285-7"><a href="delineamento-em-blocos-casualizados.html#cb285-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(desc) <span class="ot">=</span> <span class="st">&#39;Produvidade (Kg/ha)&#39;</span></span>
+<span id="cb285-8"><a href="delineamento-em-blocos-casualizados.html#cb285-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(desc,<span class="dv">2</span>), <span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1263,12 +1263,12 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br><br></p>
 <div id="por-cultivar-1" class="section level3" number="14.12.1">
 <h3><span class="header-section-number">14.12.1</span> Por Cultivar</h3>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="delineamento-em-blocos-casualizados.html#cb286-1"></a>Médias =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, Tratamento, mean))</span>
-<span id="cb286-2"><a href="delineamento-em-blocos-casualizados.html#cb286-2"></a>Variâncias =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, Tratamento, var))</span>
-<span id="cb286-3"><a href="delineamento-em-blocos-casualizados.html#cb286-3"></a>Desvios =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, Tratamento, sd))</span>
-<span id="cb286-4"><a href="delineamento-em-blocos-casualizados.html#cb286-4"></a>CV =<span class="st"> </span>Desvios <span class="op">/</span><span class="st"> </span>Médias <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb286-5"><a href="delineamento-em-blocos-casualizados.html#cb286-5"></a>Desc =<span class="st"> </span><span class="kw">cbind</span>(Médias, Variâncias, Desvios, CV)</span>
-<span id="cb286-6"><a href="delineamento-em-blocos-casualizados.html#cb286-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="delineamento-em-blocos-casualizados.html#cb286-1" aria-hidden="true" tabindex="-1"></a>Médias <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, Tratamento, mean))</span>
+<span id="cb286-2"><a href="delineamento-em-blocos-casualizados.html#cb286-2" aria-hidden="true" tabindex="-1"></a>Variâncias <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, Tratamento, var))</span>
+<span id="cb286-3"><a href="delineamento-em-blocos-casualizados.html#cb286-3" aria-hidden="true" tabindex="-1"></a>Desvios <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, Tratamento, sd))</span>
+<span id="cb286-4"><a href="delineamento-em-blocos-casualizados.html#cb286-4" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">=</span> Desvios <span class="sc">/</span> Médias <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb286-5"><a href="delineamento-em-blocos-casualizados.html#cb286-5" aria-hidden="true" tabindex="-1"></a>Desc <span class="ot">=</span> <span class="fu">cbind</span>(Médias, Variâncias, Desvios, CV)</span>
+<span id="cb286-6"><a href="delineamento-em-blocos-casualizados.html#cb286-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(Desc,<span class="dv">2</span>),<span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1393,19 +1393,19 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="gráfico-de-caixas-4" class="section level2" number="14.13">
 <h2><span class="header-section-number">14.13</span> Gráfico de Caixas</h2>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="delineamento-em-blocos-casualizados.html#cb287-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb287-2"><a href="delineamento-em-blocos-casualizados.html#cb287-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb287-3"><a href="delineamento-em-blocos-casualizados.html#cb287-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>TRAT, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
-<span id="cb287-4"><a href="delineamento-em-blocos-casualizados.html#cb287-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span>
-<span id="cb287-5"><a href="delineamento-em-blocos-casualizados.html#cb287-5"></a>mediab=<span class="kw">tapply</span>(dados<span class="op">$</span>resp, dados<span class="op">$</span><span class="st"> </span>TRAT, mean)</span>
-<span id="cb287-6"><a href="delineamento-em-blocos-casualizados.html#cb287-6"></a><span class="kw">points</span>(mediab, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="delineamento-em-blocos-casualizados.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb287-2"><a href="delineamento-em-blocos-casualizados.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb287-3"><a href="delineamento-em-blocos-casualizados.html#cb287-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(resp <span class="sc">~</span> dados<span class="sc">$</span>TRAT, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb287-4"><a href="delineamento-em-blocos-casualizados.html#cb287-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab=</span>X, <span class="at">ylab=</span>Y))</span>
+<span id="cb287-5"><a href="delineamento-em-blocos-casualizados.html#cb287-5" aria-hidden="true" tabindex="-1"></a>mediab<span class="ot">=</span><span class="fu">tapply</span>(dados<span class="sc">$</span>resp, dados<span class="sc">$</span> TRAT, mean)</span>
+<span id="cb287-6"><a href="delineamento-em-blocos-casualizados.html#cb287-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mediab, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-165"></span>
 <img src="index_files/figure-html/unnamed-chunk-165-1.png" alt="Gráfico de caixas" width="672" />
 <p class="caption">
 Figure 14.1: Gráfico de caixas
 </p>
 </div>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="delineamento-em-blocos-casualizados.html#cb288-1"></a><span class="kw">names</span>(Desvios)[<span class="kw">which.min</span>(Desvios)]</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="delineamento-em-blocos-casualizados.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Desvios)[<span class="fu">which.min</span>(Desvios)]</span></code></pre></div>
 <p>Não observa-se <em>outliers</em>. Há maior variabilidade em T 5 e menor em T 3, com 595.285 e 42.77, respectivamente. Há evidências de diferença entre as Médias dos tratamentos.</p>
 <p><br><br></p>
 </div>
@@ -1419,9 +1419,9 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="delineamento-em-blocos-casualizados.html#cb289-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(resp <span class="op">~</span><span class="st"> </span>Tratamento<span class="op">+</span>bloco))</span>
-<span id="cb289-2"><a href="delineamento-em-blocos-casualizados.html#cb289-2"></a>av=<span class="kw">anova</span>(mod)</span>
-<span id="cb289-3"><a href="delineamento-em-blocos-casualizados.html#cb289-3"></a><span class="kw">kable</span>(av, <span class="dt">align =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="delineamento-em-blocos-casualizados.html#cb289-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">aov</span>(resp <span class="sc">~</span> Tratamento<span class="sc">+</span>bloco))</span>
+<span id="cb289-2"><a href="delineamento-em-blocos-casualizados.html#cb289-2" aria-hidden="true" tabindex="-1"></a>av<span class="ot">=</span><span class="fu">anova</span>(mod)</span>
+<span id="cb289-3"><a href="delineamento-em-blocos-casualizados.html#cb289-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(av, <span class="at">align =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1477,14 +1477,14 @@ H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="delineamento-em-blocos-casualizados.html#cb290-1"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res))</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="delineamento-em-blocos-casualizados.html#cb290-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">norm=</span><span class="fu">shapiro.test</span>(mod<span class="sc">$</span>res))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  mod$res
 ## W = 0.97989, p-value = 0.6151</code></pre>
 <p>Como p-valor calculado (p=<span class="math inline">\(0.6151\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(\alpha=0,05\)</span>), não rejeita-se <span class="math inline">\(H_O\)</span>. Logo, os erros seguem distribuição normal.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="delineamento-em-blocos-casualizados.html#cb292-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="delineamento-em-blocos-casualizados.html#cb292-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-168"></span>
 <img src="index_files/figure-html/unnamed-chunk-168-1.png" alt="Gráfico QQplot \label{Fig:QQ}" width="672" />
 <p class="caption">
@@ -1503,7 +1503,7 @@ H_1: &amp; \mbox{ As Variâncias não são homogêneas}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="delineamento-em-blocos-casualizados.html#cb293-1"></a>(<span class="dt">homog=</span><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>res <span class="op">~</span><span class="st"> </span>Tratamento)))</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="delineamento-em-blocos-casualizados.html#cb293-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">homog=</span><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>res <span class="sc">~</span> Tratamento)))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1522,7 +1522,7 @@ H_1: \mbox{Os erros não são independentes}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="delineamento-em-blocos-casualizados.html#cb295-1"></a>(<span class="dt">ind=</span>lmtest<span class="op">::</span><span class="kw">dwtest</span>(mod))</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="delineamento-em-blocos-casualizados.html#cb295-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">ind=</span>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(mod))</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1530,8 +1530,8 @@ H_1: \mbox{Os erros não são independentes}.
 ## DW = 2.9611, p-value = 0.9272
 ## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p>Como p-valor calculado (p=<span class="math inline">\(0.9272\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não rejeita-se <span class="math inline">\(H_0\)</span>. Logo, os erros são independentes. A Figura  apresenta os resíduos brutos. Percebe-se que os resíduos estão distribuídos de forma totalmente aleatória, evidenciando a sua independência.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="delineamento-em-blocos-casualizados.html#cb297-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>res, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Resíduos brutos&#39;</span>)</span>
-<span id="cb297-2"><a href="delineamento-em-blocos-casualizados.html#cb297-2"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="delineamento-em-blocos-casualizados.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod<span class="sc">$</span>res, <span class="at">las=</span><span class="dv">1</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Resíduos brutos&#39;</span>)</span>
+<span id="cb297-2"><a href="delineamento-em-blocos-casualizados.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-171"></span>
 <img src="index_files/figure-html/unnamed-chunk-171-1.png" alt="Gráfico de resíduos brutos \label{fig:res}" width="672" />
 <p class="caption">
@@ -1543,12 +1543,12 @@ Figure 14.3: Gráfico de resíduos brutos
 </div>
 <div id="teste-de-comparações" class="section level2" number="14.16">
 <h2><span class="header-section-number">14.16</span> Teste de comparações</h2>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="delineamento-em-blocos-casualizados.html#cb298-1"></a>mod<span class="fl">.1</span> =<span class="st"> </span>easyanova<span class="op">::</span><span class="kw">ea1</span>(dados[,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>)], <span class="dt">design=</span><span class="dv">2</span>, <span class="dt">plot=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="delineamento-em-blocos-casualizados.html#cb299-1"></a>tabela=<span class="kw">cbind</span>(mod<span class="fl">.1</span><span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">1</span>],</span>
-<span id="cb299-2"><a href="delineamento-em-blocos-casualizados.html#cb299-2"></a>             mod<span class="fl">.1</span><span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">2</span>],</span>
-<span id="cb299-3"><a href="delineamento-em-blocos-casualizados.html#cb299-3"></a>             mod<span class="fl">.1</span><span class="op">$</span><span class="st">`</span><span class="dt">Adjusted means</span><span class="st">`</span>[<span class="dv">8</span>])</span>
-<span id="cb299-4"><a href="delineamento-em-blocos-casualizados.html#cb299-4"></a><span class="kw">names</span>(tabela)[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]=<span class="kw">c</span>(<span class="st">&quot;Cultivar&quot;</span>,<span class="st">&quot;Média&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
-<span id="cb299-5"><a href="delineamento-em-blocos-casualizados.html#cb299-5"></a><span class="kw">kable</span>(tabela, <span class="dt">align =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">booktabs=</span>T, <span class="dt">caption=</span><span class="st">&quot;Teste de comparação de Scott-Knott&quot;</span>, <span class="dt">format=</span><span class="st">&quot;pandoc&quot;</span>, <span class="dt">format.args =</span> <span class="kw">list</span>(<span class="dt">big.mark=</span><span class="st">&quot;.&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="delineamento-em-blocos-casualizados.html#cb298-1" aria-hidden="true" tabindex="-1"></a>mod<span class="fl">.1</span> <span class="ot">=</span> easyanova<span class="sc">::</span><span class="fu">ea1</span>(dados[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>)], <span class="at">design=</span><span class="dv">2</span>, <span class="at">plot=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="delineamento-em-blocos-casualizados.html#cb299-1" aria-hidden="true" tabindex="-1"></a>tabela<span class="ot">=</span><span class="fu">cbind</span>(mod<span class="fl">.1</span><span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means</span><span class="st">`</span>[<span class="dv">1</span>],</span>
+<span id="cb299-2"><a href="delineamento-em-blocos-casualizados.html#cb299-2" aria-hidden="true" tabindex="-1"></a>             mod<span class="fl">.1</span><span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means</span><span class="st">`</span>[<span class="dv">2</span>],</span>
+<span id="cb299-3"><a href="delineamento-em-blocos-casualizados.html#cb299-3" aria-hidden="true" tabindex="-1"></a>             mod<span class="fl">.1</span><span class="sc">$</span><span class="st">`</span><span class="at">Adjusted means</span><span class="st">`</span>[<span class="dv">8</span>])</span>
+<span id="cb299-4"><a href="delineamento-em-blocos-casualizados.html#cb299-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tabela)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Cultivar&quot;</span>,<span class="st">&quot;Média&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb299-5"><a href="delineamento-em-blocos-casualizados.html#cb299-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tabela, <span class="at">align =</span> <span class="st">&#39;l&#39;</span>, <span class="at">booktabs=</span>T, <span class="at">caption=</span><span class="st">&quot;Teste de comparação de Scott-Knott&quot;</span>, <span class="at">format=</span><span class="st">&quot;pandoc&quot;</span>, <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark=</span><span class="st">&quot;.&quot;</span>))</span></code></pre></div>
 <table>
 <caption><span id="tab:unnamed-chunk-172">Table 14.1: </span>Teste de comparação de Scott-Knott</caption>
 <thead>
@@ -1636,16 +1636,16 @@ Figure 14.3: Gráfico de resíduos brutos
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="delineamento-em-blocos-casualizados.html#cb300-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb300-2"><a href="delineamento-em-blocos-casualizados.html#cb300-2"></a><span class="kw">with</span>(dados,<span class="kw">dbc</span>(Tratamento, bloco,resp, <span class="dt">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="delineamento-em-blocos-casualizados.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb300-2"><a href="delineamento-em-blocos-casualizados.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados,<span class="fu">dbc</span>(Tratamento, bloco,resp, <span class="at">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc   Pr&gt;Fc
-## Tratamento 14 3302891  3 2.5458 0.01714
-## Bloco       2  308550  2 1.6648 0.20742
-## Residuo    28 2594739  4               
-## Total      44 6206180  1               
+##            GL      SQ     QM     Fc   Pr&gt;Fc
+## Tratamento 14 3302891 235921 2.5458 0.01714
+## Bloco       2  308550 154275 1.6648 0.20742
+## Residuo    28 2594739  92669               
+## Total      44 6206180                      
 ## ------------------------------------------------------------------------
 ## CV = 12.25 %
 ## 
@@ -1713,10 +1713,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

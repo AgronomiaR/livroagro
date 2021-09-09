@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 15 Delineamento em Quadrado Latino | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 15 Delineamento em Quadrado Latino | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="delineamento-em-blocos-casualizados.html"/>
 <link rel="next" href="esquema-fatorial-2-fatores.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -753,24 +753,24 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <hr />
 <p><br></p>
 <p>Criando uma função para fazer um croqui</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="delineamento-em-quadrado-latino.html#cb302-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb302-2"><a href="delineamento-em-quadrado-latino.html#cb302-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb302-3"><a href="delineamento-em-quadrado-latino.html#cb302-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb302-4"><a href="delineamento-em-quadrado-latino.html#cb302-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb302-5"><a href="delineamento-em-quadrado-latino.html#cb302-5"></a>croqui=<span class="cf">function</span>(trat){</span>
-<span id="cb302-6"><a href="delineamento-em-quadrado-latino.html#cb302-6"></a>  r=<span class="kw">length</span>(trat)</span>
-<span id="cb302-7"><a href="delineamento-em-quadrado-latino.html#cb302-7"></a>  sort=<span class="kw">design.lsd</span>(trat,r,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb302-8"><a href="delineamento-em-quadrado-latino.html#cb302-8"></a>  sort<span class="op">$</span>book[,<span class="dv">4</span>]=<span class="kw">as.factor</span>(<span class="kw">matrix</span>(sort<span class="op">$</span>book[,<span class="dv">4</span>],r,,T))</span>
-<span id="cb302-9"><a href="delineamento-em-quadrado-latino.html#cb302-9"></a>  ncol=r</span>
-<span id="cb302-10"><a href="delineamento-em-quadrado-latino.html#cb302-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book[,<span class="dv">4</span>], <span class="cf">function</span>(ii)</span>
-<span id="cb302-11"><a href="delineamento-em-quadrado-latino.html#cb302-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb302-12"><a href="delineamento-em-quadrado-latino.html#cb302-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="delineamento-em-quadrado-latino.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb302-2"><a href="delineamento-em-quadrado-latino.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb302-3"><a href="delineamento-em-quadrado-latino.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb302-4"><a href="delineamento-em-quadrado-latino.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb302-5"><a href="delineamento-em-quadrado-latino.html#cb302-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat){</span>
+<span id="cb302-6"><a href="delineamento-em-quadrado-latino.html#cb302-6" aria-hidden="true" tabindex="-1"></a>  r<span class="ot">=</span><span class="fu">length</span>(trat)</span>
+<span id="cb302-7"><a href="delineamento-em-quadrado-latino.html#cb302-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.lsd</span>(trat,r,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb302-8"><a href="delineamento-em-quadrado-latino.html#cb302-8" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book[,<span class="dv">4</span>]<span class="ot">=</span><span class="fu">as.factor</span>(<span class="fu">matrix</span>(sort<span class="sc">$</span>book[,<span class="dv">4</span>],r,,T))</span>
+<span id="cb302-9"><a href="delineamento-em-quadrado-latino.html#cb302-9" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span>r</span>
+<span id="cb302-10"><a href="delineamento-em-quadrado-latino.html#cb302-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book[,<span class="dv">4</span>], <span class="cf">function</span>(ii)</span>
+<span id="cb302-11"><a href="delineamento-em-quadrado-latino.html#cb302-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb302-12"><a href="delineamento-em-quadrado-latino.html#cb302-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="delineamento-em-quadrado-latino.html#cb303-1"></a>trat=<span class="kw">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="delineamento-em-quadrado-latino.html#cb303-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;T1&quot;</span>,<span class="st">&quot;T2&quot;</span>,<span class="st">&quot;T3&quot;</span>,<span class="st">&quot;T4&quot;</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="delineamento-em-quadrado-latino.html#cb304-1"></a><span class="kw">croqui</span>(trat)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="delineamento-em-quadrado-latino.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-176-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 <hr />
@@ -861,36 +861,36 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br><br></p>
 <div id="conjunto-de-dados-6" class="section level3" number="15.3.1">
 <h3><span class="header-section-number">15.3.1</span> Conjunto de dados</h3>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="delineamento-em-quadrado-latino.html#cb305-1"></a>RESP=<span class="kw">c</span>(<span class="fl">93.0</span>, <span class="fl">115.4</span>, <span class="fl">116.9</span>, <span class="fl">110.2</span>, <span class="fl">110.4</span>,<span class="fl">110.6</span>, <span class="fl">96.5</span>, <span class="fl">108.9</span>, <span class="fl">97.6</span>, <span class="fl">112.0</span>,<span class="fl">102.1</span>, <span class="fl">108.6</span>, <span class="fl">77.9</span>, <span class="fl">102.0</span>, <span class="fl">111.7</span>,<span class="fl">115.4</span>, <span class="fl">94.9</span>, <span class="fl">114.0</span>, <span class="fl">100.2</span>, <span class="fl">118.5</span>,<span class="fl">117.6</span>, <span class="fl">114.1</span>, <span class="fl">118.7</span>, <span class="fl">108.8</span>, <span class="fl">80.2</span>)</span>
-<span id="cb305-2"><a href="delineamento-em-quadrado-latino.html#cb305-2"></a>(<span class="dt">TRAT=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;A&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="delineamento-em-quadrado-latino.html#cb305-1" aria-hidden="true" tabindex="-1"></a>RESP<span class="ot">=</span><span class="fu">c</span>(<span class="fl">93.0</span>, <span class="fl">115.4</span>, <span class="fl">116.9</span>, <span class="fl">110.2</span>, <span class="fl">110.4</span>,<span class="fl">110.6</span>, <span class="fl">96.5</span>, <span class="fl">108.9</span>, <span class="fl">97.6</span>, <span class="fl">112.0</span>,<span class="fl">102.1</span>, <span class="fl">108.6</span>, <span class="fl">77.9</span>, <span class="fl">102.0</span>, <span class="fl">111.7</span>,<span class="fl">115.4</span>, <span class="fl">94.9</span>, <span class="fl">114.0</span>, <span class="fl">100.2</span>, <span class="fl">118.5</span>,<span class="fl">117.6</span>, <span class="fl">114.1</span>, <span class="fl">118.7</span>, <span class="fl">108.8</span>, <span class="fl">80.2</span>)</span>
+<span id="cb305-2"><a href="delineamento-em-quadrado-latino.html#cb305-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">TRAT=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;A&quot;</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;A&quot; &quot;C&quot; &quot;E&quot; &quot;D&quot; &quot;B&quot; &quot;C&quot; &quot;E&quot; &quot;B&quot; &quot;A&quot; &quot;D&quot; &quot;B&quot; &quot;D&quot; &quot;A&quot; &quot;E&quot; &quot;C&quot; &quot;D&quot; &quot;A&quot; &quot;C&quot; &quot;B&quot;
 ## [20] &quot;E&quot; &quot;E&quot; &quot;B&quot; &quot;D&quot; &quot;C&quot; &quot;A&quot;</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="delineamento-em-quadrado-latino.html#cb307-1"></a>(<span class="dt">linha=</span><span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dt">each=</span><span class="dv">5</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="delineamento-em-quadrado-latino.html#cb307-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">linha=</span><span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="at">each=</span><span class="dv">5</span>)))</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4 5 5 5 5 5
 ## Levels: 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="delineamento-em-quadrado-latino.html#cb309-1"></a>(<span class="dt">coluna=</span><span class="kw">as.factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dv">5</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="delineamento-em-quadrado-latino.html#cb309-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">coluna=</span><span class="fu">as.factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">5</span>)))</span></code></pre></div>
 <pre><code>##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
 ## Levels: 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="delineamento-em-quadrado-latino.html#cb311-1"></a>dados =<span class="st"> </span><span class="kw">data.frame</span>(TRAT, linha, coluna, RESP)</span>
-<span id="cb311-2"><a href="delineamento-em-quadrado-latino.html#cb311-2"></a>alfa=<span class="fl">0.05</span></span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="delineamento-em-quadrado-latino.html#cb311-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> <span class="fu">data.frame</span>(TRAT, linha, coluna, RESP)</span>
+<span id="cb311-2"><a href="delineamento-em-quadrado-latino.html#cb311-2" aria-hidden="true" tabindex="-1"></a>alfa<span class="ot">=</span><span class="fl">0.05</span></span></code></pre></div>
 <p><br><br></p>
 </div>
 </div>
 <div id="análise-descritiva-1" class="section level2" number="15.4">
 <h2><span class="header-section-number">15.4</span> Análise Descritiva</h2>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="delineamento-em-quadrado-latino.html#cb312-1"></a>Media=<span class="kw">mean</span>(RESP)</span>
-<span id="cb312-2"><a href="delineamento-em-quadrado-latino.html#cb312-2"></a>Desvio=<span class="kw">sd</span>(RESP)</span>
-<span id="cb312-3"><a href="delineamento-em-quadrado-latino.html#cb312-3"></a>Variancia=<span class="kw">var</span>(RESP)</span>
-<span id="cb312-4"><a href="delineamento-em-quadrado-latino.html#cb312-4"></a>Maximo=<span class="kw">max</span>(RESP)</span>
-<span id="cb312-5"><a href="delineamento-em-quadrado-latino.html#cb312-5"></a>Minimo=<span class="kw">min</span>(RESP)</span>
-<span id="cb312-6"><a href="delineamento-em-quadrado-latino.html#cb312-6"></a>Mediana=<span class="kw">median</span>(RESP)</span>
-<span id="cb312-7"><a href="delineamento-em-quadrado-latino.html#cb312-7"></a>descritiva=<span class="kw">cbind</span>(Media,</span>
-<span id="cb312-8"><a href="delineamento-em-quadrado-latino.html#cb312-8"></a>                 Desvio, </span>
-<span id="cb312-9"><a href="delineamento-em-quadrado-latino.html#cb312-9"></a>                 Variancia, </span>
-<span id="cb312-10"><a href="delineamento-em-quadrado-latino.html#cb312-10"></a>                 Maximo, </span>
-<span id="cb312-11"><a href="delineamento-em-quadrado-latino.html#cb312-11"></a>                 Minimo, </span>
-<span id="cb312-12"><a href="delineamento-em-quadrado-latino.html#cb312-12"></a>                 Mediana)</span>
-<span id="cb312-13"><a href="delineamento-em-quadrado-latino.html#cb312-13"></a><span class="kw">kable</span>(descritiva)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="delineamento-em-quadrado-latino.html#cb312-1" aria-hidden="true" tabindex="-1"></a>Media<span class="ot">=</span><span class="fu">mean</span>(RESP)</span>
+<span id="cb312-2"><a href="delineamento-em-quadrado-latino.html#cb312-2" aria-hidden="true" tabindex="-1"></a>Desvio<span class="ot">=</span><span class="fu">sd</span>(RESP)</span>
+<span id="cb312-3"><a href="delineamento-em-quadrado-latino.html#cb312-3" aria-hidden="true" tabindex="-1"></a>Variancia<span class="ot">=</span><span class="fu">var</span>(RESP)</span>
+<span id="cb312-4"><a href="delineamento-em-quadrado-latino.html#cb312-4" aria-hidden="true" tabindex="-1"></a>Maximo<span class="ot">=</span><span class="fu">max</span>(RESP)</span>
+<span id="cb312-5"><a href="delineamento-em-quadrado-latino.html#cb312-5" aria-hidden="true" tabindex="-1"></a>Minimo<span class="ot">=</span><span class="fu">min</span>(RESP)</span>
+<span id="cb312-6"><a href="delineamento-em-quadrado-latino.html#cb312-6" aria-hidden="true" tabindex="-1"></a>Mediana<span class="ot">=</span><span class="fu">median</span>(RESP)</span>
+<span id="cb312-7"><a href="delineamento-em-quadrado-latino.html#cb312-7" aria-hidden="true" tabindex="-1"></a>descritiva<span class="ot">=</span><span class="fu">cbind</span>(Media,</span>
+<span id="cb312-8"><a href="delineamento-em-quadrado-latino.html#cb312-8" aria-hidden="true" tabindex="-1"></a>                 Desvio, </span>
+<span id="cb312-9"><a href="delineamento-em-quadrado-latino.html#cb312-9" aria-hidden="true" tabindex="-1"></a>                 Variancia, </span>
+<span id="cb312-10"><a href="delineamento-em-quadrado-latino.html#cb312-10" aria-hidden="true" tabindex="-1"></a>                 Maximo, </span>
+<span id="cb312-11"><a href="delineamento-em-quadrado-latino.html#cb312-11" aria-hidden="true" tabindex="-1"></a>                 Minimo, </span>
+<span id="cb312-12"><a href="delineamento-em-quadrado-latino.html#cb312-12" aria-hidden="true" tabindex="-1"></a>                 Mediana)</span>
+<span id="cb312-13"><a href="delineamento-em-quadrado-latino.html#cb312-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(descritiva)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -916,19 +916,19 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <div id="por-tratamento-1" class="section level3" number="15.4.1">
 <h3><span class="header-section-number">15.4.1</span> Por Tratamento</h3>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="delineamento-em-quadrado-latino.html#cb313-1"></a>Media=<span class="kw">tapply</span>(RESP,TRAT, mean)</span>
-<span id="cb313-2"><a href="delineamento-em-quadrado-latino.html#cb313-2"></a>Desvio=<span class="kw">tapply</span>(RESP,TRAT,sd)</span>
-<span id="cb313-3"><a href="delineamento-em-quadrado-latino.html#cb313-3"></a>Variancia=<span class="kw">tapply</span>(RESP,TRAT, var)</span>
-<span id="cb313-4"><a href="delineamento-em-quadrado-latino.html#cb313-4"></a>Maximo=<span class="kw">tapply</span>(RESP,TRAT,max)</span>
-<span id="cb313-5"><a href="delineamento-em-quadrado-latino.html#cb313-5"></a>Minimo=<span class="kw">tapply</span>(RESP,TRAT, min)</span>
-<span id="cb313-6"><a href="delineamento-em-quadrado-latino.html#cb313-6"></a>Mediana=<span class="kw">tapply</span>(RESP,TRAT,median)</span>
-<span id="cb313-7"><a href="delineamento-em-quadrado-latino.html#cb313-7"></a>descritiva=<span class="kw">cbind</span>(Media,</span>
-<span id="cb313-8"><a href="delineamento-em-quadrado-latino.html#cb313-8"></a>                 Desvio, </span>
-<span id="cb313-9"><a href="delineamento-em-quadrado-latino.html#cb313-9"></a>                 Variancia, </span>
-<span id="cb313-10"><a href="delineamento-em-quadrado-latino.html#cb313-10"></a>                 Maximo, </span>
-<span id="cb313-11"><a href="delineamento-em-quadrado-latino.html#cb313-11"></a>                 Minimo, </span>
-<span id="cb313-12"><a href="delineamento-em-quadrado-latino.html#cb313-12"></a>                 Mediana)</span>
-<span id="cb313-13"><a href="delineamento-em-quadrado-latino.html#cb313-13"></a><span class="kw">kable</span>(descritiva)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="delineamento-em-quadrado-latino.html#cb313-1" aria-hidden="true" tabindex="-1"></a>Media<span class="ot">=</span><span class="fu">tapply</span>(RESP,TRAT, mean)</span>
+<span id="cb313-2"><a href="delineamento-em-quadrado-latino.html#cb313-2" aria-hidden="true" tabindex="-1"></a>Desvio<span class="ot">=</span><span class="fu">tapply</span>(RESP,TRAT,sd)</span>
+<span id="cb313-3"><a href="delineamento-em-quadrado-latino.html#cb313-3" aria-hidden="true" tabindex="-1"></a>Variancia<span class="ot">=</span><span class="fu">tapply</span>(RESP,TRAT, var)</span>
+<span id="cb313-4"><a href="delineamento-em-quadrado-latino.html#cb313-4" aria-hidden="true" tabindex="-1"></a>Maximo<span class="ot">=</span><span class="fu">tapply</span>(RESP,TRAT,max)</span>
+<span id="cb313-5"><a href="delineamento-em-quadrado-latino.html#cb313-5" aria-hidden="true" tabindex="-1"></a>Minimo<span class="ot">=</span><span class="fu">tapply</span>(RESP,TRAT, min)</span>
+<span id="cb313-6"><a href="delineamento-em-quadrado-latino.html#cb313-6" aria-hidden="true" tabindex="-1"></a>Mediana<span class="ot">=</span><span class="fu">tapply</span>(RESP,TRAT,median)</span>
+<span id="cb313-7"><a href="delineamento-em-quadrado-latino.html#cb313-7" aria-hidden="true" tabindex="-1"></a>descritiva<span class="ot">=</span><span class="fu">cbind</span>(Media,</span>
+<span id="cb313-8"><a href="delineamento-em-quadrado-latino.html#cb313-8" aria-hidden="true" tabindex="-1"></a>                 Desvio, </span>
+<span id="cb313-9"><a href="delineamento-em-quadrado-latino.html#cb313-9" aria-hidden="true" tabindex="-1"></a>                 Variancia, </span>
+<span id="cb313-10"><a href="delineamento-em-quadrado-latino.html#cb313-10" aria-hidden="true" tabindex="-1"></a>                 Maximo, </span>
+<span id="cb313-11"><a href="delineamento-em-quadrado-latino.html#cb313-11" aria-hidden="true" tabindex="-1"></a>                 Minimo, </span>
+<span id="cb313-12"><a href="delineamento-em-quadrado-latino.html#cb313-12" aria-hidden="true" tabindex="-1"></a>                 Mediana)</span>
+<span id="cb313-13"><a href="delineamento-em-quadrado-latino.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(descritiva)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -989,7 +989,7 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="delineamento-em-quadrado-latino.html#cb314-1"></a><span class="kw">kable</span>(<span class="kw">round</span>(descritiva,<span class="dv">2</span>), <span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="delineamento-em-quadrado-latino.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(descritiva,<span class="dv">2</span>), <span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1055,11 +1055,11 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="gráfico-de-caixas-boxplot-1" class="section level2" number="15.5">
 <h2><span class="header-section-number">15.5</span> Gráfico de Caixas (Boxplot)</h2>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="delineamento-em-quadrado-latino.html#cb315-1"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(RESP<span class="op">~</span>TRAT,</span>
-<span id="cb315-2"><a href="delineamento-em-quadrado-latino.html#cb315-2"></a>             <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb315-3"><a href="delineamento-em-quadrado-latino.html#cb315-3"></a>             <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,</span>
-<span id="cb315-4"><a href="delineamento-em-quadrado-latino.html#cb315-4"></a>             <span class="dt">ylab=</span><span class="kw">expression</span>(<span class="st">&quot;Resposta&quot;</span>))</span>
-<span id="cb315-5"><a href="delineamento-em-quadrado-latino.html#cb315-5"></a><span class="kw">points</span>(Media,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">pch=</span><span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="delineamento-em-quadrado-latino.html#cb315-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Boxplot</span>(RESP<span class="sc">~</span>TRAT,</span>
+<span id="cb315-2"><a href="delineamento-em-quadrado-latino.html#cb315-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb315-3"><a href="delineamento-em-quadrado-latino.html#cb315-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb315-4"><a href="delineamento-em-quadrado-latino.html#cb315-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Resposta&quot;</span>))</span>
+<span id="cb315-5"><a href="delineamento-em-quadrado-latino.html#cb315-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Media,<span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">pch=</span><span class="dv">8</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
@@ -1073,10 +1073,10 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="delineamento-em-quadrado-latino.html#cb316-1"></a>mod=<span class="kw">aov</span>(RESP<span class="op">~</span><span class="st"> </span>TRAT<span class="op">+</span>linha<span class="op">+</span>coluna)</span>
-<span id="cb316-2"><a href="delineamento-em-quadrado-latino.html#cb316-2"></a>av=<span class="kw">anova</span>(mod)</span>
-<span id="cb316-3"><a href="delineamento-em-quadrado-latino.html#cb316-3"></a><span class="kw">names</span>(av)=<span class="kw">c</span>(<span class="st">&quot;GL&quot;</span>,<span class="st">&quot;SQ&quot;</span>,<span class="st">&quot;QM&quot;</span>,<span class="st">&quot;Teste F&quot;</span>, <span class="st">&quot;p-valor&quot;</span>)</span>
-<span id="cb316-4"><a href="delineamento-em-quadrado-latino.html#cb316-4"></a><span class="kw">kable</span>(av, <span class="dt">align =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">format=</span><span class="st">&quot;pandoc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="delineamento-em-quadrado-latino.html#cb316-1" aria-hidden="true" tabindex="-1"></a>mod<span class="ot">=</span><span class="fu">aov</span>(RESP<span class="sc">~</span> TRAT<span class="sc">+</span>linha<span class="sc">+</span>coluna)</span>
+<span id="cb316-2"><a href="delineamento-em-quadrado-latino.html#cb316-2" aria-hidden="true" tabindex="-1"></a>av<span class="ot">=</span><span class="fu">anova</span>(mod)</span>
+<span id="cb316-3"><a href="delineamento-em-quadrado-latino.html#cb316-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(av)<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;GL&quot;</span>,<span class="st">&quot;SQ&quot;</span>,<span class="st">&quot;QM&quot;</span>,<span class="st">&quot;Teste F&quot;</span>, <span class="st">&quot;p-valor&quot;</span>)</span>
+<span id="cb316-4"><a href="delineamento-em-quadrado-latino.html#cb316-4" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(av, <span class="at">align =</span> <span class="st">&quot;l&quot;</span>, <span class="at">format=</span><span class="st">&quot;pandoc&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1140,14 +1140,14 @@ H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="delineamento-em-quadrado-latino.html#cb317-1"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res))</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="delineamento-em-quadrado-latino.html#cb317-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">norm=</span><span class="fu">shapiro.test</span>(mod<span class="sc">$</span>res))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  mod$res
 ## W = 0.96116, p-value = 0.438</code></pre>
 <p>Como p-valor calculado (p=<span class="math inline">\(0.438\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(\alpha=0.05\)</span>), não rejeita-se <span class="math inline">\(H_O\)</span>. Logo, os erros seguem distribuição normal.</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="delineamento-em-quadrado-latino.html#cb319-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="delineamento-em-quadrado-latino.html#cb319-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-184-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
@@ -1161,7 +1161,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="delineamento-em-quadrado-latino.html#cb320-1"></a>(<span class="dt">homog=</span><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>res <span class="op">~</span><span class="st"> </span>TRAT)))</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="delineamento-em-quadrado-latino.html#cb320-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">homog=</span><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>res <span class="sc">~</span> TRAT)))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1180,7 +1180,7 @@ H_1: \mbox{Os erros não são independentes}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="delineamento-em-quadrado-latino.html#cb322-1"></a>(<span class="dt">ind=</span>lmtest<span class="op">::</span><span class="kw">dwtest</span>(mod))</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="delineamento-em-quadrado-latino.html#cb322-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">ind=</span>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(mod))</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1188,8 +1188,8 @@ H_1: \mbox{Os erros não são independentes}.
 ## DW = 1.7241, p-value = 0.08134
 ## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p>Como p-valor calculado (p=<span class="math inline">\(0.0813\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0.05\)</span>), não rejeita-se <span class="math inline">\(H_0\)</span>. Logo, os erros são independentes.</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="delineamento-em-quadrado-latino.html#cb324-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>res, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span>
-<span id="cb324-2"><a href="delineamento-em-quadrado-latino.html#cb324-2"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="delineamento-em-quadrado-latino.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod<span class="sc">$</span>res, <span class="at">las=</span><span class="dv">1</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb324-2"><a href="delineamento-em-quadrado-latino.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-187-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 </div>
@@ -1199,8 +1199,8 @@ H_1: \mbox{Os erros não são independentes}.
 <p><br></p>
 <div id="usando-o-pacote-easyanova" class="section level3" number="15.8.1">
 <h3><span class="header-section-number">15.8.1</span> Usando o pacote easyanova</h3>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="delineamento-em-quadrado-latino.html#cb325-1"></a><span class="kw">library</span>(easyanova)</span>
-<span id="cb325-2"><a href="delineamento-em-quadrado-latino.html#cb325-2"></a><span class="kw">ea1</span>(dados,<span class="dt">design =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="delineamento-em-quadrado-latino.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easyanova)</span>
+<span id="cb325-2"><a href="delineamento-em-quadrado-latino.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ea1</span>(dados,<span class="at">design =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## $`Analysis of variance`
 ##            df type III SS mean square F value    p&gt;F
 ## treatments  4   2020.0544    505.0136  9.0167 0.0013
@@ -1262,8 +1262,8 @@ H_1: \mbox{Os erros não são independentes}.
 </div>
 <div id="usando-o-pacote-laercio" class="section level3" number="15.8.2">
 <h3><span class="header-section-number">15.8.2</span> Usando o pacote laercio</h3>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="delineamento-em-quadrado-latino.html#cb327-1"></a><span class="kw">require</span>(laercio)</span>
-<span id="cb327-2"><a href="delineamento-em-quadrado-latino.html#cb327-2"></a><span class="kw">LTukey</span>(mod,<span class="st">&quot;trat&quot;</span>,<span class="dt">conf.level=</span><span class="fl">0.95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="delineamento-em-quadrado-latino.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(laercio)</span>
+<span id="cb327-2"><a href="delineamento-em-quadrado-latino.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">LTukey</span>(mod,<span class="st">&quot;trat&quot;</span>,<span class="at">conf.level=</span><span class="fl">0.95</span>)</span></code></pre></div>
 <pre><code>## 
 ##  TUKEY TEST TO COMPARE MEANS 
 ##  
@@ -1302,8 +1302,8 @@ H_1: \mbox{Os erros não são independentes}.
 </div>
 <div id="usando-o-pacote-agricolae" class="section level3" number="15.8.3">
 <h3><span class="header-section-number">15.8.3</span> Usando o pacote agricolae</h3>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="delineamento-em-quadrado-latino.html#cb329-1"></a><span class="kw">require</span>(agricolae)</span>
-<span id="cb329-2"><a href="delineamento-em-quadrado-latino.html#cb329-2"></a><span class="kw">TukeyHSD</span>(mod, <span class="st">&quot;TRAT&quot;</span>, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="delineamento-em-quadrado-latino.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(agricolae)</span>
+<span id="cb329-2"><a href="delineamento-em-quadrado-latino.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(mod, <span class="st">&quot;TRAT&quot;</span>, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ##     factor levels have been ordered
@@ -1322,23 +1322,23 @@ H_1: \mbox{Os erros não são independentes}.
 ## C-E  1.80 -13.286841 16.88684 0.9949414
 ## D-E  2.68 -12.406841 17.76684 0.9776166
 ## D-C  0.88 -14.206841 15.96684 0.9996909</code></pre>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="delineamento-em-quadrado-latino.html#cb331-1"></a><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(mod, <span class="st">&quot;TRAT&quot;</span>), <span class="dt">col=</span><span class="st">&#39;blue&#39;</span>, <span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="delineamento-em-quadrado-latino.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">TukeyHSD</span>(mod, <span class="st">&quot;TRAT&quot;</span>), <span class="at">col=</span><span class="st">&#39;blue&#39;</span>, <span class="at">las=</span><span class="dv">1</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="usando-o-pacote-expdes.pt" class="section level3" number="15.8.4">
 <h3><span class="header-section-number">15.8.4</span> Usando o pacote ExpDes.pt</h3>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="delineamento-em-quadrado-latino.html#cb332-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb332-2"><a href="delineamento-em-quadrado-latino.html#cb332-2"></a><span class="kw">dql</span>(TRAT,linha,coluna,RESP)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="delineamento-em-quadrado-latino.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb332-2"><a href="delineamento-em-quadrado-latino.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dql</span>(TRAT,linha,coluna,RESP)</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc   Pr&gt;Fc
-## Tratamento  4 2020.05  3 9.0167 0.00133
-## Linha       4  257.83  5 1.1508 0.37964
-## Coluna      4   48.50  2 0.2165 0.92418
-## Residuo    12  672.10  4               
-## Total      24 2998.48  1               
+##            GL      SQ     QM     Fc   Pr&gt;Fc
+## Tratamento  4 2020.05 505.01 9.0167 0.00133
+## Linha       4  257.83  64.46 1.1508 0.37964
+## Coluna      4   48.50  12.12 0.2165 0.92418
+## Residuo    12  672.10  56.01               
+## Total      24 2998.48                      
 ## ------------------------------------------------------------------------
 ## CV = 7.04 %
 ## 
@@ -1391,10 +1391,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

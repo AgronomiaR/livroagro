@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 16 Esquema Fatorial (2 Fatores) | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 16 Esquema Fatorial (2 Fatores) | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="delineamento-em-quadrado-latino.html"/>
 <link rel="next" href="esquema-fatorial-3-fatores.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -792,45 +792,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de coluna igual número de repetições)</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="esquema-fatorial-2-fatores.html#cb334-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb334-2"><a href="esquema-fatorial-2-fatores.html#cb334-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb334-3"><a href="esquema-fatorial-2-fatores.html#cb334-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb334-4"><a href="esquema-fatorial-2-fatores.html#cb334-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb334-5"><a href="esquema-fatorial-2-fatores.html#cb334-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
-<span id="cb334-6"><a href="esquema-fatorial-2-fatores.html#cb334-6"></a>  sort=<span class="kw">design.ab</span>(trat,r,<span class="dt">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb334-7"><a href="esquema-fatorial-2-fatores.html#cb334-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>A,sort<span class="op">$</span>book<span class="op">$</span>B),<span class="dt">nrow =</span>r,<span class="dt">byrow=</span>T))</span>
-<span id="cb334-8"><a href="esquema-fatorial-2-fatores.html#cb334-8"></a>  ncol=r</span>
-<span id="cb334-9"><a href="esquema-fatorial-2-fatores.html#cb334-9"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb334-10"><a href="esquema-fatorial-2-fatores.html#cb334-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb334-11"><a href="esquema-fatorial-2-fatores.html#cb334-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb334-12"><a href="esquema-fatorial-2-fatores.html#cb334-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="esquema-fatorial-2-fatores.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb334-2"><a href="esquema-fatorial-2-fatores.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb334-3"><a href="esquema-fatorial-2-fatores.html#cb334-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb334-4"><a href="esquema-fatorial-2-fatores.html#cb334-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb334-5"><a href="esquema-fatorial-2-fatores.html#cb334-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,r){</span>
+<span id="cb334-6"><a href="esquema-fatorial-2-fatores.html#cb334-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.ab</span>(trat,r,<span class="at">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb334-7"><a href="esquema-fatorial-2-fatores.html#cb334-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>A,sort<span class="sc">$</span>book<span class="sc">$</span>B),<span class="at">nrow =</span>r,<span class="at">byrow=</span>T))</span>
+<span id="cb334-8"><a href="esquema-fatorial-2-fatores.html#cb334-8" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span>r</span>
+<span id="cb334-9"><a href="esquema-fatorial-2-fatores.html#cb334-9" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb334-10"><a href="esquema-fatorial-2-fatores.html#cb334-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb334-11"><a href="esquema-fatorial-2-fatores.html#cb334-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb334-12"><a href="esquema-fatorial-2-fatores.html#cb334-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="esquema-fatorial-2-fatores.html#cb335-1"></a>trat=<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="esquema-fatorial-2-fatores.html#cb335-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="esquema-fatorial-2-fatores.html#cb336-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="esquema-fatorial-2-fatores.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,<span class="at">r=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-194-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de colunas igual número de tratamentos)</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="esquema-fatorial-2-fatores.html#cb337-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb337-2"><a href="esquema-fatorial-2-fatores.html#cb337-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb337-3"><a href="esquema-fatorial-2-fatores.html#cb337-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb337-4"><a href="esquema-fatorial-2-fatores.html#cb337-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb337-5"><a href="esquema-fatorial-2-fatores.html#cb337-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
-<span id="cb337-6"><a href="esquema-fatorial-2-fatores.html#cb337-6"></a>  sort=<span class="kw">design.ab</span>(trat,r,<span class="dt">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb337-7"><a href="esquema-fatorial-2-fatores.html#cb337-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>A,sort<span class="op">$</span>book<span class="op">$</span>B),<span class="dt">nrow =</span>r, <span class="dt">byrow=</span>T)))</span>
-<span id="cb337-8"><a href="esquema-fatorial-2-fatores.html#cb337-8"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb337-9"><a href="esquema-fatorial-2-fatores.html#cb337-9"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book<span class="op">$</span>trat))</span>
-<span id="cb337-10"><a href="esquema-fatorial-2-fatores.html#cb337-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb337-11"><a href="esquema-fatorial-2-fatores.html#cb337-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb337-12"><a href="esquema-fatorial-2-fatores.html#cb337-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="esquema-fatorial-2-fatores.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb337-2"><a href="esquema-fatorial-2-fatores.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb337-3"><a href="esquema-fatorial-2-fatores.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb337-4"><a href="esquema-fatorial-2-fatores.html#cb337-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb337-5"><a href="esquema-fatorial-2-fatores.html#cb337-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,r){</span>
+<span id="cb337-6"><a href="esquema-fatorial-2-fatores.html#cb337-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.ab</span>(trat,r,<span class="at">design =</span> <span class="st">&quot;crd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb337-7"><a href="esquema-fatorial-2-fatores.html#cb337-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">t</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>A,sort<span class="sc">$</span>book<span class="sc">$</span>B),<span class="at">nrow =</span>r, <span class="at">byrow=</span>T)))</span>
+<span id="cb337-8"><a href="esquema-fatorial-2-fatores.html#cb337-8" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb337-9"><a href="esquema-fatorial-2-fatores.html#cb337-9" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span><span class="fu">length</span>(<span class="fu">levels</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat))</span>
+<span id="cb337-10"><a href="esquema-fatorial-2-fatores.html#cb337-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb337-11"><a href="esquema-fatorial-2-fatores.html#cb337-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb337-12"><a href="esquema-fatorial-2-fatores.html#cb337-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="esquema-fatorial-2-fatores.html#cb338-1"></a>trat=<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) <span class="co"># número de níveis do fator 1 e fator 2 (no caso são 2 cada)</span></span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="esquema-fatorial-2-fatores.html#cb338-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) <span class="co"># número de níveis do fator 1 e fator 2 (no caso são 2 cada)</span></span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="esquema-fatorial-2-fatores.html#cb339-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="esquema-fatorial-2-fatores.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,<span class="at">r=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 </div>
@@ -838,45 +838,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">16.7</span> Croqui em DBC</h2>
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de coluna igual número de repetições)</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="esquema-fatorial-2-fatores.html#cb340-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb340-2"><a href="esquema-fatorial-2-fatores.html#cb340-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb340-3"><a href="esquema-fatorial-2-fatores.html#cb340-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb340-4"><a href="esquema-fatorial-2-fatores.html#cb340-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb340-5"><a href="esquema-fatorial-2-fatores.html#cb340-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
-<span id="cb340-6"><a href="esquema-fatorial-2-fatores.html#cb340-6"></a>  sort=<span class="kw">design.ab</span>(trat,r,<span class="dt">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb340-7"><a href="esquema-fatorial-2-fatores.html#cb340-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>A,sort<span class="op">$</span>book<span class="op">$</span>B),<span class="dt">nrow =</span>r,<span class="dt">byrow=</span>T))</span>
-<span id="cb340-8"><a href="esquema-fatorial-2-fatores.html#cb340-8"></a>  ncol=r</span>
-<span id="cb340-9"><a href="esquema-fatorial-2-fatores.html#cb340-9"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb340-10"><a href="esquema-fatorial-2-fatores.html#cb340-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb340-11"><a href="esquema-fatorial-2-fatores.html#cb340-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb340-12"><a href="esquema-fatorial-2-fatores.html#cb340-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="esquema-fatorial-2-fatores.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb340-2"><a href="esquema-fatorial-2-fatores.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb340-3"><a href="esquema-fatorial-2-fatores.html#cb340-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb340-4"><a href="esquema-fatorial-2-fatores.html#cb340-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb340-5"><a href="esquema-fatorial-2-fatores.html#cb340-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,r){</span>
+<span id="cb340-6"><a href="esquema-fatorial-2-fatores.html#cb340-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.ab</span>(trat,r,<span class="at">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb340-7"><a href="esquema-fatorial-2-fatores.html#cb340-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>A,sort<span class="sc">$</span>book<span class="sc">$</span>B),<span class="at">nrow =</span>r,<span class="at">byrow=</span>T))</span>
+<span id="cb340-8"><a href="esquema-fatorial-2-fatores.html#cb340-8" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span>r</span>
+<span id="cb340-9"><a href="esquema-fatorial-2-fatores.html#cb340-9" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb340-10"><a href="esquema-fatorial-2-fatores.html#cb340-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb340-11"><a href="esquema-fatorial-2-fatores.html#cb340-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb340-12"><a href="esquema-fatorial-2-fatores.html#cb340-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="esquema-fatorial-2-fatores.html#cb341-1"></a>trat=<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="esquema-fatorial-2-fatores.html#cb341-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)</span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="esquema-fatorial-2-fatores.html#cb342-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="esquema-fatorial-2-fatores.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,<span class="at">r=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 <p>Criando uma função para fazer um croqui (Número de colunas igual número de tratamentos)</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="esquema-fatorial-2-fatores.html#cb343-1"></a><span class="co"># Não alterar os comandos da função</span></span>
-<span id="cb343-2"><a href="esquema-fatorial-2-fatores.html#cb343-2"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb343-3"><a href="esquema-fatorial-2-fatores.html#cb343-3"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb343-4"><a href="esquema-fatorial-2-fatores.html#cb343-4"></a><span class="kw">library</span>(grid)</span>
-<span id="cb343-5"><a href="esquema-fatorial-2-fatores.html#cb343-5"></a>croqui=<span class="cf">function</span>(trat,r){</span>
-<span id="cb343-6"><a href="esquema-fatorial-2-fatores.html#cb343-6"></a>  sort=<span class="kw">design.ab</span>(trat,r,<span class="dt">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="dt">serie=</span><span class="dv">0</span>)</span>
-<span id="cb343-7"><a href="esquema-fatorial-2-fatores.html#cb343-7"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.vector</span>(<span class="kw">t</span>(<span class="kw">matrix</span>(<span class="kw">paste</span>(sort<span class="op">$</span>book<span class="op">$</span>A,sort<span class="op">$</span>book<span class="op">$</span>B),<span class="dt">nrow =</span>r, <span class="dt">byrow=</span>T)))</span>
-<span id="cb343-8"><a href="esquema-fatorial-2-fatores.html#cb343-8"></a>  sort<span class="op">$</span>book<span class="op">$</span>trat=<span class="kw">as.factor</span>(sort<span class="op">$</span>book<span class="op">$</span>trat)</span>
-<span id="cb343-9"><a href="esquema-fatorial-2-fatores.html#cb343-9"></a>  ncol=<span class="kw">length</span>(<span class="kw">levels</span>(sort<span class="op">$</span>book<span class="op">$</span>trat))</span>
-<span id="cb343-10"><a href="esquema-fatorial-2-fatores.html#cb343-10"></a>  gs &lt;-<span class="st"> </span><span class="kw">lapply</span>(sort<span class="op">$</span>book<span class="op">$</span>trat, <span class="cf">function</span>(ii)</span>
-<span id="cb343-11"><a href="esquema-fatorial-2-fatores.html#cb343-11"></a>    <span class="kw">grobTree</span>(<span class="kw">rectGrob</span>(<span class="dt">gp=</span><span class="kw">gpar</span>(<span class="dt">fill=</span>ii, <span class="dt">alpha=</span><span class="fl">0.5</span>)),<span class="kw">textGrob</span>(ii)))</span>
-<span id="cb343-12"><a href="esquema-fatorial-2-fatores.html#cb343-12"></a>  <span class="kw">grid.arrange</span>(<span class="dt">grobs=</span>gs, <span class="dt">ncol=</span>ncol)}</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="esquema-fatorial-2-fatores.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Não alterar os comandos da função</span></span>
+<span id="cb343-2"><a href="esquema-fatorial-2-fatores.html#cb343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb343-3"><a href="esquema-fatorial-2-fatores.html#cb343-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb343-4"><a href="esquema-fatorial-2-fatores.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb343-5"><a href="esquema-fatorial-2-fatores.html#cb343-5" aria-hidden="true" tabindex="-1"></a>croqui<span class="ot">=</span><span class="cf">function</span>(trat,r){</span>
+<span id="cb343-6"><a href="esquema-fatorial-2-fatores.html#cb343-6" aria-hidden="true" tabindex="-1"></a>  sort<span class="ot">=</span><span class="fu">design.ab</span>(trat,r,<span class="at">design =</span> <span class="st">&quot;rcbd&quot;</span>,<span class="at">serie=</span><span class="dv">0</span>)</span>
+<span id="cb343-7"><a href="esquema-fatorial-2-fatores.html#cb343-7" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.vector</span>(<span class="fu">t</span>(<span class="fu">matrix</span>(<span class="fu">paste</span>(sort<span class="sc">$</span>book<span class="sc">$</span>A,sort<span class="sc">$</span>book<span class="sc">$</span>B),<span class="at">nrow =</span>r, <span class="at">byrow=</span>T)))</span>
+<span id="cb343-8"><a href="esquema-fatorial-2-fatores.html#cb343-8" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">$</span>book<span class="sc">$</span>trat<span class="ot">=</span><span class="fu">as.factor</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat)</span>
+<span id="cb343-9"><a href="esquema-fatorial-2-fatores.html#cb343-9" aria-hidden="true" tabindex="-1"></a>  ncol<span class="ot">=</span><span class="fu">length</span>(<span class="fu">levels</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat))</span>
+<span id="cb343-10"><a href="esquema-fatorial-2-fatores.html#cb343-10" aria-hidden="true" tabindex="-1"></a>  gs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(sort<span class="sc">$</span>book<span class="sc">$</span>trat, <span class="cf">function</span>(ii)</span>
+<span id="cb343-11"><a href="esquema-fatorial-2-fatores.html#cb343-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grobTree</span>(<span class="fu">rectGrob</span>(<span class="at">gp=</span><span class="fu">gpar</span>(<span class="at">fill=</span>ii, <span class="at">alpha=</span><span class="fl">0.5</span>)),<span class="fu">textGrob</span>(ii)))</span>
+<span id="cb343-12"><a href="esquema-fatorial-2-fatores.html#cb343-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grid.arrange</span>(<span class="at">grobs=</span>gs, <span class="at">ncol=</span>ncol)}</span></code></pre></div>
 <p><br></p>
 <p>Vetor de tratamentos</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="esquema-fatorial-2-fatores.html#cb344-1"></a>trat=<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) <span class="co"># número de níveis do fator 1 e fator 2 (no caso são 2 cada)</span></span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="esquema-fatorial-2-fatores.html#cb344-1" aria-hidden="true" tabindex="-1"></a>trat<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) <span class="co"># número de níveis do fator 1 e fator 2 (no caso são 2 cada)</span></span></code></pre></div>
 <p><br></p>
 <p>Usando a função</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="esquema-fatorial-2-fatores.html#cb345-1"></a><span class="kw">croqui</span>(trat,<span class="dt">r=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="esquema-fatorial-2-fatores.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">croqui</span>(trat,<span class="at">r=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br><br></p>
 <hr />
@@ -889,41 +889,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="soja.jpg" /></p>
 <p><strong>Fonte da foto</strong>: <a href="https://blog.aegro.com.br/inoculante-para-soja/" class="uri">https://blog.aegro.com.br/inoculante-para-soja/</a></p>
 <p><br></p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="esquema-fatorial-2-fatores.html#cb346-1"></a>NN=<span class="kw">c</span>(<span class="dv">339</span>,<span class="dv">332</span>,<span class="dv">163</span>,<span class="dv">230</span>,<span class="dv">300</span>,</span>
-<span id="cb346-2"><a href="esquema-fatorial-2-fatores.html#cb346-2"></a>      <span class="dv">163</span>,<span class="dv">172</span>,<span class="dv">123</span>,<span class="dv">083</span>,<span class="dv">161</span>,</span>
-<span id="cb346-3"><a href="esquema-fatorial-2-fatores.html#cb346-3"></a>      <span class="dv">171</span>,<span class="dv">069</span>,<span class="dv">095</span>,<span class="dv">046</span>,<span class="dv">079</span>,</span>
-<span id="cb346-4"><a href="esquema-fatorial-2-fatores.html#cb346-4"></a>      <span class="dv">335</span>,<span class="dv">235</span>,<span class="dv">217</span>,<span class="dv">174</span>,<span class="dv">222</span>,</span>
-<span id="cb346-5"><a href="esquema-fatorial-2-fatores.html#cb346-5"></a>      <span class="dv">284</span>,<span class="dv">136</span>,<span class="dv">225</span>,<span class="dv">098</span>,<span class="dv">110</span>,</span>
-<span id="cb346-6"><a href="esquema-fatorial-2-fatores.html#cb346-6"></a>      <span class="dv">082</span>,<span class="dv">038</span>,<span class="dv">092</span>,<span class="dv">053</span>,<span class="dv">046</span>,</span>
-<span id="cb346-7"><a href="esquema-fatorial-2-fatores.html#cb346-7"></a>      <span class="dv">196</span>,<span class="dv">252</span>,<span class="dv">346</span>,<span class="dv">468</span>,<span class="dv">258</span>,</span>
-<span id="cb346-8"><a href="esquema-fatorial-2-fatores.html#cb346-8"></a>      <span class="dv">032</span>,<span class="dv">038</span>,<span class="dv">063</span>,<span class="dv">048</span>,<span class="dv">160</span>)</span>
-<span id="cb346-9"><a href="esquema-fatorial-2-fatores.html#cb346-9"></a>(<span class="dt">Inoculacao=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;NI&quot;</span>),<span class="dt">e=</span><span class="dv">20</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="esquema-fatorial-2-fatores.html#cb346-1" aria-hidden="true" tabindex="-1"></a>NN<span class="ot">=</span><span class="fu">c</span>(<span class="dv">339</span>,<span class="dv">332</span>,<span class="dv">163</span>,<span class="dv">230</span>,<span class="dv">300</span>,</span>
+<span id="cb346-2"><a href="esquema-fatorial-2-fatores.html#cb346-2" aria-hidden="true" tabindex="-1"></a>      <span class="dv">163</span>,<span class="dv">172</span>,<span class="dv">123</span>,<span class="dv">083</span>,<span class="dv">161</span>,</span>
+<span id="cb346-3"><a href="esquema-fatorial-2-fatores.html#cb346-3" aria-hidden="true" tabindex="-1"></a>      <span class="dv">171</span>,<span class="dv">069</span>,<span class="dv">095</span>,<span class="dv">046</span>,<span class="dv">079</span>,</span>
+<span id="cb346-4"><a href="esquema-fatorial-2-fatores.html#cb346-4" aria-hidden="true" tabindex="-1"></a>      <span class="dv">335</span>,<span class="dv">235</span>,<span class="dv">217</span>,<span class="dv">174</span>,<span class="dv">222</span>,</span>
+<span id="cb346-5"><a href="esquema-fatorial-2-fatores.html#cb346-5" aria-hidden="true" tabindex="-1"></a>      <span class="dv">284</span>,<span class="dv">136</span>,<span class="dv">225</span>,<span class="dv">098</span>,<span class="dv">110</span>,</span>
+<span id="cb346-6"><a href="esquema-fatorial-2-fatores.html#cb346-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">082</span>,<span class="dv">038</span>,<span class="dv">092</span>,<span class="dv">053</span>,<span class="dv">046</span>,</span>
+<span id="cb346-7"><a href="esquema-fatorial-2-fatores.html#cb346-7" aria-hidden="true" tabindex="-1"></a>      <span class="dv">196</span>,<span class="dv">252</span>,<span class="dv">346</span>,<span class="dv">468</span>,<span class="dv">258</span>,</span>
+<span id="cb346-8"><a href="esquema-fatorial-2-fatores.html#cb346-8" aria-hidden="true" tabindex="-1"></a>      <span class="dv">032</span>,<span class="dv">038</span>,<span class="dv">063</span>,<span class="dv">048</span>,<span class="dv">160</span>)</span>
+<span id="cb346-9"><a href="esquema-fatorial-2-fatores.html#cb346-9" aria-hidden="true" tabindex="-1"></a>(<span class="at">Inoculacao=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;NI&quot;</span>),<span class="at">e=</span><span class="dv">20</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot;
 ## [16] &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot;
 ## [31] &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot;</code></pre>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="esquema-fatorial-2-fatores.html#cb348-1"></a>(<span class="dt">epoca=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Plantio&quot;</span>,<span class="st">&quot;V1+15&quot;</span>,<span class="st">&quot;V3+15&quot;</span>,<span class="st">&quot;R1+15&quot;</span>),<span class="dt">e=</span><span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="esquema-fatorial-2-fatores.html#cb348-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">epoca=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Plantio&quot;</span>,<span class="st">&quot;V1+15&quot;</span>,<span class="st">&quot;V3+15&quot;</span>,<span class="st">&quot;R1+15&quot;</span>),<span class="at">e=</span><span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;V1+15&quot;   &quot;V1+15&quot;  
 ##  [8] &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;  
 ## [15] &quot;V3+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;Plantio&quot;
 ## [22] &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V1+15&quot;  
 ## [29] &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;  
 ## [36] &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;</code></pre>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="esquema-fatorial-2-fatores.html#cb350-1"></a>F1=<span class="kw">as.factor</span>(Inoculacao)</span>
-<span id="cb350-2"><a href="esquema-fatorial-2-fatores.html#cb350-2"></a>F2=<span class="kw">as.factor</span>(epoca)</span>
-<span id="cb350-3"><a href="esquema-fatorial-2-fatores.html#cb350-3"></a>Trat=<span class="kw">paste</span>(F1,F2)</span>
-<span id="cb350-4"><a href="esquema-fatorial-2-fatores.html#cb350-4"></a>dados=<span class="kw">data.frame</span>(F1,F2,<span class="dt">resp=</span>NN)</span>
-<span id="cb350-5"><a href="esquema-fatorial-2-fatores.html#cb350-5"></a>X=<span class="st">&quot;&quot;</span>;Y=<span class="st">&quot;Número de nódulos&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="esquema-fatorial-2-fatores.html#cb350-1" aria-hidden="true" tabindex="-1"></a>F1<span class="ot">=</span><span class="fu">as.factor</span>(Inoculacao)</span>
+<span id="cb350-2"><a href="esquema-fatorial-2-fatores.html#cb350-2" aria-hidden="true" tabindex="-1"></a>F2<span class="ot">=</span><span class="fu">as.factor</span>(epoca)</span>
+<span id="cb350-3"><a href="esquema-fatorial-2-fatores.html#cb350-3" aria-hidden="true" tabindex="-1"></a>Trat<span class="ot">=</span><span class="fu">paste</span>(F1,F2)</span>
+<span id="cb350-4"><a href="esquema-fatorial-2-fatores.html#cb350-4" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(F1,F2,<span class="at">resp=</span>NN)</span>
+<span id="cb350-5"><a href="esquema-fatorial-2-fatores.html#cb350-5" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="st">&quot;&quot;</span>;Y<span class="ot">=</span><span class="st">&quot;Número de nódulos&quot;</span></span></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="estatística-descritiva-3" class="section level2" number="16.9">
 <h2><span class="header-section-number">16.9</span> Estatística descritiva</h2>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="esquema-fatorial-2-fatores.html#cb351-1"></a>Media =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">mean</span>(resp))</span>
-<span id="cb351-2"><a href="esquema-fatorial-2-fatores.html#cb351-2"></a>Variancia =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">var</span>(resp))</span>
-<span id="cb351-3"><a href="esquema-fatorial-2-fatores.html#cb351-3"></a>Desvio =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sd</span>(resp))</span>
-<span id="cb351-4"><a href="esquema-fatorial-2-fatores.html#cb351-4"></a>CV =<span class="st"> </span>Desvio <span class="op">/</span><span class="st"> </span>Media <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb351-5"><a href="esquema-fatorial-2-fatores.html#cb351-5"></a></span>
-<span id="cb351-6"><a href="esquema-fatorial-2-fatores.html#cb351-6"></a>desc =<span class="st"> </span><span class="kw">cbind</span>(Media, Variancia, Desvio, CV)</span>
-<span id="cb351-7"><a href="esquema-fatorial-2-fatores.html#cb351-7"></a>desc</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="esquema-fatorial-2-fatores.html#cb351-1" aria-hidden="true" tabindex="-1"></a>Media <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(resp))</span>
+<span id="cb351-2"><a href="esquema-fatorial-2-fatores.html#cb351-2" aria-hidden="true" tabindex="-1"></a>Variancia <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">var</span>(resp))</span>
+<span id="cb351-3"><a href="esquema-fatorial-2-fatores.html#cb351-3" aria-hidden="true" tabindex="-1"></a>Desvio <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(resp))</span>
+<span id="cb351-4"><a href="esquema-fatorial-2-fatores.html#cb351-4" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">=</span> Desvio <span class="sc">/</span> Media <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb351-5"><a href="esquema-fatorial-2-fatores.html#cb351-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb351-6"><a href="esquema-fatorial-2-fatores.html#cb351-6" aria-hidden="true" tabindex="-1"></a>desc <span class="ot">=</span> <span class="fu">cbind</span>(Media, Variancia, Desvio, CV)</span>
+<span id="cb351-7"><a href="esquema-fatorial-2-fatores.html#cb351-7" aria-hidden="true" tabindex="-1"></a>desc</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -945,12 +945,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="por-inoculação" class="section level3" number="16.9.1">
 <h3><span class="header-section-number">16.9.1</span> Por Inoculação</h3>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="esquema-fatorial-2-fatores.html#cb352-1"></a>MediaA =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F1, mean))</span>
-<span id="cb352-2"><a href="esquema-fatorial-2-fatores.html#cb352-2"></a>VarianciaA =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F1, var))</span>
-<span id="cb352-3"><a href="esquema-fatorial-2-fatores.html#cb352-3"></a>DesvioA =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F1, sd))</span>
-<span id="cb352-4"><a href="esquema-fatorial-2-fatores.html#cb352-4"></a>CVA =<span class="st"> </span>DesvioA <span class="op">/</span><span class="st"> </span>MediaA <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb352-5"><a href="esquema-fatorial-2-fatores.html#cb352-5"></a>Desc =<span class="st"> </span><span class="kw">cbind</span>(MediaA, VarianciaA, DesvioA, CVA)</span>
-<span id="cb352-6"><a href="esquema-fatorial-2-fatores.html#cb352-6"></a>Desc</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="esquema-fatorial-2-fatores.html#cb352-1" aria-hidden="true" tabindex="-1"></a>MediaA <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F1, mean))</span>
+<span id="cb352-2"><a href="esquema-fatorial-2-fatores.html#cb352-2" aria-hidden="true" tabindex="-1"></a>VarianciaA <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F1, var))</span>
+<span id="cb352-3"><a href="esquema-fatorial-2-fatores.html#cb352-3" aria-hidden="true" tabindex="-1"></a>DesvioA <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F1, sd))</span>
+<span id="cb352-4"><a href="esquema-fatorial-2-fatores.html#cb352-4" aria-hidden="true" tabindex="-1"></a>CVA <span class="ot">=</span> DesvioA <span class="sc">/</span> MediaA <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb352-5"><a href="esquema-fatorial-2-fatores.html#cb352-5" aria-hidden="true" tabindex="-1"></a>Desc <span class="ot">=</span> <span class="fu">cbind</span>(MediaA, VarianciaA, DesvioA, CVA)</span>
+<span id="cb352-6"><a href="esquema-fatorial-2-fatores.html#cb352-6" aria-hidden="true" tabindex="-1"></a>Desc</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -982,12 +982,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="por-época-de-aplicação" class="section level3" number="16.9.2">
 <h3><span class="header-section-number">16.9.2</span> Por época de aplicação</h3>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="esquema-fatorial-2-fatores.html#cb353-1"></a>MediaB =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F2, mean))</span>
-<span id="cb353-2"><a href="esquema-fatorial-2-fatores.html#cb353-2"></a>VarianciaB =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F2, var))</span>
-<span id="cb353-3"><a href="esquema-fatorial-2-fatores.html#cb353-3"></a>DesvioB =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F2, sd))</span>
-<span id="cb353-4"><a href="esquema-fatorial-2-fatores.html#cb353-4"></a>CVB =<span class="st"> </span>DesvioB <span class="op">/</span><span class="st"> </span>MediaB <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb353-5"><a href="esquema-fatorial-2-fatores.html#cb353-5"></a>Desc =<span class="st"> </span><span class="kw">cbind</span>(MediaB, VarianciaB, DesvioB, CVB)</span>
-<span id="cb353-6"><a href="esquema-fatorial-2-fatores.html#cb353-6"></a>Desc</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="esquema-fatorial-2-fatores.html#cb353-1" aria-hidden="true" tabindex="-1"></a>MediaB <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F2, mean))</span>
+<span id="cb353-2"><a href="esquema-fatorial-2-fatores.html#cb353-2" aria-hidden="true" tabindex="-1"></a>VarianciaB <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F2, var))</span>
+<span id="cb353-3"><a href="esquema-fatorial-2-fatores.html#cb353-3" aria-hidden="true" tabindex="-1"></a>DesvioB <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F2, sd))</span>
+<span id="cb353-4"><a href="esquema-fatorial-2-fatores.html#cb353-4" aria-hidden="true" tabindex="-1"></a>CVB <span class="ot">=</span> DesvioB <span class="sc">/</span> MediaB <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb353-5"><a href="esquema-fatorial-2-fatores.html#cb353-5" aria-hidden="true" tabindex="-1"></a>Desc <span class="ot">=</span> <span class="fu">cbind</span>(MediaB, VarianciaB, DesvioB, CVB)</span>
+<span id="cb353-6"><a href="esquema-fatorial-2-fatores.html#cb353-6" aria-hidden="true" tabindex="-1"></a>Desc</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1039,44 +1039,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">16.10.1</span> Gráfico de Caixas</h3>
 <div id="fator-1" class="section level4" number="16.10.1.1">
 <h4><span class="header-section-number">16.10.1.1</span> Fator 1</h4>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="esquema-fatorial-2-fatores.html#cb354-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb354-2"><a href="esquema-fatorial-2-fatores.html#cb354-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb354-3"><a href="esquema-fatorial-2-fatores.html#cb354-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>F1, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
-<span id="cb354-4"><a href="esquema-fatorial-2-fatores.html#cb354-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span>
-<span id="cb354-5"><a href="esquema-fatorial-2-fatores.html#cb354-5"></a>mediab=<span class="kw">with</span>(dados,<span class="kw">tapply</span>(resp, F1, mean))</span>
-<span id="cb354-6"><a href="esquema-fatorial-2-fatores.html#cb354-6"></a><span class="kw">points</span>(mediab, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="esquema-fatorial-2-fatores.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb354-2"><a href="esquema-fatorial-2-fatores.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb354-3"><a href="esquema-fatorial-2-fatores.html#cb354-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(resp <span class="sc">~</span> F1, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb354-4"><a href="esquema-fatorial-2-fatores.html#cb354-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab=</span>X, <span class="at">ylab=</span>Y))</span>
+<span id="cb354-5"><a href="esquema-fatorial-2-fatores.html#cb354-5" aria-hidden="true" tabindex="-1"></a>mediab<span class="ot">=</span><span class="fu">with</span>(dados,<span class="fu">tapply</span>(resp, F1, mean))</span>
+<span id="cb354-6"><a href="esquema-fatorial-2-fatores.html#cb354-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mediab, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-211-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="fator-2" class="section level4" number="16.10.1.2">
 <h4><span class="header-section-number">16.10.1.2</span> Fator 2</h4>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="esquema-fatorial-2-fatores.html#cb355-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb355-2"><a href="esquema-fatorial-2-fatores.html#cb355-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb355-3"><a href="esquema-fatorial-2-fatores.html#cb355-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>F2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
-<span id="cb355-4"><a href="esquema-fatorial-2-fatores.html#cb355-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span>
-<span id="cb355-5"><a href="esquema-fatorial-2-fatores.html#cb355-5"></a>mediab=<span class="kw">with</span>(dados,<span class="kw">tapply</span>(resp, F2, mean))</span>
-<span id="cb355-6"><a href="esquema-fatorial-2-fatores.html#cb355-6"></a><span class="kw">points</span>(mediab, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="esquema-fatorial-2-fatores.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb355-2"><a href="esquema-fatorial-2-fatores.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb355-3"><a href="esquema-fatorial-2-fatores.html#cb355-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(resp <span class="sc">~</span> F2, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb355-4"><a href="esquema-fatorial-2-fatores.html#cb355-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab=</span>X, <span class="at">ylab=</span>Y))</span>
+<span id="cb355-5"><a href="esquema-fatorial-2-fatores.html#cb355-5" aria-hidden="true" tabindex="-1"></a>mediab<span class="ot">=</span><span class="fu">with</span>(dados,<span class="fu">tapply</span>(resp, F2, mean))</span>
+<span id="cb355-6"><a href="esquema-fatorial-2-fatores.html#cb355-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mediab, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-212-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="juntando-fatores" class="section level4" number="16.10.1.3">
 <h4><span class="header-section-number">16.10.1.3</span> Juntando Fatores</h4>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="esquema-fatorial-2-fatores.html#cb356-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb356-2"><a href="esquema-fatorial-2-fatores.html#cb356-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb356-3"><a href="esquema-fatorial-2-fatores.html#cb356-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>F1<span class="op">*</span>F2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
-<span id="cb356-4"><a href="esquema-fatorial-2-fatores.html#cb356-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="esquema-fatorial-2-fatores.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb356-2"><a href="esquema-fatorial-2-fatores.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb356-3"><a href="esquema-fatorial-2-fatores.html#cb356-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(resp <span class="sc">~</span> F1<span class="sc">*</span>F2, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb356-4"><a href="esquema-fatorial-2-fatores.html#cb356-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab=</span>X, <span class="at">ylab=</span>Y))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-213-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 </div>
 </div>
 <div id="gráfico-de-interação" class="section level3" number="16.10.2">
 <h3><span class="header-section-number">16.10.2</span> Gráfico de interação</h3>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="esquema-fatorial-2-fatores.html#cb357-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(F2, F1, resp, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
-<span id="cb357-2"><a href="esquema-fatorial-2-fatores.html#cb357-2"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;FATOR1&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="esquema-fatorial-2-fatores.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">interaction.plot</span>(F2, F1, resp, <span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb357-2"><a href="esquema-fatorial-2-fatores.html#cb357-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">xlab=</span><span class="st">&#39;&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="at">trace.label=</span><span class="st">&quot;FATOR1&quot;</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="esquema-fatorial-2-fatores.html#cb358-1"></a><span class="co"># FATOR1 e FATOR2</span></span>
-<span id="cb358-2"><a href="esquema-fatorial-2-fatores.html#cb358-2"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(F1, F2, resp, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
-<span id="cb358-3"><a href="esquema-fatorial-2-fatores.html#cb358-3"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="esquema-fatorial-2-fatores.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FATOR1 e FATOR2</span></span>
+<span id="cb358-2"><a href="esquema-fatorial-2-fatores.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">interaction.plot</span>(F1, F2, resp, <span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb358-3"><a href="esquema-fatorial-2-fatores.html#cb358-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">xlab=</span><span class="st">&#39;&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="at">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
 <p><br><br></p>
 </div>
@@ -1110,8 +1110,8 @@ H_1: &amp; \mbox{Pelo menos duas combinações entre os níveis do fator 1 e do 
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="esquema-fatorial-2-fatores.html#cb359-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(resp<span class="op">~</span>F1<span class="op">*</span>F2))</span>
-<span id="cb359-2"><a href="esquema-fatorial-2-fatores.html#cb359-2"></a><span class="kw">anova</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="esquema-fatorial-2-fatores.html#cb359-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">aov</span>(resp<span class="sc">~</span>F1<span class="sc">*</span>F2))</span>
+<span id="cb359-2"><a href="esquema-fatorial-2-fatores.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1173,13 +1173,13 @@ H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="esquema-fatorial-2-fatores.html#cb360-1"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res))</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="esquema-fatorial-2-fatores.html#cb360-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">norm=</span><span class="fu">shapiro.test</span>(mod<span class="sc">$</span>res))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  mod$res
 ## W = 0.96809, p-value = 0.3125</code></pre>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="esquema-fatorial-2-fatores.html#cb362-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="esquema-fatorial-2-fatores.html#cb362-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-219-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
@@ -1195,7 +1195,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 \end{eqnarray*}\]</span></p>
 <div id="para-fator-1" class="section level4" number="16.12.2.1">
 <h4><span class="header-section-number">16.12.2.1</span> Para Fator 1</h4>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="esquema-fatorial-2-fatores.html#cb363-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>residuals<span class="op">~</span>F1))</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="esquema-fatorial-2-fatores.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>residuals<span class="sc">~</span>F1))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1205,7 +1205,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="para-fator-2" class="section level4" number="16.12.2.2">
 <h4><span class="header-section-number">16.12.2.2</span> Para Fator 2</h4>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="esquema-fatorial-2-fatores.html#cb365-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>residuals<span class="op">~</span>F2))</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="esquema-fatorial-2-fatores.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>residuals<span class="sc">~</span>F2))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1215,8 +1215,8 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="juntandos-os-fatores" class="section level4" number="16.12.2.3">
 <h4><span class="header-section-number">16.12.2.3</span> Juntandos os fatores</h4>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="esquema-fatorial-2-fatores.html#cb367-1"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)),<span class="dt">e=</span><span class="dv">5</span>)</span>
-<span id="cb367-2"><a href="esquema-fatorial-2-fatores.html#cb367-2"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>residuals<span class="op">~</span>tratamentos))</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="esquema-fatorial-2-fatores.html#cb367-1" aria-hidden="true" tabindex="-1"></a>tratamentos<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)),<span class="at">e=</span><span class="dv">5</span>)</span>
+<span id="cb367-2"><a href="esquema-fatorial-2-fatores.html#cb367-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>residuals<span class="sc">~</span>tratamentos))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1235,23 +1235,23 @@ H_1: \mbox{Os erros não são independentes}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="esquema-fatorial-2-fatores.html#cb369-1"></a>(<span class="dt">ind=</span>lmtest<span class="op">::</span><span class="kw">dwtest</span>(mod))</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="esquema-fatorial-2-fatores.html#cb369-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">ind=</span>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(mod))</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
 ## data:  mod
 ## DW = 1.9256, p-value = 0.07498
 ## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="esquema-fatorial-2-fatores.html#cb371-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>res, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Resíduos brutos&#39;</span>)</span>
-<span id="cb371-2"><a href="esquema-fatorial-2-fatores.html#cb371-2"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="esquema-fatorial-2-fatores.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod<span class="sc">$</span>res, <span class="at">las=</span><span class="dv">1</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Resíduos brutos&#39;</span>)</span>
+<span id="cb371-2"><a href="esquema-fatorial-2-fatores.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-224-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 </div>
 <div id="teste-de-comparações-2" class="section level2" number="16.13">
 <h2><span class="header-section-number">16.13</span> Teste de comparações</h2>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="esquema-fatorial-2-fatores.html#cb372-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb372-2"><a href="esquema-fatorial-2-fatores.html#cb372-2"></a><span class="kw">with</span>(dados,<span class="kw">fat2.dic</span>(F1,F2,resp, <span class="dt">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="esquema-fatorial-2-fatores.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb372-2"><a href="esquema-fatorial-2-fatores.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados,<span class="fu">fat2.dic</span>(F1,F2,resp, <span class="at">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Legenda:
 ## FATOR 1:  F1 
@@ -1261,12 +1261,12 @@ H_1: \mbox{Os erros não são independentes}.
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##         GL     SQ QM      Fc    Pr&gt;Fc
-## F1       1  11696  2  2.7579 0.106542
-## F2       3  84754  3  6.6615 0.001272
-## F1*F2    3 212960  5 16.7382 0.000001
-## Residuo 32 135712  4                 
-## Total   39 445123  1                 
+##         GL     SQ    QM      Fc    Pr&gt;Fc
+## F1       1  11696 11696  2.7579 0.106542
+## F2       3  84754 28251  6.6615 0.001272
+## F1*F2    3 212960 70987 16.7382 0.000001
+## Residuo 32 135712  4241                 
+## Total   39 445123                       
 ## ------------------------------------------------------------------------
 ## CV = 38.68 %
 ## 
@@ -1289,11 +1289,11 @@ H_1: \mbox{Os erros não são independentes}.
 ##               GL       SQ        QM      Fc  Pr.Fc
 ## F2             3  84754.5  28251.50  6.6615 0.0013
 ## F1:F2 Plantio  1  26112.1  26112.10  6.1571 0.0185
-## F1:F2 R1+15    1  70896.4  70896.40 16.7169  3e-04
+## F1:F2 R1+15    1  70896.4  70896.40 16.7169 0.0003
 ## F1:F2 V1+15    1  15288.1  15288.10  3.6048 0.0667
-## F1:F2 V3+15    1 112360.0 112360.00 26.4938      0
-## Residuo       32 135712.0   4241.00               
-## Total         39 445123.1  11413.41               
+## F1:F2 V3+15    1 112360.0 112360.00 26.4938 0.0000
+## Residuo       32 135712.0   4241.00      NA     NA
+## Total         39 445123.1  11413.41      NA     NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1346,10 +1346,10 @@ H_1: \mbox{Os erros não são independentes}.
 ## ------------------------------------------------------------------------
 ##          GL       SQ       QM      Fc  Pr.Fc
 ## F1        1  11696.4 11696.40  2.7579 0.1065
-## F2:F1 IN  3 105043.8 35014.58  8.2562  3e-04
-## F2:F1 NI  3 192671.0 64223.65 15.1435      0
-## Residuo  32 135712.0  4241.00               
-## Total    39 445123.1 11413.41               
+## F2:F1 IN  3 105043.8 35014.58  8.2562 0.0003
+## F2:F1 NI  3 192671.0 64223.65 15.1435 0.0000
+## Residuo  32 135712.0  4241.00      NA     NA
+## Total    39 445123.1 11413.41      NA     NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1385,42 +1385,42 @@ H_1: \mbox{Os erros não são independentes}.
 <p><br></p>
 <p>Supondo o mesmo exemplo anterior. Todavia, iremos considerar que o experimento foi conduzido em delineamento em blocos casualizados com cinco repetições.</p>
 <p><br></p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="esquema-fatorial-2-fatores.html#cb374-1"></a>NN=<span class="kw">c</span>(<span class="dv">339</span>,<span class="dv">332</span>,<span class="dv">163</span>,<span class="dv">230</span>,<span class="dv">300</span>,<span class="dv">163</span>,<span class="dv">172</span>,<span class="dv">123</span>,<span class="dv">083</span>,<span class="dv">161</span>,<span class="dv">171</span>,<span class="dv">069</span>,<span class="dv">095</span>,<span class="dv">046</span>,<span class="dv">079</span>,<span class="dv">335</span>,<span class="dv">235</span>,<span class="dv">217</span>,<span class="dv">174</span>,<span class="dv">222</span>,<span class="dv">284</span>,<span class="dv">136</span>,<span class="dv">225</span>,<span class="dv">098</span>,<span class="dv">110</span>,<span class="dv">082</span>,<span class="dv">038</span>,<span class="dv">092</span>,<span class="dv">053</span>,<span class="dv">046</span>,</span>
-<span id="cb374-2"><a href="esquema-fatorial-2-fatores.html#cb374-2"></a>      <span class="dv">196</span>,<span class="dv">252</span>,<span class="dv">346</span>,<span class="dv">468</span>,<span class="dv">258</span>,<span class="dv">032</span>,<span class="dv">038</span>,<span class="dv">063</span>,<span class="dv">048</span>,<span class="dv">160</span>)</span>
-<span id="cb374-3"><a href="esquema-fatorial-2-fatores.html#cb374-3"></a>(<span class="dt">Inoculacao=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;NI&quot;</span>),<span class="dt">e=</span><span class="dv">20</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="esquema-fatorial-2-fatores.html#cb374-1" aria-hidden="true" tabindex="-1"></a>NN<span class="ot">=</span><span class="fu">c</span>(<span class="dv">339</span>,<span class="dv">332</span>,<span class="dv">163</span>,<span class="dv">230</span>,<span class="dv">300</span>,<span class="dv">163</span>,<span class="dv">172</span>,<span class="dv">123</span>,<span class="dv">083</span>,<span class="dv">161</span>,<span class="dv">171</span>,<span class="dv">069</span>,<span class="dv">095</span>,<span class="dv">046</span>,<span class="dv">079</span>,<span class="dv">335</span>,<span class="dv">235</span>,<span class="dv">217</span>,<span class="dv">174</span>,<span class="dv">222</span>,<span class="dv">284</span>,<span class="dv">136</span>,<span class="dv">225</span>,<span class="dv">098</span>,<span class="dv">110</span>,<span class="dv">082</span>,<span class="dv">038</span>,<span class="dv">092</span>,<span class="dv">053</span>,<span class="dv">046</span>,</span>
+<span id="cb374-2"><a href="esquema-fatorial-2-fatores.html#cb374-2" aria-hidden="true" tabindex="-1"></a>      <span class="dv">196</span>,<span class="dv">252</span>,<span class="dv">346</span>,<span class="dv">468</span>,<span class="dv">258</span>,<span class="dv">032</span>,<span class="dv">038</span>,<span class="dv">063</span>,<span class="dv">048</span>,<span class="dv">160</span>)</span>
+<span id="cb374-3"><a href="esquema-fatorial-2-fatores.html#cb374-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">Inoculacao=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;NI&quot;</span>),<span class="at">e=</span><span class="dv">20</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot;
 ## [16] &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot;
 ## [31] &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot;</code></pre>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="esquema-fatorial-2-fatores.html#cb376-1"></a>(<span class="dt">epoca=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Plantio&quot;</span>,<span class="st">&quot;V1+15&quot;</span>,<span class="st">&quot;V3+15&quot;</span>,<span class="st">&quot;R1+15&quot;</span>),<span class="dt">e=</span><span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="esquema-fatorial-2-fatores.html#cb376-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">epoca=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Plantio&quot;</span>,<span class="st">&quot;V1+15&quot;</span>,<span class="st">&quot;V3+15&quot;</span>,<span class="st">&quot;R1+15&quot;</span>),<span class="at">e=</span><span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;V1+15&quot;   &quot;V1+15&quot;  
 ##  [8] &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;  
 ## [15] &quot;V3+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;Plantio&quot;
 ## [22] &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V1+15&quot;  
 ## [29] &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;  
 ## [36] &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="esquema-fatorial-2-fatores.html#cb378-1"></a>(<span class="dt">bloco=</span><span class="kw">rep</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>),<span class="dv">8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="esquema-fatorial-2-fatores.html#cb378-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">bloco=</span><span class="fu">rep</span>(<span class="fu">paste</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),<span class="dv">8</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;B 1&quot; &quot;B 2&quot; &quot;B 3&quot; &quot;B 4&quot; &quot;B 5&quot; &quot;B 1&quot; &quot;B 2&quot; &quot;B 3&quot; &quot;B 4&quot; &quot;B 5&quot; &quot;B 1&quot; &quot;B 2&quot;
 ## [13] &quot;B 3&quot; &quot;B 4&quot; &quot;B 5&quot; &quot;B 1&quot; &quot;B 2&quot; &quot;B 3&quot; &quot;B 4&quot; &quot;B 5&quot; &quot;B 1&quot; &quot;B 2&quot; &quot;B 3&quot; &quot;B 4&quot;
 ## [25] &quot;B 5&quot; &quot;B 1&quot; &quot;B 2&quot; &quot;B 3&quot; &quot;B 4&quot; &quot;B 5&quot; &quot;B 1&quot; &quot;B 2&quot; &quot;B 3&quot; &quot;B 4&quot; &quot;B 5&quot; &quot;B 1&quot;
 ## [37] &quot;B 2&quot; &quot;B 3&quot; &quot;B 4&quot; &quot;B 5&quot;</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="esquema-fatorial-2-fatores.html#cb380-1"></a>F1=<span class="kw">as.factor</span>(Inoculacao)</span>
-<span id="cb380-2"><a href="esquema-fatorial-2-fatores.html#cb380-2"></a>F2=<span class="kw">as.factor</span>(epoca)</span>
-<span id="cb380-3"><a href="esquema-fatorial-2-fatores.html#cb380-3"></a>bloco=<span class="kw">as.factor</span>(bloco)</span>
-<span id="cb380-4"><a href="esquema-fatorial-2-fatores.html#cb380-4"></a>Trat=<span class="kw">paste</span>(F1,F2)</span>
-<span id="cb380-5"><a href="esquema-fatorial-2-fatores.html#cb380-5"></a>dados=<span class="kw">data.frame</span>(F1,F2,bloco,<span class="dt">resp=</span>NN)</span>
-<span id="cb380-6"><a href="esquema-fatorial-2-fatores.html#cb380-6"></a><span class="kw">attach</span>(dados)</span>
-<span id="cb380-7"><a href="esquema-fatorial-2-fatores.html#cb380-7"></a>X=<span class="st">&quot;&quot;</span>;Y=<span class="st">&quot;Número de nódulos&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="esquema-fatorial-2-fatores.html#cb380-1" aria-hidden="true" tabindex="-1"></a>F1<span class="ot">=</span><span class="fu">as.factor</span>(Inoculacao)</span>
+<span id="cb380-2"><a href="esquema-fatorial-2-fatores.html#cb380-2" aria-hidden="true" tabindex="-1"></a>F2<span class="ot">=</span><span class="fu">as.factor</span>(epoca)</span>
+<span id="cb380-3"><a href="esquema-fatorial-2-fatores.html#cb380-3" aria-hidden="true" tabindex="-1"></a>bloco<span class="ot">=</span><span class="fu">as.factor</span>(bloco)</span>
+<span id="cb380-4"><a href="esquema-fatorial-2-fatores.html#cb380-4" aria-hidden="true" tabindex="-1"></a>Trat<span class="ot">=</span><span class="fu">paste</span>(F1,F2)</span>
+<span id="cb380-5"><a href="esquema-fatorial-2-fatores.html#cb380-5" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(F1,F2,bloco,<span class="at">resp=</span>NN)</span>
+<span id="cb380-6"><a href="esquema-fatorial-2-fatores.html#cb380-6" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(dados)</span>
+<span id="cb380-7"><a href="esquema-fatorial-2-fatores.html#cb380-7" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="st">&quot;&quot;</span>;Y<span class="ot">=</span><span class="st">&quot;Número de nódulos&quot;</span></span></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="estatística-descritiva-4" class="section level2" number="16.15">
 <h2><span class="header-section-number">16.15</span> Estatística descritiva</h2>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="esquema-fatorial-2-fatores.html#cb381-1"></a>Media =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">mean</span>(resp))</span>
-<span id="cb381-2"><a href="esquema-fatorial-2-fatores.html#cb381-2"></a>Variancia =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">var</span>(resp))</span>
-<span id="cb381-3"><a href="esquema-fatorial-2-fatores.html#cb381-3"></a>Desvio =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sd</span>(resp))</span>
-<span id="cb381-4"><a href="esquema-fatorial-2-fatores.html#cb381-4"></a>CV =<span class="st"> </span>Desvio <span class="op">/</span><span class="st"> </span>Media <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb381-5"><a href="esquema-fatorial-2-fatores.html#cb381-5"></a></span>
-<span id="cb381-6"><a href="esquema-fatorial-2-fatores.html#cb381-6"></a>desc =<span class="st"> </span><span class="kw">cbind</span>(Media, Variancia, Desvio, CV)</span>
-<span id="cb381-7"><a href="esquema-fatorial-2-fatores.html#cb381-7"></a>desc</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="esquema-fatorial-2-fatores.html#cb381-1" aria-hidden="true" tabindex="-1"></a>Media <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(resp))</span>
+<span id="cb381-2"><a href="esquema-fatorial-2-fatores.html#cb381-2" aria-hidden="true" tabindex="-1"></a>Variancia <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">var</span>(resp))</span>
+<span id="cb381-3"><a href="esquema-fatorial-2-fatores.html#cb381-3" aria-hidden="true" tabindex="-1"></a>Desvio <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(resp))</span>
+<span id="cb381-4"><a href="esquema-fatorial-2-fatores.html#cb381-4" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">=</span> Desvio <span class="sc">/</span> Media <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb381-5"><a href="esquema-fatorial-2-fatores.html#cb381-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-6"><a href="esquema-fatorial-2-fatores.html#cb381-6" aria-hidden="true" tabindex="-1"></a>desc <span class="ot">=</span> <span class="fu">cbind</span>(Media, Variancia, Desvio, CV)</span>
+<span id="cb381-7"><a href="esquema-fatorial-2-fatores.html#cb381-7" aria-hidden="true" tabindex="-1"></a>desc</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1442,12 +1442,12 @@ H_1: \mbox{Os erros não são independentes}.
 <p><br></p>
 <div id="por-inoculação-1" class="section level3" number="16.15.1">
 <h3><span class="header-section-number">16.15.1</span> Por Inoculação</h3>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="esquema-fatorial-2-fatores.html#cb382-1"></a>MediaA =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F1, mean))</span>
-<span id="cb382-2"><a href="esquema-fatorial-2-fatores.html#cb382-2"></a>VarianciaA =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F1, var))</span>
-<span id="cb382-3"><a href="esquema-fatorial-2-fatores.html#cb382-3"></a>DesvioA =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F1, sd))</span>
-<span id="cb382-4"><a href="esquema-fatorial-2-fatores.html#cb382-4"></a>CVA =<span class="st"> </span>DesvioA <span class="op">/</span><span class="st"> </span>MediaA <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb382-5"><a href="esquema-fatorial-2-fatores.html#cb382-5"></a>Desc =<span class="st"> </span><span class="kw">cbind</span>(MediaA, VarianciaA, DesvioA, CVA)</span>
-<span id="cb382-6"><a href="esquema-fatorial-2-fatores.html#cb382-6"></a>Desc</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="esquema-fatorial-2-fatores.html#cb382-1" aria-hidden="true" tabindex="-1"></a>MediaA <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F1, mean))</span>
+<span id="cb382-2"><a href="esquema-fatorial-2-fatores.html#cb382-2" aria-hidden="true" tabindex="-1"></a>VarianciaA <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F1, var))</span>
+<span id="cb382-3"><a href="esquema-fatorial-2-fatores.html#cb382-3" aria-hidden="true" tabindex="-1"></a>DesvioA <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F1, sd))</span>
+<span id="cb382-4"><a href="esquema-fatorial-2-fatores.html#cb382-4" aria-hidden="true" tabindex="-1"></a>CVA <span class="ot">=</span> DesvioA <span class="sc">/</span> MediaA <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb382-5"><a href="esquema-fatorial-2-fatores.html#cb382-5" aria-hidden="true" tabindex="-1"></a>Desc <span class="ot">=</span> <span class="fu">cbind</span>(MediaA, VarianciaA, DesvioA, CVA)</span>
+<span id="cb382-6"><a href="esquema-fatorial-2-fatores.html#cb382-6" aria-hidden="true" tabindex="-1"></a>Desc</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1479,12 +1479,12 @@ H_1: \mbox{Os erros não são independentes}.
 </div>
 <div id="por-época-de-aplicação-1" class="section level3" number="16.15.2">
 <h3><span class="header-section-number">16.15.2</span> Por época de aplicação</h3>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="esquema-fatorial-2-fatores.html#cb383-1"></a>MediaB =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F2, mean))</span>
-<span id="cb383-2"><a href="esquema-fatorial-2-fatores.html#cb383-2"></a>VarianciaB =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F2, var))</span>
-<span id="cb383-3"><a href="esquema-fatorial-2-fatores.html#cb383-3"></a>DesvioB =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(resp, F2, sd))</span>
-<span id="cb383-4"><a href="esquema-fatorial-2-fatores.html#cb383-4"></a>CVB =<span class="st"> </span>DesvioB <span class="op">/</span><span class="st"> </span>MediaB <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb383-5"><a href="esquema-fatorial-2-fatores.html#cb383-5"></a>Desc =<span class="st"> </span><span class="kw">cbind</span>(MediaB, VarianciaB, DesvioB, CVB)</span>
-<span id="cb383-6"><a href="esquema-fatorial-2-fatores.html#cb383-6"></a>Desc</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="esquema-fatorial-2-fatores.html#cb383-1" aria-hidden="true" tabindex="-1"></a>MediaB <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F2, mean))</span>
+<span id="cb383-2"><a href="esquema-fatorial-2-fatores.html#cb383-2" aria-hidden="true" tabindex="-1"></a>VarianciaB <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F2, var))</span>
+<span id="cb383-3"><a href="esquema-fatorial-2-fatores.html#cb383-3" aria-hidden="true" tabindex="-1"></a>DesvioB <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(resp, F2, sd))</span>
+<span id="cb383-4"><a href="esquema-fatorial-2-fatores.html#cb383-4" aria-hidden="true" tabindex="-1"></a>CVB <span class="ot">=</span> DesvioB <span class="sc">/</span> MediaB <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb383-5"><a href="esquema-fatorial-2-fatores.html#cb383-5" aria-hidden="true" tabindex="-1"></a>Desc <span class="ot">=</span> <span class="fu">cbind</span>(MediaB, VarianciaB, DesvioB, CVB)</span>
+<span id="cb383-6"><a href="esquema-fatorial-2-fatores.html#cb383-6" aria-hidden="true" tabindex="-1"></a>Desc</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1536,44 +1536,44 @@ H_1: \mbox{Os erros não são independentes}.
 <h3><span class="header-section-number">16.16.1</span> Gráfico de Caixas</h3>
 <div id="fator-1-1" class="section level4" number="16.16.1.1">
 <h4><span class="header-section-number">16.16.1.1</span> Fator 1</h4>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="esquema-fatorial-2-fatores.html#cb384-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb384-2"><a href="esquema-fatorial-2-fatores.html#cb384-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb384-3"><a href="esquema-fatorial-2-fatores.html#cb384-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>F1, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
-<span id="cb384-4"><a href="esquema-fatorial-2-fatores.html#cb384-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span>
-<span id="cb384-5"><a href="esquema-fatorial-2-fatores.html#cb384-5"></a>mediab=<span class="kw">with</span>(dados,<span class="kw">tapply</span>(resp, F1, mean))</span>
-<span id="cb384-6"><a href="esquema-fatorial-2-fatores.html#cb384-6"></a><span class="kw">points</span>(mediab, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="esquema-fatorial-2-fatores.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb384-2"><a href="esquema-fatorial-2-fatores.html#cb384-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb384-3"><a href="esquema-fatorial-2-fatores.html#cb384-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(resp <span class="sc">~</span> F1, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb384-4"><a href="esquema-fatorial-2-fatores.html#cb384-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab=</span>X, <span class="at">ylab=</span>Y))</span>
+<span id="cb384-5"><a href="esquema-fatorial-2-fatores.html#cb384-5" aria-hidden="true" tabindex="-1"></a>mediab<span class="ot">=</span><span class="fu">with</span>(dados,<span class="fu">tapply</span>(resp, F1, mean))</span>
+<span id="cb384-6"><a href="esquema-fatorial-2-fatores.html#cb384-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mediab, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="fator-2-1" class="section level4" number="16.16.1.2">
 <h4><span class="header-section-number">16.16.1.2</span> Fator 2</h4>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="esquema-fatorial-2-fatores.html#cb385-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb385-2"><a href="esquema-fatorial-2-fatores.html#cb385-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb385-3"><a href="esquema-fatorial-2-fatores.html#cb385-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>F2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
-<span id="cb385-4"><a href="esquema-fatorial-2-fatores.html#cb385-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span>
-<span id="cb385-5"><a href="esquema-fatorial-2-fatores.html#cb385-5"></a>mediab=<span class="kw">with</span>(dados,<span class="kw">tapply</span>(resp, F2, mean))</span>
-<span id="cb385-6"><a href="esquema-fatorial-2-fatores.html#cb385-6"></a><span class="kw">points</span>(mediab, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="esquema-fatorial-2-fatores.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb385-2"><a href="esquema-fatorial-2-fatores.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb385-3"><a href="esquema-fatorial-2-fatores.html#cb385-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(resp <span class="sc">~</span> F2, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb385-4"><a href="esquema-fatorial-2-fatores.html#cb385-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab=</span>X, <span class="at">ylab=</span>Y))</span>
+<span id="cb385-5"><a href="esquema-fatorial-2-fatores.html#cb385-5" aria-hidden="true" tabindex="-1"></a>mediab<span class="ot">=</span><span class="fu">with</span>(dados,<span class="fu">tapply</span>(resp, F2, mean))</span>
+<span id="cb385-6"><a href="esquema-fatorial-2-fatores.html#cb385-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mediab, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="juntando-fatores-1" class="section level4" number="16.16.1.3">
 <h4><span class="header-section-number">16.16.1.3</span> Juntando Fatores</h4>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="esquema-fatorial-2-fatores.html#cb386-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb386-2"><a href="esquema-fatorial-2-fatores.html#cb386-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb386-3"><a href="esquema-fatorial-2-fatores.html#cb386-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(resp <span class="op">~</span><span class="st"> </span>F1<span class="op">*</span>F2, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
-<span id="cb386-4"><a href="esquema-fatorial-2-fatores.html#cb386-4"></a>                    <span class="dt">xlab=</span>X, <span class="dt">ylab=</span>Y))</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="esquema-fatorial-2-fatores.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb386-2"><a href="esquema-fatorial-2-fatores.html#cb386-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb386-3"><a href="esquema-fatorial-2-fatores.html#cb386-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(resp <span class="sc">~</span> F1<span class="sc">*</span>F2, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>,</span>
+<span id="cb386-4"><a href="esquema-fatorial-2-fatores.html#cb386-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab=</span>X, <span class="at">ylab=</span>Y))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 </div>
 </div>
 <div id="gráfico-de-interação-1" class="section level3" number="16.16.2">
 <h3><span class="header-section-number">16.16.2</span> Gráfico de interação</h3>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="esquema-fatorial-2-fatores.html#cb387-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(F2, F1, resp, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
-<span id="cb387-2"><a href="esquema-fatorial-2-fatores.html#cb387-2"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;FATOR1&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="esquema-fatorial-2-fatores.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">interaction.plot</span>(F2, F1, resp, <span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb387-2"><a href="esquema-fatorial-2-fatores.html#cb387-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">xlab=</span><span class="st">&#39;&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="at">trace.label=</span><span class="st">&quot;FATOR1&quot;</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="esquema-fatorial-2-fatores.html#cb388-1"></a><span class="co"># FATOR1 e FATOR2</span></span>
-<span id="cb388-2"><a href="esquema-fatorial-2-fatores.html#cb388-2"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(F1, F2, resp, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
-<span id="cb388-3"><a href="esquema-fatorial-2-fatores.html#cb388-3"></a>                             <span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="esquema-fatorial-2-fatores.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FATOR1 e FATOR2</span></span>
+<span id="cb388-2"><a href="esquema-fatorial-2-fatores.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">interaction.plot</span>(F1, F2, resp, <span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">bty=</span><span class="st">&#39;l&#39;</span>, </span>
+<span id="cb388-3"><a href="esquema-fatorial-2-fatores.html#cb388-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">xlab=</span><span class="st">&#39;&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="at">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
 <p><br><br></p>
 </div>
@@ -1607,8 +1607,8 @@ H_1: &amp; \mbox{Pelo menos duas combinações entre os níveis do fator 1 e do 
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="esquema-fatorial-2-fatores.html#cb389-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(resp<span class="op">~</span>F1<span class="op">*</span>F2<span class="op">+</span>bloco))</span>
-<span id="cb389-2"><a href="esquema-fatorial-2-fatores.html#cb389-2"></a><span class="kw">anova</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="esquema-fatorial-2-fatores.html#cb389-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">aov</span>(resp<span class="sc">~</span>F1<span class="sc">*</span>F2<span class="sc">+</span>bloco))</span>
+<span id="cb389-2"><a href="esquema-fatorial-2-fatores.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1678,13 +1678,13 @@ H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="esquema-fatorial-2-fatores.html#cb390-1"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res))</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="esquema-fatorial-2-fatores.html#cb390-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">norm=</span><span class="fu">shapiro.test</span>(mod<span class="sc">$</span>res))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  mod$res
 ## W = 0.95489, p-value = 0.1118</code></pre>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="esquema-fatorial-2-fatores.html#cb392-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="esquema-fatorial-2-fatores.html#cb392-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-241-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
@@ -1700,7 +1700,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 \end{eqnarray*}\]</span></p>
 <div id="para-fator-1-1" class="section level4" number="16.18.2.1">
 <h4><span class="header-section-number">16.18.2.1</span> Para Fator 1</h4>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="esquema-fatorial-2-fatores.html#cb393-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>residuals<span class="op">~</span>F1))</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="esquema-fatorial-2-fatores.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>residuals<span class="sc">~</span>F1))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1710,7 +1710,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="para-fator-2-1" class="section level4" number="16.18.2.2">
 <h4><span class="header-section-number">16.18.2.2</span> Para Fator 2</h4>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="esquema-fatorial-2-fatores.html#cb395-1"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>residuals<span class="op">~</span>F2))</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="esquema-fatorial-2-fatores.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>residuals<span class="sc">~</span>F2))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1720,8 +1720,8 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="juntandos-os-fatores-1" class="section level4" number="16.18.2.3">
 <h4><span class="header-section-number">16.18.2.3</span> Juntandos os fatores</h4>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="esquema-fatorial-2-fatores.html#cb397-1"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)),<span class="dt">e=</span><span class="dv">5</span>)</span>
-<span id="cb397-2"><a href="esquema-fatorial-2-fatores.html#cb397-2"></a><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>residuals<span class="op">~</span>tratamentos))</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="esquema-fatorial-2-fatores.html#cb397-1" aria-hidden="true" tabindex="-1"></a>tratamentos<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)),<span class="at">e=</span><span class="dv">5</span>)</span>
+<span id="cb397-2"><a href="esquema-fatorial-2-fatores.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>residuals<span class="sc">~</span>tratamentos))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1740,23 +1740,23 @@ H_1: \mbox{Os erros não são independentes}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="esquema-fatorial-2-fatores.html#cb399-1"></a>(<span class="dt">ind=</span>lmtest<span class="op">::</span><span class="kw">dwtest</span>(mod))</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="esquema-fatorial-2-fatores.html#cb399-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">ind=</span>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(mod))</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
 ## data:  mod
 ## DW = 1.8654, p-value = 0.06734
 ## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="esquema-fatorial-2-fatores.html#cb401-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>res, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Resíduos brutos&#39;</span>)</span>
-<span id="cb401-2"><a href="esquema-fatorial-2-fatores.html#cb401-2"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="esquema-fatorial-2-fatores.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod<span class="sc">$</span>res, <span class="at">las=</span><span class="dv">1</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;Resíduos brutos&#39;</span>)</span>
+<span id="cb401-2"><a href="esquema-fatorial-2-fatores.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-246-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 </div>
 <div id="teste-de-comparações-3" class="section level2" number="16.19">
 <h2><span class="header-section-number">16.19</span> Teste de comparações</h2>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="esquema-fatorial-2-fatores.html#cb402-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb402-2"><a href="esquema-fatorial-2-fatores.html#cb402-2"></a><span class="kw">with</span>(dados,<span class="kw">fat2.dbc</span>(F1,F2,bloco,resp, <span class="dt">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="esquema-fatorial-2-fatores.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb402-2"><a href="esquema-fatorial-2-fatores.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados,<span class="fu">fat2.dbc</span>(F1,F2,bloco,resp, <span class="at">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Legenda:
 ## FATOR 1:  F1 
@@ -1766,13 +1766,13 @@ H_1: \mbox{Os erros não são independentes}.
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##         GL     SQ QM      Fc   Pr&gt;Fc
-## Bloco    4  11614  4  0.6551 0.62822
-## F1       1  11696  2  2.6390 0.11547
-## F2       3  84755  3  6.3743 0.00198
-## F1*F2    3 212960  6 16.0166 0.00000
-## Residuo 28 124098  5                
-## Total   39 445123  1                
+##         GL     SQ    QM      Fc   Pr&gt;Fc
+## Bloco    4  11614  2903  0.6551 0.62822
+## F1       1  11696 11696  2.6390 0.11547
+## F2       3  84755 28252  6.3743 0.00198
+## F1*F2    3 212960 70987 16.0166 0.00000
+## Residuo 28 124098  4432                
+## Total   39 445123                      
 ## ------------------------------------------------------------------------
 ## CV = 39.54 %
 ## 
@@ -1794,13 +1794,13 @@ H_1: \mbox{Os erros não são independentes}.
 ## ------------------------------------------------------------------------
 ##               GL       SQ         QM      Fc  Pr.Fc
 ## Bloco          4  11613.6   2903.400  0.6551 0.6282
-## F2             3  84754.5  28251.500  6.3743  0.002
+## F2             3  84754.5  28251.500  6.3743 0.0020
 ## F1:F2 Plantio  1  26112.1  26112.100  5.8916 0.0219
-## F1:F2 R1+15    1  70896.4  70896.400 15.9962  4e-04
+## F1:F2 R1+15    1  70896.4  70896.400 15.9962 0.0004
 ## F1:F2 V1+15    1  15288.1  15288.100  3.4494 0.0738
-## F1:F2 V3+15    1 112360.0 112360.000 25.3515      0
-## Residuo       28 124098.4   4432.086               
-## Total         39 445123.1  11413.413               
+## F1:F2 V3+15    1 112360.0 112360.000 25.3515 0.0000
+## Residuo       28 124098.4   4432.086             NA
+## Total         39 445123.1  11413.413             NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1854,10 +1854,10 @@ H_1: \mbox{Os erros não são independentes}.
 ##          GL       SQ        QM      Fc  Pr.Fc
 ## Bloco     4  11613.6  2903.400  0.6551 0.6282
 ## F1        1  11696.4 11696.400   2.639 0.1155
-## F2:F1 IN  3 105043.8 35014.583  7.9002  6e-04
-## F2:F1 NI  3 192671.0 64223.650 14.4906      0
-## Residuo  28 124098.4  4432.086               
-## Total    39 445123.1 11413.413               
+## F2:F1 IN  3 105043.8 35014.583  7.9002 0.0006
+## F2:F1 NI  3 192671.0 64223.650 14.4906 0.0000
+## Residuo  28 124098.4  4432.086             NA
+## Total    39 445123.1 11413.413             NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1884,10 +1884,10 @@ H_1: \mbox{Os erros não são independentes}.
 ##  b    2   68.2 
 ##  b    3   62.2 
 ## ------------------------------------------------------------------------</code></pre>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="esquema-fatorial-2-fatores.html#cb404-1"></a><span class="co"># ou</span></span>
-<span id="cb404-2"><a href="esquema-fatorial-2-fatores.html#cb404-2"></a></span>
-<span id="cb404-3"><a href="esquema-fatorial-2-fatores.html#cb404-3"></a><span class="kw">library</span>(easyanova)</span>
-<span id="cb404-4"><a href="esquema-fatorial-2-fatores.html#cb404-4"></a><span class="kw">ea2</span>(dados, <span class="dt">design =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="esquema-fatorial-2-fatores.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb404-2"><a href="esquema-fatorial-2-fatores.html#cb404-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-3"><a href="esquema-fatorial-2-fatores.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easyanova)</span>
+<span id="cb404-4"><a href="esquema-fatorial-2-fatores.html#cb404-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ea2</span>(dados, <span class="at">design =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
 <pre><code>## $`Analysis of variance`
 ##                   df type III SS mean square F value    p&gt;F
@@ -2068,10 +2068,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

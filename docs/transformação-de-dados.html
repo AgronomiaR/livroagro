@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 13 Transformação de dados | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 13 Transformação de dados | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="delineamento-inteiramente-casualizado.html"/>
 <link rel="next" href="delineamento-em-blocos-casualizados.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -835,9 +835,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="conjunto-de-dados-2" class="section level2" number="13.7">
 <h2><span class="header-section-number">13.7</span> Conjunto de dados</h2>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="transformação-de-dados.html#cb188-1"></a>resposta=<span class="kw">c</span>(<span class="dv">02</span>,<span class="dv">02</span>,<span class="dv">01</span>,<span class="dv">01</span>,<span class="dv">00</span>,<span class="dv">01</span>,<span class="dv">00</span>,<span class="dv">00</span>,<span class="dv">01</span>,<span class="dv">01</span>,<span class="dv">12</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">11</span>,<span class="dv">07</span>,<span class="dv">09</span>,<span class="dv">15</span>,<span class="dv">08</span>,<span class="dv">10</span>)</span>
-<span id="cb188-2"><a href="transformação-de-dados.html#cb188-2"></a>cultivar=<span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],<span class="dt">e=</span><span class="dv">5</span>)</span>
-<span id="cb188-3"><a href="transformação-de-dados.html#cb188-3"></a>cultivar=<span class="kw">as.factor</span>(cultivar)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="transformação-de-dados.html#cb188-1" aria-hidden="true" tabindex="-1"></a>resposta<span class="ot">=</span><span class="fu">c</span>(<span class="dv">02</span>,<span class="dv">02</span>,<span class="dv">01</span>,<span class="dv">01</span>,<span class="dv">00</span>,<span class="dv">01</span>,<span class="dv">00</span>,<span class="dv">00</span>,<span class="dv">01</span>,<span class="dv">01</span>,<span class="dv">12</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">11</span>,<span class="dv">07</span>,<span class="dv">09</span>,<span class="dv">15</span>,<span class="dv">08</span>,<span class="dv">10</span>)</span>
+<span id="cb188-2"><a href="transformação-de-dados.html#cb188-2" aria-hidden="true" tabindex="-1"></a>cultivar<span class="ot">=</span><span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="at">e=</span><span class="dv">5</span>)</span>
+<span id="cb188-3"><a href="transformação-de-dados.html#cb188-3" aria-hidden="true" tabindex="-1"></a>cultivar<span class="ot">=</span><span class="fu">as.factor</span>(cultivar)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="gráficos-exploratórios" class="section level2" number="13.8">
@@ -845,22 +845,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="gráfico-de-caixas-1" class="section level3" number="13.8.1">
 <h3><span class="header-section-number">13.8.1</span> Gráfico de caixas</h3>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="transformação-de-dados.html#cb189-1"></a>car<span class="op">::</span><span class="kw">Boxplot</span>(resposta<span class="op">~</span>cultivar)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="transformação-de-dados.html#cb189-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Boxplot</span>(resposta<span class="sc">~</span>cultivar)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <pre><code>## [1] &quot;18&quot;</code></pre>
 <p><br></p>
 </div>
 <div id="histograma-1" class="section level3" number="13.8.2">
 <h3><span class="header-section-number">13.8.2</span> Histograma</h3>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="transformação-de-dados.html#cb191-1"></a><span class="kw">hist</span>(resposta)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="transformação-de-dados.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resposta)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <p><br></p>
 </div>
 </div>
 <div id="análise-de-variância-2" class="section level2" number="13.9">
 <h2><span class="header-section-number">13.9</span> Análise de variância</h2>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="transformação-de-dados.html#cb192-1"></a>modelo=<span class="kw">aov</span>(resposta<span class="op">~</span>cultivar)</span>
-<span id="cb192-2"><a href="transformação-de-dados.html#cb192-2"></a><span class="kw">anova</span>(modelo) <span class="co"># Conferir GL</span></span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="transformação-de-dados.html#cb192-1" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(resposta<span class="sc">~</span>cultivar)</span>
+<span id="cb192-2"><a href="transformação-de-dados.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo) <span class="co"># Conferir GL</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: resposta
@@ -875,7 +875,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.10</span> Pressuposições</h2>
 <div id="normalidade-dos-erros-2" class="section level3" number="13.10.1">
 <h3><span class="header-section-number">13.10.1</span> Normalidade dos erros</h3>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="transformação-de-dados.html#cb194-1"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="transformação-de-dados.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -885,7 +885,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="homogeneidade-das-variâncias-1" class="section level3" number="13.10.2">
 <h3><span class="header-section-number">13.10.2</span> Homogeneidade das variâncias</h3>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="transformação-de-dados.html#cb196-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>cultivar)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="transformação-de-dados.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>cultivar)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -896,7 +896,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="independência-dos-erros-1" class="section level3" number="13.10.3">
 <h3><span class="header-section-number">13.10.3</span> Independência dos erros</h3>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="transformação-de-dados.html#cb198-1"></a>lmtest<span class="op">::</span><span class="kw">dwtest</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="transformação-de-dados.html#cb198-1" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(modelo)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -908,9 +908,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="gráfico-de-resíduos-padronizados" class="section level3" number="13.10.4">
 <h3><span class="header-section-number">13.10.4</span> Gráfico de resíduos padronizados</h3>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="transformação-de-dados.html#cb200-1"></a>a=<span class="kw">anova</span>(modelo)</span>
-<span id="cb200-2"><a href="transformação-de-dados.html#cb200-2"></a><span class="kw">plot</span>(modelo<span class="op">$</span>residuals<span class="op">/</span><span class="kw">sqrt</span>(a<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">2</span>]), <span class="dt">ylab=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</span>
-<span id="cb200-3"><a href="transformação-de-dados.html#cb200-3"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="transformação-de-dados.html#cb200-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">anova</span>(modelo)</span>
+<span id="cb200-2"><a href="transformação-de-dados.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>residuals<span class="sc">/</span><span class="fu">sqrt</span>(a<span class="sc">$</span><span class="st">`</span><span class="at">Mean Sq</span><span class="st">`</span>[<span class="dv">2</span>]), <span class="at">ylab=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</span>
+<span id="cb200-3"><a href="transformação-de-dados.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
 <p>As pressuposições de normalidade dos erros e homogeneidade das variâncias não foram atendidas. Dessa forma, vamos transformar os dados e conferir novamente as pressuposições!</p>
 </div>
@@ -924,17 +924,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="usando-o-comando-boxcox-e-conferindo-visualmente-um-valor-aproximado-de-lambda" class="section level3" number="13.11.2">
 <h3><span class="header-section-number">13.11.2</span> Usando o comando boxcox e conferindo visualmente um valor aproximado de <span class="math inline">\(\lambda\)</span></h3>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="transformação-de-dados.html#cb201-1"></a><span class="co"># MASS::boxcox(modelo) ## o comando boxcox do pacote MASS não aceita quando ocorre observações 0</span></span>
-<span id="cb201-2"><a href="transformação-de-dados.html#cb201-2"></a><span class="co"># vamos somar uma constante com valor &quot;baixo&quot;</span></span>
-<span id="cb201-3"><a href="transformação-de-dados.html#cb201-3"></a>MASS<span class="op">::</span><span class="kw">boxcox</span>(<span class="kw">aov</span>(resposta<span class="fl">+0.000001</span><span class="op">~</span>cultivar))</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="transformação-de-dados.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MASS::boxcox(modelo) ## o comando boxcox do pacote MASS não aceita quando ocorre observações 0</span></span>
+<span id="cb201-2"><a href="transformação-de-dados.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="co"># vamos somar uma constante com valor &quot;baixo&quot;</span></span>
+<span id="cb201-3"><a href="transformação-de-dados.html#cb201-3" aria-hidden="true" tabindex="-1"></a>MASS<span class="sc">::</span><span class="fu">boxcox</span>(<span class="fu">aov</span>(resposta<span class="fl">+0.000001</span><span class="sc">~</span>cultivar))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="descobrindo-o-valor-exato-de-lambda" class="section level3" number="13.11.3">
 <h3><span class="header-section-number">13.11.3</span> Descobrindo o valor exato de <span class="math inline">\(\lambda\)</span></h3>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="transformação-de-dados.html#cb202-1"></a>bc=MASS<span class="op">::</span><span class="kw">boxcox</span>(<span class="kw">aov</span>(resposta<span class="fl">+0.000001</span><span class="op">~</span>cultivar))</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="transformação-de-dados.html#cb202-1" aria-hidden="true" tabindex="-1"></a>bc<span class="ot">=</span>MASS<span class="sc">::</span><span class="fu">boxcox</span>(<span class="fu">aov</span>(resposta<span class="fl">+0.000001</span><span class="sc">~</span>cultivar))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="transformação-de-dados.html#cb203-1"></a>bc<span class="op">$</span>x[<span class="kw">which.max</span>(bc<span class="op">$</span>y)]</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="transformação-de-dados.html#cb203-1" aria-hidden="true" tabindex="-1"></a>bc<span class="sc">$</span>x[<span class="fu">which.max</span>(bc<span class="sc">$</span>y)]</span></code></pre></div>
 <pre><code>## [1] 0.4242424</code></pre>
 <p>A aproximação de <span class="math inline">\(\lambda\)</span> é 0,5 (sqrt(Y))</p>
 <p><br></p>
@@ -945,14 +945,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="modelo-transformado" class="section level3" number="13.12.1">
 <h3><span class="header-section-number">13.12.1</span> Modelo transformado</h3>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="transformação-de-dados.html#cb205-1"></a>modelo=<span class="kw">aov</span>(resposta<span class="op">^</span><span class="fl">0.5</span><span class="op">~</span>cultivar)</span>
-<span id="cb205-2"><a href="transformação-de-dados.html#cb205-2"></a><span class="co">#ou</span></span>
-<span id="cb205-3"><a href="transformação-de-dados.html#cb205-3"></a>modelo=<span class="kw">aov</span>(<span class="kw">sqrt</span>(resposta)<span class="op">~</span>cultivar)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="transformação-de-dados.html#cb205-1" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(resposta<span class="sc">^</span><span class="fl">0.5</span><span class="sc">~</span>cultivar)</span>
+<span id="cb205-2"><a href="transformação-de-dados.html#cb205-2" aria-hidden="true" tabindex="-1"></a><span class="co">#ou</span></span>
+<span id="cb205-3"><a href="transformação-de-dados.html#cb205-3" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(<span class="fu">sqrt</span>(resposta)<span class="sc">~</span>cultivar)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="normalidade-dos-erros-3" class="section level3" number="13.12.2">
 <h3><span class="header-section-number">13.12.2</span> Normalidade dos erros</h3>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="transformação-de-dados.html#cb206-1"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="transformação-de-dados.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -963,7 +963,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="homogeneidade-das-variâncias-2" class="section level3" number="13.12.3">
 <h3><span class="header-section-number">13.12.3</span> Homogeneidade das variâncias</h3>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="transformação-de-dados.html#cb208-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>cultivar)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="transformação-de-dados.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>cultivar)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -974,7 +974,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="independência-dos-erros-2" class="section level3" number="13.12.4">
 <h3><span class="header-section-number">13.12.4</span> Independência dos erros</h3>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="transformação-de-dados.html#cb210-1"></a>lmtest<span class="op">::</span><span class="kw">dwtest</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="transformação-de-dados.html#cb210-1" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(modelo)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -986,9 +986,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="gráfico-de-resíduos-padronizados-1" class="section level3" number="13.12.5">
 <h3><span class="header-section-number">13.12.5</span> Gráfico de resíduos padronizados</h3>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="transformação-de-dados.html#cb212-1"></a>a=<span class="kw">anova</span>(modelo)</span>
-<span id="cb212-2"><a href="transformação-de-dados.html#cb212-2"></a><span class="kw">plot</span>(modelo<span class="op">$</span>residuals<span class="op">/</span><span class="kw">sqrt</span>(a<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">2</span>]), <span class="dt">ylab=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</span>
-<span id="cb212-3"><a href="transformação-de-dados.html#cb212-3"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="transformação-de-dados.html#cb212-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">anova</span>(modelo)</span>
+<span id="cb212-2"><a href="transformação-de-dados.html#cb212-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>residuals<span class="sc">/</span><span class="fu">sqrt</span>(a<span class="sc">$</span><span class="st">`</span><span class="at">Mean Sq</span><span class="st">`</span>[<span class="dv">2</span>]), <span class="at">ylab=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</span>
+<span id="cb212-3"><a href="transformação-de-dados.html#cb212-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <p><br></p>
 </div>
@@ -998,18 +998,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-multcomp-1" class="section level3" number="13.13.1">
 <h3><span class="header-section-number">13.13.1</span> Teste de Comparação Múltipla de Tukey (Utilizando o multcomp)</h3>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="transformação-de-dados.html#cb213-1"></a><span class="kw">library</span>(multcomp)</span>
-<span id="cb213-2"><a href="transformação-de-dados.html#cb213-2"></a>mcomp=<span class="kw">glht</span>(modelo, <span class="kw">mcp</span>(<span class="dt">cultivar=</span><span class="st">&quot;Tukey&quot;</span>))</span>
-<span id="cb213-3"><a href="transformação-de-dados.html#cb213-3"></a><span class="kw">plot</span>(mcomp)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="transformação-de-dados.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
+<span id="cb213-2"><a href="transformação-de-dados.html#cb213-2" aria-hidden="true" tabindex="-1"></a>mcomp<span class="ot">=</span><span class="fu">glht</span>(modelo, <span class="fu">mcp</span>(<span class="at">cultivar=</span><span class="st">&quot;Tukey&quot;</span>))</span>
+<span id="cb213-3"><a href="transformação-de-dados.html#cb213-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mcomp)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="transformação-de-dados.html#cb214-1"></a><span class="kw">cld</span>(mcomp)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="transformação-de-dados.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cld</span>(mcomp)</span></code></pre></div>
 <pre><code>##   A   B   C   D 
 ## &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot;</code></pre>
 <p><br></p>
 </div>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-tukeyhsd-do-r-1" class="section level3" number="13.13.2">
 <h3><span class="header-section-number">13.13.2</span> Teste de Comparação Múltipla de Tukey (Utilizando o TukeyHSD do R)</h3>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="transformação-de-dados.html#cb216-1"></a>(<span class="dt">tukey=</span><span class="kw">TukeyHSD</span>(modelo))</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="transformação-de-dados.html#cb216-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">tukey=</span><span class="fu">TukeyHSD</span>(modelo))</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -1023,23 +1023,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## C-B  2.9615534  2.056209 3.8668981 0.0000004
 ## D-B  2.5018879  1.596543 3.4072325 0.0000035
 ## D-C -0.4596655 -1.365010 0.4456791 0.4869422</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="transformação-de-dados.html#cb218-1"></a><span class="kw">plot</span>(tukey)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="transformação-de-dados.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-hsd.test-do-agricolae-1" class="section level3" number="13.13.3">
 <h3><span class="header-section-number">13.13.3</span> Teste de Comparação Múltipla de Tukey (Utilizando o HSD.test do Agricolae)</h3>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="transformação-de-dados.html#cb219-1"></a><span class="kw">library</span>(agricolae)</span>
-<span id="cb219-2"><a href="transformação-de-dados.html#cb219-2"></a>tukey=<span class="kw">HSD.test</span>(modelo,<span class="st">&quot;cultivar&quot;</span>)</span>
-<span id="cb219-3"><a href="transformação-de-dados.html#cb219-3"></a><span class="kw">plot</span>(tukey)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="transformação-de-dados.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb219-2"><a href="transformação-de-dados.html#cb219-2" aria-hidden="true" tabindex="-1"></a>tukey<span class="ot">=</span><span class="fu">HSD.test</span>(modelo,<span class="st">&quot;cultivar&quot;</span>)</span>
+<span id="cb219-3"><a href="transformação-de-dados.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-ea1-do-pacote-easyanova-1" class="section level3" number="13.13.4">
 <h3><span class="header-section-number">13.13.4</span> Teste de Comparação Múltipla de Tukey (Utilizando o ea1() do pacote easyanova)</h3>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="transformação-de-dados.html#cb220-1"></a><span class="kw">library</span>(easyanova)</span>
-<span id="cb220-2"><a href="transformação-de-dados.html#cb220-2"></a>tukey=<span class="kw">ea1</span>(<span class="kw">data.frame</span>(cultivar,resposta<span class="op">^</span><span class="fl">0.5</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="transformação-de-dados.html#cb221-1"></a><span class="kw">cbind</span>(tukey<span class="op">$</span>Means[<span class="dv">1</span>],tukey<span class="op">$</span>Means[<span class="dv">2</span>],tukey<span class="op">$</span>Means[<span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="transformação-de-dados.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(easyanova)</span>
+<span id="cb220-2"><a href="transformação-de-dados.html#cb220-2" aria-hidden="true" tabindex="-1"></a>tukey<span class="ot">=</span><span class="fu">ea1</span>(<span class="fu">data.frame</span>(cultivar,resposta<span class="sc">^</span><span class="fl">0.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="transformação-de-dados.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(tukey<span class="sc">$</span>Means[<span class="dv">1</span>],tukey<span class="sc">$</span>Means[<span class="dv">2</span>],tukey<span class="sc">$</span>Means[<span class="dv">4</span>])</span></code></pre></div>
 <pre><code>##   treatment   mean tukey
 ## 1         C 3.5616     a
 ## 2         D 3.1019     a
@@ -1049,20 +1049,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="teste-de-comparação-múltipla-de-tukey-utilizando-o-dic-do-pacote-expdes.pt-1" class="section level3" number="13.13.5">
 <h3><span class="header-section-number">13.13.5</span> Teste de Comparação Múltipla de Tukey (Utilizando o dic do pacote ExpDes.pt)</h3>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="transformação-de-dados.html#cb223-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb223-2"><a href="transformação-de-dados.html#cb223-2"></a><span class="kw">dic</span>(cultivar,resposta<span class="op">^</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="transformação-de-dados.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb223-2"><a href="transformação-de-dados.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dic</span>(cultivar,resposta<span class="sc">^</span><span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc      Pr&gt;Fc
-## Tratamento  3 33.346  3 44.402 5.5521e-08
-## Residuo    16  4.005  2                  
-## Total      19 37.352  1                  
+##            GL     SQ      QM     Fc      Pr&gt;Fc
+## Tratamento  3 33.346 11.1155 44.402 5.5521e-08
+## Residuo    16  4.005  0.2503                  
+## Total      19 37.352                          
 ## ------------------------------------------------------------------------
 ## CV = 24.32 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.7181511 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -1093,24 +1093,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <p>Um experimento foi conduzido com o intuito de avaliar a inoculação de <em>Trichoderma</em> sp. (T4), <em>Azospirillum</em> sp. (T3) e associação de ambos (T2) em relação a testemunha, quanto à altura de plantas de milho. O experimento foi conduzido em delineamento inteiramente casualizado com 8 repetições.</p>
 <p><br></p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="transformação-de-dados.html#cb225-1"></a>RESP=<span class="kw">c</span>(<span class="dv">124</span>,<span class="dv">136</span>,<span class="dv">124</span>,<span class="dv">102</span>,<span class="dv">112</span>,<span class="dv">108</span>,<span class="dv">102</span>,<span class="dv">122</span>,</span>
-<span id="cb225-2"><a href="transformação-de-dados.html#cb225-2"></a>       <span class="dv">130</span>,<span class="dv">128</span>,<span class="dv">118</span>,<span class="dv">106</span>,<span class="dv">126</span>,<span class="dv">106</span>,<span class="dv">128</span>,<span class="dv">122</span>,</span>
-<span id="cb225-3"><a href="transformação-de-dados.html#cb225-3"></a>       <span class="dv">132</span>,<span class="dv">132</span>,<span class="dv">190</span>,<span class="dv">144</span>,<span class="dv">090</span>,<span class="dv">126</span>,<span class="dv">142</span>,<span class="dv">148</span>,</span>
-<span id="cb225-4"><a href="transformação-de-dados.html#cb225-4"></a>       <span class="dv">140</span>,<span class="dv">120</span>,<span class="dv">118</span>,<span class="dv">098</span>,<span class="dv">110</span>,<span class="dv">140</span>,<span class="dv">104</span>,<span class="dv">142</span>)</span>
-<span id="cb225-5"><a href="transformação-de-dados.html#cb225-5"></a>TRAT=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dt">e=</span><span class="dv">8</span>)</span>
-<span id="cb225-6"><a href="transformação-de-dados.html#cb225-6"></a>dados =<span class="st"> </span><span class="kw">data.frame</span>(TRAT, RESP)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="transformação-de-dados.html#cb225-1" aria-hidden="true" tabindex="-1"></a>RESP<span class="ot">=</span><span class="fu">c</span>(<span class="dv">124</span>,<span class="dv">136</span>,<span class="dv">124</span>,<span class="dv">102</span>,<span class="dv">112</span>,<span class="dv">108</span>,<span class="dv">102</span>,<span class="dv">122</span>,</span>
+<span id="cb225-2"><a href="transformação-de-dados.html#cb225-2" aria-hidden="true" tabindex="-1"></a>       <span class="dv">130</span>,<span class="dv">128</span>,<span class="dv">118</span>,<span class="dv">106</span>,<span class="dv">126</span>,<span class="dv">106</span>,<span class="dv">128</span>,<span class="dv">122</span>,</span>
+<span id="cb225-3"><a href="transformação-de-dados.html#cb225-3" aria-hidden="true" tabindex="-1"></a>       <span class="dv">132</span>,<span class="dv">132</span>,<span class="dv">190</span>,<span class="dv">144</span>,<span class="dv">090</span>,<span class="dv">126</span>,<span class="dv">142</span>,<span class="dv">148</span>,</span>
+<span id="cb225-4"><a href="transformação-de-dados.html#cb225-4" aria-hidden="true" tabindex="-1"></a>       <span class="dv">140</span>,<span class="dv">120</span>,<span class="dv">118</span>,<span class="dv">098</span>,<span class="dv">110</span>,<span class="dv">140</span>,<span class="dv">104</span>,<span class="dv">142</span>)</span>
+<span id="cb225-5"><a href="transformação-de-dados.html#cb225-5" aria-hidden="true" tabindex="-1"></a>TRAT<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)),<span class="at">e=</span><span class="dv">8</span>)</span>
+<span id="cb225-6"><a href="transformação-de-dados.html#cb225-6" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">=</span> <span class="fu">data.frame</span>(TRAT, RESP)</span></code></pre></div>
 <p><br><br></p>
 </div>
 </div>
 <div id="estatística-descritiva-1" class="section level2" number="13.15">
 <h2><span class="header-section-number">13.15</span> Estatística descritiva</h2>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="transformação-de-dados.html#cb226-1"></a>Média =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">mean</span>(RESP))</span>
-<span id="cb226-2"><a href="transformação-de-dados.html#cb226-2"></a>Variância =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">var</span>(RESP))</span>
-<span id="cb226-3"><a href="transformação-de-dados.html#cb226-3"></a>Desvio =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">sd</span>(RESP))</span>
-<span id="cb226-4"><a href="transformação-de-dados.html#cb226-4"></a>CV =<span class="st"> </span>Desvio <span class="op">/</span><span class="st"> </span>Média <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb226-5"><a href="transformação-de-dados.html#cb226-5"></a></span>
-<span id="cb226-6"><a href="transformação-de-dados.html#cb226-6"></a>desc =<span class="st"> </span><span class="kw">cbind</span>(Média, Variância, Desvio, CV)</span>
-<span id="cb226-7"><a href="transformação-de-dados.html#cb226-7"></a><span class="kw">kable</span>(<span class="kw">round</span>(desc,<span class="dv">2</span>), <span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="transformação-de-dados.html#cb226-1" aria-hidden="true" tabindex="-1"></a>Média <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">mean</span>(RESP))</span>
+<span id="cb226-2"><a href="transformação-de-dados.html#cb226-2" aria-hidden="true" tabindex="-1"></a>Variância <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">var</span>(RESP))</span>
+<span id="cb226-3"><a href="transformação-de-dados.html#cb226-3" aria-hidden="true" tabindex="-1"></a>Desvio <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">sd</span>(RESP))</span>
+<span id="cb226-4"><a href="transformação-de-dados.html#cb226-4" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">=</span> Desvio <span class="sc">/</span> Média <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb226-5"><a href="transformação-de-dados.html#cb226-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb226-6"><a href="transformação-de-dados.html#cb226-6" aria-hidden="true" tabindex="-1"></a>desc <span class="ot">=</span> <span class="fu">cbind</span>(Média, Variância, Desvio, CV)</span>
+<span id="cb226-7"><a href="transformação-de-dados.html#cb226-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(desc,<span class="dv">2</span>), <span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1132,12 +1132,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="por-cultivar" class="section level3" number="13.15.1">
 <h3><span class="header-section-number">13.15.1</span> Por Cultivar</h3>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="transformação-de-dados.html#cb227-1"></a>Médias =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, TRAT, mean))</span>
-<span id="cb227-2"><a href="transformação-de-dados.html#cb227-2"></a>Variâncias =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, TRAT, var))</span>
-<span id="cb227-3"><a href="transformação-de-dados.html#cb227-3"></a>Desvios =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">tapply</span>(RESP, TRAT, sd))</span>
-<span id="cb227-4"><a href="transformação-de-dados.html#cb227-4"></a>CV =<span class="st"> </span>Desvios <span class="op">/</span><span class="st"> </span>Médias <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb227-5"><a href="transformação-de-dados.html#cb227-5"></a>Desc =<span class="st"> </span><span class="kw">cbind</span>(Médias, Variâncias, Desvios, CV)</span>
-<span id="cb227-6"><a href="transformação-de-dados.html#cb227-6"></a><span class="kw">kable</span>(<span class="kw">round</span>(Desc,<span class="dv">2</span>),<span class="dt">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="transformação-de-dados.html#cb227-1" aria-hidden="true" tabindex="-1"></a>Médias <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, TRAT, mean))</span>
+<span id="cb227-2"><a href="transformação-de-dados.html#cb227-2" aria-hidden="true" tabindex="-1"></a>Variâncias <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, TRAT, var))</span>
+<span id="cb227-3"><a href="transformação-de-dados.html#cb227-3" aria-hidden="true" tabindex="-1"></a>Desvios <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">tapply</span>(RESP, TRAT, sd))</span>
+<span id="cb227-4"><a href="transformação-de-dados.html#cb227-4" aria-hidden="true" tabindex="-1"></a>CV <span class="ot">=</span> Desvios <span class="sc">/</span> Médias <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb227-5"><a href="transformação-de-dados.html#cb227-5" aria-hidden="true" tabindex="-1"></a>Desc <span class="ot">=</span> <span class="fu">cbind</span>(Médias, Variâncias, Desvios, CV)</span>
+<span id="cb227-6"><a href="transformação-de-dados.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(Desc,<span class="dv">2</span>),<span class="at">align=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1187,11 +1187,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="gráfico-de-caixas-2" class="section level3" number="13.16.1">
 <h3><span class="header-section-number">13.16.1</span> Gráfico de Caixas</h3>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="transformação-de-dados.html#cb228-1"></a><span class="kw">par</span>(<span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">.2</span>, <span class="fl">.2</span>))</span>
-<span id="cb228-2"><a href="transformação-de-dados.html#cb228-2"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb228-3"><a href="transformação-de-dados.html#cb228-3"></a>caixas=<span class="kw">with</span>(dados, car<span class="op">::</span><span class="kw">Boxplot</span>(RESP <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>TRAT, <span class="dt">vertical=</span>T,<span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
-<span id="cb228-4"><a href="transformação-de-dados.html#cb228-4"></a>mediab=<span class="kw">tapply</span>(RESP, TRAT, mean)</span>
-<span id="cb228-5"><a href="transformação-de-dados.html#cb228-5"></a><span class="kw">points</span>(mediab, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="transformação-de-dados.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty=</span><span class="st">&#39;l&#39;</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">2</span>, .<span class="dv">2</span>))</span>
+<span id="cb228-2"><a href="transformação-de-dados.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb228-3"><a href="transformação-de-dados.html#cb228-3" aria-hidden="true" tabindex="-1"></a>caixas<span class="ot">=</span><span class="fu">with</span>(dados, car<span class="sc">::</span><span class="fu">Boxplot</span>(RESP <span class="sc">~</span> dados<span class="sc">$</span>TRAT, <span class="at">vertical=</span>T,<span class="at">las=</span><span class="dv">1</span>, <span class="at">col=</span><span class="st">&#39;Lightyellow&#39;</span>))</span>
+<span id="cb228-4"><a href="transformação-de-dados.html#cb228-4" aria-hidden="true" tabindex="-1"></a>mediab<span class="ot">=</span><span class="fu">tapply</span>(RESP, TRAT, mean)</span>
+<span id="cb228-5"><a href="transformação-de-dados.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(mediab, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-130-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 </div>
@@ -1206,9 +1206,9 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="transformação-de-dados.html#cb229-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(RESP <span class="op">~</span><span class="st"> </span>TRAT))</span>
-<span id="cb229-2"><a href="transformação-de-dados.html#cb229-2"></a>av=<span class="kw">anova</span>(mod)</span>
-<span id="cb229-3"><a href="transformação-de-dados.html#cb229-3"></a><span class="kw">kable</span>(av, <span class="dt">align =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="transformação-de-dados.html#cb229-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">aov</span>(RESP <span class="sc">~</span> TRAT))</span>
+<span id="cb229-2"><a href="transformação-de-dados.html#cb229-2" aria-hidden="true" tabindex="-1"></a>av<span class="ot">=</span><span class="fu">anova</span>(mod)</span>
+<span id="cb229-3"><a href="transformação-de-dados.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(av, <span class="at">align =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1254,14 +1254,14 @@ H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="transformação-de-dados.html#cb230-1"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res))</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="transformação-de-dados.html#cb230-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">norm=</span><span class="fu">shapiro.test</span>(mod<span class="sc">$</span>res))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  mod$res
 ## W = 0.94078, p-value = 0.07878</code></pre>
 <p>Como p-valor calculado (<span class="math inline">\(p=0,07878\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(p=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, os erros seguem distribuição normal.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="transformação-de-dados.html#cb232-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="transformação-de-dados.html#cb232-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">&quot;Quantis teóricos&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-133-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
@@ -1275,7 +1275,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="transformação-de-dados.html#cb233-1"></a>(<span class="dt">homog=</span><span class="kw">with</span>(dados, <span class="kw">bartlett.test</span>(mod<span class="op">$</span>res <span class="op">~</span><span class="st"> </span>TRAT)))</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="transformação-de-dados.html#cb233-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">homog=</span><span class="fu">with</span>(dados, <span class="fu">bartlett.test</span>(mod<span class="sc">$</span>res <span class="sc">~</span> TRAT)))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1287,10 +1287,10 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="transformação-de-dados-2" class="section level2" number="13.19">
 <h2><span class="header-section-number">13.19</span> Transformação de dados</h2>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="transformação-de-dados.html#cb235-1"></a><span class="kw">library</span>(MASS)</span>
-<span id="cb235-2"><a href="transformação-de-dados.html#cb235-2"></a>bc=<span class="kw">boxcox</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="transformação-de-dados.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb235-2"><a href="transformação-de-dados.html#cb235-2" aria-hidden="true" tabindex="-1"></a>bc<span class="ot">=</span><span class="fu">boxcox</span>(mod)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="transformação-de-dados.html#cb236-1"></a>bc<span class="op">$</span>x[<span class="kw">which.max</span>(bc<span class="op">$</span>y)]</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="transformação-de-dados.html#cb236-1" aria-hidden="true" tabindex="-1"></a>bc<span class="sc">$</span>x[<span class="fu">which.max</span>(bc<span class="sc">$</span>y)]</span></code></pre></div>
 <pre><code>## [1] -0.2222222</code></pre>
 <p>O valor de <span class="math inline">\(\lambda\)</span> para a Transformação Box-Cox é -0,22222. Nesse sentido, vamos usar a aproximação. Logo, iremos usar a Transformação Log</p>
 <p><br></p>
@@ -1300,8 +1300,8 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 <div id="modelo-com-dados-transformados" class="section level3" number="13.19.2">
 <h3><span class="header-section-number">13.19.2</span> Modelo com dados transformados</h3>
 <p>Devemos testar novamente as pressuposições após a Transformação!!!</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="transformação-de-dados.html#cb238-1"></a>modelo=<span class="kw">aov</span>(<span class="kw">log</span>(RESP)<span class="op">~</span>TRAT)</span>
-<span id="cb238-2"><a href="transformação-de-dados.html#cb238-2"></a><span class="kw">anova</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="transformação-de-dados.html#cb238-1" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">aov</span>(<span class="fu">log</span>(RESP)<span class="sc">~</span>TRAT)</span>
+<span id="cb238-2"><a href="transformação-de-dados.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: log(RESP)
@@ -1313,7 +1313,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="normalidade-dos-erros-5" class="section level3" number="13.19.3">
 <h3><span class="header-section-number">13.19.3</span> Normalidade dos erros</h3>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="transformação-de-dados.html#cb240-1"></a><span class="kw">shapiro.test</span>(modelo<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="transformação-de-dados.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1323,7 +1323,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="homogeneidade-das-variâncias-3" class="section level3" number="13.19.4">
 <h3><span class="header-section-number">13.19.4</span> Homogeneidade das variâncias</h3>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="transformação-de-dados.html#cb242-1"></a><span class="kw">bartlett.test</span>(modelo<span class="op">$</span>residuals<span class="op">~</span>TRAT)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="transformação-de-dados.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(modelo<span class="sc">$</span>residuals<span class="sc">~</span>TRAT)</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1333,7 +1333,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="independências-dos-erros-1" class="section level3" number="13.19.5">
 <h3><span class="header-section-number">13.19.5</span> Independências dos erros</h3>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="transformação-de-dados.html#cb244-1"></a>lmtest<span class="op">::</span><span class="kw">dwtest</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="transformação-de-dados.html#cb244-1" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(modelo)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1344,8 +1344,8 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 </div>
 <div id="usando-os-pacotes-easyanova-e-expdes.pt" class="section level3" number="13.19.6">
 <h3><span class="header-section-number">13.19.6</span> Usando os pacotes easyanova e ExpDes.pt</h3>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="transformação-de-dados.html#cb246-1"></a>dados=<span class="kw">data.frame</span>(TRAT,<span class="kw">log</span>(RESP))</span>
-<span id="cb246-2"><a href="transformação-de-dados.html#cb246-2"></a>easyanova<span class="op">::</span><span class="kw">ea1</span>(dados, <span class="dt">design=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="transformação-de-dados.html#cb246-1" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(TRAT,<span class="fu">log</span>(RESP))</span>
+<span id="cb246-2"><a href="transformação-de-dados.html#cb246-2" aria-hidden="true" tabindex="-1"></a>easyanova<span class="sc">::</span><span class="fu">ea1</span>(dados, <span class="at">design=</span><span class="dv">1</span>, <span class="at">plot=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## $`Analysis of variance`
 ##            df type I SS mean square F value    p&gt;F
 ## treatments  3    0.1127      0.0376  1.8407 0.1627
@@ -1404,20 +1404,20 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 ##  1.11009554 -0.02503035 -0.14879364 -1.51636685 -0.66575971  1.11009554 
 ##          31          32 
 ## -1.07878809  1.21454754</code></pre>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="transformação-de-dados.html#cb248-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb248-2"><a href="transformação-de-dados.html#cb248-2"></a><span class="kw">with</span>(dados,<span class="kw">dic</span>(TRAT,<span class="kw">log</span>(RESP), <span class="dt">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="transformação-de-dados.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb248-2"><a href="transformação-de-dados.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(dados,<span class="fu">dic</span>(TRAT,<span class="fu">log</span>(RESP), <span class="at">mcomp=</span><span class="st">&quot;tukey&quot;</span>))</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc  Pr&gt;Fc
-## Tratamento  3 0.11275  3 1.8407 0.1627
-## Residuo    28 0.57170  2              
-## Total      31 0.68444  1              
+##            GL      SQ       QM     Fc  Pr&gt;Fc
+## Tratamento  3 0.11275 0.037583 1.8407 0.1627
+## Residuo    28 0.57170 0.020418              
+## Total      31 0.68444                       
 ## ------------------------------------------------------------------------
 ## CV = 2.97 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.1921639 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -1470,10 +1470,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

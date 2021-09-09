@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R"
 author: "Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi"
-date: "2021-01-13"
+date: "2021-09-09"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -14,8 +14,7 @@ description: "Este é um livro virtual desenvolvido com a finalidade de fornecer
 
 # Apresentação
 
-
-O R é uma linguagem de programação muito utilizada na âmbito da estatística e na ciência de dados. Na Agronomia, o conhecimento sobre essa linguagem é um diferencial, sobretudo na carreira acadêmica, pois sua limitação gráfica e de análises é praticamente inexistente. 
+R é uma linguagem de programação muito utilizada na âmbito da estatística e na ciência de dados. Na Agronomia, o conhecimento sobre essa linguagem é um diferencial, sobretudo na carreira acadêmica, pois sua limitação gráfica e de análises é praticamente inexistente. 
 
 Este livro virtual é a versão aprimorado do antigo website AgroR e tem a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R. 
 
@@ -1132,7 +1131,7 @@ round(ds,2)      # Se a observação for menor que .5 arredonda para baixo, do c
 ```
 
 ```
-##  [1]  6.10  8.94  7.02  9.39  8.73  6.45 11.91  7.44  5.51  4.79
+##  [1] 10.41  6.92  9.39  7.35  8.92  6.40  6.98  4.39  9.18 10.06
 ```
 
 <br>
@@ -1143,7 +1142,7 @@ ceiling(ds)      # sempre arredonda para cima
 ```
 
 ```
-##  [1]  7  9  8 10  9  7 12  8  6  5
+##  [1] 11  7 10  8  9  7  7  5 10 11
 ```
 
 <br>
@@ -1154,7 +1153,7 @@ floor(ds)        # sempre arredonda para baixo
 ```
 
 ```
-##  [1]  6  8  7  9  8  6 11  7  5  4
+##  [1] 10  6  9  7  8  6  6  4  9 10
 ```
 
 # Introdução aos loops
@@ -2377,15 +2376,15 @@ dic(tratamentos, resposta)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL    SQ QM     Fc      Pr>Fc
-## Tratamento  4 57442  2 178.43 1.8747e-12
-## Residuo    15  1207  3                  
-## Total      19 58650  1                  
+##            GL    SQ      QM     Fc      Pr>Fc
+## Tratamento  4 57442 14360.6 178.43 1.8747e-12
+## Residuo    15  1207    80.5                  
+## Total      19 58650                          
 ## ------------------------------------------------------------------------
 ## CV = 5.18 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.5023389 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -2701,15 +2700,15 @@ dic(trat,resp)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc      Pr>Fc
-## Tratamento  5 3.6921  3 12.312 2.7235e-05
-## Residuo    18 1.0796  2                  
-## Total      23 4.7717  1                  
+##            GL     SQ      QM     Fc      Pr>Fc
+## Tratamento  5 3.6921 0.73842 12.312 2.7235e-05
+## Residuo    18 1.0796 0.05998                  
+## Total      23 4.7717                          
 ## ------------------------------------------------------------------------
 ## CV = 10.84 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.2087967 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -2805,15 +2804,15 @@ dic(trat,resp,mcomp = "duncan")
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc      Pr>Fc
-## Tratamento  5 3.6921  3 12.312 2.7235e-05
-## Residuo    18 1.0796  2                  
-## Total      23 4.7717  1                  
+##            GL     SQ      QM     Fc      Pr>Fc
+## Tratamento  5 3.6921 0.73842 12.312 2.7235e-05
+## Residuo    18 1.0796 0.05998                  
+## Total      23 4.7717                          
 ## ------------------------------------------------------------------------
 ## CV = 10.84 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.2087967 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -3486,15 +3485,15 @@ dic(cultivar,resposta^0.5)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc      Pr>Fc
-## Tratamento  3 33.346  3 44.402 5.5521e-08
-## Residuo    16  4.005  2                  
-## Total      19 37.352  1                  
+##            GL     SQ      QM     Fc      Pr>Fc
+## Tratamento  3 33.346 11.1155 44.402 5.5521e-08
+## Residuo    16  4.005  0.2503                  
+## Total      19 37.352                          
 ## ------------------------------------------------------------------------
 ## CV = 24.32 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.7181511 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -3878,15 +3877,15 @@ with(dados,dic(TRAT,log(RESP), mcomp="tukey"))
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc  Pr>Fc
-## Tratamento  3 0.11275  3 1.8407 0.1627
-## Residuo    28 0.57170  2              
-## Total      31 0.68444  1              
+##            GL      SQ       QM     Fc  Pr>Fc
+## Tratamento  3 0.11275 0.037583 1.8407 0.1627
+## Residuo    28 0.57170 0.020418              
+## Total      31 0.68444                       
 ## ------------------------------------------------------------------------
 ## CV = 2.97 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.1921639 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -4440,11 +4439,11 @@ dbc(cultivar,bloco,resposta)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM      Fc   Pr>Fc
-## Tratamento  8 22981.3  4 11.4114 0.00003
-## Bloco       2    33.6  2  0.0666 0.93578
-## Residuo    16  4027.8  3                
-## Total      26 27042.7  1                
+##            GL      SQ      QM      Fc   Pr>Fc
+## Tratamento  8 22981.3 2872.67 11.4114 0.00003
+## Bloco       2    33.6   16.78  0.0666 0.93578
+## Residuo    16  4027.8  251.74                
+## Total      26 27042.7                        
 ## ------------------------------------------------------------------------
 ## CV = 8.69 %
 ## 
@@ -4787,11 +4786,11 @@ with(dados,dbc(Tratamento, bloco,resp, mcomp="tukey"))
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc   Pr>Fc
-## Tratamento 14 3302891  3 2.5458 0.01714
-## Bloco       2  308550  2 1.6648 0.20742
-## Residuo    28 2594739  4               
-## Total      44 6206180  1               
+##            GL      SQ     QM     Fc   Pr>Fc
+## Tratamento 14 3302891 235921 2.5458 0.01714
+## Bloco       2  308550 154275 1.6648 0.20742
+## Residuo    28 2594739  92669               
+## Total      44 6206180                      
 ## ------------------------------------------------------------------------
 ## CV = 12.25 %
 ## 
@@ -5409,12 +5408,12 @@ dql(TRAT,linha,coluna,RESP)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc   Pr>Fc
-## Tratamento  4 2020.05  3 9.0167 0.00133
-## Linha       4  257.83  5 1.1508 0.37964
-## Coluna      4   48.50  2 0.2165 0.92418
-## Residuo    12  672.10  4               
-## Total      24 2998.48  1               
+##            GL      SQ     QM     Fc   Pr>Fc
+## Tratamento  4 2020.05 505.01 9.0167 0.00133
+## Linha       4  257.83  64.46 1.1508 0.37964
+## Coluna      4   48.50  12.12 0.2165 0.92418
+## Residuo    12  672.10  56.01               
+## Total      24 2998.48                      
 ## ------------------------------------------------------------------------
 ## CV = 7.04 %
 ## 
@@ -6134,12 +6133,12 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##         GL     SQ QM      Fc    Pr>Fc
-## F1       1  11696  2  2.7579 0.106542
-## F2       3  84754  3  6.6615 0.001272
-## F1*F2    3 212960  5 16.7382 0.000001
-## Residuo 32 135712  4                 
-## Total   39 445123  1                 
+##         GL     SQ    QM      Fc    Pr>Fc
+## F1       1  11696 11696  2.7579 0.106542
+## F2       3  84754 28251  6.6615 0.001272
+## F1*F2    3 212960 70987 16.7382 0.000001
+## Residuo 32 135712  4241                 
+## Total   39 445123                       
 ## ------------------------------------------------------------------------
 ## CV = 38.68 %
 ## 
@@ -6162,11 +6161,11 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 ##               GL       SQ        QM      Fc  Pr.Fc
 ## F2             3  84754.5  28251.50  6.6615 0.0013
 ## F1:F2 Plantio  1  26112.1  26112.10  6.1571 0.0185
-## F1:F2 R1+15    1  70896.4  70896.40 16.7169  3e-04
+## F1:F2 R1+15    1  70896.4  70896.40 16.7169 0.0003
 ## F1:F2 V1+15    1  15288.1  15288.10  3.6048 0.0667
-## F1:F2 V3+15    1 112360.0 112360.00 26.4938      0
-## Residuo       32 135712.0   4241.00               
-## Total         39 445123.1  11413.41               
+## F1:F2 V3+15    1 112360.0 112360.00 26.4938 0.0000
+## Residuo       32 135712.0   4241.00      NA     NA
+## Total         39 445123.1  11413.41      NA     NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -6219,10 +6218,10 @@ with(dados,fat2.dic(F1,F2,resp, mcomp="tukey"))
 ## ------------------------------------------------------------------------
 ##          GL       SQ       QM      Fc  Pr.Fc
 ## F1        1  11696.4 11696.40  2.7579 0.1065
-## F2:F1 IN  3 105043.8 35014.58  8.2562  3e-04
-## F2:F1 NI  3 192671.0 64223.65 15.1435      0
-## Residuo  32 135712.0  4241.00               
-## Total    39 445123.1 11413.41               
+## F2:F1 IN  3 105043.8 35014.58  8.2562 0.0003
+## F2:F1 NI  3 192671.0 64223.65 15.1435 0.0000
+## Residuo  32 135712.0  4241.00      NA     NA
+## Total    39 445123.1 11413.41      NA     NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -6654,13 +6653,13 @@ with(dados,fat2.dbc(F1,F2,bloco,resp, mcomp="tukey"))
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##         GL     SQ QM      Fc   Pr>Fc
-## Bloco    4  11614  4  0.6551 0.62822
-## F1       1  11696  2  2.6390 0.11547
-## F2       3  84755  3  6.3743 0.00198
-## F1*F2    3 212960  6 16.0166 0.00000
-## Residuo 28 124098  5                
-## Total   39 445123  1                
+##         GL     SQ    QM      Fc   Pr>Fc
+## Bloco    4  11614  2903  0.6551 0.62822
+## F1       1  11696 11696  2.6390 0.11547
+## F2       3  84755 28252  6.3743 0.00198
+## F1*F2    3 212960 70987 16.0166 0.00000
+## Residuo 28 124098  4432                
+## Total   39 445123                      
 ## ------------------------------------------------------------------------
 ## CV = 39.54 %
 ## 
@@ -6682,13 +6681,13 @@ with(dados,fat2.dbc(F1,F2,bloco,resp, mcomp="tukey"))
 ## ------------------------------------------------------------------------
 ##               GL       SQ         QM      Fc  Pr.Fc
 ## Bloco          4  11613.6   2903.400  0.6551 0.6282
-## F2             3  84754.5  28251.500  6.3743  0.002
+## F2             3  84754.5  28251.500  6.3743 0.0020
 ## F1:F2 Plantio  1  26112.1  26112.100  5.8916 0.0219
-## F1:F2 R1+15    1  70896.4  70896.400 15.9962  4e-04
+## F1:F2 R1+15    1  70896.4  70896.400 15.9962 0.0004
 ## F1:F2 V1+15    1  15288.1  15288.100  3.4494 0.0738
-## F1:F2 V3+15    1 112360.0 112360.000 25.3515      0
-## Residuo       28 124098.4   4432.086               
-## Total         39 445123.1  11413.413               
+## F1:F2 V3+15    1 112360.0 112360.000 25.3515 0.0000
+## Residuo       28 124098.4   4432.086             NA
+## Total         39 445123.1  11413.413             NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -6742,10 +6741,10 @@ with(dados,fat2.dbc(F1,F2,bloco,resp, mcomp="tukey"))
 ##          GL       SQ        QM      Fc  Pr.Fc
 ## Bloco     4  11613.6  2903.400  0.6551 0.6282
 ## F1        1  11696.4 11696.400   2.639 0.1155
-## F2:F1 IN  3 105043.8 35014.583  7.9002  6e-04
-## F2:F1 NI  3 192671.0 64223.650 14.4906      0
-## Residuo  28 124098.4  4432.086               
-## Total    39 445123.1 11413.413               
+## F2:F1 IN  3 105043.8 35014.583  7.9002 0.0006
+## F2:F1 NI  3 192671.0 64223.650 14.4906 0.0000
+## Residuo  28 124098.4  4432.086             NA
+## Total    39 445123.1 11413.413             NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -8525,12 +8524,12 @@ mod.parc = with(dados, sp.plot(repe, FATOR1, FATOR2, RESP))
 ## 
 ## Response: RESP
 ##               Df Sum Sq Mean Sq F value    Pr(>F)    
-## repe          11   5772     525  0.2537  0.984072    
-## FATOR1         1  26339   26339 12.7363  0.004404 ** 
-## Ea            11  22748    2068                      
-## FATOR2         4 133672   33418 28.8821 2.442e-15 ***
-## FATOR1:FATOR2  4  12783    3196  2.7620  0.032468 *  
-## Eb            88 101820    1157                      
+## repe          11   5772     525     NaN       NaN    
+## FATOR1         1  26339   26339  12.736  0.004404 ** 
+## Ea            11  22748    2068     NaN       NaN    
+## FATOR2         4 133672   33418  28.882 2.442e-15 ***
+## FATOR1:FATOR2  4  12783    3196   2.762  0.032468 *  
+## Eb            88 101820    1157     NaN       NaN    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
@@ -9107,15 +9106,15 @@ dic(AMOSTRA,MS,quali = F)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc      Pr>Fc
-## Tratamento  4 3.1344  3 13.823 6.4215e-05
-## Residuo    15 0.8503  2                  
-## Total      19 3.9847  1                  
+##            GL     SQ      QM     Fc      Pr>Fc
+## Tratamento  4 3.1344 0.78361 13.823 6.4215e-05
+## Residuo    15 0.8503 0.05669                  
+## Total      19 3.9847                          
 ## ------------------------------------------------------------------------
 ## CV = 0.26 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.8052063 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -9437,15 +9436,15 @@ dic(FAD,CA, quali=F)
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL    SQ QM     Fc      Pr>Fc
-## Tratamento  4 4.868  3 8.4749 0.00036068
-## Residuo    20 2.872  2                  
-## Total      24 7.740  1                  
+##            GL    SQ     QM     Fc      Pr>Fc
+## Tratamento  4 4.868 1.2170 8.4749 0.00036068
+## Residuo    20 2.872 0.1436                  
+## Total      24 7.740                         
 ## ------------------------------------------------------------------------
 ## CV = 5.54 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.5382094 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------

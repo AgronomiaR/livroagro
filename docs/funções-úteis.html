@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 8 Funções úteis | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 8 Funções úteis | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="manipulação-de-objeto.html"/>
 <link rel="next" href="introdução-aos-loops.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -648,18 +648,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.1</span> Como criar um sequência repetida de observações?</h2>
 <hr />
 <p>O primeiro argumento indica o valor que será repetido e o segundo argumento será o número de vezes que será repetido</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="funções-úteis.html#cb41-1"></a><span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>)        <span class="co"># criando uma sequência de 10 observações 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="funções-úteis.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>)        <span class="co"># criando uma sequência de 10 observações 0</span></span></code></pre></div>
 <pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
 <p><br></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="funções-úteis.html#cb43-1"></a><span class="kw">rep</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">10</span>)      <span class="co"># criando uma sequência de 10 observações T</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="funções-úteis.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">10</span>)      <span class="co"># criando uma sequência de 10 observações T</span></span></code></pre></div>
 <pre><code>##  [1] &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot;</code></pre>
 <p><br><br></p>
 <p>Criando uma sequência de cinco observações 1 e 2, sendo cada uma repetida de forma alternada</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="funções-úteis.html#cb45-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="funções-úteis.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 2 1 2 1 2 1 2 1 2</code></pre>
 <p><br><br></p>
 <p>Criando uma sequência de cinco observações 1 e 2, sendo cada uma repetida de forma sequencial (5 primeiras observações são 1 e as demais 2).</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="funções-úteis.html#cb47-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">e=</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="funções-úteis.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">e=</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 2 2 2 2 2</code></pre>
 <p><br><br></p>
 <hr />
@@ -667,7 +667,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="como-criar-um-sequência-númerica-com-intervalo-fixo" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> Como criar um sequência númerica com intervalo fixo?</h2>
 <hr />
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="funções-úteis.html#cb49-1"></a><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">1</span>) <span class="co"># sequencia de 1 a 100 com intervalo de 1 em 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="funções-úteis.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">1</span>) <span class="co"># sequencia de 1 a 100 com intervalo de 1 em 1</span></span></code></pre></div>
 <pre><code>##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
 ##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
 ##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
@@ -680,16 +680,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="como-arredondar-valores" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Como arredondar valores?</h2>
 <hr />
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="funções-úteis.html#cb51-1"></a>ds=<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">2</span>) <span class="co"># Criando um vetor numérico de 10 observações com média 8 e desvio-padrão 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="funções-úteis.html#cb51-1" aria-hidden="true" tabindex="-1"></a>ds<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">2</span>) <span class="co"># Criando um vetor numérico de 10 observações com média 8 e desvio-padrão 2</span></span></code></pre></div>
 <p><br></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="funções-úteis.html#cb52-1"></a><span class="kw">round</span>(ds,<span class="dv">2</span>)      <span class="co"># Se a observação for menor que .5 arredonda para baixo, do contrário arredonda para cima</span></span></code></pre></div>
-<pre><code>##  [1]  6.10  8.94  7.02  9.39  8.73  6.45 11.91  7.44  5.51  4.79</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="funções-úteis.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ds,<span class="dv">2</span>)      <span class="co"># Se a observação for menor que .5 arredonda para baixo, do contrário arredonda para cima</span></span></code></pre></div>
+<pre><code>##  [1] 10.41  6.92  9.39  7.35  8.92  6.40  6.98  4.39  9.18 10.06</code></pre>
 <p><br></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="funções-úteis.html#cb54-1"></a><span class="kw">ceiling</span>(ds)      <span class="co"># sempre arredonda para cima</span></span></code></pre></div>
-<pre><code>##  [1]  7  9  8 10  9  7 12  8  6  5</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="funções-úteis.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ceiling</span>(ds)      <span class="co"># sempre arredonda para cima</span></span></code></pre></div>
+<pre><code>##  [1] 11  7 10  8  9  7  7  5 10 11</code></pre>
 <p><br></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="funções-úteis.html#cb56-1"></a><span class="kw">floor</span>(ds)        <span class="co"># sempre arredonda para baixo</span></span></code></pre></div>
-<pre><code>##  [1]  6  8  7  9  8  6 11  7  5  4</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="funções-úteis.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">floor</span>(ds)        <span class="co"># sempre arredonda para baixo</span></span></code></pre></div>
+<pre><code>##  [1] 10  6  9  7  8  6  6  4  9 10</code></pre>
 </div>
 </div>
             </section>
@@ -721,10 +721,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

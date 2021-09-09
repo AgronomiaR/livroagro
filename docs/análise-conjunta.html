@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 20 Análise conjunta | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 20 Análise conjunta | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="polinômios-ortogonais.html"/>
 
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -717,16 +717,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <p>Um experimento com três tratamentos (T1: 6cm; T2: 12cm e T3: 18cm) foi conduzido em delineamento em blocos casualizados com quatro repetições cada. Este mesmo experimento foi repetido duas vezes, totalizando 3 ensaios experimentais (fevereiro; Abril e Junho de 2018).</p>
 <p><br></p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="análise-conjunta.html#cb542-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
-<span id="cb542-2"><a href="análise-conjunta.html#cb542-2"></a>resposta=<span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">80</span>,<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">60</span>,<span class="dv">85</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>,</span>
-<span id="cb542-3"><a href="análise-conjunta.html#cb542-3"></a>           <span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">80</span>,</span>
-<span id="cb542-4"><a href="análise-conjunta.html#cb542-4"></a>           <span class="dv">70</span>,<span class="dv">90</span>,<span class="dv">80</span>,<span class="dv">80</span>)</span>
-<span id="cb542-5"><a href="análise-conjunta.html#cb542-5"></a>Comprimento=<span class="kw">rep</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">12</span>,<span class="dv">18</span>),<span class="dt">e=</span><span class="dv">4</span>),<span class="dv">3</span>); Comprimento=<span class="kw">as.factor</span>(Comprimento)</span>
-<span id="cb542-6"><a href="análise-conjunta.html#cb542-6"></a>Tempo=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="dt">e=</span><span class="dv">12</span>); Tempo=<span class="kw">as.factor</span>(Tempo)</span>
-<span id="cb542-7"><a href="análise-conjunta.html#cb542-7"></a>Repe=<span class="kw">as.factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dv">3</span>),</span>
-<span id="cb542-8"><a href="análise-conjunta.html#cb542-8"></a>       <span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dv">3</span>),</span>
-<span id="cb542-9"><a href="análise-conjunta.html#cb542-9"></a>       <span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dv">3</span>)))</span>
-<span id="cb542-10"><a href="análise-conjunta.html#cb542-10"></a>(<span class="dt">dados=</span><span class="kw">data.frame</span>(Comprimento, Tempo, Repe, resposta))</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="análise-conjunta.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
+<span id="cb542-2"><a href="análise-conjunta.html#cb542-2" aria-hidden="true" tabindex="-1"></a>resposta<span class="ot">=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">80</span>,<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">60</span>,<span class="dv">85</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">20</span>,</span>
+<span id="cb542-3"><a href="análise-conjunta.html#cb542-3" aria-hidden="true" tabindex="-1"></a>           <span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">60</span>,<span class="dv">80</span>,<span class="dv">80</span>,</span>
+<span id="cb542-4"><a href="análise-conjunta.html#cb542-4" aria-hidden="true" tabindex="-1"></a>           <span class="dv">70</span>,<span class="dv">90</span>,<span class="dv">80</span>,<span class="dv">80</span>)</span>
+<span id="cb542-5"><a href="análise-conjunta.html#cb542-5" aria-hidden="true" tabindex="-1"></a>Comprimento<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">12</span>,<span class="dv">18</span>),<span class="at">e=</span><span class="dv">4</span>),<span class="dv">3</span>); Comprimento<span class="ot">=</span><span class="fu">as.factor</span>(Comprimento)</span>
+<span id="cb542-6"><a href="análise-conjunta.html#cb542-6" aria-hidden="true" tabindex="-1"></a>Tempo<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>),<span class="at">e=</span><span class="dv">12</span>); Tempo<span class="ot">=</span><span class="fu">as.factor</span>(Tempo)</span>
+<span id="cb542-7"><a href="análise-conjunta.html#cb542-7" aria-hidden="true" tabindex="-1"></a>Repe<span class="ot">=</span><span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)),<span class="dv">3</span>),</span>
+<span id="cb542-8"><a href="análise-conjunta.html#cb542-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)),<span class="dv">3</span>),</span>
+<span id="cb542-9"><a href="análise-conjunta.html#cb542-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;R&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)),<span class="dv">3</span>)))</span>
+<span id="cb542-10"><a href="análise-conjunta.html#cb542-10" aria-hidden="true" tabindex="-1"></a>(<span class="at">dados=</span><span class="fu">data.frame</span>(Comprimento, Tempo, Repe, resposta))</span></code></pre></div>
 <pre><code>##    Comprimento Tempo Repe resposta
 ## 1            6     2  R 1       20
 ## 2            6     2  R 2       30
@@ -773,8 +773,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="tempo-de-2-meses" class="section level3" number="20.3.1">
 <h3><span class="header-section-number">20.3.1</span> Tempo de 2 meses</h3>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="análise-conjunta.html#cb544-1"></a>modelo=<span class="kw">with</span>(dados[Tempo<span class="op">==</span><span class="st">&quot;2&quot;</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">+</span>Repe))</span>
-<span id="cb544-2"><a href="análise-conjunta.html#cb544-2"></a><span class="kw">anova</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="análise-conjunta.html#cb544-1" aria-hidden="true" tabindex="-1"></a>modelo<span class="ot">=</span><span class="fu">with</span>(dados[Tempo<span class="sc">==</span><span class="st">&quot;2&quot;</span>,],<span class="fu">aov</span>(resposta<span class="sc">~</span>Comprimento<span class="sc">+</span>Repe))</span>
+<span id="cb544-2"><a href="análise-conjunta.html#cb544-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: resposta
@@ -789,8 +789,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="tempo-de-4-meses" class="section level3" number="20.3.2">
 <h3><span class="header-section-number">20.3.2</span> Tempo de 4 meses</h3>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="análise-conjunta.html#cb546-1"></a>modelo1=<span class="kw">with</span>(dados[Tempo<span class="op">==</span><span class="st">&quot;4&quot;</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">+</span>Repe))</span>
-<span id="cb546-2"><a href="análise-conjunta.html#cb546-2"></a><span class="kw">anova</span>(modelo1)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="análise-conjunta.html#cb546-1" aria-hidden="true" tabindex="-1"></a>modelo1<span class="ot">=</span><span class="fu">with</span>(dados[Tempo<span class="sc">==</span><span class="st">&quot;4&quot;</span>,],<span class="fu">aov</span>(resposta<span class="sc">~</span>Comprimento<span class="sc">+</span>Repe))</span>
+<span id="cb546-2"><a href="análise-conjunta.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: resposta
@@ -805,8 +805,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="tempo-de-6-meses" class="section level3" number="20.3.3">
 <h3><span class="header-section-number">20.3.3</span> Tempo de 6 meses</h3>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="análise-conjunta.html#cb548-1"></a>modelo2=<span class="kw">with</span>(dados[Tempo<span class="op">==</span><span class="st">&quot;6&quot;</span>,],<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">+</span>Repe))</span>
-<span id="cb548-2"><a href="análise-conjunta.html#cb548-2"></a><span class="kw">anova</span>(modelo2)</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="análise-conjunta.html#cb548-1" aria-hidden="true" tabindex="-1"></a>modelo2<span class="ot">=</span><span class="fu">with</span>(dados[Tempo<span class="sc">==</span><span class="st">&quot;6&quot;</span>,],<span class="fu">aov</span>(resposta<span class="sc">~</span>Comprimento<span class="sc">+</span>Repe))</span>
+<span id="cb548-2"><a href="análise-conjunta.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo2)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: resposta
@@ -822,14 +822,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="quadrado-do-resíduo-médio" class="section level2" number="20.4">
 <h2><span class="header-section-number">20.4</span> Quadrado do resíduo médio</h2>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="análise-conjunta.html#cb550-1"></a>QMResiduo1&lt;-<span class="st"> </span><span class="kw">anova</span>(modelo)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
-<span id="cb550-2"><a href="análise-conjunta.html#cb550-2"></a>QMResiduo2&lt;-<span class="st"> </span><span class="kw">anova</span>(modelo1)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
-<span id="cb550-3"><a href="análise-conjunta.html#cb550-3"></a>QMResiduo3&lt;-<span class="st"> </span><span class="kw">anova</span>(modelo2)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
-<span id="cb550-4"><a href="análise-conjunta.html#cb550-4"></a>QMResiduo&lt;-<span class="st"> </span><span class="kw">c</span>(QMResiduo1, QMResiduo2,</span>
-<span id="cb550-5"><a href="análise-conjunta.html#cb550-5"></a>              QMResiduo3)</span>
-<span id="cb550-6"><a href="análise-conjunta.html#cb550-6"></a><span class="kw">max</span>(QMResiduo)<span class="op">/</span><span class="kw">min</span>(QMResiduo) <span class="co">## Deve ser menor que 7</span></span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="análise-conjunta.html#cb550-1" aria-hidden="true" tabindex="-1"></a>QMResiduo1<span class="ot">&lt;-</span> <span class="fu">anova</span>(modelo)<span class="sc">$</span><span class="st">`</span><span class="at">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
+<span id="cb550-2"><a href="análise-conjunta.html#cb550-2" aria-hidden="true" tabindex="-1"></a>QMResiduo2<span class="ot">&lt;-</span> <span class="fu">anova</span>(modelo1)<span class="sc">$</span><span class="st">`</span><span class="at">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
+<span id="cb550-3"><a href="análise-conjunta.html#cb550-3" aria-hidden="true" tabindex="-1"></a>QMResiduo3<span class="ot">&lt;-</span> <span class="fu">anova</span>(modelo2)<span class="sc">$</span><span class="st">`</span><span class="at">Mean Sq</span><span class="st">`</span>[<span class="dv">3</span>]</span>
+<span id="cb550-4"><a href="análise-conjunta.html#cb550-4" aria-hidden="true" tabindex="-1"></a>QMResiduo<span class="ot">&lt;-</span> <span class="fu">c</span>(QMResiduo1, QMResiduo2,</span>
+<span id="cb550-5"><a href="análise-conjunta.html#cb550-5" aria-hidden="true" tabindex="-1"></a>              QMResiduo3)</span>
+<span id="cb550-6"><a href="análise-conjunta.html#cb550-6" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(QMResiduo)<span class="sc">/</span><span class="fu">min</span>(QMResiduo) <span class="do">## Deve ser menor que 7</span></span></code></pre></div>
 <pre><code>## [1] 4.345679</code></pre>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="análise-conjunta.html#cb552-1"></a><span class="kw">sum</span>(QMResiduo)<span class="op">/</span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="análise-conjunta.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(QMResiduo)<span class="sc">/</span><span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] 178.0093</code></pre>
 <p><br></p>
 <p>De acordo com Pimentel Gomes (2009), os ensaios em diversos locais podem ser agrupados em uma única análise desde que o quociente entre o maior e o menor quadrado médio do resíduo (QMRes) seja inferior a 7, caso contrário, pode-se considerar subgrupos de locais homogêneos, com quadrados médios residuais que satisfaçam o quociente, a fim de se construir tantas análises conjuntas quantos subgrupos criados</p>
@@ -838,11 +838,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="gráfico-de-interação-3" class="section level2" number="20.5">
 <h2><span class="header-section-number">20.5</span> Gráfico de interação</h2>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="análise-conjunta.html#cb554-1"></a><span class="kw">interaction.plot</span>(Comprimento, </span>
-<span id="cb554-2"><a href="análise-conjunta.html#cb554-2"></a>                 Tempo, resposta, </span>
-<span id="cb554-3"><a href="análise-conjunta.html#cb554-3"></a>                 <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>),</span>
-<span id="cb554-4"><a href="análise-conjunta.html#cb554-4"></a>                 <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb554-5"><a href="análise-conjunta.html#cb554-5"></a>                 <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="análise-conjunta.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(Comprimento, </span>
+<span id="cb554-2"><a href="análise-conjunta.html#cb554-2" aria-hidden="true" tabindex="-1"></a>                 Tempo, resposta, </span>
+<span id="cb554-3"><a href="análise-conjunta.html#cb554-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>),</span>
+<span id="cb554-4"><a href="análise-conjunta.html#cb554-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb554-5"><a href="análise-conjunta.html#cb554-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-329-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
@@ -850,8 +850,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">20.6</span> Análise de Variância conjunta</h2>
 <p>A análise de variância conjunta pode ser efetuada conforme os comandos abaixo:</p>
 <p>Teste F para efeito da interação Local:Trat (Somente a interação é válida)</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="análise-conjunta.html#cb555-1"></a><span class="kw">summary</span>(<span class="kw">aov</span>(resposta<span class="op">~</span>Tempo<span class="op">+</span>Tempo<span class="op">:</span>Repe<span class="op">+</span>Comprimento<span class="op">+</span></span>
-<span id="cb555-2"><a href="análise-conjunta.html#cb555-2"></a><span class="st">              </span>Tempo<span class="op">:</span>Comprimento, <span class="dt">data=</span>dados)) </span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="análise-conjunta.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(resposta<span class="sc">~</span>Tempo<span class="sc">+</span>Tempo<span class="sc">:</span>Repe<span class="sc">+</span>Comprimento<span class="sc">+</span></span>
+<span id="cb555-2"><a href="análise-conjunta.html#cb555-2" aria-hidden="true" tabindex="-1"></a>              Tempo<span class="sc">:</span>Comprimento, <span class="at">data=</span>dados)) </span></code></pre></div>
 <pre><code>##                   Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## Tempo              2   9829    4915  27.609 3.28e-06 ***
 ## Comprimento        2  12304    6152  34.560 6.86e-07 ***
@@ -862,8 +862,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Como p-valor calculado <span class="math inline">\(p=0.026\)</span> é menor que o nível de significância adotado de (<span class="math inline">\(\alpha=0.05\)</span>), pode-se concluir que há efeito de interação. Logo, temos que analisar como experimentos separados.</p>
 <p>Teste F para efeito do Tratamento</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="análise-conjunta.html#cb557-1"></a>mod=<span class="kw">aov</span>(resposta<span class="op">~</span>Tempo<span class="op">+</span>Tempo<span class="op">:</span>Repe<span class="op">+</span>Comprimento<span class="op">+</span><span class="kw">Error</span>(Tempo<span class="op">:</span>(Repe<span class="op">+</span>Comprimento)), <span class="dt">data=</span>dados)</span>
-<span id="cb557-2"><a href="análise-conjunta.html#cb557-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="análise-conjunta.html#cb557-1" aria-hidden="true" tabindex="-1"></a>mod<span class="ot">=</span><span class="fu">aov</span>(resposta<span class="sc">~</span>Tempo<span class="sc">+</span>Tempo<span class="sc">:</span>Repe<span class="sc">+</span>Comprimento<span class="sc">+</span><span class="fu">Error</span>(Tempo<span class="sc">:</span>(Repe<span class="sc">+</span>Comprimento)), <span class="at">data=</span>dados)</span>
+<span id="cb557-2"><a href="análise-conjunta.html#cb557-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>## 
 ## Error: Tempo:Repe
 ##            Df Sum Sq Mean Sq
@@ -1012,9 +1012,9 @@ H_1: &amp; \mbox{ Os erros não têm distribuição normal}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="análise-conjunta.html#cb559-1"></a><span class="co">## Vamos analisar os erros como sendo um modelo em esquema Fatorial</span></span>
-<span id="cb559-2"><a href="análise-conjunta.html#cb559-2"></a>mod1=<span class="kw">aov</span>(resposta<span class="op">~</span>Comprimento<span class="op">*</span>Tempo<span class="op">+</span>Repe)</span>
-<span id="cb559-3"><a href="análise-conjunta.html#cb559-3"></a>(<span class="dt">norm=</span><span class="kw">shapiro.test</span>(mod1<span class="op">$</span>res))</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="análise-conjunta.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Vamos analisar os erros como sendo um modelo em esquema Fatorial</span></span>
+<span id="cb559-2"><a href="análise-conjunta.html#cb559-2" aria-hidden="true" tabindex="-1"></a>mod1<span class="ot">=</span><span class="fu">aov</span>(resposta<span class="sc">~</span>Comprimento<span class="sc">*</span>Tempo<span class="sc">+</span>Repe)</span>
+<span id="cb559-3"><a href="análise-conjunta.html#cb559-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">norm=</span><span class="fu">shapiro.test</span>(mod1<span class="sc">$</span>res))</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1025,8 +1025,8 @@ H_1: &amp; \mbox{ Os erros não têm distribuição normal}.
 </div>
 <div id="gráfico-de-normalidade-1" class="section level3" number="20.9.2">
 <h3><span class="header-section-number">20.9.2</span> Gráfico de normalidade</h3>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="análise-conjunta.html#cb561-1"></a>HNP=hnp<span class="op">::</span><span class="kw">hnp</span>(mod1, <span class="dt">paint.on=</span>T, <span class="dt">col=</span><span class="st">&quot;red&quot;</span> , <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">8</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="análise-conjunta.html#cb562-1"></a><span class="kw">plot</span>(HNP,<span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>),  <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="análise-conjunta.html#cb561-1" aria-hidden="true" tabindex="-1"></a>HNP<span class="ot">=</span>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod1, <span class="at">paint.on=</span>T, <span class="at">col=</span><span class="st">&quot;red&quot;</span> , <span class="at">las=</span><span class="dv">1</span>, <span class="at">pch=</span><span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="análise-conjunta.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(HNP,<span class="at">lty=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>),  <span class="at">col=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-334-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br></p>
 </div>
@@ -1040,7 +1040,7 @@ H_1: &amp; \mbox{ As variâncias não são homogêneas}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="análise-conjunta.html#cb563-1"></a>(<span class="dt">homog=</span><span class="kw">bartlett.test</span>(mod1<span class="op">$</span>res<span class="op">~</span><span class="kw">paste</span>(Comprimento,Tempo)))</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="análise-conjunta.html#cb563-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">homog=</span><span class="fu">bartlett.test</span>(mod1<span class="sc">$</span>res<span class="sc">~</span><span class="fu">paste</span>(Comprimento,Tempo)))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1059,13 +1059,13 @@ H_1: &amp; \mbox{ Os erros não são independentes.}
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="análise-conjunta.html#cb565-1"></a><span class="kw">library</span>(lmtest)</span>
-<span id="cb565-2"><a href="análise-conjunta.html#cb565-2"></a>ind=<span class="kw">dwtest</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="análise-conjunta.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb565-2"><a href="análise-conjunta.html#cb565-2" aria-hidden="true" tabindex="-1"></a>ind<span class="ot">=</span><span class="fu">dwtest</span>(mod1)</span></code></pre></div>
 <p>Como p-valor calculado (<span class="math inline">\(p=0.5781767\)</span>) é maior que o nível de significância adotado (<span class="math inline">\(\alpha=0,05\)</span>), não se rejeita <span class="math inline">\(H_0\)</span>. Logo, os erros são independentes. A Figura  apresenta o gráfico dos resíduos brutos. Percebe-se que os resíduos estão distribuídos de forma totalmente aleatório, evidenciando a independência dos erros.</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="análise-conjunta.html#cb566-1"></a><span class="kw">plot</span>(mod1<span class="op">$</span>res, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb566-2"><a href="análise-conjunta.html#cb566-2"></a>     <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">pch=</span><span class="dv">16</span>,</span>
-<span id="cb566-3"><a href="análise-conjunta.html#cb566-3"></a>     <span class="dt">ylab=</span><span class="st">&quot;Residuos brutos&quot;</span>)</span>
-<span id="cb566-4"><a href="análise-conjunta.html#cb566-4"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="análise-conjunta.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod1<span class="sc">$</span>res, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb566-2"><a href="análise-conjunta.html#cb566-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span>, <span class="at">pch=</span><span class="dv">16</span>,</span>
+<span id="cb566-3"><a href="análise-conjunta.html#cb566-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Residuos brutos&quot;</span>)</span>
+<span id="cb566-4"><a href="análise-conjunta.html#cb566-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-337-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br><br></p>
 </div>
@@ -1075,14 +1075,14 @@ H_1: &amp; \mbox{ Os erros não são independentes.}
 <p><br></p>
 <div id="desdobramento-do-comprimento-em-cada-nível-de-tempo" class="section level3" number="20.10.1">
 <h3><span class="header-section-number">20.10.1</span> Desdobramento do Comprimento em cada nível de Tempo</h3>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="análise-conjunta.html#cb567-1"></a><span class="co">#desdobramento</span></span>
-<span id="cb567-2"><a href="análise-conjunta.html#cb567-2"></a>dados<span class="op">$</span>LT&lt;-<span class="st"> </span><span class="kw">as.factor</span>(dados<span class="op">$</span>Tempo<span class="op">:</span>dados<span class="op">$</span>Comprimento)</span>
-<span id="cb567-3"><a href="análise-conjunta.html#cb567-3"></a><span class="co">#efeito de tratamento dentro de cada nível de local</span></span>
-<span id="cb567-4"><a href="análise-conjunta.html#cb567-4"></a>mod.conj&lt;-<span class="st"> </span><span class="kw">aov</span>(resposta <span class="op">~</span><span class="st"> </span>Tempo <span class="op">+</span><span class="st"> </span>Tempo<span class="op">:</span>Repe <span class="op">+</span><span class="st"> </span>LT,</span>
-<span id="cb567-5"><a href="análise-conjunta.html#cb567-5"></a>               <span class="dt">data=</span>dados)</span>
-<span id="cb567-6"><a href="análise-conjunta.html#cb567-6"></a><span class="kw">summary</span>(mod.conj,</span>
-<span id="cb567-7"><a href="análise-conjunta.html#cb567-7"></a>        <span class="dt">split=</span><span class="kw">list</span>(<span class="dt">LT=</span><span class="kw">list</span>(<span class="dt">TdL1=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dt">TdL2=</span><span class="dv">3</span><span class="op">:</span><span class="dv">4</span>,</span>
-<span id="cb567-8"><a href="análise-conjunta.html#cb567-8"></a>                           <span class="dt">TdL3=</span><span class="dv">5</span><span class="op">:</span><span class="dv">6</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="análise-conjunta.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="co">#desdobramento</span></span>
+<span id="cb567-2"><a href="análise-conjunta.html#cb567-2" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>LT<span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dados<span class="sc">$</span>Tempo<span class="sc">:</span>dados<span class="sc">$</span>Comprimento)</span>
+<span id="cb567-3"><a href="análise-conjunta.html#cb567-3" aria-hidden="true" tabindex="-1"></a><span class="co">#efeito de tratamento dentro de cada nível de local</span></span>
+<span id="cb567-4"><a href="análise-conjunta.html#cb567-4" aria-hidden="true" tabindex="-1"></a>mod.conj<span class="ot">&lt;-</span> <span class="fu">aov</span>(resposta <span class="sc">~</span> Tempo <span class="sc">+</span> Tempo<span class="sc">:</span>Repe <span class="sc">+</span> LT,</span>
+<span id="cb567-5"><a href="análise-conjunta.html#cb567-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">data=</span>dados)</span>
+<span id="cb567-6"><a href="análise-conjunta.html#cb567-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.conj,</span>
+<span id="cb567-7"><a href="análise-conjunta.html#cb567-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">split=</span><span class="fu">list</span>(<span class="at">LT=</span><span class="fu">list</span>(<span class="at">TdL1=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="at">TdL2=</span><span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb567-8"><a href="análise-conjunta.html#cb567-8" aria-hidden="true" tabindex="-1"></a>                           <span class="at">TdL3=</span><span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>)))</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## Tempo        2   9829    4915  27.609 3.28e-06 ***
 ## LT           6  14846    2474  13.900 6.80e-06 ***
@@ -1097,62 +1097,62 @@ H_1: &amp; \mbox{ Os erros não são independentes.}
 </div>
 <div id="teste-de-comparação-múltipla-2" class="section level3" number="20.10.2">
 <h3><span class="header-section-number">20.10.2</span> Teste de comparação múltipla</h3>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="análise-conjunta.html#cb569-1"></a><span class="co"># O QMres é 178 e o GL é 18</span></span>
-<span id="cb569-2"><a href="análise-conjunta.html#cb569-2"></a></span>
-<span id="cb569-3"><a href="análise-conjunta.html#cb569-3"></a><span class="kw">require</span>(agricolae)</span>
-<span id="cb569-4"><a href="análise-conjunta.html#cb569-4"></a></span>
-<span id="cb569-5"><a href="análise-conjunta.html#cb569-5"></a><span class="co">#dentro de Tempo 2</span></span>
-<span id="cb569-6"><a href="análise-conjunta.html#cb569-6"></a>tukey.l1&lt;-<span class="kw">HSD.test</span>(dados<span class="op">$</span>resposta[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;2&quot;</span>],</span>
-<span id="cb569-7"><a href="análise-conjunta.html#cb569-7"></a>             dados<span class="op">$</span>Comprimento[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;2&quot;</span>],</span>
-<span id="cb569-8"><a href="análise-conjunta.html#cb569-8"></a>             <span class="dv">18</span>, <span class="dv">178</span>)</span>
-<span id="cb569-9"><a href="análise-conjunta.html#cb569-9"></a>tukey.l1<span class="op">$</span>groups</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="análise-conjunta.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O QMres é 178 e o GL é 18</span></span>
+<span id="cb569-2"><a href="análise-conjunta.html#cb569-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb569-3"><a href="análise-conjunta.html#cb569-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(agricolae)</span>
+<span id="cb569-4"><a href="análise-conjunta.html#cb569-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb569-5"><a href="análise-conjunta.html#cb569-5" aria-hidden="true" tabindex="-1"></a><span class="co">#dentro de Tempo 2</span></span>
+<span id="cb569-6"><a href="análise-conjunta.html#cb569-6" aria-hidden="true" tabindex="-1"></a>tukey.l1<span class="ot">&lt;-</span><span class="fu">HSD.test</span>(dados<span class="sc">$</span>resposta[dados<span class="sc">$</span>Tempo<span class="sc">==</span><span class="st">&quot;2&quot;</span>],</span>
+<span id="cb569-7"><a href="análise-conjunta.html#cb569-7" aria-hidden="true" tabindex="-1"></a>             dados<span class="sc">$</span>Comprimento[dados<span class="sc">$</span>Tempo<span class="sc">==</span><span class="st">&quot;2&quot;</span>],</span>
+<span id="cb569-8"><a href="análise-conjunta.html#cb569-8" aria-hidden="true" tabindex="-1"></a>             <span class="dv">18</span>, <span class="dv">178</span>)</span>
+<span id="cb569-9"><a href="análise-conjunta.html#cb569-9" aria-hidden="true" tabindex="-1"></a>tukey.l1<span class="sc">$</span>groups</span></code></pre></div>
 <pre><code>##    dados$resposta[dados$Tempo == &quot;2&quot;] groups
 ## 18                              83.75      a
 ## 12                              72.50      a
 ## 6                               25.00      b</code></pre>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="análise-conjunta.html#cb571-1"></a><span class="co">#dentro de Tempo 4</span></span>
-<span id="cb571-2"><a href="análise-conjunta.html#cb571-2"></a>tukey.l2&lt;-<span class="kw">HSD.test</span>(dados<span class="op">$</span>resposta[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;4&quot;</span>],</span>
-<span id="cb571-3"><a href="análise-conjunta.html#cb571-3"></a>                    dados<span class="op">$</span>Comprimento[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;4&quot;</span>],</span>
-<span id="cb571-4"><a href="análise-conjunta.html#cb571-4"></a>                    <span class="dv">18</span>, <span class="dv">178</span>)</span>
-<span id="cb571-5"><a href="análise-conjunta.html#cb571-5"></a>tukey.l2<span class="op">$</span>groups</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="análise-conjunta.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dentro de Tempo 4</span></span>
+<span id="cb571-2"><a href="análise-conjunta.html#cb571-2" aria-hidden="true" tabindex="-1"></a>tukey.l2<span class="ot">&lt;-</span><span class="fu">HSD.test</span>(dados<span class="sc">$</span>resposta[dados<span class="sc">$</span>Tempo<span class="sc">==</span><span class="st">&quot;4&quot;</span>],</span>
+<span id="cb571-3"><a href="análise-conjunta.html#cb571-3" aria-hidden="true" tabindex="-1"></a>                    dados<span class="sc">$</span>Comprimento[dados<span class="sc">$</span>Tempo<span class="sc">==</span><span class="st">&quot;4&quot;</span>],</span>
+<span id="cb571-4"><a href="análise-conjunta.html#cb571-4" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">18</span>, <span class="dv">178</span>)</span>
+<span id="cb571-5"><a href="análise-conjunta.html#cb571-5" aria-hidden="true" tabindex="-1"></a>tukey.l2<span class="sc">$</span>groups</span></code></pre></div>
 <pre><code>##    dados$resposta[dados$Tempo == &quot;4&quot;] groups
 ## 18                                 55      a
 ## 12                                 20      b
 ## 6                                  15      b</code></pre>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="análise-conjunta.html#cb573-1"></a><span class="co">#dentro de Tempo 6</span></span>
-<span id="cb573-2"><a href="análise-conjunta.html#cb573-2"></a>tukey.l3&lt;-<span class="kw">HSD.test</span>(dados<span class="op">$</span>resposta[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;6&quot;</span>],</span>
-<span id="cb573-3"><a href="análise-conjunta.html#cb573-3"></a>                    dados<span class="op">$</span>Comprimento[dados<span class="op">$</span>Tempo<span class="op">==</span><span class="st">&quot;6&quot;</span>],</span>
-<span id="cb573-4"><a href="análise-conjunta.html#cb573-4"></a>                    <span class="dv">18</span>, <span class="dv">178</span>)</span>
-<span id="cb573-5"><a href="análise-conjunta.html#cb573-5"></a>tukey.l3<span class="op">$</span>groups</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="análise-conjunta.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dentro de Tempo 6</span></span>
+<span id="cb573-2"><a href="análise-conjunta.html#cb573-2" aria-hidden="true" tabindex="-1"></a>tukey.l3<span class="ot">&lt;-</span><span class="fu">HSD.test</span>(dados<span class="sc">$</span>resposta[dados<span class="sc">$</span>Tempo<span class="sc">==</span><span class="st">&quot;6&quot;</span>],</span>
+<span id="cb573-3"><a href="análise-conjunta.html#cb573-3" aria-hidden="true" tabindex="-1"></a>                    dados<span class="sc">$</span>Comprimento[dados<span class="sc">$</span>Tempo<span class="sc">==</span><span class="st">&quot;6&quot;</span>],</span>
+<span id="cb573-4"><a href="análise-conjunta.html#cb573-4" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">18</span>, <span class="dv">178</span>)</span>
+<span id="cb573-5"><a href="análise-conjunta.html#cb573-5" aria-hidden="true" tabindex="-1"></a>tukey.l3<span class="sc">$</span>groups</span></code></pre></div>
 <pre><code>##    dados$resposta[dados$Tempo == &quot;6&quot;] groups
 ## 12                                 80      a
 ## 18                                 80      a
 ## 6                                  45      b</code></pre>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="análise-conjunta.html#cb575-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb575-2"><a href="análise-conjunta.html#cb575-2"></a><span class="kw">bar.group</span>(tukey.l1<span class="op">$</span>groups, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
-<span id="cb575-3"><a href="análise-conjunta.html#cb575-3"></a>          <span class="dt">main=</span><span class="st">&quot;Tempo 2&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
-<span id="cb575-4"><a href="análise-conjunta.html#cb575-4"></a>          <span class="dt">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="dt">las=</span><span class="dv">1</span>)</span>
-<span id="cb575-5"><a href="análise-conjunta.html#cb575-5"></a><span class="kw">bar.group</span>(tukey.l2<span class="op">$</span>groups, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
-<span id="cb575-6"><a href="análise-conjunta.html#cb575-6"></a>          <span class="dt">main=</span><span class="st">&quot;Tempo 4&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
-<span id="cb575-7"><a href="análise-conjunta.html#cb575-7"></a>          <span class="dt">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="dt">las=</span><span class="dv">1</span>)</span>
-<span id="cb575-8"><a href="análise-conjunta.html#cb575-8"></a><span class="kw">bar.group</span>(tukey.l3<span class="op">$</span>groups, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
-<span id="cb575-9"><a href="análise-conjunta.html#cb575-9"></a>          <span class="dt">main=</span><span class="st">&quot;Tempo 6&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
-<span id="cb575-10"><a href="análise-conjunta.html#cb575-10"></a>          <span class="dt">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="dt">las=</span><span class="dv">1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="análise-conjunta.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb575-2"><a href="análise-conjunta.html#cb575-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bar.group</span>(tukey.l1<span class="sc">$</span>groups, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
+<span id="cb575-3"><a href="análise-conjunta.html#cb575-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Tempo 2&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
+<span id="cb575-4"><a href="análise-conjunta.html#cb575-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb575-5"><a href="análise-conjunta.html#cb575-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bar.group</span>(tukey.l2<span class="sc">$</span>groups, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
+<span id="cb575-6"><a href="análise-conjunta.html#cb575-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Tempo 4&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
+<span id="cb575-7"><a href="análise-conjunta.html#cb575-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb575-8"><a href="análise-conjunta.html#cb575-8" aria-hidden="true" tabindex="-1"></a><span class="fu">bar.group</span>(tukey.l3<span class="sc">$</span>groups, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">120</span>),</span>
+<span id="cb575-9"><a href="análise-conjunta.html#cb575-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">main=</span><span class="st">&quot;Tempo 6&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Comprimento&quot;</span>,</span>
+<span id="cb575-10"><a href="análise-conjunta.html#cb575-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span><span class="st">&quot;resposta&quot;</span>,<span class="at">las=</span><span class="dv">1</span>) </span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-340-1.png" width="672" /></p>
 <p><br><br><br></p>
 </div>
 </div>
 <div id="tabela-final-1" class="section level2" number="20.11">
 <h2><span class="header-section-number">20.11</span> Tabela Final</h2>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="análise-conjunta.html#cb576-1"></a><span class="kw">library</span>(knitr)</span>
-<span id="cb576-2"><a href="análise-conjunta.html#cb576-2"></a>media=<span class="kw">tapply</span>(resposta, <span class="kw">list</span>(Comprimento, Tempo),mean)</span>
-<span id="cb576-3"><a href="análise-conjunta.html#cb576-3"></a>tabela=<span class="kw">data.frame</span>(<span class="st">&quot;Mês 2&quot;</span>=media[,<span class="dv">1</span>],</span>
-<span id="cb576-4"><a href="análise-conjunta.html#cb576-4"></a>             <span class="st">&quot; &quot;</span>=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>),</span>
-<span id="cb576-5"><a href="análise-conjunta.html#cb576-5"></a>             <span class="st">&quot;Mês 4&quot;</span>=media[,<span class="dv">2</span>],</span>
-<span id="cb576-6"><a href="análise-conjunta.html#cb576-6"></a>             <span class="st">&quot; &quot;</span>=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>),</span>
-<span id="cb576-7"><a href="análise-conjunta.html#cb576-7"></a>             <span class="st">&quot;Mês 6&quot;</span>=media[,<span class="dv">3</span>],</span>
-<span id="cb576-8"><a href="análise-conjunta.html#cb576-8"></a>             <span class="st">&quot; &quot;</span>=<span class="kw">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>))</span>
-<span id="cb576-9"><a href="análise-conjunta.html#cb576-9"></a><span class="kw">kable</span>(tabela, <span class="dt">align =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Mês 2&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;Mês 4&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;Mês 6&quot;</span>,<span class="st">&quot; &quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="análise-conjunta.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb576-2"><a href="análise-conjunta.html#cb576-2" aria-hidden="true" tabindex="-1"></a>media<span class="ot">=</span><span class="fu">tapply</span>(resposta, <span class="fu">list</span>(Comprimento, Tempo),mean)</span>
+<span id="cb576-3"><a href="análise-conjunta.html#cb576-3" aria-hidden="true" tabindex="-1"></a>tabela<span class="ot">=</span><span class="fu">data.frame</span>(<span class="st">&quot;Mês 2&quot;</span><span class="ot">=</span>media[,<span class="dv">1</span>],</span>
+<span id="cb576-4"><a href="análise-conjunta.html#cb576-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot; &quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>),</span>
+<span id="cb576-5"><a href="análise-conjunta.html#cb576-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Mês 4&quot;</span><span class="ot">=</span>media[,<span class="dv">2</span>],</span>
+<span id="cb576-6"><a href="análise-conjunta.html#cb576-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot; &quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>),</span>
+<span id="cb576-7"><a href="análise-conjunta.html#cb576-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Mês 6&quot;</span><span class="ot">=</span>media[,<span class="dv">3</span>],</span>
+<span id="cb576-8"><a href="análise-conjunta.html#cb576-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot; &quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;B&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>))</span>
+<span id="cb576-9"><a href="análise-conjunta.html#cb576-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tabela, <span class="at">align =</span> <span class="st">&quot;c&quot;</span>, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Mês 2&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;Mês 4&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;Mês 6&quot;</span>,<span class="st">&quot; &quot;</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1227,10 +1227,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },

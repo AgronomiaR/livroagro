@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 19 Polinômios Ortogonais | Aplicações práticas do software R</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 19 Polinômios Ortogonais | Aplicações práticas do software R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu e Rodrigo Yudi Palhaci Marubayashi" />
 
 
-<meta name="date" content="2021-01-13" />
+<meta name="date" content="2021-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="esquema-de-parcelas-subdivididas.html"/>
 <link rel="next" href="análise-conjunta.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,8 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -119,6 +118,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -752,26 +752,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="conjunto-de-dados-8" class="section level3" number="19.3.1">
 <h3><span class="header-section-number">19.3.1</span> Conjunto de dados</h3>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="polinômios-ortogonais.html#cb489-1"></a>MS=<span class="kw">c</span>(<span class="fl">93.517</span>, <span class="fl">93.246</span>, <span class="fl">93.216</span>, <span class="fl">93.224</span>,</span>
-<span id="cb489-2"><a href="polinômios-ortogonais.html#cb489-2"></a>     <span class="fl">93.168</span>, <span class="fl">93.645</span>, <span class="fl">93.640</span>, <span class="fl">93.357</span>,</span>
-<span id="cb489-3"><a href="polinômios-ortogonais.html#cb489-3"></a>     <span class="fl">92.985</span>, <span class="fl">92.644</span>, <span class="fl">92.506</span>, <span class="fl">92.293</span>, </span>
-<span id="cb489-4"><a href="polinômios-ortogonais.html#cb489-4"></a>     <span class="fl">93.124</span>, <span class="fl">93.375</span>, <span class="fl">93.138</span>, <span class="fl">92.678</span>,</span>
-<span id="cb489-5"><a href="polinômios-ortogonais.html#cb489-5"></a>     <span class="fl">92.529</span>, <span class="fl">92.150</span>, <span class="fl">92.603</span>, <span class="fl">92.415</span>)</span>
-<span id="cb489-6"><a href="polinômios-ortogonais.html#cb489-6"></a>AMOSTRA=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb489-7"><a href="polinômios-ortogonais.html#cb489-7"></a>          <span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,</span>
-<span id="cb489-8"><a href="polinômios-ortogonais.html#cb489-8"></a>          <span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,</span>
-<span id="cb489-9"><a href="polinômios-ortogonais.html#cb489-9"></a>          <span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,</span>
-<span id="cb489-10"><a href="polinômios-ortogonais.html#cb489-10"></a>          <span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>)</span>
-<span id="cb489-11"><a href="polinômios-ortogonais.html#cb489-11"></a>dados=<span class="kw">data.frame</span>(<span class="dt">Amostra=</span><span class="kw">factor</span>(AMOSTRA),MS)</span>
-<span id="cb489-12"><a href="polinômios-ortogonais.html#cb489-12"></a><span class="kw">attach</span>(dados)</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="polinômios-ortogonais.html#cb489-1" aria-hidden="true" tabindex="-1"></a>MS<span class="ot">=</span><span class="fu">c</span>(<span class="fl">93.517</span>, <span class="fl">93.246</span>, <span class="fl">93.216</span>, <span class="fl">93.224</span>,</span>
+<span id="cb489-2"><a href="polinômios-ortogonais.html#cb489-2" aria-hidden="true" tabindex="-1"></a>     <span class="fl">93.168</span>, <span class="fl">93.645</span>, <span class="fl">93.640</span>, <span class="fl">93.357</span>,</span>
+<span id="cb489-3"><a href="polinômios-ortogonais.html#cb489-3" aria-hidden="true" tabindex="-1"></a>     <span class="fl">92.985</span>, <span class="fl">92.644</span>, <span class="fl">92.506</span>, <span class="fl">92.293</span>, </span>
+<span id="cb489-4"><a href="polinômios-ortogonais.html#cb489-4" aria-hidden="true" tabindex="-1"></a>     <span class="fl">93.124</span>, <span class="fl">93.375</span>, <span class="fl">93.138</span>, <span class="fl">92.678</span>,</span>
+<span id="cb489-5"><a href="polinômios-ortogonais.html#cb489-5" aria-hidden="true" tabindex="-1"></a>     <span class="fl">92.529</span>, <span class="fl">92.150</span>, <span class="fl">92.603</span>, <span class="fl">92.415</span>)</span>
+<span id="cb489-6"><a href="polinômios-ortogonais.html#cb489-6" aria-hidden="true" tabindex="-1"></a>AMOSTRA<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb489-7"><a href="polinômios-ortogonais.html#cb489-7" aria-hidden="true" tabindex="-1"></a>          <span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,</span>
+<span id="cb489-8"><a href="polinômios-ortogonais.html#cb489-8" aria-hidden="true" tabindex="-1"></a>          <span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">50</span>,</span>
+<span id="cb489-9"><a href="polinômios-ortogonais.html#cb489-9" aria-hidden="true" tabindex="-1"></a>          <span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">75</span>,</span>
+<span id="cb489-10"><a href="polinômios-ortogonais.html#cb489-10" aria-hidden="true" tabindex="-1"></a>          <span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>,<span class="dv">100</span>)</span>
+<span id="cb489-11"><a href="polinômios-ortogonais.html#cb489-11" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">Amostra=</span><span class="fu">factor</span>(AMOSTRA),MS)</span>
+<span id="cb489-12"><a href="polinômios-ortogonais.html#cb489-12" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(dados)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="média-e-variância" class="section level3" number="19.3.2">
 <h3><span class="header-section-number">19.3.2</span> Média e Variância</h3>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="polinômios-ortogonais.html#cb490-1"></a>(<span class="dt">meditrat=</span><span class="kw">tapply</span>(MS,AMOSTRA,mean))</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="polinômios-ortogonais.html#cb490-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">meditrat=</span><span class="fu">tapply</span>(MS,AMOSTRA,mean))</span></code></pre></div>
 <pre><code>##        0       25       50       75      100 
 ## 93.30075 93.45250 92.60700 93.07875 92.42425</code></pre>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="polinômios-ortogonais.html#cb492-1"></a>(<span class="dt">variatrat=</span><span class="kw">tapply</span>(MS,AMOSTRA,var))</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="polinômios-ortogonais.html#cb492-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">variatrat=</span><span class="fu">tapply</span>(MS,AMOSTRA,var))</span></code></pre></div>
 <pre><code>##          0         25         50         75        100 
 ## 0.02094492 0.05409100 0.08435000 0.08464092 0.03940758</code></pre>
 <p><br></p>
@@ -791,8 +791,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="análise-de-variância-para-matéria-seca" class="section level2" number="19.5">
 <h2><span class="header-section-number">19.5</span> Análise de Variância para Matéria Seca</h2>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="polinômios-ortogonais.html#cb494-1"></a>mod =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>Amostra)</span>
-<span id="cb494-2"><a href="polinômios-ortogonais.html#cb494-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="polinômios-ortogonais.html#cb494-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">aov</span>(MS <span class="sc">~</span> Amostra)</span>
+<span id="cb494-2"><a href="polinômios-ortogonais.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## Amostra      4 3.1344  0.7836   13.82 6.42e-05 ***
 ## Residuals   15 0.8503  0.0567                     
@@ -802,8 +802,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="polinômio-até-4-grau" class="section level2" number="19.6">
 <h2><span class="header-section-number">19.6</span> Polinômio até 4 grau</h2>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="polinômios-ortogonais.html#cb496-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">4</span>))</span>
-<span id="cb496-2"><a href="polinômios-ortogonais.html#cb496-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="polinômios-ortogonais.html#cb496-1" aria-hidden="true" tabindex="-1"></a>mod.reg <span class="ot">=</span> <span class="fu">aov</span>(MS <span class="sc">~</span> AMOSTRA <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">4</span>))</span>
+<span id="cb496-2"><a href="polinômios-ortogonais.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.reg)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## AMOSTRA       1 1.8092  1.8092  31.916 4.62e-05 ***
 ## I(AMOSTRA^2)  1 0.0249  0.0249   0.439 0.517484    
@@ -816,8 +816,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="polinômio-de-3-grau" class="section level2" number="19.7">
 <h2><span class="header-section-number">19.7</span> Polinômio de 3 grau</h2>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="polinômios-ortogonais.html#cb498-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>))</span>
-<span id="cb498-2"><a href="polinômios-ortogonais.html#cb498-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="polinômios-ortogonais.html#cb498-1" aria-hidden="true" tabindex="-1"></a>mod.reg <span class="ot">=</span> <span class="fu">aov</span>(MS <span class="sc">~</span> AMOSTRA <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">3</span>))</span>
+<span id="cb498-2"><a href="polinômios-ortogonais.html#cb498-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.reg)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 ## AMOSTRA       1 1.8092  1.8092  13.502 0.00205 **
 ## I(AMOSTRA^2)  1 0.0249  0.0249   0.186 0.67212   
@@ -829,8 +829,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="polinômio-de-2-grau" class="section level2" number="19.8">
 <h2><span class="header-section-number">19.8</span> Polinômio de 2 grau</h2>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="polinômios-ortogonais.html#cb500-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb500-2"><a href="polinômios-ortogonais.html#cb500-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="polinômios-ortogonais.html#cb500-1" aria-hidden="true" tabindex="-1"></a>mod.reg <span class="ot">=</span> <span class="fu">aov</span>(MS <span class="sc">~</span> AMOSTRA <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb500-2"><a href="polinômios-ortogonais.html#cb500-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.reg)</span></code></pre></div>
 <pre><code>##              Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 ## AMOSTRA       1 1.8092  1.8092  14.302 0.00149 **
 ## I(AMOSTRA^2)  1 0.0249  0.0249   0.197 0.66285   
@@ -841,8 +841,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="polinômio-de-1-grau" class="section level2" number="19.9">
 <h2><span class="header-section-number">19.9</span> Polinômio de 1 grau</h2>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="polinômios-ortogonais.html#cb502-1"></a>mod.reg =<span class="st"> </span><span class="kw">aov</span>(MS <span class="op">~</span><span class="st"> </span>AMOSTRA)</span>
-<span id="cb502-2"><a href="polinômios-ortogonais.html#cb502-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="polinômios-ortogonais.html#cb502-1" aria-hidden="true" tabindex="-1"></a>mod.reg <span class="ot">=</span> <span class="fu">aov</span>(MS <span class="sc">~</span> AMOSTRA)</span>
+<span id="cb502-2"><a href="polinômios-ortogonais.html#cb502-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.reg)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)   
 ## AMOSTRA      1  1.809  1.8092   14.97 0.00112 **
 ## Residuals   18  2.175  0.1209                   
@@ -852,8 +852,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="coeficientes-do-modelo" class="section level2" number="19.10">
 <h2><span class="header-section-number">19.10</span> Coeficientes do modelo</h2>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="polinômios-ortogonais.html#cb504-1"></a>mod.reg =<span class="st"> </span><span class="kw">lm</span>(MS <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(AMOSTRA<span class="op">^</span><span class="dv">4</span>))</span>
-<span id="cb504-2"><a href="polinômios-ortogonais.html#cb504-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="polinômios-ortogonais.html#cb504-1" aria-hidden="true" tabindex="-1"></a>mod.reg <span class="ot">=</span> <span class="fu">lm</span>(MS <span class="sc">~</span> <span class="fu">I</span>(AMOSTRA) <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">I</span>(AMOSTRA<span class="sc">^</span><span class="dv">4</span>))</span>
+<span id="cb504-2"><a href="polinômios-ortogonais.html#cb504-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.reg)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = MS ~ I(AMOSTRA) + I(AMOSTRA^2) + I(AMOSTRA^3) + 
@@ -880,10 +880,10 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="curva-estimada" class="section level2" number="19.11">
 <h2><span class="header-section-number">19.11</span> Curva Estimada</h2>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="polinômios-ortogonais.html#cb506-1"></a>m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(MS<span class="op">~</span><span class="kw">poly</span>(AMOSTRA, <span class="dt">degree=</span><span class="dv">1</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
-<span id="cb506-2"><a href="polinômios-ortogonais.html#cb506-2"></a><span class="co"># ou</span></span>
-<span id="cb506-3"><a href="polinômios-ortogonais.html#cb506-3"></a>m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(MS<span class="op">~</span>AMOSTRA)</span>
-<span id="cb506-4"><a href="polinômios-ortogonais.html#cb506-4"></a><span class="kw">anova</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="polinômios-ortogonais.html#cb506-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(MS<span class="sc">~</span><span class="fu">poly</span>(AMOSTRA, <span class="at">degree=</span><span class="dv">1</span>, <span class="at">raw=</span><span class="cn">TRUE</span>)) <span class="co"># não ortogonal</span></span>
+<span id="cb506-2"><a href="polinômios-ortogonais.html#cb506-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb506-3"><a href="polinômios-ortogonais.html#cb506-3" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(MS<span class="sc">~</span>AMOSTRA)</span>
+<span id="cb506-4"><a href="polinômios-ortogonais.html#cb506-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: MS
@@ -896,20 +896,20 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="usando-o-expdes.pt-1" class="section level2" number="19.12">
 <h2><span class="header-section-number">19.12</span> Usando o ExpDes.pt</h2>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="polinômios-ortogonais.html#cb508-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb508-2"><a href="polinômios-ortogonais.html#cb508-2"></a><span class="kw">dic</span>(AMOSTRA,MS,<span class="dt">quali =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="polinômios-ortogonais.html#cb508-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb508-2"><a href="polinômios-ortogonais.html#cb508-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dic</span>(AMOSTRA,MS,<span class="at">quali =</span> F)</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc      Pr&gt;Fc
-## Tratamento  4 3.1344  3 13.823 6.4215e-05
-## Residuo    15 0.8503  2                  
-## Total      19 3.9847  1                  
+##            GL     SQ      QM     Fc      Pr&gt;Fc
+## Tratamento  4 3.1344 0.78361 13.823 6.4215e-05
+## Residuo    15 0.8503 0.05669                  
+## Total      19 3.9847                          
 ## ------------------------------------------------------------------------
 ## CV = 0.26 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.8052063 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -1001,17 +1001,17 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 </div>
 <div id="gráfico" class="section level2" number="19.13">
 <h2><span class="header-section-number">19.13</span> Gráfico</h2>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="polinômios-ortogonais.html#cb510-1"></a><span class="kw">plot</span>(MS<span class="op">~</span>AMOSTRA,<span class="dt">ylab=</span><span class="st">&quot;Massa Seca&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot; &quot;</span>)</span>
-<span id="cb510-2"><a href="polinômios-ortogonais.html#cb510-2"></a><span class="kw">abline</span>(m1,<span class="dt">col=</span><span class="dv">2</span>)</span>
-<span id="cb510-3"><a href="polinômios-ortogonais.html#cb510-3"></a>dose=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>)</span>
-<span id="cb510-4"><a href="polinômios-ortogonais.html#cb510-4"></a><span class="kw">points</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="st">&quot;*&quot;</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="polinômios-ortogonais.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MS<span class="sc">~</span>AMOSTRA,<span class="at">ylab=</span><span class="st">&quot;Massa Seca&quot;</span>,<span class="at">xlab=</span><span class="st">&quot; &quot;</span>)</span>
+<span id="cb510-2"><a href="polinômios-ortogonais.html#cb510-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(m1,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb510-3"><a href="polinômios-ortogonais.html#cb510-3" aria-hidden="true" tabindex="-1"></a>dose<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">75</span>,<span class="dv">100</span>)</span>
+<span id="cb510-4"><a href="polinômios-ortogonais.html#cb510-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(meditrat<span class="sc">~</span>dose,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">pch=</span><span class="st">&quot;*&quot;</span>,<span class="at">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-311-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="gráfico-somente-com-a-média" class="section level2" number="19.14">
 <h2><span class="header-section-number">19.14</span> Gráfico somente com a média</h2>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="polinômios-ortogonais.html#cb511-1"></a><span class="kw">plot</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">las=</span><span class="dv">1</span>)</span>
-<span id="cb511-2"><a href="polinômios-ortogonais.html#cb511-2"></a><span class="kw">curve</span>(m1<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>m1<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>x, <span class="dt">add=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="polinômios-ortogonais.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(meditrat<span class="sc">~</span>dose,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pch=</span><span class="dv">16</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb511-2"><a href="polinômios-ortogonais.html#cb511-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(m1<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>m1<span class="sc">$</span>coefficients[<span class="dv">2</span>]<span class="sc">*</span>x, <span class="at">add=</span>T)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-312-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
@@ -1022,14 +1022,14 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 <p><br></p>
 <p>Num experimento estudou-se o efeito do farelo de arroz desengordurado (FAD) como fatores de retardamento da maturidade sexual de frangas. O ensaio, organizado em blocos completos casualizados, abrangeu duas fases distintas e foi constituído de 5 tratamentos e 5 repetições com 8 aves por unidade experimental. Os tratamentos, na primeira fase eram formados por rações que continham 0, 15, 30, 45, 60 % de FAD em substituição ao milho. Os resultados obtidos na primeira fase do ensaio, para conversão alimentar foram os seguintes:</p>
 <p>Fonte: <a href="http://www.uel.br/pessoal/lscunha/pages/arquivos/uel/Especializa%C3%A7%C3%A3o/Aula_9_-_Polin%C3%B4mios_Ortogonais(1).pdf" class="uri">http://www.uel.br/pessoal/lscunha/pages/arquivos/uel/Especializa%C3%A7%C3%A3o/Aula_9_-_Polin%C3%B4mios_Ortogonais(1).pdf</a></p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="polinômios-ortogonais.html#cb512-1"></a>CA=<span class="kw">c</span>(<span class="fl">6.5</span>, <span class="fl">6.4</span>, <span class="fl">6.2</span>, <span class="fl">5.8</span>, <span class="fl">7.3</span>,</span>
-<span id="cb512-2"><a href="polinômios-ortogonais.html#cb512-2"></a>    <span class="fl">7.1</span>, <span class="fl">7.4</span>, <span class="fl">6.9</span>, <span class="fl">7.3</span>, <span class="fl">7.0</span>,</span>
-<span id="cb512-3"><a href="polinômios-ortogonais.html#cb512-3"></a>    <span class="fl">7.5</span>, <span class="fl">8.1</span>, <span class="fl">6.7</span>, <span class="fl">7.4</span>, <span class="fl">7.7</span>,</span>
-<span id="cb512-4"><a href="polinômios-ortogonais.html#cb512-4"></a>    <span class="fl">7.2</span>, <span class="fl">7.0</span>, <span class="fl">6.9</span>, <span class="fl">6.7</span>, <span class="fl">6.5</span>,</span>
-<span id="cb512-5"><a href="polinômios-ortogonais.html#cb512-5"></a>    <span class="fl">6.4</span>, <span class="fl">6.5</span>, <span class="fl">6.0</span>, <span class="fl">6.3</span>, <span class="fl">6.2</span>)</span>
-<span id="cb512-6"><a href="polinômios-ortogonais.html#cb512-6"></a>Bloco=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dv">5</span>)</span>
-<span id="cb512-7"><a href="polinômios-ortogonais.html#cb512-7"></a>FAD=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>),<span class="dt">e=</span><span class="dv">5</span>)</span>
-<span id="cb512-8"><a href="polinômios-ortogonais.html#cb512-8"></a>dados=<span class="kw">data.frame</span>(<span class="dt">fad=</span><span class="kw">factor</span>(FAD),<span class="dt">Bloco=</span><span class="kw">factor</span>(Bloco),CA)</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="polinômios-ortogonais.html#cb512-1" aria-hidden="true" tabindex="-1"></a>CA<span class="ot">=</span><span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">6.4</span>, <span class="fl">6.2</span>, <span class="fl">5.8</span>, <span class="fl">7.3</span>,</span>
+<span id="cb512-2"><a href="polinômios-ortogonais.html#cb512-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">7.1</span>, <span class="fl">7.4</span>, <span class="fl">6.9</span>, <span class="fl">7.3</span>, <span class="fl">7.0</span>,</span>
+<span id="cb512-3"><a href="polinômios-ortogonais.html#cb512-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">7.5</span>, <span class="fl">8.1</span>, <span class="fl">6.7</span>, <span class="fl">7.4</span>, <span class="fl">7.7</span>,</span>
+<span id="cb512-4"><a href="polinômios-ortogonais.html#cb512-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">7.2</span>, <span class="fl">7.0</span>, <span class="fl">6.9</span>, <span class="fl">6.7</span>, <span class="fl">6.5</span>,</span>
+<span id="cb512-5"><a href="polinômios-ortogonais.html#cb512-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">6.4</span>, <span class="fl">6.5</span>, <span class="fl">6.0</span>, <span class="fl">6.3</span>, <span class="fl">6.2</span>)</span>
+<span id="cb512-6"><a href="polinômios-ortogonais.html#cb512-6" aria-hidden="true" tabindex="-1"></a>Bloco<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),<span class="dv">5</span>)</span>
+<span id="cb512-7"><a href="polinômios-ortogonais.html#cb512-7" aria-hidden="true" tabindex="-1"></a>FAD<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>),<span class="at">e=</span><span class="dv">5</span>)</span>
+<span id="cb512-8"><a href="polinômios-ortogonais.html#cb512-8" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">fad=</span><span class="fu">factor</span>(FAD),<span class="at">Bloco=</span><span class="fu">factor</span>(Bloco),CA)</span></code></pre></div>
 <p><br><br></p>
 </div>
 <div id="análise-de-variância-12" class="section level2" number="19.16">
@@ -1043,8 +1043,8 @@ H_1: &amp; \mu_i \neq \mu_i&#39; \qquad i \neq i&#39;.
 \right.
 \end{eqnarray*}\]</span></p>
 <p><br></p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="polinômios-ortogonais.html#cb513-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados,<span class="kw">aov</span>(CA <span class="op">~</span><span class="st"> </span>fad<span class="op">+</span>Bloco))</span>
-<span id="cb513-2"><a href="polinômios-ortogonais.html#cb513-2"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="polinômios-ortogonais.html#cb513-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">with</span>(dados,<span class="fu">aov</span>(CA <span class="sc">~</span> fad<span class="sc">+</span>Bloco))</span>
+<span id="cb513-2"><a href="polinômios-ortogonais.html#cb513-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## fad          4  4.868   1.217  10.058 0.000289 ***
 ## Bloco        4  0.936   0.234   1.934 0.153795    
@@ -1068,7 +1068,7 @@ H_1: &amp; \mbox{Os erros não seguem distribuição normal}.
 \right.
 \end{eqnarray*}\]</span></p>
 <p><br></p>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="polinômios-ortogonais.html#cb515-1"></a><span class="kw">shapiro.test</span>(mod<span class="op">$</span>res)</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="polinômios-ortogonais.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(mod<span class="sc">$</span>res)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1088,7 +1088,7 @@ H_1: &amp; \mbox{ As Variâncias não são homogêneas}.
 \right.
 \end{eqnarray*}\]</span></p>
 <p><br></p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="polinômios-ortogonais.html#cb517-1"></a><span class="kw">bartlett.test</span>(<span class="kw">residuals</span>(mod)<span class="op">~</span><span class="kw">as.factor</span>(dados<span class="op">$</span>fad))</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="polinômios-ortogonais.html#cb517-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(<span class="fu">residuals</span>(mod)<span class="sc">~</span><span class="fu">as.factor</span>(dados<span class="sc">$</span>fad))</span></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -1107,15 +1107,15 @@ H_1: \mbox{Os erros não são independentes}.
 \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="polinômios-ortogonais.html#cb519-1"></a><span class="kw">library</span>(lmtest)</span>
-<span id="cb519-2"><a href="polinômios-ortogonais.html#cb519-2"></a><span class="kw">dwtest</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="polinômios-ortogonais.html#cb519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb519-2"><a href="polinômios-ortogonais.html#cb519-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(mod)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
 ## data:  mod
 ## DW = 2.8659, p-value = 0.923
 ## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="polinômios-ortogonais.html#cb521-1"></a><span class="kw">plot</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="polinômios-ortogonais.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod<span class="sc">$</span>residuals)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" /></p>
 <p><br></p>
 </div>
@@ -1123,8 +1123,8 @@ H_1: \mbox{Os erros não são independentes}.
 <div id="coeficientes-do-modelo-1" class="section level2" number="19.18">
 <h2><span class="header-section-number">19.18</span> Coeficientes do modelo</h2>
 <p><br></p>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="polinômios-ortogonais.html#cb522-1"></a>mod.reg =<span class="st"> </span><span class="kw">lm</span>(CA <span class="op">~</span><span class="st"> </span>FAD <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(FAD<span class="op">^</span><span class="dv">4</span>))</span>
-<span id="cb522-2"><a href="polinômios-ortogonais.html#cb522-2"></a><span class="kw">summary</span>(mod.reg)</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="polinômios-ortogonais.html#cb522-1" aria-hidden="true" tabindex="-1"></a>mod.reg <span class="ot">=</span> <span class="fu">lm</span>(CA <span class="sc">~</span> FAD <span class="sc">+</span> <span class="fu">I</span>(FAD<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(FAD<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> <span class="fu">I</span>(FAD<span class="sc">^</span><span class="dv">4</span>))</span>
+<span id="cb522-2"><a href="polinômios-ortogonais.html#cb522-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.reg)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = CA ~ FAD + I(FAD^2) + I(FAD^3) + I(FAD^4))
@@ -1150,20 +1150,20 @@ H_1: \mbox{Os erros não são independentes}.
 </div>
 <div id="usando-o-expdes.pt-2" class="section level2" number="19.19">
 <h2><span class="header-section-number">19.19</span> Usando o ExpDes.pt</h2>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="polinômios-ortogonais.html#cb524-1"></a><span class="kw">library</span>(ExpDes.pt)</span>
-<span id="cb524-2"><a href="polinômios-ortogonais.html#cb524-2"></a><span class="kw">dic</span>(FAD,CA, <span class="dt">quali=</span>F)</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="polinômios-ortogonais.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ExpDes.pt)</span>
+<span id="cb524-2"><a href="polinômios-ortogonais.html#cb524-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dic</span>(FAD,CA, <span class="at">quali=</span>F)</span></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL    SQ QM     Fc      Pr&gt;Fc
-## Tratamento  4 4.868  3 8.4749 0.00036068
-## Residuo    20 2.872  2                  
-## Total      24 7.740  1                  
+##            GL    SQ     QM     Fc      Pr&gt;Fc
+## Tratamento  4 4.868 1.2170 8.4749 0.00036068
+## Residuo    20 2.872 0.1436                  
+## Total      24 7.740                         
 ## ------------------------------------------------------------------------
 ## CV = 5.54 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.5382094 
 ## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
 ## ------------------------------------------------------------------------
@@ -1255,15 +1255,15 @@ H_1: \mbox{Os erros não são independentes}.
 </div>
 <div id="curva-estimada-1" class="section level2" number="19.20">
 <h2><span class="header-section-number">19.20</span> Curva Estimada</h2>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="polinômios-ortogonais.html#cb526-1"></a>m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(CA<span class="op">~</span><span class="kw">poly</span>(FAD, <span class="dt">degree=</span><span class="dv">1</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
-<span id="cb526-2"><a href="polinômios-ortogonais.html#cb526-2"></a><span class="kw">anova</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="polinômios-ortogonais.html#cb526-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(CA<span class="sc">~</span><span class="fu">poly</span>(FAD, <span class="at">degree=</span><span class="dv">1</span>, <span class="at">raw=</span><span class="cn">TRUE</span>)) <span class="co"># não ortogonal</span></span>
+<span id="cb526-2"><a href="polinômios-ortogonais.html#cb526-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: CA
 ##                                   Df Sum Sq Mean Sq F value Pr(&gt;F)
 ## poly(FAD, degree = 1, raw = TRUE)  1   0.18  0.1800  0.5476 0.4668
 ## Residuals                         23   7.56  0.3287</code></pre>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="polinômios-ortogonais.html#cb528-1"></a><span class="kw">summary</span>(m1)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="polinômios-ortogonais.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = CA ~ poly(FAD, degree = 1, raw = TRUE))
@@ -1282,8 +1282,8 @@ H_1: \mbox{Os erros não são independentes}.
 ## Residual standard error: 0.5733 on 23 degrees of freedom
 ## Multiple R-squared:  0.02326,    Adjusted R-squared:  -0.01921 
 ## F-statistic: 0.5476 on 1 and 23 DF,  p-value: 0.4668</code></pre>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="polinômios-ortogonais.html#cb530-1"></a>m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(CA<span class="op">~</span><span class="kw">poly</span>(FAD, <span class="dt">degree=</span><span class="dv">2</span>, <span class="dt">raw=</span><span class="ot">TRUE</span>)) <span class="co"># não ortogonal</span></span>
-<span id="cb530-2"><a href="polinômios-ortogonais.html#cb530-2"></a><span class="kw">anova</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="polinômios-ortogonais.html#cb530-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(CA<span class="sc">~</span><span class="fu">poly</span>(FAD, <span class="at">degree=</span><span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>)) <span class="co"># não ortogonal</span></span>
+<span id="cb530-2"><a href="polinômios-ortogonais.html#cb530-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: CA
@@ -1292,7 +1292,7 @@ H_1: \mbox{Os erros não são independentes}.
 ## Residuals                         22 3.1349 0.14249                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="polinômios-ortogonais.html#cb532-1"></a><span class="kw">summary</span>(m2)</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="polinômios-ortogonais.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = CA ~ poly(FAD, degree = 2, raw = TRUE))
@@ -1316,31 +1316,31 @@ H_1: \mbox{Os erros não são independentes}.
 </div>
 <div id="gráficos" class="section level2" number="19.21">
 <h2><span class="header-section-number">19.21</span> Gráficos</h2>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="polinômios-ortogonais.html#cb534-1"></a>(<span class="dt">meditrat=</span><span class="kw">tapply</span>(CA,FAD,mean))</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="polinômios-ortogonais.html#cb534-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">meditrat=</span><span class="fu">tapply</span>(CA,FAD,mean))</span></code></pre></div>
 <pre><code>##    0   15   30   45   60 
 ## 6.44 7.14 7.48 6.86 6.28</code></pre>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="polinômios-ortogonais.html#cb536-1"></a><span class="kw">plot</span>(CA<span class="op">~</span>FAD,<span class="dt">ylab=</span><span class="st">&quot;CA&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot; &quot;</span>)</span>
-<span id="cb536-2"><a href="polinômios-ortogonais.html#cb536-2"></a><span class="kw">curve</span>(<span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T)</span>
-<span id="cb536-3"><a href="polinômios-ortogonais.html#cb536-3"></a>dose=<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>)</span>
-<span id="cb536-4"><a href="polinômios-ortogonais.html#cb536-4"></a><span class="kw">points</span>(meditrat<span class="op">~</span>dose,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">pch=</span><span class="st">&quot;*&quot;</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="polinômios-ortogonais.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CA<span class="sc">~</span>FAD,<span class="at">ylab=</span><span class="st">&quot;CA&quot;</span>,<span class="at">xlab=</span><span class="st">&quot; &quot;</span>)</span>
+<span id="cb536-2"><a href="polinômios-ortogonais.html#cb536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">coef</span>(m2)[<span class="dv">1</span>]<span class="sc">+</span><span class="fu">coef</span>(m2)[<span class="dv">2</span>]<span class="sc">*</span>x<span class="sc">+</span><span class="fu">coef</span>(m2)[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>, <span class="at">add=</span>T)</span>
+<span id="cb536-3"><a href="polinômios-ortogonais.html#cb536-3" aria-hidden="true" tabindex="-1"></a>dose<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">45</span>,<span class="dv">60</span>)</span>
+<span id="cb536-4"><a href="polinômios-ortogonais.html#cb536-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(meditrat<span class="sc">~</span>dose,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">pch=</span><span class="st">&quot;*&quot;</span>,<span class="at">cex=</span><span class="fl">1.5</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-322-1.png" width="672" /></p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="polinômios-ortogonais.html#cb537-1"></a><span class="kw">plot</span>(meditrat<span class="op">~</span>dose,</span>
-<span id="cb537-2"><a href="polinômios-ortogonais.html#cb537-2"></a>     <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb537-3"><a href="polinômios-ortogonais.html#cb537-3"></a>     <span class="dt">pch=</span><span class="dv">16</span>, </span>
-<span id="cb537-4"><a href="polinômios-ortogonais.html#cb537-4"></a>     <span class="dt">las=</span><span class="dv">1</span>, </span>
-<span id="cb537-5"><a href="polinômios-ortogonais.html#cb537-5"></a>     <span class="dt">ylab=</span><span class="st">&quot;Conversão alimentar&quot;</span>,</span>
-<span id="cb537-6"><a href="polinômios-ortogonais.html#cb537-6"></a>     <span class="dt">main=</span><span class="kw">expression</span>(<span class="kw">italic</span>(<span class="st">&quot;Conversão alimentar&quot;</span>)),</span>
-<span id="cb537-7"><a href="polinômios-ortogonais.html#cb537-7"></a>     <span class="dt">xlab=</span><span class="st">&quot;FAD (%)&quot;</span>)</span>
-<span id="cb537-8"><a href="polinômios-ortogonais.html#cb537-8"></a><span class="kw">curve</span>(<span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb537-9"><a href="polinômios-ortogonais.html#cb537-9"></a>(<span class="dt">xmax=</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">/-</span>(<span class="dv">2</span><span class="op">*</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="polinômios-ortogonais.html#cb537-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(meditrat<span class="sc">~</span>dose,</span>
+<span id="cb537-2"><a href="polinômios-ortogonais.html#cb537-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb537-3"><a href="polinômios-ortogonais.html#cb537-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">16</span>, </span>
+<span id="cb537-4"><a href="polinômios-ortogonais.html#cb537-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span>, </span>
+<span id="cb537-5"><a href="polinômios-ortogonais.html#cb537-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Conversão alimentar&quot;</span>,</span>
+<span id="cb537-6"><a href="polinômios-ortogonais.html#cb537-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="fu">expression</span>(<span class="fu">italic</span>(<span class="st">&quot;Conversão alimentar&quot;</span>)),</span>
+<span id="cb537-7"><a href="polinômios-ortogonais.html#cb537-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;FAD (%)&quot;</span>)</span>
+<span id="cb537-8"><a href="polinômios-ortogonais.html#cb537-8" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">coef</span>(m2)[<span class="dv">1</span>]<span class="sc">+</span><span class="fu">coef</span>(m2)[<span class="dv">2</span>]<span class="sc">*</span>x<span class="sc">+</span><span class="fu">coef</span>(m2)[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>, <span class="at">add=</span>T, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb537-9"><a href="polinômios-ortogonais.html#cb537-9" aria-hidden="true" tabindex="-1"></a>(<span class="at">xmax=</span><span class="fu">coef</span>(m2)[<span class="dv">2</span>]<span class="sc">/-</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">coef</span>(m2)[<span class="dv">3</span>]))</span></code></pre></div>
 <pre><code>## poly(FAD, degree = 2, raw = TRUE)1 
 ##                           28.21023</code></pre>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="polinômios-ortogonais.html#cb539-1"></a>(<span class="dt">ymax=</span><span class="kw">coef</span>(m2)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">2</span>]<span class="op">*</span>xmax<span class="op">+</span><span class="kw">coef</span>(m2)[<span class="dv">3</span>]<span class="op">*</span>xmax<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="polinômios-ortogonais.html#cb539-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">ymax=</span><span class="fu">coef</span>(m2)[<span class="dv">1</span>]<span class="sc">+</span><span class="fu">coef</span>(m2)[<span class="dv">2</span>]<span class="sc">*</span>xmax<span class="sc">+</span><span class="fu">coef</span>(m2)[<span class="dv">3</span>]<span class="sc">*</span>xmax<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## (Intercept) 
 ##    7.346437</code></pre>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="polinômios-ortogonais.html#cb541-1"></a><span class="kw">abline</span>(<span class="dt">v=</span>xmax, <span class="dt">h=</span>ymax, <span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb541-2"><a href="polinômios-ortogonais.html#cb541-2"></a><span class="kw">points</span>(xmax,ymax, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">pch=</span><span class="dv">8</span>)</span>
-<span id="cb541-3"><a href="polinômios-ortogonais.html#cb541-3"></a><span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>, <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="kw">expression</span>(Y<span class="op">==</span><span class="fl">6.457143+0.06304762</span> <span class="op">*</span>x<span class="fl">-0.00111746</span><span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>), <span class="kw">expression</span>(R<span class="op">^</span><span class="dv">2</span><span class="op">==</span><span class="fl">0.595</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="polinômios-ortogonais.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>xmax, <span class="at">h=</span>ymax, <span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb541-2"><a href="polinômios-ortogonais.html#cb541-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(xmax,ymax, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">pch=</span><span class="dv">8</span>)</span>
+<span id="cb541-3"><a href="polinômios-ortogonais.html#cb541-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomleft&quot;</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>,<span class="at">legend=</span><span class="fu">c</span>(<span class="fu">expression</span>(Y<span class="sc">==</span><span class="fl">6.457143+0.06304762</span> <span class="sc">*</span>x<span class="fl">-0.00111746</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>), <span class="fu">expression</span>(R<span class="sc">^</span><span class="dv">2</span><span class="sc">==</span><span class="fl">0.595</span>)))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-323-1.png" width="672" /></p>
 <p><br><br><br><br></p>
 <hr />
@@ -1375,10 +1375,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "sepia",
+"theme": "white",
 "family": "sans",
 "size": 2
 },
